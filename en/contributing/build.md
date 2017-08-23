@@ -1,27 +1,70 @@
-# Building
+# Building DroneCore from Source
 
-## Build the Library
+To build all of DroneCore from source you will first need to build the C++ library, and then any wrappers. The instructions below show how.
 
-Make sure the submodules are updated first.
+## Build the C++ Library
 
+### Linux and Mac OS X
+
+First install the dependencies
+```bash
+sudo apt-get update -y
+sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev -y
 ```
+
+> **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile).
+
+Clone the DroneCore repository (or your fork) and update the submodules:
+
+```bash
+git clone https://github.com/dronecore/DroneCore.git
+cd DroneCore
 git submodule update --init --recursive
 ```
 
-### Desktop
-
-Build for the desktop to test and debug:
+You can then build the library by calling:
 
 ```
 make default
 ```
 
-### Android
+### Windows
+
+To build DroneCode on Windows you'll need to install Visual Studio Community 2015 with Update 3 (this is an older version, but is still available through the free Microsoft Dev Essentials Program).
+
+First download the [curl](https://curl.haxx.se/) source, extract and build it. These instructions assume you downloaded [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) and extracted to the root of your C drive. The instructions can be modified for any other release.
+
+Open the *VS2015 x64 Native Tools Command Prompt*, go to the source directory and enter:
+
+```bash
+cd C:\curl-7.54.1\winbuild
+nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
+```
+
+To build in Windows:
+```
+mkdir build && cd build
+cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
+
+cmake --build .
+```
+
+Note that you need to download the curl source and provide the directory of the header files.
+
+
+### Using the Compiled C++ Library
+
+The [Takeoff and Land](../examples/takeoff_and_land.md) example shows how to build and test an example in C++.
+
+
+
+## Build for Android
+
+> **Tip** You must first build the C++ Library (as shown above).
 
 To build for Android devices or simulators, you first need to install:
 - [Android NDK](https://developer.android.com/ndk/downloads/index.html)
 - [Android SDK](https://developer.android.com/studio/index.html)
-
 
 Also, you need to set these three environment variables:
 
@@ -43,9 +86,11 @@ make android install
 ```
 
 
-### iOS
+## Build for iOS 
 
-To build for real iOS devices on macOS:
+> **Tip** You must first build the C++ Library (as shown above).
+
+To build for real iOS devices on Mac OS X:
 
 ```
 make ios install
@@ -57,24 +102,7 @@ Build for the iOS simulator on macOS:
 make ios_simulator install
 ```
 
-### Windows
 
-First download the curl source, extract and build it:
-```
-cd C:\curl-7.54.1\winbuild
-nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
-```
-
-
-To build in Windows, open the VS2015 x64 Native Tools Command Prompt, go to the source directory and do:
-```
-mkdir build && cd build
-cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
-
-cmake --build .
-```
-
-Note that you need to download the curl source and provide the directory of the header files.
 
 ## Build with external directory for plugins and custom integration_tests
 
@@ -124,16 +152,6 @@ build/default/integration_tests_runner --gtest_filter="ExternalExampleHello"
 ```
 
 
-
-### Code Style
-
-All cpp and h files should be formatted according to the astyle settings defined by astylerc.
-To automatically fix the formatting, run this command:
-
-```
-make fix_style
-```
-
 ## Building in Docker
 
 If you want to develop in docker, you can use the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile) based on Ubuntu 16.04.
@@ -169,6 +187,3 @@ INSTALL_PREFIX=/usr/local make default install
 
 Note that when using the library **libdronecore.a**, you need to link to a thread library such as *pthread* on a POSIX system (pthread is not included in the static library because it is included in glibc).
 
-## Build Example
-
-The [Takeoff and Land](../examples/takeoff_and_land.md) example shows how to build and test an example.
