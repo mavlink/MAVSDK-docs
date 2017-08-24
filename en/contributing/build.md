@@ -4,50 +4,64 @@ To build all of DroneCore from source you will first need to build the C++ libra
 
 ## Build the C++ Library
 
-### Linux and Mac OS X
+### Mac OS X
 
-First install the dependencies
-```bash
-sudo apt-get update -y
-sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev -y
-```
+First install:
+* [XCode](https://developer.apple.com/xcode/) (for *clang*)
+* [Homebrew](https://brew.sh/) (for *cmake*).
+  Once you have installed brew, you can install *cmake* via the terminal:
+  ```
+  brew install cmake
+  ```
 
-> **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile).
+Then follow the instructions for building the library on [Linux](#linux).
 
-Clone the DroneCore repository (or your fork) and update the submodules:
+### Linux
 
-```bash
-git clone https://github.com/dronecore/DroneCore.git
-cd DroneCore
-git submodule update --init --recursive
-```
+To build the *DroneCore* C++ Library on Linux (or Mac OS X after installing the [preconditions above](#mac-os-x)):
 
-You can then build the library by calling:
+1. First install the dependencies
+   ```bash
+   sudo apt-get update -y
+   sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev -y
+   ```
+   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile).
 
-```
-make default
-```
+1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork) and update the submodules:
+   ```bash
+   git clone https://github.com/dronecore/DroneCore.git
+   cd DroneCore
+   git submodule update --init --recursive
+   ```
+1. Build the C++ library by calling:
+   ```
+   make default
+   ```
 
 ### Windows
 
-To build *DroneCore* on Windows you'll need to install *Visual Studio Community Edition*. You will also need to download the [curl](https://curl.haxx.se/) source, extract and build it, and make the directory of the header files available when you build DroneCore.
+To build the library you'll need to install *Visual Studio Community Edition*. You will also need to download the [curl](https://curl.haxx.se/) source, extract and build it, and make the directory of the header files available when you build DroneCore.
 
 > **Note** The instructions below assume you downloaded [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
-The steps are:
-
+To build the *DroneCore* C++ Library on Windows:
+1. Clone the DroneCore repository (or your fork) and update the submodules:
+   ```bash
+   git clone https://github.com/dronecore/DroneCore.git
+   cd DroneCore
+   git submodule update --init --recursive
+   ```
 1. Download the [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) source and extract it to the root of your C drive. 
 1. Open the *VS2015 x64 Native Tools Command Prompt*, go to the source directory and enter:
    ```bash
    cd C:\curl-7.54.1\winbuild
-   nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
+   nmake /f Makefile.vc mode=static VC=14 MACHINE=x64 DEBUG=no
    ```
-
 1. Then build *DroneCore* in Windows:
    ```
    cd /your/path/to/DroneCore
    mkdir build && cd build
-   cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
+   cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc14-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
    cmake --build .
    ```
 
