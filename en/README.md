@@ -45,7 +45,7 @@ Developers who want to contribute to the API will need to build the C++ library 
 This guide contains information and examples showing how to use DroneCore. If you have specific questions that are not answered by the documentation, these can be raised on:
 
 * [Slack DroneCore Channel](https://px4.slack.com/messages/C68J8H32A) (get a [Slack login here](http://slack.px4.io))
-* [Discuss board](TBD)
+* [Discuss board](http://discuss.px4.io/c/dronecore)
 
 Use Github for bug reports/enhancement requests:
 
