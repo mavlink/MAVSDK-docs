@@ -30,32 +30,30 @@ make default
 
 ### Windows
 
-To build DroneCode on Windows you'll need to install Visual Studio Community 2015 with Update 3 (this is an older version, but is still available through the free Microsoft Dev Essentials Program).
+To build *DroneCore* on Windows you'll need to install *Visual Studio Community Edition*. You will also need to download the [curl](https://curl.haxx.se/) source, extract and build it, and make the directory of the header files available when you build DroneCore.
 
-First download the [curl](https://curl.haxx.se/) source, extract and build it. These instructions assume you downloaded [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) and extracted to the root of your C drive. The instructions can be modified for any other release.
+> **Note** The instructions below assume you downloaded [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
-Open the *VS2015 x64 Native Tools Command Prompt*, go to the source directory and enter:
+The steps are:
 
-```bash
-cd C:\curl-7.54.1\winbuild
-nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
-```
+1. Download the [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) source and extract it to the root of your C drive. 
+1. Open the *VS2015 x64 Native Tools Command Prompt*, go to the source directory and enter:
+   ```bash
+   cd C:\curl-7.54.1\winbuild
+   nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
+   ```
 
-To build in Windows:
-```
-mkdir build && cd build
-cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
-
-cmake --build .
-```
-
-Note that you need to download the curl source and provide the directory of the header files.
-
+1. Then build *DroneCore* in Windows:
+   ```
+   cd /your/path/to/DroneCore
+   mkdir build && cd build
+   cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
+   cmake --build .
+   ```
 
 ### Using the Compiled C++ Library
 
 The [Takeoff and Land](../examples/takeoff_and_land.md) example shows how to build and test an example in C++.
-
 
 
 ## Build for Android
@@ -186,4 +184,8 @@ INSTALL_PREFIX=/usr/local make default install
 ```
 
 Note that when using the library **libdronecore.a**, you need to link to a thread library such as *pthread* on a POSIX system (pthread is not included in the static library because it is included in glibc).
+
+## Build Python Wrapper
+
+TBD.
 
