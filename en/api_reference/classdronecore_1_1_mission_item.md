@@ -15,7 +15,7 @@ Each [MissionItem](classdronecore_1_1_mission_item.md) can contain a position an
 
 Type | Description
 --- | ---
-enum [CameraAction](#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) {<ul><li style="list-style-type: none;"><a href="#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aa4130de26d3895fa5de9f46ddd558315c">TAKE_PHOTO</a>, <a href="#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aa27eb71e5403792ee9072932ec93c113c">START_PHOTO_INTERVAL</a>, <a href="#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aa7554aaea445f14cf06a0757ff8204b0a">STOP_PHOTO_INTERVAL</a>, <a href="#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aa2830bdcebb2b8bb17e19bef72a7255bc">START_VIDEO</a>, <a href="#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aac7dbedd5fead832bc23d7caaf4cfb8cf">STOP_VIDEO</a>, <a href="#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aab50339a10e1de285ac99d4c3990b8693">NONE</a><p>}</p></li> | Possible camera actions at a mission item.
+enum [CameraAction](#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) | Possible camera actions at a mission item.
 
 ## Public Member Functions
 

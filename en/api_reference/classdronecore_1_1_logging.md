@@ -15,7 +15,7 @@ The [Logging](classdronecore_1_1_logging.md) class allows log data using logger 
 
 Type | Description
 --- | ---
-enum [Result](#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) {<ul><li style="list-style-type: none;"><a href="#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086ad0749aaba8b833466dfcbb0428e4f89c">SUCCESS=0</a>, <a href="#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a23514014e50da2b2583cae24ab1ecd88">NO_DEVICE</a>, <a href="#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086ac77f1f09dab2c0c9980fca7cfae02518">CONNECTION_ERROR</a>, <a href="#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a802706a9238e2928077f97736854bad4">BUSY</a>, <a href="#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a6fa4dbf368cea972db8d9156799d5dbe">COMMAND_DENIED</a>, <a href="#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a070a0fb40f6c308ab544b227660aadff">TIMEOUT</a>, <a href="#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a696b031073e74bf2cb98e5ef201d4aa3">UNKNOWN</a><p>}</p></li> | Results for logging requests.
+enum [Result](#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) | Results for logging requests.
 std::function< void([Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086))> [result_callback_t](#classdronecore_1_1_logging_1a16c5eb728571a59a552ca6706166b427) | Callback type for logging requests.
 
 ## Public Member Functions

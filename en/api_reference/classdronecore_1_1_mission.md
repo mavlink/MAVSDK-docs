@@ -12,7 +12,7 @@ The [Mission](classdronecore_1_1_mission.md) class enables waypoint missions.
 
 Type | Description
 --- | ---
-enum [Result](#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda) {<ul><li style="list-style-type: none;"><a href="#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaad0749aaba8b833466dfcbb0428e4f89c">SUCCESS=0</a>, <a href="#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaabb1ca97ec761fc37101737ba0aa2e7c5">ERROR</a>, <a href="#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaab6968a2ae2835d0d36126e1d12e5d1a1">TOO_MANY_MISSION_ITEMS</a>, <a href="#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa802706a9238e2928077f97736854bad4">BUSY</a>, <a href="#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa070a0fb40f6c308ab544b227660aadff">TIMEOUT</a>, <a href="#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaaf295a0c3e37c94f078e1c5476479132d">INVALID_ARGUMENT</a>, <a href="#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa696b031073e74bf2cb98e5ef201d4aa3">UNKNOWN</a><p>}</p></li> | Possible results returned for mission requests.
+enum [Result](#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda) | Possible results returned for mission requests.
 std::function< void([Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda))> [result_callback_t](#classdronecore_1_1_mission_1a239f8d5853785d6ccf90c8c48b5ccf06) | Callback type for async mission calls.
 std::function< void(int current, int total)> [progress_callback_t](#classdronecore_1_1_mission_1aeda7795cd898008afc05b779f99b704b) | Callback type to receive mission progress.
 

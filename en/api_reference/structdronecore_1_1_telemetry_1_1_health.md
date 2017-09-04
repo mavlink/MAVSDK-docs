@@ -44,7 +44,7 @@ bool dronecore::Telemetry::Health::gyrometer_calibration_ok
 true if the gyrometer is calibrated.
 
 
-<!-- [<Element 'type' at 0x00000211CA903E08> gyrometer_calibration_ok](#structdronecore_1_1_telemetry_1_1_health_1a20d42a65fe962216969dc8eef6a221a8) -->
+<!-- [<Element 'type' at 0x000001F32A2D3228> gyrometer_calibration_ok](#structdronecore_1_1_telemetry_1_1_health_1a20d42a65fe962216969dc8eef6a221a8) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->
@@ -66,7 +66,7 @@ bool dronecore::Telemetry::Health::accelerometer_calibration_ok
 true if the accelerometer is calibrated.
 
 
-<!-- [<Element 'type' at 0x00000211CA86EDB8> accelerometer_calibration_ok](#structdronecore_1_1_telemetry_1_1_health_1aca75d649d8caf7004f42bd418a407cbc) -->
+<!-- [<Element 'type' at 0x000001F32A2FE098> accelerometer_calibration_ok](#structdronecore_1_1_telemetry_1_1_health_1aca75d649d8caf7004f42bd418a407cbc) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->
@@ -88,7 +88,7 @@ bool dronecore::Telemetry::Health::magnetometer_calibration_ok
 true if the magnetometer is calibrated.
 
 
-<!-- [<Element 'type' at 0x00000211CA86EA48> magnetometer_calibration_ok](#structdronecore_1_1_telemetry_1_1_health_1a30651ed802acff96c88365fb2ca9fc5c) -->
+<!-- [<Element 'type' at 0x000001F32A2FEC28> magnetometer_calibration_ok](#structdronecore_1_1_telemetry_1_1_health_1a30651ed802acff96c88365fb2ca9fc5c) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->
@@ -110,7 +110,7 @@ bool dronecore::Telemetry::Health::level_calibration_ok
 true if the vehicle has a valid level calibration.
 
 
-<!-- [<Element 'type' at 0x00000211CA86E188> level_calibration_ok](#structdronecore_1_1_telemetry_1_1_health_1a470b87fb4865c89fb225dda1c77d6db6) -->
+<!-- [<Element 'type' at 0x000001F32A2FE9A8> level_calibration_ok](#structdronecore_1_1_telemetry_1_1_health_1a470b87fb4865c89fb225dda1c77d6db6) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->
@@ -132,7 +132,7 @@ bool dronecore::Telemetry::Health::local_position_ok
 true if the local position estimate is good enough to fly in a position control mode.
 
 
-<!-- [<Element 'type' at 0x00000211CA86ED68> local_position_ok](#structdronecore_1_1_telemetry_1_1_health_1a54a4cacaf2ae764857165dd1077d6c91) -->
+<!-- [<Element 'type' at 0x000001F32A2FEC78> local_position_ok](#structdronecore_1_1_telemetry_1_1_health_1a54a4cacaf2ae764857165dd1077d6c91) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->
@@ -154,7 +154,7 @@ bool dronecore::Telemetry::Health::global_position_ok
 true if the global position estimate is good enough to fly in a position controlled mode.
 
 
-<!-- [<Element 'type' at 0x00000211CA868BD8> global_position_ok](#structdronecore_1_1_telemetry_1_1_health_1a5f02efb9cc25a6db1ee2b9d70149ba6f) -->
+<!-- [<Element 'type' at 0x000001F32A2F7728> global_position_ok](#structdronecore_1_1_telemetry_1_1_health_1a5f02efb9cc25a6db1ee2b9d70149ba6f) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->
@@ -176,7 +176,7 @@ bool dronecore::Telemetry::Health::home_position_ok
 true if the home position has been initialized properly.
 
 
-<!-- [<Element 'type' at 0x00000211CA868688> home_position_ok](#structdronecore_1_1_telemetry_1_1_health_1a3736323422843fb5e37b988a95d5575a) -->
+<!-- [<Element 'type' at 0x000001F32A2F7AE8> home_position_ok](#structdronecore_1_1_telemetry_1_1_health_1a3736323422843fb5e37b988a95d5575a) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->

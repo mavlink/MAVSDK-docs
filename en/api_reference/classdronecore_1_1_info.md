@@ -219,7 +219,7 @@ Length of git hash strings.
 
 Length is 16 chars + null termination.
 
-<!-- [<Element 'type' at 0x00000211CA86E688> GIT_HASH_STR_LEN](#classdronecore_1_1_info_1aae671143f80e43d2f431e7fe0d3774fd) -->
+<!-- [<Element 'type' at 0x000001F32A2F7A48> GIT_HASH_STR_LEN](#classdronecore_1_1_info_1aae671143f80e43d2f431e7fe0d3774fd) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: yes -->

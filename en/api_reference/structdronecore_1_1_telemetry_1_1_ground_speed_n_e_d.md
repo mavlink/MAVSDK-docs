@@ -35,7 +35,7 @@ float dronecore::Telemetry::GroundSpeedNED::velocity_north_m_s
 Velocity in North direction in metres/second.
 
 
-<!-- [<Element 'type' at 0x00000211CA86E908> velocity_north_m_s](#structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d_1ad8522faaa977abf925cb519f6c00b126) -->
+<!-- [<Element 'type' at 0x000001F32A2F7C78> velocity_north_m_s](#structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d_1ad8522faaa977abf925cb519f6c00b126) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->
@@ -57,7 +57,7 @@ float dronecore::Telemetry::GroundSpeedNED::velocity_east_m_s
 Velocity in East direction in metres/second.
 
 
-<!-- [<Element 'type' at 0x00000211CA86E408> velocity_east_m_s](#structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d_1a542cba7e296b1deae7b28b0c2ec69172) -->
+<!-- [<Element 'type' at 0x000001F32A2F7E58> velocity_east_m_s](#structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d_1a542cba7e296b1deae7b28b0c2ec69172) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->
@@ -79,7 +79,7 @@ float dronecore::Telemetry::GroundSpeedNED::velocity_down_m_s
 Velocity in Down direction in metres/second.
 
 
-<!-- [<Element 'type' at 0x00000211CA86E778> velocity_down_m_s](#structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d_1ad88b00135b9eab248168ef44206bafa2) -->
+<!-- [<Element 'type' at 0x000001F32A2F7958> velocity_down_m_s](#structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d_1ad88b00135b9eab248168ef44206bafa2) -->
 <!-- kind: variable -->
 <!-- prot: public -->
 <!-- static: no -->

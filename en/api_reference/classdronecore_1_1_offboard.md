@@ -25,7 +25,7 @@ struct [VelocityNEDYaw](structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md)
 
 Type | Description
 --- | ---
-enum [Result](#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) {<ul><li style="list-style-type: none;"><a href="#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572edad0749aaba8b833466dfcbb0428e4f89c">SUCCESS=0</a>, <a href="#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda23514014e50da2b2583cae24ab1ecd88">NO_DEVICE</a>, <a href="#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572edac77f1f09dab2c0c9980fca7cfae02518">CONNECTION_ERROR</a>, <a href="#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda802706a9238e2928077f97736854bad4">BUSY</a>, <a href="#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda6fa4dbf368cea972db8d9156799d5dbe">COMMAND_DENIED</a>, <a href="#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda070a0fb40f6c308ab544b227660aadff">TIMEOUT</a>, <a href="#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda696b031073e74bf2cb98e5ef201d4aa3">UNKNOWN</a><p>}</p></li> | Results for offboard requests.
+enum [Result](#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | Results for offboard requests.
 std::function< void([Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed))> [result_callback_t](#classdronecore_1_1_offboard_1a75eeca649293887ac9d398e6432e431f) | Callback type for offboard requests.
 
 ## Public Member Functions
