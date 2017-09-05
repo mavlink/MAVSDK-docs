@@ -35,17 +35,17 @@ enum [FlightMode](#classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd414
 enum [Result](#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | Results enum for telemetry requests.
 std::function< void([Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc))> [result_callback_t](#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) | Callback type for telemetry requests.
 std::function< void([Position](structdronecore_1_1_telemetry_1_1_position.md))> [position_callback_t](#classdronecore_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) | Callback type for position updates.
-std::function< void(bool [in_air](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a6c0c0e9dc05c2e9cb627f31dd0df8cc9))> [in_air_callback_t](#classdronecore_1_1_telemetry_1a99189e3b07a193d756ceaeaa1a91d833) | Callback type for in-air updates.
-std::function< void(bool [armed](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a1ca9b2f8c61cea33f17fbcca48612253))> [armed_callback_t](#classdronecore_1_1_telemetry_1a832876c9db780e356bc365d3efb33655) | Callback type for armed updates (asynchronous).
+std::function< void(bool [in_air](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ae6cc80856eb3e57b9598dbea4b0a4a78))> [in_air_callback_t](#classdronecore_1_1_telemetry_1a99189e3b07a193d756ceaeaa1a91d833) | Callback type for in-air updates.
+std::function< void(bool [armed](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0ca7da7922c22509ce6d55d4ad19bcf7))> [armed_callback_t](#classdronecore_1_1_telemetry_1a832876c9db780e356bc365d3efb33655) | Callback type for armed updates (asynchronous).
 std::function< void([Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) quaternion)> [attitude_quaternion_callback_t](#classdronecore_1_1_telemetry_1a86295814a8130e61b0daea84cd8a325d) | Callback type for attitude updates in quaternion.
 std::function< void([EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) euler_angle)> [attitude_euler_angle_callback_t](#classdronecore_1_1_telemetry_1a8e907cdfef9c7692b01bf9369e3cccc1) | Callback type for attitude updates in Euler angles.
-std::function< void([GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) [ground_speed_ned](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1acb36f18a5796b36950e52b381ffa8c38))> [ground_speed_ned_callback_t](#classdronecore_1_1_telemetry_1adfa7b9abb80fcb835b6f369e432086eb) | Callback type for ground speed (NED) updates.
-std::function< void([GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) [gps_info](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a98e4f139bcaff88586d298125ec9a96f))> [gps_info_callback_t](#classdronecore_1_1_telemetry_1a4fee2a4394b618b9425fc2436709dd7c) | Callback type for GPS information updates.
-std::function< void([Battery](structdronecore_1_1_telemetry_1_1_battery.md) [battery](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1aa4bcac69bf1c7d6e3f0b4564a1a67773))> [battery_callback_t](#classdronecore_1_1_telemetry_1addeb9f37391d82c73ceada70a654952e) | Callback type for battery status updates.
-std::function< void([FlightMode](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a) [flight_mode](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a336bd23ce20a3106cf1696f76be9eb13))> [flight_mode_callback_t](#classdronecore_1_1_telemetry_1a71d15a014fb64cf25033bf8d2917bfb2) | Callback type for flight mode updates.
-std::function< void([Health](structdronecore_1_1_telemetry_1_1_health.md) [health](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a93c7e70fa0b2a533d59dafc26cb6027d))> [health_callback_t](#classdronecore_1_1_telemetry_1a49377fd508ff337929dd930b769bb033) | Callback type for health status updates.
-std::function< void(bool [health_all_ok](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ac937baccf425c7df48d6471dcfbdaebf))> [health_all_ok_callback_t](#classdronecore_1_1_telemetry_1a9d1d2b101bf57ebc838b4280641d1334) | Callback type for health status updates.
-std::function< void([RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) [rc_status](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a33ccbdd74b5de8e974bb83c42e2461a8))> [rc_status_callback_t](#classdronecore_1_1_telemetry_1a7bbe1360883d5d1f124096e94576e4c3) | Callback type for RC status updates.
+std::function< void([GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) [ground_speed_ned](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ae0a0fc17033ef5dc92618a027f813da2))> [ground_speed_ned_callback_t](#classdronecore_1_1_telemetry_1adfa7b9abb80fcb835b6f369e432086eb) | Callback type for ground speed (NED) updates.
+std::function< void([GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) [gps_info](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1aab62cc7225f40082acbd16f2fdbb8a7e))> [gps_info_callback_t](#classdronecore_1_1_telemetry_1a4fee2a4394b618b9425fc2436709dd7c) | Callback type for GPS information updates.
+std::function< void([Battery](structdronecore_1_1_telemetry_1_1_battery.md) [battery](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a28f1adb3a672c4fd15bbf1489f76e2fa))> [battery_callback_t](#classdronecore_1_1_telemetry_1addeb9f37391d82c73ceada70a654952e) | Callback type for battery status updates.
+std::function< void([FlightMode](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a) [flight_mode](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ac2da43d7afc47da36a6c9d010bac22f0))> [flight_mode_callback_t](#classdronecore_1_1_telemetry_1a71d15a014fb64cf25033bf8d2917bfb2) | Callback type for flight mode updates.
+std::function< void([Health](structdronecore_1_1_telemetry_1_1_health.md) [health](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a17ba227e4324b7033d0175ecab3d64bc))> [health_callback_t](#classdronecore_1_1_telemetry_1a49377fd508ff337929dd930b769bb033) | Callback type for health status updates.
+std::function< void(bool [health_all_ok](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29))> [health_all_ok_callback_t](#classdronecore_1_1_telemetry_1a9d1d2b101bf57ebc838b4280641d1334) | Callback type for health status updates.
+std::function< void([RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) [rc_status](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a1f60325b7b4b31c5c02baafd025e7bf0))> [rc_status_callback_t](#classdronecore_1_1_telemetry_1a7bbe1360883d5d1f124096e94576e4c3) | Callback type for RC status updates.
 
 ## Public Member Functions
 
@@ -55,15 +55,15 @@ Type | Name | Description
 | [Telemetry](#classdronecore_1_1_telemetry_1ab237a6c16423aebdb52e31d9714c5520) (TelemetryImpl *impl) | Constructor (internal use only).
 | [~Telemetry](#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095) () | Destructor (internal use only).
 | [Telemetry](#classdronecore_1_1_telemetry_1a91a3319d9040bd89d241be3d8b2e9a5e) (const Telemetry &)=delete | Copy constructor (object is not copyable).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_position](#classdronecore_1_1_telemetry_1ac2ac9937d147b075345732b8035cb6d8) (double rate_hz) | Set rate of position updates (synchronous).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_home_position](#classdronecore_1_1_telemetry_1a13ee097c33e96a42f8bfc402ebcea9e0) (double rate_hz) | Set rate of home position updates (synchronous).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_in_air](#classdronecore_1_1_telemetry_1afd4c7437587608a6e63330ce872ddf9a) (double rate_hz) | Set rate of in-air status updates (synchronous).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_attitude](#classdronecore_1_1_telemetry_1a3c32be7982a782ae18d5507bfe5e3f96) (double rate_hz) | Set rate of attitude updates (synchronous).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_camera_attitude](#classdronecore_1_1_telemetry_1adc474c9f3bc8863203aeaa2217e9d8f1) (double rate_hz) | Set rate of camera attitude updates (synchronous).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_ground_speed_ned](#classdronecore_1_1_telemetry_1aca477c283142ab18250d6ebcea9bdd02) (double rate_hz) | Set rate of ground speed (NED) updates (synchronous).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_gps_info](#classdronecore_1_1_telemetry_1a61960de117fe6ad5007a87ded1b8f666) (double rate_hz) | Set rate of GPS information updates (synchronous).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_battery](#classdronecore_1_1_telemetry_1a664e4567802717bd77a204494ae5eb68) (double rate_hz) | Set rate of battery status updates (synchronous).
-[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_rc_status](#classdronecore_1_1_telemetry_1a80187bab7afc9d0e4196123d9683af81) (double rate_hz) | Set rate of RC status updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_position](#classdronecore_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da) (double rate_hz) | Set rate of position updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_home_position](#classdronecore_1_1_telemetry_1a9d89866f6672fbe3b88047e7ba295bf9) (double rate_hz) | Set rate of home position updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_in_air](#classdronecore_1_1_telemetry_1aed902b38ff4380a8927340c291e183f5) (double rate_hz) | Set rate of in-air status updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_attitude](#classdronecore_1_1_telemetry_1a2471afa3ebcc9df677e4369f9788c272) (double rate_hz) | Set rate of attitude updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_camera_attitude](#classdronecore_1_1_telemetry_1ad04dcac5e40d592c04a46631350b99fd) (double rate_hz) | Set rate of camera attitude updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_ground_speed_ned](#classdronecore_1_1_telemetry_1a3d3db4ee1fc2060f5f21e36bd3afe0b3) (double rate_hz) | Set rate of ground speed (NED) updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_gps_info](#classdronecore_1_1_telemetry_1a7b31a3bafe6bfa4c3a9698d06fdb226d) (double rate_hz) | Set rate of GPS information updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_battery](#classdronecore_1_1_telemetry_1a004c386df5e28c458a9ac56fa45f7dfe) (double rate_hz) | Set rate of battery status updates (synchronous).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_rc_status](#classdronecore_1_1_telemetry_1a9fe7d6275bf8a330673f9890481d5b4a) (double rate_hz) | Set rate of RC status updates (synchronous).
 void | [set_rate_position_async](#classdronecore_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288) (double rate_hz, result_callback_t callback) | Set rate of position updates (asynchronous).
 void | [set_rate_home_position_async](#classdronecore_1_1_telemetry_1a2540af7d324392aa7d3749568c74c140) (double rate_hz, result_callback_t callback) | Set rate of home position updates (asynchronous).
 void | [set_rate_in_air_async](#classdronecore_1_1_telemetry_1aac06f897f6eff775f458ea3979f2ae68) (double rate_hz, result_callback_t callback) | Set rate of in-air status updates (asynchronous).
@@ -73,21 +73,21 @@ void | [set_rate_ground_speed_ned_async](#classdronecore_1_1_telemetry_1adeff560
 void | [set_rate_gps_info_async](#classdronecore_1_1_telemetry_1a8e65a2cf6a47faeca762866e06ee581f) (double rate_hz, result_callback_t callback) | Set rate of GPS information updates (asynchronous).
 void | [set_rate_battery_async](#classdronecore_1_1_telemetry_1a52d686b80c498d8ecb66e8a59de12e3d) (double rate_hz, result_callback_t callback) | Set rate of battery status updates (asynchronous).
 void | [set_rate_rc_status_async](#classdronecore_1_1_telemetry_1a931cdcb687aca9253ed6c183a977986f) (double rate_hz, result_callback_t callback) | Set rate of RC status updates (asynchronous).
-[Position](structdronecore_1_1_telemetry_1_1_position.md) | [position](#classdronecore_1_1_telemetry_1a679282db2895dbbf8916a52209e00565) () const | Get the current position (synchronous).
-[Position](structdronecore_1_1_telemetry_1_1_position.md) | [home_position](#classdronecore_1_1_telemetry_1a39af2a73d3ba955d044ecefb38170d65) () const | Get the home position (synchronous).
-bool | [in_air](#classdronecore_1_1_telemetry_1a6c0c0e9dc05c2e9cb627f31dd0df8cc9) () const | Get the in-air status (synchronous).
-bool | [armed](#classdronecore_1_1_telemetry_1a1ca9b2f8c61cea33f17fbcca48612253) () const | Get the arming status (synchronous).
-[Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) | [attitude_quaternion](#classdronecore_1_1_telemetry_1a9f0a908a2bb70bec4fd6e266e72becca) () const | Get the current attitude in quaternions (synchronous).
-[EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) | [attitude_euler_angle](#classdronecore_1_1_telemetry_1acb635cddf09d316d8cac13e2c64615fc) () const | Get the current attitude in Euler angles (synchronous).
-[Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) | [camera_attitude_quaternion](#classdronecore_1_1_telemetry_1aae359c96b0efe0ebab321b6feba0e901) () const | Get the camera's attitude in quaternions (synchronous).
-[EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) | [camera_attitude_euler_angle](#classdronecore_1_1_telemetry_1ac4b5f34d098e0e3d4a6ad0d598a8d8f2) () const | Get the camera's attitude in Euler angles (synchronous).
-[GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) | [ground_speed_ned](#classdronecore_1_1_telemetry_1acb36f18a5796b36950e52b381ffa8c38) () const | Get the current ground speed (NED) (synchronous).
-[GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) | [gps_info](#classdronecore_1_1_telemetry_1a98e4f139bcaff88586d298125ec9a96f) () const | Get the current GPS information (synchronous).
-[Battery](structdronecore_1_1_telemetry_1_1_battery.md) | [battery](#classdronecore_1_1_telemetry_1aa4bcac69bf1c7d6e3f0b4564a1a67773) () const | Get the current battery status (synchronous).
-[FlightMode](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a) | [flight_mode](#classdronecore_1_1_telemetry_1a336bd23ce20a3106cf1696f76be9eb13) () const | Get the current flight mode (synchronous).
-[Health](structdronecore_1_1_telemetry_1_1_health.md) | [health](#classdronecore_1_1_telemetry_1a93c7e70fa0b2a533d59dafc26cb6027d) () const | Get the current health status (synchronous).
-bool | [health_all_ok](#classdronecore_1_1_telemetry_1ac937baccf425c7df48d6471dcfbdaebf) () const | Returns true if the overall health is ok (synchronous).
-[RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) | [rc_status](#classdronecore_1_1_telemetry_1a33ccbdd74b5de8e974bb83c42e2461a8) () const | Get the RC status (synchronous).
+[Position](structdronecore_1_1_telemetry_1_1_position.md) | [position](#classdronecore_1_1_telemetry_1aa272d9fb09a850b815c78cbdf47311e1) () const | Get the current position (synchronous).
+[Position](structdronecore_1_1_telemetry_1_1_position.md) | [home_position](#classdronecore_1_1_telemetry_1a48c7bfa911ac4ecbc3dd7c374dc2ac74) () const | Get the home position (synchronous).
+bool | [in_air](#classdronecore_1_1_telemetry_1ae6cc80856eb3e57b9598dbea4b0a4a78) () const | Get the in-air status (synchronous).
+bool | [armed](#classdronecore_1_1_telemetry_1a0ca7da7922c22509ce6d55d4ad19bcf7) () const | Get the arming status (synchronous).
+[Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) | [attitude_quaternion](#classdronecore_1_1_telemetry_1a960a63afbe464b51267c7dbd562aa4eb) () const | Get the current attitude in quaternions (synchronous).
+[EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) | [attitude_euler_angle](#classdronecore_1_1_telemetry_1a2bab57f8e73e25354f7f3d7d6ac663c0) () const | Get the current attitude in Euler angles (synchronous).
+[Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) | [camera_attitude_quaternion](#classdronecore_1_1_telemetry_1acf85f5bf7a50c1e397a60e7b12dfe495) () const | Get the camera's attitude in quaternions (synchronous).
+[EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) | [camera_attitude_euler_angle](#classdronecore_1_1_telemetry_1a12ef129a12fcbae32b7a60008b4b135c) () const | Get the camera's attitude in Euler angles (synchronous).
+[GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) | [ground_speed_ned](#classdronecore_1_1_telemetry_1ae0a0fc17033ef5dc92618a027f813da2) () const | Get the current ground speed (NED) (synchronous).
+[GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) | [gps_info](#classdronecore_1_1_telemetry_1aab62cc7225f40082acbd16f2fdbb8a7e) () const | Get the current GPS information (synchronous).
+[Battery](structdronecore_1_1_telemetry_1_1_battery.md) | [battery](#classdronecore_1_1_telemetry_1a28f1adb3a672c4fd15bbf1489f76e2fa) () const | Get the current battery status (synchronous).
+[FlightMode](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a) | [flight_mode](#classdronecore_1_1_telemetry_1ac2da43d7afc47da36a6c9d010bac22f0) () const | Get the current flight mode (synchronous).
+[Health](structdronecore_1_1_telemetry_1_1_health.md) | [health](#classdronecore_1_1_telemetry_1a17ba227e4324b7033d0175ecab3d64bc) () const | Get the current health status (synchronous).
+bool | [health_all_ok](#classdronecore_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29) () const | Returns true if the overall health is ok (synchronous).
+[RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) | [rc_status](#classdronecore_1_1_telemetry_1a1f60325b7b4b31c5c02baafd025e7bf0) () const | Get the RC status (synchronous).
 void | [position_async](#classdronecore_1_1_telemetry_1ac4a01ef44f175ef9a84a984268708722) (position_callback_t callback) | Subscribe to position updates (asynchronous).
 void | [home_position_async](#classdronecore_1_1_telemetry_1a3a90030b4259e8cf6979883d3271b0e3) (position_callback_t callback) | Subscribe to home position updates (asynchronous).
 void | [in_air_async](#classdronecore_1_1_telemetry_1a0f97d0730c7f1481e82355944a99a5cf) (in_air_callback_t callback) | Subscribe to in-air updates (asynchronous).
@@ -104,13 +104,14 @@ void | [health_async](#classdronecore_1_1_telemetry_1a69675f46ba188d07d2e7edc110
 void | [health_all_ok_async](#classdronecore_1_1_telemetry_1a83b384cd04b2ed17db805cfad8bafab5) (health_all_ok_callback_t callback) | Subscribe to overall health status updates (asynchronous).
 void | [rc_status_async](#classdronecore_1_1_telemetry_1a8f49537ae4c176a3e952247d60e82cd9) (rc_status_callback_t callback) | Subscribe to RC status updates (asynchronous).
 const [Telemetry](classdronecore_1_1_telemetry.md) & | [operator=](#classdronecore_1_1_telemetry_1a9f46a41e835ab0beed894e49ab61515f) (const Telemetry &)=delete | Equality operator (object is not copyable).
+
 ## Static Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-const char * | [flight_mode_str](#classdronecore_1_1_telemetry_1a455d2ef2c72cfe570a136467f0b78c9e) (FlightMode flight_mode) | Get a human readable English string for a flight mode.
-const char * | [result_str](#classdronecore_1_1_telemetry_1ad62bfd131060bdf2f2c4219b3eda93e3) (Result result) | Get human-readable English string for [Telemetry::Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc).
+const char * | [flight_mode_str](#classdronecore_1_1_telemetry_1ada1428856268d876b22d5d4dabdea8bd) (FlightMode flight_mode) | Get a human readable English string for a flight mode.
+const char * | [result_str](#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a) (Result result) | Get human-readable English string for [Telemetry::Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc).
 
 
 ## Constructor & Destructor Documentation
@@ -127,18 +128,7 @@ Constructor (internal use only).
 
 **Parameters**
 
-* [TelemetryImpl](classdronecore_1_1_telemetry_impl.md) * **impl** - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: yes -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
+* TelemetryImpl * **impl** - 
 
 ### ~Telemetry() {#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095}
 ```cpp
@@ -147,17 +137,6 @@ dronecore::Telemetry::~Telemetry()
 
 
 Destructor (internal use only).
-
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
 
 
 ### Telemetry() {#classdronecore_1_1_telemetry_1a91a3319d9040bd89d241be3d8b2e9a5e}
@@ -172,16 +151,6 @@ Copy constructor (object is not copyable).
 **Parameters**
 
 * const [Telemetry](classdronecore_1_1_telemetry.md) & **** - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
 
 ## Member Typdef Documentation
 
@@ -381,11 +350,6 @@ For more information about flight modes, check out [https://docs.px4.io/en/confi
 <span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aa6687898e86a83f245901f96d313930b1"></span> `OFFBOARD` | [Offboard](classdronecore_1_1_offboard.md) mode. 
 <span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aa696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Mode not known. 
 
-<!-- inbodydescription:  --> 
-<!-- prot: public -->
-<!-- static: no -->
-
-
 ### enum Result {#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc}
 
 
@@ -402,16 +366,12 @@ Results enum for telemetry requests.
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Request timeout. 
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
 
-<!-- inbodydescription:  --> 
-<!-- prot: public -->
-<!-- static: no -->
-
 ## Member Function Documentation
 
 
-### set_rate_position() {#classdronecore_1_1_telemetry_1ac2ac9937d147b075345732b8035cb6d8}
+### set_rate_position() {#classdronecore_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_position(double rate_hz)
+Result dronecore::Telemetry::set_rate_position(double rate_hz)
 ```
 
 
@@ -426,20 +386,9 @@ Set rate of position updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### set_rate_home_position() {#classdronecore_1_1_telemetry_1a13ee097c33e96a42f8bfc402ebcea9e0}
+### set_rate_home_position() {#classdronecore_1_1_telemetry_1a9d89866f6672fbe3b88047e7ba295bf9}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_home_position(double rate_hz)
+Result dronecore::Telemetry::set_rate_home_position(double rate_hz)
 ```
 
 
@@ -454,20 +403,9 @@ Set rate of home position updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### set_rate_in_air() {#classdronecore_1_1_telemetry_1afd4c7437587608a6e63330ce872ddf9a}
+### set_rate_in_air() {#classdronecore_1_1_telemetry_1aed902b38ff4380a8927340c291e183f5}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_in_air(double rate_hz)
+Result dronecore::Telemetry::set_rate_in_air(double rate_hz)
 ```
 
 
@@ -482,20 +420,9 @@ Set rate of in-air status updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### set_rate_attitude() {#classdronecore_1_1_telemetry_1a3c32be7982a782ae18d5507bfe5e3f96}
+### set_rate_attitude() {#classdronecore_1_1_telemetry_1a2471afa3ebcc9df677e4369f9788c272}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_attitude(double rate_hz)
+Result dronecore::Telemetry::set_rate_attitude(double rate_hz)
 ```
 
 
@@ -510,20 +437,9 @@ Set rate of attitude updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### set_rate_camera_attitude() {#classdronecore_1_1_telemetry_1adc474c9f3bc8863203aeaa2217e9d8f1}
+### set_rate_camera_attitude() {#classdronecore_1_1_telemetry_1ad04dcac5e40d592c04a46631350b99fd}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_camera_attitude(double rate_hz)
+Result dronecore::Telemetry::set_rate_camera_attitude(double rate_hz)
 ```
 
 
@@ -538,20 +454,9 @@ Set rate of camera attitude updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### set_rate_ground_speed_ned() {#classdronecore_1_1_telemetry_1aca477c283142ab18250d6ebcea9bdd02}
+### set_rate_ground_speed_ned() {#classdronecore_1_1_telemetry_1a3d3db4ee1fc2060f5f21e36bd3afe0b3}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_ground_speed_ned(double rate_hz)
+Result dronecore::Telemetry::set_rate_ground_speed_ned(double rate_hz)
 ```
 
 
@@ -566,20 +471,9 @@ Set rate of ground speed (NED) updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### set_rate_gps_info() {#classdronecore_1_1_telemetry_1a61960de117fe6ad5007a87ded1b8f666}
+### set_rate_gps_info() {#classdronecore_1_1_telemetry_1a7b31a3bafe6bfa4c3a9698d06fdb226d}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_gps_info(double rate_hz)
+Result dronecore::Telemetry::set_rate_gps_info(double rate_hz)
 ```
 
 
@@ -594,20 +488,9 @@ Set rate of GPS information updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### set_rate_battery() {#classdronecore_1_1_telemetry_1a664e4567802717bd77a204494ae5eb68}
+### set_rate_battery() {#classdronecore_1_1_telemetry_1a004c386df5e28c458a9ac56fa45f7dfe}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_battery(double rate_hz)
+Result dronecore::Telemetry::set_rate_battery(double rate_hz)
 ```
 
 
@@ -622,20 +505,9 @@ Set rate of battery status updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### set_rate_rc_status() {#classdronecore_1_1_telemetry_1a80187bab7afc9d0e4196123d9683af81}
+### set_rate_rc_status() {#classdronecore_1_1_telemetry_1a9fe7d6275bf8a330673f9890481d5b4a}
 ```cpp
-Telemetry::Result dronecore::Telemetry::set_rate_rc_status(double rate_hz)
+Result dronecore::Telemetry::set_rate_rc_status(double rate_hz)
 ```
 
 
@@ -649,17 +521,6 @@ Set rate of RC status updates (synchronous).
 **Returns**
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### set_rate_position_async() {#classdronecore_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288}
 ```cpp
@@ -675,17 +536,6 @@ Set rate of position updates (asynchronous).
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### set_rate_home_position_async() {#classdronecore_1_1_telemetry_1a2540af7d324392aa7d3749568c74c140}
 ```cpp
 void dronecore::Telemetry::set_rate_home_position_async(double rate_hz, result_callback_t callback)
@@ -699,17 +549,6 @@ Set rate of home position updates (asynchronous).
 
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### set_rate_in_air_async() {#classdronecore_1_1_telemetry_1aac06f897f6eff775f458ea3979f2ae68}
 ```cpp
@@ -725,17 +564,6 @@ Set rate of in-air status updates (asynchronous).
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### set_rate_attitude_async() {#classdronecore_1_1_telemetry_1ac219c4f150a31c38606e18a94d969a2c}
 ```cpp
 void dronecore::Telemetry::set_rate_attitude_async(double rate_hz, result_callback_t callback)
@@ -749,17 +577,6 @@ Set rate of attitude updates (asynchronous).
 
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### set_rate_camera_attitude_async() {#classdronecore_1_1_telemetry_1a4afd29de2fef5eecd709252d70548eb1}
 ```cpp
@@ -775,17 +592,6 @@ Set rate of camera attitude updates (asynchronous).
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### set_rate_ground_speed_ned_async() {#classdronecore_1_1_telemetry_1adeff5606c33c24cece7afc2ae1247c46}
 ```cpp
 void dronecore::Telemetry::set_rate_ground_speed_ned_async(double rate_hz, result_callback_t callback)
@@ -799,17 +605,6 @@ Set rate of ground speed (NED) updates (asynchronous).
 
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### set_rate_gps_info_async() {#classdronecore_1_1_telemetry_1a8e65a2cf6a47faeca762866e06ee581f}
 ```cpp
@@ -825,17 +620,6 @@ Set rate of GPS information updates (asynchronous).
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### set_rate_battery_async() {#classdronecore_1_1_telemetry_1a52d686b80c498d8ecb66e8a59de12e3d}
 ```cpp
 void dronecore::Telemetry::set_rate_battery_async(double rate_hz, result_callback_t callback)
@@ -849,17 +633,6 @@ Set rate of battery status updates (asynchronous).
 
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### set_rate_rc_status_async() {#classdronecore_1_1_telemetry_1a931cdcb687aca9253ed6c183a977986f}
 ```cpp
@@ -875,20 +648,9 @@ Set rate of RC status updates (asynchronous).
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### position() {#classdronecore_1_1_telemetry_1a679282db2895dbbf8916a52209e00565}
+### position() {#classdronecore_1_1_telemetry_1aa272d9fb09a850b815c78cbdf47311e1}
 ```cpp
-Telemetry::Position dronecore::Telemetry::position() const
+Position dronecore::Telemetry::position() const
 ```
 
 
@@ -899,20 +661,9 @@ Get the current position (synchronous).
 
 &emsp;[Position](structdronecore_1_1_telemetry_1_1_position.md) - [Position](structdronecore_1_1_telemetry_1_1_position.md).
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Position](structdronecore_1_1_telemetry_1_1_position.md) -->
-<!-- return_type_comment: [Position](structdronecore_1_1_telemetry_1_1_position.md). -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### home_position() {#classdronecore_1_1_telemetry_1a39af2a73d3ba955d044ecefb38170d65}
+### home_position() {#classdronecore_1_1_telemetry_1a48c7bfa911ac4ecbc3dd7c374dc2ac74}
 ```cpp
-Telemetry::Position dronecore::Telemetry::home_position() const
+Position dronecore::Telemetry::home_position() const
 ```
 
 
@@ -923,18 +674,7 @@ Get the home position (synchronous).
 
 &emsp;[Position](structdronecore_1_1_telemetry_1_1_position.md) - Home position.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Position](structdronecore_1_1_telemetry_1_1_position.md) -->
-<!-- return_type_comment: Home position. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### in_air() {#classdronecore_1_1_telemetry_1a6c0c0e9dc05c2e9cb627f31dd0df8cc9}
+### in_air() {#classdronecore_1_1_telemetry_1ae6cc80856eb3e57b9598dbea4b0a4a78}
 ```cpp
 bool dronecore::Telemetry::in_air() const
 ```
@@ -947,18 +687,7 @@ Get the in-air status (synchronous).
 
 &emsp;bool - true if in-air (flying) and not on-ground (landed).
 
-<!-- inbodydescription:  --> 
-<!-- return_type: bool -->
-<!-- return_type_comment: true if in-air (flying) and not on-ground (landed). -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### armed() {#classdronecore_1_1_telemetry_1a1ca9b2f8c61cea33f17fbcca48612253}
+### armed() {#classdronecore_1_1_telemetry_1a0ca7da7922c22509ce6d55d4ad19bcf7}
 ```cpp
 bool dronecore::Telemetry::armed() const
 ```
@@ -971,20 +700,9 @@ Get the arming status (synchronous).
 
 &emsp;bool - true if armed (propellers spinning).
 
-<!-- inbodydescription:  --> 
-<!-- return_type: bool -->
-<!-- return_type_comment: true if armed (propellers spinning). -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### attitude_quaternion() {#classdronecore_1_1_telemetry_1a9f0a908a2bb70bec4fd6e266e72becca}
+### attitude_quaternion() {#classdronecore_1_1_telemetry_1a960a63afbe464b51267c7dbd562aa4eb}
 ```cpp
-Telemetry::Quaternion dronecore::Telemetry::attitude_quaternion() const
+Quaternion dronecore::Telemetry::attitude_quaternion() const
 ```
 
 
@@ -995,20 +713,9 @@ Get the current attitude in quaternions (synchronous).
 
 &emsp;[Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) - Attitude as quaternion.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) -->
-<!-- return_type_comment: Attitude as quaternion. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### attitude_euler_angle() {#classdronecore_1_1_telemetry_1acb635cddf09d316d8cac13e2c64615fc}
+### attitude_euler_angle() {#classdronecore_1_1_telemetry_1a2bab57f8e73e25354f7f3d7d6ac663c0}
 ```cpp
-Telemetry::EulerAngle dronecore::Telemetry::attitude_euler_angle() const
+EulerAngle dronecore::Telemetry::attitude_euler_angle() const
 ```
 
 
@@ -1019,20 +726,9 @@ Get the current attitude in Euler angles (synchronous).
 
 &emsp;[EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) - Attitude as Euler angle.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) -->
-<!-- return_type_comment: Attitude as Euler angle. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### camera_attitude_quaternion() {#classdronecore_1_1_telemetry_1aae359c96b0efe0ebab321b6feba0e901}
+### camera_attitude_quaternion() {#classdronecore_1_1_telemetry_1acf85f5bf7a50c1e397a60e7b12dfe495}
 ```cpp
-Telemetry::Quaternion dronecore::Telemetry::camera_attitude_quaternion() const
+Quaternion dronecore::Telemetry::camera_attitude_quaternion() const
 ```
 
 
@@ -1043,20 +739,9 @@ Get the camera's attitude in quaternions (synchronous).
 
 &emsp;[Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) - Camera's attitude as quaternion.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) -->
-<!-- return_type_comment: Camera's attitude as quaternion. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### camera_attitude_euler_angle() {#classdronecore_1_1_telemetry_1ac4b5f34d098e0e3d4a6ad0d598a8d8f2}
+### camera_attitude_euler_angle() {#classdronecore_1_1_telemetry_1a12ef129a12fcbae32b7a60008b4b135c}
 ```cpp
-Telemetry::EulerAngle dronecore::Telemetry::camera_attitude_euler_angle() const
+EulerAngle dronecore::Telemetry::camera_attitude_euler_angle() const
 ```
 
 
@@ -1067,20 +752,9 @@ Get the camera's attitude in Euler angles (synchronous).
 
 &emsp;[EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) - Camera's attitude as Euler angle.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) -->
-<!-- return_type_comment: Camera's attitude as Euler angle. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### ground_speed_ned() {#classdronecore_1_1_telemetry_1acb36f18a5796b36950e52b381ffa8c38}
+### ground_speed_ned() {#classdronecore_1_1_telemetry_1ae0a0fc17033ef5dc92618a027f813da2}
 ```cpp
-Telemetry::GroundSpeedNED dronecore::Telemetry::ground_speed_ned() const
+GroundSpeedNED dronecore::Telemetry::ground_speed_ned() const
 ```
 
 
@@ -1091,20 +765,9 @@ Get the current ground speed (NED) (synchronous).
 
 &emsp;[GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) - Ground speed in NED.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) -->
-<!-- return_type_comment: Ground speed in NED. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### gps_info() {#classdronecore_1_1_telemetry_1a98e4f139bcaff88586d298125ec9a96f}
+### gps_info() {#classdronecore_1_1_telemetry_1aab62cc7225f40082acbd16f2fdbb8a7e}
 ```cpp
-Telemetry::GPSInfo dronecore::Telemetry::gps_info() const
+GPSInfo dronecore::Telemetry::gps_info() const
 ```
 
 
@@ -1115,20 +778,9 @@ Get the current GPS information (synchronous).
 
 &emsp;[GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) - GPS information.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) -->
-<!-- return_type_comment: GPS information. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### battery() {#classdronecore_1_1_telemetry_1aa4bcac69bf1c7d6e3f0b4564a1a67773}
+### battery() {#classdronecore_1_1_telemetry_1a28f1adb3a672c4fd15bbf1489f76e2fa}
 ```cpp
-Telemetry::Battery dronecore::Telemetry::battery() const
+Battery dronecore::Telemetry::battery() const
 ```
 
 
@@ -1139,20 +791,9 @@ Get the current battery status (synchronous).
 
 &emsp;[Battery](structdronecore_1_1_telemetry_1_1_battery.md) - 
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Battery](structdronecore_1_1_telemetry_1_1_battery.md) -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### flight_mode() {#classdronecore_1_1_telemetry_1a336bd23ce20a3106cf1696f76be9eb13}
+### flight_mode() {#classdronecore_1_1_telemetry_1ac2da43d7afc47da36a6c9d010bac22f0}
 ```cpp
-Telemetry::FlightMode dronecore::Telemetry::flight_mode() const
+FlightMode dronecore::Telemetry::flight_mode() const
 ```
 
 
@@ -1163,20 +804,9 @@ Get the current flight mode (synchronous).
 
 &emsp;[FlightMode](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a) - Flight mode.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [FlightMode](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a) -->
-<!-- return_type_comment: Flight mode. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### health() {#classdronecore_1_1_telemetry_1a93c7e70fa0b2a533d59dafc26cb6027d}
+### health() {#classdronecore_1_1_telemetry_1a17ba227e4324b7033d0175ecab3d64bc}
 ```cpp
-Telemetry::Health dronecore::Telemetry::health() const
+Health dronecore::Telemetry::health() const
 ```
 
 
@@ -1187,18 +817,7 @@ Get the current health status (synchronous).
 
 &emsp;[Health](structdronecore_1_1_telemetry_1_1_health.md) - [Health](structdronecore_1_1_telemetry_1_1_health.md) status.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Health](structdronecore_1_1_telemetry_1_1_health.md) -->
-<!-- return_type_comment: [Health](structdronecore_1_1_telemetry_1_1_health.md) status. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### health_all_ok() {#classdronecore_1_1_telemetry_1ac937baccf425c7df48d6471dcfbdaebf}
+### health_all_ok() {#classdronecore_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29}
 ```cpp
 bool dronecore::Telemetry::health_all_ok() const
 ```
@@ -1211,20 +830,9 @@ Returns true if the overall health is ok (synchronous).
 
 &emsp;bool - true if all individual health flags are true.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: bool -->
-<!-- return_type_comment: true if all individual health flags are true. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### rc_status() {#classdronecore_1_1_telemetry_1a33ccbdd74b5de8e974bb83c42e2461a8}
+### rc_status() {#classdronecore_1_1_telemetry_1a1f60325b7b4b31c5c02baafd025e7bf0}
 ```cpp
-Telemetry::RCStatus dronecore::Telemetry::rc_status() const
+RCStatus dronecore::Telemetry::rc_status() const
 ```
 
 
@@ -1234,17 +842,6 @@ Get the RC status (synchronous).
 **Returns**
 
 &emsp;[RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) - RC status.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: [RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) -->
-<!-- return_type_comment: RC status. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### position_async() {#classdronecore_1_1_telemetry_1ac4a01ef44f175ef9a84a984268708722}
 ```cpp
@@ -1259,17 +856,6 @@ Subscribe to position updates (asynchronous).
 
 * [position_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) **callback** - Function to call with updates.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### home_position_async() {#classdronecore_1_1_telemetry_1a3a90030b4259e8cf6979883d3271b0e3}
 ```cpp
 void dronecore::Telemetry::home_position_async(position_callback_t callback)
@@ -1283,17 +869,6 @@ Subscribe to home position updates (asynchronous).
 
 * [position_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) **callback** - Function to call with updates.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### in_air_async() {#classdronecore_1_1_telemetry_1a0f97d0730c7f1481e82355944a99a5cf}
 ```cpp
 void dronecore::Telemetry::in_air_async(in_air_callback_t callback)
@@ -1306,17 +881,6 @@ Subscribe to in-air updates (asynchronous).
 **Parameters**
 
 * [in_air_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a99189e3b07a193d756ceaeaa1a91d833) **callback** - Function to call with updates.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### armed_async() {#classdronecore_1_1_telemetry_1a5bc58c1183bc8d149b67f944740c28ca}
 ```cpp
@@ -1332,17 +896,6 @@ Note that armed updates are limited to 1Hz.
 
 * [armed_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a832876c9db780e356bc365d3efb33655) **callback** - Function to call with updates.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### attitude_quaternion_async() {#classdronecore_1_1_telemetry_1a5efba6a7d3eee0c0ed7fbf32d736591c}
 ```cpp
 void dronecore::Telemetry::attitude_quaternion_async(attitude_quaternion_callback_t callback)
@@ -1355,17 +908,6 @@ Subscribe to attitude updates in quaternion (asynchronous).
 **Parameters**
 
 * [attitude_quaternion_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a86295814a8130e61b0daea84cd8a325d) **callback** - Function to call with updates.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### attitude_euler_angle_async() {#classdronecore_1_1_telemetry_1a4db3470f055b7a76485ec27eebee8c59}
 ```cpp
@@ -1380,17 +922,6 @@ Subscribe to attitude updates in Euler angles (asynchronous).
 
 * [attitude_euler_angle_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a8e907cdfef9c7692b01bf9369e3cccc1) **callback** - Function to call with updates.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### camera_attitude_quaternion_async() {#classdronecore_1_1_telemetry_1aa1a49c8d37499314f6050dfc4bb145ad}
 ```cpp
 void dronecore::Telemetry::camera_attitude_quaternion_async(attitude_quaternion_callback_t callback)
@@ -1403,17 +934,6 @@ Subscribe to camera attitude updates in quaternion (asynchronous).
 **Parameters**
 
 * [attitude_quaternion_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a86295814a8130e61b0daea84cd8a325d) **callback** - Function to call with updates.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### camera_attitude_euler_angle_async() {#classdronecore_1_1_telemetry_1a35b0534671564e763621f516e0197449}
 ```cpp
@@ -1428,17 +948,6 @@ Subscribe to camera attitude updates in Euler angles (asynchronous).
 
 * [attitude_euler_angle_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a8e907cdfef9c7692b01bf9369e3cccc1) **callback** - Function to call with updates.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### ground_speed_ned_async() {#classdronecore_1_1_telemetry_1a954e95659c2890e0277664910fce9c34}
 ```cpp
 void dronecore::Telemetry::ground_speed_ned_async(ground_speed_ned_callback_t callback)
@@ -1451,17 +960,6 @@ Subscribe to ground speed (NED) updates (asynchronous).
 **Parameters**
 
 * [ground_speed_ned_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1adfa7b9abb80fcb835b6f369e432086eb) **callback** - Function to call with updates.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### gps_info_async() {#classdronecore_1_1_telemetry_1afa05293d3d370ef90c5a291a22036a6e}
 ```cpp
@@ -1476,17 +974,6 @@ Subscribe to GPS information updates (asynchronous).
 
 * [gps_info_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a4fee2a4394b618b9425fc2436709dd7c) **callback** - Function to call with updates.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### battery_async() {#classdronecore_1_1_telemetry_1a58bf2de73fbd609460398157dc8ffdd5}
 ```cpp
 void dronecore::Telemetry::battery_async(battery_callback_t callback)
@@ -1499,17 +986,6 @@ Subscribe to battery status updates (asynchronous).
 **Parameters**
 
 * [battery_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1addeb9f37391d82c73ceada70a654952e) **callback** - Function to call with updates.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### flight_mode_async() {#classdronecore_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a}
 ```cpp
@@ -1525,17 +1001,6 @@ Note that flight mode updates are limited to 1Hz.
 
 * [flight_mode_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a71d15a014fb64cf25033bf8d2917bfb2) **callback** - Function to call with updates.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### health_async() {#classdronecore_1_1_telemetry_1a69675f46ba188d07d2e7edc110fbd2e9}
 ```cpp
 void dronecore::Telemetry::health_async(health_callback_t callback)
@@ -1549,17 +1014,6 @@ Note that health status updates are limited to 1Hz.
 **Parameters**
 
 * [health_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a49377fd508ff337929dd930b769bb033) **callback** - Function to call with updates.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### health_all_ok_async() {#classdronecore_1_1_telemetry_1a83b384cd04b2ed17db805cfad8bafab5}
 ```cpp
@@ -1575,17 +1029,6 @@ Note that overall health status updates are limited to 1Hz.
 
 * [health_all_ok_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a9d1d2b101bf57ebc838b4280641d1334) **callback** - Function to call with updates.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### rc_status_async() {#classdronecore_1_1_telemetry_1a8f49537ae4c176a3e952247d60e82cd9}
 ```cpp
 void dronecore::Telemetry::rc_status_async(rc_status_callback_t callback)
@@ -1598,17 +1041,6 @@ Subscribe to RC status updates (asynchronous).
 **Parameters**
 
 * [rc_status_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a7bbe1360883d5d1f124096e94576e4c3) **callback** - Function to call with updates.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### operator=() {#classdronecore_1_1_telemetry_1a9f46a41e835ab0beed894e49ab61515f}
 ```cpp
@@ -1627,20 +1059,9 @@ Equality operator (object is not copyable).
 
 &emsp;const [Telemetry](classdronecore_1_1_telemetry.md) & - 
 
-<!-- inbodydescription:  --> 
-<!-- return_type: const [Telemetry](classdronecore_1_1_telemetry.md) & -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### flight_mode_str() {#classdronecore_1_1_telemetry_1a455d2ef2c72cfe570a136467f0b78c9e}
+### flight_mode_str() {#classdronecore_1_1_telemetry_1ada1428856268d876b22d5d4dabdea8bd}
 ```cpp
-static const char * dronecore::Telemetry::flight_mode_str(FlightMode flight_mode)
+static static const char* dronecore::Telemetry::flight_mode_str(FlightMode flight_mode)
 ```
 
 
@@ -1655,20 +1076,9 @@ Get a human readable English string for a flight mode.
 
 &emsp;const char * - 
 
-<!-- inbodydescription:  --> 
-<!-- return_type: const char * -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: yes -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### result_str() {#classdronecore_1_1_telemetry_1ad62bfd131060bdf2f2c4219b3eda93e3}
+### result_str() {#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a}
 ```cpp
-static const char * dronecore::Telemetry::result_str(Result result)
+static static const char* dronecore::Telemetry::result_str(Result result)
 ```
 
 
@@ -1682,13 +1092,3 @@ Get human-readable English string for [Telemetry::Result](classdronecore_1_1_tel
 **Returns**
 
 &emsp;const char * - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type: const char * -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: yes -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->

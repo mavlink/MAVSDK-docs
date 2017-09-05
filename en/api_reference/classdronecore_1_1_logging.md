@@ -26,17 +26,18 @@ Type | Name | Description
 | [Logging](#classdronecore_1_1_logging_1ac543ff1d6a0e9980eeb113d39fff39bf) (LoggingImpl *impl) | Constructor (internal use only).
 | [~Logging](#classdronecore_1_1_logging_1a49e75d77f900ba5ef59a960ae9b8dc55) () | Destructor (internal use only).
 | [Logging](#classdronecore_1_1_logging_1a62a17eb90e3ec9253f1b40e94d3c1fd7) (const Logging &)=delete | Copy constructor (object is not copyable).
-[Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) | [start_logging](#classdronecore_1_1_logging_1ac7ac1c523482b19ff67743468505115a) () const | Start logging (synchronous).
-[Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) | [stop_logging](#classdronecore_1_1_logging_1a40dfe2ad5af64ac5d76a70ee9e21ccdf) () const | Stop logging (synchronous).
+[Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) | [start_logging](#classdronecore_1_1_logging_1a4684d8226742b575fce423c9ce758fc0) () const | Start logging (synchronous).
+[Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) | [stop_logging](#classdronecore_1_1_logging_1a258affbec05c9c2ca229a3e12e5c8a1b) () const | Stop logging (synchronous).
 void | [start_logging_async](#classdronecore_1_1_logging_1a5ee9b37891aa66fd98f17fbf871c383b) (result_callback_t callback) | Start logging (asynchronous).
 void | [stop_logging_async](#classdronecore_1_1_logging_1a643b9a80157464d6ac94c8c2987099a0) (result_callback_t callback) | Stop logging (asynchronous).
 const [Logging](classdronecore_1_1_logging.md) & | [operator=](#classdronecore_1_1_logging_1a43d8bd32d59a2b5e728e221d7bba4aef) (const Logging &)=delete | Equality operator (object is not copyable).
+
 ## Static Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-const char * | [result_str](#classdronecore_1_1_logging_1a2ab64d9f058aabd4b08a49f2506daa00) (Result result) | Returns human-readable English string for [Logging::Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086).
+const char * | [result_str](#classdronecore_1_1_logging_1adc5a7560f1a27996fc05f2b761f0b177) (Result result) | Returns human-readable English string for [Logging::Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086).
 
 
 ## Constructor & Destructor Documentation
@@ -53,18 +54,7 @@ Constructor (internal use only).
 
 **Parameters**
 
-* [LoggingImpl](classdronecore_1_1_logging_impl.md) * **impl** - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: yes -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
+* LoggingImpl * **impl** - 
 
 ### ~Logging() {#classdronecore_1_1_logging_1a49e75d77f900ba5ef59a960ae9b8dc55}
 ```cpp
@@ -73,17 +63,6 @@ dronecore::Logging::~Logging()
 
 
 Destructor (internal use only).
-
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
 
 
 ### Logging() {#classdronecore_1_1_logging_1a62a17eb90e3ec9253f1b40e94d3c1fd7}
@@ -98,16 +77,6 @@ Copy constructor (object is not copyable).
 **Parameters**
 
 * const [Logging](classdronecore_1_1_logging.md) & **** - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
 
 ## Member Typdef Documentation
 
@@ -141,16 +110,12 @@ Results for logging requests.
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Timeout. 
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
 
-<!-- inbodydescription:  --> 
-<!-- prot: public -->
-<!-- static: no -->
-
 ## Member Function Documentation
 
 
-### start_logging() {#classdronecore_1_1_logging_1ac7ac1c523482b19ff67743468505115a}
+### start_logging() {#classdronecore_1_1_logging_1a4684d8226742b575fce423c9ce758fc0}
 ```cpp
-Logging::Result dronecore::Logging::start_logging() const
+Result dronecore::Logging::start_logging() const
 ```
 
 
@@ -162,20 +127,9 @@ Start logging (synchronous).
 
 &emsp;[Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### stop_logging() {#classdronecore_1_1_logging_1a40dfe2ad5af64ac5d76a70ee9e21ccdf}
+### stop_logging() {#classdronecore_1_1_logging_1a258affbec05c9c2ca229a3e12e5c8a1b}
 ```cpp
-Logging::Result dronecore::Logging::stop_logging() const
+Result dronecore::Logging::stop_logging() const
 ```
 
 
@@ -186,17 +140,6 @@ Stop logging (synchronous).
 **Returns**
 
 &emsp;[Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) - Result of request.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: [Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### start_logging_async() {#classdronecore_1_1_logging_1a5ee9b37891aa66fd98f17fbf871c383b}
 ```cpp
@@ -212,17 +155,6 @@ Start logging (asynchronous).
 
 * [result_callback_t](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1a16c5eb728571a59a552ca6706166b427) **callback** - Callback to get result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### stop_logging_async() {#classdronecore_1_1_logging_1a643b9a80157464d6ac94c8c2987099a0}
 ```cpp
 void dronecore::Logging::stop_logging_async(result_callback_t callback)
@@ -236,17 +168,6 @@ Stop logging (asynchronous).
 **Parameters**
 
 * [result_callback_t](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1a16c5eb728571a59a552ca6706166b427) **callback** - Callback to get result of request.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### operator=() {#classdronecore_1_1_logging_1a43d8bd32d59a2b5e728e221d7bba4aef}
 ```cpp
@@ -265,20 +186,9 @@ Equality operator (object is not copyable).
 
 &emsp;const [Logging](classdronecore_1_1_logging.md) & - 
 
-<!-- inbodydescription:  --> 
-<!-- return_type: const [Logging](classdronecore_1_1_logging.md) & -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### result_str() {#classdronecore_1_1_logging_1a2ab64d9f058aabd4b08a49f2506daa00}
+### result_str() {#classdronecore_1_1_logging_1adc5a7560f1a27996fc05f2b761f0b177}
 ```cpp
-static const char * dronecore::Logging::result_str(Result result)
+static static const char* dronecore::Logging::result_str(Result result)
 ```
 
 
@@ -292,13 +202,3 @@ Returns human-readable English string for [Logging::Result](classdronecore_1_1_l
 **Returns**
 
 &emsp;const char * - result Human-readable string.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: const char * -->
-<!-- return_type_comment: result Human-readable string. -->
-<!-- prot: public -->
-<!-- static: yes -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->

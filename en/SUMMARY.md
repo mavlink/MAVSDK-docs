@@ -26,6 +26,8 @@
   * [class Offboard](api_reference/classdronecore_1_1_offboard.md)
     * [struct VelocityBodyYawspeed](api_reference/structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md)
     * [struct VelocityNEDYaw](api_reference/structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md)
+  * [class DevicePluginContainer](api_reference/classdronecore_1_1_device_plugin_container.md)
+  * [class PluginBase](api_reference/classdronecore_1_1_plugin_base.md)
 * [Contributing](contributing/README.md)
   * [Building Source](contributing/build.md)
   * [Tests](contributing/test.md)

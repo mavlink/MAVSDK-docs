@@ -28,19 +28,20 @@ Type | Name | Description
 ---: | --- | ---
 | [DroneCore](#classdronecore_1_1_drone_core_1a0b94dd09cd46faa41742d3720f210aa2) () | Constructor.
 | [~DroneCore](#classdronecore_1_1_drone_core_1abbaedb6fd922c023e53611b484b38582) () | Destructor.
-[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | [add_udp_connection](#classdronecore_1_1_drone_core_1a1bdb0e8825e6dc06fc04d76fba236c5f) () | Adds a UDP connection with the default arguments.
-[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | [add_udp_connection](#classdronecore_1_1_drone_core_1a515e90ba2a12d494f38d4bb493f381e6) (int local_port_number) | Adds a UDP connection with a specific port number.
-const std::vector< uint64_t > & | [device_uuids](#classdronecore_1_1_drone_core_1a516b9ba73dae13315a85e4df71dce501) () const | Get vector of device UUIDs.
-[Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a10872f29d98348484b3fdbc8ce0c8108) () const | Get the first discovered device.
-[Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a3f363ed19b923d3a8a7b70bd18135ed4) (uint64_t uuid) const | Get the device with the specified UUID.
+[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | [add_udp_connection](#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8) () | Adds a UDP connection with the default arguments.
+[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | [add_udp_connection](#classdronecore_1_1_drone_core_1acff94c81bce7ff2726ae382a9cdc9211) (int local_port_number) | Adds a UDP connection with a specific port number.
+const std::vector< uint64_t > & | [device_uuids](#classdronecore_1_1_drone_core_1a20490717da3893be2c6965b905a7c1db) () const | Get vector of device UUIDs.
+[Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a5bac6e419e56a1f77a51adef98e94e7c) () const | Get the first discovered device.
+[Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a7d18869c8c8f518af78bee313b554a2a) (uint64_t uuid) const | Get the device with the specified UUID.
 void | [register_on_discover](#classdronecore_1_1_drone_core_1a864ec7349eba67b02b8b3792f6c388f9) (event_callback_t callback) | Register callback for device discovery.
 void | [register_on_timeout](#classdronecore_1_1_drone_core_1ad8c0dc0100449d21a46a787c810e8978) (event_callback_t callback) | Register callback for device timeout.
+
 ## Static Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-const char * | [connection_result_str](#classdronecore_1_1_drone_core_1ab842ee94d965c9f71cd0e96b31e17ee2) (ConnectionResult) | Translates the [DroneCore::ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) enum to a human-readable English string.
+const char * | [connection_result_str](#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af) (ConnectionResult) | Translates the [DroneCore::ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) enum to a human-readable English string.
 
 
 ## Constructor & Destructor Documentation
@@ -55,17 +56,6 @@ dronecore::DroneCore::DroneCore()
 Constructor.
 
 
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### ~DroneCore() {#classdronecore_1_1_drone_core_1abbaedb6fd922c023e53611b484b38582}
 ```cpp
 dronecore::DroneCore::~DroneCore()
@@ -75,16 +65,6 @@ dronecore::DroneCore::~DroneCore()
 Destructor.
 
 Disconnects all connected vehicles and releases all resources.
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
 
 ## Member Typdef Documentation
 
@@ -111,7 +91,7 @@ Callback type for discover and timeout notifications.
 
 Result type returned when adding a connection.
 
-**Note**: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you add a connection: [add_udp_connection()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a1bdb0e8825e6dc06fc04d76fba236c5f).
+**Note**: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you add a connection: [add_udp_connection()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8).
 
  Value | Description
 --- | ---
@@ -127,16 +107,12 @@ Result type returned when adding a connection.
 <span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a588cf56f08269878b055227a8490de67"></span> `DESTINATION_IP_UNKNOWN` | Connection IP is unknown. 
 <span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a9532aa7fe8e205a02479a2e43d05f6b1"></span> `CONNECTIONS_EXHAUSTED` | Connections exhausted. 
 
-<!-- inbodydescription:  --> 
-<!-- prot: public -->
-<!-- static: no -->
-
 ## Member Function Documentation
 
 
-### add_udp_connection() {#classdronecore_1_1_drone_core_1a1bdb0e8825e6dc06fc04d76fba236c5f}
+### add_udp_connection() {#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8}
 ```cpp
-DroneCore::ConnectionResult dronecore::DroneCore::add_udp_connection()
+ConnectionResult dronecore::DroneCore::add_udp_connection()
 ```
 
 
@@ -148,20 +124,9 @@ This will listen on UDP port 14540.
 
 &emsp;[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) - The result of adding the connection.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) -->
-<!-- return_type_comment: The result of adding the connection. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### add_udp_connection() {#classdronecore_1_1_drone_core_1a515e90ba2a12d494f38d4bb493f381e6}
+### add_udp_connection() {#classdronecore_1_1_drone_core_1acff94c81bce7ff2726ae382a9cdc9211}
 ```cpp
-DroneCore::ConnectionResult dronecore::DroneCore::add_udp_connection(int local_port_number)
+ConnectionResult dronecore::DroneCore::add_udp_connection(int local_port_number)
 ```
 
 
@@ -176,20 +141,9 @@ Adds a UDP connection with a specific port number.
 
 &emsp;[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) - The result of adding the connection.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) -->
-<!-- return_type_comment: The result of adding the connection. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### device_uuids() {#classdronecore_1_1_drone_core_1a516b9ba73dae13315a85e4df71dce501}
+### device_uuids() {#classdronecore_1_1_drone_core_1a20490717da3893be2c6965b905a7c1db}
 ```cpp
-const std::vector< uint64_t > & dronecore::DroneCore::device_uuids() const
+const std::vector<uint64_t>& dronecore::DroneCore::device_uuids() const
 ```
 
 
@@ -201,20 +155,9 @@ This returns a vector of the UUIDs of all devices that have been discovered so f
 
 &emsp;const std::vector< uint64_t > & - A reference to the vector containing the UUIDs.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: const std::vector< uint64_t > & -->
-<!-- return_type_comment: A reference to the vector containing the UUIDs. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### device() {#classdronecore_1_1_drone_core_1a10872f29d98348484b3fdbc8ce0c8108}
+### device() {#classdronecore_1_1_drone_core_1a5bac6e419e56a1f77a51adef98e94e7c}
 ```cpp
-Device & dronecore::DroneCore::device() const
+Device& dronecore::DroneCore::device() const
 ```
 
 
@@ -226,20 +169,9 @@ This returns the first discovered device or a null device if no device has yet b
 
 &emsp;[Device](classdronecore_1_1_device.md) & - A reference to a device.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Device](classdronecore_1_1_device.md) & -->
-<!-- return_type_comment: A reference to a device. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### device() {#classdronecore_1_1_drone_core_1a3f363ed19b923d3a8a7b70bd18135ed4}
+### device() {#classdronecore_1_1_drone_core_1a7d18869c8c8f518af78bee313b554a2a}
 ```cpp
-Device & dronecore::DroneCore::device(uint64_t uuid) const
+Device& dronecore::DroneCore::device(uint64_t uuid) const
 ```
 
 
@@ -254,17 +186,6 @@ This returns a device for a given UUID if such a device has been discovered and 
 **Returns**
 
 &emsp;[Device](classdronecore_1_1_device.md) & - A reference to the specified device.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: [Device](classdronecore_1_1_device.md) & -->
-<!-- return_type_comment: A reference to the specified device. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### register_on_discover() {#classdronecore_1_1_drone_core_1a864ec7349eba67b02b8b3792f6c388f9}
 ```cpp
@@ -283,17 +204,6 @@ This sets a callback that will be notified if a new device is discovered.
 
 * [event_callback_t](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abb488f975ee7e199cd1cb08a317a52c3) **callback** - Callback to register.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### register_on_timeout() {#classdronecore_1_1_drone_core_1ad8c0dc0100449d21a46a787c810e8978}
 ```cpp
 void dronecore::DroneCore::register_on_timeout(event_callback_t callback)
@@ -311,20 +221,9 @@ This sets a callback that will be notified if no heartbeat of the device has bee
 
 * [event_callback_t](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abb488f975ee7e199cd1cb08a317a52c3) **callback** - Callback to register.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### connection_result_str() {#classdronecore_1_1_drone_core_1ab842ee94d965c9f71cd0e96b31e17ee2}
+### connection_result_str() {#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af}
 ```cpp
-static const char * dronecore::DroneCore::connection_result_str(ConnectionResult)
+static static const char* dronecore::DroneCore::connection_result_str(ConnectionResult)
 ```
 
 
@@ -338,13 +237,3 @@ Translates the [DroneCore::ConnectionResult](classdronecore_1_1_drone_core.md#cl
 **Returns**
 
 &emsp;const char * - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type: const char * -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: yes -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->

@@ -29,18 +29,6 @@ float dronecore::Telemetry::Battery::voltage_v
 Voltage in volts.
 
 
-<!-- [<Element 'type' at 0x000001F32A2F7818> voltage_v](#structdronecore_1_1_telemetry_1_1_battery_1aa011a5e9134228e64d2d84f544be8450) -->
-<!-- kind: variable -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- mutable: no -->
-<!-- definition: float dronecore::Telemetry::Battery::voltage_v -->
-<!-- detaileddescription:  -->
-<!-- briefdescription: Voltage in volts. -->
-
-<!-- argsstring:  -->
-
-
 ### remaining_percent {#structdronecore_1_1_telemetry_1_1_battery_1a8bdad4d3f77f6fc93fdcfe55b6a49ec0}
 
 ```cpp
@@ -50,14 +38,3 @@ float dronecore::Telemetry::Battery::remaining_percent
 
 Estimated battery percentage remaining (range: 0.0 to 1.0).
 
-
-<!-- [<Element 'type' at 0x000001F32A2F7908> remaining_percent](#structdronecore_1_1_telemetry_1_1_battery_1a8bdad4d3f77f6fc93fdcfe55b6a49ec0) -->
-<!-- kind: variable -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- mutable: no -->
-<!-- definition: float dronecore::Telemetry::Battery::remaining_percent -->
-<!-- detaileddescription:  -->
-<!-- briefdescription: Estimated battery percentage remaining (range: 0.0 to 1.0). -->
-
-<!-- argsstring:  -->

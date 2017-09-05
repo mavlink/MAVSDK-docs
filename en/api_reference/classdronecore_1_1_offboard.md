@@ -36,19 +36,20 @@ Type | Name | Description
 | [Offboard](#classdronecore_1_1_offboard_1a8015934ad2d766f8b37b7d5b43f2b089) (OffboardImpl *impl) | Constructor (internal use only).
 | [~Offboard](#classdronecore_1_1_offboard_1a7cb4eff36c37fed1c6d973aa41b059b8) () | Destructor (internal use only).
 | [Offboard](#classdronecore_1_1_offboard_1ac586be55cb24aa0ccd29c97352dd2ee5) (const Offboard &)=delete | Copy constructor (object is not copyable).
-[Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | [start](#classdronecore_1_1_offboard_1ab1965b77299ea46d4cff749385ab8bd1) () const | Start offboard control (synchronous).
-[Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | [stop](#classdronecore_1_1_offboard_1a1239beddb7d1be0ab8287b122db70ebc) () const | Stop offboard control (synchronous).
-void | [start_async](#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) (result_callback_t callback) |
+[Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | [start](#classdronecore_1_1_offboard_1a2b3aecd25645101a705cd1d80782311a) () const | Start offboard control (synchronous).
+[Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | [stop](#classdronecore_1_1_offboard_1a2cecfbeb40bcd1d314fcfb07eb4dcd60) () const | Stop offboard control (synchronous).
+void | [start_async](#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) (result_callback_t callback) | Start offboard control (asynchronous).
 void | [stop_async](#classdronecore_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a) (result_callback_t callback) | Stop offboard control (asynchronous).
 void | [set_velocity_ned](#classdronecore_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) (VelocityNEDYaw velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
 void | [set_velocity_body](#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc) (VelocityBodyYawspeed velocity_body_yawspeed) | Set the velocity body coordinates coordinates and yaw angular rate.
 const [Offboard](classdronecore_1_1_offboard.md) & | [operator=](#classdronecore_1_1_offboard_1aa6bf966e606cdd361364791d06aca977) (const Offboard &)=delete | Equality operator (object is not copyable).
+
 ## Static Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-const char * | [result_str](#classdronecore_1_1_offboard_1a97a03a7bde9946b098844b44a5782220) (Result result) | Get human-readable English string for [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed).
+const char * | [result_str](#classdronecore_1_1_offboard_1a8eb7467e48fe354d34bc45637ca9f5b8) (Result result) | Get human-readable English string for [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed).
 
 
 ## Constructor & Destructor Documentation
@@ -65,18 +66,7 @@ Constructor (internal use only).
 
 **Parameters**
 
-* [OffboardImpl](classdronecore_1_1_offboard_impl.md) * **impl** - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: yes -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
+* OffboardImpl * **impl** - 
 
 ### ~Offboard() {#classdronecore_1_1_offboard_1a7cb4eff36c37fed1c6d973aa41b059b8}
 ```cpp
@@ -85,17 +75,6 @@ dronecore::Offboard::~Offboard()
 
 
 Destructor (internal use only).
-
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
 
 
 ### Offboard() {#classdronecore_1_1_offboard_1ac586be55cb24aa0ccd29c97352dd2ee5}
@@ -110,16 +89,6 @@ Copy constructor (object is not copyable).
 **Parameters**
 
 * const [Offboard](classdronecore_1_1_offboard.md) & **** - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type:  -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
 
 ## Member Typdef Documentation
 
@@ -153,14 +122,10 @@ Results for offboard requests.
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Request timeout. 
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
 
-<!-- inbodydescription:  --> 
-<!-- prot: public -->
-<!-- static: no -->
-
 ## Member Function Documentation
 
 
-### start() {#classdronecore_1_1_offboard_1ab1965b77299ea46d4cff749385ab8bd1}
+### start() {#classdronecore_1_1_offboard_1a2b3aecd25645101a705cd1d80782311a}
 ```cpp
 Offboard::Result dronecore::Offboard::start() const
 ```
@@ -174,18 +139,7 @@ Start offboard control (synchronous).
 
 &emsp;[Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### stop() {#classdronecore_1_1_offboard_1a1239beddb7d1be0ab8287b122db70ebc}
+### stop() {#classdronecore_1_1_offboard_1a2cecfbeb40bcd1d314fcfb07eb4dcd60}
 ```cpp
 Offboard::Result dronecore::Offboard::stop() const
 ```
@@ -198,17 +152,6 @@ Stop offboard control (synchronous).
 
 &emsp;[Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) - Result of request.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) -->
-<!-- return_type_comment: Result of request. -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: yes -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### start_async() {#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8}
 ```cpp
 void dronecore::Offboard::start_async(result_callback_t callback)
@@ -217,23 +160,11 @@ void dronecore::Offboard::start_async(result_callback_t callback)
 
 Start offboard control (asynchronous).
 
-
 **Attention:** This is work in progress, use with caution!
 
 **Parameters**
 
 * [result_callback_t](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a75eeca649293887ac9d398e6432e431f) **callback** - Callback to receive request result.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### stop_async() {#classdronecore_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a}
 ```cpp
@@ -248,17 +179,6 @@ Stop offboard control (asynchronous).
 
 * [result_callback_t](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a75eeca649293887ac9d398e6432e431f) **callback** - Callback to receive request result.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### set_velocity_ned() {#classdronecore_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d}
 ```cpp
 void dronecore::Offboard::set_velocity_ned(VelocityNEDYaw velocity_ned_yaw)
@@ -272,17 +192,6 @@ Set the velocity in NED coordinates and yaw.
 
 * [VelocityNEDYaw](structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md) **velocity_ned_yaw** - Velocity and yaw struct.
 
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
 ### set_velocity_body() {#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc}
 ```cpp
 void dronecore::Offboard::set_velocity_body(VelocityBodyYawspeed velocity_body_yawspeed)
@@ -295,17 +204,6 @@ Set the velocity body coordinates coordinates and yaw angular rate.
 **Parameters**
 
 * [VelocityBodyYawspeed](structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md) **velocity_body_yawspeed** - Velocity and yaw angular rate struct.
-
-<!-- inbodydescription:  --> 
-<!-- return_type: void -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
 
 ### operator=() {#classdronecore_1_1_offboard_1aa6bf966e606cdd361364791d06aca977}
 ```cpp
@@ -324,20 +222,9 @@ Equality operator (object is not copyable).
 
 &emsp;const [Offboard](classdronecore_1_1_offboard.md) & - 
 
-<!-- inbodydescription:  --> 
-<!-- return_type: const [Offboard](classdronecore_1_1_offboard.md) & -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: no -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
-
-
-### result_str() {#classdronecore_1_1_offboard_1a97a03a7bde9946b098844b44a5782220}
+### result_str() {#classdronecore_1_1_offboard_1a8eb7467e48fe354d34bc45637ca9f5b8}
 ```cpp
-static const char * dronecore::Offboard::result_str(Result result)
+static static const char* dronecore::Offboard::result_str(Result result)
 ```
 
 
@@ -350,14 +237,4 @@ Get human-readable English string for [Offboard::Result](classdronecore_1_1_offb
 
 **Returns**
 
-&emsp;const char * - 
-
-<!-- inbodydescription:  --> 
-<!-- return_type: const char * -->
-<!-- return_type_comment:  -->
-<!-- prot: public -->
-<!-- static: yes -->
-<!-- const: no -->
-<!-- explicit: no -->
-<!-- virt: non-virtual -->
-<!-- inline: no -->
+&emsp;const char * - Human-readable string for enum value.
