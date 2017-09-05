@@ -1,4 +1,5 @@
-<div style="float:right; padding:4px;"><img src="./assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/></div>
+<img src="./assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/>
+
 # DroneCore Developer Documentation
 
 > **Warning** Under Construction.
