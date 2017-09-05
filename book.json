@@ -27,7 +27,7 @@
                 "picto": "fa-thumbs-o-up"
             }
         },
-        "favicon": "favicon.ico",
+        "favicon": "./assets/site/favicon.png",
         "toolbar": {
             "buttons":
             [

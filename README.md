@@ -1,12 +1,13 @@
+<div style="float:right; padding:4px;"><img src="./assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/></div>
 # DroneCore Developer Documentation
 
 > **Warning** Under Construction.
 
-This [DroneCore documentation](http://docs.dronecore.com) explains how to use the [DroneCore](https://github.com/dronecore/DroneCore#dronecore) C++ MAVLink API Library, along with auto-generated wrapper APIs written in Python, Java and iOS (forthcoming).
+This [DroneCore documentation](https://dronecore.gitbooks.io/dronecore-guide/content/en/) explains how to use the [DroneCore](https://github.com/dronecore/DroneCore#dronecore) C++ MAVLink API Library, along with auto-generated wrapper APIs written in Python, Java and iOS (forthcoming).
 
 This repository contains the *source code* for the documentation.
 
-## Build instructions
+## Documentation Build
 
 Instructions how to setup a Gitbook toolchain and build this documentation can be found in the [Gitbook toolchain docs](https://toolchain.gitbook.com/setup.html).
 

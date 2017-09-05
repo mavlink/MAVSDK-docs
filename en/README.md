@@ -1,14 +1,30 @@
+<div style="float:right; padding:10px;"><img src="../assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/></div>
 # DroneCore Guide
-
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io) 
-
 <!-- 
 [![Releases](https://img.shields.io/github/release/PX4/Firmware.svg)](https://github.com/PX4/Firmware/releases) [![Discuss](https://img.shields.io/badge/discuss-px4-ff69b4.svg)](http://discuss.px4.io/) 
 -->
 
-DroneCore is a [MAVLink](http://mavlink.org) Library for the [PX4 flight stack](http://px4.io), with APIs for C++, Python, Android, and iOS (coming soon). The API can manage one or more vehicles, providing programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
+DroneCore is a [MAVLink](http://mavlink.org) Library for the [PX4 flight stack](http://px4.io), with APIs for C++, Python, Android, and iOS (coming soon). 
 
-The library can run on a vehicle-based companion computer or on a ground-based GCS or mobile device. DroneCore applications can run on devices that have significantly more processing power that an ordinary flight controller, enabling tasks like computer vision, obstacle avoidance, and route planning.
+> **Tip** DroneCore is the best way to integrate with PX4 over MAVLink! 
+  It is supported by Dronecode, ensuring that it is robust, well tested, and maintained. 
+
+The library provides a simple core API for managing one or more vehicles, providing programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
+
+Developers can extend the library using plugins in order to add any other required MAVLink API (for example, to integrate PX4 with custom cameras, gimbals, or other hardware over MAVLink).
+
+DroneCore can run on a vehicle-based companion computer or on a ground-based GCS or mobile device. These devices have significantly more processing power that an ordinary flight controller, enabling tasks like computer vision, obstacle avoidance, and route planning.
+
+## Project Status
+
+DroneCore is still in pre-alpha development. 
+- The core C++ API has been created and is (largely) stable.
+- UDP connections are supported. We are nearly finished writing plugins to support TCP and serial connections.
+- Currently you can only develop in C++. [gRPC](https://grpc.io/) is being investigated as a promising technology for writing the cross-platform wrappers.
+
+To use DroneCore you will need to [build the C++ library](contributing/build.md). Instructions for how to write a simple complete example are covered in [Takeoff and Land](examples/takeoff_and_land.md).
+
 
 ## Library Features
 
@@ -20,20 +36,18 @@ The library is:
 - Cross-platform (Linux, Mac, Windows, iOS, Android).
 - Extensible, using compile-time plugins.
 
-The main features provided by the API (in all programing languages) are:
+The main features provided by the simple core API are (in all programing languages):
 
 * Connect to and manage up to 255 vehicles via a UDP network connection (serial and TCP connections are not yet implemented). 
 * Get information about vehicles (vendor, software versions, product versions etc.)
 * Get vehicle telemetry and state information (e.g. battery, GPS, RC connection, flight mode etc.) and set telemetry update rates.
 * Send commands to arm, disarm, kill, takeoff, land and return to launch.
-* Create and manage missions
+* Create and manage missions.
 * Send commands to directly control vehicle movement.
 
 The [API Reference](api_reference/README.md) provides detailed information about the API. See the [FAQ](getting_started/faq.md) for more information about the library. 
 
 ## Getting Started
-
-> **Note** At time of writing all users will need to [build the library](contributing/build.md) in order to use it. In the near future we'll have binary releases for the wrapper APIs.  Instructions for how to write a simple complete example are covered in [Takeoff and Land](examples/takeoff_and_land.md). The text below is "aspirational".
 
 The [Quick Start](getting_started/README.md) explains how to set up a development environment and write a minimal example for all our supported programming languages/platforms. 
 
