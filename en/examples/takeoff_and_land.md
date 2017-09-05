@@ -7,7 +7,7 @@ It sets up a UDP connection, waits for a device to appear, and commands it to ta
 
 <!-- [Gitbook-api-theme](https://github.com/GitbookIO/theme-api#gitbook-api-theme) shows how the methods work -->
 
-> **Tip** The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/blob/master/example/).
+> **Tip** The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/tree/master/example/takeoff_land).
 
 {% method %}
 ## Build Example {#build_example}
@@ -31,10 +31,10 @@ cmake ..
 make && ./takeoff_and_land
 ```
 
-Note that the example needs to be linked to a thread library (see [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/example/CMakeLists.txt))
+Note that the example needs to be linked to a thread library (see [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/example/takeoff_land/CMakeLists.txt))
 
 {% sample lang="python" %}
-XXXX
+PYTHON EXAMPLE NOT ADDED YET
 {% endmethod %}
 
 
@@ -44,7 +44,7 @@ XXXX
 The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/blob/master/example/).
 
 {% sample lang="cpp" %}
-[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/example/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/example/takeoff_land/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -77,7 +77,7 @@ target_link_libraries(takeoff_and_land
 
 ```
 
-[takeoff_and_land.cpp](https://github.com/dronecore/DroneCore/blob/master/example/takeoff_and_land.cpp)
+[takeoff_and_land.cpp](https://github.com/dronecore/DroneCore/blob/master/example/takeoff_land/takeoff_and_land.cpp)
 ```cpp
 // Simple example to demonstrate how to use DroneCore.
 //
@@ -171,7 +171,7 @@ int main(int /*argc*/, char ** /*argv*/)
 ```
 
 {% sample lang="python" %}
-This is perhaps where equivalent Python example might live. 
+PYTHON EXAMPLE NOT ADDED YET
 {% endmethod %}
 
 
