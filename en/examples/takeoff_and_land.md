@@ -25,7 +25,7 @@ make default install
 Then build the example:
 
 ```
-cd example/
+cd example/takeoff_land/
 mkdir build && cd build
 cmake ..
 make && ./takeoff_and_land
