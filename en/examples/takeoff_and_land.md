@@ -2,21 +2,20 @@
 
 This example shows how to use basic DroneCore features. 
 
-It sets up a UDP connection, waits for a device to appear, and commands it to takeoff and then land again. While flying the vehicle receives telemetry. The example is implemented in C++ and <????>.
+It sets up a UDP connection, waits for a device to appear, and commands it to takeoff and then land again. While flying the vehicle receives telemetry. The example is implemented in C++ (only).
 
 
 <!-- [Gitbook-api-theme](https://github.com/GitbookIO/theme-api#gitbook-api-theme) shows how the methods work -->
 
 > **Tip** The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/tree/master/example/takeoff_land).
 
-{% method %}
 ## Build Example {#build_example}
 
 To build and try it, start PX4 in SITL and build and run the example as follows:
 
-
-{% sample lang="cpp" %}
-Build and install the DroneCore library first:
+### Linux
+First [Build and install the DroneCore C++ Library](../contributing/build.md).
+Make sure that you install the library and headers in the standard location:
 
 ```
 make default install
@@ -33,17 +32,30 @@ make && ./takeoff_and_land
 
 Note that the example needs to be linked to a thread library (see [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/example/takeoff_land/CMakeLists.txt))
 
-{% sample lang="python" %}
-PYTHON EXAMPLE NOT ADDED YET
-{% endmethod %}
+### Windows
+
+First [Build and install the DroneCore C++ Library](../contributing/build.md).
+Make sure that you install the library and headers in the standard location:
+
+```
+cmake --build . --target install
+```
+
+Build the example using:
+```
+cd example/takeoff_land/
+mkdir build && cd build
+cmake --build .
+```
+
+The debug binary for the example is stored under \Debug folder.
 
 
-{% method %}
 ## Source code {#source_code}
 
 The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/blob/master/example/).
 
-{% sample lang="cpp" %}
+
 [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/example/takeoff_land/CMakeLists.txt)
 
 ```make
@@ -169,9 +181,3 @@ int main(int /*argc*/, char ** /*argv*/)
     return 0;
 }
 ```
-
-{% sample lang="python" %}
-PYTHON EXAMPLE NOT ADDED YET
-{% endmethod %}
-
-

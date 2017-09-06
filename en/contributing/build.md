@@ -23,7 +23,7 @@ To build the *DroneCore* C++ Library on Linux (or Mac OS X after installing the 
 1. First install the dependencies
    ```bash
    sudo apt-get update -y
-   sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev -y
+   sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev doxygen -y
    ```
    > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile).
 
@@ -36,6 +36,18 @@ To build the *DroneCore* C++ Library on Linux (or Mac OS X after installing the 
 1. Build the C++ library by calling:
    ```
    make default
+   ```
+   
+1. (Optionally) Install the binaries and header files in the default location:
+   > **Tip** This is needed to build DroneCore applications (but not for the unit and integration tests).
+   
+   ```
+   make default install
+   ```
+   
+1. (Optionally) Build the API Reference documentation by calling:
+   ```
+   make docs
    ```
 
 ### Windows
@@ -63,6 +75,13 @@ To build the *DroneCore* C++ Library on Windows:
    mkdir build && cd build
    cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc14-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
    cmake --build .
+   ```
+   
+1. (Optionally) Install the binaries and header files in the default location:
+   > **Tip** This is needed to build DroneCore applications (but not for the unit and integration tests).
+   
+   ```
+   cmake --build . --target install
    ```
 
 ### Using the Compiled C++ Library
