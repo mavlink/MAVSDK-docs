@@ -32,6 +32,7 @@
   * [Building Source](contributing/build.md)
   * [Tests](contributing/test.md)
   * [Coding Style](contributing/code_style.md)
+  * [Documentation](contributing/documentation.md)
 * [Releases](releases/README.md)
 
 ## Dronecode Shortcuts
