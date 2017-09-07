@@ -217,7 +217,11 @@ The main steps are:
    make fix_style
    # Build the docs
    make docs
+   # Clean the build
+   make clean
    ```
+   
+> **Note** Files built in a Docker container are owned by root. In order to clean up the **build** and **install** folders you will need to either call `make clean` in the container or `sudo make clean` in the host computer.
 
 ### Running single docker commands
 
