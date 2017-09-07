@@ -185,22 +185,70 @@ build/default/integration_tests_runner --gtest_filter="ExternalExampleHello"
 
 ## Building in Docker
 
-If you want to develop in docker, you can use the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile) based on Ubuntu 16.04.
+You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). 
 
-Build the image:
-```
-docker build . -t dronecore
+The main steps are:
+
+1. Install Docker on your host computer. 
+1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork) and update the submodules:
+   ```bash
+   git clone https://github.com/dronecore/DroneCore.git
+   cd DroneCore
+   git submodule update --init --recursive
+   ```
+1. Enter the following command in your host's terminal:
+   ```bash
+   docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/Dronecore:rw dronecore/dronecore bash
+   ```
+   > **Note** The `-v` flag maps a directory on your host (left side) to a path in
+   the container (right side). Above you need to specify the left-side path to the DroneCore repository on your host. The container path must be set as above.
+   
+   Docker will download an image from [Docker Hub](https://hub.docker.com/r/dronecore/dronecore/), use it to create a container, and then open a bash prompt:
+   ```
+   root*81ebe14d0c1a:/home/docker1000/src/Dronecore# 
+   ```
+1. In the bash prompt you can build DroneCore using the normal Linux `make` commands:
+   ```bash
+   # Build the C++ library
+   make default
+   # Build and install DroneCore 
+   make default install
+   # Run code-style check
+   make fix_style
+   # Build the docs
+   make docs
+   ```
+
+### Running single docker commands
+
+You can also run build commands directly from your host (rather than opening bash), as shown below. 
+
+To make and install the C++ Library:
+```bash
+docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/Dronecore:rw dronecore/dronecore make install
 ```
 
-To compile in it:
-```
-docker run -it -v $HOME/<wherever>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore make
+To run the code style check:
+```bash
+docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/Dronecore:rw dronecore/dronecore make fix_style
 ```
 
-Or run the code style check:
-```
-docker run -it -v $HOME/<wherever>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore make fix_style
-```
+### Building the Docker Image
+
+The approach above downloads a container image ([dronecore/dronecore](https://hub.docker.com/r/dronecore/dronecore/)) from Docker Hub. 
+  
+You can also build the image yourself using the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile) in the root of the DroneCore repository (this is based on Ubuntu 16.04). The image can be used in the same way as the one from Docker Hub.
+
+1. Open a command prompt/terminal in the root of the DroneCore repository.
+1. Build the image as shown:
+   ```bash
+   docker build . -t my_image    # 'my_image' can then be used to refer to the image
+   ```
+1. Open a bash prompt using this image:
+   ```bash
+   docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/Dronecore:rw my_image bash
+   ```
+
 
 ## Install Artifacts
 
