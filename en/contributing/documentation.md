@@ -46,7 +46,7 @@ To raise an issue against the documentation:
 
 If you want to make more significant changes or additions to the documentation you will need to set up Git and the gitbook toolchain (this allows you to render the documentation and check that links work). 
 
-For setup information see: [Gitbook toolchain](https://toolchain.gitbook.com/setup.html)
+For setup information see: [Gitbook toolchain](https://toolchain.gitbook.com/setup.html).
 
 
 ## API Reference
@@ -65,4 +65,4 @@ The documentation is then built to: **/install/docs/markdown**.
 > **Note** Extracting the API reference does not work automatically on Windows because the `make` toolchain is different. 
 
 <span></span>
-> **Note** *Doxygen* creates xml files from source comments in **/install/docs/xml**. The Python script *generate_markdown_from_doxygen_xml.py* converts these to markdown (and stores in **/install/docs/markdown**)
+> **Note** *Doxygen* creates xml files from source comments in **/install/docs/xml**. The Python script *generate_markdown_from_doxygen_xml.py* converts these to markdown (and stores in **/install/docs/markdown**).
