@@ -4,7 +4,7 @@
 
 > **Warning** Under Construction.
 
-This [DroneCore documentation](https://dronecore.gitbooks.io/dronecore-guide/content/en/) explains how to use the [DroneCore](https://github.com/dronecore/DroneCore#dronecore) C++ MAVLink API Library, along with auto-generated wrapper APIs written in Python, Java and iOS (forthcoming).
+This [DroneCore documentation](https://docs.dronecore.io/en/) explains how to use the [DroneCore](https://github.com/dronecore/DroneCore#dronecore) C++ MAVLink API Library, along with auto-generated wrapper APIs written in Python, Java and iOS (forthcoming).
 
 This repository contains the *source code* for the documentation.
 
