@@ -36,7 +36,7 @@ dronecore::DevicePluginContainer::DevicePluginContainer(const DevicePluginContai
 
 **Parameters**
 
-* const [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md) & **** - 
+* const [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md) & - 
 
 ## Member Function Documentation
 
@@ -121,7 +121,7 @@ const DevicePluginContainer& dronecore::DevicePluginContainer::operator=(const D
 
 **Parameters**
 
-* const [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md) & **** - 
+* const [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md) & - 
 
 **Returns**
 

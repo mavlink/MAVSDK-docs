@@ -232,7 +232,7 @@ Translates the [DroneCore::ConnectionResult](classdronecore_1_1_drone_core.md#cl
 
 **Parameters**
 
-* [ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) **** - 
+* [ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) - 
 
 **Returns**
 

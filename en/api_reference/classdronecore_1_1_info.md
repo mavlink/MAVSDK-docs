@@ -67,7 +67,7 @@ Copy Constructor (object is not copyable).
 
 **Parameters**
 
-* const [Info](classdronecore_1_1_info.md) & **** - 
+* const [Info](classdronecore_1_1_info.md) & - 
 
 ## Member Function Documentation
 
@@ -123,7 +123,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Info](classdronecore_1_1_info.md) & **** - 
+* const [Info](classdronecore_1_1_info.md) & - 
 
 **Returns**
 

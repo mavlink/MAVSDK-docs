@@ -76,7 +76,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Logging](classdronecore_1_1_logging.md) & **** - 
+* const [Logging](classdronecore_1_1_logging.md) & - 
 
 ## Member Typdef Documentation
 
@@ -180,7 +180,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Logging](classdronecore_1_1_logging.md) & **** - 
+* const [Logging](classdronecore_1_1_logging.md) & - 
 
 **Returns**
 

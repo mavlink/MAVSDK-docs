@@ -88,7 +88,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Offboard](classdronecore_1_1_offboard.md) & **** - 
+* const [Offboard](classdronecore_1_1_offboard.md) & - 
 
 ## Member Typdef Documentation
 
@@ -216,7 +216,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Offboard](classdronecore_1_1_offboard.md) & **** - 
+* const [Offboard](classdronecore_1_1_offboard.md) & - 
 
 **Returns**
 

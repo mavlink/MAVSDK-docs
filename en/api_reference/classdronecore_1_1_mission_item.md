@@ -74,7 +74,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [MissionItem](classdronecore_1_1_mission_item.md) & **** - 
+* const [MissionItem](classdronecore_1_1_mission_item.md) & - 
 
 ## Member Enumeration Documentation
 
@@ -294,7 +294,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [MissionItem](classdronecore_1_1_mission_item.md) & **** - 
+* const [MissionItem](classdronecore_1_1_mission_item.md) & - 
 
 **Returns**
 
