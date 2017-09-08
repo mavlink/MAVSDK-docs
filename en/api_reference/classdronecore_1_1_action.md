@@ -85,7 +85,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Action](classdronecore_1_1_action.md) & **** - 
+* const [Action](classdronecore_1_1_action.md) & - 
 
 ## Member Typdef Documentation
 
@@ -359,7 +359,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Action](classdronecore_1_1_action.md) & **** - 
+* const [Action](classdronecore_1_1_action.md) & - 
 
 **Returns**
 
@@ -376,7 +376,7 @@ Returns a human-readable English string for an [Action::Result](classdronecore_1
 
 **Parameters**
 
-* [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) **** - 
+* [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) - 
 
 **Returns**
 

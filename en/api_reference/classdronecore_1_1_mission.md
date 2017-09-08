@@ -78,7 +78,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Mission](classdronecore_1_1_mission.md) & **** - 
+* const [Mission](classdronecore_1_1_mission.md) & - 
 
 ## Member Typdef Documentation
 
@@ -256,7 +256,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Mission](classdronecore_1_1_mission.md) & **** - 
+* const [Mission](classdronecore_1_1_mission.md) & - 
 
 **Returns**
 

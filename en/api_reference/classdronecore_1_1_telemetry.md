@@ -150,7 +150,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Telemetry](classdronecore_1_1_telemetry.md) & **** - 
+* const [Telemetry](classdronecore_1_1_telemetry.md) & - 
 
 ## Member Typdef Documentation
 
@@ -1053,7 +1053,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Telemetry](classdronecore_1_1_telemetry.md) & **** - 
+* const [Telemetry](classdronecore_1_1_telemetry.md) & - 
 
 **Returns**
 
