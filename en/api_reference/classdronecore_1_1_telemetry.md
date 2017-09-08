@@ -1061,7 +1061,7 @@ Equality operator (object is not copyable).
 
 ### flight_mode_str() {#classdronecore_1_1_telemetry_1ada1428856268d876b22d5d4dabdea8bd}
 ```cpp
-static static const char* dronecore::Telemetry::flight_mode_str(FlightMode flight_mode)
+static const char* dronecore::Telemetry::flight_mode_str(FlightMode flight_mode)
 ```
 
 
@@ -1078,7 +1078,7 @@ Get a human readable English string for a flight mode.
 
 ### result_str() {#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a}
 ```cpp
-static static const char* dronecore::Telemetry::result_str(Result result)
+static const char* dronecore::Telemetry::result_str(Result result)
 ```
 
 
