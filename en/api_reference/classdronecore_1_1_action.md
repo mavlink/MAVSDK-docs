@@ -367,7 +367,7 @@ Equality operator (object is not copyable).
 
 ### result_str() {#classdronecore_1_1_action_1a1e44fcd1ee2a566a6590ba2a1ab2e6a7}
 ```cpp
-static static const char* dronecore::Action::result_str(Result)
+static const char* dronecore::Action::result_str(Result)
 ```
 
 

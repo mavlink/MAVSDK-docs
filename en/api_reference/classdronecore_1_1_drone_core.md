@@ -223,7 +223,7 @@ This sets a callback that will be notified if no heartbeat of the device has bee
 
 ### connection_result_str() {#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af}
 ```cpp
-static static const char* dronecore::DroneCore::connection_result_str(ConnectionResult)
+static const char* dronecore::DroneCore::connection_result_str(ConnectionResult)
 ```
 
 
