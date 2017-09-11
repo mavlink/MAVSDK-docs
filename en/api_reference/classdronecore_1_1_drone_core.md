@@ -149,7 +149,7 @@ const std::vector<uint64_t>& dronecore::DroneCore::device_uuids() const
 
 Get vector of device UUIDs.
 
-This returns a vector of the UUIDs of all devices that have been discovered so far.
+This returns a vector of the UUIDs of all devices that have been discovered.
 
 **Returns**
 
