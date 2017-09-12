@@ -1,6 +1,6 @@
 ## FAQ
 
-### Why was DroneCore written in C++
+### Why was DroneCore written in C++?
 
 The aim was to have an API in a language which is cross-platform and has many language bindings. Additionally, the library needs to be lightweight and fast, so it does not fall over for onboard usage with high rate messaging.
 
@@ -11,6 +11,12 @@ Yes, DroneCore is designed to support multiple vehicles. A vehicle is called a d
 A device needs to have a specific mavlink system ID but can consist of multiple components with different component IDs. An example would be a drone with a gimbal and a camera talking mavlink with the same system ID but different component IDs.
 
 The limit is in theory 255 vehicles for system IDs ranging from 1 to 255.
+
+### What sorts of vehicles does DroneCore support?
+
+The DroneCore API is designed for interacting with *aircraft* (copters, fixed wing and VTOL).
+
+The API may "work" with ground based vehicle or other type, but some methods will not make sense, and this use-case is unsupported and untested.
 
 ### Are serial connections supported?
 
