@@ -34,7 +34,7 @@ DroneCore `Telemetry` information may not precisely reflect the state of the con
 
 DroneCore gets and stores vehicle state information from received MAVLink messages. The API is likely to more accurately reflect the device state if DroneCore is queried just after receiving an update rather than just before getting the next one.
 
-The main implication is that developers need to use a channel and and update rate that allows them to perform the desired control algorithm - there is no point trying to use computer vision over an unreliable high-latency link. The rate at which update messages should be sent can be specified by using API (but will be limited by the bandwidth of the channel). 
+The main implication is that developers need to use a channel and an update rate that allows them to perform the desired control algorithm - there is no point trying to use computer vision over an unreliable high-latency link. The rate at which update messages should be sent can be specified by using API (but will be limited by the bandwidth of the channel). 
 
 `Info` information is static for a particular vehicle, so should remain accurate.
 
@@ -43,7 +43,7 @@ The main implication is that developers need to use a channel and and update rat
 
 Actions methods (and any other "vehicle instructions") return when the vehicle has confirmed that the message was received and will be acted on (or not). The methods do not wait for the commanded action to complete.
 
-So, for example, the [Action::land()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1ad1a50dd7bff99d3099916576efbf8cf6) method returns as soon as the vehicle confirms it will land, but will land at some later point. 
+So, for example, the [Action::land()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1ad1a50dd7bff99d3099916576efbf8cf6) method returns as soon as the vehicle confirms it will land, but will actually land at some later point. 
 
 The implication is that developers will need to separately monitor the completion of the requested actions, if this is important to the application.
 
