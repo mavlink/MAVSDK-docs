@@ -5,6 +5,7 @@
 * [Quick Start](getting_started/README.md)
 * [Guide](guide/README.md)
   * [Usage/Paradigms](guide/general_usage.md)
+  * [Connecting to Devices](guide/connections.md)
 * [Example](examples/README.md)
   * [Takeoff and Land](examples/takeoff_and_land.md)
 * [API Reference](api_reference/README.md)
