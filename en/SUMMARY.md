@@ -3,6 +3,8 @@
 * [Introduction](README.md)
   * [FAQ](getting_started/faq.md)
 * [Quick Start](getting_started/README.md)
+* [Guide](guide/README.md)
+  * [Usage/Paradigms](guide/general_usage.md)
 * [Example](examples/README.md)
   * [Takeoff and Land](examples/takeoff_and_land.md)
 * [API Reference](api_reference/README.md)
