@@ -18,7 +18,7 @@ DroneCore APIs do not raise exceptions! Instead, methods that can fail return su
 
 > **Tip** The error code usually reflects acknowledgment from the vehicle that it will perform the requested action (or not). The operation itself may not yet have completed (e.g. taking off).
 
-The various classes also all provide methods getting human readable strings from their associated enum (e.g. [DroneCore::connection_result_str()](h../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af), [Telemetry::result_str()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a)). You can see how these are used in the example code.
+The various classes also all provide methods getting human readable strings from their associated enum (e.g. [DroneCore::connection_result_str()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af), [Telemetry::result_str()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a)). You can see how these are used in the example code.
 
 ## API Limitations/Behaviour
 ### Supported Vehicles
@@ -30,13 +30,11 @@ The APIs include methods that do not make sense for other vehicle types - includ
 
 ### Telemetry/Information
 
-DroneCore `Telemetry` information may not precisely reflect the state of the connected vehicle.
+DroneCore gets and stores vehicle state/telemetry information from received MAVLink messages. The information is supplied to callback subscribers as soon as message updates are received. Clients can also query the API synchronously, and will get the information from the last recieved message (depending on channel latency, this information will become increasingly "stale" between messages).
 
-DroneCore gets and stores vehicle state information from received MAVLink messages. The API is likely to more accurately reflect the device state if DroneCore is queried just after receiving an update rather than just before getting the next one.
+The rate at which update messages are sent by the vehicle can be specified using DroneCore (but will be limited by the bandwidth of the channel). Developers need to use a channel and a message update rate that allows their desired control algorithm to be effective - there is no point trying to use computer vision over an unreliable high-latency link.
 
-The main implication is that developers need to use a channel and an update rate that allows them to perform the desired control algorithm - there is no point trying to use computer vision over an unreliable high-latency link. The rate at which update messages should be sent can be specified by using API (but will be limited by the bandwidth of the channel). 
-
-`Info` information is static for a particular vehicle, so should remain accurate.
+`Info` information does not change for a particular vehicle, so will be accurate whenever read.
 
 
 ### Actions/Offboard
@@ -52,8 +50,9 @@ The implication is that developers will need to separately monitor the completio
 
 The `Mission` and `MissionItem` APIs provide a the most useful *subset* of MAVLink mission commands as a developer-friendly API. 
 
-Not every mission command behaviour supported by the protocol and PX4 will be supported by DroneCore. For example, at time of writing the API does not allow you to specify commands that jump back to previous commands.
+Not every mission command behaviour supported by the protocol and PX4 will be supported by DroneCore. For example, at time of writing the API does not allow you to specify commands that jump back to previous mission items.
+
 
 ### Connection Status
 
-Connection state information may be up to 3 seconds out of date (callbacks are notified 3 seconds after the last heartbeat message).
+A device is considered to be disconnected (timed-out) if its heartbeat message is not detected within 3 seconds.
