@@ -1,8 +1,8 @@
 <div style="float:right; padding:10px; margin-right:20px;"><img src="../assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/></div>
 # DroneCore Guide
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io) 
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-DroneCore-ff69b4.svg)](http://discuss.px4.io/c/dronecore)  
 <!-- 
-[![Releases](https://img.shields.io/github/release/PX4/Firmware.svg)](https://github.com/PX4/Firmware/releases) [![Discuss](https://img.shields.io/badge/discuss-px4-ff69b4.svg)](http://discuss.px4.io/) 
+[![Releases](https://img.shields.io/github/release/PX4/Firmware.svg)](https://github.com/PX4/Firmware/releases) 
 -->
 
 DroneCore is a [MAVLink](http://mavlink.org) Library for the [PX4 flight stack](http://px4.io), with APIs for C++, Python, Android, and iOS (coming soon). 
