@@ -6,6 +6,7 @@
 * [Guide](guide/README.md)
   * [Usage/Paradigms](guide/general_usage.md)
   * [Connecting to Devices](guide/connections.md)
+  * [Building C++ Apps](guide/toolchain.md)
 * [Example](examples/README.md)
   * [Takeoff and Land](examples/takeoff_and_land.md)
 * [API Reference](api_reference/README.md)
