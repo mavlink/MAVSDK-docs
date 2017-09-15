@@ -254,7 +254,7 @@ You can also build the image yourself using the [Dockerfile](https://github.com/
    ```
 
 
-## Install DroneCore Headers and Static Library
+## Install DroneCore Headers and Static Library {#install-artifacts}
 
 In order to *use* DroneCore your C++ applications need to be able locate the DroneCore libraries and header files (see [Building C++ Apps](../guide/toolchain.md)). You can either install these to standard system locations or locally within the DroneCore directory.
 
