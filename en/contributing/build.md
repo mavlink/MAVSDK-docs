@@ -254,23 +254,32 @@ You can also build the image yourself using the [Dockerfile](https://github.com/
    ```
 
 
-## Install Artifacts
+## Install DroneCore Headers and Static Library
 
-The build artifacts (headers and static library file) can be installed locally into the folder `./install/` using:
+In order to *use* DroneCore your C++ applications need to be able locate the DroneCore libraries and header files (see [Building C++ Apps](../guide/toolchain.md)). You can either install these to standard system locations or locally within the DroneCore directory.
+
+> **Note** When using the library **libdronecore.a**, you need to link to a thread library such as *pthread* on a POSIX system (pthread is not included in the static library because it is included in glibc).
+
+
+### System-wide Install
+
+Installing DroneCore system-wide means that the files you need to build your apps are always in the same place, and your build definition files can be simpler because they do not need to consider relative locations.
+
+> **Warning** System-wide install is not (yet) supported on Windows. If you're a Windows guru, we'd [love your help](../README.md#getting-help) to set this up.
+
+To install the files system-wide:
+
+```bash
+make clean  #REQUIRED!
+sudo INSTALL_PREFIX=/usr/local make default install
+```
+
+> **Note** System-wide install overwrites standard install locations. If you already have DroneCore installed through some other mechanism it will be replaced!
+
+### Local Install
+
+The DroneCore headers and static library can be installed locally into the folder **DroneCore/install/** using:
 
 ```
 make default install
 ```
-
-Or, to install the files system-wide, using:
-
-```
-INSTALL_PREFIX=/usr/local make default install
-```
-
-Note that when using the library **libdronecore.a**, you need to link to a thread library such as *pthread* on a POSIX system (pthread is not included in the static library because it is included in glibc).
-
-## Build Python Wrapper
-
-TBD.
-
