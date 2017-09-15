@@ -6,7 +6,7 @@ DroneCore C++ apps are written in standard C++ (c++11) and can be built using yo
 
 DroneCore itself uses the [cmake](https://cmake.org/) build system, and we recommend that you do too. CMake is an open-source, cross-platform toolchain that allows you to build your examples on Mac OS, Linux and Windows using the same build file definition.
 
-Below we explain how to set up a minimal make file for your application.
+Below we explain how to set up a minimal build setup (**CMakeLists.txt**) file for your application.
 
 
 ## Build Definition File - CMakeLists.txt
