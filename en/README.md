@@ -1,14 +1,14 @@
-<div style="float:right; padding:10px; margin-right:20px;"><img src="../assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/></div>
+<div style="float:right; padding:10px; margin-right:20px;"><a href="http://dronecore.io/"><img src="../assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/></a></div>
 # DroneCore Guide
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-DroneCore-ff69b4.svg)](http://discuss.px4.io/c/dronecore)  
 <!-- 
 [![Releases](https://img.shields.io/github/release/PX4/Firmware.svg)](https://github.com/PX4/Firmware/releases) 
 -->
 
-DroneCore is a [MAVLink](http://mavlink.org) Library for the [PX4 flight stack](http://px4.io), with APIs for C++, Python, Android, and iOS (coming soon). 
+*DroneCore* is a [MAVLink](http://mavlink.org) Library for the [PX4 flight stack](http://px4.io), with APIs for C++, Python, Android, and iOS (coming soon). 
 
 > **Tip** DroneCore is the best way to integrate with PX4 over MAVLink! 
-  It is supported by Dronecode, ensuring that it is robust, well tested, and maintained. 
+  It is supported by [Dronecode](https://www.dronecode.org/), ensuring that it is robust, well tested, and maintained. 
 
 The library provides a simple core API for managing one or more vehicles, providing programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
 
@@ -20,10 +20,10 @@ DroneCore can run on a vehicle-based companion computer or on a ground-based GCS
 
 DroneCore is still in pre-alpha development. 
 - The core C++ API has been created and is (largely) stable.
-- UDP connections are supported. We are nearly finished writing plugins to support TCP and serial connections.
-- Currently you can only develop in C++. [gRPC](https://grpc.io/) is being investigated as a promising technology for writing the cross-platform wrappers.
+- Currently you can only develop in C++. 
+  - [gRPC](https://grpc.io/) is being investigated as a promising technology for writing the cross-platform wrappers.
 
-To use DroneCore you will need to [build the C++ library](contributing/build.md). Instructions for how to write a simple complete example are covered in [Takeoff and Land](examples/takeoff_and_land.md).
+To use DroneCore you will need to [build the C++ library](contributing/build.md). The [Guide](guide/README.md) explains how to write C++ DroneCore apps. A simple complete example can be found in [Takeoff and Land](examples/takeoff_and_land.md).
 
 
 ## Library Features
@@ -88,7 +88,6 @@ Use Github for bug reports/enhancement requests:
 
 ## Contributing
 
-
 DroneCore welcomes contributions! If you want to help or have suggestions/bug reports [please get in touch with the development team](#getting-help). 
 
 The [Contributing](contributing/README.md) section contains everything you need to contribute, including topics about building Dronecore from source code, running our integration and unit tests, and all other aspects of core development. 
@@ -98,8 +97,3 @@ The [Contributing](contributing/README.md) section contains everything you need 
 
 * DroneCore is licensed under the permissive [BSD 3-clause](https://github.com/dronecore/DroneCore/blob/master/LICENSE.md).
 * This *DroneCore Developer Documentation* is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
-
-<!-- ## Roadmap   - removed. I think belongs on repo at this point. Can be added back to releases if you want to manage it in docs -->
-<!-- ## API overview    - moved to "Getting started" (for now) -->
-<!-- ## Authors   - removed - I think this belongs in repo, though arguably could link to the github author tracking -->
-
