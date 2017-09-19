@@ -1,7 +1,7 @@
 # Building C++ DroneCore Apps
 
 DroneCore C++ apps are written in standard C++ (c++11) and can be built using your preferred build system, compiler and linker toolchain. The only requirements are:
-- The build system must be able to locate the DroneCore headers and libraries (installed as described [here](../contributing/build.html#install-artifacts)).
+- The build system must be able to locate the DroneCore headers and libraries (installed as described [here](../contributing/build.md#install-artifacts)).
 - When using DroneCore you need to link to a thread library (e.g. *pthread* on a POSIX system). 
 
 DroneCore itself uses the [cmake](https://cmake.org/) build system, and we recommend that you do too. CMake is an open-source, cross-platform toolchain that allows you to build your examples on Mac OS, Linux and Windows using the same build file definition.

@@ -77,7 +77,7 @@ return the first device detected, or a null `Device` if none have been discovere
 Device &device = dc.device()
 ```
 
-The `Device` can be used to query and control the vehicle. You use the device getters to get an instance of a plugin API (e.g. [Device::action()](../api_reference/classdronecore_1_1_device.md#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192) to get an [Action](../api_reference/classdronecore_1_1_action.html) object) and then call the object's methods. For example, to arm the device you would do:
+The `Device` can be used to query and control the vehicle. You use the device getters to get an instance of a plugin API (e.g. [Device::action()](../api_reference/classdronecore_1_1_device.md#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192) to get an [Action](../api_reference/classdronecore_1_1_action.md) object) and then call the object's methods. For example, to arm the device you would do:
 ```cpp
 const Action::Result arm_result = device.action().arm();
 ```
