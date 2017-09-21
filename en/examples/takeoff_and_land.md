@@ -1,60 +1,17 @@
 # Example: Takeoff and Land
 
-This example shows how to use basic DroneCore features. 
+This simple example shows the basic use of many DroneCore features. 
 
-It sets up a UDP connection, waits for a device to appear, and commands it to takeoff and then land again. While flying the vehicle receives telemetry. The example is implemented in C++ (only).
-
-
-<!-- [Gitbook-api-theme](https://github.com/GitbookIO/theme-api#gitbook-api-theme) shows how the methods work -->
+It sets up a UDP connection, waits for a device to appear, arms it, and commands it to takeoff and then land again. While flying the vehicle receives telemetry. The example is implemented in C++ (only).
 
 > **Tip** The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/tree/master/example/takeoff_land).
 
-## Build Example {#build_example}
+## Running the Example {#run_example}
 
-To build and try it, start PX4 in SITL and build and run the example as follows:
+The example is built and run [as described here](/examples/README.md#trying_the_examples) (the standard way).
 
-### Linux
-First [Build and install the DroneCore C++ Library](../contributing/build.md).
-Make sure that you install the library and headers in the standard location:
-
-```
-make default install
-```
-
-Then build the example:
-
-```
-cd example/takeoff_land/
-mkdir build && cd build
-cmake ..
-make && ./takeoff_and_land
-```
-
-Note that the example needs to be linked to a thread library (see [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/example/takeoff_land/CMakeLists.txt))
-
-### Windows
-
-First [Build and install the DroneCore C++ Library](../contributing/build.md).
-Make sure that you install the library and headers in the standard location:
-
-```
-cmake --build . --target install
-```
-
-Build the example using:
-```
-cd example/takeoff_land/
-mkdir build && cd build
-cmake --build .
-```
-
-The debug binary for the example is stored under \Debug folder.
-
-## Running the Example
-
-
-
-```bash
+The example terminal output is:
+```sh
 $ ./takeoff_and_land 
 Waiting to discover device...
 Partner IP: 127.0.0.1:14557
@@ -83,8 +40,7 @@ Finished...
 
 ## Source code {#source_code}
 
-The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/blob/master/example/).
-
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/dronecore/DroneCore/tree/master/example/takeoff_land).
 
 [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/example/takeoff_land/CMakeLists.txt)
 

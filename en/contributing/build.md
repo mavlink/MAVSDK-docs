@@ -28,25 +28,20 @@ To build the *DroneCore* C++ Library on Linux (or Mac OS X after installing the 
    > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile).
 
 1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork) and update the submodules:
-   ```bash
+   ```sh
    git clone https://github.com/dronecore/DroneCore.git
    cd DroneCore
    git submodule update --init --recursive
    ```
 1. Build the C++ library by calling:
-   ```
+   ```sh
    make default
    ```
    
-1. (Optionally) Install the binaries and header files in the default location:
-   > **Tip** This is needed to build DroneCore applications (but not for the unit and integration tests).
-   
-   ```
-   make default install
-   ```
+1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build DroneCore applications, but not to run DroneCore test code.
    
 1. (Optionally) Build the API Reference documentation by calling:
-   ```
+   ```sh
    make docs
    ```
 
@@ -58,32 +53,62 @@ To build the library you'll need to install *Visual Studio Community Edition*. Y
 
 To build the *DroneCore* C++ Library on Windows:
 1. Clone the DroneCore repository (or your fork) and update the submodules:
-   ```bash
+   ```sh
    git clone https://github.com/dronecore/DroneCore.git
    cd DroneCore
    git submodule update --init --recursive
    ```
 1. Download the [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) source and extract it to the root of your C drive. 
 1. Open the *VS2015 x64 Native Tools Command Prompt*, go to the source directory and enter:
-   ```bash
+   ```sh
    cd C:\curl-7.54.1\winbuild
    nmake /f Makefile.vc mode=static VC=14 MACHINE=x64 DEBUG=no
    ```
 1. Then build *DroneCore* in Windows:
-   ```
+   ```sh
    cd /your/path/to/DroneCore
    mkdir build && cd build
    cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc14-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
    cmake --build .
    ```
    
-1. (Optionally) Install the binaries and header files in the default location:
-   > **Tip** This is needed to build DroneCore applications (but not for the unit and integration tests).
-   
-   ```
-   cmake --build . --target install
-   ```
+1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build DroneCore applications, but not to run DroneCore test code.
 
+
+
+## Install DroneCore {#install-artifacts}
+
+In order to *use* DroneCore your C++ applications need to be able locate the DroneCore libraries and header files (see [Building C++ Apps](../guide/toolchain.md)). You can either install these to standard system locations or locally within the DroneCore directory.
+
+> **Tip** The example code assumes that DroneCore is installed locally. The example **CMakeLists.txt** file can easily be modified to find the system-wide installation.
+
+<span></span>
+> **Note** When using the library **libdronecore.a**, you need to link to a thread library such as *pthread* on a POSIX system (pthread is not included in the static library because it is included in glibc).
+
+### System-wide Install
+
+Installing DroneCore system-wide means that the files you need to build your apps are always in the same place, and your build definition files can be simpler because they do not need to consider relative locations.
+
+> **Warning** System-wide install is not (yet) supported on Windows. If you're a Windows guru, we'd [love your help](../README.md#getting-help) to set this up.
+
+To install the files system-wide:
+
+```sh
+make clean  #REQUIRED!
+sudo INSTALL_PREFIX=/usr/local make default install
+```
+
+> **Note** System-wide install overwrites standard install locations. If you already have DroneCore installed through some other mechanism it will be replaced!
+
+### Local Install
+
+The DroneCore headers and static library can be installed locally into the folder **DroneCore/install/** using:
+
+```sh
+make default install
+```
+   
+   
 ### Using the Compiled C++ Library
 
 The [Takeoff and Land](../examples/takeoff_and_land.md) example shows how to build and test an example in C++.
@@ -191,13 +216,13 @@ The main steps are:
 
 1. Install Docker on your host computer. 
 1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork) and update the submodules:
-   ```bash
+   ```sh
    git clone https://github.com/dronecore/DroneCore.git
    cd DroneCore
    git submodule update --init --recursive
    ```
 1. Enter the following command in your host's terminal:
-   ```bash
+   ```sh
    docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore bash
    ```
    > **Note** The `-v` flag maps a directory on your host (left side) to a path in
@@ -207,8 +232,8 @@ The main steps are:
    ```
    root*81ebe14d0c1a:/home/docker1000/src/Dronecore# 
    ```
-1. In the bash prompt you can build DroneCore using the normal Linux `make` commands:
-   ```bash
+1. In the terminal you can build DroneCore using the normal Linux `make` commands:
+   ```sh
    # Build the C++ library
    make default
    # Build and install DroneCore 
@@ -245,41 +270,11 @@ You can also build the image yourself using the [Dockerfile](https://github.com/
 
 1. Open a command prompt/terminal in the root of the DroneCore repository.
 1. Build the image as shown:
-   ```bash
+   ```sh
    docker build . -t my_image    # 'my_image' can then be used to refer to the image
    ```
 1. Open a bash prompt using this image:
-   ```bash
+   ```sh
    docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw my_image bash
    ```
 
-
-## Install DroneCore Headers and Static Library {#install-artifacts}
-
-In order to *use* DroneCore your C++ applications need to be able locate the DroneCore libraries and header files (see [Building C++ Apps](../guide/toolchain.md)). You can either install these to standard system locations or locally within the DroneCore directory.
-
-> **Note** When using the library **libdronecore.a**, you need to link to a thread library such as *pthread* on a POSIX system (pthread is not included in the static library because it is included in glibc).
-
-
-### System-wide Install
-
-Installing DroneCore system-wide means that the files you need to build your apps are always in the same place, and your build definition files can be simpler because they do not need to consider relative locations.
-
-> **Warning** System-wide install is not (yet) supported on Windows. If you're a Windows guru, we'd [love your help](../README.md#getting-help) to set this up.
-
-To install the files system-wide:
-
-```bash
-make clean  #REQUIRED!
-sudo INSTALL_PREFIX=/usr/local make default install
-```
-
-> **Note** System-wide install overwrites standard install locations. If you already have DroneCore installed through some other mechanism it will be replaced!
-
-### Local Install
-
-The DroneCore headers and static library can be installed locally into the folder **DroneCore/install/** using:
-
-```
-make default install
-```
