@@ -51,7 +51,7 @@ include_directories(
 )
 
 add_executable(fly_mission
-    fly_mission_dronecore.cpp
+    fly_mission.cpp
 )
 
 # Not needed if DroneCore installed system-wide
@@ -69,7 +69,7 @@ target_link_libraries(fly_mission
 )
 ```
 
-[fly_mission_dronecore.cpp](https://github.com/dronecore/DroneCore/blob/master/example/fly_mission/fly_mission_dronecore.cpp)
+[fly_mission.cpp](https://github.com/dronecore/DroneCore/blob/master/example/fly_mission/fly_mission.cpp)
 
 ```cpp
 //
