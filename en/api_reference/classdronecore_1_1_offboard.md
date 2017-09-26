@@ -10,7 +10,7 @@ This class is used to control a drone with velocity commands.
 The module is called offboard because the velocity commands can be sent from external sources as opposed to onboard control right inside the autopilot "board".
 
 
-**Attention:** this is work in progress, use with caution! 
+Attention: this is work in progress, use with caution! 
 
 
 ## Data Structures
@@ -133,7 +133,7 @@ Offboard::Result dronecore::Offboard::start() const
 
 Start offboard control (synchronous).
 
-**Attention:** this is work in progress, use with caution!
+Attention: this is work in progress, use with caution!
 
 **Returns**
 
@@ -160,7 +160,7 @@ void dronecore::Offboard::start_async(result_callback_t callback)
 
 Start offboard control (asynchronous).
 
-**Attention:** This is work in progress, use with caution!
+Attention: This is work in progress, use with caution!
 
 **Parameters**
 

@@ -21,4 +21,3 @@
   * [struct VelocityNEDYaw](structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md)
 * [class Logging](classdronecore_1_1_logging.md)
 * [class DevicePluginContainer](classdronecore_1_1_device_plugin_container.md)
-* [class PluginBase](classdronecore_1_1_plugin_base.md)

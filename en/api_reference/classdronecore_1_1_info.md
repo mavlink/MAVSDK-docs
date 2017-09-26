@@ -4,7 +4,7 @@
 ----
 
 
-The [Info](classdronecore_1_1_info.md) class provides basic info about the hardware and/or software of a device. 
+The [Info](classdronecore_1_1_info.md) class provides basic infomation about the hardware and/or software of a device. 
 
 
 ## Data Structures

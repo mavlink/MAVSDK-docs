@@ -7,7 +7,7 @@
 The [Logging](classdronecore_1_1_logging.md) class allows log data using logger and log streaming from the vehicle. 
 
 
-**This feature is not yet implemented**. 
+This feature is not yet implemented. 
 
 
 ## Public Types
@@ -121,7 +121,7 @@ Result dronecore::Logging::start_logging() const
 
 Start logging (synchronous).
 
-**This feature is not yet implemented**.
+This feature is not yet implemented.
 
 **Returns**
 
@@ -135,7 +135,7 @@ Result dronecore::Logging::stop_logging() const
 
 Stop logging (synchronous).
 
-**This feature is not yet implemented**.
+This feature is not yet implemented.
 
 **Returns**
 
@@ -149,7 +149,7 @@ void dronecore::Logging::start_logging_async(result_callback_t callback)
 
 Start logging (asynchronous).
 
-**This feature is not yet implemented**.
+This feature is not yet implemented.
 
 **Parameters**
 
@@ -163,7 +163,7 @@ void dronecore::Logging::stop_logging_async(result_callback_t callback)
 
 Stop logging (asynchronous).
 
-**This feature is not yet implemented**.
+This feature is not yet implemented.
 
 **Parameters**
 
