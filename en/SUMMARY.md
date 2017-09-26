@@ -7,7 +7,7 @@
   * [Usage/Paradigms](guide/general_usage.md)
   * [Connecting to Devices](guide/connections.md)
   * [Vehicle Information](guide/device_version.md)
-  #* [Telemetry](guide/telemetry.md)
+  * [Telemetry](guide/telemetry.md)
   * [Building C++ Apps](guide/toolchain.md)
 * [Examples](examples/README.md)
   * [Takeoff and Land](examples/takeoff_and_land.md)
