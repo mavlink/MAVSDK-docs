@@ -95,7 +95,7 @@ Callback type for discover and timeout notifications.
 
 Result type returned when adding a connection.
 
-**Note**: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you add a connection: [add_udp_connection()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8).
+Note: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you add a connection: [add_udp_connection()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8).
 
  Value | Description
 --- | ---
@@ -171,7 +171,7 @@ Adds a TCP connection with a specific IP address and port number.
 
 **Parameters**
 
-* std::string **remote_ip** - 
+* std::string **remote_ip** - The IP address to connect to.
 * int **remote_port** - The TCP port to connect to.
 
 **Returns**
@@ -203,7 +203,7 @@ Adds a serial connection with a specific port (COM or UART dev node) and baudrat
 
 **Parameters**
 
-* std::string **dev_path** - 
+* std::string **dev_path** - Serial port to connect to.
 * int **baudrate** - Baudrate of the serial port.
 
 **Returns**
@@ -267,7 +267,7 @@ Register callback for device discovery.
 This sets a callback that will be notified if a new device is discovered.
 
 
-**Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
+Note Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
 **Parameters**
 
@@ -284,7 +284,7 @@ Register callback for device timeout.
 This sets a callback that will be notified if no heartbeat of the device has been received in 3 seconds.
 
 
-**Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
+Note Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
 **Parameters**
 
