@@ -61,6 +61,9 @@ Disarmed, exiting.
 ...
 ```
 
+## How it works
+
+The operation of most of this code is discussed in the guide: [Missions](../guide/missions.md).
 
 ## Source code {#source_code}
 
