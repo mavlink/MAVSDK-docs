@@ -12,6 +12,7 @@ The example is built and run [as described here](/examples/README.md#trying_the_
 The example terminal output should be similar to that shown below:
 
 > **Note** This is for a release build of DroneCore. A debug build will display additional information from DroneCore.
+
 ```
 $ ./fly_mission 
 Waiting to discover device...
