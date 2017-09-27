@@ -223,7 +223,7 @@ The main steps are:
    ```
 1. Enter the following command in your host's terminal:
    ```sh
-   docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore bash
+   docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore bash
    ```
    > **Note** The `-v` flag maps a directory on your host (left side) to a path in
    the container (right side). Above you need to specify the left-side path to the DroneCore repository on your host. The container path must be set as above.
@@ -254,12 +254,12 @@ You can also run build commands directly from your host (rather than opening bas
 
 To make and install the C++ Library:
 ```bash
-docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore make install
+docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore make install
 ```
 
 To run the code style check:
 ```bash
-docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore make fix_style
+docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore make fix_style
 ```
 
 ### Building the Docker Image
@@ -275,6 +275,6 @@ You can also build the image yourself using the [Dockerfile](https://github.com/
    ```
 1. Open a bash prompt using this image:
    ```sh
-   docker run -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw my_image bash
+   docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw my_image bash
    ```
 
