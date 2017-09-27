@@ -50,7 +50,8 @@ mission_items.push_back(new_item2);
 then it will be the default for the remainder of the mission.
 
 <span></span>
-> **Note** There are also getter methods for querying the current value of `MissionItem` attributes.
+> **Note** There are also getter methods for querying the current value of `MissionItem` attributes. 
+The default values of most fields are `NaN` (which means they are ignored/not sent).
 
 
 ### Convenience Function
@@ -165,9 +166,9 @@ To pause a mission use [Mission::pause_mission_async()](../api_reference/classdr
 
 ## Monitoring Progress
 
-Asyncronously monitor progress using [Mission::subscribe_progress()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a3290fc79eb22f899528328adfca48a61), which receives a regular callback with the current `MissionItem` number and the total number of items.
+Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a3290fc79eb22f899528328adfca48a61), which receives a regular callback with the current `MissionItem` number and the total number of items.
 
-The code fragment just takes a lambda function that reports the current status. Note that the mission is complete when `current == total`.
+The code fragment just takes a lambda function that reports the current status. 
 
 ```cpp
 device.mission().subscribe_progress( [](int current, int total) {
@@ -175,10 +176,14 @@ device.mission().subscribe_progress( [](int current, int total) {
     });
 ```
 
+> **Note** The mission is complete when `current == total`.
+
 The following synchronous methods are also available for checking mission progress:
 * [mission_finished()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1abf3463efaa18147a1c179e7449503829) - Checks if mission has been finished.
 * [current_mission_item()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a1faa448b32cd0028923b22de0cc78e9c) - Returns the current mission item index.
 * [total_mission_items()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a9d2195ec1af301c51002f8cb99aa22e9) - Gets the total number of items.
+
+> **Note** The mission is (also) complete when `current_mission_item()` == `total_mission_items()`.
 
 
 ## Taking off, Landing, Returning
