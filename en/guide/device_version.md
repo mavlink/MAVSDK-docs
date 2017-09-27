@@ -9,7 +9,8 @@ firmware semantic version).
 The code below shows how to query the UUID and version information and print it to the console:
 
 ```cpp
-// Get Device to query (in this case the first detected vehicle)
+// Get Device to query (the code assumes we have already found at least one vehicle and we 
+// want to query the first detected vehicle).
 Device &device = dc.device();
 
 // Get device UUID
