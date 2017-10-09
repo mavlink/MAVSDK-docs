@@ -13,7 +13,7 @@ A device can consist of multiple components such as an autopilot with a gimbal a
 This class is derived from [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md), which provides methods to access plugin classes like [Action](classdronecore_1_1_action.md), [Telemetry](classdronecore_1_1_telemetry.md), [Info](classdronecore_1_1_info.md), [Logging](classdronecore_1_1_logging.md), [Offboard](classdronecore_1_1_offboard.md) and [Mission](classdronecore_1_1_mission.md) (for example, using [DroneCore::device()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a5bac6e419e56a1f77a51adef98e94e7c).[action()](classdronecore_1_1_device_plugin_container.md#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192)...).
 
 
-NOTE The content of [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md), and hence the available accessors, are auto-generated at compile time.
+**NOTE** The content of [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md), and hence the available accessors, are auto-generated at compile time.
 
 
 [Device](classdronecore_1_1_device.md) objects are not created or destroyed directly by API consumers. They are accessed using, for example, [DroneCore::device()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a5bac6e419e56a1f77a51adef98e94e7c) and cleaned up when [DroneCore](classdronecore_1_1_drone_core.md) is destroyed. 
