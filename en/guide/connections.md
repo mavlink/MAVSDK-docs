@@ -31,6 +31,9 @@ DroneCore monitors any added communication ports for new devices, which are dist
 
 The methods are used in the same way, and invoke a callback function with the UUID of the device that was discovered/disconnected. This UUID can then be used to get a `Device` object for managing the associated vehicle (see [Accessing Devices](#accessing-devices) below).
 
+> **Note** If a device does not have a UUID then DroneCore will instead use its MAVLink system ID (a number in the range of 0 to 255).
+On a properly configured MAVLink network this will be unique.
+
 The code fragment below shows how to register a callback (in this case the callback is a lambda function that just prints the UUID value to standard `cout`).
 
 ```cpp
@@ -56,8 +59,8 @@ for ( auto i = device_vector.begin(); i != device_vector.end(); i++ ) {
 }
 ```
 
-> **Note** The vector contains UUIDs for all devices detected by DroneCore, including those that may no longer be connected. 
-Since at time of writing there is no way to query a device to determine if it is connected, this mechanism is not particularly useful.
+The vector contains UUIDs for all devices detected by DroneCore, including those that may no longer be connected. 
+You can use [DroneCore::is_connected(uint64_t)](../api_reference/classdronecore_1_1_drone_core.html#classdronecore_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23) to determine if the device with a particular UUID is connected or not. If you're only expecting a single connection, then you can use the parameterless `is_connected()` method.
 
 
 ## Accessing Devices
