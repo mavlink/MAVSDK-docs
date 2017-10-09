@@ -37,6 +37,8 @@ Type | Name | Description
 const std::vector< uint64_t > & | [device_uuids](#classdronecore_1_1_drone_core_1a20490717da3893be2c6965b905a7c1db) () const | Get vector of device UUIDs.
 [Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a5bac6e419e56a1f77a51adef98e94e7c) () const | Get the first discovered device.
 [Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a7d18869c8c8f518af78bee313b554a2a) (uint64_t uuid) const | Get the device with the specified UUID.
+bool | [is_connected](#classdronecore_1_1_drone_core_1a2adf0c6fc5521fa8f446e048a09f5ec1) () const | Returns `true` if exactly one device is currently connected.
+bool | [is_connected](#classdronecore_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23) (uint64_t uuid) const | Returns `true` if a device is currently connected.
 void | [register_on_discover](#classdronecore_1_1_drone_core_1a864ec7349eba67b02b8b3792f6c388f9) (event_callback_t callback) | Register callback for device discovery.
 void | [register_on_timeout](#classdronecore_1_1_drone_core_1ad8c0dc0100449d21a46a787c810e8978) (event_callback_t callback) | Register callback for device timeout.
 
@@ -85,7 +87,7 @@ Callback type for discover and timeout notifications.
 
 **Parameters**
 
-* **uuid** - UUID of device.
+* **uuid** - UUID of device (or MAVLink system ID for devices that don't have a UUID).
 
 ## Member Enumeration Documentation
 
@@ -95,7 +97,7 @@ Callback type for discover and timeout notifications.
 
 Result type returned when adding a connection.
 
-Note: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you add a connection: [add_udp_connection()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8).
+**Note**: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you add a connection: [add_udp_connection()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8).
 
  Value | Description
 --- | ---
@@ -171,7 +173,7 @@ Adds a TCP connection with a specific IP address and port number.
 
 **Parameters**
 
-* std::string **remote_ip** - The IP address to connect to.
+* std::string **remote_ip** - 
 * int **remote_port** - The TCP port to connect to.
 
 **Returns**
@@ -203,7 +205,7 @@ Adds a serial connection with a specific port (COM or UART dev node) and baudrat
 
 **Parameters**
 
-* std::string **dev_path** - Serial port to connect to.
+* std::string **dev_path** - 
 * int **baudrate** - Baudrate of the serial port.
 
 **Returns**
@@ -218,7 +220,7 @@ const std::vector<uint64_t>& dronecore::DroneCore::device_uuids() const
 
 Get vector of device UUIDs.
 
-This returns a vector of the UUIDs of all devices that have been discovered.
+This returns a vector of the UUIDs of all devices that have been discovered. If a device doesn't have a UUID then [DroneCore](classdronecore_1_1_drone_core.md) will instead use its MAVLink system ID (range: 0..255).
 
 **Returns**
 
@@ -256,6 +258,41 @@ This returns a device for a given UUID if such a device has been discovered and 
 
 &emsp;[Device](classdronecore_1_1_device.md) & - A reference to the specified device.
 
+### is_connected() {#classdronecore_1_1_drone_core_1a2adf0c6fc5521fa8f446e048a09f5ec1}
+```cpp
+bool dronecore::DroneCore::is_connected() const
+```
+
+
+Returns `true` if exactly one device is currently connected.
+
+Connected means we are receiving heartbeats from this device. It means the same as "discovered" and "not timed out".
+
+
+If multiple devices have connected, this will return `false`.
+
+**Returns**
+
+&emsp;bool - `true` if exactly one device is connected.
+
+### is_connected() {#classdronecore_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23}
+```cpp
+bool dronecore::DroneCore::is_connected(uint64_t uuid) const
+```
+
+
+Returns `true` if a device is currently connected.
+
+Connected means we are receiving heartbeats from this device. It means the same as "discovered" and "not timed out".
+
+**Parameters**
+
+* uint64_t **uuid** - UUID of device to check.
+
+**Returns**
+
+&emsp;bool - `true` if device is connected.
+
 ### register_on_discover() {#classdronecore_1_1_drone_core_1a864ec7349eba67b02b8b3792f6c388f9}
 ```cpp
 void dronecore::DroneCore::register_on_discover(event_callback_t callback)
@@ -267,7 +304,7 @@ Register callback for device discovery.
 This sets a callback that will be notified if a new device is discovered.
 
 
-Note Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
+**Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
 **Parameters**
 
@@ -284,7 +321,7 @@ Register callback for device timeout.
 This sets a callback that will be notified if no heartbeat of the device has been received in 3 seconds.
 
 
-Note Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
+**Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
 **Parameters**
 

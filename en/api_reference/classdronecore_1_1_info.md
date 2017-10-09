@@ -97,7 +97,7 @@ Tests if this [Version](structdronecore_1_1_info_1_1_version.md) object is fully
 
 **Returns**
 
-&emsp;bool - true if [Version](structdronecore_1_1_info_1_1_version.md) object is fully populated from device.
+&emsp;bool - `true` if [Version](structdronecore_1_1_info_1_1_version.md) object is fully populated from device.
 
 ### get_version() {#classdronecore_1_1_info_1a6e41fae8c6ad352e70b1e93b4a1589f9}
 ```cpp

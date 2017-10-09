@@ -10,7 +10,7 @@ This class is used to control a drone with velocity commands.
 The module is called offboard because the velocity commands can be sent from external sources as opposed to onboard control right inside the autopilot "board".
 
 
-Attention: this is work in progress, use with caution! 
+**Attention:** this is work in progress, use with caution! 
 
 
 ## Data Structures
@@ -133,7 +133,7 @@ Offboard::Result dronecore::Offboard::start() const
 
 Start offboard control (synchronous).
 
-Attention: this is work in progress, use with caution!
+**Attention:** this is work in progress, use with caution!
 
 **Returns**
 
@@ -160,7 +160,7 @@ void dronecore::Offboard::start_async(result_callback_t callback)
 
 Start offboard control (asynchronous).
 
-Attention: This is work in progress, use with caution!
+**Attention:** This is work in progress, use with caution!
 
 **Parameters**
 
@@ -190,7 +190,7 @@ Set the velocity in NED coordinates and yaw.
 
 **Parameters**
 
-* [VelocityNEDYaw](structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md) **velocity_ned_yaw** - Velocity and yaw struct.
+* [VelocityNEDYaw](structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md) **velocity_ned_yaw** - Velocity and yaw `struct`.
 
 ### set_velocity_body() {#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc}
 ```cpp
@@ -203,7 +203,7 @@ Set the velocity body coordinates coordinates and yaw angular rate.
 
 **Parameters**
 
-* [VelocityBodyYawspeed](structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md) **velocity_body_yawspeed** - Velocity and yaw angular rate struct.
+* [VelocityBodyYawspeed](structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md) **velocity_body_yawspeed** - Velocity and yaw angular rate `struct`.
 
 ### operator=() {#classdronecore_1_1_offboard_1aa6bf966e606cdd361364791d06aca977}
 ```cpp

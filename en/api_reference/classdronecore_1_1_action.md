@@ -138,7 +138,7 @@ Result dronecore::Action::arm() const
 
 Send command to *arm* the drone (synchronous).
 
-Note Arming a drone normally causes motors to spin at idle. Before arming take all safety precautions and stand clear of the drone!
+**Note** Arming a drone normally causes motors to spin at idle. Before arming take all safety precautions and stand clear of the drone!
 
 **Returns**
 

@@ -135,7 +135,7 @@ Set the fly-through property of a mission item.
 
 **Parameters**
 
-* bool **fly_through** - If true the drone will fly through the waypoint without stopping. If false the drone will come to a stop at the waypoint before continuing.
+* bool **fly_through** - If `true` the drone will fly through the waypoint without stopping. If `false` the drone will come to a stop at the waypoint before continuing.
 
 ### set_speed() {#classdronecore_1_1_mission_item_1a37e43f748da4136c659419a4a2d84b0e}
 ```cpp
