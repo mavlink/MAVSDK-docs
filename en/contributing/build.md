@@ -227,7 +227,10 @@ The main steps are:
    ```
    > **Note** The `-v` flag maps a directory on your host (left side) to a path in
    the container (right side). Above you need to specify the left-side path to the DroneCore repository on your host. The container path must be set as above.
-   
+
+   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side).  You need to specify the left-side path to the DroneCore repository on your host and the container path must be set as above.
+   > The `--rm` automatically cleans up leftover docker containers after you exit the docker container.
+
    Docker will download an image from [Docker Hub](https://hub.docker.com/r/dronecore/dronecore/), use it to create a container, and then open a bash prompt:
    ```
    root*81ebe14d0c1a:/home/docker1000/src/Dronecore# 
