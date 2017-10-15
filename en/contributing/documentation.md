@@ -51,7 +51,7 @@ For setup information see: [Gitbook toolchain](https://toolchain.gitbook.com/set
 
 ## API Reference
 
-The C++ source code is annotated using comments using [Doxygen](https://www.stack.nl/~dimitri/doxygen/manual/index.html) syntax. You can extract the documentation on Mac OSX or Linux when you [build the library](../contributing/build.md) using the command: 
+The C++ source code is annotated using comments using [Doxygen](https://www.stack.nl/~dimitri/doxygen/manual/index.html) syntax. You can extract the documentation on macOS or Linux when you [build the library](../contributing/build.md) using the command: 
 ```
 make docs
 ```

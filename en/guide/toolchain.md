@@ -4,7 +4,7 @@ DroneCore C++ apps are written in standard C++ (c++11) and can be built using yo
 - The build system must be able to locate the DroneCore headers and libraries (installed as described [here](../contributing/build.md#install-artifacts)).
 - When using DroneCore you need to link to a thread library (e.g. *pthread* on a POSIX system). 
 
-DroneCore itself uses the [cmake](https://cmake.org/) build system, and we recommend that you do too. CMake is an open-source, cross-platform toolchain that allows you to build your examples on Mac OS, Linux and Windows using the same build file definition.
+DroneCore itself uses the [cmake](https://cmake.org/) build system, and we recommend that you do too. CMake is an open-source, cross-platform toolchain that allows you to build your examples on macOS, Linux and Windows using the same build file definition.
 
 Below we explain how to set up a minimal build setup (**CMakeLists.txt**) file for your application.
 
@@ -134,7 +134,7 @@ The main elements of the file are described below:
    # Add DEBUG define for Debug target
    set(CMAKE_CXX_FLAGS_DEBUG "-DDEBUG")
    ```
-1. The [find_package()](https://cmake.org/cmake/help/latest/command/find_package.html) command tells *cmake* to find a thread library on Linux, Mac, and Windows. Further down we add the found package to the libraries built into the project (see `${CMAKE_THREAD_LIBS_INIT}`):
+1. The [find_package()](https://cmake.org/cmake/help/latest/command/find_package.html) command tells *cmake* to find a thread library on Linux, macOS, and Windows. Further down we add the found package to the libraries built into the project (see `${CMAKE_THREAD_LIBS_INIT}`):
    ```cmake
    find_package(Threads REQUIRED)
    ```
@@ -187,7 +187,7 @@ To create and run the app:
    cmake ..   # Create make files for your current platform
    ```
 1. Build the project
-   * Linux/Mac:
+   * Linux/macOS:
      ```bash 
      make -j8
      ``` 

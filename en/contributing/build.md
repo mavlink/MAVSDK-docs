@@ -4,7 +4,7 @@ To build all of DroneCore from source you will first need to build the C++ libra
 
 ## Build the C++ Library
 
-### Mac OS X
+### macOS {#mac-os-x}
 
 First install:
 * [XCode](https://developer.apple.com/xcode/) (for *clang*)
@@ -18,7 +18,7 @@ Then follow the instructions for building the library on [Linux](#linux).
 
 ### Linux
 
-To build the *DroneCore* C++ Library on Linux (or Mac OS X after installing the [preconditions above](#mac-os-x)):
+To build the *DroneCore* C++ Library on Linux (or macOS after installing the [preconditions above](#mac-os-x)):
 
 1. First install the dependencies
    ```bash
@@ -33,11 +33,16 @@ To build the *DroneCore* C++ Library on Linux (or Mac OS X after installing the 
    cd DroneCore
    git submodule update --init --recursive
    ```
-1. Build the C++ library by calling:
+1. Build the (debug) C++ library by calling:
    ```sh
    make default
    ```
-   
+   > **Tip** You can build *release* binaries by setting `BUILD_TYPE=Release` as shown below:
+     ```sh
+     make clean
+     BUILD_TYPE=Release make
+     ```
+
 1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build DroneCore applications, but not to run DroneCore test code.
    
 1. (Optionally) Build the API Reference documentation by calling:
@@ -72,8 +77,12 @@ To build the *DroneCore* C++ Library on Windows:
    cmake --build .
    ```
    
-1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build DroneCore applications, but not to run DroneCore test code.
+   > **Tip** You can generate *release* binaries by setting `--config Release` in the build step (`--config Debug` is used by default):
+     ```sh
+     cmake --build . --config Release
+     ```
 
+1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build DroneCore applications, but not to run DroneCore test code.
 
 
 ## Install DroneCore {#install-artifacts}
@@ -82,8 +91,6 @@ In order to *use* DroneCore your C++ applications need to be able locate the Dro
 
 > **Tip** The example code assumes that DroneCore is installed locally. The example **CMakeLists.txt** file can easily be modified to find the system-wide installation.
 
-<span></span>
-> **Note** When using the library **libdronecore.a**, you need to link to a thread library such as *pthread* on a POSIX system (pthread is not included in the static library because it is included in glibc).
 
 ### System-wide Install
 
@@ -102,16 +109,21 @@ sudo INSTALL_PREFIX=/usr/local make default install
 
 ### Local Install
 
-The DroneCore headers and static library can be installed locally into the folder **DroneCore/install/** using:
+On Linux/macOS the DroneCore headers and static library can be installed locally into the folder **DroneCore/install/** using:
 
 ```sh
 make default install
 ```
-   
-   
+
+On Windows specify `--target install` when building, as shown:
+```sh
+cmake --build . --target install
+```
+
+
 ### Using the Compiled C++ Library
 
-The [Takeoff and Land](../examples/takeoff_and_land.md) example shows how to build and test an example in C++.
+The [Building C++ Apps](../guide/toolchain.md) topic explains how use the library in C++ apps.
 
 
 ## Build for Android
@@ -146,7 +158,7 @@ make android install
 
 > **Tip** You must first build the C++ Library (as shown above).
 
-To build for real iOS devices on Mac OS X:
+To build for real iOS devices on macOS:
 
 ```
 make ios install

@@ -21,7 +21,7 @@ In order to test them, first start PX4 in SITL (Simulation), optionally start *Q
 
 ### Setting up a Simulator
 
-PX4 supports a [number of simulators](https://dev.px4.io/en/simulation/). In order to set up the [jMAVSim](https://dev.px4.io/en/simulation/jmavsim.html) or [Gazebo](https://dev.px4.io/en/simulation/gazebo.html) simulator, you can simply follow the standard PX4 toolchain setup instructions for [Mac OS X](https://dev.px4.io/en/setup/dev_env_mac.html) or [Ubuntu Linux](https://dev.px4.io/en/setup/dev_env_linux.html#development-toolchain).
+PX4 supports a [number of simulators](https://dev.px4.io/en/simulation/). In order to set up the [jMAVSim](https://dev.px4.io/en/simulation/jmavsim.html) or [Gazebo](https://dev.px4.io/en/simulation/gazebo.html) simulator, you can simply follow the standard PX4 toolchain setup instructions for [macOS](https://dev.px4.io/en/setup/dev_env_mac.html) or [Ubuntu Linux](https://dev.px4.io/en/setup/dev_env_linux.html#development-toolchain).
 
 Once the simulator is installed, it can be started from the PX4 /Firmware directory using the command:
 * jMAVSim: `make posix_sitl_default jmavsim`

@@ -33,7 +33,7 @@ The core library is written in C++, with auto-generated bindings for other suppo
 The library is:
 - Straightforward and easy to use. It has an API that supports both synchronous (blocking) and asynchronous calls (using callbacks). 
 - Fast, robust, and lightweight. Built to handle onboard usage with high rate messaging.
-- Cross-platform (Linux, Mac, Windows, iOS, Android).
+- Cross-platform (Linux, macOS, Windows, iOS, Android).
 - Extensible, using compile-time plugins.
 
 The main features provided by the simple core API are (in all programing languages):
