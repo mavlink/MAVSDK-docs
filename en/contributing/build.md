@@ -4,7 +4,7 @@ To build all of DroneCore from source you will first need to build the C++ libra
 
 ## Build the C++ Library
 
-### Mac OS X
+### macOS {#mac-os-x}
 
 First install:
 * [XCode](https://developer.apple.com/xcode/) (for *clang*)
@@ -18,7 +18,7 @@ Then follow the instructions for building the library on [Linux](#linux).
 
 ### Linux
 
-To build the *DroneCore* C++ Library on Linux (or Mac OS X after installing the [preconditions above](#mac-os-x)):
+To build the *DroneCore* C++ Library on Linux (or macOS after installing the [preconditions above](#mac-os-x)):
 
 1. First install the dependencies
    ```bash
@@ -109,7 +109,7 @@ sudo INSTALL_PREFIX=/usr/local make default install
 
 ### Local Install
 
-On Linux/Mac OSX the DroneCore headers and static library can be installed locally into the folder **DroneCore/install/** using:
+On Linux/macOS the DroneCore headers and static library can be installed locally into the folder **DroneCore/install/** using:
 
 ```sh
 make default install
@@ -158,7 +158,7 @@ make android install
 
 > **Tip** You must first build the C++ Library (as shown above).
 
-To build for real iOS devices on Mac OS X:
+To build for real iOS devices on macOS:
 
 ```
 make ios install
