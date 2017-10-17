@@ -39,6 +39,7 @@
   * [Building Source](contributing/build.md)
   * [Tests](contributing/test.md)
   * [Coding Style](contributing/code_style.md)
+  * [Plugin/Test Logging](contributing/dev_logging.md)
   * [Documentation](contributing/documentation.md)
 * [Releases](releases/README.md)
 
