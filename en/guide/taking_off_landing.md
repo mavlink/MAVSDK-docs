@@ -94,7 +94,6 @@ if (arm_result != Action::Result::SUCCESS) {
       <<  std::endl;
     return 1; //Exit if arming fails
 }
-// Vehicle now armed
 ```
 
 > **Tip** If the `arm()` method returns `Action::Result::SUCCESS` then the vehicle is armed and can proceed to takeoff. This can be confirmed using [Telemetry::armed()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0ca7da7922c22509ce6d55d4ad19bcf7).
