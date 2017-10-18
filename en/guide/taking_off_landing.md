@@ -23,7 +23,7 @@ The vehicle will only take off once *armed*, and can only arm once it is "health
 
 ### Health Check
 
-The code fragment below shows very simple code to synchronously poll for health status (using [Telemetry:health_all_ok()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29)) prior to arming.
+The code fragment below shows very simple code to synchronously poll for health status (using [Telemetry:health_all_ok()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29)) prior to arming:
 
 ```cpp
 // Wait until health is OK and vehicle is ready to arm
@@ -94,17 +94,11 @@ if (arm_result != Action::Result::SUCCESS) {
       <<  std::endl;
     return 1; //Exit if arming fails
 }
+// Vehicle now armed
 ```
 
-Use [Telemetry::armed()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0ca7da7922c22509ce6d55d4ad19bcf7) to check that the vehicle has armed before calling the takeoff command.
+> **Tip** If the `arm()` method returns `Action::Result::SUCCESS` then the vehicle is armed and can proceed to takeoff. This can be confirmed using [Telemetry::armed()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0ca7da7922c22509ce6d55d4ad19bcf7).
 
-```cpp
-//Check if armed before sending command taking off
-while (!device.telemetry().armed()) {
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-}
-std::cout << " Armed." << std::endl;
-```
 
 ### Get/Set Takeoff Altitude
 
