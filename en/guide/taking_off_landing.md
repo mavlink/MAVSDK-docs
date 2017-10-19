@@ -7,7 +7,7 @@ Most of the methods have both synchronous and asynchronous versions. The methods
 > **Note** The implication is that you may need to monitor for completion of actions!
 
 <span></span>
-> **Note** All the code fragments below refer to the object `device`, which is a [connected device/vehicle](guide/connections.md).
+> **Note** All the code fragments below refer to the object `device`, which is a [connected device/vehicle](../guide/connections.md).
 
 
 ## Taking Off
