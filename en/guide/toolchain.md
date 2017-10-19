@@ -186,6 +186,10 @@ To create and run the app:
    mkdir build && cd build   # Create a build directory and navigate into it
    cmake ..   # Create make files for your current platform
    ```
+   > **Tip** Make files for release binaries are created by default. Use the flag `-DCMAKE_BUILD_TYPE=Debug` to build debug binaries:
+  ```
+  cmake -DCMAKE_BUILD_TYPE=Debug ..
+  ```
 1. Build the project
    * Linux/macOS:
      ```bash 

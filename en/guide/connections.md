@@ -60,7 +60,7 @@ for ( auto i = device_vector.begin(); i != device_vector.end(); i++ ) {
 ```
 
 The vector contains UUIDs for all devices detected by DroneCore, including those that may no longer be connected. 
-You can use [DroneCore::is_connected(uint64_t)](../api_reference/classdronecore_1_1_drone_core.html#classdronecore_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23) to determine if the device with a particular UUID is connected or not. If you're only expecting a single connection, then you can use the parameterless `is_connected()` method.
+You can use [DroneCore::is_connected(uint64_t)](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23) to determine if the device with a particular UUID is connected or not. If you're only expecting a single connection, then you can use the parameterless `is_connected()` method.
 
 
 ## Accessing Devices
