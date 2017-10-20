@@ -85,7 +85,6 @@ Use Github for bug reports/enhancement requests:
 * [Documentation](https://github.com/dronecore/docs/issues/)
 <!-- Add info about where Python etc API issues are reported). -->
 
-
 ## Contributing
 
 DroneCore welcomes contributions! If you want to help or have suggestions/bug reports [please get in touch with the development team](#getting-help). 
