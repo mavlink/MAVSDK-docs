@@ -43,12 +43,6 @@ Type containing device version information.
  char [os_sw_git_hash](#structdronecore_1_1_info_1_1_version_1a0466e10843ca6a745c39f254ef08cf0f) - Operating system software git hash as string.
 
 
- uint16_t [vendor_id](#structdronecore_1_1_info_1_1_version_1a98d1c4e51637d6fdff5e1fc270d9a947) - ID of board vendor.
-
-
- uint16_t [product_id](#structdronecore_1_1_info_1_1_version_1a1fecccba3c564b65f757205160b8050e) - ID of product.
-
-
 ## Field Documentation
 
 
@@ -160,24 +154,4 @@ char dronecore::Info::Version::os_sw_git_hash[GIT_HASH_STR_LEN]
 
 
 Operating system software git hash as string.
-
-
-### vendor_id {#structdronecore_1_1_info_1_1_version_1a98d1c4e51637d6fdff5e1fc270d9a947}
-
-```cpp
-uint16_t dronecore::Info::Version::vendor_id
-```
-
-
-ID of board vendor.
-
-
-### product_id {#structdronecore_1_1_info_1_1_version_1a1fecccba3c564b65f757205160b8050e}
-
-```cpp
-uint16_t dronecore::Info::Version::product_id
-```
-
-
-ID of product.
 
