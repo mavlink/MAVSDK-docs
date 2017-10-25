@@ -19,6 +19,7 @@
   * [class Device](api_reference/classdronecore_1_1_device.md)
   * [class Info](api_reference/classdronecore_1_1_info.md)
     * [struct Version](api_reference/structdronecore_1_1_info_1_1_version.md)
+    * [struct Product](api_reference/structdronecore_1_1_info_1_1_product.md)
   * [class Telemetry](api_reference/classdronecore_1_1_telemetry.md)
     * [struct Battery](api_reference/structdronecore_1_1_telemetry_1_1_battery.md)
     * [struct EulerAngle](api_reference/structdronecore_1_1_telemetry_1_1_euler_angle.md)

@@ -4,6 +4,7 @@
 * [class Device](classdronecore_1_1_device.md)
 * [class Info](classdronecore_1_1_info.md)
   * [struct Version](structdronecore_1_1_info_1_1_version.md)
+  * [struct Product](structdronecore_1_1_info_1_1_product.md)
 * [class Telemetry](classdronecore_1_1_telemetry.md)
   * [struct Battery](structdronecore_1_1_telemetry_1_1_battery.md)
   * [struct EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md)
