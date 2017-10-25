@@ -23,7 +23,7 @@ LogDebug() << "command unsupported (" << something.mavlink_command << ").";
 
 Function | Description | Example
 --- | --- | ---
-`LogDebug()` | Debug messages showing progress and internal state.<br>Debug messages. *These are not displayed in RELEASE builds*. | <code style="color:white; background-color:black;">[04:55:08&#124;Error] This is a debug message (test_file.cpp:26)</code>
-`LogInfo()` | Information messages. For reporting progress and status. | <code style="color:#006fb8;">[04:55:08&#124;Error] This is an information message (test_file.cpp:26)</code>
-`LogWarn()` | Warning messages. For reporting when the vehicle isn't acting as commanded (e.g. rejecting commands). |  <code style="color:#ffc706;">[04:55:08&#124;Error] This is a warning message (test_file.cpp:26)</code>
-`LogErr()` | Error messages. For reporting errors in DroneCore behaviour (e.g. communication link issues/retry failures). | <code style="color:red;">[04:55:08&#124;Error] This is an error message (test_file.cpp:26)</code>
+`LogDebug()` | Debug messages.<br> For reporting internal progress/state.<br>*Not displayed in RELEASE builds.* | <code style="color:green;">[04:55:08&#124;Error]</code> `This is a debug message (test_file.cpp:26)`
+`LogInfo()` | Information messages.<br>For reporting progress and status. | <code style="color:#006fb8;">[04:55:08&#124;Error]</code> `This is an information message (test_file.cpp:26)`
+`LogWarn()` | Warning messages.<br>For reporting when vehicle not acting as commanded (e.g. rejecting commands). | <code style="color:#ffc706;">[04:55:08&#124;Error]</code> `This is a warning message (test_file.cpp:26)`
+`LogErr()` | Error messages.<br>For reporting errors in DroneCore behaviour (e.g. communication link issues/retry failures). | <code style="color:red;">[04:55:08&#124;Error]</code> `This is an error message (test_file.cpp:26)`
