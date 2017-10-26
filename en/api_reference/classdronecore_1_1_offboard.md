@@ -10,6 +10,9 @@ This class is used to control a drone with velocity commands.
 The module is called offboard because the velocity commands can be sent from external sources as opposed to onboard control right inside the autopilot "board".
 
 
+Client code must specify a setpoint before starting offboard mode. [DroneCore](classdronecore_1_1_drone_core.md) automatically resends setpoints at 20Hz (PX4 [Offboard](classdronecore_1_1_offboard.md) mode requires that setpoints are minimally resent at 2Hz). If more precise control is required, clients can call the setpoint methods at whatever rate is required.
+
+
 **Attention:** this is work in progress, use with caution! 
 
 
@@ -120,6 +123,7 @@ Results for offboard requests.
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda802706a9238e2928077f97736854bad4"></span> `BUSY` | Vehicle busy. 
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command denied. 
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Request timeout. 
+<span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572edabe5140e11d47ef100aaf22a20c6f46b2"></span> `NO_SETPOINT_SET` |  Can't start without setpoint set.
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
 
 ## Member Function Documentation
