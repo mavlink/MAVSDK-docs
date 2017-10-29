@@ -3,9 +3,9 @@
 The [Offboard](../api_reference/classdronecore_1_1_offboard.md) module provides a simple API 
 for controlling the vehicle using velocity and yaw setpoints. It is useful for tasks requiring direct control from a companion computer; for example to implement collision avoidance.
 
-> **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/en/flight_modes/offboard.html). The class can only be used with copter and VTOL vehicles (a PX4 limitation) and currently only supports *velocity setpoint commands* (PX4 additionally supports position and thrust setpoints). 
+> **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/en/flight_modes/offboard.html). The class can only be used with copter and VTOL vehicles (not fixed wing - a PX4 limitation) and currently only supports *velocity setpoint commands* (PX4 additionally supports position and thrust setpoints). 
 
-Client code must specify a setpoint before starting *Offboard mode*. DroneCore automatically resends setpoints at 20Hz (PX4 Offboard mode requires that setpoints are minimally resent at 2Hz). If more precise control is required, clients can call the setpoint methods at whatever rate is required.
+Client code must specify a setpoint before starting *Offboard mode*. DroneCore automatically resends setpoints at 20Hz (PX4 requires that setpoints are minimally resent at 2Hz). If more precise control is required, clients can call the setpoint methods at whatever rate is required.
 
 
 ## Preconditions
@@ -23,7 +23,7 @@ To use offboard mode you must first create a setpoint using either [set_velocity
 After you have created a setpoint call [start()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a2b3aecd25645101a705cd1d80782311a) or [start_async()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) to switch to offboard mode. 
 
 ```cpp
-// Create a null setpoint (no velocity or yaw components in any direction)
+// Create a setpoint before starting offboard mode (in this case a null setpoint)
 device.offboard().set_velocity_body({0.0f, 0.0f, 0.0f, 0.0f});
 
 // Start offboard mode.
@@ -59,9 +59,11 @@ if (result != Offboard::Result::SUCCESS) {
 ## Velocity Setpoints
 
 The API provides methods to set velocity and yaw components using the NED frame (`set_velocity_ned()`) and the body frame (`set_velocity_body()`). 
-The difference is that NED is relative to an absolute co-ordinate system (North, East, Down) while Body frame is relative to the vehicle orientation (front, right, down).
+The difference is that NED is relative to an absolute co-ordinate system (North, East, Down) while body frame is relative to the vehicle orientation (front, right, down).
 
-The NED frame is used to move towards, or face the vehicle in, a specific compass direction. Body frame is usually used for tasks where the vehicle needs to deviate from a current path (e.g. to avoid an obstacle) or to rotate the vehicle at a specific rate. Movement up/down is the same in either frame. 
+The NED frame is used to move towards a specific compass direction or face the vehicle in a specific compass direction. Body frame is usually used for tasks where the vehicle needs to *deviate* from the current path (e.g. to avoid an obstacle) or to rotate the vehicle at a specific rate. Movement up/down is the same in either frame.
+
+The following sections provide some common usage examples.
 
 ### Move in Compass Direction
 
@@ -72,11 +74,11 @@ velocity components in North, East, and Down directions (in metres/second).
 
 Examples:
 
-* Head North at 3 m/s. 
+* Head North at 3 m/s:
   ```cpp
   device.offboard().set_velocity_ned({3.0f, 0.0f, 0.0f, 0.0f});
   ```
-* Head North-West with 5 m/s on each velocity component (notice that a negative value is required on the `east_m_s` value to move West). 
+* Head North-West with 5 m/s on each velocity component (notice that a negative value is required on the `east_m_s` value to move West): 
   ```cpp
   device.offboard().set_velocity_ned({5.0f, -5.0f, 0.0f, 0.0f});
   ```
@@ -88,11 +90,11 @@ Both co-ordinate systems use the same definition for "down", and both methods ta
 
 Examples:
 
-* Go *up* at 2 m/s (note, negative value to go up!)
+* Go *up* at 2 m/s (note, negative value to go up!):
   ```cpp
   device.offboard().set_velocity_ned({0.0f, 0.0f, -2.0f, 0.0f});
   ```
-* Go down at 3 m/s
+* Go down at 3 m/s:
   ```cpp
   device.offboard().set_velocity_body({0.0f, 0.0f, 3.0f, 0.0f});
   ```
@@ -107,11 +109,11 @@ Calling `set_velocity_ned()` using an initialiser list type declaration for the 
 the final (fourth) value is the yaw direction.
 
 Examples:
-* Turn to face West
+* Turn to face West:
   ```cpp
   device.offboard().set_velocity_ned({0.0f, 0.0f, 0.0f, 270.0f});
   ```
-* Turn to face North
+* Turn to face North:
   ```cpp
   device.offboard().set_velocity_ned({0.0f, 0.0f, 0.0f, 0.0f});
   ```
@@ -122,17 +124,17 @@ It is not possible to control the rate or direction that the vehicle will use to
 ### Turn/Yaw Vehicle in specified Direction/at Rate
 
 The `set_velocity_body()` can be used to rotate the vehicle at a specific rate and in a specified direction. 
-This is set in [VelocityBodyYawspeed::yawspeed_deg_s](../api_reference/structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a6858130475964eb2d5c5a4236b7f1e31), as the angular rate in degrees/second. Looking from above, the vehicle will turn clockwise if the value is positive and anticlockwise if it is negative. 
+This is set in [VelocityBodyYawspeed::yawspeed_deg_s](../api_reference/structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a6858130475964eb2d5c5a4236b7f1e31), as the angular rate in degrees/second. If viewed from above, the vehicle will turn clockwise if the value is positive and anticlockwise if it is negative. 
 
 Calling `set_velocity_body()` using an initialiser list type declaration the final (fourth) value is the yaw rate/direction.
 
 Examples:
 
-* Turn clock-wise at 60 degrees per second
+* Turn clock-wise at 60 degrees per second:
   ```cpp
   device.offboard().set_velocity_body({0.0f, 0.0f, 0.0f, 60.0f});
   ```
-* Turn anti clock-wise at 5 degrees per second
+* Turn anti clock-wise at 5 degrees per second:
   ```cpp
   device.offboard().set_velocity_body({0.0f, 0.0f, 0.0f, -5.0f});
   ```
