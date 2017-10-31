@@ -52,7 +52,11 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
 
 ### Windows
 
-To build the library you'll need to install *Visual Studio Community Edition*. You will also need to download the [curl](https://curl.haxx.se/) source, extract and build it, and make the directory of the header files available when you build DroneCore.
+To build the library in Windows, you need:
+
+- [Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017): Download and install them if you don't already have it.
+- [curl](https://curl.haxx.se/): Download the source, extract and build it, and make the directory of the header files available when you build DroneCore.
+- [cmake](https://cmake.org/download/): Download the installer and run it. Make sure to tick "add to PATH" during the installation.
 
 > **Note** The instructions below assume you downloaded [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
@@ -67,13 +71,13 @@ To build the *DroneCore* C++ Library on Windows:
 1. Open the *VS2015 x64 Native Tools Command Prompt*, go to the source directory and enter:
    ```sh
    cd C:\curl-7.56.1\winbuild
-   nmake /f Makefile.vc mode=static VC=14 MACHINE=x64 DEBUG=no
+   nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
    ```
 1. Then build *DroneCore* in Windows:
    ```sh
    cd /your/path/to/DroneCore
    mkdir build && cd build
-   cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.56.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.56.1\builds\libcurl-vc14-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
+   cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.56.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.56.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 15 2017 Win64" ..
    cmake --build .
    ```
 
