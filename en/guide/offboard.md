@@ -174,6 +174,14 @@ The DroneCore examples use timers to separate commands (e.g. `sleep_for(seconds(
 real-world use case you might use telemetry or sensors to control when the setpoint is changed.
 
 
+## Monitoring Offboard Mode
+
+The vehicle may change out of offboard mode outside the control of your application (for example if a GCS were to put the vehicle into *Hold mode*).
+In this case, DroneCore will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a44d9284ef03c8cf6f37a77b2f3cadaf0) will change from `true` to `false`.
+
+Calls to change the setpoint do not return an error! Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)).
+
+
 ## Further Information
 
 Additional information/examples for the Offboard API are linked below:

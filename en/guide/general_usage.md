@@ -20,10 +20,19 @@ DroneCore APIs do not raise exceptions! Instead, methods that can fail return su
 
 The various classes also all provide methods getting human readable strings from their associated enum (e.g. [DroneCore::connection_result_str()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af), [Telemetry::result_str()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a)). You can see how these are used in the example code.
 
+
+## Shared Vehicle Control
+
+A vehicle can receive commands from multiple sources, including a Ground Control Station, or other MAVLink applications.
+
+DroneCore applications that are running in environments where this is possible can explicitly monitor for changes in flight mode 
+(outside application control) and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)). 
+
+
 ## API Limitations/Behaviour
 ### Supported Vehicles
 
-DroneCore has been designed to manage *aircraft* (VTOL, copter, fixed wing) that use the PX4 autopilot. 
+DroneCore has been designed to manage *aircraft* (copter, fixed wing, VTOL) that use the PX4 autopilot. 
 
 The APIs include methods that do not make sense for other vehicle types - including "takeoff" and "land". While ground vehicles may work, they are not supported and are untested.
 
@@ -56,3 +65,5 @@ Not every mission command behaviour supported by the protocol and PX4 will be su
 ### Connection Status
 
 A device is considered to be disconnected (timed-out) if its heartbeat message is not detected within 3 seconds.
+
+
