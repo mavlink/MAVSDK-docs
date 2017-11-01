@@ -54,7 +54,7 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
 
 To build the library in Windows, you need:
 
-- [Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017): Download and install them if you don't already have it (all  that is needed are the "Visual C+ Build Tools).
+- [Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017): Download and install (only the "Visual C+ Build Tools" are needed from installer).
 - [cmake](https://cmake.org/download/): Download the installer and run it. Make sure to tick "add to PATH" during the installation.
 - [curl](https://curl.haxx.se/): Download the source, extract and build it, and make the directory of the header files available as described below.
 
