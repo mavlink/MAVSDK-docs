@@ -1,5 +1,7 @@
 # Examples
 
+> **Tip** Information about *writing* example code is covered in the [Contributing > Writing Plugins](../contributing/plugins.md) (*plugin developers* should initially create [integration tests](../contributing/test.md#integration-tests) rather than examples for new code).
+
 This section contains examples showing how to use DroneCore.
 
 * [Takeoff and Land](../examples/takeoff_and_land.md) - Shows basic usage of DroneCore (connect to port, detect device, arm, takeoff, land, get telemetry)
