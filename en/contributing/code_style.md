@@ -5,7 +5,7 @@ This topic contains the DroneCore formatting and coding guidelines.
 > **Note** These guidelines are not written in stone! [Start a discussion](../README.md#getting-help) if you have suggestions for
 > improvement (the project will consider anything other than "matters of personal taste"). 
 
-## Formatting and wWite Space
+## Formatting and White Space
 
 All **.cpp** and **.h** files should be formatted according to the [astyle](http://astyle.sourceforge.net/) settings defined by [astylerc](https://github.com/dronecore/DroneCore/blob/master/astylerc).
 
