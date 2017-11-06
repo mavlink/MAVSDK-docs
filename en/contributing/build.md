@@ -247,6 +247,7 @@ You can also build the image yourself using the [Dockerfile](https://github.com/
 
 DroneCore can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the DroneCore at compile time (by specifying `EXTERNAL_DIR` in the `make` command):
 ```
+make clean   # This is required!
 make EXTERNAL_DIR=relative_path_to_external_directory
 ```
 See [DroneCore Extensions](../guide/dronecore_extensions.md) for more information.
