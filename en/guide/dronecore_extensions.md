@@ -77,12 +77,14 @@ To build *DroneCore* so that it includes the extension library, specify the top 
 The line below shows how this is done for the [external_example](https://github.com/dronecore/DroneCore/tree/master/external_example) directory.
 
 ```
+make clean  # This is required!
 make EXTERNAL_DIR=external_example
 ```
 
 To build a parallel *DroneCore_Extensions* folder (from within the DroneCore directory) you would enter:
 
 ```
+make clean   # This is required!
 make EXTERNAL_DIR=../DroneCore_Extensions
 ```
 
