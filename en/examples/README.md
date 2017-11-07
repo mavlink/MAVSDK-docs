@@ -1,10 +1,12 @@
 # Examples
 
+> **Tip** Information about *writing* example code is covered in the [Contributing > Writing Plugins](../contributing/plugins.md) (*plugin developers* should initially create [integration tests](../contributing/test.md#integration-tests) rather than examples for new code).
+
 This section contains examples showing how to use DroneCore.
 
 * [Takeoff and Land](../examples/takeoff_and_land.md) - Shows basic usage of DroneCore (connect to port, detect device, arm, takeoff, land, get telemetry)
 * [Fly Mission](../examples/fly_mission.md) - Shows how to create, upload, and run missions.
-
+* [Offboard Velocity Control](../examples/offboard_velocity.md) - Demonstrates how to control a vehicle in Offboard mode using velocity commands (in both the NED and body frames).
 
 All examples are all built and run in the same way, as described in the following section (any exceptions are covered in the page for the associated example).
 

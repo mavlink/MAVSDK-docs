@@ -61,6 +61,7 @@ The most important classes are:
 - [Action](/api_reference/classdronecore_1_1_action.md): Simple drone actions including arming, taking off, and landing.
 - [Mission](/api_reference/classdronecore_1_1_mission.md): Waypoint mission creation and upload/download. Missions are created from [MissionItem](/api_reference/classdronecore_1_1_mission_item.md) objects.
 - [Offboard](/api_reference/classdronecore_1_1_offboard.md): Control a drone with velocity commands.
+- [Gimbal](/api_reference/classdronecore_1_1_gimbal.md): Control a gimbal.
 - [Logging](/api_reference/classdronecore_1_1_logging.md): Data logging and streaming from the vehicle.
 - [include/device_plugin_container.h.in](https://github.com/dronecore/DroneCore/blob/master/include/device_plugin_container.h.in): Auto-generated file that is required for DroneCore plugin development - see [DevicePluginContainer](/api_reference/classdronecore_1_1_device_plugin_container.md).
 

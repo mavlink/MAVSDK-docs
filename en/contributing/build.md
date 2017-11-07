@@ -170,56 +170,6 @@ Build for the iOS simulator on macOS:
 make ios_simulator install
 ```
 
-
-
-## Build with external directory for plugins and custom integration_tests
-
-The library is split into a [core](https://github.com/dronecore/DroneCore/tree/master/core) and [plugins](https://github.com/dronecore/DroneCore/tree/master/plugins). The plugins are included at compile time.
-The cmake script [autogenerate_plugin_container.cmake](https://github.com/dronecore/DroneCore/blob/master/autogenerate_plugin_container.cmake) takes care of including the plugin folders and integrations tests.
-
-The architecture goal is that the plugins do not depend on each other but only to the core source. This means you can swap out plugins as needed, however, it will lead to some duplicate functionality across the plugin modules.
-
-You can add modules by copying the [external_example](https://github.com/dronecore/DroneCore/tree/master/external_example) and adapting it:
-
-The external directory needs to contain the folders `integration_tests` and `plugins`.
-
-```
-external_example
-├── integration_tests
-│   ├── CMakeLists.txt
-│   └── hello_world.cpp
-└── plugins
-    └── example
-        ├── CMakeLists.txt
-        ├── example.cpp
-        ├── example.h
-        ├── example_impl.cpp
-        ├── example_impl.h
-        └── example_impl_test.cpp
-```
-
-To add an additional library, the library name can be added to the variable `additional_libs` as follows:
-```
-set(additional_libs "library_name" PARENT_SCOPE)
-```
-
-And the required includes as `additional_includes`.
-```
-set(additional_includes "include_dir" PARENT_SCOPE)
-```
-
-To include the external folder in the build, add the folder name to the make command:
-
-```
-make EXTERNAL_DIR=external_example
-```
-
-To run the external hello world integration test, do:
-```
-build/default/integration_tests_runner --gtest_filter="ExternalExampleHello"
-```
-
-
 ## Building in Docker
 
 You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). 
@@ -293,3 +243,11 @@ You can also build the image yourself using the [Dockerfile](https://github.com/
    docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw my_image bash
    ```
 
+## Build DroneCore Extensions {#dronecore_extensions}
+
+DroneCore can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the DroneCore at compile time (by specifying `EXTERNAL_DIR` in the `make` command):
+```
+make clean   # This is required!
+make EXTERNAL_DIR=relative_path_to_external_directory
+```
+See [DroneCore Extensions](../guide/dronecore_extensions.md) for more information.

@@ -10,6 +10,8 @@ The [Info](classdronecore_1_1_info.md) class provides basic infomation about the
 ## Data Structures
 
 
+struct [Product](structdronecore_1_1_info_1_1_product.md)
+
 struct [Version](structdronecore_1_1_info_1_1_version.md)
 
 ## Public Member Functions
@@ -21,8 +23,9 @@ Type | Name | Description
 | [~Info](#classdronecore_1_1_info_1a39e608070500b5fca0b4415cdb13f75f) () | Destructor (internal use only).
 | [Info](#classdronecore_1_1_info_1af0902805d75577d1195363eda21d7bb1) (const Info &)=delete | Copy Constructor (object is not copyable).
 uint64_t | [uuid](#classdronecore_1_1_info_1a49c7dd5f1a369c8296f0c3a2443bc031) () const | Gets the UUID of the device.
-bool | [is_complete](#classdronecore_1_1_info_1a088438b73c715fb20c02792fed1815f7) () const | Tests if this [Version](structdronecore_1_1_info_1_1_version.md) object is fully populated from hardware.
+bool | [is_complete](#classdronecore_1_1_info_1a088438b73c715fb20c02792fed1815f7) () const | Tests if the [Version](structdronecore_1_1_info_1_1_version.md) and [Product](structdronecore_1_1_info_1_1_product.md) objects are fully populated from hardware.
 [Version](structdronecore_1_1_info_1_1_version.md) | [get_version](#classdronecore_1_1_info_1a6e41fae8c6ad352e70b1e93b4a1589f9) () const | Get device version information.
+[Product](structdronecore_1_1_info_1_1_product.md) | [get_product](#classdronecore_1_1_info_1adb7999bf9e92f95e3dfa5eaea216807a) () const | Get device product information.
 const [Info](classdronecore_1_1_info.md) & | [operator=](#classdronecore_1_1_info_1ac82758b486f00562e193a89e3dbff6d3) (const Info &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Attributes
@@ -92,12 +95,12 @@ bool dronecore::Info::is_complete() const
 ```
 
 
-Tests if this [Version](structdronecore_1_1_info_1_1_version.md) object is fully populated from hardware.
+Tests if the [Version](structdronecore_1_1_info_1_1_version.md) and [Product](structdronecore_1_1_info_1_1_product.md) objects are fully populated from hardware.
 
 
 **Returns**
 
-&emsp;bool - `true` if [Version](structdronecore_1_1_info_1_1_version.md) object is fully populated from device.
+&emsp;bool - `true` if [Version](structdronecore_1_1_info_1_1_version.md) and [Product](structdronecore_1_1_info_1_1_product.md) objects are fully populated from device.
 
 ### get_version() {#classdronecore_1_1_info_1a6e41fae8c6ad352e70b1e93b4a1589f9}
 ```cpp
@@ -111,6 +114,19 @@ Get device version information.
 **Returns**
 
 &emsp;[Version](structdronecore_1_1_info_1_1_version.md) - The version object for the device.
+
+### get_product() {#classdronecore_1_1_info_1adb7999bf9e92f95e3dfa5eaea216807a}
+```cpp
+Product dronecore::Info::get_product() const
+```
+
+
+Get device product information.
+
+
+**Returns**
+
+&emsp;[Product](structdronecore_1_1_info_1_1_product.md) - The product object for the device.
 
 ### operator=() {#classdronecore_1_1_info_1ac82758b486f00562e193a89e3dbff6d3}
 ```cpp

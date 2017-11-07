@@ -17,6 +17,7 @@ Type | Name | Description
 ---: | --- | ---
 | [DevicePluginContainer](#classdronecore_1_1_device_plugin_container_1af4c0f2facc64a99818737971f7f1cc77) (const DevicePluginContainer &)=delete |
 [Action](classdronecore_1_1_action.md) & | [action](#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192) () |
+[Gimbal](classdronecore_1_1_gimbal.md) & | [gimbal](#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0) () |
 [Info](classdronecore_1_1_info.md) & | [info](#classdronecore_1_1_device_plugin_container_1a1509e3d7a469cbc3e33471138b1f4dc7) () |
 [Logging](classdronecore_1_1_logging.md) & | [logging](#classdronecore_1_1_device_plugin_container_1a0551f966021bdbd9e41700232c33d379) () |
 [Mission](classdronecore_1_1_mission.md) & | [mission](#classdronecore_1_1_device_plugin_container_1a8a05778326d0ef4c74146bc42fdcb52d) () |
@@ -52,6 +53,18 @@ Getter for [Action](classdronecore_1_1_action.md) plugin.
 **Returns**
 
 &emsp;[Action](classdronecore_1_1_action.md) & - a reference to the action plugin instance
+
+### gimbal() {#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0}
+```cpp
+Gimbal& dronecore::DevicePluginContainer::gimbal()
+```
+
+
+Getter for [Gimbal](classdronecore_1_1_gimbal.md) plugin.
+
+**Returns**
+
+&emsp;[Gimbal](classdronecore_1_1_gimbal.md) & - a reference to the gimbal plugin instance
 
 ### info() {#classdronecore_1_1_device_plugin_container_1a1509e3d7a469cbc3e33471138b1f4dc7}
 ```cpp
