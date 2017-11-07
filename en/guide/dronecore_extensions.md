@@ -32,7 +32,7 @@ A simplified view of a "typical" extension directory is shown below (in this cas
 
 ## Create a DroneCore Extension Library
 
-To create a new C++ DroneCore Extension Library, first copy [DroneCore/external_example](https://github.com/dronecore/DroneCore/tree/master/external_example) to the same folder level as the DroneCore directory.
+To create a new C++ DroneCore Extension Library, first copy [DroneCore/external_example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) to the same folder level as the DroneCore directory.
 Then rename the top level folder as desired.
 
 The *external_example* contains a single integration test (**hello_world.cpp**) and a single plugin (**/example**) 
@@ -74,7 +74,7 @@ Tests in extension libraries are written and run exactly the same as "normal" Dr
 
 To build *DroneCore* so that it includes the extension library, specify the top level directory `EXTERNAL_DIR` in the `make` command 
 (only one external directory can be specified). 
-The line below shows how this is done for the [external_example](https://github.com/dronecore/DroneCore/tree/master/external_example) directory.
+The line below shows how this is done for the [external_example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) directory.
 
 ```
 make clean  # This is required!

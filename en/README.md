@@ -23,7 +23,7 @@ DroneCore is still in pre-alpha development.
 - Currently you can only develop in C++. 
   - [gRPC](https://grpc.io/) is being investigated as a promising technology for writing the cross-platform wrappers.
 
-To use DroneCore you will need to [build the C++ library](contributing/build.md). The [Guide](guide/README.md) explains how to write C++ DroneCore apps. A simple complete example can be found in [Takeoff and Land](examples/takeoff_and_land.md).
+To use DroneCore you will need to [build the C++ library](contributing/build.md). The [Guide](guide/README.md) explains how to write C++ DroneCore apps. A number complete examples can be found [here](examples/README.md).
 
 
 ## Library Features
@@ -63,7 +63,7 @@ The most important classes are:
 - [Offboard](/api_reference/classdronecore_1_1_offboard.md): Control a drone with velocity commands.
 - [Gimbal](/api_reference/classdronecore_1_1_gimbal.md): Control a gimbal.
 - [Logging](/api_reference/classdronecore_1_1_logging.md): Data logging and streaming from the vehicle.
-- [include/device_plugin_container.h.in](https://github.com/dronecore/DroneCore/blob/master/include/device_plugin_container.h.in): Auto-generated file that is required for DroneCore plugin development - see [DevicePluginContainer](/api_reference/classdronecore_1_1_device_plugin_container.md).
+- [include/device_plugin_container.h.in](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/include/device_plugin_container.h.in): Auto-generated file that is required for DroneCore plugin development - see [DevicePluginContainer](/api_reference/classdronecore_1_1_device_plugin_container.md).
 
 
 ## Getting Started
@@ -95,5 +95,5 @@ The [Contributing](contributing/README.md) section contains everything you need 
 
 ## License
 
-* DroneCore is licensed under the permissive [BSD 3-clause](https://github.com/dronecore/DroneCore/blob/master/LICENSE.md).
+* DroneCore is licensed under the permissive [BSD 3-clause](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/LICENSE.md).
 * This *DroneCore Developer Documentation* is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.

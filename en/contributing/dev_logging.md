@@ -9,7 +9,7 @@ The API methods display a custom message, prepending a timestamp and the type of
 
 ## Usage
 
-The API is defined in [core/log.h](https://github.com/dronecore/DroneCore/blob/master/core/log.h) (and made available to integration tests via [core/integration_test_helper.h](https://github.com/dronecore/DroneCore/blob/master/core/integration_test_helper.h)). 
+The API is defined in [core/log.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/log.h) (and made available to integration tests via [core/integration_test_helper.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/integration_test_helper.h)). 
 
 The API methods are called as shown below for `LogDebug()`, with the left shift operator (`<<`) used to append the message-specific text.
 

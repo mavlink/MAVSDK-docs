@@ -12,7 +12,7 @@ The `Telemetry` API provides methods to return the following types of informatio
 
 * [Position](../api_reference/structdronecore_1_1_telemetry_1_1_position.md) - latitude and longitude in degrees, and altitude relative to sea level and to the takeoff altitude.
 * [Battery](../api_reference/structdronecore_1_1_telemetry_1_1_battery.md) - voltage and percentage power remaining.
-* [GroundSpeedNED](http://localhost:4000/en/api_reference/structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) - velocity components in NED coordinates.
+* [GroundSpeedNED](../api_reference/structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) - velocity components in NED coordinates.
 * Vehicle attitude/orientation - as a [Quaternion](../api_reference/structdronecore_1_1_telemetry_1_1_quaternion.md) or [EulerAngle](../api_reference/structdronecore_1_1_telemetry_1_1_euler_angle.md)
 * [GPSInfo](../api_reference/structdronecore_1_1_telemetry_1_1_g_p_s_info.md) - type of fix, if any, and number of satellites.
 * [Health](../api_reference/structdronecore_1_1_telemetry_1_1_health.md) - calibration status of various sensors and confirmation that position estimates are good enough for position control.
@@ -151,8 +151,8 @@ Additional information/examples for the Telemetry API are linked below:
 
 * [DroneCore Examples](../examples/README.md)
 * Integration tests:
-  * [telemetry_async.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/telemetry_async.cpp)
-  * [telemetry_health.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/telemetry_health.cpp)
-  * [telemetry_modes.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/telemetry_modes.cpp)
-  * [telemetry_simple.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/telemetry_simple.cpp)
+  * [telemetry_async.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_async.cpp)
+  * [telemetry_health.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_health.cpp)
+  * [telemetry_modes.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_modes.cpp)
+  * [telemetry_simple.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_simple.cpp)
 
