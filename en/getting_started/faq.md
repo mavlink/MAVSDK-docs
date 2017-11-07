@@ -28,7 +28,7 @@ libCURL will be required to download the camera definition file which is referen
 
 ### How are plugins added?
 
-Plugins need to have the correct structure and be placed in the [plugins directory](https://github.com/dronecore/DroneCore/tree/master/plugins). It is also possible to add external plugins which are outside of the DroneCore tree. For instructions see the [build docs](../contributing/build.md#build-with-external-directory-for-plugins-and-custom-integration_tests).
+Plugins need to have the correct structure and be placed in the [plugins directory](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). It is also possible to add external plugins which are outside of the DroneCore tree. For instructions see the [build docs](../contributing/build.md#build-with-external-directory-for-plugins-and-custom-integration_tests).
 
 ### Can a plugin depend on another one?
 

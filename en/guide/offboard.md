@@ -188,6 +188,6 @@ Additional information/examples for the Offboard API are linked below:
 
 * [Example: Offboard Velocity](../examples/offboard_velocity.md)
 * Integration tests:
-  * [offboard_velocity.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/offboard_velocity.cpp)
+  * [offboard_velocity.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/offboard_velocity.cpp)
 
 

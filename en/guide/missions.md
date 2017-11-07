@@ -201,6 +201,6 @@ At time of writing the Mission API does not provide takeoff, land or "return to 
 * [Mission Flight Mode](https://docs.px4.io/en/flight_modes/mission.html) (PX4 User Guide)
 * [Fly Mission](../examples/fly_mission.md) (DroneCore Example)
 * Integration tests:
-  * [mission.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/mission.cpp)
-  * [mission_change_speed.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/mission_change_speed.cpp)
-  * [mission_survey.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/mission_survey.cpp)
+  * [mission.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission.cpp)
+  * [mission_change_speed.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
+  * [mission_survey.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)

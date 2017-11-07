@@ -1,8 +1,8 @@
 # Writing Plugins
 
-DroneCore is split into a [core](https://github.com/dronecore/DroneCore/tree/master/core) and [plugins](https://github.com/dronecore/DroneCore/tree/master/plugins). 
+DroneCore is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/core) and [plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). 
 
-Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are included at compile time. The *cmake* script [autogenerate_plugin_container.cmake](https://github.com/dronecore/DroneCore/blob/master/autogenerate_plugin_container.cmake) takes care of including the plugin folders and integration tests.
+Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are included at compile time. The *cmake* script [autogenerate_plugin_container.cmake](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/autogenerate_plugin_container.cmake) takes care of including the plugin folders and integration tests.
 
 > **Note** Plugins can also be defined in [DroneCore Extensions](../guide/dronecore_extensions.md). 
 > These are defined and tested in exactly the same way as "standard" DroneCore plugins. 
@@ -45,11 +45,11 @@ Each plugin must have the same files/structure, as shown for the "example" plugi
 
 ## Create a Plugin
 
-To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/dronecore/DroneCore/tree/master/plugins) (e.g. 
-[Action](https://github.com/dronecore/DroneCore/tree/master/plugins/action), 
-[Telemetry](https://github.com/dronecore/DroneCore/tree/master/plugins/telemetry), etc.) or the [example](https://github.com/dronecore/DroneCore/tree/master/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [DroneCore Extension](../guide/dronecore_extensions.md) folder).
+To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins) (e.g. 
+[Action](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/action), 
+[Telemetry](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/telemetry), etc.) or the [example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [DroneCore Extension](../guide/dronecore_extensions.md) folder).
 
-Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/external_example/plugins/example/CMakeLists.txt) as appropriate:
+Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/plugins/example/CMakeLists.txt) as appropriate:
 * Modify plugin filenames as appropriate
 * Add additional libraries using the variable `additional_libs`:
   ```
@@ -59,18 +59,18 @@ Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/d
   ```
   set(additional_includes "include_dir" PARENT_SCOPE)
   ```
-* You can also add tests with `unittest_source_files`, as discussed in [Testing](../contributing/test.md#writing_tests).
+* You can also add tests with `unittest_source_files`, as [discussed below](#adding_unit_tests).
 
 
 ## Plugin Code
 
-The [standard plugins](https://github.com/dronecore/DroneCore/tree/master/plugins) can be reviewed for guidance on
+The [standard plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins) can be reviewed for guidance on
 how to write plugin code, including how to send and process MAVLink messages.
 
 
 ## Test Code {#testing}
 
-[Tests](../contributing/test.md#writing_tests) must be created for all new and updated plugin code. 
+Tests must be created for all new and updated plugin code. 
 The tests should be exhaustive, and cover all aspects of using the plugin API.
 
 The [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)
@@ -87,7 +87,7 @@ Unit tests are therefore considered optional!
 
 > **Tip** Comprehensive integration tests should be written instead, with the simulator providing appropriate MAVLink messages.
 
-#### Adding Unit Tests
+#### Adding Unit Tests {#adding_unit_tests}
 
 Unit tests are stored as separate files in the same directory as their associated source code. 
 Often they test the implementation (rather than the public API), 
@@ -107,7 +107,7 @@ set(unittest_source_files
 )
 ```
 
-> **Note** Unit tests for *core* functionality are added in the main [DroneCore/CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/CMakeLists.txt#L187) file. 
+> **Note** Unit tests for *core* functionality are added in the main [DroneCore/CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt#L187) file. 
 
 
 #### Unit Test Code
@@ -115,7 +115,7 @@ set(unittest_source_files
 Unit tests typically include the file to be tested, **dronecore.h**, and **gtest.h**. There are no standard shared test unit resources so 
 test functions are declared using `TEST`. All tests in a file should share the same test-case name (the first argument to `TEST`).
 
-The skeleton [example plugin unit test](https://github.com/dronecore/DroneCore/blob/master/external_example/plugins/example/example_impl_test.cpp) is shown below: 
+The skeleton [example plugin unit test](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/plugins/example/example_impl_test.cpp) is shown below: 
 ```cpp
 #include "example_impl.h"
 #include "dronecore.h"
@@ -134,7 +134,7 @@ TEST(ExampleImpl, NoTest)
 
 
 
-### Writing Integration Tests
+### Writing Integration Tests {#integration_tests}
 
 DroneCore provides the `integration_tests_runner` application for running the integration tests and 
 some helper code to make it easier to log tests and run them against the simulator.
@@ -220,11 +220,9 @@ TEST_F(SitlTest, ExternalExampleHello)
 ```
 
 
-
-
 ## Example Code
 
-> **Note** It is quicker and easier to write and modify [integration tests](#test-code) than examples. 
+> **Note** It is quicker and easier to write and modify [integration tests](#integration_tests) than examples. 
 > Do not write example code until the plugin has been accepted!
 
 A simple example should be written that demonstrates basic usage of its API by 3rd parties. 
@@ -239,7 +237,7 @@ can usefully be copied and reused by external developers.
 
 ### In-Source Comments
 
-The public API must be fully documented using [Doxygen](https://www.stack.nl/~dimitri/doxygen/manual/docblocks.html) markup.
+The public API must be fully documented using [Doxygen](http://doxygen.nl/manual/docblocks.html) markup.
 All items should minimally have a brief description (preceded by the `@brief` tag).
 
 > **Tip** The in-source comments will be compiled to markdown and included in the [API Reference](../api_reference/README.md).

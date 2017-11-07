@@ -207,7 +207,7 @@ Additional information/examples for the Action API are linked below:
 
 * [Example: Takeoff and Land](../examples/takeoff_and_land.md)
 * Integration tests:
-  * [simple_hover.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/simple_hover.cpp)
-  * [async_hover.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/async_hover.cpp)
-  * [takeoff_and_kill.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/takeoff_and_kill.cpp)
+  * [simple_hover.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/simple_hover.cpp)
+  * [async_hover.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/async_hover.cpp)
+  * [takeoff_and_kill.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/takeoff_and_kill.cpp)
 
