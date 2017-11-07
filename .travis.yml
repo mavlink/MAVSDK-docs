@@ -10,7 +10,7 @@ install:
 
 script: 
 
-- htmlproofer ./_book --empty-alt-ignore true --check-external-hash true --url-ignore https://img.shields.io/badge/discuss-DroneCore-ff69b4.svg,https://grpc.io/
+- htmlproofer ./_book --empty-alt-ignore true --check-external-hash true --url-ignore 'https://img.shields.io/badge/discuss-DroneCore-ff69b4.svg,https://grpc.io/'
 
 
 
