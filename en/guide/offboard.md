@@ -20,7 +20,7 @@ Device &device = dc.device();
 
 To use offboard mode you must first create a setpoint using either [set_velocity_ned()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) or [set_velocity_body()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc). You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts. 
 
-After you have created a setpoint call [start()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a2b3aecd25645101a705cd1d80782311a) or [start_async()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) to switch to offboard mode. 
+After you have created a setpoint call [start()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a658454f130f7b19d56f23347a448f1b9) or [start_async()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) to switch to offboard mode. 
 
 ```cpp
 // Create a setpoint before starting offboard mode (in this case a null setpoint)
@@ -39,7 +39,7 @@ Above we use the synchronous API, and then use [Offboard::result_str()](../api_r
 
 You can change the setpoints as needed (new setpoints replace any old setpoints).
 
-To stop offboard mode call [Offboard::stop()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a2cecfbeb40bcd1d314fcfb07eb4dcd60) or [stop_async()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a). 
+To stop offboard mode call [Offboard::stop()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1ae223c08f1ffc694b26d847cab7738406) or [stop_async()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a). 
 DroneCore will then clear the current setpoint and put the vehicle into 
 [Hold flight mode](https://docs.px4.io/en/flight_modes/hold.html). 
 The synchronous API is used as shown below:

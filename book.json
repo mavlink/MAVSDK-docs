@@ -13,6 +13,9 @@
         "validate-links",
         "theme-dronecode@git+https://github.com/dronecode/theme-dronecode.git"
     ],
+    "variables": {
+      "github_branch": "develop"
+    },
     "pluginsConfig": {
 
         "page-footer-ex":{
