@@ -23,7 +23,7 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
 1. First install the dependencies
    ```bash
    sudo apt-get update -y
-   sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev doxygen -y
+   sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev libtinyxml2-dev doxygen -y
    ```
    > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile).
 
