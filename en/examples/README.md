@@ -45,13 +45,12 @@ To build the examples follow the instructions below, replacing *takeoff_and_land
 
 #### Linux
 
-First [Build and install the DroneCore C++ Library](../contributing/build.md).
-Make sure that you install the library and headers locally (rather than system-wide) using the command below:
+First [Build and install the DroneCore C++ Library](../contributing/build.md) using the command below:
 ```sh
-make default install
+sudo make default install
 ```
 
-Then build and run the example:
+Then build the example:
 ```sh
 cd example/takeoff_and_land/
 mkdir build && cd build
@@ -62,13 +61,13 @@ make
 #### Windows
 
 First [Build and install the DroneCore C++ Library](../contributing/build.md).
-Make sure that you install the library and headers in the standard location:
+Make sure that you install the library and headers in the standard location: 
 
 ```sh
 cmake --build . --target install
 ```
 
-Build and run the example as shown below (in this case *takeoff_and_land*, but all the other examples are built and run in the same way):
+Build the example as shown below (in this case *takeoff_and_land*, but all the other examples are built in the same way):
 ```sh
 cd example/takeoff_land/
 mkdir build && cd build
@@ -83,5 +82,8 @@ On all platform you can then run the new executable (from the **\build** directo
 ```sh
 ./takeoff_and_land
 ```
+
+> **Tip** Most examples will create a binary with the same name as the example. The name that is used
+> is specified in the **CMakeLists.txt** file as the first value in the call to `add_executable()`.
 
 If you have already started the simulation the example code should connect to PX4, and you will be able to observe behaviour through the DroneCore terminal, SITL terminal, and/or *QGroundControl*.
