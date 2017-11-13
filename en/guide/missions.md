@@ -14,8 +14,6 @@ The supported set is:
 * [MAV_CMD_DO_CHANGE_SPEED](http://mavlink.org/messages/common#MAV_CMD_DO_CHANGE_SPEED)
 * [MAV_CMD_DO_MOUNT_CONTROL](http://mavlink.org/messages/common#MAV_CMD_DO_MOUNT_CONTROL)
 * [MAV_CMD_IMAGE_START_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_IMAGE_START_CAPTURE)
-* [START_PHOTO_INTERVAL](http://mavlink.org/messages/common#START_PHOTO_INTERVAL)
-* [TAKE_PHOTO](http://mavlink.org/messages/common#TAKE_PHOTO)
 * [MAV_CMD_IMAGE_STOP_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_IMAGE_STOP_CAPTURE)
 * [MAV_CMD_VIDEO_START_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_VIDEO_START_CAPTURE)
 * [MAV_CMD_VIDEO_STOP_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_VIDEO_STOP_CAPTURE)
