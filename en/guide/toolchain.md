@@ -58,9 +58,11 @@ target_link_libraries(your_executable_name
 
 > **Tip** Where possible install Dronecore [system wide](../contributing/build.md#dronecore_system_wide_install) and follow the instructions in the [previous section](#dronecore_installed_system). 
 
-**CMakeLists.txt** is more complicated when DroneCore is [installed locally](../contributing/build.md#dronecore_local_install), because you need to specify where the build should find both headers and library files. The example file below assumes that DroneCore was installed locally into the directory **/install/**.
+**CMakeLists.txt** is more complicated when DroneCore is [installed locally](../contributing/build.md#dronecore_local_install), because you need to specify where the build should find both headers and library files *relative to your current directory*. 
 
-The new lines are marked up using `# >>> ADDED` comments below.  You have to change the same information as before: *your_project_name*, *your_executable_name* and *your_source_file*. You may also need to change the location of the headers/library files, depending on where your application is hosted relative to the **DroneCore** project root directory (this example assumes that your application is nested two levels deep, just like our example code).
+The changes to the file (with respect to the previous version) are shown below.  You have to change the same information as before: *your_project_name*, *your_executable_name* and *your_source_file*. 
+
+> **Note** The example file below assumes that DroneCore was installed locally into the directory **DroneCore/install/** and that the application is nested two levels deep (at the same level as the DroneCore example code).
 
 ```cmake
 cmake_minimum_required(VERSION 2.8.12)
@@ -75,38 +77,38 @@ else()
     add_definitions("-std=c++11 -WX -W2")
 endif()
 
-# >>> 
-# Specify include directories
-include_directories(
-    # Not needed if installed system-wide
-    ${CMAKE_SOURCE_DIR}/../../install/include
-)
-# >>>
-
 # Specify your app's executable name, and list of source files used to create it.
 add_executable(your_executable_name
     your_source_file.cpp
     # ... any other source files
 )
+```
+Remove/comment this section (Not using "system wide" DroneCore)
+```cmake
+#target_link_libraries(your_executable_name
+#    dronecore  #All apps link against dronecore library
+    # ... any other linked libraries
+#)
+```
+Add section specifying local path to include directories and DroneCore library.
+```cmake
+# Specify include directories
+include_directories(
+    ${CMAKE_SOURCE_DIR}/../../install/include
+)
 
-# >>> ADDED
 # Specify variable 'dronecore_lib' containing location of DroneCore library.
-if(WINDOWS)
+if(MSVC)
     set(dronecore_lib "${CMAKE_SOURCE_DIR}/../../install/lib/dronecore.lib")
 else()
     set(dronecore_lib "${CMAKE_SOURCE_DIR}/../../install/lib/libdronecore.so")
 endif()
-# <<< 
 
 # Specify your app's executable name and a list of linked libraries
 target_link_libraries(your_executable_name
-    # dronecore #Note, this is now commented out or removed
-    
-# >>> ADDED
     # Add  'dronecore_lib' variable defining where the DroneCore library can be found. 
     ${dronecore_lib}
     # dronecore # Link against library named dronecore in standard install location
-# <<< 
     # ... any other linked libraries
 )
 ```

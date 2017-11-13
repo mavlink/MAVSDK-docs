@@ -107,11 +107,12 @@ System-wide installation copies DroneCore to the standard system-wide locations 
 To install DroneCore system-wide:
 
 ```sh
-sudo make clean  #REQUIRED!
+make clean  #REQUIRED!
+make default
 sudo default install
 ```
 
-> **Tip** The `sudo` command is required (above) in order to copy or remove files in system directories.
+> **Tip** The `sudo` command is required (above) in order to install files to system directories.
 
 ### Local Install {#dronecore_local_install}
 
@@ -255,7 +256,8 @@ DroneCore can be extended with plugins and integration tests that are defined "o
 
 The commands to build and install DroneCore with an extension library are:
 ```
-sudo make clean   # This is required!
-sudo make EXTERNAL_DIR=relative_path_to_external_directory default install
+make clean   # This is required!
+make default EXTERNAL_DIR=relative_path_to_external_directory
+sudo make default install
 ```
 See [DroneCore Extensions](../guide/dronecore_extensions.md) for more information.
