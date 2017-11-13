@@ -14,7 +14,7 @@ Type | Description
 --- | ---
 enum [Result](#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda) | Possible results returned for mission requests.
 std::function< void([Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda))> [result_callback_t](#classdronecore_1_1_mission_1a239f8d5853785d6ccf90c8c48b5ccf06) | Callback type for async mission calls.
-std::function< void([Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda), std::vector< std::shared_ptr< [MissionItem](classdronecore_1_1_mission_item.md) > >)> [mission_items_and_result_callback_t](#classdronecore_1_1_mission_1a7cb36c0356a867e90f3c4c764d424d32) | Callback type for `download_mission_async` call to get mission items and result.
+std::function< void([Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda), std::vector< std::shared_ptr< [MissionItem](classdronecore_1_1_mission_item.md) > >)> [mission_items_and_result_callback_t](#classdronecore_1_1_mission_1a7cb36c0356a867e90f3c4c764d424d32) | Callback type for [download_mission_async()](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) call to get mission items and result.
 std::function< void(int current, int total)> [progress_callback_t](#classdronecore_1_1_mission_1aeda7795cd898008afc05b779f99b704b) | Callback type to receive mission progress.
 
 ## Public Member Functions
@@ -102,7 +102,7 @@ typedef std::function<void(Result, std::vector<std::shared_ptr<MissionItem> >)> 
 ```
 
 
-Callback type for `download_mission_async` call to get mission items and result.
+Callback type for [download_mission_async()](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) call to get mission items and result.
 
 
 ### typedef progress_callback_t {#classdronecore_1_1_mission_1aeda7795cd898008afc05b779f99b704b}
@@ -168,7 +168,7 @@ void dronecore::Mission::download_mission_async(mission_items_and_result_callbac
 
 Downloads a vector of mission items from the device (asynchronous).
 
-The mission items are downloaded from a drone.
+The method will fail if any of the downloaded mission items are not supported by the [DroneCore](classdronecore_1_1_drone_core.md) API.
 
 **Parameters**
 
@@ -182,7 +182,7 @@ void dronecore::Mission::start_mission_async(result_callback_t callback)
 
 Starts the mission (asynchronous).
 
-Note that the mission must be uplaoded to the vehicle using [upload_mission_async()](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) before this method is called.
+Note that the mission must be uploaded to the vehicle using [upload_mission_async()](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) before this method is called.
 
 **Parameters**
 
@@ -196,7 +196,7 @@ void dronecore::Mission::pause_mission_async(result_callback_t callback)
 
 Pauses the mission (asynchronous).
 
-Pausing the mission puts the vehicle into HOLD mode (See [https://docs.px4.io/en/flight_modes/hold.html](https://docs.px4.io/en/flight_modes/hold.html)). A multicopter should just hover at the spot while a fixedwing vehicle should loiter around the location where it paused.
+Pausing the mission puts the vehicle into [HOLD mode](https://docs.px4.io/en/flight_modes/hold.html). A multicopter should just hover at the spot while a fixedwing vehicle should loiter around the location where it paused.
 
 **Parameters**
 
@@ -213,7 +213,7 @@ Sets the mission item index to go to (asynchronous).
 By setting the current index to 0, the mission is restarted from the beginning. If it is set to a specific index of a mission item, the mission will be set to this item.
 
 
-Note that this is not necessarily true for general missions using mavlink if loop counters are used.
+Note that this is not necessarily true for general missions using MAVLink if loop counters are used.
 
 **Parameters**
 
