@@ -218,10 +218,41 @@ Use [Mission::download_mission_async()](../api_reference/classdronecore_1_1_miss
 > **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands). 
 > Missions created using *QGroundControl* are not guaranteed to successfully download! 
 
-The example below shows how to download a mission:
+The code fragment below shows how to download a mission:
 
 ```cpp
-// TBD
+{
+    std::cout << "Downloading mission." << std::endl;
+
+    // Wrap download_mission_async() function using std::future.
+    struct PromiseResult {
+        Mission::Result mission_result;
+        std::vector<std::shared_ptr<MissionItem>> mission_items;
+    };
+
+    auto prom = std::make_shared<std::promise<PromiseResult>>();
+    auto future = prom->get_future();
+
+    device.mission().download_mission_async(
+        [prom](Mission::Result result, std::vector<std::shared_ptr<MissionItem>> mission_items_downloaded) {
+            PromiseResult promise_result {};
+            promise_result.mission_result = result;
+            promise_result.mission_items = mission_items_downloaded;
+            prom->set_value(promise_result);
+    });
+
+    PromiseResult promise_result = future.get();
+
+    if (promise_result.mission_result != Mission::Result::SUCCESS) {
+        std::cout << "Mission download failed (" << Mission::result_str(promise_result.mission_result) 
+            << "), exiting." << std::endl;
+        return 1;
+    }
+
+    std::cout << "Mission downloaded (MissionItems: " 
+        << promise_result.mission_items.size() 
+        << ")" << std::endl;
+}
 ```
 
 
