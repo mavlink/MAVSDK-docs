@@ -48,8 +48,9 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
      BUILD_TYPE=Release make
      ```
 
+
 1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build [DroneCore C++ apps](../guide/toolchain.md), but not to run DroneCore test code.
-   
+
 1. (Optionally) Build the API Reference documentation by calling:
    ```sh
    make docs
@@ -57,9 +58,13 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
 
 ### Windows
 
-To build the library you'll need to install *Visual Studio Community Edition*. You will also need to download the [curl](https://curl.haxx.se/) source, extract and build it, and make the directory of the header files available when you build DroneCore.
+To build the library in Windows, you need:
 
-> **Note** The instructions below assume you downloaded [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
+- [Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017): Download and install (only the "Visual C+ Build Tools" are needed from installer).
+- [cmake](https://cmake.org/download/): Download the installer and run it. Make sure to tick "add to PATH" during the installation.
+- [curl](https://curl.haxx.se/): Download the source, extract and build it, and make the directory of the header files available as described below.
+
+> **Note** The instructions below assume you downloaded [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
 To build the *DroneCore* C++ Library on Windows:
 1. Clone the DroneCore repository (or your fork) and update the submodules:
@@ -68,20 +73,20 @@ To build the *DroneCore* C++ Library on Windows:
    cd DroneCore
    git submodule update --init --recursive
    ```
-1. Download the [curl-7.54.1.zip](https://curl.haxx.se/download/curl-7.54.1.zip) source and extract it to the root of your C drive. 
+1. Download the [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) source and extract it to the root of your C drive.
 1. Open the *VS2015 x64 Native Tools Command Prompt*, go to the source directory and enter:
    ```sh
-   cd C:\curl-7.54.1\winbuild
-   nmake /f Makefile.vc mode=static VC=14 MACHINE=x64 DEBUG=no
+   cd C:\curl-7.56.1\winbuild
+   nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
    ```
 1. Then build *DroneCore* in Windows:
    ```sh
    cd /your/path/to/DroneCore
    mkdir build && cd build
-   cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.54.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.54.1\builds\libcurl-vc14-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 14 2015 Win64" ..
+   cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.56.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.56.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 15 2017 Win64" ..
    cmake --build .
    ```
-   
+
    > **Tip** You can generate *release* binaries by setting `--config Release` in the build step (`--config Debug` is used by default):
      ```sh
      cmake --build . --config Release
@@ -166,7 +171,7 @@ make android install
 ```
 
 
-## Build for iOS 
+## Build for iOS
 
 > **Tip** You must first build the C++ Library (as shown above).
 
@@ -184,11 +189,11 @@ make ios_simulator install
 
 ## Building in Docker
 
-You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). 
+You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly).
 
 The main steps are:
 
-1. Install Docker on your host computer. 
+1. Install Docker on your host computer.
 1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork) and update the submodules:
    ```sh
    git clone https://github.com/dronecore/DroneCore.git
@@ -207,13 +212,13 @@ The main steps are:
 
    Docker will download an image from [Docker Hub](https://hub.docker.com/r/dronecore/dronecore/), use it to create a container, and then open a bash prompt:
    ```
-   root*81ebe14d0c1a:/home/docker1000/src/Dronecore# 
+   root*81ebe14d0c1a:/home/docker1000/src/Dronecore#
    ```
 1. In the terminal you can build DroneCore using the normal Linux `make` commands:
    ```sh
    # Build the C++ library
    make default
-   # Build and install DroneCore 
+   # Build and install DroneCore
    make default install
    # Run code-style check
    make fix_style
@@ -222,12 +227,12 @@ The main steps are:
    # Clean the build
    make clean
    ```
-   
+
 > **Note** Files built in a Docker container are owned by root. In order to clean up the **build** and **install** folders you will need to either call `make clean` in the container or `sudo make clean` in the host computer.
 
 ### Running single docker commands
 
-You can also run build commands directly from your host (rather than opening bash), as shown below. 
+You can also run build commands directly from your host (rather than opening bash), as shown below.
 
 To make and install the C++ Library:
 ```bash
@@ -241,8 +246,8 @@ docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000
 
 ### Building the Docker Image
 
-The approach above downloads a container image ([dronecore/dronecore](https://hub.docker.com/r/dronecore/dronecore/)) from Docker Hub. 
-  
+The approach above downloads a container image ([dronecore/dronecore](https://hub.docker.com/r/dronecore/dronecore/)) from Docker Hub.
+
 You can also build the image yourself using the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile) in the root of the DroneCore repository (this is based on Ubuntu 16.04). The image can be used in the same way as the one from Docker Hub.
 
 1. Open a command prompt/terminal in the root of the DroneCore repository.

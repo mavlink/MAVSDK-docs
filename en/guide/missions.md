@@ -1,10 +1,25 @@
 # Missions
 
-The DroneCore Mission API allows you to create, upload, run, pause, restart, jump to item in, and track missions. Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
+The DroneCore Mission API allows you to create, upload, download, run, pause, restart, jump to item in, and track missions. Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
-> **Note** The API enables a small but useful subset of the mission commands supported by PX4 (and the MAVLink specification). For example, it does not currently support "repeat", takeoff, return to land etc.
+Missions are *managed* though the [Mission](../api_reference/classdronecore_1_1_mission.md) class, which communicates with the device to upload mission information and run, pause, track the mission progress etc. The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects.
 
-Missions are *managed* though the [Mission](../api_reference/classdronecore_1_1_mission.md) class, which communicates with the device to upload mission information and run, pause, track the mission progress etc. The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects. 
+
+## Supported Mission Commands {#supported_mission_commands}
+
+The [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) class abstracts a small but useful subset of the mission commands supported by PX4 (and the MAVLink specification):
+
+The supported set is:
+* [MAV_CMD_NAV_WAYPOINT](http://mavlink.org/messages/common#MAV_CMD_NAV_WAYPOINT)
+* [MAV_CMD_DO_CHANGE_SPEED](http://mavlink.org/messages/common#MAV_CMD_DO_CHANGE_SPEED)
+* [MAV_CMD_DO_MOUNT_CONTROL](http://mavlink.org/messages/common#MAV_CMD_DO_MOUNT_CONTROL)
+* [MAV_CMD_IMAGE_START_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_IMAGE_START_CAPTURE)
+* [MAV_CMD_IMAGE_STOP_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_IMAGE_STOP_CAPTURE)
+* [MAV_CMD_VIDEO_START_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_VIDEO_START_CAPTURE)
+* [MAV_CMD_VIDEO_STOP_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_VIDEO_STOP_CAPTURE)
+
+> **Tip** The Mission API does not (at time of writing) support "repeat", takeoff, return to land etc. 
+> DroneCore provides some omitted functionality through the [Action](../guide/taking_off_landing.md) API.
 
 
 ## Preconditions
@@ -94,7 +109,7 @@ mission_items.push_back(
 
 ## Uploading a Mission
 
-Use [Mission::send_mission_async()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1ad06a0751e303eb5c1f1ba37d3b9ede47) to upload the mission defined in the previous section.
+Use [Mission::upload_mission_async()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) to upload the mission defined in the previous section.
 
 The example below shows how this is done, using promises to wait on the result.
 
@@ -104,7 +119,7 @@ The example below shows how this is done, using promises to wait on the result.
 {
     auto prom = std::make_shared<std::promise<Mission::Result>>();
     auto future_result = prom->get_future();
-    device.mission().send_mission_async(
+    device.mission().upload_mission_async(
     mission_items, [prom](Mission::Result result) {
         prom->set_value(result);
     });
@@ -190,10 +205,53 @@ The following synchronous methods are also available for checking mission progre
 
 If using a copter or VTOL vehicle then PX4 will automatically takeoff when it is armed and a mission is started (even without a takeoff mission item). For Fixed Wing vehicles the vehicle must be launched before starting a mission.
 
-At time of writing the Mission API does not provide takeoff, land or "return to launch" `MissionItems`. If required you can instead use the appropriate commands in the [Action](../api_reference/classdronecore_1_1_action.md) class.
+At time of writing the Mission API does not provide takeoff, land or "return to launch" `MissionItems`. If required you can instead use the appropriate commands in the [Action](../guide/taking_off_landing.md) class.
 
-<!-- when we have a topic on taking off and landing in the guide, link to that instead -->
 <!-- Update if we get new mission items -->
+
+## Downloading Missions
+
+Use [Mission::download_mission_async()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) to download a mission from the vehicle. The mission is downloaded as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects, that you can then view or manipulate as required.
+
+> **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands). 
+> Missions created using *QGroundControl* are not guaranteed to successfully download! 
+
+The code fragment below shows how to download a mission:
+
+```cpp
+{
+    std::cout << "Downloading mission." << std::endl;
+
+    // Wrap download_mission_async() function using std::future.
+    struct PromiseResult {
+        Mission::Result mission_result;
+        std::vector<std::shared_ptr<MissionItem>> mission_items;
+    };
+
+    auto prom = std::make_shared<std::promise<PromiseResult>>();
+    auto future = prom->get_future();
+
+    device.mission().download_mission_async(
+        [prom](Mission::Result result, std::vector<std::shared_ptr<MissionItem>> mission_items_downloaded) {
+            PromiseResult promise_result {};
+            promise_result.mission_result = result;
+            promise_result.mission_items = mission_items_downloaded;
+            prom->set_value(promise_result);
+    });
+
+    PromiseResult promise_result = future.get();
+
+    if (promise_result.mission_result != Mission::Result::SUCCESS) {
+        std::cout << "Mission download failed (" << Mission::result_str(promise_result.mission_result) 
+            << "), exiting." << std::endl;
+        return 1;
+    }
+
+    std::cout << "Mission downloaded (MissionItems: " 
+        << promise_result.mission_items.size() 
+        << ")" << std::endl;
+}
+```
 
 
 ## Further Information
