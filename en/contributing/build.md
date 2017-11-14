@@ -92,7 +92,7 @@ To build the *DroneCore* C++ Library on Windows:
 
 ## Install DroneCore {#install-artifacts}
 
-*Installing* builds DroneCore **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). DroneCore supports installation system-wide (recommended) or locally within the DroneCore tree.
+*Installing* builds DroneCore **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). DroneCore supports installation system-wide by default. You can also install files locally/relative to the DroneCore tree if needed.
 
 > **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)) so you will need to [install DroneCore locally](#dronecore_local_install).
 >
@@ -109,10 +109,15 @@ To install DroneCore system-wide:
 ```sh
 make clean  #REQUIRED!
 make default
-sudo default install
+sudo make default install  #sudo required to install files to system directories!
 ```
 
-> **Tip** The `sudo` command is required (above) in order to install files to system directories.
+> **Tip** The first time you build DroneCore you may also need to [update the linker cache](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html). 
+> On Ubuntu call the following:
+  ```
+  sudo ldconfig
+  ```
+
 
 ### Local Install {#dronecore_local_install}
 

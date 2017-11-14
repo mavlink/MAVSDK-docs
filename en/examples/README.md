@@ -89,3 +89,20 @@ On all platform you can then run the new executable (from the **\build** directo
 > is specified in the **CMakeLists.txt** file as the first value in the call to `add_executable()`.
 
 If you have already started the simulation the example code should connect to PX4, and you will be able to observe behaviour through the DroneCore terminal, SITL terminal, and/or *QGroundControl*.
+
+## Troubleshooting
+
+### Linux: Error loading shared libraries
+
+The following error is raised when you run an application/example on Linux and the DroneCore shared library cannot be found:
+
+```
+error while loading shared libraries: libdronecore.so: cannot open shared object file: No such file or directory
+```
+
+The solution is to update the linker cache so that the system can find the library. On Ubuntu call the following:
+```
+sudo ldconfig
+```
+
+For more information/other Linux flavours see [Linux Documentation > Shared Libraries](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html).
