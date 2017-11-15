@@ -7,15 +7,18 @@ This example shows how to create, upload, and run, pause, and restart missions u
 
 ## Running the Example {#run_example}
 
-The example is built and run [as described here](/examples/README.md#trying_the_examples) (the standard way). 
+The example is built and run [as described here](../examples/README.md#trying_the_examples) (the standard way). 
 
 The example terminal output should be similar to that shown below:
 
-> **Note** This is for a release build of DroneCore. A debug build will display additional information from DroneCore.
+> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
 
 ```
 $ ./fly_mission 
 Waiting to discover device...
+[03:42:51|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:210)
+[03:42:51|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2017-11-14/2 (device_impl.cpp:225)
+[03:42:51|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
 Discovered device with UUID: 4294967298
 Waiting for device to be ready
 ...
@@ -23,11 +26,39 @@ Waiting for device to be ready
 Device ready
 Creating and uploading mission
 Uploading mission...
+[03:43:07|Debug] Send mission item 0 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 1 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 2 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 3 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 4 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 5 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 6 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 7 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 8 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 9 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 10 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 11 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 12 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 13 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 14 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 15 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 16 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 17 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 18 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 19 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 20 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 21 (mission_impl.cpp:712)
+[03:43:07|Debug] Send mission item 22 (mission_impl.cpp:712)
+[03:43:07|Info ] Mission accepted (mission_impl.cpp:136)
 Mission uploaded.
 Arming...
+[03:43:07|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:225)
 Armed.
 Starting mission.
 Started mission.
+[03:43:07|Debug] MAVLink: info: Executing mission. (device_impl.cpp:225)
+[03:43:07|Debug] MAVLink: info: Takeoff to 10.0 meters above home. (device_impl.cpp:225)
+[03:43:07|Debug] MAVLink: info: Takeoff detected (device_impl.cpp:225)
 Mission status update: 0 / 6
 Mission status update: 0 / 6
 Mission status update: 1 / 6
@@ -53,12 +84,19 @@ Mission status update: 4 / 6
 Mission status update: 5 / 6
 Mission status update: 5 / 6
 Mission status update: 5 / 6
+Mission status update: 5 / 6
+[03:44:10|Debug] MAVLink: info: Mission finished, loitering. (device_impl.cpp:225)
 Mission status update: 6 / 6
 Commanding RTL...
 Commanded RTL.
+[03:44:10|Debug] MAVLink: info: RTL: return at 498 m (10 m above home) (device_impl.cpp:225)
+[03:44:18|Debug] MAVLink: info: RTL: descend to 493 m (5 m above home) (device_impl.cpp:225)
+[03:44:22|Debug] MAVLink: info: RTL: loiter 5.0s (device_impl.cpp:225)
+[03:44:27|Debug] MAVLink: info: RTL: land at home (device_impl.cpp:225)
+[03:44:40|Debug] MAVLink: info: Landing detected (device_impl.cpp:225)
+[03:44:43|Debug] MAVLink: info: DISARMED by auto disarm on land (device_impl.cpp:225)
 Mission status update: 6 / 6
 Disarmed, exiting.
-...
 ```
 
 ## How it works
