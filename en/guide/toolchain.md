@@ -118,7 +118,7 @@ target_link_libraries(your_executable_name
 
 This section assumes that you have already [built and installed the DroneCore C++ Library](../contributing/build.md) and that your example has a **CMakeLists.txt** in its root directory. 
 
-To create and run the app:
+To create and run the app on Linux/macOS:
 1. First create a build directory and run *cmake*: 
    ```bash 
    cd /path/to/your/application/   # Open a prompt and navigate to your application 
@@ -126,22 +126,26 @@ To create and run the app:
    cmake ..   # Create make files for your current platform
    ```
    > **Tip** Make files for release binaries are created by default. Use the flag `-DCMAKE_BUILD_TYPE=Debug` to build debug binaries:
-  ```
-  cmake -DCMAKE_BUILD_TYPE=Debug ..
-  ```
+   ```
+   cmake -DCMAKE_BUILD_TYPE=Debug ..
+   ```
 1. Build the project
-   * Linux/macOS:
-     ```bash 
-     make -j8
-     ``` 
-   * Windows:
-     ```bash 
-     cmake --build .
-     ``` 
+   ```bash 
+   make -j8
+   ```
 1. Execute the file (in your build directory):
-     ```bash 
-     ./your_executable_name  # Run your new executable
-     ```
+   ```bash 
+   ./your_executable_name  # Run your new executable
+   ```
+
+On Windows the commands are:
+```bash 
+cd /path/to/your/application/   # Open a prompt and navigate to your application 
+mkdir build && cd build   # Create a build directory and navigate into it
+cmake .. -G "Visual Studio 15 2017 Win64" # Create make files for your current platform
+cmake --build .  # Build the file 
+./your_executable_name  # Run your new executable
+```
 
 
 ## Useful Links
