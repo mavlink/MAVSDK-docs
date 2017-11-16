@@ -131,21 +131,23 @@ To create and run the app on Linux/macOS:
    ```
 1. Build the project
    ```bash 
-   make -j8
+   make
    ```
 1. Execute the file (in your build directory):
    ```bash 
    ./your_executable_name  # Run your new executable
    ```
 
-On Windows the commands are:
-```bash 
-cd /path/to/your/application/   # Open a prompt and navigate to your application 
-mkdir build && cd build   # Create a build directory and navigate into it
-cmake .. -G "Visual Studio 15 2017 Win64" # Create make files for your current platform
-cmake --build .  # Build the file 
-./your_executable_name  # Run your new executable
-```
+To create and run the app on Windows:
+1. Open the *VS2015 x64 Native Tools Command Prompt*.
+1. Navigate to the app source directory and enter the commands as shown below:
+   ```bash 
+   cd /path/to/your/application/   # Open a prompt and navigate to your application 
+   mkdir build && cd build   # Create a build directory and navigate into it
+   cmake .. -G "Visual Studio 15 2017 Win64" # Create make files for your current platform
+   cmake --build .  # Build the file 
+   ./your_executable_name  # Run your new executable
+   ```
 
 
 ## Useful Links
