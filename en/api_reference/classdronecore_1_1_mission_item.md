@@ -30,6 +30,7 @@ void | [set_relative_altitude](#classdronecore_1_1_mission_item_1afef21f3028edad
 void | [set_fly_through](#classdronecore_1_1_mission_item_1a63d73896635dc0af136a521cd35bf352) (bool fly_through) | Set the fly-through property of a mission item.
 void | [set_speed](#classdronecore_1_1_mission_item_1a37e43f748da4136c659419a4a2d84b0e) (float speed_m_s) | Set the speed to use after a mission item.
 void | [set_gimbal_pitch_and_yaw](#classdronecore_1_1_mission_item_1a10adfcff1e99ae937654786b767e5558) (float pitch_deg, float yaw_deg) | Set the pitch and yaw angle of a gimbal at that mission item.
+void | [set_camera_action_delay](#classdronecore_1_1_mission_item_1ae3cbad3e497b9165b5b8e6e414a52385) (float delay_s) | Set a delay before executing camera action.
 void | [set_camera_action](#classdronecore_1_1_mission_item_1a8d0d8a5519783aaa272befd73e851896) (CameraAction action) | Set the camera action for a mission item.
 void | [set_camera_photo_interval](#classdronecore_1_1_mission_item_1a4ffe698b47c659aa8857725e94ad1f7c) (double interval_s) | Set the camera photo interval.
 double | [get_latitude_deg](#classdronecore_1_1_mission_item_1ad95d5d10d69bdb43321231c51dda1175) () const | Get the latitude of a mission item.
@@ -37,6 +38,7 @@ double | [get_longitude_deg](#classdronecore_1_1_mission_item_1a9f76de6dbbcec326
 float | [get_relative_altitude_m](#classdronecore_1_1_mission_item_1a22481d92a61136d42b5133b208e6cf0d) () const | Get the relative altitude of a mission item.
 bool | [get_fly_through](#classdronecore_1_1_mission_item_1afd92f9ab01d25c0d721b4249821b6da2) () const | Get the fly-through property of a mission item.
 float | [get_speed_m_s](#classdronecore_1_1_mission_item_1adc737b7be9b49cd0fe188763203aeae5) () const | Get the speed to be used after this mission item.
+float | [get_camera_action_delay_s](#classdronecore_1_1_mission_item_1a620be1392d32343f624238301e968ee6) () const | Get the delay before executing camera action.
 [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) | [get_camera_action](#classdronecore_1_1_mission_item_1ae42a857f79b63c611f5a21fed2ea18fc) () const | Get the camera action set for this mission item.
 double | [get_camera_photo_interval_s](#classdronecore_1_1_mission_item_1adf38956d9ed1ef4e98a4d5a6b61eccd7) () const | Get the camera photo interval that was set for this mission item.
 const [MissionItem](classdronecore_1_1_mission_item.md) & | [operator=](#classdronecore_1_1_mission_item_1a8582ad72a3a8c20c87e8224ab10970c0) (const MissionItem &)=delete | Equality operator (object is not copyable).
@@ -164,6 +166,20 @@ Set the pitch and yaw angle of a gimbal at that mission item.
 * float **pitch_deg** - The new pitch angle of the gimbal in degrees (0: horizontal, positive up, -90: vertical downward facing).
 * float **yaw_deg** - The new yaw angle of the gimbal in degrees (0: forward, positive clock-wise, 90: to the right).
 
+### set_camera_action_delay() {#classdronecore_1_1_mission_item_1ae3cbad3e497b9165b5b8e6e414a52385}
+```cpp
+void dronecore::MissionItem::set_camera_action_delay(float delay_s)
+```
+
+
+Set a delay before executing camera action.
+
+This can be used to wait for vehicle to slow down or a gimbal to arrive at the set orientation.
+
+**Parameters**
+
+* float **delay_s** - The time to wait for in seconds.
+
 ### set_camera_action() {#classdronecore_1_1_mission_item_1a8d0d8a5519783aaa272befd73e851896}
 ```cpp
 void dronecore::MissionItem::set_camera_action(CameraAction action)
@@ -255,6 +271,19 @@ Get the speed to be used after this mission item.
 **Returns**
 
 &emsp;float - Speed in metres/second.
+
+### get_camera_action_delay_s() {#classdronecore_1_1_mission_item_1a620be1392d32343f624238301e968ee6}
+```cpp
+float dronecore::MissionItem::get_camera_action_delay_s() const
+```
+
+
+Get the delay before executing camera action.
+
+
+**Returns**
+
+&emsp;float - The delay in seconds.
 
 ### get_camera_action() {#classdronecore_1_1_mission_item_1ae42a857f79b63c611f5a21fed2ea18fc}
 ```cpp
