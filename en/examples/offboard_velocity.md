@@ -7,32 +7,34 @@ This example shows how to how to control a vehicle in *Offboard mode* using velo
 
 ## Running the Example {#run_example}
 
-The example is built and run [as described here](/examples/README.md#trying_the_examples) (the standard way). 
+The example is built and run [as described here](../examples/README.md#trying_the_examples) (the standard way). 
 
 The example terminal output should be similar to that shown below:
 
-> **Note** This is for a debug build of DroneCore.
+> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
 
 ```
 $ ./offboard 
+ubuntu@ubuntu:~/DroneCore/example/offboard_velocity/build$ ./offboard 
 Wait for device to connect via heartbeat
-[05:58:02|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:210)
-[05:58:02|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2017-10-31/0 (device_impl.cpp:223)
-[05:58:03|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
+[03:48:52|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:210)
+[03:48:52|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2017-11-14/2 (device_impl.cpp:225)
+[03:48:53|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
+Waiting for device to be ready
+...
 Waiting for device to be ready
 Device is ready
-[05:58:04|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:223)
 Armed
+[03:49:07|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:225)
 In Air...
-[05:58:04|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:223)
-[05:58:04|Debug] MAVLink: info: Takeoff detected (device_impl.cpp:223)
-[05:58:04|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:223)
+[03:49:07|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:225)
+[03:49:07|Debug] MAVLink: info: Takeoff detected (device_impl.cpp:225)
+[03:49:07|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:225)
 [NED] Offboard started
 [NED] Turn to face East
 [NED] Go North and back South
 [NED] Turn to face West
 [NED] Go up 2 m/s, turn to face South
-[05:58:26|Debug] MAVLink: emergency: Accel #1 fail:  TOUT! (device_impl.cpp:223)
 [NED] Go down 1 m/s, turn to face North
 [NED] Offboard stopped
 [BODY] Offboard started
@@ -44,7 +46,7 @@ In Air...
 [BODY] Fly a circle sideways
 [BODY] Wait for a bit
 [BODY] Offboard stopped
-[05:59:28|Debug] MAVLink: info: Landing at current position (device_impl.cpp:223)
+[03:50:31|Debug] MAVLink: info: Landing at current position (device_impl.cpp:225)
 Landed
 ```
 
@@ -68,36 +70,14 @@ if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
 else()
     add_definitions("-std=c++11 -WX -W2")
-    set(platform_libs "Ws2_32.lib")
 endif()
-
-# Add DEBUG define for Debug target
-set(CMAKE_CXX_FLAGS_DEBUG "-DDEBUG")
-
-# This finds thread libs on Linux, Mac, and Windows.
-find_package(Threads REQUIRED)
-
-# Not needed if DroneCore installed system-wide
-include_directories(
-    ${CMAKE_SOURCE_DIR}/../../install/include
-)
 
 add_executable(offboard
     offboard_velocity.cpp
 )
 
-# Not needed if DroneCore installed system-wide
-if(WINDOWS)
-    set(dronecore_lib "${CMAKE_SOURCE_DIR}/../../install/lib/dronecore.lib")
-else()
-    set(dronecore_lib "${CMAKE_SOURCE_DIR}/../../install/lib/libdronecore.a")
-endif()
-
 target_link_libraries(offboard
-    ${dronecore_lib}  # Remove/comment out this line if DroneCore used locally
-    # dronecore  # Uncomment/add this line if DroneCore installed system-wide
-    ${CMAKE_THREAD_LIBS_INIT}
-    ${platform_libs}
+    dronecore
 )
 ```
 

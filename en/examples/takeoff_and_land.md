@@ -8,32 +8,41 @@ It sets up a UDP connection, waits for a device to appear, arms it, and commands
 
 ## Running the Example {#run_example}
 
-The example is built and run [as described here](/examples/README.md#trying_the_examples) (the standard way).
+The example is built and run [as described here](../examples/README.md#trying_the_examples) (the standard way).
 
-The example terminal output is:
+The example terminal output should be similar to that shown below:
+
+> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
+
 ```sh
 $ ./takeoff_and_land 
 Waiting to discover device...
-Partner IP: 127.0.0.1:14557
+[03:34:57|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:210)
+[03:34:57|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
 Discovered device with UUID: 4294967298
 Arming...
 Taking off...
-Altitude: -0.042 m
-Altitude: 0.054 m
-Altitude: 0.989 m
-Altitude: 2.128 m
-Altitude: 2.434 m
-Altitude: 2.446 m
-Altitude: 2.408 m
-Altitude: 2.377 m
-Altitude: 2.369 m
-Altitude: 2.374 m
+[03:34:59|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:225)
+[03:34:59|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:225)
+[03:34:59|Debug] MAVLink: info: Takeoff detected (device_impl.cpp:225)
+[03:34:59|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:225)
+Altitude: 0 m
+Altitude: 1.381 m
+Altitude: 2.283 m
+Altitude: 2.519 m
+Altitude: 2.55 m
+Altitude: 2.53 m
+Altitude: 2.508 m
+Altitude: 2.491 m
+Altitude: 2.479 m
+Altitude: 2.471 m
 Landing...
-Altitude: 1.758 m
-Altitude: 0.782 m
-Altitude: -0.068 m
-Altitude: -0.441 m
-Altitude: -0.573 m
+[03:35:09|Debug] MAVLink: info: Landing at current position (device_impl.cpp:225)
+Altitude: 2.321 m
+Altitude: 1.587 m
+Altitude: 0.813 m
+Altitude: 0.025 m
+Altitude: -0.483 m
 Finished...
 ```
 
@@ -53,36 +62,14 @@ if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
 else()
     add_definitions("-std=c++11 -WX -W2")
-    set(platform_libs "Ws2_32.lib")
 endif()
-
-# Add DEBUG define for Debug target
-set(CMAKE_CXX_FLAGS_DEBUG "-DDEBUG")
-
-# This finds thread libs on Linux, Mac, and Windows.
-find_package(Threads REQUIRED)
-
-# Not needed if DroneCore installed system-wide
-include_directories(
-    ${CMAKE_SOURCE_DIR}/../../install/include
-)
 
 add_executable(takeoff_and_land
     takeoff_and_land.cpp
 )
 
-# Not needed if DroneCore installed system-wide
-if(WINDOWS)
-    set(dronecore_lib "${CMAKE_SOURCE_DIR}/../../install/lib/dronecore.lib")
-else()
-    set(dronecore_lib "${CMAKE_SOURCE_DIR}/../../install/lib/libdronecore.a")
-endif()
-
 target_link_libraries(takeoff_and_land
-    ${dronecore_lib}  # Remove/comment out this line if DroneCore used locally
-    # dronecore  # Uncomment/add this line if DroneCore installed system-wide
-    ${CMAKE_THREAD_LIBS_INIT}
-    ${platform_libs}
+    dronecore
 )
 ```
 

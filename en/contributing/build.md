@@ -1,8 +1,13 @@
 # Building DroneCore from Source
 
-To build all of DroneCore from source you will first need to build the C++ library, and then any wrappers. The instructions below show how.
+This section explains how to [build](#build_dronecore_cpp) and [install](#install-artifacts) the DroneCore C++ library from source (both "natively" and in docker) for all our target platforms. It also shows how to build DroneCore with extensions and build the API Reference documentation. 
 
-## Build the C++ Library
+
+## Build the C++ Library {#build_dronecore_cpp}
+
+This section explains how to build the DroneCore C++ library from source, 
+along with its unit and integration tests. 
+Build artifacts are created in the **build** subdirectory.
 
 ### macOS {#mac-os-x}
 
@@ -43,7 +48,8 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
      BUILD_TYPE=Release make
      ```
 
-1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build DroneCore applications, but not to run DroneCore test code.
+
+1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build [DroneCore C++ apps](../guide/toolchain.md), but not to run DroneCore test code.
 
 1. (Optionally) Build the API Reference documentation by calling:
    ```sh
@@ -86,48 +92,55 @@ To build the *DroneCore* C++ Library on Windows:
      cmake --build . --config Release
      ```
 
-1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build DroneCore applications, but not to run DroneCore test code.
+1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build [Dronecore C++ apps](../guide/toolchain.md), but not to run DroneCore test code.
 
 
 ## Install DroneCore {#install-artifacts}
 
-In order to *use* DroneCore your C++ applications need to be able locate the DroneCore libraries and header files (see [Building C++ Apps](../guide/toolchain.md)). You can either install these to standard system locations or locally within the DroneCore directory.
+*Installing* builds DroneCore **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). DroneCore supports installation system-wide by default. You can also install files locally/relative to the DroneCore tree if needed.
 
-> **Tip** The example code assumes that DroneCore is installed locally. The example **CMakeLists.txt** file can easily be modified to find the system-wide installation.
+> **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)) so you will need to [install DroneCore locally](#dronecore_local_install).
+>
+> Windows gurus, we'd [love your help](../README.md#getting-help) to implement this).
 
+### System-wide Install {#dronecore_system_wide_install}
 
-### System-wide Install
+System-wide installation copies DroneCore to the standard system-wide locations for your platform (On Ubuntu Linux this is **/usr/local/**).
 
-Installing DroneCore system-wide means that the files you need to build your apps are always in the same place, and your build definition files can be simpler because they do not need to consider relative locations.
+> **Warning** System-wide installation overwrites any previously installed version of DroneCore. 
 
-> **Warning** System-wide install is not (yet) supported on Windows. If you're a Windows guru, we'd [love your help](../README.md#getting-help) to set this up.
-
-To install the files system-wide:
+To install DroneCore system-wide:
 
 ```sh
 make clean  #REQUIRED!
-sudo INSTALL_PREFIX=/usr/local make default install
+make default
+sudo make default install  #sudo required to install files to system directories!
 ```
 
-> **Note** System-wide install overwrites standard install locations. If you already have DroneCore installed through some other mechanism it will be replaced!
+> **Tip** The first time you build DroneCore you may also need to [update the linker cache](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html). 
+> On Ubuntu call the following:
+  ```
+  sudo ldconfig
+  ```
 
-### Local Install
 
-On Linux/macOS the DroneCore headers and static library can be installed locally into the folder **DroneCore/install/** using:
+### Local Install {#dronecore_local_install}
+
+Local installation copies DroneCore headers/library to a user-specified location in the DroneCore directory.
+
+On Linux/macOS use the `INSTALL_PREFIX` variable to specify a path relative to the **DroneCore/build/** folder
+(or an absolute path).
+For example, to install into the **DroneCore/install/** folder you would call:
 
 ```sh
-make default install
+make clean  #REQUIRED!
+INSTALL_PREFIX=../../install make default install
 ```
 
 On Windows specify `--target install` when building, as shown:
 ```sh
 cmake --build . --target install
 ```
-
-
-### Using the Compiled C++ Library
-
-The [Building C++ Apps](../guide/toolchain.md) topic explains how use the library in C++ apps.
 
 
 ## Build for Android
@@ -146,14 +159,14 @@ Also, you need to set these three environment variables:
 
 E.g. you can add the lines below to your .bashrc, (or .zshrc for zshell users, or .profile):
 
-```
+```sh
 export NDK_ROOT=$HOME/Android/android-ndk-r13
 export ANDROID_TOOLCHAIN_CMAKE=$HOME/Android/android-ndk-r13/build/cmake/android.toolchain.cmake
 export ANDROID_CMAKE_BIN=$HOME/Android/Sdk/cmake/3.6.3155560/bin/cmake
 ```
 
 Then you build for all Android architectures:
-```
+```sh
 make android install
 ```
 
@@ -164,13 +177,13 @@ make android install
 
 To build for real iOS devices on macOS:
 
-```
+```sh
 make ios install
 ```
 
 Build for the iOS simulator on macOS:
 
-```
+```sh
 make ios_simulator install
 ```
 
@@ -249,9 +262,12 @@ You can also build the image yourself using the [Dockerfile](https://github.com/
 
 ## Build DroneCore Extensions {#dronecore_extensions}
 
-DroneCore can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the DroneCore at compile time (by specifying `EXTERNAL_DIR` in the `make` command):
+DroneCore can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the DroneCore at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
+
+The commands to build and install DroneCore with an extension library are:
 ```
 make clean   # This is required!
-make EXTERNAL_DIR=relative_path_to_external_directory
+make default EXTERNAL_DIR=relative_path_to_external_directory
+sudo make default install
 ```
 See [DroneCore Extensions](../guide/dronecore_extensions.md) for more information.
