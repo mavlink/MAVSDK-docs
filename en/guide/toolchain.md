@@ -139,7 +139,7 @@ To create and run the app on Linux/macOS:
    ```
 
 To create and run the app on Windows:
-1. Open the *VS2015 x64 Native Tools Command Prompt*.
+1. Open the *VS2017 x64 Native Tools Command Prompt*.
 1. Navigate to the app source directory and enter the commands as shown below:
    ```bash 
    cd /path/to/your/application/   # Open a prompt and navigate to your application 
