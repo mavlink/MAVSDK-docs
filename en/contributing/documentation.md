@@ -51,22 +51,9 @@ For setup information see: [Gitbook toolchain](https://toolchain.gitbook.com/set
 
 ## API Reference
 
-The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax. You can extract the documentation to markdown files (one per class) when you [build the library](../contributing/build.md).
-
-To create the reference markdown docs (on macOS or Linux) build with: 
-```
-make docs
-```
-The files are created in **/install/docs/markdown**.
+The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax. 
+You can extract the documentation to markdown files (one per class) on macOS or Linux using the instructions in [Building DroneCore from Source > Build API Reference Documentation](../contributing/build.md#build_api_reference).
 
 In order to include new API reference in the *DroneCore Guide* it must be manually added to the [Github repository](https://github.com/dronecore/docs/):
 * Copy the files into the [docs/en/api_reference](https://github.com/dronecore/docs/tree/{{ book.github_branch }}/en/api_reference) folder
 * *New* APIs should be added to appropriate sections in the [docs/en/SUMMARY.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/SUMMARY.md), [docs/en/api_reference/README.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/api_reference/README.md) and overview [docs/en/README.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/README.md#api-overview).
-
-> **Note** Extracting the API reference does not work automatically on Windows because the `make` toolchain is different. 
-
-<span></span>
-> **Note** The toolchain uses *DOxygen* to create an XML documentation in **/install/docs/xml**. 
-> The [generate_markdown_from_doxygen_xml.py](https://github.com/dronecore/DroneCore/blob/develop/generate_markdown_from_doxygen_xml.py) script 
-> is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**
-
