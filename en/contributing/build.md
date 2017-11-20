@@ -51,10 +51,6 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
 
 1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build [DroneCore C++ apps](../guide/toolchain.md), but not to run DroneCore test code.
 
-1. (Optionally) Build the API Reference documentation by calling:
-   ```sh
-   make docs
-   ```
 
 ### Windows
 
@@ -222,8 +218,6 @@ The main steps are:
    make default install
    # Run code-style check
    make fix_style
-   # Build the docs
-   make docs
    # Clean the build
    make clean
    ```
@@ -271,3 +265,24 @@ make default EXTERNAL_DIR=relative_path_to_external_directory
 sudo make default install
 ```
 See [DroneCore Extensions](../guide/dronecore_extensions.md) for more information.
+
+
+## Build API Reference Documentation {#build_api_reference}
+
+The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax. 
+
+Extract the documentation to markdown files (one per class) on macOS or Linux using the commands:
+```bash
+rm -R install  # Required (remove previous install/docs)
+make clean     # Required (clean build)
+./generate_docs.sh
+```
+The files are created in **/install/docs/markdown**.
+
+> **Note** Extracting the API reference does not yet work automatically on Windows. 
+
+<span></span>
+> **Note** The *generate_docs.sh* script [builds the library](../contributing/build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**. 
+> The [generate_markdown_from_doxygen_xml.py](https://github.com/dronecore/DroneCore/blob/develop/generate_markdown_from_doxygen_xml.py) script 
+> is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.
+
