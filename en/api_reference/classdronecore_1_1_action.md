@@ -56,7 +56,7 @@ const [Action](classdronecore_1_1_action.md) & | [operator=](#classdronecore_1_1
 
 Type | Name | Description
 ---: | --- | ---
-const char * | [result_str](#classdronecore_1_1_action_1a1e44fcd1ee2a566a6590ba2a1ab2e6a7) (Result) | Returns a human-readable English string for an [Action::Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011).
+const char * | [result_str](#classdronecore_1_1_action_1a1fefb474ee36cb15fe31b42313782057) (Result result) | Returns a human-readable English string for an [Action::Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011).
 
 
 ## Constructor & Destructor Documentation
@@ -435,9 +435,9 @@ Equality operator (object is not copyable).
 
 &emsp;const [Action](classdronecore_1_1_action.md) & - 
 
-### result_str() {#classdronecore_1_1_action_1a1e44fcd1ee2a566a6590ba2a1ab2e6a7}
+### result_str() {#classdronecore_1_1_action_1a1fefb474ee36cb15fe31b42313782057}
 ```cpp
-static const char* dronecore::Action::result_str(Result)
+static const char* dronecore::Action::result_str(Result result)
 ```
 
 
@@ -446,7 +446,7 @@ Returns a human-readable English string for an [Action::Result](classdronecore_1
 
 **Parameters**
 
-* [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) - 
+* [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) **result** - The enum value for which a human readable string is required.
 
 **Returns**
 

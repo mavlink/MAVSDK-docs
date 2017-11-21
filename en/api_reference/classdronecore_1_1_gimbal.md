@@ -171,7 +171,7 @@ Returns a human-readable English string for [Gimbal::Result](classdronecore_1_1_
 
 **Parameters**
 
-* [Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6f) **result** - 
+* [Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6f) **result** - The enum value for which a human readable string is required.
 
 **Returns**
 

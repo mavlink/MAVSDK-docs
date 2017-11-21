@@ -173,7 +173,7 @@ Adds a TCP connection with a specific IP address and port number.
 
 **Parameters**
 
-* std::string **remote_ip** - 
+* std::string **remote_ip** - Remote IP address to connect to.
 * int **remote_port** - The TCP port to connect to.
 
 **Returns**
@@ -205,7 +205,7 @@ Adds a serial connection with a specific port (COM or UART dev node) and baudrat
 
 **Parameters**
 
-* std::string **dev_path** - 
+* std::string **dev_path** - COM or UART dev node name/path.
 * int **baudrate** - Baudrate of the serial port.
 
 **Returns**
