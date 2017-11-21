@@ -64,7 +64,7 @@ Finished...
 
 ## How it works
 
-The operation of most of this code is discussed in the guide: [Takeoff and Landing (and other actions)](../guide/taking_off_landing.md#transition_vtol).
+The operation of the transition code is discussed in the guide: [Takeoff and Landing (and other actions)](../guide/taking_off_landing.md#transition_vtol).
 
 ## Source code {#source_code}
 

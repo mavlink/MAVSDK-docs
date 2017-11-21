@@ -204,8 +204,8 @@ You can get/set the normal horizontal velocity used in *Return mode*, *Hold mode
 
 ## Switch Between VTOL Modes {#transition_vtol}
 
-DroneCore provides methods to transition between VTOL fixed wing and multicopter modes (and back), with both synchronous and asynchronous versions:
-* [transition_to_fixedwing()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a6f40384be0ad61a29b6e2fd0a0c86754), [transition_to_multicopter](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a0088dbe4c715e2bfbe805b89d28add5a),
+DroneCore provides methods to transition between VTOL fixed wing and multicopter modes, with both synchronous and asynchronous versions:
+* [transition_to_fixedwing()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a6f40384be0ad61a29b6e2fd0a0c86754), [transition_to_multicopter()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a0088dbe4c715e2bfbe805b89d28add5a)
 * [transition_to_fixedwing_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1af5b02f05ffdc2e0787a7633410710d9d), [transition_to_multicopter_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a053aa7430852a4200b201abda1b3b3e4)
 
 The associated action will only be executed for VTOL vehicles (on other vehicle types the command will fail with a `Result` of `VTOL_TRANSITION_SUPPORT_UNKNOWN` or `NO_VTOL_TRANSITION_SUPPORT`). The command will succeed if called when the vehicle is already in the mode.
