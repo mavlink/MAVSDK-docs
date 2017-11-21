@@ -74,19 +74,16 @@ Tests in extension libraries are written and run exactly the same as "normal" Dr
 
 To build *DroneCore* so that it includes the extension library, specify the top level directory `EXTERNAL_DIR` in the `make` command 
 (only one external directory can be specified). 
-The line below shows how this is done for the [external_example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) directory.
 
-```
-make clean  # This is required!
-make EXTERNAL_DIR=external_example
-```
-
-To build a parallel *DroneCore_Extensions* folder (from within the DroneCore directory) you would enter:
+To build and install a parallel *DroneCore_Extensions* folder (from within the DroneCore directory) you would enter:
 
 ```
 make clean   # This is required!
-make EXTERNAL_DIR=../DroneCore_Extensions
+make default EXTERNAL_DIR=../DroneCore_Extensions
+sudo make default install   # sudo needed to install files into system directories. 
 ```
+
+> **Tip** You can test this by copying the [DroneCore/external_example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) directory as a peer of **DroneCore** and renaming it to *DroneCore_Extensions*.
 
 
 <!-- 
