@@ -15,7 +15,7 @@ The content of the [DevicePluginContainer](classdronecore_1_1_device_plugin_cont
 
 Type | Name | Description
 ---: | --- | ---
-| [DevicePluginContainer](#classdronecore_1_1_device_plugin_container_1af4c0f2facc64a99818737971f7f1cc77) (const DevicePluginContainer &)=delete |
+| [DevicePluginContainer](#classdronecore_1_1_device_plugin_container_1af4c0f2facc64a99818737971f7f1cc77) (const DevicePluginContainer &)=delete | Copy constructor (object is not copyable).
 [Action](classdronecore_1_1_action.md) & | [action](#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192) () |
 [Gimbal](classdronecore_1_1_gimbal.md) & | [gimbal](#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0) () |
 [Info](classdronecore_1_1_info.md) & | [info](#classdronecore_1_1_device_plugin_container_1a1509e3d7a469cbc3e33471138b1f4dc7) () |
@@ -23,7 +23,7 @@ Type | Name | Description
 [Mission](classdronecore_1_1_mission.md) & | [mission](#classdronecore_1_1_device_plugin_container_1a8a05778326d0ef4c74146bc42fdcb52d) () |
 [Offboard](classdronecore_1_1_offboard.md) & | [offboard](#classdronecore_1_1_device_plugin_container_1a63193bd25273bbda48665e12e012f478) () |
 [Telemetry](classdronecore_1_1_telemetry.md) & | [telemetry](#classdronecore_1_1_device_plugin_container_1a9b119348d0f5195c9b0919fbe6196b14) () |
-const [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md) & | [operator=](#classdronecore_1_1_device_plugin_container_1abb90ffceec0873823fb78067d8d6e385) (const DevicePluginContainer &)=delete |
+const [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md) & | [operator=](#classdronecore_1_1_device_plugin_container_1abb90ffceec0873823fb78067d8d6e385) (const DevicePluginContainer &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -33,6 +33,9 @@ const [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md) & |
 ```cpp
 dronecore::DevicePluginContainer::DevicePluginContainer(const DevicePluginContainer &)=delete
 ```
+
+
+Copy constructor (object is not copyable).
 
 
 **Parameters**
@@ -130,6 +133,9 @@ Getter for [Telemetry](classdronecore_1_1_telemetry.md) plugin.
 ```cpp
 const DevicePluginContainer& dronecore::DevicePluginContainer::operator=(const DevicePluginContainer &)=delete
 ```
+
+
+Equality operator (object is not copyable).
 
 
 **Parameters**
