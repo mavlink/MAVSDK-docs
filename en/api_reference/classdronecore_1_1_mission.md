@@ -172,7 +172,7 @@ The method will fail if any of the downloaded mission items are not supported by
 
 **Parameters**
 
-* [mission_items_and_result_callback_t](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a7cb36c0356a867e90f3c4c764d424d32) **callback** - Callback to receive result of this request.
+* [mission_items_and_result_callback_t](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a7cb36c0356a867e90f3c4c764d424d32) **callback** - Callback to receive mission items and result of this request.
 
 ### start_mission_async() {#classdronecore_1_1_mission_1a9e032c6b2bc35cf6e7e19e07747fb0d3}
 ```cpp
@@ -301,8 +301,8 @@ Gets a human-readable English string for an [Mission::Result](classdronecore_1_1
 
 **Parameters**
 
-* [Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda) **result** - 
+* [Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda) **result** - Enum for which string is required.
 
 **Returns**
 
-&emsp;const char * - 
+&emsp;const char * - Human readable string for the [Mission::Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda).

@@ -201,4 +201,4 @@ Returns human-readable English string for [Logging::Result](classdronecore_1_1_l
 
 **Returns**
 
-&emsp;const char * - result Human-readable string.
+&emsp;const char * - result Human-readable string for [Logging::Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086).

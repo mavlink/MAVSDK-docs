@@ -4,11 +4,14 @@
 
 This section contains examples showing how to use DroneCore.
 
-* [Takeoff and Land](../examples/takeoff_and_land.md) - Shows basic usage of DroneCore (connect to port, detect device, arm, takeoff, land, get telemetry)
-* [Fly Mission](../examples/fly_mission.md) - Shows how to create, upload, and run missions.
-* [Offboard Velocity Control](../examples/offboard_velocity.md) - Demonstrates how to control a vehicle in Offboard mode using velocity commands (in both the NED and body frames).
+Example | Description
+--- | ---
+[Takeoff and Land](../examples/takeoff_and_land.md) | Shows basic usage of DroneCore (connect to port, detect device, arm, takeoff, land, get telemetry)
+[Fly Mission](../examples/fly_mission.md) | Shows how to create, upload, and run missions.
+[Offboard Velocity Control](../examples/offboard_velocity.md) | Demonstrates how to control a vehicle in Offboard mode using velocity commands (in both the NED and body frames).
+[VTOL Transitions](../examples/transition_vtol_fixed_wing.md) | Shows how to transition a VTOL vehicle between copter and fixed-wing modes.
 
-All examples are all built and run in the same way, as described in the following section (any exceptions are covered in the page for the associated example).
+The examples are "largely" built and run in the same way, as described in the following section (any exceptions are covered in the page for the associated example).
 
 > **Warning** Some of the examples define flight behaviour relative to the default home position in the simulator (e.g. [Fly Mission](../examples/fly_mission.md)). Care should be taken if using them on a real vehicle.
 
@@ -25,11 +28,11 @@ In order to test them, first start PX4 in SITL (Simulation), optionally start *Q
 
 PX4 supports a [number of simulators](https://dev.px4.io/en/simulation/). In order to set up the [jMAVSim](https://dev.px4.io/en/simulation/jmavsim.html) or [Gazebo](https://dev.px4.io/en/simulation/gazebo.html) simulator, you can simply follow the standard PX4 toolchain setup instructions for [macOS](https://dev.px4.io/en/setup/dev_env_mac.html) or [Ubuntu Linux](https://dev.px4.io/en/setup/dev_env_linux.html#development-toolchain).
 
-Once the simulator is installed, it can be started from the PX4 /Firmware directory using the command:
+> **Note** JMAVSim can only be used to simulate multicopters. Gazebo additionally supports a number of [other vehicles](https://dev.px4.io/en/simulation/gazebo.html#html#running-the-simulation) (e.g. VTOL, Rovers, fixed-wing etc.).
+
+After running a standard installation, a multicopter simulation can be started from the PX4 **/Firmware** directory using the command:
 * jMAVSim: `make posix_sitl_default jmavsim`
 * Gazebo: `make posix_sitl_default gazebo`
-
-> **Note** Windows is not recommended for PX4/DroneCore development - by preference you should use a dual-boot Linux computer, or run both simulated PX4 and DroneCore in a virtual machine.
 
 
 ### Using QGroundControl

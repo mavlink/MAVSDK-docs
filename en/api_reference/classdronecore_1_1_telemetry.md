@@ -1091,4 +1091,4 @@ Get human-readable English string for [Telemetry::Result](classdronecore_1_1_tel
 
 **Returns**
 
-&emsp;const char * - 
+&emsp;const char * - Human readable string for the [Telemetry::Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc).
