@@ -15,7 +15,7 @@ Below we explain how to set up a minimal build setup (**CMakeLists.txt**) file f
 
 The sections below show how you can set up the file for when DroneCore is [installed system wide](../contributing/build.md#dronecore_system_wide_install) (the default) or [locally](../contributing/build.md#dronecore_local_install).
 
-> **Warning** DroneCore system-wide installation is not yet supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)). Instead build the app using a [local DroneCore installation](#dronecore_local_install). 
+> **Warning** DroneCore system-wide installation is not supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)). Instead build the app using a [local DroneCore installation](#dronecore_local_install). 
 >
 > Windows gurus, we'd [love your help](../README.md#getting-help) to implement this). 
 
@@ -56,11 +56,11 @@ target_link_libraries(your_executable_name
 
 ### DroneCore Installed Locally {#dronecore_local_install}
 
-> **Tip** Where possible install Dronecore [system wide](../contributing/build.md#dronecore_system_wide_install) and follow the instructions in the [previous section](#dronecore_installed_system). 
+> **Tip** Where possible install Dronecore [system wide](../contributing/build.md#dronecore_system_wide_install) and follow the instructions in the [previous section](#dronecore_installed_system). You will need to install locally on Windows.
 
 **CMakeLists.txt** is more complicated when DroneCore is [installed locally](../contributing/build.md#dronecore_local_install), because you need to specify where the build should find both headers and library files *relative to your current directory*. 
 
-The changes to the file (with respect to the previous version) are shown below.  You have to change the same information as before: *your_project_name*, *your_executable_name* and *your_source_file*. 
+The changes to the file (with respect to the previous version) are shown below. You have to change the same information as before: *your_project_name*, *your_executable_name* and *your_source_file*. 
 
 > **Note** The example file below assumes that DroneCore was installed locally into the directory **DroneCore/install/** and that the application is nested two levels deep (at the same level as the DroneCore example code).
 
@@ -118,6 +118,8 @@ target_link_libraries(your_executable_name
 
 This section assumes that you have already [built and installed the DroneCore C++ Library](../contributing/build.md) and that your example has a **CMakeLists.txt** in its root directory. 
 
+### Linux/macOS
+
 To create and run the app on Linux/macOS:
 1. First create a build directory and run *cmake*: 
    ```bash 
@@ -138,6 +140,8 @@ To create and run the app on Linux/macOS:
    ./your_executable_name  # Run your new executable
    ```
 
+### Windows
+
 To create and run the app on Windows:
 1. Open the *VS2017 x64 Native Tools Command Prompt*.
 1. Navigate to the app source directory and enter the commands as shown below:
@@ -146,7 +150,7 @@ To create and run the app on Windows:
    mkdir build && cd build   # Create a build directory and navigate into it
    cmake .. -G "Visual Studio 15 2017 Win64" # Create make files for your current platform
    cmake --build .  # Build the file 
-   ./your_executable_name  # Run your new executable
+   .\Debug\your_executable_name.exe  # Run your new executable
    ```
 
 

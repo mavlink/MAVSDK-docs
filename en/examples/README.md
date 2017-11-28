@@ -48,7 +48,7 @@ To build the examples follow the instructions below, replacing *takeoff_and_land
 
 #### Linux
 
-First [Build and install the DroneCore C++ Library](../contributing/build.md) using the command below:
+First [Build and install the DroneCore C++ Library](../contributing/build.md) system-wide using the command below:
 ```sh
 make clean
 made default
@@ -65,28 +65,38 @@ make
 
 #### Windows
 
-First [Build and install the DroneCore C++ Library](../contributing/build.md).
-Make sure that you install the library and headers in the standard location: 
+First [Build and install the DroneCore C++ Library](../contributing/build.md#windows).
+Make sure that you [install the library and headers locally](../contributing/build.md#dronecore_local_install) in the standard location: 
 
 ```sh
 cmake --build . --target install
 ```
 
-Build the example as shown below (in this case *takeoff_and_land*, but all the other examples are built in the same way):
+Modify the example as described in [Building C++ Apps > DroneCore Installed Locally](../guide/toolchain.md#dronecore_local_install) (this is required for Windows).
+
+Build the example as described in [Building C++ Apps](../guide/toolchain.md#windows). Below we show how for the *takeoff_and_land* example, but all the other examples are built in the same way:
 ```sh
-cd example/takeoff_land/
+cd example/takeoff_and_land/
 mkdir build && cd build
+cmake .. -G "Visual Studio 15 2017 Win64"
 cmake --build .
+.\Debug\takeoff_and_land.exe
 ```
 
-> **Note** The debug binary for the example is stored under \Debug folder.
+> **Note** The debug binary for the example is stored under **\Debug** folder.
 
 ### Running the Examples {#running_the_examples}
 
-On all platform you can then run the new executable (from the **\build** directory):
+On Linux/macOS you can then run the new executable (from the **\build** directory):
 ```sh
 ./takeoff_and_land
 ```
+
+For Windows you launch the file from the **\build\Debug\** directory:
+```sh
+.\Debug\takeoff_and_land.exe
+```
+
 
 > **Tip** Most examples will create a binary with the same name as the example. The name that is used
 > is specified in the **CMakeLists.txt** file as the first value in the call to `add_executable()`.
