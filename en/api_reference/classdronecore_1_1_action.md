@@ -119,7 +119,7 @@ Callback type for asynchronous [Action](classdronecore_1_1_action.md) calls.
 Possible results returned for commanded actions.
 
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Success. The action command was accepted by the vehicle. 
 <span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011a23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device is connected error. 

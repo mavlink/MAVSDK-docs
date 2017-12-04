@@ -21,5 +21,8 @@
   * [struct VelocityBodyYawspeed](structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md)
   * [struct VelocityNEDYaw](structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md)
 * [class Gimbal](classdronecore_1_1_gimbal.md)
+* [class FollowMe](classdronecore_1_1_follow_me.md)
+  * [struct Config](structdronecore_1_1_follow_me_1_1_config.md)
+  * [struct TargetLocation ](structdronecore_1_1_follow_me_1_1_target_location.md)
 * [class Logging](classdronecore_1_1_logging.md)
 * [class DevicePluginContainer](classdronecore_1_1_device_plugin_container.md)

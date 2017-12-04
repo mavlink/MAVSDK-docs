@@ -98,7 +98,7 @@ Callback type for asynchronous [Gimbal](classdronecore_1_1_gimbal.md) calls.
 Possible results returned for gimbal commands.
 
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6fad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Success. The gimbal command was accepted. 
 <span id="classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6fabb1ca97ec761fc37101737ba0aa2e7c5"></span> `ERROR` | Error. An error occured sending the command. 

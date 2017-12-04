@@ -116,7 +116,7 @@ Callback type for offboard requests.
 Results for offboard requests.
 
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572edad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device connected. 

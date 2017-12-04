@@ -16,13 +16,11 @@ For more info see [https://en.wikipedia.org/wiki/Euler_angles](https://en.wikipe
 ## Data Fields
 
 
- float [roll_deg](#structdronecore_1_1_telemetry_1_1_euler_angle_1a489b9c6636c3a8e392775e9892fc860d) - Roll angle in degrees, positive is banking to the right.
+float [roll_deg](#structdronecore_1_1_telemetry_1_1_euler_angle_1a489b9c6636c3a8e392775e9892fc860d)  - Roll angle in degrees, positive is banking to the right.
 
+float [pitch_deg](#structdronecore_1_1_telemetry_1_1_euler_angle_1a0798653095d534ead5fdb22e1988b334)  - Pitch angle in degrees, positive is pitching nose up.
 
- float [pitch_deg](#structdronecore_1_1_telemetry_1_1_euler_angle_1a0798653095d534ead5fdb22e1988b334) - Pitch angle in degrees, positive is pitching nose up.
-
-
- float [yaw_deg](#structdronecore_1_1_telemetry_1_1_euler_angle_1a6830955c231cfe2f9ea40f3b425f3149) - Yaw angle in degrees, positive is clock-wise seen from above.
+float [yaw_deg](#structdronecore_1_1_telemetry_1_1_euler_angle_1a6830955c231cfe2f9ea40f3b425f3149)  - Yaw angle in degrees, positive is clock-wise seen from above.
 
 
 ## Field Documentation

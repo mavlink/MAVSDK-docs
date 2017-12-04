@@ -31,7 +31,7 @@ const [Info](classdronecore_1_1_info.md) & | [operator=](#classdronecore_1_1_inf
 ## Static Public Attributes
 
 
-static const unsigned [GIT_HASH_STR_LEN](#classdronecore_1_1_info_1aae671143f80e43d2f431e7fe0d3774fd)= 17 - Length of git hash strings.
+static const unsigned [GIT_HASH_STR_LEN](#classdronecore_1_1_info_1aae671143f80e43d2f431e7fe0d3774fd) = 17 - Length of git hash strings.
 
 
 ## Constructor & Destructor Documentation
@@ -151,7 +151,7 @@ Equality operator (object is not copyable).
 ### GIT_HASH_STR_LEN {#classdronecore_1_1_info_1aae671143f80e43d2f431e7fe0d3774fd}
 
 ```cpp
-const unsigned dronecore::Info::GIT_HASH_STR_LEN= 17
+const unsigned dronecore::Info::GIT_HASH_STR_LEN
 ```
 
 

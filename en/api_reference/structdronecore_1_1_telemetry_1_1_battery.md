@@ -10,10 +10,9 @@
 ## Data Fields
 
 
- float [voltage_v](#structdronecore_1_1_telemetry_1_1_battery_1aa011a5e9134228e64d2d84f544be8450) - Voltage in volts.
+float [voltage_v](#structdronecore_1_1_telemetry_1_1_battery_1aa011a5e9134228e64d2d84f544be8450)  - Voltage in volts.
 
-
- float [remaining_percent](#structdronecore_1_1_telemetry_1_1_battery_1a8bdad4d3f77f6fc93fdcfe55b6a49ec0) - Estimated battery percentage remaining (range: 0.0 to 1.0).
+float [remaining_percent](#structdronecore_1_1_telemetry_1_1_battery_1a8bdad4d3f77f6fc93fdcfe55b6a49ec0)  - Estimated battery percentage remaining (range: 0.0 to 1.0).
 
 
 ## Field Documentation

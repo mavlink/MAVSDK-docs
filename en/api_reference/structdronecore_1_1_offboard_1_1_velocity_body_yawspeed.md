@@ -10,16 +10,13 @@ Type for velocity commands in body coordinates (forward, right, down and yaw ang
 ## Data Fields
 
 
- float [forward_m_s](#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a133a610b901d4146872f8a7b41699636) - Velocity forward in metres/second.
+float [forward_m_s](#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a133a610b901d4146872f8a7b41699636)  - Velocity forward in metres/second.
 
+float [right_m_s](#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1ae761aeeda4c129520cba653c02aeace1)  - Velocity right in metres/secon.d.
 
- float [right_m_s](#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1ae761aeeda4c129520cba653c02aeace1) - Velocity right in metres/secon.d.
+float [down_m_s](#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a8df8b128b12830c9736bd00e355f57a7)  - Velocity down in metres/second.
 
-
- float [down_m_s](#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a8df8b128b12830c9736bd00e355f57a7) - Velocity down in metres/second.
-
-
- float [yawspeed_deg_s](#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a6858130475964eb2d5c5a4236b7f1e31) - Yaw angular rate in degrees/second (positive for clock-wise looking from above).
+float [yawspeed_deg_s](#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a6858130475964eb2d5c5a4236b7f1e31)  - Yaw angular rate in degrees/second (positive for clock-wise looking from above).
 
 
 ## Field Documentation
