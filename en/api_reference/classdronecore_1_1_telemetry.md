@@ -110,7 +110,7 @@ const [Telemetry](classdronecore_1_1_telemetry.md) & | [operator=](#classdroneco
 
 Type | Name | Description
 ---: | --- | ---
-const char * | [flight_mode_str](#classdronecore_1_1_telemetry_1ada1428856268d876b22d5d4dabdea8bd) (FlightMode flight_mode) | Get a human readable English string for a flight mode.
+std::string | [flight_mode_str](#classdronecore_1_1_telemetry_1a84a33ee3ce1a95a97dd66c66d821b512) (FlightMode flight_mode) | Get a human readable English string for a flight mode.
 const char * | [result_str](#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a) (Result result) | Get human-readable English string for [Telemetry::Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc).
 
 
@@ -313,7 +313,7 @@ Callback type for health status updates.
 
 **Parameters**
 
-* **health_all_ok** - 
+* **health_all_ok** - If all health flags are ok.
 
 ### typedef rc_status_callback_t {#classdronecore_1_1_telemetry_1a7bbe1360883d5d1f124096e94576e4c3}
 
@@ -339,7 +339,7 @@ Flight modes.
 
 For more information about flight modes, check out [https://docs.px4.io/en/config/flight_mode.html](https://docs.px4.io/en/config/flight_mode.html).
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aa2baa69eafc7204f3bd8648eba580c489"></span> `READY` | Armed and ready to take off. 
 <span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aa8fabc74a4ed0781d663336cbf8c9c53d"></span> `TAKEOFF` | Taking off. 
@@ -348,6 +348,7 @@ For more information about flight modes, check out [https://docs.px4.io/en/confi
 <span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aa0d4a147a2cf60f0761f239bf3ee2745e"></span> `RETURN_TO_LAUNCH` | Returning to launch position (then landing). 
 <span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aa479a809c0b6eaaefd3b1df16f976df06"></span> `LAND` | Landing. 
 <span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aa6687898e86a83f245901f96d313930b1"></span> `OFFBOARD` | [Offboard](classdronecore_1_1_offboard.md) mode. 
+<span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aac4099cf323b2f571c3d4917db6b1a20d"></span> `FOLLOW_ME` | [FollowMe](classdronecore_1_1_follow_me.md) mode. 
 <span id="classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145aa696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Mode not known. 
 
 ### enum Result {#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc}
@@ -356,7 +357,7 @@ For more information about flight modes, check out [https://docs.px4.io/en/confi
 Results enum for telemetry requests.
 
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bcad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device connected. 
@@ -828,7 +829,7 @@ Returns true if the overall health is ok (synchronous).
 
 **Returns**
 
-&emsp;bool - true if all individual health flags are true.
+&emsp;bool - True if all health flags are OK.
 
 ### rc_status() {#classdronecore_1_1_telemetry_1a1f60325b7b4b31c5c02baafd025e7bf0}
 ```cpp
@@ -1059,9 +1060,9 @@ Equality operator (object is not copyable).
 
 &emsp;const [Telemetry](classdronecore_1_1_telemetry.md) & - 
 
-### flight_mode_str() {#classdronecore_1_1_telemetry_1ada1428856268d876b22d5d4dabdea8bd}
+### flight_mode_str() {#classdronecore_1_1_telemetry_1a84a33ee3ce1a95a97dd66c66d821b512}
 ```cpp
-static const char* dronecore::Telemetry::flight_mode_str(FlightMode flight_mode)
+static std::string dronecore::Telemetry::flight_mode_str(FlightMode flight_mode)
 ```
 
 
@@ -1074,7 +1075,7 @@ Get a human readable English string for a flight mode.
 
 **Returns**
 
-&emsp;const char * - 
+&emsp;std::string - 
 
 ### result_str() {#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a}
 ```cpp

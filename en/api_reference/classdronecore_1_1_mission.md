@@ -130,7 +130,7 @@ The mission is finished if current == total.
 Possible results returned for mission requests.
 
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
 <span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaabb1ca97ec761fc37101737ba0aa2e7c5"></span> `ERROR` | Error. 

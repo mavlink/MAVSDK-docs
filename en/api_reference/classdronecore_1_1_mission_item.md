@@ -87,7 +87,7 @@ Copy constructor (object is not copyable).
 Possible camera actions at a mission item.
 
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aa4130de26d3895fa5de9f46ddd558315c"></span> `TAKE_PHOTO` | Take single photo. 
 <span id="classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aa27eb71e5403792ee9072932ec93c113c"></span> `START_PHOTO_INTERVAL` | Start capturing photos at regular intervals - see [set_camera_photo_interval()](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a4ffe698b47c659aa8857725e94ad1f7c). 

@@ -99,7 +99,7 @@ Result type returned when adding a connection.
 
 **Note**: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you add a connection: [add_udp_connection()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8).
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Connection succeeded. 
 <span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Connection timed out. 

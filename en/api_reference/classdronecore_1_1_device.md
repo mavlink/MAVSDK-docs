@@ -27,6 +27,7 @@ Type | Name | Description
 | [Device](#classdronecore_1_1_device_1aa64ba685fe110fcb0a8e1b92156f144b) (DeviceImpl *impl) | Constructor (internal use only).
 | [~Device](#classdronecore_1_1_device_1a65c697e12eed30109074e18a9cfdc836) () | Destructor (internal use only).
 [Action](classdronecore_1_1_action.md) & | [action](#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192) () |
+[FollowMe](classdronecore_1_1_follow_me.md) & | [follow_me](#classdronecore_1_1_device_plugin_container_1ae13164c3bb59230c559341b8506c5e03) () |
 [Gimbal](classdronecore_1_1_gimbal.md) & | [gimbal](#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0) () |
 [Info](classdronecore_1_1_info.md) & | [info](#classdronecore_1_1_device_plugin_container_1a1509e3d7a469cbc3e33471138b1f4dc7) () |
 [Logging](classdronecore_1_1_logging.md) & | [logging](#classdronecore_1_1_device_plugin_container_1a0551f966021bdbd9e41700232c33d379) () |
@@ -76,6 +77,18 @@ Getter for [Action](classdronecore_1_1_action.md) plugin.
 **Returns**
 
 &emsp;[Action](classdronecore_1_1_action.md) & - a reference to the action plugin instance
+
+### follow_me() {#classdronecore_1_1_device_plugin_container_1ae13164c3bb59230c559341b8506c5e03}
+```cpp
+FollowMe& dronecore::DevicePluginContainer::follow_me()
+```
+
+
+Getter for [FollowMe](classdronecore_1_1_follow_me.md) plugin.
+
+**Returns**
+
+&emsp;[FollowMe](classdronecore_1_1_follow_me.md) & - a reference to the follow_me plugin instance
 
 ### gimbal() {#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0}
 ```cpp

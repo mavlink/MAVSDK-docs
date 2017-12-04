@@ -100,7 +100,7 @@ Callback type for logging requests.
 Results for logging requests.
 
 
- Value | Description
+Value | Description
 --- | ---
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device connected. 
