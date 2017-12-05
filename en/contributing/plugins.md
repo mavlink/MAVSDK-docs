@@ -68,6 +68,58 @@ The [standard plugins](https://github.com/dronecore/DroneCore/tree/{{ book.githu
 how to write plugin code, including how to send and process MAVLink messages.
 
 
+### Plugin Base Class
+
+All plugins should derive their implementation from `PluginImplBase` (**core/plugin_impl_base.h**) and override virtual methods as needed.
+
+
+### Plugin Enable/Disable
+
+DroneCore provides virtual methods that a plugin should implement allow DroneCore to better manage resources. For example, to prevent callback being created before the `Device` is instantiated, or messages being sent when a vehicle is not connected.
+
+Plugin authors should provide an implementation of the following `PluginImplBase` pure virtual methods:
+* [init()](#init)/[deinit()](#deinit): These are called when a device is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `Device` instantiated. This includes calls that set up callbacks.
+* [enable()](#enable)/[disable()](#disable): These are called when a vehicle is discovered or has timed out. They should be used for managing resources needed to access a connected device/vehicle (e.g. getting a parameter or changing a setting).
+
+The [external example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) provides a minimal implementation.
+
+Additional detail is provided for methods below.
+
+
+##### init() {#init}
+```cpp
+virtual void init() = 0
+```
+
+The `init()` method is called when a plugin is instantiated. This happens when a `Device` is constructed (this does not mean that the device actually exists and is connected - it might just be an empty dummy device).
+
+Plugins should do initialization steps with other parts of DroneCore at this state, e.g. set up callbacks with `_parent` (`DeviceImpl`).
+
+##### deinit() {#deinit}
+```cpp
+virtual void deinit() = 0
+```
+The `deinit()` method is called before a plugin is destroyed. This usually happens only at the very end, when a DroneCore instance is destroyed.
+
+Plugins should cleanup anything that was set up during `init()`.
+
+##### enable() {#enable}
+```cpp
+virtual void enable() = 0
+```
+The `enable()` method is called when a device is discovered (connected). Plugins should do all initialization/configuration steps that require a device to be connected. For example, setting/getting parameters.
+
+If any threads, call_every or timeouts are needed, they can be started in this method.
+
+##### disable() {#disable}
+```cpp
+virtual void disable() = 0
+```
+The `disable()` method is called when a device has timed out. The method is also called before `deinit()` is called to stop any devices with active plugins from communicating (in order to prevent warnings and errors because communication to the device no longer works).
+
+If any threads, call_every, or timeouts are running, they should be stopped in this method.
+
+
 ## Test Code {#testing}
 
 Tests must be created for all new and updated plugin code. 
