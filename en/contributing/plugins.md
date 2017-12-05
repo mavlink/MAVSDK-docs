@@ -68,16 +68,20 @@ The [standard plugins](https://github.com/dronecore/DroneCore/tree/{{ book.githu
 how to write plugin code, including how to send and process MAVLink messages.
 
 
+### Plugin Base Class
+
+All plugins should derive their implementation from `PluginImplBase` (**core/plugin_impl_base.h**) and override virtual methods as needed.
+
+
 ### Plugin Enable/Disable
 
 DroneCore provides virtual methods that a plugin should implement allow DroneCore to better manage resources. For example, to prevent callback being created before the `Device` is instantiated, or messages being sent when a vehicle is not connected.
 
-Plugin authors should provide an implementation class that derives from `PluginImplBase` (**core/plugin_impl_base.h**) and implements the following pure virtual methods:
+Plugin authors should provide an implementation of the following `PluginImplBase` pure virtual methods:
 * [init()](#init)/[deinit()](#deinit): These are called when a device is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `Device` instantiated. This includes calls that set up callbacks.
 * [enable()](#enable)/[disable()](#disable): These are called when a vehicle is discovered or has timed out. They should be used for managing resources needed to access a connected device/vehicle (e.g. getting a parameter or changing a setting).
 
-
-> **Note** The methods are currently optional. For a transitional period, runtime warnings will be displayed if the methods are not implemented.
+The [external example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) provides a minimal implementation.
 
 Additional detail is provided for methods below.
 
