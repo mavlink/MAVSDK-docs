@@ -39,8 +39,8 @@ auto curr_config = device.follow_me().get_config();
 
 To start and stop following a target, call [start()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a694749d43d527f85584df25a49b05ccf) and [stop()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a6394507b0fb96bceebe6efd17f0529ce), respectively.
 
-In between the calls, use [set_curr_target_location()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1afb8c24ed93421e904b0f528569c7699a) to set the target position for the vehicle to follow. 
-DroneCore automatically resends the last set position at the rate required by the autopilot, but this can be overridden by setting the location at another rate.
+After starting, use [set_curr_target_location()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1afb8c24ed93421e904b0f528569c7699a) to set the target position for the vehicle to follow. 
+DroneCore automatically resends the last set position at the rate required by the autopilot/flight mode (1 Hz).
 
 > **Note** The API does not automatically get the position of the device running the DroneCore. The client app must fetch this using OS-specific methods and pass them to the `FollowMe` class.
 
