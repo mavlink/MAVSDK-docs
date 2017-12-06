@@ -37,12 +37,11 @@ auto curr_config = device.follow_me().get_config();
 
 ## Following a Target
 
-To start and stop following a target, call [start()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a694749d43d527f85584df25a49b05ccf) and [stop()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a6394507b0fb96bceebe6efd17f0529ce), respectively.
+To start and stop following a target, call [start()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a694749d43d527f85584df25a49b05ccf) and [stop()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a6394507b0fb96bceebe6efd17f0529ce), respectively - `start()` puts the vehicle into [Follow-Me mode](https://docs.px4.io/en/flight_modes/follow_me.html) and `stop()` puts it into [Hold mode](https://docs.px4.io/en/flight_modes/hold.html).
 
-After starting, use [set_curr_target_location()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1afb8c24ed93421e904b0f528569c7699a) to set the target position for the vehicle to follow. 
-DroneCore automatically resends the last set position at the rate required by the autopilot/flight mode (1 Hz).
+Use [set_curr_target_location()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1afb8c24ed93421e904b0f528569c7699a) to set the target position(s) for the vehicle to follow (the app typically passes its host's current position, which it would obtain using OS-specific methods). This can be called at any time, but messages will only be sent once following is started. DroneCore automatically resends the last set position at the rate required by the autopilot/flight mode (1 Hz). 
 
-> **Note** The API does not automatically get the position of the device running the DroneCore. The client app must fetch this using OS-specific methods and pass them to the `FollowMe` class.
+> **Note** Typically you would call `set_curr_target_location()` before or shortly after starting the mode. If you call `start()` without having set any target location, or if the connection is broken, the vehicle will climb to minimum altitude (if needed) and remain in the mode waiting for messages. 
 
 ```cpp
 // Start following
@@ -52,9 +51,11 @@ if (follow_me_result != FollowMe::Result::SUCCESS) {
     std::cout << "Failed to start following:" << FollowMe::result_str(follow_me_result) << std::endl;
 }
 
+
 // ... Get target position from underlying platform or wherever and supply to vehicle 
 // Here we just show one point being set. Minimum values specified in the configuration are respected.
 follow_me.set_curr_target_location({ 47.39776569, 8.54553292, 9.0, 0.f, 0.f, 0.f });
+
 
 // Stop following
 follow_me_result = device.follow_me().stop();
@@ -64,7 +65,8 @@ if (follow_me_result != FollowMe::Result::SUCCESS) {
 }
 ```
 
-The last location that was set can be retrieved using [get_last_location()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1ab68273d5ace65ee953afa1797ae49e7c).
+The last location that was set can be retrieved using [get_last_location()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1ab68273d5ace65ee953afa1797ae49e7c). Before a target position is first set this API will return `Nan`.
+
 
 
 ## Further Information
