@@ -11,6 +11,7 @@
   * [Taking Off and Landing](guide/taking_off_landing.md)
   * [Missions](guide/missions.md)
   * [Offboard Control](guide/offboard.md)
+  * [Follow Me](guide/follow_me.md)
   * [VTOL Support](guide/vtol.md)
   * [Building C++ Apps](guide/toolchain.md)
   * [DroneCore Extensions](guide/dronecore_extensions.md)
