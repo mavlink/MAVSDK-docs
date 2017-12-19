@@ -52,9 +52,9 @@ if (follow_me_result != FollowMe::Result::SUCCESS) {
 }
 
 
-// ... Get target position from underlying platform or wherever and supply to vehicle 
-// Here we just show one point being set. Minimum values specified in the configuration are respected.
-follow_me.set_target_location({ 47.39776569, 8.54553292, 9.0, 0.f, 0.f, 0.f });
+// Get target position from underlying platform and supply to vehicle. 
+//   For this example we just show one point being set (instead of a stream).
+follow_me.set_target_location({ 47.39776569, 8.54553292, 0.f, 0.f, 0.f, 0.f });
 
 
 // Stop following
