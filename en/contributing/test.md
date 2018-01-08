@@ -41,7 +41,7 @@ cd wherever/DroneCore/
 AUTOSTART_SITL=1 make run_integration_tests
 ```
 
-To run the tests without the 3D viewer (gzclient), use:
+To run the tests without the 3D viewer (*gzclient*), use:
 
 ```
 AUTOSTART_SITL=1 HEADLESS=1 make run_integration_tests
@@ -68,7 +68,7 @@ make run_integration_tests
 Make sure you are connected to a vehicle and check the connection using e.g.:
 
 ```
-make && build/default/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
+make && build/default/dronecore-integrationtests --gtest_filter="SitlTest.TelemetryAsync"
 ```
 
 
@@ -76,15 +76,15 @@ make && build/default/integration_tests_runner --gtest_filter="SitlTest.Telemetr
 
 To list all integration tests:
 ```
-make && build/default/integration_tests_runner --gtest_list_tests
+make && build/default/dronecore-integrationtests --gtest_list_tests
 ```
 
 To run a single integration test:
 ```
-make && build/default/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
+make && build/default/dronecore-integrationtests --gtest_filter="SitlTest.TelemetryAsync"
 ```
 
 To run all telemetry tests:
 ```
-make && build/default/integration_tests_runner --gtest_filter="SitlTest.Telemetry*"
+make && build/default/dronecore-integrationtests --gtest_filter="SitlTest.Telemetry*"
 ```

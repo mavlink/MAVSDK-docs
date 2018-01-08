@@ -145,7 +145,7 @@ Unit tests are stored as separate files in the same directory as their associate
 Often they test the implementation (rather than the public API), 
 and hence are named with the suffix **_impl_test.cpp**.
 
-In order to include a test in the DroneCore unit test program (`unit_tests_runner`), 
+In order to include a test in the DroneCore unit test program (`dronecore-unittests`), 
 its file name must be added to the `$unittest_source_files` variable in the 
 plugin **CMakeLists.txt** file (you can add multiple files).
 
@@ -188,7 +188,7 @@ TEST(ExampleImpl, NoTest)
 
 ### Writing Integration Tests {#integration_tests}
 
-DroneCore provides the `integration_tests_runner` application for running the integration tests and 
+DroneCore provides the `dronecore-integrationtests` application for running the integration tests and 
 some helper code to make it easier to log tests and run them against the simulator.
 
 > **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
@@ -198,12 +198,12 @@ some helper code to make it easier to log tests and run them against the simulat
 
 #### Adding Integration Tests
 
-In order to run an integration test it needs to be added to the `integration_tests_runner` program.
+In order to run an integration test it needs to be added to the `dronecore-integrationtests` program.
 
 Integration tests for core functionality and plugins delivered by the project 
-are stored in [DroneCore/integration_tests](https://github.com/dronecore/DroneCore/tree/develop/integration_tests). 
+are stored in [DroneCore/integration_tests](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/integration_tests). 
 The files are added to the test program in that folder's 
-[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/master/integration_tests/CMakeLists.txt#L12) file:
+[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/CMakeLists.txt) file:
 
 ```cmake
 list(APPEND integration_tests
