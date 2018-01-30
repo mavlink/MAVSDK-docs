@@ -9,3 +9,4 @@ This topic explains how to set up a development environment and write a minimal 
 > The [Guide](../guide/README.md) explains how to write C++ DroneCore apps. A simple complete example can be found in [Takeoff and Land](../examples/takeoff_and_land.md).
 
 
+
