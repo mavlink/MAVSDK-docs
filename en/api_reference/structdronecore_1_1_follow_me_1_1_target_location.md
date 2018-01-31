@@ -4,7 +4,7 @@
 ----
 
 
-Type for geographical location of the target being followed. 
+Geographical location of the target in motion. 
 
 
 ## Data Fields
