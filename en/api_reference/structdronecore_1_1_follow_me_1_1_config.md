@@ -8,7 +8,7 @@
 
 
 **See Also:**
-- [get_config()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5), [set_config()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aedf746d4a0eebdaaddc3d1ba0aeb6720)
+- [get_config()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5), [set_config()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a4b92c3a042911dd9bdb378c686458a34)
 - [Parameter Reference](https://docs.px4.io/en/advanced_config/parameter_reference.html#follow-target) (PX4 User Guide)
 
 

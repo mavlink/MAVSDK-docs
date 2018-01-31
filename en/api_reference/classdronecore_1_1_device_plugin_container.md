@@ -16,14 +16,14 @@ The content of the [DevicePluginContainer](classdronecore_1_1_device_plugin_cont
 Type | Name | Description
 ---: | --- | ---
 | [DevicePluginContainer](#classdronecore_1_1_device_plugin_container_1af4c0f2facc64a99818737971f7f1cc77) (const DevicePluginContainer &)=delete | Copy constructor (object is not copyable).
-[Action](classdronecore_1_1_action.md) & | [action](#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192) () |
-[FollowMe](classdronecore_1_1_follow_me.md) & | [follow_me](#classdronecore_1_1_device_plugin_container_1ae13164c3bb59230c559341b8506c5e03) () |
-[Gimbal](classdronecore_1_1_gimbal.md) & | [gimbal](#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0) () |
 [Info](classdronecore_1_1_info.md) & | [info](#classdronecore_1_1_device_plugin_container_1a1509e3d7a469cbc3e33471138b1f4dc7) () |
 [Logging](classdronecore_1_1_logging.md) & | [logging](#classdronecore_1_1_device_plugin_container_1a0551f966021bdbd9e41700232c33d379) () |
-[Mission](classdronecore_1_1_mission.md) & | [mission](#classdronecore_1_1_device_plugin_container_1a8a05778326d0ef4c74146bc42fdcb52d) () |
-[Offboard](classdronecore_1_1_offboard.md) & | [offboard](#classdronecore_1_1_device_plugin_container_1a63193bd25273bbda48665e12e012f478) () |
 [Telemetry](classdronecore_1_1_telemetry.md) & | [telemetry](#classdronecore_1_1_device_plugin_container_1a9b119348d0f5195c9b0919fbe6196b14) () |
+[FollowMe](classdronecore_1_1_follow_me.md) & | [follow_me](#classdronecore_1_1_device_plugin_container_1ae13164c3bb59230c559341b8506c5e03) () |
+[Action](classdronecore_1_1_action.md) & | [action](#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192) () |
+[Gimbal](classdronecore_1_1_gimbal.md) & | [gimbal](#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0) () |
+[Offboard](classdronecore_1_1_offboard.md) & | [offboard](#classdronecore_1_1_device_plugin_container_1a63193bd25273bbda48665e12e012f478) () |
+[Mission](classdronecore_1_1_mission.md) & | [mission](#classdronecore_1_1_device_plugin_container_1a8a05778326d0ef4c74146bc42fdcb52d) () |
 const [DevicePluginContainer](classdronecore_1_1_device_plugin_container.md) & | [operator=](#classdronecore_1_1_device_plugin_container_1abb90ffceec0873823fb78067d8d6e385) (const DevicePluginContainer &)=delete | Equality operator (object is not copyable).
 
 
@@ -45,42 +45,6 @@ Copy constructor (object is not copyable).
 
 ## Member Function Documentation
 
-
-### action() {#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192}
-```cpp
-Action& dronecore::DevicePluginContainer::action()
-```
-
-
-Getter for [Action](classdronecore_1_1_action.md) plugin.
-
-**Returns**
-
-&emsp;[Action](classdronecore_1_1_action.md) & - a reference to the action plugin instance
-
-### follow_me() {#classdronecore_1_1_device_plugin_container_1ae13164c3bb59230c559341b8506c5e03}
-```cpp
-FollowMe& dronecore::DevicePluginContainer::follow_me()
-```
-
-
-Getter for [FollowMe](classdronecore_1_1_follow_me.md) plugin.
-
-**Returns**
-
-&emsp;[FollowMe](classdronecore_1_1_follow_me.md) & - a reference to the follow_me plugin instance
-
-### gimbal() {#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0}
-```cpp
-Gimbal& dronecore::DevicePluginContainer::gimbal()
-```
-
-
-Getter for [Gimbal](classdronecore_1_1_gimbal.md) plugin.
-
-**Returns**
-
-&emsp;[Gimbal](classdronecore_1_1_gimbal.md) & - a reference to the gimbal plugin instance
 
 ### info() {#classdronecore_1_1_device_plugin_container_1a1509e3d7a469cbc3e33471138b1f4dc7}
 ```cpp
@@ -106,17 +70,53 @@ Getter for [Logging](classdronecore_1_1_logging.md) plugin.
 
 &emsp;[Logging](classdronecore_1_1_logging.md) & - a reference to the logging plugin instance
 
-### mission() {#classdronecore_1_1_device_plugin_container_1a8a05778326d0ef4c74146bc42fdcb52d}
+### telemetry() {#classdronecore_1_1_device_plugin_container_1a9b119348d0f5195c9b0919fbe6196b14}
 ```cpp
-Mission& dronecore::DevicePluginContainer::mission()
+Telemetry& dronecore::DevicePluginContainer::telemetry()
 ```
 
 
-Getter for [Mission](classdronecore_1_1_mission.md) plugin.
+Getter for [Telemetry](classdronecore_1_1_telemetry.md) plugin.
 
 **Returns**
 
-&emsp;[Mission](classdronecore_1_1_mission.md) & - a reference to the mission plugin instance
+&emsp;[Telemetry](classdronecore_1_1_telemetry.md) & - a reference to the telemetry plugin instance
+
+### follow_me() {#classdronecore_1_1_device_plugin_container_1ae13164c3bb59230c559341b8506c5e03}
+```cpp
+FollowMe& dronecore::DevicePluginContainer::follow_me()
+```
+
+
+Getter for [FollowMe](classdronecore_1_1_follow_me.md) plugin.
+
+**Returns**
+
+&emsp;[FollowMe](classdronecore_1_1_follow_me.md) & - a reference to the follow_me plugin instance
+
+### action() {#classdronecore_1_1_device_plugin_container_1aea48bd55b1ace227ebb56690794c2192}
+```cpp
+Action& dronecore::DevicePluginContainer::action()
+```
+
+
+Getter for [Action](classdronecore_1_1_action.md) plugin.
+
+**Returns**
+
+&emsp;[Action](classdronecore_1_1_action.md) & - a reference to the action plugin instance
+
+### gimbal() {#classdronecore_1_1_device_plugin_container_1a2fce9f439c565af9a8510c5746c728f0}
+```cpp
+Gimbal& dronecore::DevicePluginContainer::gimbal()
+```
+
+
+Getter for [Gimbal](classdronecore_1_1_gimbal.md) plugin.
+
+**Returns**
+
+&emsp;[Gimbal](classdronecore_1_1_gimbal.md) & - a reference to the gimbal plugin instance
 
 ### offboard() {#classdronecore_1_1_device_plugin_container_1a63193bd25273bbda48665e12e012f478}
 ```cpp
@@ -130,17 +130,17 @@ Getter for [Offboard](classdronecore_1_1_offboard.md) plugin.
 
 &emsp;[Offboard](classdronecore_1_1_offboard.md) & - a reference to the offboard plugin instance
 
-### telemetry() {#classdronecore_1_1_device_plugin_container_1a9b119348d0f5195c9b0919fbe6196b14}
+### mission() {#classdronecore_1_1_device_plugin_container_1a8a05778326d0ef4c74146bc42fdcb52d}
 ```cpp
-Telemetry& dronecore::DevicePluginContainer::telemetry()
+Mission& dronecore::DevicePluginContainer::mission()
 ```
 
 
-Getter for [Telemetry](classdronecore_1_1_telemetry.md) plugin.
+Getter for [Mission](classdronecore_1_1_mission.md) plugin.
 
 **Returns**
 
-&emsp;[Telemetry](classdronecore_1_1_telemetry.md) & - a reference to the telemetry plugin instance
+&emsp;[Mission](classdronecore_1_1_mission.md) & - a reference to the mission plugin instance
 
 ### operator=() {#classdronecore_1_1_device_plugin_container_1abb90ffceec0873823fb78067d8d6e385}
 ```cpp
