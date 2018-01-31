@@ -8,7 +8,7 @@
 
 
 **See Also:**
-- [get_config()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5), [set_config()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a4b92c3a042911dd9bdb378c686458a34)
+- [get_config()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5), [set_config()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aedf746d4a0eebdaaddc3d1ba0aeb6720)
 - [Parameter Reference](https://docs.px4.io/en/advanced_config/parameter_reference.html#follow-target) (PX4 User Guide)
 
 
@@ -24,7 +24,7 @@ enum [FollowDirection](#structdronecore_1_1_follow_me_1_1_config_1a048f9f74309c1
 
 float [min_height_m](#structdronecore_1_1_follow_me_1_1_config_1a62c100d4dc35e3731f3b5d62fb5baad9) = 8.0f - Min follow height, in meters.
 
-float [follow_dist_m](#structdronecore_1_1_follow_me_1_1_config_1ab0e453d6b18cf602548cd63636b103ea) = 8.0f - Horizontal follow distance to target, in meters.
+float [follow_distance_m](#structdronecore_1_1_follow_me_1_1_config_1a933c0af8cf3df4bca0a34176f09c4fb8) = 8.0f - Horizontal follow distance to target, in meters.
 
 [FollowDirection](structdronecore_1_1_follow_me_1_1_config.md#structdronecore_1_1_follow_me_1_1_config_1a048f9f74309c17027c37eadc4dcb2c1a) [follow_direction](#structdronecore_1_1_follow_me_1_1_config_1a920f7acca4b5e717c9ead1bb89f9d538) = [FollowDirection::BEHIND](structdronecore_1_1_follow_me_1_1_config.md#structdronecore_1_1_follow_me_1_1_config_1a048f9f74309c17027c37eadc4dcb2c1aaef9c2aaa3392278b1fe2fa46124350a9) - Relative position of the following vehicle.
 
@@ -147,10 +147,10 @@ float dronecore::FollowMe::Config::min_height_m
 Min follow height, in meters.
 
 
-### follow_dist_m {#structdronecore_1_1_follow_me_1_1_config_1ab0e453d6b18cf602548cd63636b103ea}
+### follow_distance_m {#structdronecore_1_1_follow_me_1_1_config_1a933c0af8cf3df4bca0a34176f09c4fb8}
 
 ```cpp
-float dronecore::FollowMe::Config::follow_dist_m
+float dronecore::FollowMe::Config::follow_distance_m
 ```
 
 

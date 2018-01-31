@@ -30,7 +30,7 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
    sudo apt-get update -y
    sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev libtinyxml2-dev doxygen -y
    ```
-   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile).
+   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/dronecore/DroneCore/tree/develop/docker).
 
 1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork) and update the submodules:
    ```sh
@@ -56,7 +56,7 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
 
 To build the library in Windows, you need:
 
-- [Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017): Download and install (only the "Visual C+ Build Tools" are needed from installer).
+- [Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#58852): Download and install (only the "Visual C+ Build Tools" are needed from installer).
 - [cmake](https://cmake.org/download/): Download the installer and run it. Make sure to tick "add to PATH" during the installation.
 - [curl](https://curl.haxx.se/): Download the source, extract and build it, and make the directory of the header files available as described below.
 
