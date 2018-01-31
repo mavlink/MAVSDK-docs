@@ -45,7 +45,7 @@ void | [start_async](#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f9
 void | [stop_async](#classdronecore_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a) (result_callback_t callback) | Stop offboard control (asynchronous).
 bool | [is_active](#classdronecore_1_1_offboard_1a44d9284ef03c8cf6f37a77b2f3cadaf0) () const | Check if offboard control is active.
 void | [set_velocity_ned](#classdronecore_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) (VelocityNEDYaw velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
-void | [set_velocity_body](#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc) (VelocityBodyYawspeed velocity_body_yawspeed) | Set the velocity body coordinates coordinates and yaw angular rate.
+void | [set_velocity_body](#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc) (VelocityBodyYawspeed velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
 const [Offboard](classdronecore_1_1_offboard.md) & | [operator=](#classdronecore_1_1_offboard_1aa6bf966e606cdd361364791d06aca977) (const Offboard &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -219,7 +219,7 @@ void dronecore::Offboard::set_velocity_body(VelocityBodyYawspeed velocity_body_y
 ```
 
 
-Set the velocity body coordinates coordinates and yaw angular rate.
+Set the velocity body coordinates and yaw angular rate.
 
 
 **Parameters**

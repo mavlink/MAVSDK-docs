@@ -99,7 +99,7 @@ void | [camera_attitude_euler_angle_async](#classdronecore_1_1_telemetry_1a35b05
 void | [ground_speed_ned_async](#classdronecore_1_1_telemetry_1a954e95659c2890e0277664910fce9c34) (ground_speed_ned_callback_t callback) | Subscribe to ground speed (NED) updates (asynchronous).
 void | [gps_info_async](#classdronecore_1_1_telemetry_1afa05293d3d370ef90c5a291a22036a6e) (gps_info_callback_t callback) | Subscribe to GPS information updates (asynchronous).
 void | [battery_async](#classdronecore_1_1_telemetry_1a58bf2de73fbd609460398157dc8ffdd5) (battery_callback_t callback) | Subscribe to battery status updates (asynchronous).
-void | [flight_mode_async](#classdronecore_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a) (flight_mode_callback_t callback) | Subscribe to battery status updates (asynchronous).
+void | [flight_mode_async](#classdronecore_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a) (flight_mode_callback_t callback) | Subscribe to flight mode updates (asynchronous).
 void | [health_async](#classdronecore_1_1_telemetry_1a69675f46ba188d07d2e7edc110fbd2e9) (health_callback_t callback) | Subscribe to health status updates (asynchronous).
 void | [health_all_ok_async](#classdronecore_1_1_telemetry_1a83b384cd04b2ed17db805cfad8bafab5) (health_all_ok_callback_t callback) | Subscribe to overall health status updates (asynchronous).
 void | [rc_status_async](#classdronecore_1_1_telemetry_1a8f49537ae4c176a3e952247d60e82cd9) (rc_status_callback_t callback) | Subscribe to RC status updates (asynchronous).
@@ -994,7 +994,7 @@ void dronecore::Telemetry::flight_mode_async(flight_mode_callback_t callback)
 ```
 
 
-Subscribe to battery status updates (asynchronous).
+Subscribe to flight mode updates (asynchronous).
 
 Note that flight mode updates are limited to 1Hz.
 
