@@ -27,10 +27,22 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
    ```
    > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile).
 
-1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork) and update the submodules:
+1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork): 
    ```sh
    git clone https://github.com/dronecore/DroneCore.git
    cd DroneCore
+   ```
+1. Checkout the release/branch you want to build (the `develop` branch is checked out by default).
+   * Latest stable build (`master`):
+     ```
+     git checkout master
+     ```
+   * Head revision with latest features (`develop`):
+     ```
+     git checkout develop
+     ```
+1. Update the submodules:
+   ```sh
    git submodule update --init --recursive
    ```
 1. Build the (debug) C++ library by calling:
@@ -61,10 +73,22 @@ To build the library in Windows, you need:
 > **Note** The instructions below assume you downloaded [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
 To build the *DroneCore* C++ Library on Windows:
-1. Clone the DroneCore repository (or your fork) and update the submodules:
+1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork): 
    ```sh
    git clone https://github.com/dronecore/DroneCore.git
    cd DroneCore
+   ```
+1. Checkout the release/branch you want to build (the `develop` branch is checked out by default).
+   * Latest stable build (`master`):
+     ```
+     git checkout master
+     ```
+   * Head revision with latest features (`develop`):
+     ```
+     git checkout develop
+     ```
+1. Update the submodules:
+   ```sh
    git submodule update --init --recursive
    ```
 1. Download the [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) source and extract it to the root of your C drive.
