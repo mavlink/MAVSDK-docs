@@ -23,7 +23,7 @@ std::function< void([Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gim
 
 Type | Name | Description
 ---: | --- | ---
-| [Gimbal](#classdronecore_1_1_gimbal_1a14f51547abcaabeb212ec04439e497be) (GimbalImpl *impl) | Constructor (internal use only).
+| [Gimbal](#classdronecore_1_1_gimbal_1a2a5ad56ba40eaacc0261f82ed49407e6) (Device *device) | Constructor (internal use only).
 | [~Gimbal](#classdronecore_1_1_gimbal_1a4f8b2a6cf5a7347a474f8e47618ad838) () | Destructor (internal use only).
 | [Gimbal](#classdronecore_1_1_gimbal_1a82637c62da14ae39db96724d4273cad4) (const Gimbal &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6f) | [set_pitch_and_yaw](#classdronecore_1_1_gimbal_1ac8ac49d29f11b2107da6b043bb57b54e) (float pitch_deg, float yaw_deg) | Set gimbal pitch and yaw angles (synchronous).
@@ -41,9 +41,9 @@ const char * | [result_str](#classdronecore_1_1_gimbal_1ad60c5378cc7d160be67432f
 ## Constructor & Destructor Documentation
 
 
-### Gimbal() {#classdronecore_1_1_gimbal_1a14f51547abcaabeb212ec04439e497be}
+### Gimbal() {#classdronecore_1_1_gimbal_1a2a5ad56ba40eaacc0261f82ed49407e6}
 ```cpp
-dronecore::Gimbal::Gimbal(GimbalImpl *impl)
+dronecore::Gimbal::Gimbal(Device *device)
 ```
 
 
@@ -52,7 +52,7 @@ Constructor (internal use only).
 
 **Parameters**
 
-* GimbalImpl * **impl** - Private internal implementation.
+* [Device](classdronecore_1_1_device.md) * **device** - 
 
 ### ~Gimbal() {#classdronecore_1_1_gimbal_1a4f8b2a6cf5a7347a474f8e47618ad838}
 ```cpp

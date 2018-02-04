@@ -46,7 +46,6 @@
     * [struct Config](api_reference/structdronecore_1_1_follow_me_1_1_config.md)
     * [struct TargetLocation ](api_reference/structdronecore_1_1_follow_me_1_1_target_location.md)
   * [class Logging](api_reference/classdronecore_1_1_logging.md)
-  * [class DevicePluginContainer](api_reference/classdronecore_1_1_device_plugin_container.md)
 * [Contributing](contributing/README.md)
   * [Building Source](contributing/build.md)
   * [Testing](contributing/test.md)

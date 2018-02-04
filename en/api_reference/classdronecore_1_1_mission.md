@@ -22,7 +22,7 @@ std::function< void(int current, int total)> [progress_callback_t](#classdroneco
 
 Type | Name | Description
 ---: | --- | ---
-| [Mission](#classdronecore_1_1_mission_1ae37622b5640ab3a5042b33c540b31db8) (MissionImpl *impl) | Constructor (internal use only).
+| [Mission](#classdronecore_1_1_mission_1a3835376b0fbf186ad572dbfad3bcc4e9) (Device *device) | Constructor (internal use only).
 | [~Mission](#classdronecore_1_1_mission_1a395b8c121630aa8a5dd3d48f95290659) () | Destructor (internal use only).
 | [Mission](#classdronecore_1_1_mission_1a4947f79b7dd71e66bca64e5bbb0b3377) (const Mission &)=delete | Copy constructor (object is not copyable).
 void | [upload_mission_async](#classdronecore_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) (const std::vector< std::shared_ptr< MissionItem >> &mission_items, result_callback_t callback) | Uploads a vector of mission items to the device (asynchronous).
@@ -47,9 +47,9 @@ const char * | [result_str](#classdronecore_1_1_mission_1a0eabb2fe4db664c552d281
 ## Constructor & Destructor Documentation
 
 
-### Mission() {#classdronecore_1_1_mission_1ae37622b5640ab3a5042b33c540b31db8}
+### Mission() {#classdronecore_1_1_mission_1a3835376b0fbf186ad572dbfad3bcc4e9}
 ```cpp
-dronecore::Mission::Mission(MissionImpl *impl)
+dronecore::Mission::Mission(Device *device)
 ```
 
 
@@ -58,7 +58,7 @@ Constructor (internal use only).
 
 **Parameters**
 
-* MissionImpl * **impl** - 
+* [Device](classdronecore_1_1_device.md) * **device** - 
 
 ### ~Mission() {#classdronecore_1_1_mission_1a395b8c121630aa8a5dd3d48f95290659}
 ```cpp
