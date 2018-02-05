@@ -29,6 +29,13 @@ The following code assumes that you already have included DroneCore (`#include <
 Device &device = dc.device(); 
 ```
 
+The code also assumes that you have defined `mission`, a shared pointer to an instance of the `Mission` class associated with the device (see [Using Plugins](../guide/using_plugins.md)):
+```
+#include <dronecore/mission.h>
+auto mission = std::make_shared<Mission>(&device);
+```
+
+
 ## Defining a Mission
 
 A mission must be defined as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects as shown below:
@@ -119,7 +126,7 @@ The example below shows how this is done, using promises to wait on the result.
 {
     auto prom = std::make_shared<std::promise<Mission::Result>>();
     auto future_result = prom->get_future();
-    device.mission().upload_mission_async(
+    mission->upload_mission_async(
     mission_items, [prom](Mission::Result result) {
         prom->set_value(result);
     });
@@ -143,7 +150,7 @@ The code fragment below shows how this is done, using promises to wait on the re
 {
     auto prom = std::make_shared<std::promise<Mission::Result>>();
     auto future_result = prom->get_future();
-    device.mission().start_mission_async(
+    mission->start_mission_async(
     [prom](Mission::Result result) {
         prom->set_value(result);
     });
@@ -165,7 +172,7 @@ To pause a mission use [Mission::pause_mission_async()](../api_reference/classdr
     auto future_result = prom->get_future();
 
     std::cout << "Pausing mission..." << std::endl;
-    device.mission().pause_mission_async(
+    mission->pause_mission_async(
     [prom](Mission::Result result) {
         prom->set_value(result);
     });
@@ -186,7 +193,7 @@ Asynchronously monitor progress using [Mission::subscribe_progress()](../api_ref
 The code fragment just takes a lambda function that reports the current status. 
 
 ```cpp
-device.mission().subscribe_progress( [](int current, int total) {
+mission->subscribe_progress( [](int current, int total) {
        std::cout << "Mission status update: " << current << " / " << total << std::endl;
     });
 ```
@@ -231,7 +238,7 @@ The code fragment below shows how to download a mission:
     auto prom = std::make_shared<std::promise<PromiseResult>>();
     auto future = prom->get_future();
 
-    device.mission().download_mission_async(
+    mission->download_mission_async(
         [prom](Mission::Result result, std::vector<std::shared_ptr<MissionItem>> mission_items_downloaded) {
             PromiseResult promise_result {};
             promise_result.mission_result = result;

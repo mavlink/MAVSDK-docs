@@ -6,24 +6,35 @@ The [Info](../api_reference/classdronecore_1_1_info.md) class is used to get dev
 hardware may return garbage values (for example, the simulator provides garbage values for the vendor 
 firmware semantic version).
 
+## Preconditions
+
+The following code assumes that you already have included DroneCore (`#include <dronecore/dronecore.h>`) and that there is a [connection to a device](../guide/connections.md) obtained as shown below:
+```cpp
+Device &device = dc.device(); 
+```
+
+The code also assumes that you have defined `info`, a shared pointer to an instance of the `Info` class associated with the device (see [Using Plugins](../guide/using_plugins.md)):
+```cpp
+#include <dronecore/info.h>
+auto info = std::make_shared<Info>(&device);
+```
+
+## Query Device Information
+
 The code below shows how to query the UUID, version, and product, information and print it to the console:
 
 ```cpp
-// Get Device to query (the code assumes we have already found at least one vehicle and we 
-// want to query the first detected vehicle).
-Device &device = dc.device();
-
 // Get device UUID
-std::cout << " UUID: " << device.info().uuid() << std::endl;
+std::cout << " UUID: " << info->uuid() << std::endl;
 
 // Wait until version/firmware information has been populated from the vehicle
-while (!device.info().is_complete()) {
+while (!info->is_complete()) {
     std::cout << "Waiting for Version information to populate from device." << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 // Get the device Version struct
-const Info::Version &deviceVersion =  device.info().get_version();
+const Info::Version &deviceVersion =  info->get_version();
 
 // Print out the vehicle version information.
 std::cout << "  flight_sw_major: " << deviceVersion.flight_sw_major<< std::endl
@@ -39,7 +50,7 @@ std::cout << "  flight_sw_major: " << deviceVersion.flight_sw_major<< std::endl
           << "  os_sw_git_hash: " << deviceVersion.os_sw_git_hash<< std::endl;
 
 // Get the device Product struct
-const Info::Product &deviceProduct =  device.info().get_product();
+const Info::Product &deviceProduct =  info->get_product();
 
 // Print out the vehicle product information.
 std::cout << "  vendor_id: " << deviceProduct.vendor_id<< std::endl

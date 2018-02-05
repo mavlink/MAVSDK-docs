@@ -22,7 +22,7 @@ The sections below show how you can set up the file for when DroneCore is [insta
 
 ### DroneCore Installed System-wide {#dronecore_installed_system}
 
-A "template" **CMakeLists.txt** is shown below. Most of file is boilerplate - the only things you need to change are *your_project_name*, *your_executable_name* and *your_source_file*. 
+A "template" **CMakeLists.txt** is shown below. Most of file is boilerplate - the main things you need to change are *your_project_name*, *your_executable_name* and *your_source_file*. You should also make sure that any plugins used by your app are listed in the `target_link_libraries` section.
 
 ```cmake
 cmake_minimum_required(VERSION 2.8.12)
@@ -35,6 +35,8 @@ if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
 else()
     add_definitions("-std=c++11 -WX -W2")
+    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
+    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
 
 # Specify your app's executable name, and list of source files used to create it.
@@ -46,7 +48,9 @@ add_executable(your_executable_name
 # Specify your app's executable name and a list of linked libraries
 target_link_libraries(your_executable_name
     dronecore  #All apps link against dronecore library
-    # ... any other linked libraries
+    dronecore_action  # If action plugin used by app ...
+    dronecore_telemetry If telemetry plugin used by app ...
+    # ... Any other linked libraries
 )
 ```
 
