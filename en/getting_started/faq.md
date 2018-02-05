@@ -8,13 +8,13 @@ The aim was to have an API in a language which is cross-platform and has many la
 
 Yes, DroneCore is designed to support multiple vehicles. A vehicle is called a device in DroneCore.
 
-A device needs to have a specific mavlink system ID but can consist of multiple components with different component IDs. An example would be a drone with a gimbal and a camera talking mavlink with the same system ID but different component IDs.
+A device needs to have a specific MAVLink system ID but can consist of multiple components with different component IDs. An example would be a drone with a gimbal and a camera talking MAVLink with the same system ID but different component IDs.
 
 The limit is in theory 255 vehicles for system IDs ranging from 1 to 255.
 
 ### What sorts of vehicles does DroneCore support?
 
-The DroneCore API is designed for interacting with *aircraft* (copters, fixed wing and VTOL).
+The DroneCore API is designed for interacting with *aircraft*. It has primarily been tested for use with copters, but also has basic support for fixed wing and [VTOL](../guide/vtol.md).
 
 The API may "work" with ground based vehicle or other type, but some methods will not make sense, and this use-case is unsupported and untested.
 
@@ -24,7 +24,7 @@ The architecture has stubs for serial, TCP, and UDP connections. However, only U
 
 ### Why is libCURL a dependency?
 
-libCURL will be required to download the camera definition file which is referenced in [CAMERA_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION). It might also come in handy whenever any other REST resources are required.
+libCURL will be required to download the camera definition file which is referenced in [CAMERA_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION). It might also come in handy whenever any other REST resources are required. 
 
 ### How are plugins added?
 
