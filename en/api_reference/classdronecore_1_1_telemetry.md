@@ -52,7 +52,7 @@ std::function< void([RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) 
 
 Type | Name | Description
 ---: | --- | ---
-| [Telemetry](#classdronecore_1_1_telemetry_1ad0cb6dd62c12af390870f8b5cb5bde55) (Device *device) | Constructor (internal use only).
+| [Telemetry](#classdronecore_1_1_telemetry_1ad0cb6dd62c12af390870f8b5cb5bde55) (Device *device) | Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
 | [~Telemetry](#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095) () | Destructor (internal use only).
 | [Telemetry](#classdronecore_1_1_telemetry_1a91a3319d9040bd89d241be3d8b2e9a5e) (const Telemetry &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_position](#classdronecore_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da) (double rate_hz) | Set rate of position updates (synchronous).
@@ -123,12 +123,20 @@ dronecore::Telemetry::Telemetry(Device *device)
 ```
 
 
-Constructor (internal use only).
+Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
 
+The plugin is typically created as shown below: 
+
+```cpp
+auto telemetry = std::make_shared<Telemetry>(&device);
+```
+
+
+The plugin is owned by the device (and will be destroyed along with it).
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - 
+* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
 
 ### ~Telemetry() {#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095}
 ```cpp

@@ -19,7 +19,7 @@ struct [Version](structdronecore_1_1_info_1_1_version.md)
 
 Type | Name | Description
 ---: | --- | ---
-| [Info](#classdronecore_1_1_info_1a10ea70679e1b2d7e43bc9944fbe18aaf) (Device *device) | Constructor (internal use only).
+| [Info](#classdronecore_1_1_info_1a10ea70679e1b2d7e43bc9944fbe18aaf) (Device *device) | Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
 | [~Info](#classdronecore_1_1_info_1a39e608070500b5fca0b4415cdb13f75f) () | Destructor (internal use only).
 | [Info](#classdronecore_1_1_info_1af0902805d75577d1195363eda21d7bb1) (const Info &)=delete | Copy Constructor (object is not copyable).
 uint64_t | [uuid](#classdronecore_1_1_info_1a49c7dd5f1a369c8296f0c3a2443bc031) () const | Gets the UUID of the device.
@@ -43,12 +43,20 @@ dronecore::Info::Info(Device *device)
 ```
 
 
-Constructor (internal use only).
+Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
 
+The plugin is typically created as shown below: 
+
+```cpp
+auto info = std::make_shared<Info>(&device);
+```
+
+
+The plugin is owned by the device (and will be destroyed along with it).
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - 
+* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
 
 ### ~Info() {#classdronecore_1_1_info_1a39e608070500b5fca0b4415cdb13f75f}
 ```cpp
