@@ -6,21 +6,46 @@ Most of the methods have both synchronous and asynchronous versions. The methods
 
 > **Note** The implication is that you may need to monitor for completion of actions!
 
-## Preconditions
 
-The following code assumes that you already have included DroneCore (`#include <dronecore/dronecore.h>`) and that there is a [connection to a device](../guide/connections.md) obtained as shown below:
-```cpp
-Device &device = dc.device(); 
-```
 
-The code also assumes that you have defined `action` and `telemetry`, shared pointers to instances of the respective classes that are associated with the device (see [Using Plugins](../guide/using_plugins.md)):
-The code also assumes that you have included the `Action` and `Telemetry` headers and created an instance of the classes for the device (see [Using Plugins](../guide/using_plugins.md)):
-```cpp
-#include <dronecore/action.h>
-#include <dronecore/telemetry.h>
-auto action = std::make_shared<Action>(&device);
-auto telemetry = std::make_shared<Telemetry>(&device);
-```
+## Create the Plugin
+
+> **Tip** `Action` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+
+The main steps are:
+
+1. Link the plugin library into your application. Do this by adding `dronecore_action` to the `target_link_libraries` section of the app's *cmake* build definition file
+
+   ```cmake
+   target_link_libraries(your_application_name
+     dronecore
+     ...
+     dronecore_action
+     ...
+   )
+   ```
+1. [Create a connection](../guide/connections.md) to a `device`. For example (basic code without error checking):
+   ```
+   #include <dronecore/dronecore.h>
+   DroneCore dc;
+   DroneCore::ConnectionResult conn_result = dc.add_udp_connection();
+   // Wait for the device to connect via heartbeat
+   while (!dc.is_connected()) {
+      sleep_for(seconds(1));
+   }
+   // Device got discovered.
+   Device &device = dc.device();
+   ```
+1. Create a shared pointer to an instance of `Action` instantiated with the `device`: 
+   ```
+   #include <dronecore/action.h>
+   auto action = std::make_shared<Action>(&device);
+   ```
+
+The `action` pointer can then used to access the plugin API (as shown in the following sections). 
+
+
+> **Note** Some of the sections below additionally assume you have created a `Telemetry` instance that can be accessed using `telemetry`.
 
 
 ## Taking Off

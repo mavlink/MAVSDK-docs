@@ -4,13 +4,13 @@ This topic provides general/overview information about how DroneCore is used, de
 
 ## Object Management
 
-[DroneCore](../api_reference/classdronecore_1_1_drone_core.md) is the main library class. Applications must create a `DroneCore` object and destroy it during application shut down. The object can be created as an automatic variable that is cleaned up when it goes out of scope, or you can dynamically create/destroy the object using `new`/`delete`.
+[DroneCore](../api_reference/classdronecore_1_1_drone_core.md) is the main library class. Applications must create a `DroneCore` object and destroy it during application shut down. The object is usually created as an automatic variable that is cleaned up when it goes out of scope (you can also dynamically create/destroy the object using `new`/`delete`).
 
 API consumers use [DroneCore](../api_reference/classdronecore_1_1_drone_core.md) to discover and connect to [Device](../api_reference/classdronecore_1_1_device.md) objects (vehicles/cameras etc.). 
 
-Access to drone information and control objects are provided [by plugins](../guide/using_plugins.md). Plugin objects are created and associated with a *specific* `Device` object (a plugin instance must be created for every device that needs it). 
+Access to drone information and control objects are provided [by plugins](../guide/using_plugins.md) (e.g. Telemetry, Action, Mission etc.). Plugin objects are instantiated with a *specific* `Device` object (a plugin instance must be created for every device that needs it). 
 
-Plugin objects are owned by their associated `Device`, which is in turned owned by `DroneCore`. All objects are automatically cleaned up when the parent `DroneCore` object is destroyed.
+Plugin objects are created as shared pointers that will be destroyed when all associated handles are out of scope. All objects are automatically cleaned up when the parent `DroneCore` object is destroyed.
 
 
 ## Error Handling

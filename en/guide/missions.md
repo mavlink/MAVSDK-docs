@@ -22,18 +22,41 @@ The supported set is:
 > DroneCore provides some omitted functionality through the [Action](../guide/taking_off_landing.md) API.
 
 
-## Preconditions
+## Create the Plugin
 
-The following code assumes that you already have included DroneCore (`#include <dronecore/dronecore.h>`) and the standard library (`#include <functional>`) and that there is a [connection to a device](../guide/connections.md) obtained as shown below:
-```cpp
-Device &device = dc.device(); 
-```
+> **Tip** `Mission` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
 
-The code also assumes that you have defined `mission`, a shared pointer to an instance of the `Mission` class associated with the device (see [Using Plugins](../guide/using_plugins.md)):
-```
-#include <dronecore/mission.h>
-auto mission = std::make_shared<Mission>(&device);
-```
+The main steps are:
+
+1. Link the plugin library into your application. Do this by adding `dronecore_mission` to the `target_link_libraries` section of the app's *cmake* build definition file
+
+   ```cmake
+   target_link_libraries(your_application_name
+     dronecore
+     ...
+     dronecore_mission
+     ...
+   )
+   ```
+1. [Create a connection](../guide/connections.md) to a `device`. For example (basic code without error checking):
+   ```
+   #include <dronecore/dronecore.h>
+   DroneCore dc;
+   DroneCore::ConnectionResult conn_result = dc.add_udp_connection();
+   // Wait for the device to connect via heartbeat
+   while (!dc.is_connected()) {
+      sleep_for(seconds(1));
+   }
+   // Device got discovered.
+   Device &device = dc.device();
+   ```
+1. Create a shared pointer to an instance of `Mission` instantiated with the `device`: 
+   ```
+   #include <dronecore/mission.h>
+   auto mission = std::make_shared<Mission>(&device);
+   ```
+
+The `mission` pointer can then used to access the plugin API (as shown in the following sections).
 
 
 ## Defining a Mission

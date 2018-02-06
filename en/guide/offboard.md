@@ -8,19 +8,41 @@ for controlling the vehicle using velocity and yaw setpoints. It is useful for t
 Client code must specify a setpoint before starting *Offboard mode*. DroneCore automatically resends setpoints at 20Hz (PX4 requires that setpoints are minimally resent at 2Hz). If more precise control is required, clients can call the setpoint methods at whatever rate is required.
 
 
-## Preconditions
+## Create the Plugin
 
-The following code assumes that you already have included DroneCore (`#include <dronecore/dronecore.h>`) 
-and that there is a [connection](../guide/connections.md) to a `device` obtained as shown below:
-```
-Device &device = dc.device();
-```
+> **Tip** `Offboard` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
 
-The code also assumes that you have defined `offboard`, a shared pointer to an instance of the `Offboard` class associated with the device (see [Using Plugins](../guide/using_plugins.md)):
-```
-#include <dronecore/offboard.h>
-auto offboard = std::make_shared<Offboard>(&device);
-```
+The main steps are:
+
+1. Link the plugin library into your application. Do this by adding `dronecore_offboard` to the `target_link_libraries` section of the app's *cmake* build definition file
+
+   ```cmake
+   target_link_libraries(your_application_name
+     dronecore
+     ...
+     dronecore_offboard
+     ...
+   )
+   ```
+1. [Create a connection](../guide/connections.md) to a `device`. For example (basic code without error checking):
+   ```
+   #include <dronecore/dronecore.h>
+   DroneCore dc;
+   DroneCore::ConnectionResult conn_result = dc.add_udp_connection();
+   // Wait for the device to connect via heartbeat
+   while (!dc.is_connected()) {
+      sleep_for(seconds(1));
+   }
+   // Device got discovered.
+   Device &device = dc.device();
+   ```
+1. Create a shared pointer to an instance of `Offboard` instantiated with the `device`: 
+   ```
+   #include <dronecore/offboard.h>
+   auto offboard = std::make_shared<Offboard>(&device);
+   ```
+
+The `offboard` pointer can then used to access the plugin API (as shown in the following sections).
 
 ## Starting/Stopping Offboard Mode
 
