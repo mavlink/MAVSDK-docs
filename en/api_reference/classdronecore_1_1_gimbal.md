@@ -46,8 +46,7 @@ const char * | [result_str](#classdronecore_1_1_gimbal_1ad60c5378cc7d160be67432f
 dronecore::Gimbal::Gimbal(Device *device)
 ```
 
-
-Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
 
@@ -56,11 +55,9 @@ auto gimbal = std::make_shared<Gimbal>(&device);
 ```
 
 
-The plugin is owned by the device (and will be destroyed along with it).
-
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
 
 ### ~Gimbal() {#classdronecore_1_1_gimbal_1a4f8b2a6cf5a7347a474f8e47618ad838}
 ```cpp

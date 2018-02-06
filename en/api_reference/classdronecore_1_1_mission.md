@@ -52,8 +52,7 @@ const char * | [result_str](#classdronecore_1_1_mission_1a0eabb2fe4db664c552d281
 dronecore::Mission::Mission(Device *device)
 ```
 
-
-Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
 
@@ -62,11 +61,9 @@ auto mission = std::make_shared<Mission>(&device);
 ```
 
 
-The plugin is owned by the device (and will be destroyed along with it).
-
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
 
 ### ~Mission() {#classdronecore_1_1_mission_1a395b8c121630aa8a5dd3d48f95290659}
 ```cpp

@@ -64,8 +64,7 @@ const char * | [result_str](#classdronecore_1_1_offboard_1a8eb7467e48fe354d34bc4
 dronecore::Offboard::Offboard(Device *device)
 ```
 
-
-Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
 
@@ -73,12 +72,9 @@ The plugin is typically created as shown below:
 auto offboard = std::make_shared<Offboard>(&device);
 ```
 
-
-The plugin is owned by the device (and will be destroyed along with it).
-
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
 
 ### ~Offboard() {#classdronecore_1_1_offboard_1a7cb4eff36c37fed1c6d973aa41b059b8}
 ```cpp

@@ -67,8 +67,7 @@ const char * | [result_str](#classdronecore_1_1_action_1a1fefb474ee36cb15fe31b42
 dronecore::Action::Action(Device *device)
 ```
 
-
-Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
 
@@ -77,11 +76,9 @@ auto action = std::make_shared<Action>(&device);
 ```
 
 
-The plugin is owned by the device (and will be destroyed along with it).
-
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
 
 ### ~Action() {#classdronecore_1_1_action_1a6bb0301fecf66d75ca3b27bda25af7f2}
 ```cpp

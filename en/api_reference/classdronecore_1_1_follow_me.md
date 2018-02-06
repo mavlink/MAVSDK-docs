@@ -61,8 +61,7 @@ std::string | [result_str](#classdronecore_1_1_follow_me_1a50d848b1c7b00e40343b8
 dronecore::FollowMe::FollowMe(Device *device)
 ```
 
-
-Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
 
@@ -71,11 +70,9 @@ auto follow_me = std::make_shared<FollowMe>(&device);
 ```
 
 
-The plugin is owned by the device (and will be destroyed along with it).
-
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
 
 ### ~FollowMe() {#classdronecore_1_1_follow_me_1a66ffe3c9652bc08a2766f211592316ac}
 ```cpp

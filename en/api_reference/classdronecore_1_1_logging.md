@@ -48,8 +48,7 @@ const char * | [result_str](#classdronecore_1_1_logging_1adc5a7560f1a27996fc05f2
 dronecore::Logging::Logging(Device *device)
 ```
 
-
-Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
 
@@ -58,11 +57,9 @@ auto logger = std::make_shared<Logging>(&device);
 ```
 
 
-The plugin is owned by the device (and will be destroyed along with it).
-
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
 
 ### ~Logging() {#classdronecore_1_1_logging_1a49e75d77f900ba5ef59a960ae9b8dc55}
 ```cpp

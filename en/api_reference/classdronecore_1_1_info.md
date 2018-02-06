@@ -42,8 +42,7 @@ static const unsigned [GIT_HASH_STR_LEN](#classdronecore_1_1_info_1aae671143f80e
 dronecore::Info::Info(Device *device)
 ```
 
-
-Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
 
@@ -52,11 +51,9 @@ auto info = std::make_shared<Info>(&device);
 ```
 
 
-The plugin is owned by the device (and will be destroyed along with it).
-
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
 
 ### ~Info() {#classdronecore_1_1_info_1a39e608070500b5fca0b4415cdb13f75f}
 ```cpp

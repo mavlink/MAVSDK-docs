@@ -122,8 +122,7 @@ const char * | [result_str](#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a
 dronecore::Telemetry::Telemetry(Device *device)
 ```
 
-
-Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
 
@@ -131,12 +130,9 @@ The plugin is typically created as shown below:
 auto telemetry = std::make_shared<Telemetry>(&device);
 ```
 
-
-The plugin is owned by the device (and will be destroyed along with it).
-
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
 
 ### ~Telemetry() {#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095}
 ```cpp
