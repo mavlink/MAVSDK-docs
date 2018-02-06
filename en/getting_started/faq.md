@@ -18,6 +18,14 @@ The DroneCore API is designed for interacting with *aircraft* (copters, fixed wi
 
 The API may "work" with ground based vehicle or other type, but some methods will not make sense, and this use-case is unsupported and untested.
 
+### Does DroneCore support indoor use?
+
+Indoor use is not supported (at time of writing).
+
+DroneCore requires that connected vehicles have a position estimate. Currently this means that GPS is required. 
+In future we also expect PX4 to support local positioning methods (optical flow or visual-inertial odometry), at which point indoor use will also become possible. 
+
+
 ### Are serial connections supported?
 
 The architecture has stubs for serial, TCP, and UDP connections. However, only UDP connections are implemented right now.
