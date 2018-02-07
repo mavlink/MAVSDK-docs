@@ -209,7 +209,7 @@ make ios_simulator install
 
 ## Building in Docker
 
-You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly).
+You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). There are containers based on Fedora and Ubuntu (it doesn't matter which you use).
 
 The main steps are:
 
@@ -220,17 +220,22 @@ The main steps are:
    cd DroneCore
    git submodule update --init --recursive
    ```
-1. Enter the following command in your host's terminal:
-   ```sh
-   docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore bash
-   ```
+1. Enter either of the following command in your host's terminal:
+   * Fedora
+     ```sh
+     docker run --rm -it -v $HOME/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore-fedora-27 bash
+     ```
+   * Ubuntu
+     ```sh
+     docker run --rm -it -v $HOME/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore-ubuntu-16.04 bash
+     ```
    > **Note** The `-v` flag maps a directory on your host (left side) to a path in
    the container (right side). Above you need to specify the left-side path to the DroneCore repository on your host. The container path must be set as above.
 
-   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side).  You need to specify the left-side path to the DroneCore repository on your host and the container path must be set as above.
+   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side).  You need to specify the left-side path to the DroneCore repository on your host and the container path must be set as above. 
    > The `--rm` automatically cleans up leftover docker containers after you exit the docker container.
 
-   Docker will download an image from [Docker Hub](https://hub.docker.com/r/dronecore/dronecore/), use it to create a container, and then open a bash prompt:
+   Docker will download an image from [Docker Hub](https://hub.docker.com/u/dronecore/), use it to create a container, and then open a bash prompt:
    ```
    root*81ebe14d0c1a:/home/docker1000/src/Dronecore#
    ```
@@ -264,16 +269,22 @@ docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000
 
 ### Building the Docker Image
 
-The approach above downloads a container image ([dronecore/dronecore](https://hub.docker.com/r/dronecore/dronecore/)) from Docker Hub.
+The approach above downloads a container image based on Ubuntu 16.04 ([dronecore/dronecore-ubuntu-16.04](https://hub.docker.com/r/dronecore/dronecore-ubuntu-16.04/)) or Fedora 27 ([dronecore/dronecore-fedora-27](https://hub.docker.com/r/dronecore/dronecore-fedora-27/)) from Docker Hub.
 
-You can also build the image yourself using the [Dockerfile](https://github.com/dronecore/DroneCore/blob/master/Dockerfile) in the root of the DroneCore repository (this is based on Ubuntu 16.04). The image can be used in the same way as the one from Docker Hub.
+You can also build the images yourself using the files in [DroneCore/docker](https://github.com/dronecore/DroneCore/tree/master/docker). The image can be used in the same way as the one from Docker Hub.
 
 1. Open a command prompt/terminal in the root of the DroneCore repository.
-1. Build the image as shown:
-   ```sh
-   docker build . -t my_image    # 'my_image' can then be used to refer to the image
-   ```
-1. Open a bash prompt using this image:
+1. Build the images as shown:
+   * Fedora 
+     ```sh
+     docker build -f docker/Dockerfile-Fedora-27 -t my_image .
+     ```
+   * Ubuntu 
+     ```sh
+     docker build -f docker/Dockerfile-Ubuntu-16.04 -t my_image .
+     ```
+   `my_image` can then be used to refer to the image in later steps.
+1. Open a bash prompt using the newly created image:
    ```sh
    docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw my_image bash
    ```
