@@ -1,4 +1,4 @@
-# Take-off and Landing (and Other Actions)
+# Actions (Take-off, Landing, Arming, etc)
 
 DroneCore provides the [Action](../api_reference/classdronecore_1_1_action.md) class for commanding the vehicle to arm, takeoff, land, return home and land, disarm, kill and transition between VTOL modes. 
 
@@ -6,8 +6,46 @@ Most of the methods have both synchronous and asynchronous versions. The methods
 
 > **Note** The implication is that you may need to monitor for completion of actions!
 
-<span></span>
-> **Note** All the code fragments below refer to the object `device`, which is a [connected device/vehicle](../guide/connections.md).
+
+
+## Create the Plugin
+
+> **Tip** `Action` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+
+The main steps are:
+
+1. Link the plugin library into your application. Do this by adding `dronecore_action` to the `target_link_libraries` section of the app's *cmake* build definition file
+
+   ```cmake
+   target_link_libraries(your_application_name
+     dronecore
+     ...
+     dronecore_action
+     ...
+   )
+   ```
+1. [Create a connection](../guide/connections.md) to a `device`. For example (basic code without error checking):
+   ```
+   #include <dronecore/dronecore.h>
+   DroneCore dc;
+   DroneCore::ConnectionResult conn_result = dc.add_udp_connection();
+   // Wait for the device to connect via heartbeat
+   while (!dc.is_connected()) {
+      sleep_for(seconds(1));
+   }
+   // Device got discovered.
+   Device &device = dc.device();
+   ```
+1. Create a shared pointer to an instance of `Action` instantiated with the `device`: 
+   ```
+   #include <dronecore/action.h>
+   auto action = std::make_shared<Action>(&device);
+   ```
+
+The `action` pointer can then used to access the plugin API (as shown in the following sections). 
+
+
+> **Note** Some of the sections below additionally assume you have created a `Telemetry` instance that can be accessed using `telemetry`.
 
 
 ## Taking Off
@@ -27,7 +65,7 @@ The code fragment below shows very simple code to synchronously poll for health 
 
 ```cpp
 // Wait until health is OK and vehicle is ready to arm
-while (device.telemetry().health_all_ok() != true) {
+while (telemetry->health_all_ok() != true) {
     std::cout << "Vehicle not ready to arm ..." << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
@@ -37,7 +75,7 @@ The code fragment below performs the same task, but additionally exits the app i
 
 ```cpp
 // Exit if calibration is required
-Telemetry::Health check_health = device.telemetry().health();
+Telemetry::Health check_health = telemetry->health();
 bool calibration_required = false;
 if (!check_health.gyrometer_calibration_ok) {
     std::cout << ERROR_CONSOLE_TEXT << "Gyro requires calibration." << NORMAL_CONSOLE_TEXT << std::endl;
@@ -61,9 +99,9 @@ if (calibration_required) {
 
 
 // Check if ready to arm (reporting status)
-while (device.telemetry().health_all_ok() != true) {
+while (telemetry->health_all_ok() != true) {
     std::cout << ERROR_CONSOLE_TEXT << "Vehicle not ready to arm. Waiting on:" << NORMAL_CONSOLE_TEXT << std::endl;
-    Telemetry::Health current_health = device.telemetry().health();
+    Telemetry::Health current_health = telemetry->health();
     if (!current_health.global_position_ok) {
         std::cout << ERROR_CONSOLE_TEXT << "  - GPS fix." << NORMAL_CONSOLE_TEXT << std::endl;
     }
@@ -86,7 +124,7 @@ Once the vehicle is ready, use the following synchronous code to arm:
 ```cpp
 // Arm vehicle
 std::cout << "Arming..." << std::endl;
-const Action::Result arm_result = device.action().arm();
+const Action::Result arm_result = action->arm();
 
 if (arm_result != Action::Result::SUCCESS) {
     std::cout << "Arming failed:" 
@@ -103,7 +141,7 @@ if (arm_result != Action::Result::SUCCESS) {
 
 The default/current takeoff altitude can be queried using [get_takeoff_altitude_m()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a1888deebcc48d906c3c19473596e6fec). This target can be changed at any point before takeoff using [set_takeoff_altitude()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1adc6f7f6668d3681afa4d820095154c9d). The code fragment below shows how to set the takeoff altitude to 3 metres:
 ```cpp
-device.action().set_takeoff_altitude(3.0);
+action->set_takeoff_altitude(3.0);
 ```
 
 ### Takeoff Action
@@ -112,7 +150,7 @@ Once the vehicle is armed it can be commanded to take off. The code below uses t
 ```cpp
 // Command Take off
 std::cout << "Taking off..." << std::endl;
-const Action::Result takeoff_result = device.action().takeoff();
+const Action::Result takeoff_result = action->takeoff();
 if (takeoff_result != Action::Result::SUCCESS) {
     std::cout << "Takeoff failed:" << Action::result_str(
         takeoff_result) << std::endl;
@@ -127,10 +165,10 @@ If the command succeeds the vehicle will takeoff, and hover at the takeoff altit
 The code below checks for takeoff completion by polling the current altitude until the target altitude is reached:
 
 ```cpp
-float target_alt=device.action().get_takeoff_altitude_m();
+float target_alt=action->get_takeoff_altitude_m();
 float current_position=0;
 while (current_position<target_alt) {
-    current_position = device.telemetry().position().relative_altitude_m;
+    current_position = telemetry->position().relative_altitude_m;
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 // Reached target altitude - continue with next instruction.
@@ -146,7 +184,7 @@ The best way to land the vehicle at the current location is to use the [land()](
 The code below shows how to use the land action.
 
 ```cpp
-const Action::Result land_result = device.action().land();
+const Action::Result land_result = action->land();
 if (land_result != Action::Result::SUCCESS) {
     //Land failed, so exit (in reality might try a return to land or kill.)
     return 1;
@@ -157,7 +195,7 @@ The vehicle should land and then automatically disarm. If you want to monitor th
 app based on the armed state, as shown below.
 
 ```cpp
-while (device.telemetry().armed()) {
+while (telemetry->armed()) {
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 std::cout << "Disarmed, exiting." << std::endl;
@@ -171,7 +209,7 @@ std::cout << "Disarmed, exiting." << std::endl;
 The code below shows how to use the synchronous method:
 
 ```cpp
-const Action::Result rtl_result = device.action().return_to_launch();
+const Action::Result rtl_result = telemetry->return_to_launch();
 if (rtl_result != Action::Result::SUCCESS) {
     //RTL failed, so exit (in reality might send kill command.)
     return 1;
@@ -214,7 +252,7 @@ The code fragment below shows how to call the synchronous action to transition t
 and to print the result of the call (the other synchronous method is used in the same way). 
 
 ```cpp
-const Action::Result fw_result = device.action().transition_to_fixedwing();
+const Action::Result fw_result = action->transition_to_fixedwing();
 
 if (fw_result != Action::Result::SUCCESS) {
     std::cout << "Transition to fixed wing failed: " 

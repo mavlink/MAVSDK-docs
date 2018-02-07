@@ -119,6 +119,8 @@ if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
 else()
     add_definitions("-std=c++11 -WX -W2")
+    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
+    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
 
 add_executable(fly_mission
@@ -127,6 +129,9 @@ add_executable(fly_mission
 
 target_link_libraries(fly_mission
     dronecore
+    dronecore_action
+    dronecore_mission
+    dronecore_telemetry
 )
 ```
 
@@ -139,11 +144,14 @@ target_link_libraries(fly_mission
 // Author: Julian Oes <julian@oes.ch>, Shakthi Prashanth <shakthi.prashanth.m@intel.com>
 //
 
+#include <dronecore/action.h>
 #include <dronecore/dronecore.h>
-#include <iostream>
+#include <dronecore/mission.h>
+#include <dronecore/telemetry.h>
 #include <functional>
-#include <memory>
 #include <future>
+#include <iostream>
+#include <memory>
 
 
 using namespace dronecore;
@@ -193,8 +201,11 @@ int main(int /*argc*/, char ** /*argv*/)
     // If there were multiple, we could specify it with:
     // dc.device(uint64_t uuid);
     Device &device = dc.device();
+    std::shared_ptr<Action> action = std::make_shared<Action>(&device);
+    std::shared_ptr<Mission> mission = std::make_shared<Mission>(&device);
+    std::shared_ptr<Telemetry> telemetry = std::make_shared<Telemetry>(&device);
 
-    while (!device.telemetry().health_all_ok()) {
+    while (!telemetry->health_all_ok()) {
         std::cout << "Waiting for device to be ready" << std::endl;
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
@@ -247,11 +258,11 @@ int main(int /*argc*/, char ** /*argv*/)
 
     {
         std::cout << "Uploading mission..." << std::endl;
-        // We only have the send_mission function asynchronous for now, so we wrap it using
+        // We only have the upload_mission function asynchronous for now, so we wrap it using
         // std::future.
         auto prom = std::make_shared<std::promise<Mission::Result>>();
         auto future_result = prom->get_future();
-        device.mission().send_mission_async(
+        mission->upload_mission_async(
         mission_items, [prom](Mission::Result result) {
             prom->set_value(result);
         });
@@ -265,7 +276,7 @@ int main(int /*argc*/, char ** /*argv*/)
     }
 
     std::cout << "Arming..." << std::endl;
-    const Action::Result arm_result = device.action().arm();
+    const Action::Result arm_result = action->arm();
     if (arm_result != Action::Result::SUCCESS) {
         std::cout << "Arming failed (" << Action::result_str(arm_result) << "), exiting." << std::endl;
         return 1;
@@ -275,7 +286,7 @@ int main(int /*argc*/, char ** /*argv*/)
 
     std::atomic<bool> want_to_pause {false};
     // Before starting the mission, we want to be sure to subscribe to the mission progress.
-    device.mission().subscribe_progress(
+    mission->subscribe_progress(
     [&want_to_pause](int current, int total) {
         std::cout << "Mission status update: " << current << " / " << total << std::endl;
 
@@ -290,7 +301,7 @@ int main(int /*argc*/, char ** /*argv*/)
         std::cout << "Starting mission." << std::endl;
         auto prom = std::make_shared<std::promise<Mission::Result>>();
         auto future_result = prom->get_future();
-        device.mission().start_mission_async(
+        mission->start_mission_async(
         [prom](Mission::Result result) {
             prom->set_value(result);
             std::cout << "Started mission." << std::endl;
@@ -312,7 +323,7 @@ int main(int /*argc*/, char ** /*argv*/)
         auto future_result = prom->get_future();
 
         std::cout << "Pausing mission..." << std::endl;
-        device.mission().pause_mission_async(
+        mission->pause_mission_async(
         [prom](Mission::Result result) {
             prom->set_value(result);
         });
@@ -334,7 +345,7 @@ int main(int /*argc*/, char ** /*argv*/)
         auto future_result = prom->get_future();
 
         std::cout << "Resuming mission..." << std::endl;
-        device.mission().start_mission_async(
+        mission->start_mission_async(
         [prom](Mission::Result result) {
             prom->set_value(result);
         });
@@ -347,14 +358,14 @@ int main(int /*argc*/, char ** /*argv*/)
         }
     }
 
-    while (!device.mission().mission_finished()) {
+    while (!mission->mission_finished()) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
     {
         // We are done, and can do RTL to go home.
         std::cout << "Commanding RTL..." << std::endl;
-        const Action::Result result = device.action().return_to_launch();
+        const Action::Result result = action->return_to_launch();
         if (result != Action::Result::SUCCESS) {
             std::cout << "Failed to command RTL (" << Action::result_str(result) << ")" << std::endl;
         } else {
@@ -365,7 +376,7 @@ int main(int /*argc*/, char ** /*argv*/)
     // We need to wait a bit, otherwise the armed state might not be correct yet.
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
-    while (device.telemetry().armed()) {
+    while (telemetry->armed()) {
         // Wait until we're done.
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }

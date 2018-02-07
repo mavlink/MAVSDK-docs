@@ -8,6 +8,42 @@ The API is used to supply the position(s) for the [target](../api_reference/stru
 - Windows: [Windows.Devices.Geolocation](https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Geolocation)
 
 
+## Create the Plugin
+
+> **Tip** `FollowMe` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+
+The main steps are:
+
+1. Link the plugin library into your application. Do this by adding `dronecore_follow_me` to the `target_link_libraries` section of the app's *cmake* build definition file
+
+   ```cmake
+   target_link_libraries(your_application_name
+     dronecore
+     ...
+     dronecore_follow_me
+     ...
+   )
+   ```
+1. [Create a connection](../guide/connections.md) to a `device`. For example (basic code without error checking):
+   ```
+   #include <dronecore/dronecore.h>
+   DroneCore dc;
+   DroneCore::ConnectionResult conn_result = dc.add_udp_connection();
+   // Wait for the device to connect via heartbeat
+   while (!dc.is_connected()) {
+      sleep_for(seconds(1));
+   }
+   // Device got discovered.
+   Device &device = dc.device();
+   ```
+1. Create a shared pointer to an instance of `FollowMe` instantiated with the `device`: 
+   ```
+   #include <dronecore/follow_me.h>
+   auto follow_me = std::make_shared<FollowMe >(&device);
+   ```
+
+The `follow_me` pointer can then used to access the plugin API (as shown in the following sections).
+
 ## Set the Follow Configuration
 
 By default the vehicle will follow directly behind the target at a height and distance of 8 metres. 
@@ -23,7 +59,7 @@ config.responsiveness = 0.2f;  // Higher responsiveness
 config.follow_direction = FollowMe::Config::FollowDirection::FRONT;  //Follow from front-centre
 
 // Apply configuration
-FollowMe::Result config_result = device.follow_me().set_config(config);
+FollowMe::Result config_result = follow_me->set_config(config);
 if (config_result != FollowMe::Result::SUCCESS) {
     // handle config-setting failure (in this case print error)
     std::cout << "Setting configuration failed:" << FollowMe::result_str(config_result) << std::endl;
@@ -32,7 +68,7 @@ if (config_result != FollowMe::Result::SUCCESS) {
 
 The [get_config()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5) method is provided to get the current configuration:
 ```cpp
-auto curr_config = device.follow_me().get_config();
+auto curr_config = follow_me->get_config();
 ```
 
 ## Following a Target
@@ -45,7 +81,7 @@ Use [set_target_location()](../api_reference/classdronecore_1_1_follow_me.md#cla
 
 ```cpp
 // Start following
-FollowMe::Result follow_me_result = device.follow_me().start();
+FollowMe::Result follow_me_result = follow_me->start();
 if (follow_me_result != FollowMe::Result::SUCCESS) {
     // handle start failure (in this case print error)
     std::cout << "Failed to start following:" << FollowMe::result_str(follow_me_result) << std::endl;
@@ -54,11 +90,11 @@ if (follow_me_result != FollowMe::Result::SUCCESS) {
 
 // Get target position from underlying platform and supply to vehicle. 
 //   For this example we just show one point being set (instead of a stream).
-follow_me.set_target_location({ 47.39776569, 8.54553292, 0.f, 0.f, 0.f, 0.f });
+follow_me->set_target_location({ 47.39776569, 8.54553292, 0.f, 0.f, 0.f, 0.f });
 
 
 // Stop following
-follow_me_result = device.follow_me().stop();
+follow_me_result = follow_me->stop();
 if (follow_me_result != FollowMe::Result::SUCCESS) {
     // handle stop failure (in this case print error)
     std::cout << "Failed to stop following:" << FollowMe::result_str(follow_me_result) << std::endl;

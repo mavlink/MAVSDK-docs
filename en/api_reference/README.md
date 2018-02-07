@@ -25,4 +25,3 @@
   * [struct Config](structdronecore_1_1_follow_me_1_1_config.md)
   * [struct TargetLocation ](structdronecore_1_1_follow_me_1_1_target_location.md)
 * [class Logging](classdronecore_1_1_logging.md)
-* [class DevicePluginContainer](classdronecore_1_1_device_plugin_container.md)

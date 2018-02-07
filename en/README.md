@@ -64,7 +64,6 @@ The most important classes are:
 - [Gimbal](/api_reference/classdronecore_1_1_gimbal.md): Control a gimbal.
 - [FollowMe](/api_reference/classdronecore_1_1_follow_me.md): Drone tracks a position supplied by DroneCore.
 - [Logging](/api_reference/classdronecore_1_1_logging.md): Data logging and streaming from the vehicle.
-- [include/device_plugin_container.h.in](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/include/device_plugin_container.h.in): Auto-generated file that is required for DroneCore plugin development - see [DevicePluginContainer](/api_reference/classdronecore_1_1_device_plugin_container.md).
 
 
 ## Getting Started
@@ -78,8 +77,8 @@ Developers who want to contribute to the API will need to build the C++ library 
 
 This guide contains information and examples showing how to use DroneCore. If you have specific questions that are not answered by the documentation, these can be raised on:
 
-* [Slack DroneCore Channel](https://px4.slack.com/messages/C68J8H32A) (get a [Slack login here](http://slack.px4.io))
 * [Discuss board](http://discuss.px4.io/c/dronecore)
+* [Slack DroneCore Channel](https://px4.slack.com/messages/C68J8H32A) (get a [Slack login here](http://slack.px4.io))
 
 Use Github for bug reports/enhancement requests:
 
