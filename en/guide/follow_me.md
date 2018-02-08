@@ -109,5 +109,6 @@ The last location that was set can be retrieved using [get_last_location()](../a
 
 Additional information/examples for the Follow Me API are linked below:
 
+* [Example:Follow Me Mode](../examples/follow_me.md)
 * Integration tests:
   * [follow_me.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/follow_me.cpp)
