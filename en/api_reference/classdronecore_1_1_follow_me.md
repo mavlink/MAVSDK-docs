@@ -33,7 +33,7 @@ enum [Result](#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) 
 
 Type | Name | Description
 ---: | --- | ---
-| [FollowMe](#classdronecore_1_1_follow_me_1a2d3cbcee491efa09392e6333ae77926c) (Device *device) | Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+| [FollowMe](#classdronecore_1_1_follow_me_1a2d3cbcee491efa09392e6333ae77926c) (Device *device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 | [~FollowMe](#classdronecore_1_1_follow_me_1a66ffe3c9652bc08a2766f211592316ac) () | Destructor (internal use only).
 | [FollowMe](#classdronecore_1_1_follow_me_1a54589c314eeba131aca1c4c56d4b15e3) (const FollowMe &)=delete | Copy constructor (object is not copyable).
 const [Config](structdronecore_1_1_follow_me_1_1_config.md) & | [get_config](#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5) () const | Gets current [FollowMe](classdronecore_1_1_follow_me.md) configuration.
@@ -61,6 +61,7 @@ std::string | [result_str](#classdronecore_1_1_follow_me_1a50d848b1c7b00e40343b8
 dronecore::FollowMe::FollowMe(Device *device)
 ```
 
+
 Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
@@ -68,7 +69,6 @@ The plugin is typically created as shown below:
 ```cpp
 auto follow_me = std::make_shared<FollowMe>(&device);
 ```
-
 
 **Parameters**
 

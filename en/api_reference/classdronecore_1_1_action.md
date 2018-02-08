@@ -26,7 +26,7 @@ std::function< void([Result](classdronecore_1_1_action.md#classdronecore_1_1_act
 
 Type | Name | Description
 ---: | --- | ---
-| [Action](#classdronecore_1_1_action_1a9fd3af84d59048b3c787ed0c5644ed07) (Device *device) | Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+| [Action](#classdronecore_1_1_action_1a9fd3af84d59048b3c787ed0c5644ed07) (Device *device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 | [~Action](#classdronecore_1_1_action_1a6bb0301fecf66d75ca3b27bda25af7f2) () | Destructor (internal use only).
 | [Action](#classdronecore_1_1_action_1ae48b0e06ca2b4b7544a10c7734a03f63) (const Action &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [arm](#classdronecore_1_1_action_1a8b8631ea15655f0c922a9ba7d2e1c72c) () const | Send command to *arm* the drone (synchronous).
@@ -67,6 +67,7 @@ const char * | [result_str](#classdronecore_1_1_action_1a1fefb474ee36cb15fe31b42
 dronecore::Action::Action(Device *device)
 ```
 
+
 Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
 The plugin is typically created as shown below: 
@@ -74,7 +75,6 @@ The plugin is typically created as shown below:
 ```cpp
 auto action = std::make_shared<Action>(&device);
 ```
-
 
 **Parameters**
 

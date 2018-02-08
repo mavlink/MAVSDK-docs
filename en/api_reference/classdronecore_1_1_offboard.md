@@ -36,7 +36,7 @@ std::function< void([Result](classdronecore_1_1_offboard.md#classdronecore_1_1_o
 
 Type | Name | Description
 ---: | --- | ---
-| [Offboard](#classdronecore_1_1_offboard_1a333ac94793dc29ed95158fb2af286fa1) (Device *device) | Constructor. Creates the plugin and associates it with a specified [Device](classdronecore_1_1_device.md).
+| [Offboard](#classdronecore_1_1_offboard_1a333ac94793dc29ed95158fb2af286fa1) (Device *device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 | [~Offboard](#classdronecore_1_1_offboard_1a7cb4eff36c37fed1c6d973aa41b059b8) () | Destructor (internal use only).
 | [Offboard](#classdronecore_1_1_offboard_1ac586be55cb24aa0ccd29c97352dd2ee5) (const Offboard &)=delete | Copy constructor (object is not copyable).
 [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | [start](#classdronecore_1_1_offboard_1a658454f130f7b19d56f23347a448f1b9) () | Start offboard control (synchronous).
@@ -63,6 +63,7 @@ const char * | [result_str](#classdronecore_1_1_offboard_1a8eb7467e48fe354d34bc4
 ```cpp
 dronecore::Offboard::Offboard(Device *device)
 ```
+
 
 Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 
