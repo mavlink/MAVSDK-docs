@@ -209,7 +209,9 @@ make ios_simulator install
 
 ## Building in Docker
 
-You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). There are containers based on Fedora and Ubuntu (it doesn't matter which you use).
+You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). 
+
+> **Tip** There are docker containers based on Fedora and Ubuntu. It doesn't matter which you use!
 
 The main steps are:
 
@@ -220,24 +222,22 @@ The main steps are:
    cd DroneCore
    git submodule update --init --recursive
    ```
-1. Enter either of the following command in your host's terminal:
+1. Enter either of the following commands in your host's terminal:
    * Fedora
      ```sh
-     docker run --rm -it -v $HOME/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore-fedora-27 bash
+     docker run --rm -it -v $HOME/DroneCore:/root/DroneCore:rw dronecore/dronecore-fedora-27 bash
      ```
    * Ubuntu
      ```sh
-     docker run --rm -it -v $HOME/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore-ubuntu-16.04 bash
+     docker run --rm -it -v $HOME/DroneCore:/root/DroneCore:rw dronecore/dronecore-ubuntu-16.04 bash
      ```
-   > **Note** The `-v` flag maps a directory on your host (left side) to a path in
-   the container (right side). Above you need to specify the left-side path to the DroneCore repository on your host. The container path must be set as above.
 
-   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side).  You need to specify the left-side path to the DroneCore repository on your host and the container path must be set as above. 
+   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side). You need to specify the left-side path to the DroneCore repository on your host and the container path must be set as above. 
    > The `--rm` automatically cleans up leftover docker containers after you exit the docker container.
 
    Docker will download an image from [Docker Hub](https://hub.docker.com/u/dronecore/), use it to create a container, and then open a bash prompt:
    ```
-   root*81ebe14d0c1a:/home/docker1000/src/Dronecore#
+   root*81ebe14d0c1a:~/Dronecore#
    ```
 1. In the terminal you can build DroneCore using the normal Linux `make` commands:
    ```sh
@@ -251,20 +251,20 @@ The main steps are:
    make clean
    ```
 
-> **Note** Files built in a Docker container are owned by root. In order to clean up the **build** and **install** folders you will need to either call `make clean` in the container or `sudo make clean` in the host computer.
+> **Note** Files built in a Docker container are owned by root. In order to clean up the **build** and **install** folders you will need to either call `make clean` in the container or `sudo make clean` in the host computer (or `sudo rm -r build`).
 
 ### Running single docker commands
 
-You can also run build commands directly from your host (rather than opening bash), as shown below.
+You can also run build commands directly from your host (rather than opening bash). Below we show this using the Ubuntu docker image:
 
 To make and install the C++ Library:
 ```bash
-docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore make install
+docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:rw dronecore/dronecore-ubuntu-16.04 make install
 ```
 
 To run the code style check:
 ```bash
-docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw dronecore/dronecore make fix_style
+docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:rw dronecore/dronecore-ubuntu-16.04 make fix_style
 ```
 
 ### Building the Docker Image
@@ -286,7 +286,7 @@ You can also build the images yourself using the files in [DroneCore/docker](htt
    `my_image` can then be used to refer to the image in later steps.
 1. Open a bash prompt using the newly created image:
    ```sh
-   docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/home/docker1000/src/DroneCore:rw my_image bash
+   docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:rw my_image bash
    ```
 
 ## Build DroneCore Extensions {#dronecore_extensions}
