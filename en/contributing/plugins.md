@@ -1,8 +1,8 @@
 # Writing Plugins
 
-DroneCore is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/core) and [plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). 
+DroneCore is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/core) and multiple independent [plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). 
 
-Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are included at compile time. The *cmake* script [autogenerate_plugin_container.cmake](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/autogenerate_plugin_container.cmake) takes care of including the plugin folders and integration tests.
+Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. The [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
 
 > **Note** Plugins can also be defined in [DroneCore Extensions](../guide/dronecore_extensions.md). 
 > These are defined and tested in exactly the same way as "standard" DroneCore plugins. 
@@ -11,7 +11,7 @@ Plugins that are located in the *correct location* (a subfolder of **/plugins**)
 
 Plugins should be written so that they are independent of each other (they will still need to be dependent on the core source). This allows plugins to be removed/replaced as needed at the cost of some duplicated functionality across the plugin modules.
 
-The code for each plugin and its unit test (if defined) is stored in a sub-folder of the **plugins** directory. Integration tests for all plugins in the library are stored in **integration_tests**.
+The code for each plugin (and its unit test if one has been defined) is stored in a sub-folder of the **plugins** directory. Integration tests for all plugins in the library are stored in **integration_tests**.
 
 A simplified view of the folder structure is shown below (showing relevant directories for both DroneCore and a DroneCore Extension): 
 
@@ -188,7 +188,7 @@ TEST(ExampleImpl, NoTest)
 
 ### Writing Integration Tests {#integration_tests}
 
-DroneCore provides the `dronecore-integrationtests` application for running the integration tests and 
+DroneCore provides the `integration_tests_runner` application for running the integration tests and 
 some helper code to make it easier to log tests and run them against the simulator.
 
 > **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 

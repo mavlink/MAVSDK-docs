@@ -2,7 +2,6 @@
 
 DroneCore can be extended with [plugins](../contributing/plugins.md) and [tests](../contributing/test.md) that are defined "out of tree".
 This enables developers to manage custom code in a separate repository (reducing *git* conflicts). 
-The extensions are built into the DroneCore library at compile time.
 
 > **Note** Extensions are defined in a parallel tree that *mirrors* the DroneCore structure. 
 > Extension plugins and tests are *exactly the same* as "standard" DroneCore plugins and tests.
@@ -55,7 +54,7 @@ external_example
 ## Adding/Modifying Plugins
 
 Plugins in extension libraries are exactly the same as "normal" DroneCore plugins 
-(except that they are located in the extension rather than under DroneCore). 
+(except that they are located in the extension "plugins" folder rather than under DroneCore). 
 
 [Writing Plugins](../contributing/plugins.md) explains how to write or modify plugins.
 
@@ -65,7 +64,11 @@ Plugins in extension libraries are exactly the same as "normal" DroneCore plugin
 
 ## Testing
 
-Tests in extension libraries are written and run exactly the same as "normal" DroneCore plugin tests.
+Tests in extension libraries are written in exactly the same as "normal" DroneCore plugin tests.
+
+The only difference is that all external tests should be compiled into their own "test runner". 
+The test runner for the "external example" is defined in 
+[/integration_tests/CMakeLists.txt]( https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/integration_tests/CMakeLists.txt) (named `external_example_integration_tests_runner`).
 
 [Testing](../contributing/test.md) explains how to run (and write) unit and integration tests.
 
@@ -75,7 +78,7 @@ Tests in extension libraries are written and run exactly the same as "normal" Dr
 To build *DroneCore* so that it includes the extension library, specify the top level directory `EXTERNAL_DIR` in the `make` command 
 (only one external directory can be specified). 
 
-To build and install a parallel *DroneCore_Extensions* folder (from within the DroneCore directory) you would enter:
+To build and install a parallel folder named *DroneCore_Extensions* (from within the DroneCore directory) you would enter:
 
 ```
 make clean   # This is required!
@@ -91,5 +94,6 @@ sudo make default install   # sudo needed to install files into system directori
 
 ### Locking/Unlocking the SDK
 
-Functionality to deliver in: https://github.com/dronecore/DroneCore/pull/139
+Functionality delivered in: https://github.com/dronecore/DroneCore/pull/139
+This is somewhat internal.
 -->
