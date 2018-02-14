@@ -7,6 +7,7 @@ The API is used to supply the position(s) for the [target](../api_reference/stru
 - Apple: [Core Location Framework](https://developer.apple.com/documentation/corelocation)
 - Windows: [Windows.Devices.Geolocation](https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Geolocation)
 
+> **Warning** Running *QGroundControl* at the same time as DroneCore *Follow Me* may result in unpredictable behaviour. See [QGC #6141](https://github.com/mavlink/qgroundcontrol/issues/6141) for more information.
 
 ## Create the Plugin
 
@@ -109,5 +110,6 @@ The last location that was set can be retrieved using [get_last_location()](../a
 
 Additional information/examples for the Follow Me API are linked below:
 
+* [Example:Follow Me Mode](../examples/follow_me.md)
 * Integration tests:
   * [follow_me.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/follow_me.cpp)

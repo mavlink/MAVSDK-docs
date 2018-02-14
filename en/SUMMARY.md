@@ -20,6 +20,7 @@
   * [Takeoff and Land](examples/takeoff_and_land.md)
   * [Fly Mission](examples/fly_mission.md)
   * [Offboard Mode - Velocity Control](examples/offboard_velocity.md)
+  * [Follow Me Mode](examples/follow_me.md)
   * [VTOL Transitions](examples/transition_vtol_fixed_wing.md)
 * [API Reference](api_reference/README.md)
   * [class DroneCore](api_reference/classdronecore_1_1_drone_core.md)
