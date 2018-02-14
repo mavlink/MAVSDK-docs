@@ -1,20 +1,24 @@
 # Example: Follow Me Mode
 
-This example demonstrates how to use the [Follow Me](../api_reference/classdronecore_1_1_follow_me.md) plugin. 
+This example demonstrates how to use the [Follow Me](../guide/follow_me.md) plugin. 
 It shows how to send the drone both the current position of the target (`FollowMe::TargetLocation`) and the relative position at which it should follow (`FollowMe::Config`).
 
 ![Follow Me QGC Screenshot](../../assets/examples/follow_me/follow_me_example_qgc.jpg)
 
 > **Note** A real application using this API will get the position information from the underlying device. The example uses a fake position source (`FakeLocationProvider`) to enable it to be run on computers that do not have position information. The `FakeLocationProvider` emulates the typical usage of common positioning APIs used in Android, Linux and iPhone.
 
+
 ## Running the Example {#run_example}
 
-Before running this example you will need to install Boost libraries. For Linux this is done as shown below:
-```sh
-sudo apt-get install libboost-all-dev
-```
+Special notes for this example: 
 
-Otherwise example is built and run and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
+* Before running this example you will need to install Boost libraries. For Linux this is done as shown below:
+  ```sh
+  sudo apt-get install libboost-all-dev
+  ```
+* *QGroundControl* **should not be used** at the same time as this example. See [QGC #6141](https://github.com/mavlink/qgroundcontrol/issues/6141) for more information.
+
+Otherwise the example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
 The example terminal output should be similar to that shown below:
 
@@ -22,7 +26,43 @@ The example terminal output should be similar to that shown below:
 
 ```
 $ ./follow_me 
+Wait for device to connect via heartbeat
+[11:40:49|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:211)
+[11:40:49|Debug] MAVLink: info: DISARMED by auto disarm on land (device.cpp:247)
+[11:40:50|Debug] Discovered 4294967298 (dronecore_impl.cpp:219)
+[11:40:50|Info ] FollowMe: Applying default FollowMe configuration FollowMe to the device... (follow_me_impl.cpp:186)
+Device is ready
+Armed
+[11:40:51|Debug] MAVLink: info: ARMED by arm/disarm component command (device.cpp:247)
+[11:40:51|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-02-14/0 (device.cpp:247)
+In Air...
+[11:40:51|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (device.cpp:247)
+[11:40:51|Debug] MAVLink: info: Takeoff detected (device.cpp:247)
+[11:40:51|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (device.cpp:247)
+[11:40:51|Debug] MAVLink: info: data link #1 lost (device.cpp:247)
+[FlightMode: Takeoff] Vehicle is at: nan, nan degrees.
+[FlightMode: Hold] Vehicle is at: nan, nan degrees.
+[FlightMode: Hold] Vehicle is at: nan, nan degrees.
+[FlightMode: Hold] Vehicle is at: nan, nan degrees.
+[FlightMode: Hold] Vehicle is at: nan, nan degrees.
+[11:40:56|Debug] FollowMe: Waiting for the device confirmation of the new configuration.. (follow_me_impl.cpp:98)
+[11:40:56|Debug] FollowMe: Waiting for the device confirmation of the new configuration.. (follow_me_impl.cpp:98)
+[11:40:56|Info ] FollowMe: Configured: Min height: 20 meters, Follow distance: 8 meters, Follow direction: Front right, Responsiveness: 0.5 (follow_me_impl.cpp:101)
+[FlightMode: FollowMe] Vehicle is at: nan, nan degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54559 degrees.
 ...
+[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.5457 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54573 degrees.
+waiting until landed
+[11:41:33|Debug] MAVLink: info: Landing at current position (device.cpp:247)
+waiting until landed
+waiting until landed
+...
+waiting until landed
+waiting until landed
+[11:42:04|Debug] MAVLink: info: Landing detected (device.cpp:247)
+Landed...
 ```
 
 ## How it works
@@ -165,7 +205,7 @@ int main(int, char **)
     follow_me_result = follow_me->start();
     follow_me_error_exit(follow_me_result, "Failed to start FollowMe mode");
 
-    boost::asio::io_context io; // for event loop
+    boost::asio::io_service io; // for event loop
     std::unique_ptr<FakeLocationProvider> location_provider(new FakeLocationProvider(io));
     // Register for platform-specific Location provider. We're using FakeLocationProvider for the example.
     location_provider->request_location_updates([&device, &follow_me](double lat, double lon) {
@@ -249,7 +289,7 @@ class FakeLocationProvider
 public:
     typedef std::function<void(double lat, double lon)> location_callback_t;
 
-    FakeLocationProvider(boost::asio::io_context &io)
+    FakeLocationProvider(boost::asio::io_service &io)
         : timer_(io, boost::posix_time::seconds(1))
     {}
 
