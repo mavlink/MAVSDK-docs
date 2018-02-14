@@ -9,7 +9,12 @@ It shows how to send the drone both the current position of the target (`FollowM
 
 ## Running the Example {#run_example}
 
-The example is built and run [as described here](../examples/README.md#trying_the_examples) (the standard way). 
+Before running this example you will need to install Boost libraries. For Linux this is done as shown below:
+```sh
+sudo apt-get install libboost-all-dev
+```
+
+Otherwise example is built and run and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
 The example terminal output should be similar to that shown below:
 
