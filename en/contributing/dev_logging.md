@@ -35,6 +35,6 @@ Function | Description | Example
 
 Basic logging is defined in source for both incoming (handled/ignored) and sent MAVLink messages.
 
-This functionality is disabled by default, and available only in debug builds. To enable the logs, set `#define MESSAGE_DEBUGGING 1` in [core/device_impl.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/device_impl.cpp)
+This functionality is disabled by default, and available only in debug builds. To enable the logs, set `#define MESSAGE_DEBUGGING 1` in [core/device.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/device.cpp)
 
 <!-- Added: https://github.com/dronecore/DroneCore/pull/194 -->

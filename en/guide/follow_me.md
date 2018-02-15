@@ -102,7 +102,7 @@ if (follow_me_result != FollowMe::Result::SUCCESS) {
 }
 ```
 
-The last location that was set can be retrieved using [get_last_location()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1ab68273d5ace65ee953afa1797ae49e7c). Before a target position is first set this API will return `Nan`.
+The last location that was set can be retrieved using [get_last_location()](../api_reference/classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a16da2bf7d0384e2bff4440600b523f8c). Before a target position is first set this API will return `Nan`.
 
 
 
