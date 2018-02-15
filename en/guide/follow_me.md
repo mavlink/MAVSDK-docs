@@ -55,7 +55,7 @@ The code fragment below shows how to set the configuration:
 // configure follow me behaviour
 FollowMe::Config config;
 config.min_height_m = 12.f;  // Minimum height
-config.follow_dist_m = 20.f;  // Follow distance
+config.follow_distance_m = 20.f;  // Follow distance
 config.responsiveness = 0.2f;  // Higher responsiveness
 config.follow_direction = FollowMe::Config::FollowDirection::FRONT;  //Follow from front-centre
 
