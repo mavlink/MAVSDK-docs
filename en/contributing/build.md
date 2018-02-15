@@ -134,14 +134,13 @@ To install DroneCore system-wide:
 ```sh
 make clean  #REQUIRED!
 make default
-sudo make default install  #sudo required to install files to system directories!
+sudo make default install  # sudo required to install files to system directories!
+
+# First installation only
+sudo ldconfig  # update linker cache
 ```
 
-> **Tip** The first time you build DroneCore you may also need to [update the linker cache](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html). 
-> On Ubuntu call the following:
-  ```
-  sudo ldconfig
-  ```
+> **Note** The first time you build DroneCore you may also need to [update the linker cache](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html). On Ubuntu this is done with `sudo ldconfig`, as shown above.
 
 
 ### Local Install {#dronecore_local_install}
