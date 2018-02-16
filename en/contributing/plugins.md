@@ -151,7 +151,7 @@ plugin **CMakeLists.txt** file (you can add multiple files).
 
 The example plugin adds the **example_impl_test.cpp** unit test as shown below:
 
-```cmake
+```cmake 
 set(unittest_source_files
     # Add unit test file(s) for plugin
     example_impl_test.cpp
@@ -159,7 +159,7 @@ set(unittest_source_files
 )
 ```
 
-> **Note** Unit tests for *core* functionality are added in the main [DroneCore/CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt#L187) file. 
+> **Note** Unit tests for *core* functionality are added in the [cmake/unit_tests.cmake](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/cmake/unit_tests.cmake) file. 
 
 
 #### Unit Test Code
@@ -198,7 +198,7 @@ some helper code to make it easier to log tests and run them against the simulat
 
 #### Adding Integration Tests
 
-In order to run an integration test it needs to be added to the `dronecore-integrationtests` program.
+In order to run an integration test it needs to be added to the `integration_tests_runner` program.
 
 Integration tests for core functionality and plugins delivered by the project 
 are stored in [DroneCore/integration_tests](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/integration_tests). 
@@ -206,13 +206,18 @@ The files are added to the test program in that folder's
 [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/CMakeLists.txt) file:
 
 ```cmake
-list(APPEND integration_tests
-    simple_connect
-    async_connect
-    # ...
-    mission_change_speed
-    mission_survey
-    curl
+# This includes all GTests that run integration tests
+add_executable(integration_tests_runner
+    ../core/unittests_main.cpp
+    simple_connect.cpp
+    async_connect.cpp
+    telemetry_simple.cpp
+    ...
+    mission_change_speed.cpp
+    mission_survey.cpp
+    gimbal.cpp
+    transition_multicopter_fixedwing.cpp
+    follow_me.cpp
 )
 ```
 
@@ -226,9 +231,9 @@ external_example       ## The (example) SDK/external plugin directory.
 
 Example extension **CMakeLists.txt** file:
 ```cmake
-list(APPEND integration_tests
-    # Add the cpp file for each integration test on its own line
-    hello_world
+add_executable(external_example_integration_tests_runner
+    ${CMAKE_SOURCE_DIR}/core/unittests_main.cpp
+    hello_world.cpp
 )
 ```
  
