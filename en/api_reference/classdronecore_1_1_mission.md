@@ -14,6 +14,7 @@ Type | Description
 --- | ---
 enum [Result](#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda) | Possible results returned for mission requests.
 std::function< void([Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda))> [result_callback_t](#classdronecore_1_1_mission_1a239f8d5853785d6ccf90c8c48b5ccf06) | Callback type for async mission calls.
+std::vector< std::shared_ptr< [MissionItem](classdronecore_1_1_mission_item.md) > > [mission_items_t](#classdronecore_1_1_mission_1aeedbc1d50fec7304f0d140ce9748a5e2) | Type for vector of mission items.
 std::function< void([Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda), std::vector< std::shared_ptr< [MissionItem](classdronecore_1_1_mission_item.md) > >)> [mission_items_and_result_callback_t](#classdronecore_1_1_mission_1a7cb36c0356a867e90f3c4c764d424d32) | Callback type for [download_mission_async()](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) call to get mission items and result.
 std::function< void(int current, int total)> [progress_callback_t](#classdronecore_1_1_mission_1aeda7795cd898008afc05b779f99b704b) | Callback type to receive mission progress.
 
@@ -42,6 +43,7 @@ const [Mission](classdronecore_1_1_mission.md) & | [operator=](#classdronecore_1
 Type | Name | Description
 ---: | --- | ---
 const char * | [result_str](#classdronecore_1_1_mission_1a0eabb2fe4db664c552d28161678c593f) (Result result) | Gets a human-readable English string for an [Mission::Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda).
+[Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda) | [import_qgroundcontrol_mission](#classdronecore_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) (mission_items_t &mission_items, const std::string &qgc_plan_file) | Imports a **QGroundControl** (QGC) mission plan.
 
 
 ## Constructor & Destructor Documentation
@@ -100,6 +102,16 @@ typedef std::function<void(Result)> dronecore::Mission::result_callback_t
 Callback type for async mission calls.
 
 
+### typedef mission_items_t {#classdronecore_1_1_mission_1aeedbc1d50fec7304f0d140ce9748a5e2}
+
+```cpp
+typedef std::vector<std::shared_ptr<MissionItem> > dronecore::Mission::mission_items_t
+```
+
+
+Type for vector of mission items.
+
+
 ### typedef mission_items_and_result_callback_t {#classdronecore_1_1_mission_1a7cb36c0356a867e90f3c4c764d424d32}
 
 ```cpp
@@ -145,6 +157,9 @@ Value | Description
 <span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaaf295a0c3e37c94f078e1c5476479132d"></span> `INVALID_ARGUMENT` | Invalid argument. 
 <span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa40aa75f8e8cfdf7b660c5620e953229f"></span> `UNSUPPORTED` | The mission downloaded from the device is not supported. 
 <span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa1d25c4b5260709868a0c57ae60ae815e"></span> `NO_MISSION_AVAILABLE` | No mission available on device. 
+<span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa44090b5626a9be3103d4e3624470635c"></span> `FAILED_TO_OPEN_QGC_PLAN` | Failed to open QGroundControl plan. 
+<span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa503c552313ebdaf4cd93b1e5b5525a4f"></span> `FAILED_TO_PARSE_QGC_PLAN` | Failed to parse QGroundControl plan. 
+<span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa0118056c7c9e890a242c9bdb961dac82"></span> `UNSUPPORTED_MISSION_CMD` | Unsupported mission command. 
 <span id="classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
 
 ## Member Function Documentation
@@ -311,3 +326,26 @@ Gets a human-readable English string for an [Mission::Result](classdronecore_1_1
 **Returns**
 
 &emsp;const char * - Human readable string for the [Mission::Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda).
+
+### import_qgroundcontrol_mission() {#classdronecore_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57}
+```cpp
+static Result dronecore::Mission::import_qgroundcontrol_mission(mission_items_t &mission_items, const std::string &qgc_plan_file)
+```
+
+
+Imports a **QGroundControl** (QGC) mission plan.
+
+The method composes the plan into a vector of [MissionItem](classdronecore_1_1_mission_item.md) shared pointers that can then be uploaded to a vehicle. The method will fail if any of the imported mission items are not supported by the DroneCore API.
+
+**Parameters**
+
+* [mission_items_t](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1aeedbc1d50fec7304f0d140ce9748a5e2) & **mission_items** - Vector of mission items imported from QGC plan.
+* const std::string & **qgc_plan_file** - File path of the QGC plan.
+
+**Returns**
+
+&emsp;[Result](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cda) - [Result::SUCCESS](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaad0749aaba8b833466dfcbb0428e4f89c) if successful in importing QGC mission items. Otherwise one of the error codes: [Result::FAILED_TO_OPEN_QGC_PLAN](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa44090b5626a9be3103d4e3624470635c), [Result::FAILED_TO_PARSE_QGC_PLAN](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa503c552313ebdaf4cd93b1e5b5525a4f), [Result::UNSUPPORTED_MISSION_CMD](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a529b17f5b63508494ca22fc247598cdaa0118056c7c9e890a242c9bdb961dac82).
+
+**See Also:**
+- [QGroundControl Plan file format](https://dev.qgroundcontrol.com/en/file_formats/plan.html) (QGroundControl Dev Guide)
+

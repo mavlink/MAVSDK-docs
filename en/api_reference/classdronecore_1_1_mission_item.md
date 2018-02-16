@@ -30,18 +30,26 @@ void | [set_relative_altitude](#classdronecore_1_1_mission_item_1afef21f3028edad
 void | [set_fly_through](#classdronecore_1_1_mission_item_1a63d73896635dc0af136a521cd35bf352) (bool fly_through) | Set the fly-through property of a mission item.
 void | [set_speed](#classdronecore_1_1_mission_item_1a37e43f748da4136c659419a4a2d84b0e) (float speed_m_s) | Set the speed to use after a mission item.
 void | [set_gimbal_pitch_and_yaw](#classdronecore_1_1_mission_item_1a10adfcff1e99ae937654786b767e5558) (float pitch_deg, float yaw_deg) | Set the pitch and yaw angle of a gimbal at that mission item.
-void | [set_camera_action_delay](#classdronecore_1_1_mission_item_1ae3cbad3e497b9165b5b8e6e414a52385) (float delay_s) | Set a delay before executing camera action.
+void | [set_loiter_time](#classdronecore_1_1_mission_item_1a594fbed85eb5321d971a309dd4bcec0e) (float loiter_time_s) | Set loiter time in seconds.
 void | [set_camera_action](#classdronecore_1_1_mission_item_1a8d0d8a5519783aaa272befd73e851896) (CameraAction action) | Set the camera action for a mission item.
 void | [set_camera_photo_interval](#classdronecore_1_1_mission_item_1a4ffe698b47c659aa8857725e94ad1f7c) (double interval_s) | Set the camera photo interval.
 double | [get_latitude_deg](#classdronecore_1_1_mission_item_1ad95d5d10d69bdb43321231c51dda1175) () const | Get the latitude of a mission item.
 double | [get_longitude_deg](#classdronecore_1_1_mission_item_1a9f76de6dbbcec3269207867794a2d099) () const | Get the longitude of a mission item.
+bool | [has_position_set](#classdronecore_1_1_mission_item_1a68fd720609edc76062af95a22dbe01e6) () const | Reports whether position info (Lat, Lon) was set for this mission item.
 float | [get_relative_altitude_m](#classdronecore_1_1_mission_item_1a22481d92a61136d42b5133b208e6cf0d) () const | Get the relative altitude of a mission item.
 bool | [get_fly_through](#classdronecore_1_1_mission_item_1afd92f9ab01d25c0d721b4249821b6da2) () const | Get the fly-through property of a mission item.
 float | [get_speed_m_s](#classdronecore_1_1_mission_item_1adc737b7be9b49cd0fe188763203aeae5) () const | Get the speed to be used after this mission item.
-float | [get_camera_action_delay_s](#classdronecore_1_1_mission_item_1a620be1392d32343f624238301e968ee6) () const | Get the delay before executing camera action.
+float | [get_loiter_time_s](#classdronecore_1_1_mission_item_1a25fd1a2ba0df071b25e2315a3a1f5085) () const | Get loiter time in seconds.
 [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) | [get_camera_action](#classdronecore_1_1_mission_item_1ae42a857f79b63c611f5a21fed2ea18fc) () const | Get the camera action set for this mission item.
 double | [get_camera_photo_interval_s](#classdronecore_1_1_mission_item_1adf38956d9ed1ef4e98a4d5a6b61eccd7) () const | Get the camera photo interval that was set for this mission item.
 const [MissionItem](classdronecore_1_1_mission_item.md) & | [operator=](#classdronecore_1_1_mission_item_1a8582ad72a3a8c20c87e8224ab10970c0) (const MissionItem &)=delete | Equality operator (object is not copyable).
+
+## Static Public Member Functions
+
+
+Type | Name | Description
+---: | --- | ---
+std::string | [to_str](#classdronecore_1_1_mission_item_1aee3e76302036c953858a217d63389aae) (CameraAction camera_action) | Converts [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) to English strings.
 
 
 ## Constructor & Destructor Documentation
@@ -95,6 +103,10 @@ Value | Description
 <span id="classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aa2830bdcebb2b8bb17e19bef72a7255bc"></span> `START_VIDEO` | Start capturing video. 
 <span id="classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aac7dbedd5fead832bc23d7caaf4cfb8cf"></span> `STOP_VIDEO` | Stop capturing video. 
 <span id="classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887aab50339a10e1de285ac99d4c3990b8693"></span> `NONE` | No action. 
+
+**See Also:**
+- [to_str()](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1aee3e76302036c953858a217d63389aae)
+
 
 ## Member Function Documentation
 
@@ -166,19 +178,19 @@ Set the pitch and yaw angle of a gimbal at that mission item.
 * float **pitch_deg** - The new pitch angle of the gimbal in degrees (0: horizontal, positive up, -90: vertical downward facing).
 * float **yaw_deg** - The new yaw angle of the gimbal in degrees (0: forward, positive clock-wise, 90: to the right).
 
-### set_camera_action_delay() {#classdronecore_1_1_mission_item_1ae3cbad3e497b9165b5b8e6e414a52385}
+### set_loiter_time() {#classdronecore_1_1_mission_item_1a594fbed85eb5321d971a309dd4bcec0e}
 ```cpp
-void dronecore::MissionItem::set_camera_action_delay(float delay_s)
+void dronecore::MissionItem::set_loiter_time(float loiter_time_s)
 ```
 
 
-Set a delay before executing camera action.
+Set loiter time in seconds.
 
-This can be used to wait for vehicle to slow down or a gimbal to arrive at the set orientation.
+This specifies the delay at a waypoint before executing next mission item. It can be used to wait for vehicle to slow down or a gimbal to arrive at the set orientation.
 
 **Parameters**
 
-* float **delay_s** - The time to wait for in seconds.
+* float **loiter_time_s** - The time to wait (loiter), in seconds.
 
 ### set_camera_action() {#classdronecore_1_1_mission_item_1a8d0d8a5519783aaa272befd73e851896}
 ```cpp
@@ -233,6 +245,19 @@ Get the longitude of a mission item.
 
 &emsp;double - Longitude in degrees.
 
+### has_position_set() {#classdronecore_1_1_mission_item_1a68fd720609edc76062af95a22dbe01e6}
+```cpp
+bool dronecore::MissionItem::has_position_set() const
+```
+
+
+Reports whether position info (Lat, Lon) was set for this mission item.
+
+
+**Returns**
+
+&emsp;bool - true if Lat, Lon is set for this mission item.
+
 ### get_relative_altitude_m() {#classdronecore_1_1_mission_item_1a22481d92a61136d42b5133b208e6cf0d}
 ```cpp
 float dronecore::MissionItem::get_relative_altitude_m() const
@@ -272,18 +297,18 @@ Get the speed to be used after this mission item.
 
 &emsp;float - Speed in metres/second.
 
-### get_camera_action_delay_s() {#classdronecore_1_1_mission_item_1a620be1392d32343f624238301e968ee6}
+### get_loiter_time_s() {#classdronecore_1_1_mission_item_1a25fd1a2ba0df071b25e2315a3a1f5085}
 ```cpp
-float dronecore::MissionItem::get_camera_action_delay_s() const
+float dronecore::MissionItem::get_loiter_time_s() const
 ```
 
 
-Get the delay before executing camera action.
+Get loiter time in seconds.
 
 
 **Returns**
 
-&emsp;float - The delay in seconds.
+&emsp;float - Loiter time in seconds.
 
 ### get_camera_action() {#classdronecore_1_1_mission_item_1ae42a857f79b63c611f5a21fed2ea18fc}
 ```cpp
@@ -328,3 +353,20 @@ Equality operator (object is not copyable).
 **Returns**
 
 &emsp;const [MissionItem](classdronecore_1_1_mission_item.md) & - 
+
+### to_str() {#classdronecore_1_1_mission_item_1aee3e76302036c953858a217d63389aae}
+```cpp
+static std::string dronecore::MissionItem::to_str(CameraAction camera_action)
+```
+
+
+Converts [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) to English strings.
+
+
+**Parameters**
+
+* [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) **camera_action** - Enum [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a).
+
+**Returns**
+
+&emsp;std::string - Human readable english string for [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a).
