@@ -111,6 +111,11 @@ To build the *DroneCore* C++ Library on Windows:
      ```sh
      cmake --build . --config Release
      ```
+   <span></span>
+   > **Tip** To use more than one CPU core to build set this before building:
+     ```sh
+     set CL=/MP
+     ```
 
 1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build [Dronecore C++ apps](../guide/toolchain.md), but not to run DroneCore test code.
 
