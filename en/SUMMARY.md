@@ -19,6 +19,7 @@
 * [Examples](examples/README.md)
   * [Takeoff and Land](examples/takeoff_and_land.md)
   * [Fly Mission](examples/fly_mission.md)
+  * [Fly QGC Plan Mission](examples/fly_mission_qgc_plan.md)
   * [Offboard Mode - Velocity Control](examples/offboard_velocity.md)
   * [Follow Me Mode](examples/follow_me.md)
   * [VTOL Transitions](examples/transition_vtol_fixed_wing.md)
