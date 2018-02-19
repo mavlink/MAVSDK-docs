@@ -106,7 +106,6 @@ target_link_libraries(follow_me
     dronecore
     dronecore_action
     dronecore_follow_me
-    pthread
 )
 ```
 
