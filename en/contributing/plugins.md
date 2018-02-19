@@ -141,25 +141,22 @@ Unit tests are therefore considered optional!
 
 #### Adding Unit Tests {#adding_unit_tests}
 
-Unit tests are stored as separate files in the same directory as their associated source code. 
+Unit test files are stored in the same directory as their associated source code. 
 Often they test the implementation (rather than the public API), 
 and hence are named with the suffix **_impl_test.cpp**.
 
-In order to include a test in the DroneCore unit test program (`dronecore-unittests`), 
-its file name must be added to the `$unittest_source_files` variable in the 
-plugin **CMakeLists.txt** file (you can add multiple files).
+In order to include a test in the DroneCore unit test program (`unit_tests_runner`), 
+it must be added to the `UNIT_TEST_SOURCES` variable in the plugin **CMakeLists.txt** file.
 
-The example plugin adds the **example_impl_test.cpp** unit test as shown below:
+For example, to add the **example_impl_test.cpp** unit test you would 
+append the following lines to its **CMakeLists.txt**:
 
 ```cmake 
-set(unittest_source_files
-    # Add unit test file(s) for plugin
-    example_impl_test.cpp
-    PARENT_SCOPE
+list(APPEND UNIT_TEST_SOURCES
+    ${CMAKE_SOURCE_DIR}/plugins/mission/example_impl_test.cpp
 )
-```
-
-> **Note** Unit tests for *core* functionality are added in the [cmake/unit_tests.cmake](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/cmake/unit_tests.cmake) file. 
+set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)
+``` 
 
 
 #### Unit Test Code
