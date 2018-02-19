@@ -9,6 +9,12 @@ The [Fly QGroundControl Plan Mission](https://github.com/dronecore/DroneCore/tre
 
 The example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
+> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). Alternatively you can specify the plan to load when you start the example:
+  ```
+  ./fly_qgc_mission <path of QGC Mission plan>
+  ```
+
+
 The example terminal output should be similar to that shown below:
 
 > **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
@@ -89,7 +95,14 @@ Commanded RTL.
 
 ## How it works
 
-The operation of most of this code is discussed in the guide: [Missions > Import a Mission from a QGC Plan](../guide/missions.md#import_qgc_plan).
+The example application performs the following operations:
+1. Imports QGC mission items from **.plan** file.
+1. Uploads mission items to vehicle.
+1. Sets up mission progress monitoring.
+1. Starts the mission from the first mission item.
+1. Commands the *Return*/RTL action once the mission completes.
+
+The specific code for importing missions is discussed in the guide: [Missions > Import a Mission from a QGC Plan](../guide/missions.md#import_qgc_plan).
 
 ## Source code {#source_code}
 
@@ -134,9 +147,8 @@ target_link_libraries(fly_qgc_mission
 *
 * Steps to run this example:
 * 1. (a) Create a Mission in QGroundControl and save them to a file (.plan) (OR)
-*    (b) Use a pre-created sample mission plan in "example/fly_qgc_mission/qgroundcontrol_sample.plan".
-*    Click [here](https://user-images.githubusercontent.com/26615772/31763673-972c5bb6-b4dc-11e7-8ff0-f8b39b6b88c3.png) to see what sample mission plan in QGroundControl looks like.
-* 2. Run the example by passing path of the QGC mission plan as argument (Uses sample mission plan by default).
+*    (b) Use a pre-created sample mission plan in "plugins/mission/qgroundcontrol_sample.plan".
+* 2. Run the example by passing path of the QGC mission plan as argument (By default, sample mission plan is imported).
 *
 * Example description:
 * 1. Imports QGC mission items from .plan file.
@@ -330,8 +342,3 @@ inline void handle_connection_err_exit(DroneCore::ConnectionResult result,
 }
 ```
 
-[qgroundcontrol_sample.plan](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/fly_qgc_mission/qgroundcontrol_sample.plan)
-
-```
-
-```
