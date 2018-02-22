@@ -39,3 +39,4 @@ The following general guidelines should be used for all code:
 - All variables that have a physical unit should have the unit in the variable name (e.g. `_m` for meters, `_m_s` for meters/second).
 - Variable and method names should be `snake_case` and class/struct/enum names `CamelCase`. Private variables should start with an underscore, e.g.: `_variable_name`.
 - Try to exit functions early instead of nesting ifs ([read why](https://softwareengineering.stackexchange.com/questions/18454/should-i-return-from-a-function-early-or-use-an-if-statement)).
+- We don't use exceptions but use error codes. There are pros and cons for exceptions but given that the public API should be as simple as possible, it makes sense to refrain from exceptions alltogether.
