@@ -19,7 +19,11 @@ The supported set is:
 * [MAV_CMD_VIDEO_STOP_CAPTURE](https://mavlink.io/en/messages/common.html#MAV_CMD_VIDEO_STOP_CAPTURE)
 * [MAV_CMD_NAV_LOITER_TIME](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LOITER_TIME)
 
-> **Tip** The Mission API does not (at time of writing) support "repeat", takeoff, return to land etc. 
+Additionally, the following commands are supported only for mission import/download (there are no corresponding `MissionItem` methods):
+* [MAV_CMD_NAV_LAND](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LAND)
+* [MAV_CMD_NAV_TAKEOFF](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_TAKEOFF)
+
+> **Tip** The Mission API does not (at time of writing) provide explicit functionality to "repeat", takeoff, return to land etc. 
 > DroneCore provides some omitted functionality through the [Action](../guide/taking_off_landing.md) API.
 
 
