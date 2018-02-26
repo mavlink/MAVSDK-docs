@@ -8,6 +8,7 @@ Example | Description
 --- | ---
 [Takeoff and Land](../examples/takeoff_and_land.md) | Shows basic usage of DroneCore (connect to port, detect device, arm, takeoff, land, get telemetry)
 [Fly Mission](../examples/fly_mission.md) | Shows how to create, upload, and run missions.
+[Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) | Fly a mission imported from a *QGroundControl* mission plan.
 [Offboard Velocity Control](../examples/offboard_velocity.md) | Demonstrates how to control a vehicle in Offboard mode using velocity commands (in both the NED and body frames).
 [Follow Me Mode](../examples/offboard_velocity.md) | Demonstrates how to put vehicle in [Follow Me Mode](../guide/follow_me.md) and set the current target position and relative position of the drone.
 [VTOL Transitions](../examples/transition_vtol_fixed_wing.md) | Shows how to transition a VTOL vehicle between copter and fixed-wing modes.

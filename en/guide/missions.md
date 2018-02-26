@@ -1,6 +1,6 @@
 # Missions
 
-The DroneCore Mission API allows you to create, upload, download, run, pause, restart, jump to item in, and track missions. Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
+The DroneCore Mission API allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions. Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
 Missions are *managed* though the [Mission](../api_reference/classdronecore_1_1_mission.md) class, which communicates with the device to upload mission information and run, pause, track the mission progress etc. The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects.
 
@@ -10,15 +10,20 @@ Missions are *managed* though the [Mission](../api_reference/classdronecore_1_1_
 The [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) class abstracts a small but useful subset of the mission commands supported by PX4 (and the MAVLink specification):
 
 The supported set is:
-* [MAV_CMD_NAV_WAYPOINT](http://mavlink.org/messages/common#MAV_CMD_NAV_WAYPOINT)
-* [MAV_CMD_DO_CHANGE_SPEED](http://mavlink.org/messages/common#MAV_CMD_DO_CHANGE_SPEED)
-* [MAV_CMD_DO_MOUNT_CONTROL](http://mavlink.org/messages/common#MAV_CMD_DO_MOUNT_CONTROL)
-* [MAV_CMD_IMAGE_START_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_IMAGE_START_CAPTURE)
-* [MAV_CMD_IMAGE_STOP_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_IMAGE_STOP_CAPTURE)
-* [MAV_CMD_VIDEO_START_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_VIDEO_START_CAPTURE)
-* [MAV_CMD_VIDEO_STOP_CAPTURE](http://mavlink.org/messages/common#MAV_CMD_VIDEO_STOP_CAPTURE)
+* [MAV_CMD_NAV_WAYPOINT](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_WAYPOINT)
+* [MAV_CMD_DO_CHANGE_SPEED](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_CHANGE_SPEED)
+* [MAV_CMD_DO_MOUNT_CONTROL](https://mavlink.io/en/messages/common.html#MAV_CMD_DO_MOUNT_CONTROL)
+* [MAV_CMD_IMAGE_START_CAPTURE](https://mavlink.io/en/messages/common.html#MAV_CMD_IMAGE_START_CAPTURE)
+* [MAV_CMD_IMAGE_STOP_CAPTURE](https://mavlink.io/en/messages/common.html#MAV_CMD_IMAGE_STOP_CAPTURE)
+* [MAV_CMD_VIDEO_START_CAPTURE](https://mavlink.io/en/messages/common.html#MAV_CMD_VIDEO_START_CAPTURE)
+* [MAV_CMD_VIDEO_STOP_CAPTURE](https://mavlink.io/en/messages/common.html#MAV_CMD_VIDEO_STOP_CAPTURE)
+* [MAV_CMD_NAV_LOITER_TIME](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LOITER_TIME)
 
-> **Tip** The Mission API does not (at time of writing) support "repeat", takeoff, return to land etc. 
+Additionally, the following commands are supported only for mission import/download (there are no corresponding `MissionItem` methods):
+* [MAV_CMD_NAV_LAND](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LAND)
+* [MAV_CMD_NAV_TAKEOFF](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_TAKEOFF)
+
+> **Tip** The Mission API does not (at time of writing) provide explicit functionality to "repeat", takeoff, return to land etc. 
 > DroneCore provides some omitted functionality through the [Action](../guide/taking_off_landing.md) API.
 
 
@@ -98,6 +103,7 @@ then it will be the default for the remainder of the mission.
 > **Note** There are also getter methods for querying the current value of `MissionItem` attributes. 
 The default values of most fields are `NaN` (which means they are ignored/not sent).
 
+The mission (`mission_items`) can then be uploaded as shown in the section [Uploading a Mission](#uploading_mission) below.
 
 ### Convenience Function
 
@@ -108,14 +114,14 @@ value is actually used.
 The definition and use of this function is shown below:
 
 ```cpp
-std::shared_ptr<MissionItem> add_mission_item(double latitude_deg,
-                                              double longitude_deg,
-                                              float relative_altitude_m,
-                                              float speed_m_s,
-                                              bool is_fly_through,
-                                              float gimbal_pitch_deg,
-                                              float gimbal_yaw_deg,
-                                              MissionItem::CameraAction camera_action)
+std::shared_ptr<MissionItem> make_mission_item(double latitude_deg,
+                                               double longitude_deg,
+                                               float relative_altitude_m,
+                                               float speed_m_s,
+                                               bool is_fly_through,
+                                               float gimbal_pitch_deg,
+                                               float gimbal_yaw_deg,
+                                               MissionItem::CameraAction camera_action)
 {
     std::shared_ptr<MissionItem> new_item(new MissionItem());
     new_item->set_position(latitude_deg, longitude_deg);
@@ -126,18 +132,37 @@ std::shared_ptr<MissionItem> add_mission_item(double latitude_deg,
     new_item->set_camera_action(camera_action);
     return new_item;
 }
-    
-    
+
+
 mission_items.push_back(
-    add_mission_item(47.398170327054473,
-                     8.5456490218639658,
-                     10.0f, 5.0f, false,
-                     20.0f, 60.0f,
-                     MissionItem::CameraAction::NONE));
+    make_mission_item(47.398170327054473,
+                      8.5456490218639658,
+                      10.0f, 5.0f, false,
+                      20.0f, 60.0f,
+                      MissionItem::CameraAction::NONE));
 ```
 
+## Import a Mission from a QGC Plan {#import_qgc_plan}
 
-## Uploading a Mission
+DroneCore allows you to import a mission from a *QGroundControl* plan (the imported mission can then be uploaded to a vehicle).
+
+> **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#sync) (**Plan View > Sync Tool**, and then select **Save to File**).
+
+The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) method. The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
+
+The code fragment below shows how to import mission items from a plan:
+```cpp
+std::string qgc_plan = "file_path_to_some_qgroundcontrol.plan"
+Mission::mission_items_t mission_items;
+Mission::Result import_res = Mission::import_qgroundcontrol_mission(mission_items, qgc_plan);
+```
+
+> **Tip** [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) provides a working example with error checking.
+
+The mission (`mission_items`) can then be uploaded as shown in the section [Uploading a Mission](#uploading_mission) below.
+
+
+## Uploading a Mission {#uploading_mission}
 
 Use [Mission::upload_mission_async()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) to upload the mission defined in the previous section.
 
@@ -231,7 +256,7 @@ The following synchronous methods are also available for checking mission progre
 > **Note** The mission is (also) complete when `current_mission_item()` == `total_mission_items()`.
 
 
-## Taking off, Landing, Returning
+## Taking Off, Landing, Returning
 
 If using a copter or VTOL vehicle then PX4 will automatically takeoff when it is armed and a mission is started (even without a takeoff mission item). For Fixed Wing vehicles the vehicle must be launched before starting a mission.
 
@@ -287,8 +312,11 @@ The code fragment below shows how to download a mission:
 ## Further Information
 
 * [Mission Flight Mode](https://docs.px4.io/en/flight_modes/mission.html) (PX4 User Guide)
-* [Fly Mission](../examples/fly_mission.md) (DroneCore Example)
+* [Example:Fly Mission](../examples/fly_mission.md)
+* [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md)
 * Integration tests:
   * [mission.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission.cpp)
   * [mission_change_speed.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
   * [mission_survey.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)
+* Unit Tests:
+  * [mission_import_qgc_test.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/plugins/mission/mission_import_qgc_test.cpp)
