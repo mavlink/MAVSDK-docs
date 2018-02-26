@@ -10,10 +10,10 @@ This topic shows how to run the existing tests.
 
 ## Running Unit Tests
 
-To run all unit tests:
+To run all unit tests: 
 
 ```
-make run_unit_tests
+make run_unit_tests 
 ```
 
 
@@ -58,7 +58,7 @@ make posix gazebo
 
 Then run the tests as shown:
 ```
-make run_integration_tests
+make run_integration_tests 
 ```
 
 ### Run With a Real Vehicle
@@ -68,7 +68,7 @@ make run_integration_tests
 Make sure you are connected to a vehicle and check the connection using e.g.:
 
 ```
-make && build/default/dronecore-integrationtests --gtest_filter="SitlTest.TelemetryAsync"
+make && build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"  
 ```
 
 
@@ -76,15 +76,15 @@ make && build/default/dronecore-integrationtests --gtest_filter="SitlTest.Teleme
 
 To list all integration tests:
 ```
-make && build/default/dronecore-integrationtests --gtest_list_tests
+make && build/default/integration_tests/integration_tests_runner --gtest_list_tests
 ```
 
 To run a single integration test:
 ```
-make && build/default/dronecore-integrationtests --gtest_filter="SitlTest.TelemetryAsync"
+make && build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
 ```
 
 To run all telemetry tests:
 ```
-make && build/default/dronecore-integrationtests --gtest_filter="SitlTest.Telemetry*"
+make && build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.Telemetry*"
 ```

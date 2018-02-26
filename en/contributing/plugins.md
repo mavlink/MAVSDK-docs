@@ -1,8 +1,8 @@
 # Writing Plugins
 
-DroneCore is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/core) and [plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). 
+DroneCore is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/core) and multiple independent [plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). 
 
-Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are included at compile time. The *cmake* script [autogenerate_plugin_container.cmake](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/autogenerate_plugin_container.cmake) takes care of including the plugin folders and integration tests.
+Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. The [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
 
 > **Note** Plugins can also be defined in [DroneCore Extensions](../guide/dronecore_extensions.md). 
 > These are defined and tested in exactly the same way as "standard" DroneCore plugins. 
@@ -11,7 +11,7 @@ Plugins that are located in the *correct location* (a subfolder of **/plugins**)
 
 Plugins should be written so that they are independent of each other (they will still need to be dependent on the core source). This allows plugins to be removed/replaced as needed at the cost of some duplicated functionality across the plugin modules.
 
-The code for each plugin and its unit test (if defined) is stored in a sub-folder of the **plugins** directory. Integration tests for all plugins in the library are stored in **integration_tests**.
+The code for each plugin (and its unit test if one has been defined) is stored in a sub-folder of the **plugins** directory. Integration tests for all plugins in the library are stored in **integration_tests**.
 
 A simplified view of the folder structure is shown below (showing relevant directories for both DroneCore and a DroneCore Extension): 
 
@@ -141,25 +141,22 @@ Unit tests are therefore considered optional!
 
 #### Adding Unit Tests {#adding_unit_tests}
 
-Unit tests are stored as separate files in the same directory as their associated source code. 
+Unit test files are stored in the same directory as their associated source code. 
 Often they test the implementation (rather than the public API), 
 and hence are named with the suffix **_impl_test.cpp**.
 
-In order to include a test in the DroneCore unit test program (`dronecore-unittests`), 
-its file name must be added to the `$unittest_source_files` variable in the 
-plugin **CMakeLists.txt** file (you can add multiple files).
+In order to include a test in the DroneCore unit test program (`unit_tests_runner`), 
+it must be added to the `UNIT_TEST_SOURCES` variable in the plugin **CMakeLists.txt** file.
 
-The example plugin adds the **example_impl_test.cpp** unit test as shown below:
+For example, to add the **example_impl_test.cpp** unit test you would 
+append the following lines to its **CMakeLists.txt**:
 
-```cmake
-set(unittest_source_files
-    # Add unit test file(s) for plugin
-    example_impl_test.cpp
-    PARENT_SCOPE
+```cmake 
+list(APPEND UNIT_TEST_SOURCES
+    ${CMAKE_SOURCE_DIR}/plugins/mission/example_impl_test.cpp
 )
-```
-
-> **Note** Unit tests for *core* functionality are added in the main [DroneCore/CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt#L187) file. 
+set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)
+``` 
 
 
 #### Unit Test Code
@@ -188,7 +185,7 @@ TEST(ExampleImpl, NoTest)
 
 ### Writing Integration Tests {#integration_tests}
 
-DroneCore provides the `dronecore-integrationtests` application for running the integration tests and 
+DroneCore provides the `integration_tests_runner` application for running the integration tests and 
 some helper code to make it easier to log tests and run them against the simulator.
 
 > **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
@@ -198,7 +195,7 @@ some helper code to make it easier to log tests and run them against the simulat
 
 #### Adding Integration Tests
 
-In order to run an integration test it needs to be added to the `dronecore-integrationtests` program.
+In order to run an integration test it needs to be added to the `integration_tests_runner` program.
 
 Integration tests for core functionality and plugins delivered by the project 
 are stored in [DroneCore/integration_tests](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/integration_tests). 
@@ -206,13 +203,18 @@ The files are added to the test program in that folder's
 [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/CMakeLists.txt) file:
 
 ```cmake
-list(APPEND integration_tests
-    simple_connect
-    async_connect
-    # ...
-    mission_change_speed
-    mission_survey
-    curl
+# This includes all GTests that run integration tests
+add_executable(integration_tests_runner
+    ../core/unittests_main.cpp
+    simple_connect.cpp
+    async_connect.cpp
+    telemetry_simple.cpp
+    ...
+    mission_change_speed.cpp
+    mission_survey.cpp
+    gimbal.cpp
+    transition_multicopter_fixedwing.cpp
+    follow_me.cpp
 )
 ```
 
@@ -226,9 +228,9 @@ external_example       ## The (example) SDK/external plugin directory.
 
 Example extension **CMakeLists.txt** file:
 ```cmake
-list(APPEND integration_tests
-    # Add the cpp file for each integration test on its own line
-    hello_world
+add_executable(external_example_integration_tests_runner
+    ${CMAKE_SOURCE_DIR}/core/unittests_main.cpp
+    hello_world.cpp
 )
 ```
  
