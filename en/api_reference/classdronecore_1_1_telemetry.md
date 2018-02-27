@@ -740,6 +740,7 @@ Quaternion dronecore::Telemetry::camera_attitude_quaternion() const
 
 Get the camera's attitude in quaternions (synchronous).
 
+Note that the yaw component of attitude is relative to North (absolute frame).
 
 **Returns**
 
@@ -753,6 +754,7 @@ EulerAngle dronecore::Telemetry::camera_attitude_euler_angle() const
 
 Get the camera's attitude in Euler angles (synchronous).
 
+Note that the yaw component of attitude is relative to North (absolute frame).
 
 **Returns**
 
