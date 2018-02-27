@@ -24,7 +24,7 @@ DroneCore::ConnectionResult connection_result = dc.add_any_connection();
 ASSERT_EQ(connection_result,DroneCore::ConnectionResult::SUCCESS)
 ```
 
-> **Note** The default connection is to the standard PX4 broadcast UDP port for off-board APIs (14540). This is the normal/most common way to connect to PX4 over WiFi.
+> **Note** The default connection is to the [standard PX4 broadcast UDP port](https://dev.px4.io/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
 
 DroneCore also provides the [DroneCore::connection_result_str()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af) method, which you can use to create a human-readable string for the [DroneCore::ConnectionResult](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7). The code fragment below shows how you might print this string to the console:
 ```cpp
