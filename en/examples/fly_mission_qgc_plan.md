@@ -148,6 +148,7 @@ target_link_libraries(fly_qgc_mission
 * Steps to run this example:
 * 1. (a) Create a Mission in QGroundControl and save them to a file (.plan) (OR)
 *    (b) Use a pre-created sample mission plan in "plugins/mission/qgroundcontrol_sample.plan".
+*    Click [here](https://user-images.githubusercontent.com/26615772/31763673-972c5bb6-b4dc-11e7-8ff0-f8b39b6b88c3.png) to see what sample mission plan in QGroundControl looks like.
 * 2. Run the example by passing path of the QGC mission plan as argument (By default, sample mission plan is imported).
 *
 * Example description:
@@ -183,7 +184,7 @@ inline void handle_action_err_exit(Action::Result result, const std::string &mes
 // Handles Mission's result
 inline void handle_mission_err_exit(Mission::Result result, const std::string &message);
 // Handles Connection result
-inline void handle_connection_err_exit(DroneCore::ConnectionResult result,
+inline void handle_connection_err_exit(ConnectionResult result,
                                        const std::string &message);
 
 int main(int argc, char **argv)
@@ -211,7 +212,7 @@ int main(int argc, char **argv)
             prom->set_value();
         });
 
-        DroneCore::ConnectionResult connection_result = dc.add_udp_connection();
+        ConnectionResult connection_result = dc.add_udp_connection();
         handle_connection_err_exit(connection_result, "Connection failed: ");
 
         future_result.get();
@@ -330,12 +331,12 @@ inline void handle_mission_err_exit(Mission::Result result, const std::string &m
 }
 
 // Handles connection result
-inline void handle_connection_err_exit(DroneCore::ConnectionResult result,
+inline void handle_connection_err_exit(ConnectionResult result,
                                        const std::string &message)
 {
-    if (result != DroneCore::ConnectionResult::SUCCESS) {
+    if (result != ConnectionResult::SUCCESS) {
         std::cerr << ERROR_CONSOLE_TEXT << message
-                  << DroneCore::connection_result_str(result)
+                  << connection_result_str(result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }

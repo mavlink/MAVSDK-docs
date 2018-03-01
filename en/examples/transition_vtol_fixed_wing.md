@@ -97,7 +97,7 @@ target_link_libraries(transition_vtol_fixed_wing
 )
 ```
 
-[fly_mission.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
+[transition_vtol_fixed_wing.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
 
 ```cpp
 
@@ -123,11 +123,11 @@ int main(int /*argc*/, char ** /*argv*/)
 
     bool discovered_device = false;
 
-    DroneCore::ConnectionResult connection_result = dc.add_udp_connection();
+    ConnectionResult connection_result = dc.add_udp_connection();
 
-    if (connection_result != DroneCore::ConnectionResult::SUCCESS) {
+    if (connection_result != ConnectionResult::SUCCESS) {
         std::cout << ERROR_CONSOLE_TEXT << "Connection failed: "
-                  << DroneCore::connection_result_str(connection_result)
+                  << connection_result_str(connection_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
