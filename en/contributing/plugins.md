@@ -189,7 +189,7 @@ DroneCore provides the `integration_tests_runner` application for running the in
 some helper code to make it easier to log tests and run them against the simulator.
 
 > **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
-> and the [integration_tests](https://github.com/dronecore/DroneCore/tree/develop/integration_tests) 
+> and the [integration_tests](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/integration_tests) 
 > for our existing plugins to better understand how to write your own!
 
 
@@ -237,39 +237,40 @@ add_executable(external_example_integration_tests_runner
 
 #### Integration Test Files/Code
 
-The main DroneCore-specific functionality is provided by [integration_test_helper.h](https://github.com/dronecore/DroneCore/blob/master/core/integration_test_helper.h). 
+The main DroneCore-specific functionality is provided by [integration_test_helper.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/integration_test_helper.h). 
 This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md) 
 and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
 > **Note** All tests must be declared using `TEST_F` and have a first argument `SitlTest` as shown. This is required
 > in order to use the shared class to set up and tear down the simulator between tests.
 
-The example integration test [hello_world.cpp](https://github.com/dronecore/DroneCore/blob/master/external_example/integration_tests/hello_world.cpp) demonstrates this below. 
+The example integration test [hello_world.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/integration_tests/hello_world.cpp) demonstrates this below. 
 
 ```cpp
 #include <iostream>
 #include <unistd.h>
 #include "dronecore.h"
+#include "plugins/example/example.h"
 #include "integration_test_helper.h"
 
 using namespace dronecore;
 
-TEST_F(SitlTest, ExternalExampleHello)
+TEST_F(SitlTest, ExampleHello)
 {
     DroneCore dc;
 
-    DroneCore::ConnectionResult ret = dc.add_udp_connection();
-    ASSERT_EQ(ret, DroneCore::ConnectionResult::SUCCESS);
+    ConnectionResult ret = dc.add_udp_connection();
+    ASSERT_EQ(ret, ConnectionResult::SUCCESS);
 
     // Wait for device to connect via heartbeat.
     std::this_thread::sleep_for(std::chrono::seconds(2));
+    ASSERT_TRUE(dc.is_connected());
 
-    // One vehicle should have connected.
-    std::vector<uint64_t> uuids = dc.device_uuids();
-    EXPECT_EQ(uuids.size(), 1);
+    Device &device = dc.device();
+    auto example = std::make_shared<Example>(&device);
 
     // Apparently it can say hello.
-    dc.device().example().say_hello();
+    example->say_hello();
 }
 ```
 

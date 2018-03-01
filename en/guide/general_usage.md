@@ -19,7 +19,7 @@ DroneCore APIs do not raise exceptions! Instead, methods that can fail return su
 
 > **Tip** The error code usually reflects acknowledgment from the vehicle that it will perform the requested action (or not). The operation itself may not yet have completed (e.g. taking off).
 
-The various classes also all provide methods getting human readable strings from their associated enum (e.g. [DroneCore::connection_result_str()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af), [Telemetry::result_str()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a)). You can see how these are used in the example code.
+The various classes also all provide methods getting human readable strings from their associated enum (e.g. [connection_result_str()](../api_reference/namespacedronecore.md#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8), [Telemetry::result_str()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a)). You can see how these are used in the example code.
 
 
 ## Shared Vehicle Control
