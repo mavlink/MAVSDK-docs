@@ -26,22 +26,22 @@ std::function< void(bool success, int32_t value)> [get_param_int_callback_t](#cl
 
 Type | Name | Description
 ---: | --- | ---
-| [Device](#classdronecore_1_1_device_1af07b4defa38736ce928377af2f31fb6e) (DroneCoreImpl *parent, uint8_t target_system_id) |
+| [Device](#classdronecore_1_1_device_1af07b4defa38736ce928377af2f31fb6e) (DroneCoreImpl * parent, uint8_t target_system_id) |
 | [~Device](#classdronecore_1_1_device_1a65c697e12eed30109074e18a9cfdc836) () |
-| [Device](#classdronecore_1_1_device_1acf95b02d5d1d705ce3dc1438786e0c91) (const Device &)=delete |
-void | [process_mavlink_message](#classdronecore_1_1_device_1a7324f5f4cc1f7bce40a2e8c237f1212e) (const mavlink_message_t &message) |
-void | [register_mavlink_message_handler](#classdronecore_1_1_device_1aa7ae3afa910a2043185e319cfaaa4196) (uint16_t msg_id, mavlink_message_handler_t callback, const void *cookie) |
-void | [unregister_all_mavlink_message_handlers](#classdronecore_1_1_device_1a7fd2014818f2e41cc93b6c31d259f21c) (const void *cookie) |
-void | [register_timeout_handler](#classdronecore_1_1_device_1afc704e09b8331cdd36341a1ffd331c11) (std::function< void()> callback, double duration_s, void **cookie) |
-void | [refresh_timeout_handler](#classdronecore_1_1_device_1ad7d945426276c079ffc9d173583d1427) (const void *cookie) |
-void | [unregister_timeout_handler](#classdronecore_1_1_device_1a95673878b3a69db3817def10310a565d) (const void *cookie) |
-void | [add_call_every](#classdronecore_1_1_device_1a466bede03fdf9be31cefb206ef561114) (std::function< void()> callback, float interval_s, void **cookie) |
-void | [change_call_every](#classdronecore_1_1_device_1aed059a1d5a9f2ee4e11963e5d371577c) (float interval_s, const void *cookie) |
-void | [reset_call_every](#classdronecore_1_1_device_1a38c719f6ccadf6a17e61c47c14cdf234) (const void *cookie) |
-void | [remove_call_every](#classdronecore_1_1_device_1a5a101b41ec651a6a764a01d3208934e2) (const void *cookie) |
-bool | [send_message](#classdronecore_1_1_device_1a9d09cd1b8b9689080337f7efd9e9d77d) (const mavlink_message_t &message) |
-MavlinkCommands::Result | [send_command_with_ack](#classdronecore_1_1_device_1afcc8c11d47f681c41705d82ee3cd74ea) (uint16_t command, const MavlinkCommands::Params &params, uint8_t component_id=0) |
-void | [send_command_with_ack_async](#classdronecore_1_1_device_1a0ef6cf5c11820fb2ae00bd96f9abd4de) (uint16_t command, const MavlinkCommands::Params &params, command_result_callback_t callback, uint8_t component_id=0) |
+| [Device](#classdronecore_1_1_device_1acf95b02d5d1d705ce3dc1438786e0c91) (const [Device](classdronecore_1_1_device.md) &)=delete |
+void | [process_mavlink_message](#classdronecore_1_1_device_1a7324f5f4cc1f7bce40a2e8c237f1212e) (const mavlink_message_t & message) |
+void | [register_mavlink_message_handler](#classdronecore_1_1_device_1aa7ae3afa910a2043185e319cfaaa4196) (uint16_t msg_id, mavlink_message_handler_t callback, const void * cookie) |
+void | [unregister_all_mavlink_message_handlers](#classdronecore_1_1_device_1a7fd2014818f2e41cc93b6c31d259f21c) (const void * cookie) |
+void | [register_timeout_handler](#classdronecore_1_1_device_1afc704e09b8331cdd36341a1ffd331c11) (std::function< void()> callback, double duration_s, void ** cookie) |
+void | [refresh_timeout_handler](#classdronecore_1_1_device_1ad7d945426276c079ffc9d173583d1427) (const void * cookie) |
+void | [unregister_timeout_handler](#classdronecore_1_1_device_1a95673878b3a69db3817def10310a565d) (const void * cookie) |
+void | [add_call_every](#classdronecore_1_1_device_1a466bede03fdf9be31cefb206ef561114) (std::function< void()> callback, float interval_s, void ** cookie) |
+void | [change_call_every](#classdronecore_1_1_device_1aed059a1d5a9f2ee4e11963e5d371577c) (float interval_s, const void * cookie) |
+void | [reset_call_every](#classdronecore_1_1_device_1a38c719f6ccadf6a17e61c47c14cdf234) (const void * cookie) |
+void | [remove_call_every](#classdronecore_1_1_device_1a5a101b41ec651a6a764a01d3208934e2) (const void * cookie) |
+bool | [send_message](#classdronecore_1_1_device_1a9d09cd1b8b9689080337f7efd9e9d77d) (const mavlink_message_t & message) |
+MavlinkCommands::Result | [send_command_with_ack](#classdronecore_1_1_device_1afcc8c11d47f681c41705d82ee3cd74ea) (uint16_t command, const MavlinkCommands::Params & params, uint8_t component_id=0) |
+void | [send_command_with_ack_async](#classdronecore_1_1_device_1a0ef6cf5c11820fb2ae00bd96f9abd4de) (uint16_t command, const MavlinkCommands::Params & params, command_result_callback_t callback, uint8_t component_id=0) |
 MavlinkCommands::Result | [set_msg_rate](#classdronecore_1_1_device_1af10ca5a146f0129c51566486a20d98ed) (uint16_t message_id, double rate_hz, uint8_t component_id=0) |
 void | [set_msg_rate_async](#classdronecore_1_1_device_1ad3af9775d80d5301c19808822da6f9aa) (uint16_t message_id, double rate_hz, command_result_callback_t callback, uint8_t component_id=0) |
 void | [request_autopilot_version](#classdronecore_1_1_device_1abd185340eaad71374b8f8647a5594502) () |
@@ -51,23 +51,23 @@ uint8_t | [get_target_component_id](#classdronecore_1_1_device_1a41f2b9cf224c09d
 void | [set_target_system_id](#classdronecore_1_1_device_1a01f14b9dffc35b045bbfe76f411c84f8) (uint8_t system_id) |
 bool | [target_supports_mission_int](#classdronecore_1_1_device_1afbe6f90ecace24d8b7081a01be3686c3) () const |
 bool | [is_armed](#classdronecore_1_1_device_1ad8b067dc607c3fd7bd86c2961409ce60) () const |
-void | [set_param_float_async](#classdronecore_1_1_device_1a1b784f4c51451f23cb978b1982ead1bf) (const std::string &name, float value, success_t callback) |
-void | [set_param_int_async](#classdronecore_1_1_device_1aa8fe748620f9934df97582943b20b372) (const std::string &name, int32_t value, success_t callback) |
-void | [set_param_ext_float_async](#classdronecore_1_1_device_1a46ca0087cd5135a12a9f163455876fe2) (const std::string &name, float value, success_t callback) |
-void | [set_param_ext_int_async](#classdronecore_1_1_device_1ab494873b3e6e99706c89c669d867c0bf) (const std::string &name, int32_t value, success_t callback) |
+void | [set_param_float_async](#classdronecore_1_1_device_1a1b784f4c51451f23cb978b1982ead1bf) (const std::string & name, float value, success_t callback) |
+void | [set_param_int_async](#classdronecore_1_1_device_1aa8fe748620f9934df97582943b20b372) (const std::string & name, int32_t value, success_t callback) |
+void | [set_param_ext_float_async](#classdronecore_1_1_device_1a46ca0087cd5135a12a9f163455876fe2) (const std::string & name, float value, success_t callback) |
+void | [set_param_ext_int_async](#classdronecore_1_1_device_1ab494873b3e6e99706c89c669d867c0bf) (const std::string & name, int32_t value, success_t callback) |
 MavlinkCommands::Result | [set_flight_mode](#classdronecore_1_1_device_1acafac8ecf0801045ad894e80bcd9d9a8) (FlightMode mode) |
 void | [set_flight_mode_async](#classdronecore_1_1_device_1a56d240c32839524470a8784f5c72e8a0) (FlightMode mode, command_result_callback_t callback) |
-void | [get_param_float_async](#classdronecore_1_1_device_1a48dbd54b03ad86c9784dfac75274713f) (const std::string &name, get_param_float_callback_t callback) |
-void | [get_param_int_async](#classdronecore_1_1_device_1a682a74475e24cac262ac90b18e5dd49a) (const std::string &name, get_param_int_callback_t callback) |
-void | [get_param_ext_float_async](#classdronecore_1_1_device_1a6050f2993f78689c778cdb4240bb3606) (const std::string &name, get_param_float_callback_t callback) |
-void | [get_param_ext_int_async](#classdronecore_1_1_device_1a7b4050c8aa12e198d99b23be4f281c7f) (const std::string &name, get_param_int_callback_t callback) |
+void | [get_param_float_async](#classdronecore_1_1_device_1a48dbd54b03ad86c9784dfac75274713f) (const std::string & name, get_param_float_callback_t callback) |
+void | [get_param_int_async](#classdronecore_1_1_device_1a682a74475e24cac262ac90b18e5dd49a) (const std::string & name, get_param_int_callback_t callback) |
+void | [get_param_ext_float_async](#classdronecore_1_1_device_1a6050f2993f78689c778cdb4240bb3606) (const std::string & name, get_param_float_callback_t callback) |
+void | [get_param_ext_int_async](#classdronecore_1_1_device_1a7b4050c8aa12e198d99b23be4f281c7f) (const std::string & name, get_param_int_callback_t callback) |
 bool | [is_connected](#classdronecore_1_1_device_1afac855ffb266017d932c4060140af717) () const |
 Time & | [get_time](#classdronecore_1_1_device_1a6009c92dbd4ffd14367ad4ee1d4b3054) () |
-void | [register_plugin](#classdronecore_1_1_device_1a7622b2667c5454c490a0d6722f738ec3) (PluginImplBase *plugin_impl) |
-void | [unregister_plugin](#classdronecore_1_1_device_1aac00d6ae3d53154900785b882df5edf4) (PluginImplBase *plugin_impl) |
+void | [register_plugin](#classdronecore_1_1_device_1a7622b2667c5454c490a0d6722f738ec3) (PluginImplBase * plugin_impl) |
+void | [unregister_plugin](#classdronecore_1_1_device_1aac00d6ae3d53154900785b882df5edf4) (PluginImplBase * plugin_impl) |
 void | [lock_communication](#classdronecore_1_1_device_1a15d93e6a12f2208f8fa56466b7f2f819) () |
 void | [unlock_communication](#classdronecore_1_1_device_1a801aab463023eb3e64670c86349fa54c) () |
-const [Device](classdronecore_1_1_device.md) & | [operator=](#classdronecore_1_1_device_1ad03d3cdf0aaa8e4cb21becb6c7806c33) (const Device &)=delete |
+const [Device](classdronecore_1_1_device.md) & | [operator=](#classdronecore_1_1_device_1ad03d3cdf0aaa8e4cb21becb6c7806c33) (const [Device](classdronecore_1_1_device.md) &)=delete |
 
 ## Static Public Member Functions
 

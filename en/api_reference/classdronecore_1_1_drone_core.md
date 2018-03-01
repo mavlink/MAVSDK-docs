@@ -18,7 +18,6 @@ An instance of this class must be created (first) in order to use the library. T
 
 Type | Description
 --- | ---
-enum [ConnectionResult](#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | Result type returned when adding a connection.
 std::function< void(uint64_t uuid)> [event_callback_t](#classdronecore_1_1_drone_core_1abb488f975ee7e199cd1cb08a317a52c3) | Callback type for discover and timeout notifications.
 
 ## Public Member Functions
@@ -28,17 +27,17 @@ Type | Name | Description
 ---: | --- | ---
 | [DroneCore](#classdronecore_1_1_drone_core_1a0b94dd09cd46faa41742d3720f210aa2) () | Constructor.
 | [~DroneCore](#classdronecore_1_1_drone_core_1abbaedb6fd922c023e53611b484b38582) () | Destructor.
-[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | [add_any_connection](#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021) (const std::string &connection_url=DEFAULT_UDP_CONNECTION_URL) | Adds Connection via URL.
-[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | [add_udp_connection](#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb) (int local_port_number=DEFAULT_UDP_PORT) | Adds a UDP connection to the specified port number.
-[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | [add_tcp_connection](#classdronecore_1_1_drone_core_1a725640cb53c0d077e753ea2d22717b68) (const std::string &remote_ip=DEFAULT_TCP_REMOTE_IP, int remote_port=DEFAULT_TCP_REMOTE_PORT) | Adds a TCP connection with a specific IP address and port number.
-[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) | [add_serial_connection](#classdronecore_1_1_drone_core_1abde7ed4d42875dc85c73d34fedab2902) (const std::string &dev_path=DEFAULT_SERIAL_DEV_PATH, int baudrate=DEFAULT_SERIAL_BAUDRATE) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_any_connection](#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021) (const std::string & connection_url=DEFAULT_UDP_CONNECTION_URL) | Adds Connection via URL.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_udp_connection](#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb) (int local_port_number=DEFAULT_UDP_PORT) | Adds a UDP connection to the specified port number.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_tcp_connection](#classdronecore_1_1_drone_core_1a725640cb53c0d077e753ea2d22717b68) (const std::string & remote_ip=DEFAULT_TCP_REMOTE_IP, int remote_port=DEFAULT_TCP_REMOTE_PORT) | Adds a TCP connection with a specific IP address and port number.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_serial_connection](#classdronecore_1_1_drone_core_1abde7ed4d42875dc85c73d34fedab2902) (const std::string & dev_path=DEFAULT_SERIAL_DEV_PATH, int baudrate=DEFAULT_SERIAL_BAUDRATE) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
 const std::vector< uint64_t > & | [device_uuids](#classdronecore_1_1_drone_core_1a20490717da3893be2c6965b905a7c1db) () const | Get vector of device UUIDs.
 [Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a5bac6e419e56a1f77a51adef98e94e7c) () const | Get the first discovered device.
-[Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a7d18869c8c8f518af78bee313b554a2a) (uint64_t uuid) const | Get the device with the specified UUID.
+[Device](classdronecore_1_1_device.md) & | [device](#classdronecore_1_1_drone_core_1a7d18869c8c8f518af78bee313b554a2a) (uint64_t uuid)const | Get the device with the specified UUID.
 bool | [is_connected](#classdronecore_1_1_drone_core_1a2adf0c6fc5521fa8f446e048a09f5ec1) () const | Returns `true` if exactly one device is currently connected.
-bool | [is_connected](#classdronecore_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23) (uint64_t uuid) const | Returns `true` if a device is currently connected.
-void | [register_on_discover](#classdronecore_1_1_drone_core_1a864ec7349eba67b02b8b3792f6c388f9) (event_callback_t callback) | Register callback for device discovery.
-void | [register_on_timeout](#classdronecore_1_1_drone_core_1ad8c0dc0100449d21a46a787c810e8978) (event_callback_t callback) | Register callback for device timeout.
+bool | [is_connected](#classdronecore_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23) (uint64_t uuid)const | Returns `true` if a device is currently connected.
+void | [register_on_discover](#classdronecore_1_1_drone_core_1a864ec7349eba67b02b8b3792f6c388f9) ([event_callback_t](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abb488f975ee7e199cd1cb08a317a52c3) callback) | Register callback for device discovery.
+void | [register_on_timeout](#classdronecore_1_1_drone_core_1ad8c0dc0100449d21a46a787c810e8978) ([event_callback_t](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abb488f975ee7e199cd1cb08a317a52c3) callback) | Register callback for device timeout.
 
 ## Static Public Attributes
 
@@ -59,14 +58,6 @@ static constexpr auto [DEFAULT_SERIAL_DEV_PATH](#classdronecore_1_1_drone_core_1
 
 
 static constexpr int [DEFAULT_SERIAL_BAUDRATE](#classdronecore_1_1_drone_core_1a2b20d34acc312ffe6197aebdc6769a86) = 57600 - 
-
-
-## Static Public Member Functions
-
-
-Type | Name | Description
----: | --- | ---
-const char * | [connection_result_str](#classdronecore_1_1_drone_core_1a1557da80cf43483e7833cab1eee417dd) (const ConnectionResult result) | Translates the [DroneCore::ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) enum to a human-readable English string.
 
 
 ## Constructor & Destructor Documentation
@@ -108,32 +99,6 @@ Callback type for discover and timeout notifications.
 
 * **uuid** - UUID of device (or MAVLink system ID for devices that don't have a UUID).
 
-## Member Enumeration Documentation
-
-
-### enum ConnectionResult {#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7}
-
-
-Result type returned when adding a connection.
-
-**Note**: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you add a connection: [add_udp_connection()](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb).
-
-Value | Description
---- | ---
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Connection succeeded. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Connection timed out. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7aac87548d79aa92c60dcfac06ae83e5ad"></span> `SOCKET_ERROR` | Socket error. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7af69a41125696a14c45a8182ce7ba83a7"></span> `BIND_ERROR` | Bind error. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a20766ec998922f65e7ac718b7a9b7a22"></span> `SOCKET_CONNECTION_ERROR` |  
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a3e860a081575fc82cc7b6ed2ca602947"></span> `NOT_IMPLEMENTED` | Connection type not implemented. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7adb6de85627898aecebdcd28613df3164"></span> `DEVICE_NOT_CONNECTED` | No device is connected. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a9b40004e356bbecf8c222684be0988c7"></span> `DEVICE_BUSY` | Device is busy. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command is denied. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a588cf56f08269878b055227a8490de67"></span> `DESTINATION_IP_UNKNOWN` | Connection IP is unknown. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a9532aa7fe8e205a02479a2e43d05f6b1"></span> `CONNECTIONS_EXHAUSTED` | Connections exhausted. 
-<span id="classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7a269972fd1df83e8f423abead920f8780"></span> `CONNECTION_URL_INVALID` | URL invalid. 
-
 ## Member Function Documentation
 
 
@@ -164,7 +129,7 @@ Default URL : udp://:14540.
 
 **Returns**
 
-&emsp;[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) - The result of adding the connection.
+&emsp;[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) - The result of adding the connection.
 
 ### add_udp_connection() {#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb}
 ```cpp
@@ -181,7 +146,7 @@ Adds a UDP connection to the specified port number.
 
 **Returns**
 
-&emsp;[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) - The result of adding the connection.
+&emsp;[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) - The result of adding the connection.
 
 ### add_tcp_connection() {#classdronecore_1_1_drone_core_1a725640cb53c0d077e753ea2d22717b68}
 ```cpp
@@ -199,7 +164,7 @@ Adds a TCP connection with a specific IP address and port number.
 
 **Returns**
 
-&emsp;[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) - The result of adding the connection.
+&emsp;[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) - The result of adding the connection.
 
 ### add_serial_connection() {#classdronecore_1_1_drone_core_1abde7ed4d42875dc85c73d34fedab2902}
 ```cpp
@@ -217,7 +182,7 @@ Adds a serial connection with a specific port (COM or UART dev node) and baudrat
 
 **Returns**
 
-&emsp;[ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) - The result of adding the connection.
+&emsp;[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) - The result of adding the connection.
 
 ### device_uuids() {#classdronecore_1_1_drone_core_1a20490717da3893be2c6965b905a7c1db}
 ```cpp
@@ -334,64 +299,47 @@ This sets a callback that will be notified if no heartbeat of the device has bee
 
 * [event_callback_t](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abb488f975ee7e199cd1cb08a317a52c3) **callback** - Callback to register.
 
-### connection_result_str() {#classdronecore_1_1_drone_core_1a1557da80cf43483e7833cab1eee417dd}
-```cpp
-static const char* dronecore::DroneCore::connection_result_str(const ConnectionResult result)
-```
-
-
-Translates the [DroneCore::ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) enum to a human-readable English string.
-
-
-**Parameters**
-
-* const [ConnectionResult](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) **result** - 
-
-**Returns**
-
-&emsp;const char * - 
-
 ## Field Documentation
 
 
 ### DEFAULT_UDP_CONNECTION_URL {#classdronecore_1_1_drone_core_1aef2ad569dd9a7d0762b1d17d21e7f598}
 
 ```cpp
-constexpr auto dronecore::DroneCore::DEFAULT_UDP_CONNECTION_URL
+constexpr auto dronecore::DroneCore::DEFAULT_UDP_CONNECTION_URL = "udp://:14540"
 ```
 
 
 ### DEFAULT_UDP_PORT {#classdronecore_1_1_drone_core_1aa989b494349529f412b36984a46f2ca6}
 
 ```cpp
-constexpr int dronecore::DroneCore::DEFAULT_UDP_PORT
+constexpr int dronecore::DroneCore::DEFAULT_UDP_PORT = 14540
 ```
 
 
 ### DEFAULT_TCP_REMOTE_IP {#classdronecore_1_1_drone_core_1ade2086911d3052093fb87717f58a99b2}
 
 ```cpp
-constexpr auto dronecore::DroneCore::DEFAULT_TCP_REMOTE_IP
+constexpr auto dronecore::DroneCore::DEFAULT_TCP_REMOTE_IP = "127.0.0.1"
 ```
 
 
 ### DEFAULT_TCP_REMOTE_PORT {#classdronecore_1_1_drone_core_1a0ded56f7f5873f17e424343ed7b2e5af}
 
 ```cpp
-constexpr int dronecore::DroneCore::DEFAULT_TCP_REMOTE_PORT
+constexpr int dronecore::DroneCore::DEFAULT_TCP_REMOTE_PORT = 5760
 ```
 
 
 ### DEFAULT_SERIAL_DEV_PATH {#classdronecore_1_1_drone_core_1a67928c93b8b8f2ab65cf28a4b6d9436f}
 
 ```cpp
-constexpr auto dronecore::DroneCore::DEFAULT_SERIAL_DEV_PATH
+constexpr auto dronecore::DroneCore::DEFAULT_SERIAL_DEV_PATH = "/dev/ttyS0"
 ```
 
 
 ### DEFAULT_SERIAL_BAUDRATE {#classdronecore_1_1_drone_core_1a2b20d34acc312ffe6197aebdc6769a86}
 
 ```cpp
-constexpr int dronecore::DroneCore::DEFAULT_SERIAL_BAUDRATE
+constexpr int dronecore::DroneCore::DEFAULT_SERIAL_BAUDRATE = 57600
 ```
 
