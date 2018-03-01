@@ -44,7 +44,7 @@ The main steps are:
    ```
    #include <dronecore/dronecore.h>
    DroneCore dc;
-   DroneCore::ConnectionResult conn_result = dc.add_udp_connection();
+   ConnectionResult conn_result = dc.add_udp_connection();
    // Wait for the device to connect via heartbeat
    while (!dc.is_connected()) {
       sleep_for(seconds(1));

@@ -6,7 +6,7 @@ In order to detect vehicles you must first specify the communication ports that 
 
 ## Monitoring a Port
 
-Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021), [add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb), [add_tcp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a725640cb53c0d077e753ea2d22717b68) or [add_serial_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abde7ed4d42875dc85c73d34fedab2902). All the methods are used similarly, and return immediately with a [DroneCore::ConnectionResult](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7) indicating whether they succeeded.
+Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021), [add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb), [add_tcp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a725640cb53c0d077e753ea2d22717b68) or [add_serial_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abde7ed4d42875dc85c73d34fedab2902). All the methods are used similarly, and return immediately with a [ConnectionResult](../api_reference/namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) indicating whether they succeeded.
 
 The [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021) method can be used to set up monitoring for any of the supported port types (while the other methods set up specific connection types). The connection details are specified using the string formats shown below:
 
@@ -20,17 +20,17 @@ The code snippet below shows how to set up monitoring with `add_any_connection()
 
 ```cpp
 DroneCore dc;
-DroneCore::ConnectionResult connection_result = dc.add_any_connection(); 
-ASSERT_EQ(connection_result,DroneCore::ConnectionResult::SUCCESS)
+ConnectionResult connection_result = dc.add_any_connection(); 
+ASSERT_EQ(connection_result,ConnectionResult::SUCCESS)
 ```
 
 > **Note** The default connection is to the [standard PX4 broadcast UDP port](https://dev.px4.io/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
 
-DroneCore also provides the [DroneCore::connection_result_str()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a84c40dcefcafe888c38a5ed8dd93b0af) method, which you can use to create a human-readable string for the [DroneCore::ConnectionResult](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a9bdf4a0267d4851342617bdbcbbeead7). The code fragment below shows how you might print this string to the console:
+DroneCore also provides the [connection_result_str()](../api_reference/namespacedronecore.md#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8) method, which you can use to create a human-readable string for the [ConnectionResult](../api_reference/namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc). The code fragment below shows how you might print this string to the console:
 ```cpp
 DroneCore dc;
-DroneCore::ConnectionResult connection_result = dc.add_udp_connection();
-std::cout << "Connection string: " << DroneCore::connection_result_str(connection_result) << std::endl;
+ConnectionResult connection_result = dc.add_udp_connection();
+std::cout << "Connection string: " << connection_result_str(connection_result) << std::endl;
 ```
 
 
