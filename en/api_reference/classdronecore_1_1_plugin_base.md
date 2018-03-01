@@ -9,9 +9,9 @@
 
 Type | Name | Description
 ---: | --- | ---
-| [PluginBase](#classdronecore_1_1_plugin_base_1ae98dd073e3768f140d5fb938c20c861c) () |
-| [~PluginBase](#classdronecore_1_1_plugin_base_1a99a11523b84feb2fc1664eed1d4995f3) ()=default |
-| [PluginBase](#classdronecore_1_1_plugin_base_1a9a163fe7dc7cc9b8c65a1ce0e86a6750) (const [PluginBase](classdronecore_1_1_plugin_base.md) &)=delete |
+&nbsp; | [PluginBase](#classdronecore_1_1_plugin_base_1ae98dd073e3768f140d5fb938c20c861c) () |
+&nbsp; | [~PluginBase](#classdronecore_1_1_plugin_base_1a99a11523b84feb2fc1664eed1d4995f3) ()=default |
+&nbsp; | [PluginBase](#classdronecore_1_1_plugin_base_1a9a163fe7dc7cc9b8c65a1ce0e86a6750) (const [PluginBase](classdronecore_1_1_plugin_base.md) &)=delete |
 const [PluginBase](classdronecore_1_1_plugin_base.md) & | [operator=](#classdronecore_1_1_plugin_base_1a971a2166cd7528fedb4f18209b2ba699) (const [PluginBase](classdronecore_1_1_plugin_base.md) &)=delete |
 
 

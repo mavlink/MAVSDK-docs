@@ -22,9 +22,9 @@ enum [CameraAction](#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022
 
 Type | Name | Description
 ---: | --- | ---
-| [MissionItem](#classdronecore_1_1_mission_item_1aca4d7fd82ae0f623cd162730140a5a68) () | Constructor (internal use only).
-| [~MissionItem](#classdronecore_1_1_mission_item_1abfcfaeb576e969d6da33a4d16013dd9f) () | Destructor (internal use only).
-| [MissionItem](#classdronecore_1_1_mission_item_1ac6e6d75b38193db07eaa05b21fc229e2) (const [MissionItem](classdronecore_1_1_mission_item.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [MissionItem](#classdronecore_1_1_mission_item_1aca4d7fd82ae0f623cd162730140a5a68) () | Constructor (internal use only).
+&nbsp; | [~MissionItem](#classdronecore_1_1_mission_item_1abfcfaeb576e969d6da33a4d16013dd9f) () | Destructor (internal use only).
+&nbsp; | [MissionItem](#classdronecore_1_1_mission_item_1ac6e6d75b38193db07eaa05b21fc229e2) (const [MissionItem](classdronecore_1_1_mission_item.md) &)=delete | Copy constructor (object is not copyable).
 void | [set_position](#classdronecore_1_1_mission_item_1ab5897670c8830fc3514036d6ee99b582) (double latitude_deg, double longitude_deg) | Set the position of a mission item.
 void | [set_relative_altitude](#classdronecore_1_1_mission_item_1afef21f3028edad2ba2a0e966404fa33a) (float altitude_m) | Set the relative altitude of a mission item.
 void | [set_fly_through](#classdronecore_1_1_mission_item_1a63d73896635dc0af136a521cd35bf352) (bool fly_through) | Set the fly-through property of a mission item.

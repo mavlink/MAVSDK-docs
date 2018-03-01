@@ -25,8 +25,8 @@ std::function< void(uint64_t uuid)> [event_callback_t](#classdronecore_1_1_drone
 
 Type | Name | Description
 ---: | --- | ---
-| [DroneCore](#classdronecore_1_1_drone_core_1a0b94dd09cd46faa41742d3720f210aa2) () | Constructor.
-| [~DroneCore](#classdronecore_1_1_drone_core_1abbaedb6fd922c023e53611b484b38582) () | Destructor.
+&nbsp; | [DroneCore](#classdronecore_1_1_drone_core_1a0b94dd09cd46faa41742d3720f210aa2) () | Constructor.
+&nbsp; | [~DroneCore](#classdronecore_1_1_drone_core_1abbaedb6fd922c023e53611b484b38582) () | Destructor.
 [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_any_connection](#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021) (const std::string & connection_url=DEFAULT_UDP_CONNECTION_URL) | Adds Connection via URL.
 [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_udp_connection](#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb) (int local_port_number=DEFAULT_UDP_PORT) | Adds a UDP connection to the specified port number.
 [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_tcp_connection](#classdronecore_1_1_drone_core_1a725640cb53c0d077e753ea2d22717b68) (const std::string & remote_ip=DEFAULT_TCP_REMOTE_IP, int remote_port=DEFAULT_TCP_REMOTE_PORT) | Adds a TCP connection with a specific IP address and port number.
