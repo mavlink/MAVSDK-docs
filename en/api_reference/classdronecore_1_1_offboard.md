@@ -36,24 +36,24 @@ std::function< void([Result](classdronecore_1_1_offboard.md#classdronecore_1_1_o
 
 Type | Name | Description
 ---: | --- | ---
-| [Offboard](#classdronecore_1_1_offboard_1a333ac94793dc29ed95158fb2af286fa1) (Device *device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+| [Offboard](#classdronecore_1_1_offboard_1a333ac94793dc29ed95158fb2af286fa1) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 | [~Offboard](#classdronecore_1_1_offboard_1a7cb4eff36c37fed1c6d973aa41b059b8) () | Destructor (internal use only).
-| [Offboard](#classdronecore_1_1_offboard_1ac586be55cb24aa0ccd29c97352dd2ee5) (const Offboard &)=delete | Copy constructor (object is not copyable).
+| [Offboard](#classdronecore_1_1_offboard_1ac586be55cb24aa0ccd29c97352dd2ee5) (const [Offboard](classdronecore_1_1_offboard.md) &)=delete | Copy constructor (object is not copyable).
 [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | [start](#classdronecore_1_1_offboard_1a658454f130f7b19d56f23347a448f1b9) () | Start offboard control (synchronous).
 [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | [stop](#classdronecore_1_1_offboard_1ae223c08f1ffc694b26d847cab7738406) () | Stop offboard control (synchronous).
-void | [start_async](#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) (result_callback_t callback) | Start offboard control (asynchronous).
-void | [stop_async](#classdronecore_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a) (result_callback_t callback) | Stop offboard control (asynchronous).
+void | [start_async](#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) ([result_callback_t](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a75eeca649293887ac9d398e6432e431f) callback) | Start offboard control (asynchronous).
+void | [stop_async](#classdronecore_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a) ([result_callback_t](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a75eeca649293887ac9d398e6432e431f) callback) | Stop offboard control (asynchronous).
 bool | [is_active](#classdronecore_1_1_offboard_1a44d9284ef03c8cf6f37a77b2f3cadaf0) () const | Check if offboard control is active.
-void | [set_velocity_ned](#classdronecore_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) (VelocityNEDYaw velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
-void | [set_velocity_body](#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc) (VelocityBodyYawspeed velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
-const [Offboard](classdronecore_1_1_offboard.md) & | [operator=](#classdronecore_1_1_offboard_1aa6bf966e606cdd361364791d06aca977) (const Offboard &)=delete | Equality operator (object is not copyable).
+void | [set_velocity_ned](#classdronecore_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) ([VelocityNEDYaw](structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md) velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
+void | [set_velocity_body](#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc) ([VelocityBodyYawspeed](structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
+const [Offboard](classdronecore_1_1_offboard.md) & | [operator=](#classdronecore_1_1_offboard_1aa6bf966e606cdd361364791d06aca977) (const [Offboard](classdronecore_1_1_offboard.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-const char * | [result_str](#classdronecore_1_1_offboard_1a8eb7467e48fe354d34bc45637ca9f5b8) (Result result) | Get human-readable English string for [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed).
+const char * | [result_str](#classdronecore_1_1_offboard_1a8eb7467e48fe354d34bc45637ca9f5b8) ([Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) result) | Get human-readable English string for [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed).
 
 
 ## Constructor & Destructor Documentation

@@ -26,9 +26,9 @@ std::function< void([Result](classdronecore_1_1_action.md#classdronecore_1_1_act
 
 Type | Name | Description
 ---: | --- | ---
-| [Action](#classdronecore_1_1_action_1a9fd3af84d59048b3c787ed0c5644ed07) (Device *device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+| [Action](#classdronecore_1_1_action_1a9fd3af84d59048b3c787ed0c5644ed07) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 | [~Action](#classdronecore_1_1_action_1a6bb0301fecf66d75ca3b27bda25af7f2) () | Destructor (internal use only).
-| [Action](#classdronecore_1_1_action_1ae48b0e06ca2b4b7544a10c7734a03f63) (const Action &)=delete | Copy constructor (object is not copyable).
+| [Action](#classdronecore_1_1_action_1ae48b0e06ca2b4b7544a10c7734a03f63) (const [Action](classdronecore_1_1_action.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [arm](#classdronecore_1_1_action_1a8b8631ea15655f0c922a9ba7d2e1c72c) () const | Send command to *arm* the drone (synchronous).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [disarm](#classdronecore_1_1_action_1ad4b0231afcfebc261a720194f893dcd8) () const | Send command to *disarm* the drone (synchronous).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [kill](#classdronecore_1_1_action_1adc272f46adf4c52fbe7bd091a436b28b) () const | Send command to *kill* the drone (synchronous).
@@ -37,26 +37,26 @@ Type | Name | Description
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [return_to_launch](#classdronecore_1_1_action_1a9af73101ce850e37cf7259dcdeda2eb9) () const | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [transition_to_fixedwing](#classdronecore_1_1_action_1a6f40384be0ad61a29b6e2fd0a0c86754) () const | Send command to transition the drone to fixedwing.
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [transition_to_multicopter](#classdronecore_1_1_action_1a0088dbe4c715e2bfbe805b89d28add5a) () const | Send command to transition the drone to multicopter.
-void | [arm_async](#classdronecore_1_1_action_1a1a27165400d2a8419c2d96a1c0f2aa78) (result_callback_t callback) | Send command to *arm* the drone (asynchronous).
-void | [disarm_async](#classdronecore_1_1_action_1acc0a17411a25f5641ae21046b459e79e) (result_callback_t callback) | Send command to *disarm* the drone (asynchronous).
-void | [kill_async](#classdronecore_1_1_action_1a1d7d09191d9319c7912962b2dd02caa7) (result_callback_t callback) | Send command to *kill* the drone (asynchronous).
-void | [takeoff_async](#classdronecore_1_1_action_1a2aec10a2b14f5e82f05edc6e2feac83e) (result_callback_t callback) | Send command to *take off and hover* (asynchronous).
-void | [land_async](#classdronecore_1_1_action_1a7f10240cde2ff237795e3688802d857b) (result_callback_t callback) | Send command to *land* at the current position (asynchronous).
-void | [return_to_launch_async](#classdronecore_1_1_action_1aa1253c356c7628d329dfa98d78eb39ee) (result_callback_t callback) | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
-void | [transition_to_fixedwing_async](#classdronecore_1_1_action_1af5b02f05ffdc2e0787a7633410710d9d) (result_callback_t callback) | Send command to transition the drone to fixedwing (asynchronous).
-void | [transition_to_multicopter_async](#classdronecore_1_1_action_1a053aa7430852a4200b201abda1b3b3e4) (result_callback_t callback) | Send command to transition the drone to multicopter (asynchronous).
+void | [arm_async](#classdronecore_1_1_action_1a1a27165400d2a8419c2d96a1c0f2aa78) ([result_callback_t](classdronecore_1_1_action.md#classdronecore_1_1_action_1af611bba8734802ab2e32711aa5f3d74c) callback) | Send command to *arm* the drone (asynchronous).
+void | [disarm_async](#classdronecore_1_1_action_1acc0a17411a25f5641ae21046b459e79e) ([result_callback_t](classdronecore_1_1_action.md#classdronecore_1_1_action_1af611bba8734802ab2e32711aa5f3d74c) callback) | Send command to *disarm* the drone (asynchronous).
+void | [kill_async](#classdronecore_1_1_action_1a1d7d09191d9319c7912962b2dd02caa7) ([result_callback_t](classdronecore_1_1_action.md#classdronecore_1_1_action_1af611bba8734802ab2e32711aa5f3d74c) callback) | Send command to *kill* the drone (asynchronous).
+void | [takeoff_async](#classdronecore_1_1_action_1a2aec10a2b14f5e82f05edc6e2feac83e) ([result_callback_t](classdronecore_1_1_action.md#classdronecore_1_1_action_1af611bba8734802ab2e32711aa5f3d74c) callback) | Send command to *take off and hover* (asynchronous).
+void | [land_async](#classdronecore_1_1_action_1a7f10240cde2ff237795e3688802d857b) ([result_callback_t](classdronecore_1_1_action.md#classdronecore_1_1_action_1af611bba8734802ab2e32711aa5f3d74c) callback) | Send command to *land* at the current position (asynchronous).
+void | [return_to_launch_async](#classdronecore_1_1_action_1aa1253c356c7628d329dfa98d78eb39ee) ([result_callback_t](classdronecore_1_1_action.md#classdronecore_1_1_action_1af611bba8734802ab2e32711aa5f3d74c) callback) | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
+void | [transition_to_fixedwing_async](#classdronecore_1_1_action_1af5b02f05ffdc2e0787a7633410710d9d) ([result_callback_t](classdronecore_1_1_action.md#classdronecore_1_1_action_1af611bba8734802ab2e32711aa5f3d74c) callback) | Send command to transition the drone to fixedwing (asynchronous).
+void | [transition_to_multicopter_async](#classdronecore_1_1_action_1a053aa7430852a4200b201abda1b3b3e4) ([result_callback_t](classdronecore_1_1_action.md#classdronecore_1_1_action_1af611bba8734802ab2e32711aa5f3d74c) callback) | Send command to transition the drone to multicopter (asynchronous).
 void | [set_takeoff_altitude](#classdronecore_1_1_action_1adc6f7f6668d3681afa4d820095154c9d) (float relative_altitude_m) | Set takeoff altitude above ground.
 float | [get_takeoff_altitude_m](#classdronecore_1_1_action_1a1888deebcc48d906c3c19473596e6fec) () const | Get the takeoff altitude.
 void | [set_max_speed](#classdronecore_1_1_action_1abc27410a9b2a938b21ab59c5ef9ee941) (float speed_m_s) | Set vehicle maximum speed.
 float | [get_max_speed_m_s](#classdronecore_1_1_action_1ad6c8a98e0c331666c14cb996fa5dc605) () const | Get the vehicle maximum speed.
-const [Action](classdronecore_1_1_action.md) & | [operator=](#classdronecore_1_1_action_1a89f6cdf19fc05054fa746ebd3d88e17a) (const Action &)=delete | Equality operator (object is not copyable).
+const [Action](classdronecore_1_1_action.md) & | [operator=](#classdronecore_1_1_action_1a89f6cdf19fc05054fa746ebd3d88e17a) (const [Action](classdronecore_1_1_action.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-const char * | [result_str](#classdronecore_1_1_action_1a1fefb474ee36cb15fe31b42313782057) (Result result) | Returns a human-readable English string for an [Action::Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011).
+const char * | [result_str](#classdronecore_1_1_action_1a1fefb474ee36cb15fe31b42313782057) ([Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) result) | Returns a human-readable English string for an [Action::Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011).
 
 
 ## Constructor & Destructor Documentation

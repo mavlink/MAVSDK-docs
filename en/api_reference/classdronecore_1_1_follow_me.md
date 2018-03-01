@@ -33,24 +33,24 @@ enum [Result](#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) 
 
 Type | Name | Description
 ---: | --- | ---
-| [FollowMe](#classdronecore_1_1_follow_me_1a2d3cbcee491efa09392e6333ae77926c) (Device *device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+| [FollowMe](#classdronecore_1_1_follow_me_1a2d3cbcee491efa09392e6333ae77926c) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 | [~FollowMe](#classdronecore_1_1_follow_me_1a66ffe3c9652bc08a2766f211592316ac) () | Destructor (internal use only).
-| [FollowMe](#classdronecore_1_1_follow_me_1a54589c314eeba131aca1c4c56d4b15e3) (const FollowMe &)=delete | Copy constructor (object is not copyable).
+| [FollowMe](#classdronecore_1_1_follow_me_1a54589c314eeba131aca1c4c56d4b15e3) (const [FollowMe](classdronecore_1_1_follow_me.md) &)=delete | Copy constructor (object is not copyable).
 const [Config](structdronecore_1_1_follow_me_1_1_config.md) & | [get_config](#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5) () const | Gets current [FollowMe](classdronecore_1_1_follow_me.md) configuration.
-[Result](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) | [set_config](#classdronecore_1_1_follow_me_1aedf746d4a0eebdaaddc3d1ba0aeb6720) (const Config &config) | Applies [FollowMe](classdronecore_1_1_follow_me.md) configuration by sending it to device.
+[Result](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) | [set_config](#classdronecore_1_1_follow_me_1aedf746d4a0eebdaaddc3d1ba0aeb6720) (const [Config](structdronecore_1_1_follow_me_1_1_config.md) & config) | Applies [FollowMe](classdronecore_1_1_follow_me.md) configuration by sending it to device.
 bool | [is_active](#classdronecore_1_1_follow_me_1a467349820ac5f42cc388228c399a93ef) () const | Checks whether [FollowMe](classdronecore_1_1_follow_me.md) is active.
-void | [set_target_location](#classdronecore_1_1_follow_me_1a1220596b8bb51d2ca52248a92e300ad5) (const TargetLocation &location) | Sets location of the moving target.
+void | [set_target_location](#classdronecore_1_1_follow_me_1a1220596b8bb51d2ca52248a92e300ad5) (const [TargetLocation](structdronecore_1_1_follow_me_1_1_target_location.md) & location) | Sets location of the moving target.
 const [TargetLocation](structdronecore_1_1_follow_me_1_1_target_location.md) & | [get_last_location](#classdronecore_1_1_follow_me_1a16da2bf7d0384e2bff4440600b523f8c) () const | Returns the last location of the target.
 [FollowMe::Result](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) | [start](#classdronecore_1_1_follow_me_1a694749d43d527f85584df25a49b05ccf) () const | Starts [FollowMe](classdronecore_1_1_follow_me.md) mode.
 [FollowMe::Result](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) | [stop](#classdronecore_1_1_follow_me_1a6394507b0fb96bceebe6efd17f0529ce) () const | Stops [FollowMe](classdronecore_1_1_follow_me.md) mode.
-const [FollowMe](classdronecore_1_1_follow_me.md) & | [operator=](#classdronecore_1_1_follow_me_1accb454508e051d79b2943ba469958f9e) (const FollowMe &)=delete | Equality operator (object is not copyable).
+const [FollowMe](classdronecore_1_1_follow_me.md) & | [operator=](#classdronecore_1_1_follow_me_1accb454508e051d79b2943ba469958f9e) (const [FollowMe](classdronecore_1_1_follow_me.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-std::string | [result_str](#classdronecore_1_1_follow_me_1a50d848b1c7b00e40343b8d62593ca307) (Result result) | Returns English string for [FollowMe](classdronecore_1_1_follow_me.md) error codes.
+std::string | [result_str](#classdronecore_1_1_follow_me_1a50d848b1c7b00e40343b8d62593ca307) ([Result](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) result) | Returns English string for [FollowMe](classdronecore_1_1_follow_me.md) error codes.
 
 
 ## Constructor & Destructor Documentation

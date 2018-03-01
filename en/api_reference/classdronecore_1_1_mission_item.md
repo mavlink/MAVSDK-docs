@@ -24,14 +24,14 @@ Type | Name | Description
 ---: | --- | ---
 | [MissionItem](#classdronecore_1_1_mission_item_1aca4d7fd82ae0f623cd162730140a5a68) () | Constructor (internal use only).
 | [~MissionItem](#classdronecore_1_1_mission_item_1abfcfaeb576e969d6da33a4d16013dd9f) () | Destructor (internal use only).
-| [MissionItem](#classdronecore_1_1_mission_item_1ac6e6d75b38193db07eaa05b21fc229e2) (const MissionItem &)=delete | Copy constructor (object is not copyable).
+| [MissionItem](#classdronecore_1_1_mission_item_1ac6e6d75b38193db07eaa05b21fc229e2) (const [MissionItem](classdronecore_1_1_mission_item.md) &)=delete | Copy constructor (object is not copyable).
 void | [set_position](#classdronecore_1_1_mission_item_1ab5897670c8830fc3514036d6ee99b582) (double latitude_deg, double longitude_deg) | Set the position of a mission item.
 void | [set_relative_altitude](#classdronecore_1_1_mission_item_1afef21f3028edad2ba2a0e966404fa33a) (float altitude_m) | Set the relative altitude of a mission item.
 void | [set_fly_through](#classdronecore_1_1_mission_item_1a63d73896635dc0af136a521cd35bf352) (bool fly_through) | Set the fly-through property of a mission item.
 void | [set_speed](#classdronecore_1_1_mission_item_1a37e43f748da4136c659419a4a2d84b0e) (float speed_m_s) | Set the speed to use after a mission item.
 void | [set_gimbal_pitch_and_yaw](#classdronecore_1_1_mission_item_1a10adfcff1e99ae937654786b767e5558) (float pitch_deg, float yaw_deg) | Set the pitch and yaw angle of a gimbal at that mission item.
 void | [set_loiter_time](#classdronecore_1_1_mission_item_1a594fbed85eb5321d971a309dd4bcec0e) (float loiter_time_s) | Set loiter time in seconds.
-void | [set_camera_action](#classdronecore_1_1_mission_item_1a8d0d8a5519783aaa272befd73e851896) (CameraAction action) | Set the camera action for a mission item.
+void | [set_camera_action](#classdronecore_1_1_mission_item_1a8d0d8a5519783aaa272befd73e851896) ([CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) action) | Set the camera action for a mission item.
 void | [set_camera_photo_interval](#classdronecore_1_1_mission_item_1a4ffe698b47c659aa8857725e94ad1f7c) (double interval_s) | Set the camera photo interval.
 double | [get_latitude_deg](#classdronecore_1_1_mission_item_1ad95d5d10d69bdb43321231c51dda1175) () const | Get the latitude of a mission item.
 double | [get_longitude_deg](#classdronecore_1_1_mission_item_1a9f76de6dbbcec3269207867794a2d099) () const | Get the longitude of a mission item.
@@ -42,14 +42,14 @@ float | [get_speed_m_s](#classdronecore_1_1_mission_item_1adc737b7be9b49cd0fe188
 float | [get_loiter_time_s](#classdronecore_1_1_mission_item_1a25fd1a2ba0df071b25e2315a3a1f5085) () const | Get loiter time in seconds.
 [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) | [get_camera_action](#classdronecore_1_1_mission_item_1ae42a857f79b63c611f5a21fed2ea18fc) () const | Get the camera action set for this mission item.
 double | [get_camera_photo_interval_s](#classdronecore_1_1_mission_item_1adf38956d9ed1ef4e98a4d5a6b61eccd7) () const | Get the camera photo interval that was set for this mission item.
-const [MissionItem](classdronecore_1_1_mission_item.md) & | [operator=](#classdronecore_1_1_mission_item_1a8582ad72a3a8c20c87e8224ab10970c0) (const MissionItem &)=delete | Equality operator (object is not copyable).
+const [MissionItem](classdronecore_1_1_mission_item.md) & | [operator=](#classdronecore_1_1_mission_item_1a8582ad72a3a8c20c87e8224ab10970c0) (const [MissionItem](classdronecore_1_1_mission_item.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-std::string | [to_str](#classdronecore_1_1_mission_item_1aee3e76302036c953858a217d63389aae) (CameraAction camera_action) | Converts [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) to English strings.
+std::string | [to_str](#classdronecore_1_1_mission_item_1aee3e76302036c953858a217d63389aae) ([CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) camera_action) | Converts [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) to English strings.
 
 
 ## Constructor & Destructor Documentation

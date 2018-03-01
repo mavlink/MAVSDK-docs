@@ -50,7 +50,7 @@ static constexpr const float [MAX_RESPONSIVENESS](#structdronecore_1_1_follow_me
 
 Type | Name | Description
 ---: | --- | ---
-std::string | [to_str](#structdronecore_1_1_follow_me_1_1_config_1a025a841e75b66541ef029d8f837886ad) (FollowDirection direction) | Human-readable string for enum [FollowDirection](structdronecore_1_1_follow_me_1_1_config.md#structdronecore_1_1_follow_me_1_1_config_1a048f9f74309c17027c37eadc4dcb2c1a).
+std::string | [to_str](#structdronecore_1_1_follow_me_1_1_config_1a025a841e75b66541ef029d8f837886ad) ([FollowDirection](structdronecore_1_1_follow_me_1_1_config.md#structdronecore_1_1_follow_me_1_1_config_1a048f9f74309c17027c37eadc4dcb2c1a) direction) | Human-readable string for enum [FollowDirection](structdronecore_1_1_follow_me_1_1_config.md#structdronecore_1_1_follow_me_1_1_config_1a048f9f74309c17027c37eadc4dcb2c1a).
 
 
 ## Member Enumeration Documentation
@@ -100,7 +100,7 @@ Human-readable string for enum [FollowDirection](structdronecore_1_1_follow_me_1
 ### MIN_HEIGHT_M {#structdronecore_1_1_follow_me_1_1_config_1a4bc3dee9ca74031a3ac1a8dea2df12d4}
 
 ```cpp
-constexpr const float dronecore::FollowMe::Config::MIN_HEIGHT_M
+constexpr const float dronecore::FollowMe::Config::MIN_HEIGHT_M = 8.0f
 ```
 
 
@@ -110,7 +110,7 @@ Min follow height, in meters.
 ### MIN_FOLLOW_DIST_M {#structdronecore_1_1_follow_me_1_1_config_1a92f039f840aa3adad740fe048697ce9f}
 
 ```cpp
-constexpr const float dronecore::FollowMe::Config::MIN_FOLLOW_DIST_M
+constexpr const float dronecore::FollowMe::Config::MIN_FOLLOW_DIST_M = 1.0f
 ```
 
 
@@ -120,7 +120,7 @@ Min follow distance, in meters.
 ### MIN_RESPONSIVENESS {#structdronecore_1_1_follow_me_1_1_config_1ac73d36213f4ac6505ec2d44ad4fd2b4e}
 
 ```cpp
-constexpr const float dronecore::FollowMe::Config::MIN_RESPONSIVENESS
+constexpr const float dronecore::FollowMe::Config::MIN_RESPONSIVENESS = 0.f
 ```
 
 
@@ -130,7 +130,7 @@ Min responsiveness.
 ### MAX_RESPONSIVENESS {#structdronecore_1_1_follow_me_1_1_config_1afcdf2d6e55dd9da59a05fb5dbcbeab49}
 
 ```cpp
-constexpr const float dronecore::FollowMe::Config::MAX_RESPONSIVENESS
+constexpr const float dronecore::FollowMe::Config::MAX_RESPONSIVENESS = 1.0f
 ```
 
 
@@ -140,7 +140,7 @@ Max responsiveness.
 ### min_height_m {#structdronecore_1_1_follow_me_1_1_config_1a62c100d4dc35e3731f3b5d62fb5baad9}
 
 ```cpp
-float dronecore::FollowMe::Config::min_height_m
+float dronecore::FollowMe::Config::min_height_m = 8.0f
 ```
 
 
@@ -150,7 +150,7 @@ Min follow height, in meters.
 ### follow_distance_m {#structdronecore_1_1_follow_me_1_1_config_1a933c0af8cf3df4bca0a34176f09c4fb8}
 
 ```cpp
-float dronecore::FollowMe::Config::follow_distance_m
+float dronecore::FollowMe::Config::follow_distance_m = 8.0f
 ```
 
 
@@ -160,7 +160,7 @@ Horizontal follow distance to target, in meters.
 ### follow_direction {#structdronecore_1_1_follow_me_1_1_config_1a920f7acca4b5e717c9ead1bb89f9d538}
 
 ```cpp
-FollowDirection dronecore::FollowMe::Config::follow_direction= FollowDirection::BEHIND
+FollowDirection dronecore::FollowMe::Config::follow_direction = FollowDirection::BEHIND
 ```
 
 
@@ -170,7 +170,7 @@ Relative position of the following vehicle.
 ### responsiveness {#structdronecore_1_1_follow_me_1_1_config_1a836c1179788d24861642bb45b28dc7fe}
 
 ```cpp
-float dronecore::FollowMe::Config::responsiveness
+float dronecore::FollowMe::Config::responsiveness = 0.5f
 ```
 
 
