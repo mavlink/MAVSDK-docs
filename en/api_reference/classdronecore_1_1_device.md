@@ -26,9 +26,9 @@ std::function< void(bool success, int32_t value)> [get_param_int_callback_t](#cl
 
 Type | Name | Description
 ---: | --- | ---
-| [Device](#classdronecore_1_1_device_1af07b4defa38736ce928377af2f31fb6e) (DroneCoreImpl * parent, uint8_t target_system_id) |
-| [~Device](#classdronecore_1_1_device_1a65c697e12eed30109074e18a9cfdc836) () |
-| [Device](#classdronecore_1_1_device_1acf95b02d5d1d705ce3dc1438786e0c91) (const [Device](classdronecore_1_1_device.md) &)=delete |
+&nbsp; | [Device](#classdronecore_1_1_device_1af07b4defa38736ce928377af2f31fb6e) (DroneCoreImpl * parent, uint8_t target_system_id) |
+&nbsp; | [~Device](#classdronecore_1_1_device_1a65c697e12eed30109074e18a9cfdc836) () |
+&nbsp; | [Device](#classdronecore_1_1_device_1acf95b02d5d1d705ce3dc1438786e0c91) (const [Device](classdronecore_1_1_device.md) &)=delete |
 void | [process_mavlink_message](#classdronecore_1_1_device_1a7324f5f4cc1f7bce40a2e8c237f1212e) (const mavlink_message_t & message) |
 void | [register_mavlink_message_handler](#classdronecore_1_1_device_1aa7ae3afa910a2043185e319cfaaa4196) (uint16_t msg_id, mavlink_message_handler_t callback, const void * cookie) |
 void | [unregister_all_mavlink_message_handlers](#classdronecore_1_1_device_1a7fd2014818f2e41cc93b6c31d259f21c) (const void * cookie) |

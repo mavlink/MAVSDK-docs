@@ -19,9 +19,9 @@ struct [Version](structdronecore_1_1_info_1_1_version.md)
 
 Type | Name | Description
 ---: | --- | ---
-| [Info](#classdronecore_1_1_info_1a10ea70679e1b2d7e43bc9944fbe18aaf) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
-| [~Info](#classdronecore_1_1_info_1a39e608070500b5fca0b4415cdb13f75f) () | Destructor (internal use only).
-| [Info](#classdronecore_1_1_info_1af0902805d75577d1195363eda21d7bb1) (const [Info](classdronecore_1_1_info.md) &)=delete | Copy Constructor (object is not copyable).
+&nbsp; | [Info](#classdronecore_1_1_info_1a10ea70679e1b2d7e43bc9944fbe18aaf) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [~Info](#classdronecore_1_1_info_1a39e608070500b5fca0b4415cdb13f75f) () | Destructor (internal use only).
+&nbsp; | [Info](#classdronecore_1_1_info_1af0902805d75577d1195363eda21d7bb1) (const [Info](classdronecore_1_1_info.md) &)=delete | Copy Constructor (object is not copyable).
 uint64_t | [uuid](#classdronecore_1_1_info_1a49c7dd5f1a369c8296f0c3a2443bc031) () const | Gets the UUID of the device.
 bool | [is_complete](#classdronecore_1_1_info_1a088438b73c715fb20c02792fed1815f7) () const | Tests if the [Version](structdronecore_1_1_info_1_1_version.md) and [Product](structdronecore_1_1_info_1_1_product.md) objects are fully populated from hardware.
 [Version](structdronecore_1_1_info_1_1_version.md) | [get_version](#classdronecore_1_1_info_1a6e41fae8c6ad352e70b1e93b4a1589f9) () const | Get device version information.

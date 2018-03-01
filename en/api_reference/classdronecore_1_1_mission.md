@@ -23,9 +23,9 @@ std::function< void(int current, int total)> [progress_callback_t](#classdroneco
 
 Type | Name | Description
 ---: | --- | ---
-| [Mission](#classdronecore_1_1_mission_1a3835376b0fbf186ad572dbfad3bcc4e9) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
-| [~Mission](#classdronecore_1_1_mission_1a395b8c121630aa8a5dd3d48f95290659) () | Destructor (internal use only).
-| [Mission](#classdronecore_1_1_mission_1a4947f79b7dd71e66bca64e5bbb0b3377) (const [Mission](classdronecore_1_1_mission.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Mission](#classdronecore_1_1_mission_1a3835376b0fbf186ad572dbfad3bcc4e9) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [~Mission](#classdronecore_1_1_mission_1a395b8c121630aa8a5dd3d48f95290659) () | Destructor (internal use only).
+&nbsp; | [Mission](#classdronecore_1_1_mission_1a4947f79b7dd71e66bca64e5bbb0b3377) (const [Mission](classdronecore_1_1_mission.md) &)=delete | Copy constructor (object is not copyable).
 void | [upload_mission_async](#classdronecore_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) (const std::vector< std::shared_ptr< [MissionItem](classdronecore_1_1_mission_item.md) >> & mission_items, [result_callback_t](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a239f8d5853785d6ccf90c8c48b5ccf06) callback) | Uploads a vector of mission items to the device (asynchronous).
 void | [download_mission_async](#classdronecore_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) ([mission_items_and_result_callback_t](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a7cb36c0356a867e90f3c4c764d424d32) callback) | Downloads a vector of mission items from the device (asynchronous).
 void | [start_mission_async](#classdronecore_1_1_mission_1a9e032c6b2bc35cf6e7e19e07747fb0d3) ([result_callback_t](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a239f8d5853785d6ccf90c8c48b5ccf06) callback) | Starts the mission (asynchronous).

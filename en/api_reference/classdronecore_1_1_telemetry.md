@@ -52,9 +52,9 @@ std::function< void([RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) 
 
 Type | Name | Description
 ---: | --- | ---
-| [Telemetry](#classdronecore_1_1_telemetry_1ad0cb6dd62c12af390870f8b5cb5bde55) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
-| [~Telemetry](#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095) () | Destructor (internal use only).
-| [Telemetry](#classdronecore_1_1_telemetry_1a91a3319d9040bd89d241be3d8b2e9a5e) (const [Telemetry](classdronecore_1_1_telemetry.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Telemetry](#classdronecore_1_1_telemetry_1ad0cb6dd62c12af390870f8b5cb5bde55) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [~Telemetry](#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095) () | Destructor (internal use only).
+&nbsp; | [Telemetry](#classdronecore_1_1_telemetry_1a91a3319d9040bd89d241be3d8b2e9a5e) (const [Telemetry](classdronecore_1_1_telemetry.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_position](#classdronecore_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da) (double rate_hz) | Set rate of position updates (synchronous).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_home_position](#classdronecore_1_1_telemetry_1a9d89866f6672fbe3b88047e7ba295bf9) (double rate_hz) | Set rate of home position updates (synchronous).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_in_air](#classdronecore_1_1_telemetry_1aed902b38ff4380a8927340c291e183f5) (double rate_hz) | Set rate of in-air status updates (synchronous).

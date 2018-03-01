@@ -26,9 +26,9 @@ std::function< void([Result](classdronecore_1_1_action.md#classdronecore_1_1_act
 
 Type | Name | Description
 ---: | --- | ---
-| [Action](#classdronecore_1_1_action_1a9fd3af84d59048b3c787ed0c5644ed07) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
-| [~Action](#classdronecore_1_1_action_1a6bb0301fecf66d75ca3b27bda25af7f2) () | Destructor (internal use only).
-| [Action](#classdronecore_1_1_action_1ae48b0e06ca2b4b7544a10c7734a03f63) (const [Action](classdronecore_1_1_action.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Action](#classdronecore_1_1_action_1a9fd3af84d59048b3c787ed0c5644ed07) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [~Action](#classdronecore_1_1_action_1a6bb0301fecf66d75ca3b27bda25af7f2) () | Destructor (internal use only).
+&nbsp; | [Action](#classdronecore_1_1_action_1ae48b0e06ca2b4b7544a10c7734a03f63) (const [Action](classdronecore_1_1_action.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [arm](#classdronecore_1_1_action_1a8b8631ea15655f0c922a9ba7d2e1c72c) () const | Send command to *arm* the drone (synchronous).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [disarm](#classdronecore_1_1_action_1ad4b0231afcfebc261a720194f893dcd8) () const | Send command to *disarm* the drone (synchronous).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [kill](#classdronecore_1_1_action_1adc272f46adf4c52fbe7bd091a436b28b) () const | Send command to *kill* the drone (synchronous).

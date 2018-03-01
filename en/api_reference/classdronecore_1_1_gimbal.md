@@ -23,9 +23,9 @@ std::function< void([Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gim
 
 Type | Name | Description
 ---: | --- | ---
-| [Gimbal](#classdronecore_1_1_gimbal_1a2a5ad56ba40eaacc0261f82ed49407e6) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
-| [~Gimbal](#classdronecore_1_1_gimbal_1a4f8b2a6cf5a7347a474f8e47618ad838) () | Destructor (internal use only).
-| [Gimbal](#classdronecore_1_1_gimbal_1a82637c62da14ae39db96724d4273cad4) (const [Gimbal](classdronecore_1_1_gimbal.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Gimbal](#classdronecore_1_1_gimbal_1a2a5ad56ba40eaacc0261f82ed49407e6) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [~Gimbal](#classdronecore_1_1_gimbal_1a4f8b2a6cf5a7347a474f8e47618ad838) () | Destructor (internal use only).
+&nbsp; | [Gimbal](#classdronecore_1_1_gimbal_1a82637c62da14ae39db96724d4273cad4) (const [Gimbal](classdronecore_1_1_gimbal.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6f) | [set_pitch_and_yaw](#classdronecore_1_1_gimbal_1ac8ac49d29f11b2107da6b043bb57b54e) (float pitch_deg, float yaw_deg) | Set gimbal pitch and yaw angles (synchronous).
 void | [set_pitch_and_yaw_async](#classdronecore_1_1_gimbal_1a3aea07049f32f8bc5b2edaee8cb2ac16) (float pitch_deg, float yaw_deg, [result_callback_t](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a309448760ba62635fce7139be44788ff) callback) | Set gimbal pitch and yaw angles (asynchronous).
 const [Gimbal](classdronecore_1_1_gimbal.md) & | [operator=](#classdronecore_1_1_gimbal_1ad15551254ea56674c576bbcbec6e7eac) (const [Gimbal](classdronecore_1_1_gimbal.md) &)=delete | Equality operator (object is not copyable).
