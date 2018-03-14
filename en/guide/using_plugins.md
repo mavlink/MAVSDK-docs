@@ -26,7 +26,7 @@ In the application source code:
 1. [Create a connection](../guide/connections.md) to a `Device` object (below named: `device`).
 1. Make a shared pointer to the plugin object, specifying the `Device` it is to be used with:
    ```cpp
-   auto action = std::make_shared<Action>(&device);
+   auto action = std::make_shared<Action>(device);
    ```
 1. The pointer can then be used to invoke actions on the specified device. For example, to takeoff you would call the API as shown:
    ```cpp

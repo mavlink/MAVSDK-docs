@@ -40,7 +40,7 @@ The main steps are:
 1. Create a shared pointer to an instance of `FollowMe` instantiated with the `device`: 
    ```
    #include <dronecore/follow_me.h>
-   auto follow_me = std::make_shared<FollowMe >(&device);
+   auto follow_me = std::make_shared<FollowMe >(device);
    ```
 
 The `follow_me` pointer can then used to access the plugin API (as shown in the following sections).

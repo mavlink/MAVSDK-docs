@@ -16,7 +16,7 @@ Device &device = dc.device();
 The code also assumes that you have defined `info`, a shared pointer to an instance of the `Info` class associated with the device (see [Using Plugins](../guide/using_plugins.md)):
 ```cpp
 #include <dronecore/info.h>
-auto info = std::make_shared<Info>(&device);
+auto info = std::make_shared<Info>(device);
 ```
 
 ## Query Device Information
