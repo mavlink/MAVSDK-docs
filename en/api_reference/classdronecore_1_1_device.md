@@ -26,7 +26,7 @@ std::function< void(bool success, int32_t value)> [get_param_int_callback_t](#cl
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Device](#classdronecore_1_1_device_1af07b4defa38736ce928377af2f31fb6e) (DroneCoreImpl * parent, uint8_t target_system_id) |
+&nbsp; | [Device](#classdronecore_1_1_device_1a507d542a9a948033f2873dd17156fdc7) (DroneCoreImpl & parent, uint8_t target_system_id) |
 &nbsp; | [~Device](#classdronecore_1_1_device_1a65c697e12eed30109074e18a9cfdc836) () |
 &nbsp; | [Device](#classdronecore_1_1_device_1acf95b02d5d1d705ce3dc1438786e0c91) (const [Device](classdronecore_1_1_device.md) &)=delete |
 void | [process_mavlink_message](#classdronecore_1_1_device_1a7324f5f4cc1f7bce40a2e8c237f1212e) (const mavlink_message_t & message) |
@@ -81,15 +81,15 @@ uint8_t | [get_own_component_id](#classdronecore_1_1_device_1aa6dc1543b0ae9439a6
 ## Constructor & Destructor Documentation
 
 
-### Device() {#classdronecore_1_1_device_1af07b4defa38736ce928377af2f31fb6e}
+### Device() {#classdronecore_1_1_device_1a507d542a9a948033f2873dd17156fdc7}
 ```cpp
-dronecore::Device::Device(DroneCoreImpl *parent, uint8_t target_system_id)
+dronecore::Device::Device(DroneCoreImpl &parent, uint8_t target_system_id)
 ```
 
 
 **Parameters**
 
-* DroneCoreImpl * **parent** - 
+* DroneCoreImpl & **parent** - 
 * uint8_t **target_system_id** - 
 
 ### ~Device() {#classdronecore_1_1_device_1a65c697e12eed30109074e18a9cfdc836}
