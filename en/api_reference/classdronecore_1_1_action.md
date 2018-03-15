@@ -26,7 +26,7 @@ std::function< void([Result](classdronecore_1_1_action.md#classdronecore_1_1_act
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Action](#classdronecore_1_1_action_1a9fd3af84d59048b3c787ed0c5644ed07) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [Action](#classdronecore_1_1_action_1adcc408d9d18fc70e89086090d951edd0) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 &nbsp; | [~Action](#classdronecore_1_1_action_1a6bb0301fecf66d75ca3b27bda25af7f2) () | Destructor (internal use only).
 &nbsp; | [Action](#classdronecore_1_1_action_1ae48b0e06ca2b4b7544a10c7734a03f63) (const [Action](classdronecore_1_1_action.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_action.md#classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011) | [arm](#classdronecore_1_1_action_1a8b8631ea15655f0c922a9ba7d2e1c72c) () const | Send command to *arm* the drone (synchronous).
@@ -62,9 +62,9 @@ const char * | [result_str](#classdronecore_1_1_action_1a1fefb474ee36cb15fe31b42
 ## Constructor & Destructor Documentation
 
 
-### Action() {#classdronecore_1_1_action_1a9fd3af84d59048b3c787ed0c5644ed07}
+### Action() {#classdronecore_1_1_action_1adcc408d9d18fc70e89086090d951edd0}
 ```cpp
-dronecore::Action::Action(Device *device)
+dronecore::Action::Action(Device &device)
 ```
 
 
@@ -73,12 +73,12 @@ Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_devic
 The plugin is typically created as shown below: 
 
 ```cpp
-auto action = std::make_shared<Action>(&device);
+auto action = std::make_shared<Action>(device);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
 
 ### ~Action() {#classdronecore_1_1_action_1a6bb0301fecf66d75ca3b27bda25af7f2}
 ```cpp
@@ -126,6 +126,7 @@ Possible results returned for commanded actions.
 
 Value | Description
 --- | ---
+<span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
 <span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Success. The action command was accepted by the vehicle. 
 <span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011a23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device is connected error. 
 <span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
@@ -136,7 +137,6 @@ Value | Description
 <span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Timeout waiting for command acknowledgement from vehicle. 
 <span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011a59e19d623bfb3a7a60195410afcbe31f"></span> `VTOL_TRANSITION_SUPPORT_UNKNOWN` | hybrid/VTOL transition refused because VTOL support is unknown. 
 <span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011af3712e88cb2a09f0d5b72e8e493b53be"></span> `NO_VTOL_TRANSITION_SUPPORT` | Vehicle does not support hybrid/VTOL transitions. 
-<span id="classdronecore_1_1_action_1ad92c9d2e08f60f54b17ea0d861339011a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
 
 ## Member Function Documentation
 

@@ -23,7 +23,7 @@ std::function< void(int current, int total)> [progress_callback_t](#classdroneco
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Mission](#classdronecore_1_1_mission_1a3835376b0fbf186ad572dbfad3bcc4e9) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [Mission](#classdronecore_1_1_mission_1a8af8e71979b15c73ced7fa2d5a6f6894) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 &nbsp; | [~Mission](#classdronecore_1_1_mission_1a395b8c121630aa8a5dd3d48f95290659) () | Destructor (internal use only).
 &nbsp; | [Mission](#classdronecore_1_1_mission_1a4947f79b7dd71e66bca64e5bbb0b3377) (const [Mission](classdronecore_1_1_mission.md) &)=delete | Copy constructor (object is not copyable).
 void | [upload_mission_async](#classdronecore_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) (const std::vector< std::shared_ptr< [MissionItem](classdronecore_1_1_mission_item.md) >> & mission_items, [result_callback_t](classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a239f8d5853785d6ccf90c8c48b5ccf06) callback) | Uploads a vector of mission items to the device (asynchronous).
@@ -49,9 +49,9 @@ const char * | [result_str](#classdronecore_1_1_mission_1a0eabb2fe4db664c552d281
 ## Constructor & Destructor Documentation
 
 
-### Mission() {#classdronecore_1_1_mission_1a3835376b0fbf186ad572dbfad3bcc4e9}
+### Mission() {#classdronecore_1_1_mission_1a8af8e71979b15c73ced7fa2d5a6f6894}
 ```cpp
-dronecore::Mission::Mission(Device *device)
+dronecore::Mission::Mission(Device &device)
 ```
 
 
@@ -60,12 +60,12 @@ Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_devic
 The plugin is typically created as shown below: 
 
 ```cpp
-auto mission = std::make_shared<Mission>(&device);
+auto mission = std::make_shared<Mission>(device);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
 
 ### ~Mission() {#classdronecore_1_1_mission_1a395b8c121630aa8a5dd3d48f95290659}
 ```cpp

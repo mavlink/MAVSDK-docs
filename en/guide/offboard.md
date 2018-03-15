@@ -39,7 +39,7 @@ The main steps are:
 1. Create a shared pointer to an instance of `Offboard` instantiated with the `device`: 
    ```
    #include <dronecore/offboard.h>
-   auto offboard = std::make_shared<Offboard>(&device);
+   auto offboard = std::make_shared<Offboard>(device);
    ```
 
 The `offboard` pointer can then used to access the plugin API (as shown in the following sections).

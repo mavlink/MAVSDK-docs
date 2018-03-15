@@ -58,7 +58,7 @@ The main steps are:
 1. Create a shared pointer to an instance of `Mission` instantiated with the `device`: 
    ```
    #include <dronecore/mission.h>
-   auto mission = std::make_shared<Mission>(&device);
+   auto mission = std::make_shared<Mission>(device);
    ```
 
 The `mission` pointer can then used to access the plugin API (as shown in the following sections).

@@ -33,7 +33,7 @@ enum [Result](#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) 
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [FollowMe](#classdronecore_1_1_follow_me_1a2d3cbcee491efa09392e6333ae77926c) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [FollowMe](#classdronecore_1_1_follow_me_1aaaefbf5098c8a1ca69df2a170e700da0) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 &nbsp; | [~FollowMe](#classdronecore_1_1_follow_me_1a66ffe3c9652bc08a2766f211592316ac) () | Destructor (internal use only).
 &nbsp; | [FollowMe](#classdronecore_1_1_follow_me_1a54589c314eeba131aca1c4c56d4b15e3) (const [FollowMe](classdronecore_1_1_follow_me.md) &)=delete | Copy constructor (object is not copyable).
 const [Config](structdronecore_1_1_follow_me_1_1_config.md) & | [get_config](#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5) () const | Gets current [FollowMe](classdronecore_1_1_follow_me.md) configuration.
@@ -56,9 +56,9 @@ std::string | [result_str](#classdronecore_1_1_follow_me_1a50d848b1c7b00e40343b8
 ## Constructor & Destructor Documentation
 
 
-### FollowMe() {#classdronecore_1_1_follow_me_1a2d3cbcee491efa09392e6333ae77926c}
+### FollowMe() {#classdronecore_1_1_follow_me_1aaaefbf5098c8a1ca69df2a170e700da0}
 ```cpp
-dronecore::FollowMe::FollowMe(Device *device)
+dronecore::FollowMe::FollowMe(Device &device)
 ```
 
 
@@ -67,12 +67,12 @@ Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_devic
 The plugin is typically created as shown below: 
 
 ```cpp
-auto follow_me = std::make_shared<FollowMe>(&device);
+auto follow_me = std::make_shared<FollowMe>(device);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
 
 ### ~FollowMe() {#classdronecore_1_1_follow_me_1a66ffe3c9652bc08a2766f211592316ac}
 ```cpp

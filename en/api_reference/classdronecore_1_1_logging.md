@@ -23,7 +23,7 @@ std::function< void([Result](classdronecore_1_1_logging.md#classdronecore_1_1_lo
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Logging](#classdronecore_1_1_logging_1a191a5eaa0d4c23b634585a276a20ba97) ([Device](classdronecore_1_1_device.md) * device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [Logging](#classdronecore_1_1_logging_1ace064c190f8808bb23b1c830eae7a712) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
 &nbsp; | [~Logging](#classdronecore_1_1_logging_1a49e75d77f900ba5ef59a960ae9b8dc55) () | Destructor (internal use only).
 &nbsp; | [Logging](#classdronecore_1_1_logging_1a62a17eb90e3ec9253f1b40e94d3c1fd7) (const [Logging](classdronecore_1_1_logging.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) | [start_logging](#classdronecore_1_1_logging_1a4684d8226742b575fce423c9ce758fc0) () const | Start logging (synchronous).
@@ -43,9 +43,9 @@ const char * | [result_str](#classdronecore_1_1_logging_1adc5a7560f1a27996fc05f2
 ## Constructor & Destructor Documentation
 
 
-### Logging() {#classdronecore_1_1_logging_1a191a5eaa0d4c23b634585a276a20ba97}
+### Logging() {#classdronecore_1_1_logging_1ace064c190f8808bb23b1c830eae7a712}
 ```cpp
-dronecore::Logging::Logging(Device *device)
+dronecore::Logging::Logging(Device &device)
 ```
 
 
@@ -54,12 +54,12 @@ Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_devic
 The plugin is typically created as shown below: 
 
 ```cpp
-auto logging = std::make_shared<Logging>(&device);
+auto logging = std::make_shared<Logging>(device);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) * **device** - The specific device associated with this plugin.
+* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
 
 ### ~Logging() {#classdronecore_1_1_logging_1a49e75d77f900ba5ef59a960ae9b8dc55}
 ```cpp

@@ -55,7 +55,7 @@ The main steps are:
 1. Create a shared pointer to an instance of `Telemetry` instantiated with the `device`: 
    ```
    #include <dronecore/telemetry.h>
-   auto telemetry = std::make_shared<Telemetry>(&device);
+   auto telemetry = std::make_shared<Telemetry>(device);
    ```
 
 The `telemetry` pointer can then used to access the plugin API (as shown in the following sections).

@@ -39,7 +39,7 @@ The main steps are:
 1. Create a shared pointer to an instance of `Action` instantiated with the `device`: 
    ```
    #include <dronecore/action.h>
-   auto action = std::make_shared<Action>(&device);
+   auto action = std::make_shared<Action>(device);
    ```
 
 The `action` pointer can then used to access the plugin API (as shown in the following sections). 
