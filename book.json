@@ -1,6 +1,10 @@
 {   
     "gitbook": ">= 3.2.2",
-    "title": "DroneCore Guide",
+    "title": "DroneCore Guide", 
+    "variables": {
+        "logo": "./assets/site/dronecore_logo_full.png",
+        "github_branch": "develop"
+    },
     "plugins": [
         "youtube",
         "richquotes",
@@ -14,9 +18,6 @@
         "theme-dronecode@git+https://github.com/dronecode/theme-dronecode.git",
         "versions"
     ],
-    "variables": {
-      "github_branch": "develop"
-    },
     "pluginsConfig": {
 
         "page-footer-ex":{
