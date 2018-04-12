@@ -25,7 +25,7 @@ Usage: ./fly_qgc_mission <path of QGC Mission plan>
 Importing mission from Default mission plan: ../../../plugins/mission/qgroundcontrol_sample.plan
 Waiting to discover system...
 [02:25:09|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:211)
-[02:25:09|Debug] MAVLink: info: DISARMED by auto disarm on land (device.cpp:247)
+[02:25:09|Debug] MAVLink: info: DISARMED by auto disarm on land (system.cpp:247)
 [02:25:09|Debug] Discovered 4294967298 (dronecore_impl.cpp:219)
 Discovered system with UUID: 4294967298
 Waiting for system to be ready

@@ -41,7 +41,7 @@ The APIs include methods that do not make sense for other vehicle types - includ
 
 ### Telemetry/Information
 
-DroneCore gets and stores vehicle state/telemetry information from received MAVLink messages. The information is supplied to callback subscribers as soon as message updates are received. Clients can also query the API synchronously, and will get the information from the last recieved message (depending on channel latency, this information will become increasingly "stale" between messages).
+DroneCore gets and stores vehicle state/telemetry information from received MAVLink messages. The information is supplied to callback subscribers as soon as message updates are received. Clients can also query the API synchronously, and will get the information from the last received message (depending on channel latency, this information will become increasingly "stale" between messages).
 
 The rate at which update messages are sent by the vehicle can be specified using DroneCore (but will be limited by the bandwidth of the channel). Developers need to use a channel and a message update rate that allows their desired control algorithm to be effective - there is no point trying to use computer vision over an unreliable high-latency link.
 
@@ -52,7 +52,7 @@ The rate at which update messages are sent by the vehicle can be specified using
 
 `Action` methods (and any other "vehicle instructions") return when the vehicle has confirmed that the message was received and will be acted on (or not). The methods do not wait for the commanded action to complete.
 
-So, for example, the [Action::land()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1ad1a50dd7bff99d3099916576efbf8cf6) method returns as soon as the vehicle confirms it will land, but will actually land at some later point. 
+So, for example, the [Action::land()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a08367528cdf25404b7db6db457e3c6f9) method returns as soon as the vehicle confirms it will land, but will actually land at some later point. 
 
 The implication is that developers will need to separately monitor the completion of the requested actions, if this is important to the application.
 

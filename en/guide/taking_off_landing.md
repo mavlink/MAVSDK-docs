@@ -49,7 +49,7 @@ The `action` pointer can then used to access the plugin API (as shown in the fol
 
 ## Taking Off
 
-The recommended way to take off using DroneCore (and PX4) is to use either of the [takeoff()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1ae159c78b1a4056137187dc6e6d878539) or [takeoff_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a2aec10a2b14f5e82f05edc6e2feac83e) methods. If a takeoff command is accepted the vehicle will change to the [Takeoff mode](https://docs.px4.io/en/flight_modes/takeoff.html), fly to the takeoff altitude, and then hover (in takeoff mode) until another instruction is received. 
+The recommended way to take off using DroneCore (and PX4) is to use either of the [takeoff()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a1d6244edfd39272d97bf8b126eb98629) or [takeoff_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a2aec10a2b14f5e82f05edc6e2feac83e) methods. If a takeoff command is accepted the vehicle will change to the [Takeoff mode](https://docs.px4.io/en/flight_modes/takeoff.html), fly to the takeoff altitude, and then hover (in takeoff mode) until another instruction is received. 
 
 > **Note** PX4/DroneCore also provides other ways to take off:
 > - A copter or VTOL will take off automatically if a mission is started (fixed-wing will not). 
@@ -176,7 +176,7 @@ while (current_position<target_alt) {
 
 ## Landing
 
-The best way to land the vehicle at the current location is to use the [land()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1ad1a50dd7bff99d3099916576efbf8cf6) or [land_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a7f10240cde2ff237795e3688802d857b) methods. If the command is accepted the vehicle will change to the [Land mode](https://docs.px4.io/en/flight_modes/land.html) and land at the current point. 
+The best way to land the vehicle at the current location is to use the [land()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a08367528cdf25404b7db6db457e3c6f9) or [land_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a7f10240cde2ff237795e3688802d857b) methods. If the command is accepted the vehicle will change to the [Land mode](https://docs.px4.io/en/flight_modes/land.html) and land at the current point. 
 
 > **Note** DroneCore does not at time of writing recommend other approaches for landing: land mission items are not supported and manually landing the vehicle using the offboard is not as safe. 
 
@@ -203,7 +203,7 @@ std::cout << "Disarmed, exiting." << std::endl;
 
 ## Return/RTL
 
-[Return mode](https://docs.px4.io/en/flight_modes/rtl.html) (also known as "Return to Launch", "Return to Land", "Return to Home") flies the vehicle back to the home position and may also land the vehicle (depending on vehicle configuration). This mode is invoked from DroneCore using the [return_to_launch()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a9af73101ce850e37cf7259dcdeda2eb9) or [return_to_launch_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1aa1253c356c7628d329dfa98d78eb39ee) methods. 
+[Return mode](https://docs.px4.io/en/flight_modes/return.html) (also known as "Return to Launch", "Return to Land", "Return to Home") flies the vehicle back to the home position and may also land the vehicle (depending on vehicle configuration). This mode is invoked from DroneCore using the [return_to_launch()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a740a3bf125560edaf810865a616b2d24) or [return_to_launch_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1aa1253c356c7628d329dfa98d78eb39ee) methods. 
 
 The code below shows how to use the synchronous method:
 
@@ -222,8 +222,8 @@ Depending on the vehicle it may land or hover around the return point. For vehic
 Use the disarm or kill methods to stop the drone motors (the difference is that disarming will only succeed if the drone considers itself landed, while kill will disarm a vehicle even in flight).
 
 The methods are listed below. These are used in the same way as other similar `Action` APIs:
-- [disarm()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1ad4b0231afcfebc261a720194f893dcd8), [disarm_async](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1acc0a17411a25f5641ae21046b459e79e)
-- [kill()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1adc272f46adf4c52fbe7bd091a436b28b), [kill_async](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a1d7d09191d9319c7912962b2dd02caa7)
+- [disarm()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a0ab29022df5d93d4f590d83a3e9c4349), [disarm_async](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1acc0a17411a25f5641ae21046b459e79e)
+- [kill()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a615cff3ac4321340a9871416d2ca1db8), [kill_async](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a1d7d09191d9319c7912962b2dd02caa7)
 
 
 > **Tip** PX4 will automatically disarm the vehicle after landing. The disarm methods explicitly invoke the same functionality.
@@ -231,7 +231,7 @@ The methods are listed below. These are used in the same way as other similar `A
 
 ## Get/Set Cruise Speed
 
-You can get/set the normal horizontal velocity used in *Return mode*, *Hold mode*, *Takeoff* (and other [AUTO Flight Modes](https://docs.px4.io/en/flight_modes/#auto-modes)) using the following methods:
+You can get/set the normal horizontal velocity used in *Return mode*, *Hold mode*, *Takeoff* (and other [AUTO Flight Modes](https://docs.px4.io/en/getting_started/flight_modes.html#categories) using the following methods:
 * [set_max_speed()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1abc27410a9b2a938b21ab59c5ef9ee941)
 * [get_max_speed_m_s](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1abc27410a9b2a938b21ab59c5ef9ee941)
 
@@ -242,7 +242,7 @@ You can get/set the normal horizontal velocity used in *Return mode*, *Hold mode
 ## Switch Between VTOL Modes {#transition_vtol}
 
 DroneCore provides methods to transition between VTOL fixed wing and multicopter modes, with both synchronous and asynchronous versions:
-* [transition_to_fixedwing()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a6f40384be0ad61a29b6e2fd0a0c86754), [transition_to_multicopter()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a0088dbe4c715e2bfbe805b89d28add5a)
+* [transition_to_fixedwing()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a559e6cfa22f937acc0bbd1f9ac4e54fa), [transition_to_multicopter()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a3af080379382fedbc3ad8bdbaf3c4e4c)
 * [transition_to_fixedwing_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1af5b02f05ffdc2e0787a7633410710d9d), [transition_to_multicopter_async()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a053aa7430852a4200b201abda1b3b3e4)
 
 The associated action will only be executed for VTOL vehicles (on other vehicle types the command will fail with a `Result` of `VTOL_TRANSITION_SUPPORT_UNKNOWN` or `NO_VTOL_TRANSITION_SUPPORT`). The command will succeed if called when the vehicle is already in the mode.
