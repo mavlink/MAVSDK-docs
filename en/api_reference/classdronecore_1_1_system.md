@@ -4,7 +4,10 @@
 ----
 
 
-This class represents a system, made up of one or more components (e.g. autopilot, cameras, servos, gimbals, etc). Commonly [System](classdronecore_1_1_system.md) objects are used to interact with UAVs (including their components) and standalone cameras. 
+This class represents a system, made up of one or more components (e.g. autopilot, cameras, servos, gimbals, etc). 
+
+
+[System](classdronecore_1_1_system.md) objects are used to interact with UAVs (including their components) and standalone cameras. They are not created directly by application code, but are returned by the [DroneCore](classdronecore_1_1_drone_core.md) class. 
 
 
 ## Public Member Functions
@@ -33,12 +36,13 @@ dronecore::System::System(DroneCoreImpl &parent, uint8_t system_id, uint8_t comp
 
 Constructor.
 
+This constructor is not (and should not be) directly called by application code.
 
 **Parameters**
 
 * DroneCoreImpl& **parent** - 
-* uint8_t **system_id** - MAVLink system id.
-* uint8_t **comp_id** - MAVLink component id.
+* uint8_t **system_id** - System id.
+* uint8_t **comp_id** - Component id.
 
 ### ~System() {#classdronecore_1_1_system_1abeed98bdc18e63fc3632a3a0d1c9c097}
 ```cpp

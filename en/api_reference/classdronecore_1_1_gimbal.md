@@ -4,7 +4,7 @@
 ----
 
 
-The [Gimbal](classdronecore_1_1_gimbal.md) class enables to control a gimbal. 
+The [Gimbal](classdronecore_1_1_gimbal.md) class provides control over a gimbal. 
 
 
 Synchronous and asynchronous variants of the gimbal methods are supplied. 
