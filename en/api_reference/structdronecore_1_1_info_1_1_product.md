@@ -4,7 +4,7 @@
 ----
 
 
-Type containing device product information. 
+Type containing system product information. 
 
 
 ## Data Fields

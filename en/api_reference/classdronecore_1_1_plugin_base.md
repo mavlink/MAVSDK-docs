@@ -38,7 +38,7 @@ dronecore::PluginBase::PluginBase(const PluginBase &)=delete
 
 **Parameters**
 
-* const [PluginBase](classdronecore_1_1_plugin_base.md) & - 
+* const [PluginBase](classdronecore_1_1_plugin_base.md)&  - 
 
 ## Member Function Documentation
 
@@ -51,7 +51,7 @@ const PluginBase& dronecore::PluginBase::operator=(const PluginBase &)=delete
 
 **Parameters**
 
-* const [PluginBase](classdronecore_1_1_plugin_base.md) & - 
+* const [PluginBase](classdronecore_1_1_plugin_base.md)&  - 
 
 **Returns**
 

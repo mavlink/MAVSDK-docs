@@ -2,7 +2,7 @@
 
 The DroneCore Mission API allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions. Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
-Missions are *managed* though the [Mission](../api_reference/classdronecore_1_1_mission.md) class, which communicates with the device to upload mission information and run, pause, track the mission progress etc. The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects.
+Missions are *managed* though the [Mission](../api_reference/classdronecore_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc. The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects.
 
 
 ## Supported Mission Commands {#supported_mission_commands}
@@ -43,22 +43,22 @@ The main steps are:
      ...
    )
    ```
-1. [Create a connection](../guide/connections.md) to a `device`. For example (basic code without error checking):
+1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
    #include <dronecore/dronecore.h>
    DroneCore dc;
    ConnectionResult conn_result = dc.add_udp_connection();
-   // Wait for the device to connect via heartbeat
+   // Wait for the system to connect via heartbeat
    while (!dc.is_connected()) {
       sleep_for(seconds(1));
    }
-   // Device got discovered.
-   Device &device = dc.device();
+   // System got discovered.
+   System &system = dc.system();
    ```
-1. Create a shared pointer to an instance of `Mission` instantiated with the `device`: 
+1. Create a shared pointer to an instance of `Mission` instantiated with the `system`: 
    ```
    #include <dronecore/mission.h>
-   auto mission = std::make_shared<Mission>(device);
+   auto mission = std::make_shared<Mission>(system);
    ```
 
 The `mission` pointer can then used to access the plugin API (as shown in the following sections).

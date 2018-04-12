@@ -36,7 +36,7 @@ std::function< void([Result](classdronecore_1_1_offboard.md#classdronecore_1_1_o
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Offboard](#classdronecore_1_1_offboard_1a784907d1ea5ac1320125f77cce53bffb) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [Offboard](#classdronecore_1_1_offboard_1ae5d68b998d69577e47ae649c7ee3b650) ([System](classdronecore_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 &nbsp; | [~Offboard](#classdronecore_1_1_offboard_1a7cb4eff36c37fed1c6d973aa41b059b8) () | Destructor (internal use only).
 &nbsp; | [Offboard](#classdronecore_1_1_offboard_1ac586be55cb24aa0ccd29c97352dd2ee5) (const [Offboard](classdronecore_1_1_offboard.md) &)=delete | Copy constructor (object is not copyable).
 [Offboard::Result](classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) | [start](#classdronecore_1_1_offboard_1a658454f130f7b19d56f23347a448f1b9) () | Start offboard control (synchronous).
@@ -59,23 +59,23 @@ const char * | [result_str](#classdronecore_1_1_offboard_1a8eb7467e48fe354d34bc4
 ## Constructor & Destructor Documentation
 
 
-### Offboard() {#classdronecore_1_1_offboard_1a784907d1ea5ac1320125f77cce53bffb}
+### Offboard() {#classdronecore_1_1_offboard_1ae5d68b998d69577e47ae649c7ee3b650}
 ```cpp
-dronecore::Offboard::Offboard(Device &device)
+dronecore::Offboard::Offboard(System &system)
 ```
 
 
-Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 
 The plugin is typically created as shown below: 
 
 ```cpp
-auto offboard = std::make_shared<Offboard>(device);
+auto offboard = std::make_shared<Offboard>(system);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
+* [System](classdronecore_1_1_system.md)& **system** - The specific system associated with this plugin.
 
 ### ~Offboard() {#classdronecore_1_1_offboard_1a7cb4eff36c37fed1c6d973aa41b059b8}
 ```cpp
@@ -97,7 +97,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Offboard](classdronecore_1_1_offboard.md) & - 
+* const [Offboard](classdronecore_1_1_offboard.md)&  - 
 
 ## Member Typdef Documentation
 
@@ -124,7 +124,7 @@ Results for offboard requests.
 Value | Description
 --- | ---
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572edad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
-<span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device connected. 
+<span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572edafeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system connected. 
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572edac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda802706a9238e2928077f97736854bad4"></span> `BUSY` | Vehicle busy. 
 <span id="classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572eda6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command denied. 
@@ -242,7 +242,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Offboard](classdronecore_1_1_offboard.md) & - 
+* const [Offboard](classdronecore_1_1_offboard.md)&  - 
 
 **Returns**
 

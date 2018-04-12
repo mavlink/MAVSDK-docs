@@ -75,11 +75,11 @@ All plugins should derive their implementation from `PluginImplBase` (**core/plu
 
 ### Plugin Enable/Disable
 
-DroneCore provides virtual methods that a plugin should implement allow DroneCore to better manage resources. For example, to prevent callback being created before the `Device` is instantiated, or messages being sent when a vehicle is not connected.
+DroneCore provides virtual methods that a plugin should implement allow DroneCore to better manage resources. For example, to prevent callback being created before the `System` is instantiated, or messages being sent when a vehicle is not connected.
 
 Plugin authors should provide an implementation of the following `PluginImplBase` pure virtual methods:
-* [init()](#init)/[deinit()](#deinit): These are called when a device is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `Device` instantiated. This includes calls that set up callbacks.
-* [enable()](#enable)/[disable()](#disable): These are called when a vehicle is discovered or has timed out. They should be used for managing resources needed to access a connected device/vehicle (e.g. getting a parameter or changing a setting).
+* [init()](#init)/[deinit()](#deinit): These are called when a system is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `System` instantiated. This includes calls that set up callbacks.
+* [enable()](#enable)/[disable()](#disable): These are called when a vehicle is discovered or has timed out. They should be used for managing resources needed to access a connected system/vehicle (e.g. getting a parameter or changing a setting).
 
 The [external example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) provides a minimal implementation.
 
@@ -91,7 +91,7 @@ Additional detail is provided for methods below.
 virtual void init() = 0
 ```
 
-The `init()` method is called when a plugin is instantiated. This happens when a `Device` is constructed (this does not mean that the device actually exists and is connected - it might just be an empty dummy device).
+The `init()` method is called when a plugin is instantiated. This happens when a `System` is constructed (this does not mean that the system actually exists and is connected - it might just be an empty dummy system).
 
 Plugins should do initialization steps with other parts of DroneCore at this state, e.g. set up callbacks with `_parent` (`DeviceImpl`).
 
@@ -107,7 +107,7 @@ Plugins should cleanup anything that was set up during `init()`.
 ```cpp
 virtual void enable() = 0
 ```
-The `enable()` method is called when a device is discovered (connected). Plugins should do all initialization/configuration steps that require a device to be connected. For example, setting/getting parameters.
+The `enable()` method is called when a system is discovered (connected). Plugins should do all initialization/configuration steps that require a system to be connected. For example, setting/getting parameters.
 
 If any threads, call_every or timeouts are needed, they can be started in this method.
 
@@ -115,7 +115,7 @@ If any threads, call_every or timeouts are needed, they can be started in this m
 ```cpp
 virtual void disable() = 0
 ```
-The `disable()` method is called when a device has timed out. The method is also called before `deinit()` is called to stop any devices with active plugins from communicating (in order to prevent warnings and errors because communication to the device no longer works).
+The `disable()` method is called when a system has timed out. The method is also called before `deinit()` is called to stop any systems with active plugins from communicating (in order to prevent warnings and errors because communication to the system no longer works).
 
 If any threads, call_every, or timeouts are running, they should be stopped in this method.
 
@@ -262,12 +262,12 @@ TEST_F(SitlTest, ExampleHello)
     ConnectionResult ret = dc.add_udp_connection();
     ASSERT_EQ(ret, ConnectionResult::SUCCESS);
 
-    // Wait for device to connect via heartbeat.
+    // Wait for system to connect via heartbeat.
     std::this_thread::sleep_for(std::chrono::seconds(2));
     ASSERT_TRUE(dc.is_connected());
 
-    Device &device = dc.device();
-    auto example = std::make_shared<Example>(device);
+    System &system = dc.system();
+    auto example = std::make_shared<Example>(system);
 
     // Apparently it can say hello.
     example->say_hello();

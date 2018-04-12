@@ -23,14 +23,14 @@ The example terminal output should be similar to that shown below:
 $ ./fly_qgc_mission 
 Usage: ./fly_qgc_mission <path of QGC Mission plan>
 Importing mission from Default mission plan: ../../../plugins/mission/qgroundcontrol_sample.plan
-Waiting to discover device...
-[02:25:09|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:211)
+Waiting to discover system...
+[02:25:09|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:211)
 [02:25:09|Debug] MAVLink: info: DISARMED by auto disarm on land (device.cpp:247)
 [02:25:09|Debug] Discovered 4294967298 (dronecore_impl.cpp:219)
-Discovered device with UUID: 4294967298
-Waiting for device to be ready
-Waiting for device to be ready
-Device ready
+Discovered system with UUID: 4294967298
+Waiting for system to be ready
+Waiting for system to be ready
+System ready
 Found 8 mission items in the given QGC plan.
 Uploading mission...
 [02:25:11|Debug] Send mission item 0 (mission_impl.cpp:781)
@@ -180,7 +180,7 @@ using namespace std::chrono; // for seconds(), milliseconds()
 using namespace std::this_thread; // for sleep_for()
 
 // Handles Action's result
-inline void handle_action_err_exit(Action::Result result, const std::string &message);
+inline void handle_action_err_exit(ActionResult result, const std::string &message);
 // Handles Mission's result
 inline void handle_mission_err_exit(Mission::Result result, const std::string &message);
 // Handles Connection result
@@ -206,9 +206,9 @@ int main(int argc, char **argv)
         auto prom = std::make_shared<std::promise<void>>();
         auto future_result = prom->get_future();
 
-        std::cout << "Waiting to discover device..." << std::endl;
+        std::cout << "Waiting to discover system..." << std::endl;
         dc.register_on_discover([prom](uint64_t uuid) {
-            std::cout << "Discovered device with UUID: " << uuid << std::endl;
+            std::cout << "Discovered system with UUID: " << uuid << std::endl;
             prom->set_value();
         });
 
@@ -219,25 +219,25 @@ int main(int argc, char **argv)
     }
 
     dc.register_on_timeout([](uint64_t uuid) {
-        std::cout << "Device with UUID timed out: " << uuid << std::endl;
+        std::cout << "System with UUID timed out: " << uuid << std::endl;
         std::cout << "Exiting." << std::endl;
         exit(0);
     });
 
-    // We don't need to specify the UUID if it's only one device anyway.
+    // We don't need to specify the UUID if it's only one system anyway.
     // If there were multiple, we could specify it with:
-    // dc.device(uint64_t uuid);
-    Device &device = dc.device();
-    std::shared_ptr<Action> action = std::make_shared<Action>(device);
-    std::shared_ptr<Mission> mission = std::make_shared<Mission>(device);
-    std::shared_ptr<Telemetry> telemetry = std::make_shared<Telemetry>(device);
+    // dc.system(uint64_t uuid);
+    System &system = dc.system();
+    auto action = std::make_shared<Action>(system);
+    auto mission = std::make_shared<Mission>(system);
+    auto telemetry = std::make_shared<Telemetry>(system);
 
     while (!telemetry->health_all_ok()) {
-        std::cout << "Waiting for device to be ready" << std::endl;
+        std::cout << "Waiting for system to be ready" << std::endl;
         sleep_for(seconds(1));
     }
 
-    std::cout << "Device ready" << std::endl;
+    std::cout << "System ready" << std::endl;
 
     // Import Mission items from QGC plan
     Mission::mission_items_t mission_items;
@@ -267,7 +267,7 @@ int main(int argc, char **argv)
     }
 
     std::cout << "Arming..." << std::endl;
-    const Action::Result arm_result = action->arm();
+    const ActionResult arm_result = action->arm();
     handle_action_err_exit(arm_result, "Arm failed: ");
     std::cout << "Armed." << std::endl;
 
@@ -301,9 +301,9 @@ int main(int argc, char **argv)
     {
         // Mission complete. Command RTL to go home.
         std::cout << "Commanding RTL..." << std::endl;
-        const Action::Result result = action->return_to_launch();
-        if (result != Action::Result::SUCCESS) {
-            std::cout << "Failed to command RTL (" << Action::result_str(result) << ")" << std::endl;
+        const ActionResult result = action->return_to_launch();
+        if (result != ActionResult::SUCCESS) {
+            std::cout << "Failed to command RTL (" << action_result_str(result) << ")" << std::endl;
         } else {
             std::cout << "Commanded RTL." << std::endl;
         }
@@ -312,10 +312,10 @@ int main(int argc, char **argv)
     return 0;
 }
 
-inline void handle_action_err_exit(Action::Result result, const std::string &message)
+inline void handle_action_err_exit(ActionResult result, const std::string &message)
 {
-    if (result != Action::Result::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << Action::result_str(
+    if (result != ActionResult::SUCCESS) {
+        std::cerr << ERROR_CONSOLE_TEXT << message << action_result_str(
                       result) << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
@@ -342,4 +342,3 @@ inline void handle_connection_err_exit(ConnectionResult result,
     }
 }
 ```
-

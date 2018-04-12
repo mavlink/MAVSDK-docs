@@ -23,11 +23,13 @@ std::function< void([Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gim
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Gimbal](#classdronecore_1_1_gimbal_1a492027a19998e9c37eff4e29864a96c9) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [Gimbal](#classdronecore_1_1_gimbal_1a70cd26205293e850839410de35d8a344) ([System](classdronecore_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 &nbsp; | [~Gimbal](#classdronecore_1_1_gimbal_1a4f8b2a6cf5a7347a474f8e47618ad838) () | Destructor (internal use only).
 &nbsp; | [Gimbal](#classdronecore_1_1_gimbal_1a82637c62da14ae39db96724d4273cad4) (const [Gimbal](classdronecore_1_1_gimbal.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6f) | [set_pitch_and_yaw](#classdronecore_1_1_gimbal_1ac8ac49d29f11b2107da6b043bb57b54e) (float pitch_deg, float yaw_deg) | Set gimbal pitch and yaw angles (synchronous).
 void | [set_pitch_and_yaw_async](#classdronecore_1_1_gimbal_1a3aea07049f32f8bc5b2edaee8cb2ac16) (float pitch_deg, float yaw_deg, [result_callback_t](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a309448760ba62635fce7139be44788ff) callback) | Set gimbal pitch and yaw angles (asynchronous).
+[Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6f) | [set_roi_location](#classdronecore_1_1_gimbal_1a344449a99f7938a4053b6fcf8c3b4f67) (double latitude_deg, double longitude_deg, float altitude_m) | Set gimbal region of interest (ROI).
+void | [set_roi_location_async](#classdronecore_1_1_gimbal_1ae6c0f05951fd4c85bbd5a50b6c9c8e21) (double latitude_deg, double longitude_deg, float altitude_m, [result_callback_t](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a309448760ba62635fce7139be44788ff) callback) | Set gimbal region of interest (ROI) (asynchronous).
 const [Gimbal](classdronecore_1_1_gimbal.md) & | [operator=](#classdronecore_1_1_gimbal_1ad15551254ea56674c576bbcbec6e7eac) (const [Gimbal](classdronecore_1_1_gimbal.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -41,23 +43,23 @@ const char * | [result_str](#classdronecore_1_1_gimbal_1ad60c5378cc7d160be67432f
 ## Constructor & Destructor Documentation
 
 
-### Gimbal() {#classdronecore_1_1_gimbal_1a492027a19998e9c37eff4e29864a96c9}
+### Gimbal() {#classdronecore_1_1_gimbal_1a70cd26205293e850839410de35d8a344}
 ```cpp
-dronecore::Gimbal::Gimbal(Device &device)
+dronecore::Gimbal::Gimbal(System &system)
 ```
 
 
-Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 
 The plugin is typically created as shown below: 
 
 ```cpp
-auto gimbal = std::make_shared<Gimbal>(device);
+auto gimbal = std::make_shared<Gimbal>(system);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
+* [System](classdronecore_1_1_system.md)& **system** - The specific system associated with this plugin.
 
 ### ~Gimbal() {#classdronecore_1_1_gimbal_1a4f8b2a6cf5a7347a474f8e47618ad838}
 ```cpp
@@ -79,7 +81,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Gimbal](classdronecore_1_1_gimbal.md) & - 
+* const [Gimbal](classdronecore_1_1_gimbal.md)&  - 
 
 ## Member Typdef Documentation
 
@@ -148,6 +150,43 @@ This sets the desired pitch and yaw angles of a gimbal. The callback will be cal
 * float **yaw_deg** - The yaw angle in degrees. Positive for clock-wise, range -180..180 or 0..360.
 * [result_callback_t](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a309448760ba62635fce7139be44788ff) **callback** - Function to call with result of request.
 
+### set_roi_location() {#classdronecore_1_1_gimbal_1a344449a99f7938a4053b6fcf8c3b4f67}
+```cpp
+Result dronecore::Gimbal::set_roi_location(double latitude_deg, double longitude_deg, float altitude_m)
+```
+
+
+Set gimbal region of interest (ROI).
+
+This sets a region of interest that the gimbal will point to. The gimbal will continue to point to the specified region until it receives a new command. The function will return when the command is accepted, however, it might take the gimbal longer to actually rotate to the ROI.
+
+**Parameters**
+
+* double **latitude_deg** - Latitude in degrees.
+* double **longitude_deg** - Longitude in degrees.
+* float **altitude_m** - Altitude in meters (ASML).
+
+**Returns**
+
+&emsp;[Result](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a2404686489b502fbc58e940701ba1e6f) - Result of request.
+
+### set_roi_location_async() {#classdronecore_1_1_gimbal_1ae6c0f05951fd4c85bbd5a50b6c9c8e21}
+```cpp
+void dronecore::Gimbal::set_roi_location_async(double latitude_deg, double longitude_deg, float altitude_m, result_callback_t callback)
+```
+
+
+Set gimbal region of interest (ROI) (asynchronous).
+
+This sets a region of interest that the gimbal will point to. The gimbal will continue to point to the specified region until it receives a new command. The callback will be called when the command is accepted, however, it might take the gimbal longer to actually be set to the new angles.
+
+**Parameters**
+
+* double **latitude_deg** - Latitude in degrees.
+* double **longitude_deg** - Longitude in degrees.
+* float **altitude_m** - Altitude in meters (ASML).
+* [result_callback_t](classdronecore_1_1_gimbal.md#classdronecore_1_1_gimbal_1a309448760ba62635fce7139be44788ff) **callback** - Function to call with result of request.
+
 ### operator=() {#classdronecore_1_1_gimbal_1ad15551254ea56674c576bbcbec6e7eac}
 ```cpp
 const Gimbal& dronecore::Gimbal::operator=(const Gimbal &)=delete
@@ -159,7 +198,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Gimbal](classdronecore_1_1_gimbal.md) & - 
+* const [Gimbal](classdronecore_1_1_gimbal.md)&  - 
 
 **Returns**
 

@@ -4,7 +4,7 @@
 ----
 
 
-Type containing device version information. 
+Type containing system version information. 
 
 
 ## Data Fields

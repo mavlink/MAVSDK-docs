@@ -16,14 +16,14 @@ The example terminal output should be similar to that shown below:
 ```
 $ ./offboard 
 ubuntu@ubuntu:~/DroneCore/example/offboard_velocity/build$ ./offboard 
-Wait for device to connect via heartbeat
-[03:48:52|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:210)
+Wait for system to connect via heartbeat
+[03:48:52|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:210)
 [03:48:52|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2017-11-14/2 (device_impl.cpp:225)
 [03:48:53|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
-Waiting for device to be ready
+Waiting for system to be ready
 ...
-Waiting for device to be ready
-Device is ready
+Waiting for system to be ready
+System is ready
 Armed
 [03:49:07|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:225)
 In Air...
@@ -118,10 +118,10 @@ using std::chrono::seconds;
 #define NORMAL_CONSOLE_TEXT "\033[0m"  //Restore normal console colour
 
 // Handles Action's result
-inline void action_error_exit(Action::Result result, const std::string &message)
+inline void action_error_exit(ActionResult result, const std::string &message)
 {
-    if (result != Action::Result::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << Action::result_str(
+    if (result != ActionResult::SUCCESS) {
+        std::cerr << ERROR_CONSOLE_TEXT << message << action_result_str(
                       result) << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
@@ -266,29 +266,29 @@ int main(int, char **)
     ConnectionResult conn_result = dc.add_udp_connection();
     connection_error_exit(conn_result, "Connection failed");
 
-    // Wait for the device to connect via heartbeat
+    // Wait for the system to connect via heartbeat
     while (!dc.is_connected()) {
-        std::cout << "Wait for device to connect via heartbeat" << std::endl;
+        std::cout << "Wait for system to connect via heartbeat" << std::endl;
         sleep_for(seconds(1));
     }
 
-    // Device got discovered.
-    Device &device = dc.device();
-    std::shared_ptr<Action> action = std::make_shared<Action>(device);
-    std::shared_ptr<Offboard> offboard = std::make_shared<Offboard>(device);
-    std::shared_ptr<Telemetry> telemetry = std::make_shared<Telemetry>(device);
+    // System got discovered.
+    System &system = dc.system();
+    auto action = std::make_shared<Action>(system);
+    auto offboard = std::make_shared<Offboard>(system);
+    auto telemetry = std::make_shared<Telemetry>(system);
 
     while (!telemetry->health_all_ok()) {
-        std::cout << "Waiting for device to be ready" << std::endl;
+        std::cout << "Waiting for system to be ready" << std::endl;
         sleep_for(seconds(1));
     }
-    std::cout << "Device is ready" << std::endl;
+    std::cout << "System is ready" << std::endl;
 
-    Action::Result arm_result = action->arm();
+    ActionResult arm_result = action->arm();
     action_error_exit(arm_result, "Arming failed");
     std::cout << "Armed" << std::endl;
 
-    Action::Result takeoff_result = action->takeoff();
+    ActionResult takeoff_result = action->takeoff();
     action_error_exit(takeoff_result, "Takeoff failed");
     std::cout << "In Air..." << std::endl;
     sleep_for(seconds(5));
@@ -306,7 +306,7 @@ int main(int, char **)
         return EXIT_FAILURE;
     }
 
-    const Action::Result land_result = action->land();
+    const ActionResult land_result = action->land();
     action_error_exit(land_result, "Landing failed");
 
     // We are relying on auto-disarming but let's keep watching the telemetry for a bit longer.

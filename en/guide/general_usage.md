@@ -6,9 +6,9 @@ This topic provides general/overview information about how DroneCore is used, de
 
 [DroneCore](../api_reference/classdronecore_1_1_drone_core.md) is the main library class. Applications must create a `DroneCore` object and destroy it during application shut down. The object is usually created as an automatic variable that is cleaned up when it goes out of scope (you can also dynamically create/destroy the object using `new`/`delete`).
 
-API consumers use [DroneCore](../api_reference/classdronecore_1_1_drone_core.md) to discover and connect to [Device](../api_reference/classdronecore_1_1_device.md) objects (vehicles/cameras etc.). 
+API consumers use [DroneCore](../api_reference/classdronecore_1_1_drone_core.md) to discover and connect to [System](../api_reference/classdronecore_1_1_system.md) objects (vehicles/cameras etc.). 
 
-Access to drone information and control objects are provided [by plugins](../guide/using_plugins.md) (e.g. Telemetry, Action, Mission etc.). Plugin objects are instantiated with a *specific* `Device` object (a plugin instance must be created for every device that needs it). 
+Access to drone information and control objects are provided [by plugins](../guide/using_plugins.md) (e.g. Telemetry, Action, Mission etc.). Plugin objects are instantiated with a *specific* `System` object (a plugin instance must be created for every system that needs it). 
 
 Plugin objects are created as shared pointers that will be destroyed when all associated handles are out of scope. All objects are automatically cleaned up when the parent `DroneCore` object is destroyed.
 
@@ -68,5 +68,5 @@ The API allows you to download/import missions. Note however that this will fail
 
 ### Connection Status
 
-A device is considered to be disconnected (timed-out) if its heartbeat message is not detected within 3 seconds.
+A system is considered to be disconnected (timed-out) if its heartbeat message is not detected within 3 seconds.
 

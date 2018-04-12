@@ -15,12 +15,12 @@ The example terminal output for a debug build of DroneCore should be similar to 
 
 ```
 $ ./transition_vtol_fixed_wing 
-Waiting to discover device...
-[10:24:42|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:210)
+Waiting to discover system...
+[10:24:42|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:210)
 [10:24:42|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2017-11-21/0 (device_impl.cpp:229)
 [10:24:42|Debug] MAVLink: info: Landing detected (device_impl.cpp:229)
 [10:24:43|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
-Discovered device with UUID: 4294967298
+Discovered system with UUID: 4294967298
 Arming...
 Taking off...
 [10:24:44|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:229)
@@ -100,7 +100,6 @@ target_link_libraries(transition_vtol_fixed_wing
 [transition_vtol_fixed_wing.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
 
 ```cpp
-
 #include <chrono>
 #include <cstdint>
 #include <dronecore/action.h>
@@ -121,7 +120,7 @@ int main(int /*argc*/, char ** /*argv*/)
 {
     DroneCore dc;
 
-    bool discovered_device = false;
+    bool discovered_system = false;
 
     ConnectionResult connection_result = dc.add_udp_connection();
 
@@ -132,25 +131,25 @@ int main(int /*argc*/, char ** /*argv*/)
         return 1;
     }
 
-    std::cout << "Waiting to discover device..." << std::endl;
-    dc.register_on_discover([&discovered_device](uint64_t uuid) {
-        std::cout << "Discovered device with UUID: " << uuid << std::endl;
-        discovered_device = true;
+    std::cout << "Waiting to discover system..." << std::endl;
+    dc.register_on_discover([&discovered_system](uint64_t uuid) {
+        std::cout << "Discovered system with UUID: " << uuid << std::endl;
+        discovered_system = true;
     });
 
-    // We usually receive heartbeats at 1Hz, therefore we should find a device after around 2 seconds.
+    // We usually receive heartbeats at 1Hz, therefore we should find a system after around 2 seconds.
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
-    if (!discovered_device) {
-        std::cout << ERROR_CONSOLE_TEXT << "No device found, exiting." << NORMAL_CONSOLE_TEXT << std::endl;
+    if (!discovered_system) {
+        std::cout << ERROR_CONSOLE_TEXT << "No system found, exiting." << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
-    // We don't need to specify the UUID if it's only one device anyway.
+    // We don't need to specify the UUID if it's only one system anyway.
     // If there were multiple, we could specify it with:
-    // dc.device(uint64_t uuid);
-    Device &device = dc.device();
-    std::shared_ptr<Telemetry> telemetry = std::make_shared<Telemetry>(device);
+    // dc.system(uint64_t uuid);
+    System &system = dc.system();
+    auto telemetry = std::make_shared<Telemetry>(system);
 
     // We want to listen to the altitude of the drone at 1 Hz.
     const Telemetry::Result set_rate_result = telemetry->set_rate_position(1.0);
@@ -176,23 +175,23 @@ int main(int /*argc*/, char ** /*argv*/)
         return 1;
     }
 
-    std::shared_ptr<Action> action = std::make_shared<Action>(device);
+    auto action = std::make_shared<Action>(system);
 
     // Arm vehicle
     std::cout << "Arming..." << std::endl;
-    const Action::Result arm_result = action->arm();
+    const ActionResult arm_result = action->arm();
 
-    if (arm_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << Action::result_str(
+    if (arm_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << action_result_str(
                       arm_result) << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
     // Take off
     std::cout << "Taking off..." << std::endl;
-    const Action::Result takeoff_result = action->takeoff();
-    if (takeoff_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << Action::result_str(
+    const ActionResult takeoff_result = action->takeoff();
+    if (takeoff_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << action_result_str(
                       takeoff_result) << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -201,10 +200,10 @@ int main(int /*argc*/, char ** /*argv*/)
     std::this_thread::sleep_for(std::chrono::seconds(10));
 
     std::cout << "Transition to fixedwing..." << std::endl;
-    const Action::Result fw_result = action->transition_to_fixedwing();
+    const ActionResult fw_result = action->transition_to_fixedwing();
 
-    if (fw_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Transition to fixed wing failed: " << Action::result_str(
+    if (fw_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Transition to fixed wing failed: " << action_result_str(
                       fw_result) << NORMAL_CONSOLE_TEXT << std::endl;
         //return 1;
     }
@@ -213,9 +212,9 @@ int main(int /*argc*/, char ** /*argv*/)
     std::this_thread::sleep_for(std::chrono::seconds(10));
 
     std::cout << "Transition back to multicopter..." << std::endl;
-    const Action::Result mc_result = action->transition_to_multicopter();
-    if (mc_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Transition to multi copter failed:" << Action::result_str(
+    const ActionResult mc_result = action->transition_to_multicopter();
+    if (mc_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Transition to multi copter failed:" << action_result_str(
                       mc_result) << NORMAL_CONSOLE_TEXT << std::endl;
         //    return 1;
     }
@@ -225,9 +224,9 @@ int main(int /*argc*/, char ** /*argv*/)
 
     // Return to launch
     std::cout << "Return to launch..." << std::endl;
-    const Action::Result rtl_result = action->return_to_launch();
-    if (rtl_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Returning to launch failed:" << Action::result_str(
+    const ActionResult rtl_result = action->return_to_launch();
+    if (rtl_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Returning to launch failed:" << action_result_str(
                       rtl_result) << NORMAL_CONSOLE_TEXT << std::endl;
         //    return 1;
     }
@@ -237,9 +236,9 @@ int main(int /*argc*/, char ** /*argv*/)
 
     // Land
     std::cout << "Landing..." << std::endl;
-    const Action::Result land_result = action->land();
-    if (land_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << Action::result_str(
+    const ActionResult land_result = action->land();
+    if (land_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << action_result_str(
                       land_result) << NORMAL_CONSOLE_TEXT << std::endl;
         //    return 1;
     }

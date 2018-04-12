@@ -6,7 +6,7 @@ This section contains examples showing how to use DroneCore.
 
 Example | Description
 --- | ---
-[Takeoff and Land](../examples/takeoff_and_land.md) | Shows basic usage of DroneCore (connect to port, detect device, arm, takeoff, land, get telemetry)
+[Takeoff and Land](../examples/takeoff_and_land.md) | Shows basic usage of DroneCore (connect to port, detect system (vehicle), arm, takeoff, land, get telemetry)
 [Fly Mission](../examples/fly_mission.md) | Shows how to create, upload, and run missions.
 [Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) | Fly a mission imported from a *QGroundControl* mission plan.
 [Offboard Velocity Control](../examples/offboard_velocity.md) | Demonstrates how to control a vehicle in Offboard mode using velocity commands (in both the NED and body frames).
