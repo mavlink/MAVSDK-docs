@@ -52,7 +52,7 @@ std::function< void([RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) 
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Telemetry](#classdronecore_1_1_telemetry_1aa066b99449e9915b7a7588597a2da468) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [Telemetry](#classdronecore_1_1_telemetry_1acf7e2bbc7351de67be6d2a4ad03f5268) ([System](classdronecore_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 &nbsp; | [~Telemetry](#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095) () | Destructor (internal use only).
 &nbsp; | [Telemetry](#classdronecore_1_1_telemetry_1a91a3319d9040bd89d241be3d8b2e9a5e) (const [Telemetry](classdronecore_1_1_telemetry.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_position](#classdronecore_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da) (double rate_hz) | Set rate of position updates (synchronous).
@@ -117,23 +117,23 @@ const char * | [result_str](#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a
 ## Constructor & Destructor Documentation
 
 
-### Telemetry() {#classdronecore_1_1_telemetry_1aa066b99449e9915b7a7588597a2da468}
+### Telemetry() {#classdronecore_1_1_telemetry_1acf7e2bbc7351de67be6d2a4ad03f5268}
 ```cpp
-dronecore::Telemetry::Telemetry(Device &device)
+dronecore::Telemetry::Telemetry(System &system)
 ```
 
 
-Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 
 The plugin is typically created as shown below: 
 
 ```cpp
-auto telemetry = std::make_shared<Telemetry>(device);
+auto telemetry = std::make_shared<Telemetry>(system);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
+* [System](classdronecore_1_1_system.md)& **system** - The specific system associated with this plugin.
 
 ### ~Telemetry() {#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095}
 ```cpp
@@ -155,7 +155,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Telemetry](classdronecore_1_1_telemetry.md) & - 
+* const [Telemetry](classdronecore_1_1_telemetry.md)&  - 
 
 ## Member Typdef Documentation
 
@@ -365,9 +365,9 @@ Results enum for telemetry requests.
 Value | Description
 --- | ---
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bcad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
-<span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device connected. 
+<span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bcafeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system connected. 
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bcac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
-<span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca802706a9238e2928077f97736854bad4"></span> `BUSY` | [Device](classdronecore_1_1_device.md) busy. 
+<span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca802706a9238e2928077f97736854bad4"></span> `BUSY` | [System](classdronecore_1_1_system.md) busy. 
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command denied. 
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Request timeout. 
 <span id="classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bca696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
@@ -1061,7 +1061,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Telemetry](classdronecore_1_1_telemetry.md) & - 
+* const [Telemetry](classdronecore_1_1_telemetry.md)&  - 
 
 **Returns**
 

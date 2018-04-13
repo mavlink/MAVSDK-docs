@@ -7,7 +7,7 @@
 A mission is a vector of [MissionItem](classdronecore_1_1_mission_item.md)s. 
 
 
-Each [MissionItem](classdronecore_1_1_mission_item.md) can contain a position and/or actions. [Mission](classdronecore_1_1_mission.md) items are just building blocks to assemble a mission, which can be sent to (or received from) a device. They cannot be used independently. 
+Each [MissionItem](classdronecore_1_1_mission_item.md) can contain a position and/or actions. [Mission](classdronecore_1_1_mission.md) items are just building blocks to assemble a mission, which can be sent to (or received from) a system. They cannot be used independently. 
 
 
 ## Public Types
@@ -84,7 +84,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [MissionItem](classdronecore_1_1_mission_item.md) & - 
+* const [MissionItem](classdronecore_1_1_mission_item.md)&  - 
 
 ## Member Enumeration Documentation
 
@@ -348,7 +348,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [MissionItem](classdronecore_1_1_mission_item.md) & - 
+* const [MissionItem](classdronecore_1_1_mission_item.md)&  - 
 
 **Returns**
 

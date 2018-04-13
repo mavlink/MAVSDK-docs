@@ -23,7 +23,7 @@ std::function< void([Result](classdronecore_1_1_logging.md#classdronecore_1_1_lo
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Logging](#classdronecore_1_1_logging_1ace064c190f8808bb23b1c830eae7a712) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [Logging](#classdronecore_1_1_logging_1a5de2fef7e3672df617ce79ed1bae05b8) ([System](classdronecore_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 &nbsp; | [~Logging](#classdronecore_1_1_logging_1a49e75d77f900ba5ef59a960ae9b8dc55) () | Destructor (internal use only).
 &nbsp; | [Logging](#classdronecore_1_1_logging_1a62a17eb90e3ec9253f1b40e94d3c1fd7) (const [Logging](classdronecore_1_1_logging.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classdronecore_1_1_logging.md#classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086) | [start_logging](#classdronecore_1_1_logging_1a4684d8226742b575fce423c9ce758fc0) () const | Start logging (synchronous).
@@ -43,23 +43,23 @@ const char * | [result_str](#classdronecore_1_1_logging_1adc5a7560f1a27996fc05f2
 ## Constructor & Destructor Documentation
 
 
-### Logging() {#classdronecore_1_1_logging_1ace064c190f8808bb23b1c830eae7a712}
+### Logging() {#classdronecore_1_1_logging_1a5de2fef7e3672df617ce79ed1bae05b8}
 ```cpp
-dronecore::Logging::Logging(Device &device)
+dronecore::Logging::Logging(System &system)
 ```
 
 
-Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 
 The plugin is typically created as shown below: 
 
 ```cpp
-auto logging = std::make_shared<Logging>(device);
+auto logging = std::make_shared<Logging>(system);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
+* [System](classdronecore_1_1_system.md)& **system** - The specific system associated with this plugin.
 
 ### ~Logging() {#classdronecore_1_1_logging_1a49e75d77f900ba5ef59a960ae9b8dc55}
 ```cpp
@@ -81,7 +81,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [Logging](classdronecore_1_1_logging.md) & - 
+* const [Logging](classdronecore_1_1_logging.md)&  - 
 
 ## Member Typdef Documentation
 
@@ -108,9 +108,9 @@ Results for logging requests.
 Value | Description
 --- | ---
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
-<span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device connected. 
+<span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086afeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system connected. 
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
-<span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a802706a9238e2928077f97736854bad4"></span> `BUSY` | Device busy. 
+<span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a802706a9238e2928077f97736854bad4"></span> `BUSY` | System busy. 
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command denied. 
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Timeout. 
 <span id="classdronecore_1_1_logging_1ab11e242369717d9510de1ab93bfad086a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
@@ -185,7 +185,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Logging](classdronecore_1_1_logging.md) & - 
+* const [Logging](classdronecore_1_1_logging.md)&  - 
 
 **Returns**
 

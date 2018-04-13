@@ -6,9 +6,9 @@ The aim was to have an API in a language which is cross-platform and has many la
 
 ### Does DroneCore support multiple vehicles?
 
-Yes, DroneCore is designed to support multiple vehicles. A vehicle is called a device in DroneCore.
+Yes, DroneCore is designed to support multiple vehicles. A vehicle is called a system in DroneCore.
 
-A device needs to have a specific MAVLink system ID but can consist of multiple components with different component IDs. An example would be a drone with a gimbal and a camera talking MAVLink with the same system ID but different component IDs.
+A system needs to have a specific MAVLink system ID but can consist of multiple components with different component IDs. An example would be a drone with a gimbal and a camera talking MAVLink with the same system ID but different component IDs.
 
 The limit is in theory 255 vehicles for system IDs ranging from 1 to 255.
 

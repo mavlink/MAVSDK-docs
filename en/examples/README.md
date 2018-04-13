@@ -6,7 +6,7 @@ This section contains examples showing how to use DroneCore.
 
 Example | Description
 --- | ---
-[Takeoff and Land](../examples/takeoff_and_land.md) | Shows basic usage of DroneCore (connect to port, detect device, arm, takeoff, land, get telemetry)
+[Takeoff and Land](../examples/takeoff_and_land.md) | Shows basic usage of DroneCore (connect to port, detect system (vehicle), arm, takeoff, land, get telemetry)
 [Fly Mission](../examples/fly_mission.md) | Shows how to create, upload, and run missions.
 [Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) | Fly a mission imported from a *QGroundControl* mission plan.
 [Offboard Velocity Control](../examples/offboard_velocity.md) | Demonstrates how to control a vehicle in Offboard mode using velocity commands (in both the NED and body frames).
@@ -23,7 +23,7 @@ The examples are designed to automatically connect to a [simulated PX4 vehicle](
 
 In order to test them, first start PX4 in SITL (Simulation), optionally start *QGroundControl* to observe the vehicle, then build and run the example code. 
 
-> **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540). The examples connect to this port by default, using [DroneCore::add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ae4d3a7e5cc46d9570beaafdb5f19a1a8).
+> **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540). The examples connect to this port by default, using [DroneCore::add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb).
 
 
 ### Setting up a Simulator

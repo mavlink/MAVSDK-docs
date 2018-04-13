@@ -33,11 +33,11 @@ enum [Result](#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) 
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [FollowMe](#classdronecore_1_1_follow_me_1aaaefbf5098c8a1ca69df2a170e700da0) ([Device](classdronecore_1_1_device.md) & device) | Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+&nbsp; | [FollowMe](#classdronecore_1_1_follow_me_1a6a830b5927b42d1a244f84eac01cd485) ([System](classdronecore_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 &nbsp; | [~FollowMe](#classdronecore_1_1_follow_me_1a66ffe3c9652bc08a2766f211592316ac) () | Destructor (internal use only).
 &nbsp; | [FollowMe](#classdronecore_1_1_follow_me_1a54589c314eeba131aca1c4c56d4b15e3) (const [FollowMe](classdronecore_1_1_follow_me.md) &)=delete | Copy constructor (object is not copyable).
 const [Config](structdronecore_1_1_follow_me_1_1_config.md) & | [get_config](#classdronecore_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5) () const | Gets current [FollowMe](classdronecore_1_1_follow_me.md) configuration.
-[Result](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) | [set_config](#classdronecore_1_1_follow_me_1aedf746d4a0eebdaaddc3d1ba0aeb6720) (const [Config](structdronecore_1_1_follow_me_1_1_config.md) & config) | Applies [FollowMe](classdronecore_1_1_follow_me.md) configuration by sending it to device.
+[Result](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02) | [set_config](#classdronecore_1_1_follow_me_1aedf746d4a0eebdaaddc3d1ba0aeb6720) (const [Config](structdronecore_1_1_follow_me_1_1_config.md) & config) | Applies [FollowMe](classdronecore_1_1_follow_me.md) configuration by sending it to system.
 bool | [is_active](#classdronecore_1_1_follow_me_1a467349820ac5f42cc388228c399a93ef) () const | Checks whether [FollowMe](classdronecore_1_1_follow_me.md) is active.
 void | [set_target_location](#classdronecore_1_1_follow_me_1a1220596b8bb51d2ca52248a92e300ad5) (const [TargetLocation](structdronecore_1_1_follow_me_1_1_target_location.md) & location) | Sets location of the moving target.
 const [TargetLocation](structdronecore_1_1_follow_me_1_1_target_location.md) & | [get_last_location](#classdronecore_1_1_follow_me_1a16da2bf7d0384e2bff4440600b523f8c) () const | Returns the last location of the target.
@@ -56,23 +56,23 @@ std::string | [result_str](#classdronecore_1_1_follow_me_1a50d848b1c7b00e40343b8
 ## Constructor & Destructor Documentation
 
 
-### FollowMe() {#classdronecore_1_1_follow_me_1aaaefbf5098c8a1ca69df2a170e700da0}
+### FollowMe() {#classdronecore_1_1_follow_me_1a6a830b5927b42d1a244f84eac01cd485}
 ```cpp
-dronecore::FollowMe::FollowMe(Device &device)
+dronecore::FollowMe::FollowMe(System &system)
 ```
 
 
-Constructor. Creates the plugin for a specific [Device](classdronecore_1_1_device.md).
+Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 
 The plugin is typically created as shown below: 
 
 ```cpp
-auto follow_me = std::make_shared<FollowMe>(device);
+auto follow_me = std::make_shared<FollowMe>(system);
 ```
 
 **Parameters**
 
-* [Device](classdronecore_1_1_device.md) & **device** - The specific device associated with this plugin.
+* [System](classdronecore_1_1_system.md)& **system** - The specific system associated with this plugin.
 
 ### ~FollowMe() {#classdronecore_1_1_follow_me_1a66ffe3c9652bc08a2766f211592316ac}
 ```cpp
@@ -94,7 +94,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [FollowMe](classdronecore_1_1_follow_me.md) & - 
+* const [FollowMe](classdronecore_1_1_follow_me.md)&  - 
 
 ## Member Enumeration Documentation
 
@@ -108,7 +108,7 @@ Results of [FollowMe](classdronecore_1_1_follow_me.md) operations.
 Value | Description
 --- | ---
 <span id="classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
-<span id="classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02a23514014e50da2b2583cae24ab1ecd88"></span> `NO_DEVICE` | No device connected. 
+<span id="classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02afeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system connected. 
 <span id="classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
 <span id="classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02a802706a9238e2928077f97736854bad4"></span> `BUSY` | Vehicle busy. 
 <span id="classdronecore_1_1_follow_me_1aee7e30070ac95bc63b68c10bd7253b02a6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command denied. 
@@ -147,12 +147,12 @@ Result dronecore::FollowMe::set_config(const Config &config)
 ```
 
 
-Applies [FollowMe](classdronecore_1_1_follow_me.md) configuration by sending it to device.
+Applies [FollowMe](classdronecore_1_1_follow_me.md) configuration by sending it to system.
 
 
 **Parameters**
 
-* const [Config](structdronecore_1_1_follow_me_1_1_config.md) & **config** - [FollowMe](classdronecore_1_1_follow_me.md) configuration to be applied.
+* const [Config](structdronecore_1_1_follow_me_1_1_config.md)& **config** - [FollowMe](classdronecore_1_1_follow_me.md) configuration to be applied.
 
 **Returns**
 
@@ -198,7 +198,7 @@ The following links provide information about location services on different pla
 
 **Parameters**
 
-* const [TargetLocation](structdronecore_1_1_follow_me_1_1_target_location.md) & **location** - Location of the moving target.
+* const [TargetLocation](structdronecore_1_1_follow_me_1_1_target_location.md)& **location** - Location of the moving target.
 
 **See Also:**
 - [get_last_location()](classdronecore_1_1_follow_me.md#classdronecore_1_1_follow_me_1a16da2bf7d0384e2bff4440600b523f8c)
@@ -258,7 +258,7 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [FollowMe](classdronecore_1_1_follow_me.md) & - 
+* const [FollowMe](classdronecore_1_1_follow_me.md)&  - 
 
 **Returns**
 

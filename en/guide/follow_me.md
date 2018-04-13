@@ -25,22 +25,22 @@ The main steps are:
      ...
    )
    ```
-1. [Create a connection](../guide/connections.md) to a `device`. For example (basic code without error checking):
+1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
    #include <dronecore/dronecore.h>
    DroneCore dc;
    ConnectionResult conn_result = dc.add_udp_connection();
-   // Wait for the device to connect via heartbeat
+   // Wait for the system to connect via heartbeat
    while (!dc.is_connected()) {
       sleep_for(seconds(1));
    }
-   // Device got discovered.
-   Device &device = dc.device();
+   // System got discovered.
+   System &system = dc.system();
    ```
-1. Create a shared pointer to an instance of `FollowMe` instantiated with the `device`: 
+1. Create a shared pointer to an instance of `FollowMe` instantiated with the `system`: 
    ```
    #include <dronecore/follow_me.h>
-   auto follow_me = std::make_shared<FollowMe >(device);
+   auto follow_me = std::make_shared<FollowMe >(system);
    ```
 
 The `follow_me` pointer can then used to access the plugin API (as shown in the following sections).

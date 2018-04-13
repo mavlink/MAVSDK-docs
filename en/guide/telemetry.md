@@ -40,22 +40,22 @@ The main steps are:
      ...
    )
    ```
-1. [Create a connection](../guide/connections.md) to a `device`. For example (basic code without error checking):
+1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
    #include <dronecore/dronecore.h>
    DroneCore dc;
    ConnectionResult conn_result = dc.add_udp_connection();
-   // Wait for the device to connect via heartbeat
+   // Wait for the system to connect via heartbeat
    while (!dc.is_connected()) {
       sleep_for(seconds(1));
    }
-   // Device got discovered.
-   Device &device = dc.device();
+   // System got discovered.
+   System &system = dc.system();
    ```
-1. Create a shared pointer to an instance of `Telemetry` instantiated with the `device`: 
+1. Create a shared pointer to an instance of `Telemetry` instantiated with the `system`: 
    ```
    #include <dronecore/telemetry.h>
-   auto telemetry = std::make_shared<Telemetry>(device);
+   auto telemetry = std::make_shared<Telemetry>(system);
    ```
 
 The `telemetry` pointer can then used to access the plugin API (as shown in the following sections).
@@ -162,7 +162,7 @@ Similarly, you can use the asynchronous method and block
 
 ```cpp
 {
-    std::cout << "Waiting for device to be ready" << std::endl;
+    std::cout << "Waiting for system to be ready" << std::endl;
     auto prom = std::make_shared<std::promise<void>>();
     auto future_result = prom->get_future();
     telemetry->health_all_ok_async(

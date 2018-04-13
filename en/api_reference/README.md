@@ -1,7 +1,7 @@
 # API Reference
 
 * [class DroneCore](classdronecore_1_1_drone_core.md)
-* [class Device](classdronecore_1_1_device.md)
+* [class System](classdronecore_1_1_system.md)
 * [class Info](classdronecore_1_1_info.md)
   * [struct Version](structdronecore_1_1_info_1_1_version.md)
   * [struct Product](structdronecore_1_1_info_1_1_product.md)

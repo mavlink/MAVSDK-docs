@@ -5,7 +5,7 @@ It shows how to send the drone both the current position of the target (`FollowM
 
 ![Follow Me QGC Screenshot](../../assets/examples/follow_me/follow_me_example_qgc.jpg)
 
-> **Note** A real application using this API will get the position information from the underlying device. The example uses a fake position source (`FakeLocationProvider`) to enable it to be run on computers that do not have position information. The `FakeLocationProvider` emulates the typical usage of common positioning APIs used in Android, Linux and iPhone.
+> **Note** A real application using this API will get the position information from the underlying operating system. The example uses a fake position source (`FakeLocationProvider`) to enable it to be run on computers that do not have position information. The `FakeLocationProvider` emulates the typical usage of common positioning APIs used in Android, Linux and iPhone.
 
 
 ## Running the Example {#run_example}
@@ -26,12 +26,12 @@ The example terminal output should be similar to that shown below:
 
 ```
 $ ./follow_me 
-Wait for device to connect via heartbeat
-[11:40:49|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:211)
+Wait for system to connect via heartbeat
+[11:40:49|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:211)
 [11:40:49|Debug] MAVLink: info: DISARMED by auto disarm on land (device.cpp:247)
 [11:40:50|Debug] Discovered 4294967298 (dronecore_impl.cpp:219)
-[11:40:50|Info ] FollowMe: Applying default FollowMe configuration FollowMe to the device... (follow_me_impl.cpp:186)
-Device is ready
+[11:40:50|Info ] FollowMe: Applying default FollowMe configuration FollowMe to the system... (follow_me_impl.cpp:186)
+System is ready
 Armed
 [11:40:51|Debug] MAVLink: info: ARMED by arm/disarm component command (device.cpp:247)
 [11:40:51|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-02-14/0 (device.cpp:247)
@@ -145,7 +145,7 @@ using namespace std::this_thread;  // for sleep_for()
 #define TELEMETRY_CONSOLE_TEXT "\033[34m" //Turn text on console blue
 #define NORMAL_CONSOLE_TEXT "\033[0m"  //Restore normal console colour
 
-inline void action_error_exit(Action::Result result, const std::string &message);
+inline void action_error_exit(ActionResult result, const std::string &message);
 inline void follow_me_error_exit(FollowMe::Result result, const std::string &message);
 inline void connection_error_exit(ConnectionResult result, const std::string &message);
 
@@ -156,26 +156,26 @@ int main(int, char **)
     ConnectionResult conn_result = dc.add_udp_connection();
     connection_error_exit(conn_result, "Connection failed");
 
-    // Wait for the device to connect via heartbeat
+    // Wait for the system to connect via heartbeat
     while (!dc.is_connected()) {
-        std::cout << "Wait for device to connect via heartbeat" << std::endl;
+        std::cout << "Wait for system to connect via heartbeat" << std::endl;
         sleep_for(seconds(1));
     }
 
-    // Device got discovered.
-    Device &device = dc.device();
-    std::shared_ptr<Action> action = std::make_shared<Action>(device);
-    std::shared_ptr<FollowMe> follow_me = std::make_shared<FollowMe>(device);
-    std::shared_ptr<Telemetry> telemetry = std::make_shared<Telemetry>(device);
+    // System got discovered.
+    System &system = dc.system();
+    auto action = std::make_shared<Action>(system);
+    auto follow_me = std::make_shared<FollowMe>(system);
+    auto telemetry = std::make_shared<Telemetry>(system);
 
     while (!telemetry->health_all_ok()) {
-        std::cout << "Waiting for device to be ready" << std::endl;
+        std::cout << "Waiting for system to be ready" << std::endl;
         sleep_for(seconds(1));
     }
-    std::cout << "Device is ready" << std::endl;
+    std::cout << "System is ready" << std::endl;
 
     // Arm
-    Action::Result arm_result = action->arm();
+    ActionResult arm_result = action->arm();
     action_error_exit(arm_result, "Arming failed");
     std::cout << "Armed" << std::endl;
 
@@ -189,7 +189,7 @@ int main(int, char **)
     }, std::placeholders::_1));
 
     // Takeoff
-    Action::Result takeoff_result = action->takeoff();
+    ActionResult takeoff_result = action->takeoff();
     action_error_exit(takeoff_result, "Takeoff failed");
     std::cout << "In Air..." << std::endl;
     sleep_for(seconds(5)); // Wait for drone to reach takeoff altitude
@@ -207,7 +207,7 @@ int main(int, char **)
     boost::asio::io_service io; // for event loop
     std::unique_ptr<FakeLocationProvider> location_provider(new FakeLocationProvider(io));
     // Register for platform-specific Location provider. We're using FakeLocationProvider for the example.
-    location_provider->request_location_updates([&device, &follow_me](double lat, double lon) {
+    location_provider->request_location_updates([&system, &follow_me](double lat, double lon) {
         follow_me->set_target_location({lat, lon, 0.0, 0.f, 0.f, 0.f});
     });
     io.run(); // will run as long as location updates continue to happen.
@@ -220,7 +220,7 @@ int main(int, char **)
     telemetry->flight_mode_async(nullptr);
 
     // Land
-    const Action::Result land_result = action->land();
+    const ActionResult land_result = action->land();
     action_error_exit(land_result, "Landing failed");
     while (telemetry->in_air()) {
         std::cout << "waiting until landed" << std::endl;
@@ -231,10 +231,10 @@ int main(int, char **)
 }
 
 // Handles Action's result
-inline void action_error_exit(Action::Result result, const std::string &message)
+inline void action_error_exit(ActionResult result, const std::string &message)
 {
-    if (result != Action::Result::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << Action::result_str(
+    if (result != ActionResult::SUCCESS) {
+        std::cerr << ERROR_CONSOLE_TEXT << message << action_result_str(
                       result) << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }

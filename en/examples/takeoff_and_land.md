@@ -2,7 +2,7 @@
 
 This simple example shows the basic use of many DroneCore features. 
 
-It sets up a UDP connection, waits for a device to appear, arms it, and commands it to takeoff and then land again. While flying the vehicle receives telemetry. The example is implemented in C++ (only).
+It sets up a UDP connection, waits for a vehicle (system) to appear, arms it, and commands it to takeoff and then land again. While flying the vehicle receives telemetry. The example is implemented in C++ (only).
 
 > **Tip** The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/takeoff_land).
 
@@ -16,10 +16,10 @@ The example terminal output should be similar to that shown below:
 
 ```sh
 $ ./takeoff_and_land 
-Waiting to discover device...
-[03:34:57|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:210)
+Waiting to discover system...
+[03:34:57|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:210)
 [03:34:57|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
-Discovered device with UUID: 4294967298
+Discovered system with UUID: 4294967298
 Arming...
 Taking off...
 [03:34:59|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:225)
@@ -93,6 +93,8 @@ target_link_libraries(takeoff_and_land
 #include <thread>
 
 using namespace dronecore;
+using namespace std::this_thread;
+using namespace std::chrono;
 
 #define ERROR_CONSOLE_TEXT "\033[31m" //Turn text on console red
 #define TELEMETRY_CONSOLE_TEXT "\033[34m" //Turn text on console blue
@@ -106,7 +108,7 @@ int main(int argc, char **argv)
     std::string connection_url;
     ConnectionResult connection_result;
 
-    bool discovered_device = false;
+    bool discovered_system = false;
     if (argc == 1) {
         usage(argv[0]);
         connection_result = dc.add_any_connection();
@@ -122,27 +124,27 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    std::cout << "Waiting to discover device..." << std::endl;
-    dc.register_on_discover([&discovered_device](uint64_t uuid) {
-        std::cout << "Discovered device with UUID: " << uuid << std::endl;
-        discovered_device = true;
+    std::cout << "Waiting to discover system..." << std::endl;
+    dc.register_on_discover([&discovered_system](uint64_t uuid) {
+        std::cout << "Discovered system with UUID: " << uuid << std::endl;
+        discovered_system = true;
     });
 
-    // We usually receive heartbeats at 1Hz, therefore we should find a device after around 2 seconds.
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    // We usually receive heartbeats at 1Hz, therefore we should find a system after around 2 seconds.
+    sleep_for(seconds(2));
 
-    if (!discovered_device) {
-        std::cout << ERROR_CONSOLE_TEXT << "No device found, exiting." << NORMAL_CONSOLE_TEXT << std::endl;
+    if (!discovered_system) {
+        std::cout << ERROR_CONSOLE_TEXT << "No system found, exiting." << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
-    // We don't need to specify the UUID if it's only one device anyway.
+    // We don't need to specify the UUID if it's only one system anyway.
     // If there were multiple, we could specify it with:
-    // dc.device(uint64_t uuid);
-    Device &device = dc.device();
+    // dc.system(uint64_t uuid);
+    System &system = dc.system();
 
-    auto telemetry = std::make_shared<Telemetry>(device);
-    auto action = std::make_shared<Action>(device);
+    auto telemetry = std::make_shared<Telemetry>(system);
+    auto action = std::make_shared<Action>(system);
 
     // We want to listen to the altitude of the drone at 1 Hz.
     const Telemetry::Result set_rate_result = telemetry->set_rate_position(1.0);
@@ -161,45 +163,44 @@ int main(int argc, char **argv)
                   << std::endl;
     });
 
-
     // Check if vehicle is ready to arm
-    if (telemetry->health_all_ok() != true) {
-        std::cout << ERROR_CONSOLE_TEXT << "Vehicle not ready to arm" << NORMAL_CONSOLE_TEXT << std::endl;
-        return 1;
+    while (telemetry->health_all_ok() != true) {
+        std::cout << "Vehicle is getting ready to arm" << std::endl;
+        sleep_for(seconds(1));
     }
 
     // Arm vehicle
     std::cout << "Arming..." << std::endl;
-    const Action::Result arm_result = action->arm();
+    const ActionResult arm_result = action->arm();
 
-    if (arm_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << Action::result_str(
+    if (arm_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << action_result_str(
                       arm_result) << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
     // Take off
     std::cout << "Taking off..." << std::endl;
-    const Action::Result takeoff_result = action->takeoff();
-    if (takeoff_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << Action::result_str(
+    const ActionResult takeoff_result = action->takeoff();
+    if (takeoff_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << action_result_str(
                       takeoff_result) << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
     // Let it hover for a bit before landing again.
-    std::this_thread::sleep_for(std::chrono::seconds(10));
+    sleep_for(seconds(10));
 
     std::cout << "Landing..." << std::endl;
-    const Action::Result land_result = action->land();
-    if (land_result != Action::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << Action::result_str(
+    const ActionResult land_result = action->land();
+    if (land_result != ActionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << action_result_str(
                       land_result) << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
     // We are relying on auto-disarming but let's keep watching the telemetry for a bit longer.
-    std::this_thread::sleep_for(std::chrono::seconds(5));
+    sleep_for(seconds(5));
     std::cout << "Finished..." << std::endl;
     return 0;
 }
