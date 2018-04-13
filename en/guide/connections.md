@@ -62,7 +62,7 @@ The following code fragment shows how to iterate through the UUIDs (in this case
 
 ```cpp
 //Iterate through detected systems
-std::vector<uint64_t> system_vector= dc.system_uuids();
+std::vector<uint64_t> system_vector = dc.system_uuids();
 for ( auto i = system_vector.begin(); i != system_vector.end(); i++ ) {
     std::cout << *i << std::endl;
 }
