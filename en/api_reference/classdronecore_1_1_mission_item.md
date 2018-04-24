@@ -39,6 +39,8 @@ bool | [has_position_set](#classdronecore_1_1_mission_item_1a68fd720609edc76062a
 float | [get_relative_altitude_m](#classdronecore_1_1_mission_item_1a22481d92a61136d42b5133b208e6cf0d) () const | Get the relative altitude of a mission item.
 bool | [get_fly_through](#classdronecore_1_1_mission_item_1afd92f9ab01d25c0d721b4249821b6da2) () const | Get the fly-through property of a mission item.
 float | [get_speed_m_s](#classdronecore_1_1_mission_item_1adc737b7be9b49cd0fe188763203aeae5) () const | Get the speed to be used after this mission item.
+float | [get_gimbal_pitch_deg](#classdronecore_1_1_mission_item_1af6e846af98b6be4d3d7dd5856da3d875) () const | Get the gimbal pitch of a mission item.
+float | [get_gimbal_yaw_deg](#classdronecore_1_1_mission_item_1a94d4363b5ff55556d38b1d70924bf124) () const | Get the gimbal yaw of a mission item.
 float | [get_loiter_time_s](#classdronecore_1_1_mission_item_1a25fd1a2ba0df071b25e2315a3a1f5085) () const | Get loiter time in seconds.
 [CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) | [get_camera_action](#classdronecore_1_1_mission_item_1ae42a857f79b63c611f5a21fed2ea18fc) () const | Get the camera action set for this mission item.
 double | [get_camera_photo_interval_s](#classdronecore_1_1_mission_item_1adf38956d9ed1ef4e98a4d5a6b61eccd7) () const | Get the camera photo interval that was set for this mission item.
@@ -297,6 +299,32 @@ Get the speed to be used after this mission item.
 
 &emsp;float - Speed in metres/second.
 
+### get_gimbal_pitch_deg() {#classdronecore_1_1_mission_item_1af6e846af98b6be4d3d7dd5856da3d875}
+```cpp
+float dronecore::MissionItem::get_gimbal_pitch_deg() const
+```
+
+
+Get the gimbal pitch of a mission item.
+
+
+**Returns**
+
+&emsp;float - [Gimbal](classdronecore_1_1_gimbal.md) pitch in degrees.
+
+### get_gimbal_yaw_deg() {#classdronecore_1_1_mission_item_1a94d4363b5ff55556d38b1d70924bf124}
+```cpp
+float dronecore::MissionItem::get_gimbal_yaw_deg() const
+```
+
+
+Get the gimbal yaw of a mission item.
+
+
+**Returns**
+
+&emsp;float - [Gimbal](classdronecore_1_1_gimbal.md) yaw in degrees.
+
 ### get_loiter_time_s() {#classdronecore_1_1_mission_item_1a25fd1a2ba0df071b25e2315a3a1f5085}
 ```cpp
 float dronecore::MissionItem::get_loiter_time_s() const
@@ -321,7 +349,7 @@ Get the camera action set for this mission item.
 
 **Returns**
 
-&emsp;[CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) - Camera action enum value.
+&emsp;[CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) - [Camera](classdronecore_1_1_camera.md) action enum value.
 
 ### get_camera_photo_interval_s() {#classdronecore_1_1_mission_item_1adf38956d9ed1ef4e98a4d5a6b61eccd7}
 ```cpp
@@ -335,7 +363,7 @@ This only has an effect if used together with [CameraAction::START_PHOTO_INTERVA
 
 **Returns**
 
-&emsp;double - Camera photo interval in seconds.
+&emsp;double - [Camera](classdronecore_1_1_camera.md) photo interval in seconds.
 
 ### operator=() {#classdronecore_1_1_mission_item_1a8582ad72a3a8c20c87e8224ab10970c0}
 ```cpp

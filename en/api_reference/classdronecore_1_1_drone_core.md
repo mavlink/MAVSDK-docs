@@ -276,6 +276,9 @@ Register callback for system discovery.
 This sets a callback that will be notified if a new system is discovered.
 
 
+If systems have been discovered before this callback is registered, they will be notified at the time this callback is registered.
+
+
 **Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
 **Parameters**

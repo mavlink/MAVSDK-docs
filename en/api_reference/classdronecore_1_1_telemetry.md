@@ -744,7 +744,7 @@ Note that the yaw component of attitude is relative to North (absolute frame).
 
 **Returns**
 
-&emsp;[Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) - Camera's attitude as quaternion.
+&emsp;[Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) - [Camera](classdronecore_1_1_camera.md)'s attitude as quaternion.
 
 ### camera_attitude_euler_angle() {#classdronecore_1_1_telemetry_1a12ef129a12fcbae32b7a60008b4b135c}
 ```cpp
@@ -758,7 +758,7 @@ Note that the yaw component of attitude is relative to North (absolute frame).
 
 **Returns**
 
-&emsp;[EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) - Camera's attitude as Euler angle.
+&emsp;[EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) - [Camera](classdronecore_1_1_camera.md)'s attitude as Euler angle.
 
 ### ground_speed_ned() {#classdronecore_1_1_telemetry_1ae0a0fc17033ef5dc92618a027f813da2}
 ```cpp
