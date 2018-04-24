@@ -21,7 +21,7 @@ DroneCore can run on a vehicle-based companion computer or on a ground-based GCS
 DroneCore is still in pre-alpha development. 
 - The core C++ API has been created and is (largely) stable.
 - Currently you can only develop in C++. 
-  - [gRPC](https://grpc.io/) is being investigated as a promising technology for writing the cross-platform wrappers.
+  - [gRPC](https://grpc.io/) is being used to write the cross-platform wrappers.
 
 To use DroneCore you will need to [build the C++ library](contributing/build.md). The [Guide](guide/README.md) explains how to write C++ DroneCore apps. A number complete examples can be found [here](examples/README.md).
 
@@ -38,11 +38,12 @@ The library is:
 
 The main features provided by the simple core API are (in all programing languages):
 
-* Connect to and manage up to 255 vehicles via a UDP network connection (serial and TCP connections are not yet implemented). 
+* Connect to and manage up to 255 vehicles via a TCP, UDP or serial connection.
 * Get information about vehicles (vendor, software versions, product versions etc.)
 * Get vehicle telemetry and state information (e.g. battery, GPS, RC connection, flight mode etc.) and set telemetry update rates.
 * Send commands to arm, disarm, kill, takeoff, land and return to launch.
 * Create and manage missions.
+* Control a camera and gimbal both inside and outside of missions.
 * Send commands to directly control vehicle movement.
 
 See the [FAQ](getting_started/faq.md) for answers to common questions about the library. 
@@ -62,6 +63,7 @@ The most important classes are:
 - [Mission](/api_reference/classdronecore_1_1_mission.md): Waypoint mission creation and upload/download. Missions are created from [MissionItem](/api_reference/classdronecore_1_1_mission_item.md) objects.
 - [Offboard](/api_reference/classdronecore_1_1_offboard.md): Control a drone with velocity commands.
 - [Gimbal](/api_reference/classdronecore_1_1_gimbal.md): Control a gimbal.
+- [Camera](/api_reference/classdronecore_1_1_camera.md): Control a camera.
 - [FollowMe](/api_reference/classdronecore_1_1_follow_me.md): Drone tracks a position supplied by DroneCore.
 - [Logging](/api_reference/classdronecore_1_1_logging.md): Data logging and streaming from the vehicle.
 
@@ -90,7 +92,7 @@ Use Github for bug reports/enhancement requests:
 
 DroneCore welcomes contributions! If you want to help or have suggestions/bug reports [please get in touch with the development team](#getting-help). 
 
-The [Contributing](contributing/README.md) section contains everything you need to contribute, including topics about building Dronecore from source code, running our integration and unit tests, and all other aspects of core development. 
+The [Contributing](contributing/README.md) section contains everything you need to contribute, including topics about building DroneCore from source code, running our integration and unit tests, and all other aspects of core development. 
 
 
 ## License
