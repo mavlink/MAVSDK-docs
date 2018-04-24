@@ -8,6 +8,7 @@ Namespace for all dronecore types.
 ## Data Structures
 
 * [dronecore::Action](classdronecore_1_1_action.md)
+* [dronecore::Camera](classdronecore_1_1_camera.md)
 * [dronecore::DroneCore](classdronecore_1_1_drone_core.md)
 * [dronecore::FollowMe](classdronecore_1_1_follow_me.md)
 * [dronecore::Gimbal](classdronecore_1_1_gimbal.md)
@@ -33,8 +34,13 @@ Type | Name | Description
 --- | --- | ---
 const char * | [action_result_str](#namespacedronecore_1aa3b1897424479e1e7d5d079a5037957d) ([ActionResult](namespacedronecore.md#namespacedronecore_1aedb56a8f642ce3cb7bc4b940c67033c5) result) | Returns a human-readable English string for an ActionResult.
 const char * | [connection_result_str](#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8) (const [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) result) | Returns a human-readable English string for a ConnectionResult.
+bool | [operator==](#namespacedronecore_1a7c3473f77d60654f451d6e48f4e3d386) (const [MissionItem](classdronecore_1_1_mission_item.md) & lhs, const [MissionItem](classdronecore_1_1_mission_item.md) & rhs) |
+std::ostream & | [operator<<](#namespacedronecore_1a062cf568f140581dba03c6b97c65077e) (std::ostream & str, [MissionItem](classdronecore_1_1_mission_item.md) const & mission_item) |
+std::ostream & | [operator<<](#namespacedronecore_1a2ca7e28c68f825c8a181761533745c19) (std::ostream & str, [MissionItem::CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) const & camera_action) |
 bool | [operator==](#namespacedronecore_1a0363203162fba53fefe7d4d60cd3b1c9) (const [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) & lhs, const [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) & rhs) |
 std::ostream & | [operator<<](#namespacedronecore_1a9bc5f60e2e310023bbd0ed436250b217) (std::ostream & str, [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) const & position) |
+bool | [operator==](#namespacedronecore_1ab044bfb4b8bceac15f4ef1f7959775d8) (const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) & lhs, const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) & rhs) |
+std::ostream & | [operator<<](#namespacedronecore_1a33d736c83c404d96c46ff9a7f4750fb1) (std::ostream & str, [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) const & health) |
 
 ## Enumeration Type Documentation
 
@@ -136,6 +142,63 @@ Returns a human-readable English string for a ConnectionResult.
 
 &emsp;const char * - Human readable string for the ConnectionResult.
 
+### operator==() {#namespacedronecore_1a7c3473f77d60654f451d6e48f4e3d386}
+
+```
+#include: mission_item.h
+```
+```cpp
+bool dronecore::operator==(const MissionItem &lhs, const MissionItem &rhs)
+```
+
+
+**Parameters**
+
+* const [MissionItem](classdronecore_1_1_mission_item.md)& **lhs** - 
+* const [MissionItem](classdronecore_1_1_mission_item.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - 
+
+### operator<<() {#namespacedronecore_1a062cf568f140581dba03c6b97c65077e}
+
+```
+#include: mission_item.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, MissionItem const &mission_item)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [MissionItem](classdronecore_1_1_mission_item.md) const& **mission_item** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
+### operator<<() {#namespacedronecore_1a2ca7e28c68f825c8a181761533745c19}
+
+```
+#include: mission_item.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, MissionItem::CameraAction const &camera_action)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [MissionItem::CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) const& **camera_action** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
 ### operator==() {#namespacedronecore_1a0363203162fba53fefe7d4d60cd3b1c9}
 
 ```
@@ -169,6 +232,44 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Position const
 
 * std::ostream& **str** - 
 * [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) const& **position** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
+### operator==() {#namespacedronecore_1ab044bfb4b8bceac15f4ef1f7959775d8}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::Health &lhs, const Telemetry::Health &rhs)
+```
+
+
+**Parameters**
+
+* const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md)& **lhs** - 
+* const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - 
+
+### operator<<() {#namespacedronecore_1a33d736c83c404d96c46ff9a7f4750fb1}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Health const &health)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) const& **health** - 
 
 **Returns**
 
