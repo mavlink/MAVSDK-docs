@@ -112,16 +112,19 @@ Adds Connection via URL.
 
 Supports connection: Serial, TCP or UDP. Connection URL format should be:
 <ul>
-
 <li><p>UDP - udp://[Bind_host][:Bind_port]</p></li>
 <li><p>TCP - tcp://[Server_host][:Server_port]</p></li>
-<li><p>Serial - serial://[Dev_Node][:Baudrate]</p></li></ul>
+<li><p>Serial - serial://[Dev_Node][:Baudrate]</p></li>
+</ul>
 
 
 Default URL : udp://:14540.
 <ul>
+<li><p>Default Bind host IP is localhost(127.0.0.1)</p></li>
+</ul>
 
-<li><p>Default Bind host IP is localhost(127.0.0.1)</p></li></ul>
+
+> **Warning** Serial connections are not supported on Windows (they are supported on Linux and macOS).
 
 **Parameters**
 
@@ -174,6 +177,7 @@ ConnectionResult dronecore::DroneCore::add_serial_connection(const std::string &
 
 Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
 
+> **Warning** This method is not supported on Windows (it is supported on Linux and macOS).
 
 **Parameters**
 
@@ -279,7 +283,7 @@ This sets a callback that will be notified if a new system is discovered.
 If systems have been discovered before this callback is registered, they will be notified at the time this callback is registered.
 
 
-**Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
+> **Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
 **Parameters**
 
@@ -296,7 +300,7 @@ Register callback for system timeout.
 This sets a callback that will be notified if no heartbeat of the system has been received in 3 seconds.
 
 
-**Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
+> **Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
 **Parameters**
 

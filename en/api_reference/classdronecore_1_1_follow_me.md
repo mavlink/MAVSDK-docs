@@ -186,15 +186,12 @@ Sets location of the moving target.
 An app can obtain the location of the moving target from Location framework of the underlying platform.
 
 
-**Notes:**
-
-
-The following links provide information about location services on different platforms:
+> **Note** The following links provide information about location services on different platforms:
 <ul>
-
 <li><p>Android - <a href="https://developer.android.com/reference/android/location/Location.html">https://developer.android.com/reference/android/location/Location.html</a></p></li>
 <li><p>Apple - <a href="https://developer.apple.com/documentation/corelocation">https://developer.apple.com/documentation/corelocation</a></p></li>
-<li><p>Windows - <a href="https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Geolocation">https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Geolocation</a></p></li></ul>
+<li><p>Windows - <a href="https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Geolocation">https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Geolocation</a></p></li>
+</ul>
 
 **Parameters**
 

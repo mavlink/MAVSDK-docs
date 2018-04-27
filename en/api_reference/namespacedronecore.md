@@ -41,6 +41,10 @@ bool | [operator==](#namespacedronecore_1a0363203162fba53fefe7d4d60cd3b1c9) (con
 std::ostream & | [operator<<](#namespacedronecore_1a9bc5f60e2e310023bbd0ed436250b217) (std::ostream & str, [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) const & position) |
 bool | [operator==](#namespacedronecore_1ab044bfb4b8bceac15f4ef1f7959775d8) (const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) & lhs, const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) & rhs) |
 std::ostream & | [operator<<](#namespacedronecore_1a33d736c83c404d96c46ff9a7f4750fb1) (std::ostream & str, [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) const & health) |
+bool | [operator==](#namespacedronecore_1a65e8014734a31eaf756b98b672dd6466) (const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) & lhs, const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) & rhs) |
+std::ostream & | [operator<<](#namespacedronecore_1a80860746c1bda3cc94fb5ab3962cd6f6) (std::ostream & str, [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) const & gps_info) |
+bool | [operator==](#namespacedronecore_1ae113d4a3da31a7baa40029e3a1833e86) (const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) & lhs, const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) & rhs) |
+std::ostream & | [operator<<](#namespacedronecore_1a5e9f9c205d03cca66694584afb649155) (std::ostream & str, [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) const & battery) |
 
 ## Enumeration Type Documentation
 
@@ -54,7 +58,7 @@ std::ostream & | [operator<<](#namespacedronecore_1a33d736c83c404d96c46ff9a7f475
 
 Possible results returned for commanded actions.
 
-**Note**: [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you execute actions.
+> **Note** [DroneCore](classdronecore_1_1_drone_core.md) does not throw exceptions. Instead a result of this type will be returned when you execute actions.
 
 Value | Description
 --- | ---
@@ -270,6 +274,82 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Health const &
 
 * std::ostream& **str** - 
 * [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) const& **health** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
+### operator==() {#namespacedronecore_1a65e8014734a31eaf756b98b672dd6466}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::GPSInfo &lhs, const Telemetry::GPSInfo &rhs)
+```
+
+
+**Parameters**
+
+* const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md)& **lhs** - 
+* const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - 
+
+### operator<<() {#namespacedronecore_1a80860746c1bda3cc94fb5ab3962cd6f6}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::GPSInfo const &gps_info)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) const& **gps_info** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
+### operator==() {#namespacedronecore_1ae113d4a3da31a7baa40029e3a1833e86}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::Battery &lhs, const Telemetry::Battery &rhs)
+```
+
+
+**Parameters**
+
+* const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md)& **lhs** - 
+* const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - 
+
+### operator<<() {#namespacedronecore_1a5e9f9c205d03cca66694584afb649155}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Battery const &battery)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) const& **battery** - 
 
 **Returns**
 
