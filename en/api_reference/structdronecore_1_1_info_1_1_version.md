@@ -4,49 +4,33 @@
 ----
 
 
-Type containing device version information. 
+Type containing system version information. 
 
 
 ## Data Fields
 
 
- int [flight_sw_major](#structdronecore_1_1_info_1_1_version_1a0a293bf0af198c159579553e2f432273) - Flight software major version.
+int [flight_sw_major](#structdronecore_1_1_info_1_1_version_1a0a293bf0af198c159579553e2f432273)  - Flight software major version.
 
+int [flight_sw_minor](#structdronecore_1_1_info_1_1_version_1a86a6071b87c322bd0f11095dbd699dbe)  - Flight software minor version.
 
- int [flight_sw_minor](#structdronecore_1_1_info_1_1_version_1a86a6071b87c322bd0f11095dbd699dbe) - Flight software minor version.
+int [flight_sw_patch](#structdronecore_1_1_info_1_1_version_1a1a11c82ab2eff8c0fca34754bcb438a4)  - Flight software patch version.
 
+int [flight_sw_vendor_major](#structdronecore_1_1_info_1_1_version_1a7d43147c496489330cffc2e5712b2623)  - Flight software vendor major version.
 
- int [flight_sw_patch](#structdronecore_1_1_info_1_1_version_1a1a11c82ab2eff8c0fca34754bcb438a4) - Flight software patch version.
+int [flight_sw_vendor_minor](#structdronecore_1_1_info_1_1_version_1ad9120586b64d290b4156cb6af3ee0c0c)  - Flight software vendor minor version.
 
+int [flight_sw_vendor_patch](#structdronecore_1_1_info_1_1_version_1a1bf6eea00d9d49b8cb4dfda3941ca78f)  - Flight software vendor patch version.
 
- int [flight_sw_vendor_major](#structdronecore_1_1_info_1_1_version_1a7d43147c496489330cffc2e5712b2623) - Flight software vendor major version.
+char [flight_sw_git_hash](#structdronecore_1_1_info_1_1_version_1a8c364f7cefd0f52550f652a3ea6b33c3)  - Flight software git hash as string.
 
+int [os_sw_major](#structdronecore_1_1_info_1_1_version_1a2ec6ae5aeaa7c54aa26049ff1a6da4df)  - Operating system software major version.
 
- int [flight_sw_vendor_minor](#structdronecore_1_1_info_1_1_version_1ad9120586b64d290b4156cb6af3ee0c0c) - Flight software vendor minor version.
+int [os_sw_minor](#structdronecore_1_1_info_1_1_version_1af4538d5ced28d06a753a6cecfaa893a5)  - Operating system software minor version.
 
+int [os_sw_patch](#structdronecore_1_1_info_1_1_version_1af2260db6b07544fb2287b5b7a82b1e36)  - Operating system software patch version.
 
- int [flight_sw_vendor_patch](#structdronecore_1_1_info_1_1_version_1a1bf6eea00d9d49b8cb4dfda3941ca78f) - Flight software vendor patch version.
-
-
- char [flight_sw_git_hash](#structdronecore_1_1_info_1_1_version_1a8c364f7cefd0f52550f652a3ea6b33c3) - Flight software git hash as string.
-
-
- int [os_sw_major](#structdronecore_1_1_info_1_1_version_1a2ec6ae5aeaa7c54aa26049ff1a6da4df) - Operating system software major version.
-
-
- int [os_sw_minor](#structdronecore_1_1_info_1_1_version_1af4538d5ced28d06a753a6cecfaa893a5) - Operating system software minor version.
-
-
- int [os_sw_patch](#structdronecore_1_1_info_1_1_version_1af2260db6b07544fb2287b5b7a82b1e36) - Operating system software patch version.
-
-
- char [os_sw_git_hash](#structdronecore_1_1_info_1_1_version_1a0466e10843ca6a745c39f254ef08cf0f) - Operating system software git hash as string.
-
-
- uint16_t [vendor_id](#structdronecore_1_1_info_1_1_version_1a98d1c4e51637d6fdff5e1fc270d9a947) - ID of board vendor.
-
-
- uint16_t [product_id](#structdronecore_1_1_info_1_1_version_1a1fecccba3c564b65f757205160b8050e) - ID of product.
+char [os_sw_git_hash](#structdronecore_1_1_info_1_1_version_1a0466e10843ca6a745c39f254ef08cf0f)  - Operating system software git hash as string.
 
 
 ## Field Documentation
@@ -160,24 +144,4 @@ char dronecore::Info::Version::os_sw_git_hash[GIT_HASH_STR_LEN]
 
 
 Operating system software git hash as string.
-
-
-### vendor_id {#structdronecore_1_1_info_1_1_version_1a98d1c4e51637d6fdff5e1fc270d9a947}
-
-```cpp
-uint16_t dronecore::Info::Version::vendor_id
-```
-
-
-ID of board vendor.
-
-
-### product_id {#structdronecore_1_1_info_1_1_version_1a1fecccba3c564b65f757205160b8050e}
-
-```cpp
-uint16_t dronecore::Info::Version::product_id
-```
-
-
-ID of product.
 

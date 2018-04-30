@@ -51,18 +51,9 @@ For setup information see: [Gitbook toolchain](https://toolchain.gitbook.com/set
 
 ## API Reference
 
-The C++ source code is annotated using comments using [Doxygen](https://www.stack.nl/~dimitri/doxygen/manual/index.html) syntax. You can extract the documentation on macOS or Linux when you [build the library](../contributing/build.md) using the command: 
-```
-make docs
-```
+The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax. 
+You can extract the documentation to markdown files (one per class) on macOS or Linux using the instructions in [Building DroneCore from Source > Build API Reference Documentation](../contributing/build.md#build_api_reference).
 
-The documentation is then built to: **/install/docs/markdown**. 
-
-> **Tip** At time of writing changes to the API reference are not automatically populated to the Guide.
-  Changed markdown files must be manually copied into the Guide's Github repo and submitted. 
-
-<span></span>
-> **Note** Extracting the API reference does not work automatically on Windows because the `make` toolchain is different. 
-
-<span></span>
-> **Note** *Doxygen* creates xml files from source comments in **/install/docs/xml**. The Python script *generate_markdown_from_doxygen_xml.py* converts these to markdown (and stores in **/install/docs/markdown**).
+In order to include new API reference in the *DroneCore Guide* it must be manually added to the [Github repository](https://github.com/dronecore/docs/):
+* Copy the files into the [docs/en/api_reference](https://github.com/dronecore/docs/tree/{{ book.github_branch }}/en/api_reference) folder
+* *New* APIs should be added to appropriate sections in the [docs/en/SUMMARY.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/SUMMARY.md), [docs/en/api_reference/README.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/api_reference/README.md) and overview [docs/en/README.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/README.md#api-overview).

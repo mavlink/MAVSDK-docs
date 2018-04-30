@@ -2,9 +2,8 @@
 
 The [Telemetry](../api_reference/classdronecore_1_1_telemetry.md) class provides simple methods for getting vehicle telemetry, including state and flight mode information.
 
-All the methods have both synchronous and asynchronous versions, and users can set the rate at which the vehicle provides updates for each type of information.
+All the methods have both synchronous and asynchronous versions, and users can set the rate at which the vehicle provides updates for each type of information. All the methods of a particular type (synchronous, asynchronous, and set_rate methods) are used in the same way.
 
-All the methods of a particular type (synchronous, asynchronous, and set_rate methods) are used in the same way.
 
 ## API Overview
 
@@ -12,7 +11,7 @@ The `Telemetry` API provides methods to return the following types of informatio
 
 * [Position](../api_reference/structdronecore_1_1_telemetry_1_1_position.md) - latitude and longitude in degrees, and altitude relative to sea level and to the takeoff altitude.
 * [Battery](../api_reference/structdronecore_1_1_telemetry_1_1_battery.md) - voltage and percentage power remaining.
-* [GroundSpeedNED](http://localhost:4000/en/api_reference/structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) - velocity components in NED coordinates.
+* [GroundSpeedNED](../api_reference/structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) - velocity components in NED coordinates.
 * Vehicle attitude/orientation - as a [Quaternion](../api_reference/structdronecore_1_1_telemetry_1_1_quaternion.md) or [EulerAngle](../api_reference/structdronecore_1_1_telemetry_1_1_euler_angle.md)
 * [GPSInfo](../api_reference/structdronecore_1_1_telemetry_1_1_g_p_s_info.md) - type of fix, if any, and number of satellites.
 * [Health](../api_reference/structdronecore_1_1_telemetry_1_1_health.md) - calibration status of various sensors and confirmation that position estimates are good enough for position control.
@@ -23,6 +22,43 @@ In addition there are a number of methods that return vehicle "state":
 * Whether the vehicle is "all healthy" (aggregates the vehicle [Health](../api_reference/structdronecore_1_1_telemetry_1_1_health.md) information). This is used to check if the vehicle is *ready* to arm.
 * Whether the vehicle is armed/disarmed.
 * Whether the vehicle is flying/in air.
+
+
+## Create the Plugin
+
+> **Tip** `Telemetry` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+
+The main steps are:
+
+1. Link the plugin library into your application. Do this by adding `dronecore_telemetry` to the `target_link_libraries` section of the app's *cmake* build definition file
+
+   ```cmake
+   target_link_libraries(your_application_name
+     dronecore
+     ...
+     dronecore_telemetry
+     ...
+   )
+   ```
+1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
+   ```
+   #include <dronecore/dronecore.h>
+   DroneCore dc;
+   ConnectionResult conn_result = dc.add_udp_connection();
+   // Wait for the system to connect via heartbeat
+   while (!dc.is_connected()) {
+      sleep_for(seconds(1));
+   }
+   // System got discovered.
+   System &system = dc.system();
+   ```
+1. Create a shared pointer to an instance of `Telemetry` instantiated with the `system`: 
+   ```
+   #include <dronecore/telemetry.h>
+   auto telemetry = std::make_shared<Telemetry>(system);
+   ```
+
+The `telemetry` pointer can then used to access the plugin API (as shown in the following sections).
 
 
 ## Setting the Update Rate {#update-rate}
@@ -36,7 +72,7 @@ The rate-setting methods are all used in the same way, so we just show one examp
 To set the position update rate synchronously (in this case using [set_rate_position()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da)):
 ```cpp
 // Set position update rate to 1 Hz.
-const Telemetry::Result set_rate_result = dc.device().telemetry().set_rate_position(1.0);
+const Telemetry::Result set_rate_result = telemetry->set_rate_position(1.0);
 if (set_rate_result != Telemetry::Result::SUCCESS) {
     // handle rate-setting failure (in this case print error)
     std::cout << "Setting rate failed:" << Telemetry::result_str(set_rate_result) << std::endl;
@@ -51,7 +87,7 @@ To set the position update rate asynchronously with [set_rate_position_async()](
     auto prom = std::make_shared<std::promise<Telemetry::Result>>();
     auto future_result = prom->get_future();
     // Set position update rate to 1 Hz.
-    device.telemetry().set_rate_position_async(1.0, [prom](Telemetry::Result result) {
+    telemetry->set_rate_position_async(1.0, [prom](Telemetry::Result result) {
         prom->set_value(result); //fulfill promise
     });
 
@@ -76,7 +112,7 @@ void dronecore::Telemetry::position_async(position_callback_t callback)
 
 The code fragment below shows this method being use with a lambda function for the callback, which simply prints out the current position and altitude).
 ```cpp
-device.telemetry().position_async([](Telemetry::Position position) {
+telemetry->position_async([](Telemetry::Position position) {
     std::cout << "Altitude: " << position.relative_altitude_m << " m" << std::endl
               << "Latitude: " << position.latitude_deg << std::endl
               << "Longitude: " << position.longitude_deg << std::endl;
@@ -93,7 +129,7 @@ The example below shows how to use [flight_mode_async()](../api_reference/classd
 ```cpp
 // Set up callback to monitor flight mode 'changes' 
 Telemetry::FlightMode oldFlightMode=Telemetry::FlightMode::UNKNOWN;
-device.telemetry().flight_mode_async([&oldFlightMode](Telemetry::FlightMode flightMode) {
+telemetry->flight_mode_async([&oldFlightMode](Telemetry::FlightMode flightMode) {
     if (oldFlightMode != flightMode) {
         //Flight mode changed. Print!
         std::cout << "FlightMode: " << Telemetry::flight_mode_str(flightMode) << std::endl;
@@ -115,7 +151,7 @@ Often the easiest approach is to use synchronous methods and poll for the result
 
 ```cpp
 // Check if vehicle is ready to arm
-while (!device.telemetry().health_all_ok()) {
+while (!telemetry->health_all_ok()) {
     std::cout << "Vehicle not ready to arm" << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
@@ -126,10 +162,10 @@ Similarly, you can use the asynchronous method and block
 
 ```cpp
 {
-    std::cout << "Waiting for device to be ready" << std::endl;
+    std::cout << "Waiting for system to be ready" << std::endl;
     auto prom = std::make_shared<std::promise<void>>();
     auto future_result = prom->get_future();
-    device.telemetry().health_all_ok_async(
+    telemetry->health_all_ok_async(
     [prom](bool result) {
         //fulfill promise if health is OK
         if (result) {// health OK
@@ -151,8 +187,8 @@ Additional information/examples for the Telemetry API are linked below:
 
 * [DroneCore Examples](../examples/README.md)
 * Integration tests:
-  * [telemetry_async.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/telemetry_async.cpp)
-  * [telemetry_health.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/telemetry_health.cpp)
-  * [telemetry_modes.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/telemetry_modes.cpp)
-  * [telemetry_simple.cpp](https://github.com/dronecore/DroneCore/blob/master/integration_tests/telemetry_simple.cpp)
+  * [telemetry_async.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_async.cpp)
+  * [telemetry_health.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_health.cpp)
+  * [telemetry_modes.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_modes.cpp)
+  * [telemetry_simple.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_simple.cpp)
 
