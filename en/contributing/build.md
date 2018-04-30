@@ -30,7 +30,7 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
    sudo apt-get update -y
    sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev libtinyxml2-dev doxygen -y
    ```
-   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/dronecore/DroneCore/tree/develop/docker).
+   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/docker).
 
 1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork): 
    ```sh
@@ -275,7 +275,7 @@ docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:
 
 The approach above downloads a container image based on Ubuntu 16.04 ([dronecore/dronecore-ubuntu-16.04](https://hub.docker.com/r/dronecore/dronecore-ubuntu-16.04/)) or Fedora 27 ([dronecore/dronecore-fedora-27](https://hub.docker.com/r/dronecore/dronecore-fedora-27/)) from Docker Hub.
 
-You can also build the images yourself using the files in [DroneCore/docker](https://github.com/dronecore/DroneCore/tree/master/docker). The image can be used in the same way as the one from Docker Hub.
+You can also build the images yourself using the files in [DroneCore/docker](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/docker). The image can be used in the same way as the one from Docker Hub.
 
 1. Open a command prompt/terminal in the root of the DroneCore repository.
 1. Build the images as shown:
@@ -322,6 +322,6 @@ The files are created in **/install/docs/markdown**.
 
 <span></span>
 > **Note** The *generate_docs.sh* script [builds the library](../contributing/build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**. 
-> The [generate_markdown_from_doxygen_xml.py](https://github.com/dronecore/DroneCore/blob/develop/generate_markdown_from_doxygen_xml.py) script 
+> The [generate_markdown_from_doxygen_xml.py](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script 
 > is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.
 
