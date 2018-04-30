@@ -3,7 +3,7 @@
     "title": "DroneCore Guide", 
     "variables": {
         "logo": "./assets/site/dronecore_logo_full.png",
-        "github_branch": "v0.4.0"
+        "github_branch": "master"
     },
     "plugins": [
         "youtube",
