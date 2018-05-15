@@ -28,7 +28,7 @@ In future we also expect PX4 to support local positioning methods (optical flow 
 
 ### Are serial connections supported?
 
-The architecture has stubs for serial, TCP, and UDP connections. However, only UDP connections are implemented right now.
+Yes. Serial, TCP, and UDP connections are supported.
 
 ### Why is libCURL a dependency?
 
