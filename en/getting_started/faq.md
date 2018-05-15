@@ -12,7 +12,7 @@ A system needs to have a specific MAVLink system ID but can consist of multiple 
 
 The limit is in theory 255 vehicles for system IDs ranging from 1 to 255.
 
-### Does DroneCore support MAVLink 1
+### Does DroneCore support MAVLink 1?
 
 No.  DroneCore only supports [MAVLink 2.0](https://mavlink.io/en/mavlink_2.html).
 
