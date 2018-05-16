@@ -53,7 +53,7 @@ To build the examples follow the instructions below, replacing *takeoff_and_land
 First [Build and install the DroneCore C++ Library](../contributing/build.md) system-wide using the command below:
 ```sh
 make clean
-made default
+make default
 sudo make default install
 ```
 
