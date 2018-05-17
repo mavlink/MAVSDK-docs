@@ -45,6 +45,14 @@ bool | [operator==](#namespacedronecore_1a65e8014734a31eaf756b98b672dd6466) (con
 std::ostream & | [operator<<](#namespacedronecore_1a80860746c1bda3cc94fb5ab3962cd6f6) (std::ostream & str, [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) const & gps_info) |
 bool | [operator==](#namespacedronecore_1ae113d4a3da31a7baa40029e3a1833e86) (const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) & lhs, const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) & rhs) |
 std::ostream & | [operator<<](#namespacedronecore_1a5e9f9c205d03cca66694584afb649155) (std::ostream & str, [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) const & battery) |
+bool | [operator==](#namespacedronecore_1a76393963fd7c444510369aa84f75a510) (const [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) & lhs, const [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) & rhs) |
+std::ostream & | [operator<<](#namespacedronecore_1a64ba6a17f16435543665842c77978b7f) (std::ostream & str, [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) const & quaternion) |
+bool | [operator==](#namespacedronecore_1ab79eb5727113df246d7a9831bd6d411e) (const [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) & lhs, const [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) & rhs) |
+std::ostream & | [operator<<](#namespacedronecore_1a74ec1af5c36cf3c5709655b28079c041) (std::ostream & str, [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) const & euler_angle) |
+bool | [operator==](#namespacedronecore_1aedab25310e4642ea7bc35c2dd04040a3) (const [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) & lhs, const [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) & rhs) |
+std::ostream & | [operator<<](#namespacedronecore_1a30d9e948976cd9da8692f0e68fab9241) (std::ostream & str, [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) const & ground_speed) |
+bool | [operator==](#namespacedronecore_1a6b84d191db124cabb9115a37fb01958a) (const [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) & lhs, const [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) & rhs) |
+std::ostream & | [operator<<](#namespacedronecore_1abd2ed9cab741fc0c46d270a6df643d94) (std::ostream & str, [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) const & rc_status) |
 
 ## Enumeration Type Documentation
 
@@ -350,6 +358,158 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Battery const 
 
 * std::ostream& **str** - 
 * [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) const& **battery** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
+### operator==() {#namespacedronecore_1a76393963fd7c444510369aa84f75a510}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::Quaternion &lhs, const Telemetry::Quaternion &rhs)
+```
+
+
+**Parameters**
+
+* const [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md)& **lhs** - 
+* const [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - 
+
+### operator<<() {#namespacedronecore_1a64ba6a17f16435543665842c77978b7f}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Quaternion const &quaternion)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) const& **quaternion** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
+### operator==() {#namespacedronecore_1ab79eb5727113df246d7a9831bd6d411e}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::EulerAngle &lhs, const Telemetry::EulerAngle &rhs)
+```
+
+
+**Parameters**
+
+* const [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md)& **lhs** - 
+* const [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - 
+
+### operator<<() {#namespacedronecore_1a74ec1af5c36cf3c5709655b28079c041}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::EulerAngle const &euler_angle)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) const& **euler_angle** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
+### operator==() {#namespacedronecore_1aedab25310e4642ea7bc35c2dd04040a3}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::GroundSpeedNED &lhs, const Telemetry::GroundSpeedNED &rhs)
+```
+
+
+**Parameters**
+
+* const [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md)& **lhs** - 
+* const [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - 
+
+### operator<<() {#namespacedronecore_1a30d9e948976cd9da8692f0e68fab9241}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::GroundSpeedNED const &ground_speed)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) const& **ground_speed** - 
+
+**Returns**
+
+&emsp;std::ostream & - 
+
+### operator==() {#namespacedronecore_1a6b84d191db124cabb9115a37fb01958a}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::RCStatus &lhs, const Telemetry::RCStatus &rhs)
+```
+
+
+**Parameters**
+
+* const [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md)& **lhs** - 
+* const [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - 
+
+### operator<<() {#namespacedronecore_1abd2ed9cab741fc0c46d270a6df643d94}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::RCStatus const &rc_status)
+```
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) const& **rc_status** - 
 
 **Returns**
 

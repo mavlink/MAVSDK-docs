@@ -27,10 +27,12 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [DroneCore](#classdronecore_1_1_drone_core_1a0b94dd09cd46faa41742d3720f210aa2) () | Constructor.
 &nbsp; | [~DroneCore](#classdronecore_1_1_drone_core_1abbaedb6fd922c023e53611b484b38582) () | Destructor.
-[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_any_connection](#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021) (const std::string & connection_url=DEFAULT_UDP_CONNECTION_URL) | Adds Connection via URL.
-[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_udp_connection](#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb) (int local_port_number=DEFAULT_UDP_PORT) | Adds a UDP connection to the specified port number.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_any_connection](#classdronecore_1_1_drone_core_1a4d456788b98920c58b07e6a280642168) (const std::string & connection_url) | Adds Connection via URL.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_udp_connection](#classdronecore_1_1_drone_core_1a38e5715ec8817515ccaba5034da30bcd) (int local_port=DEFAULT_UDP_PORT) | Adds a UDP connection to the specified port number.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_udp_connection](#classdronecore_1_1_drone_core_1a2137a809643ef22d8b14617bf9897fac) (const std::string & local_ip, int local_port=DEFAULT_UDP_PORT) | Adds a UDP connection to the specified port number and local interface.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_tcp_connection](#classdronecore_1_1_drone_core_1abaa49c13d6277177974a09ccffde82e1) (int remote_port=DEFAULT_TCP_REMOTE_PORT) | Adds a TCP connection with a specific port number on localhost.
 [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_tcp_connection](#classdronecore_1_1_drone_core_1a725640cb53c0d077e753ea2d22717b68) (const std::string & remote_ip=DEFAULT_TCP_REMOTE_IP, int remote_port=DEFAULT_TCP_REMOTE_PORT) | Adds a TCP connection with a specific IP address and port number.
-[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_serial_connection](#classdronecore_1_1_drone_core_1abde7ed4d42875dc85c73d34fedab2902) (const std::string & dev_path=DEFAULT_SERIAL_DEV_PATH, int baudrate=DEFAULT_SERIAL_BAUDRATE) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_serial_connection](#classdronecore_1_1_drone_core_1aa84b8bfba099631267a0319169c23c8e) (const std::string & dev_path, int baudrate=DEFAULT_SERIAL_BAUDRATE) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
 std::vector< uint64_t > | [system_uuids](#classdronecore_1_1_drone_core_1ac9503e701727ffa0293a30a6c8326f10) () const | Get vector of system UUIDs.
 [System](classdronecore_1_1_system.md) & | [system](#classdronecore_1_1_drone_core_1ac9b0cdfc518ff036d7edf450153fe941) () const | Get the first discovered system.
 [System](classdronecore_1_1_system.md) & | [system](#classdronecore_1_1_drone_core_1ab6082fca008ae58b79e87676336506ac) (uint64_t uuid)const | Get the system with the specified UUID.
@@ -42,7 +44,7 @@ void | [register_on_timeout](#classdronecore_1_1_drone_core_1ad8c0dc0100449d21a4
 ## Static Public Attributes
 
 
-static constexpr auto [DEFAULT_UDP_CONNECTION_URL](#classdronecore_1_1_drone_core_1aef2ad569dd9a7d0762b1d17d21e7f598) = "udp://:14540" - 
+static constexpr auto [DEFAULT_UDP_BIND_IP](#classdronecore_1_1_drone_core_1a58ace8e05507a0ca301718bcd09785cf) = "0.0.0.0" - 
 
 
 static constexpr int [DEFAULT_UDP_PORT](#classdronecore_1_1_drone_core_1aa989b494349529f412b36984a46f2ca6) = 14540 - 
@@ -52,9 +54,6 @@ static constexpr auto [DEFAULT_TCP_REMOTE_IP](#classdronecore_1_1_drone_core_1ad
 
 
 static constexpr int [DEFAULT_TCP_REMOTE_PORT](#classdronecore_1_1_drone_core_1a0ded56f7f5873f17e424343ed7b2e5af) = 5760 - 
-
-
-static constexpr auto [DEFAULT_SERIAL_DEV_PATH](#classdronecore_1_1_drone_core_1a67928c93b8b8f2ab65cf28a4b6d9436f) = "/dev/ttyS0" - 
 
 
 static constexpr int [DEFAULT_SERIAL_BAUDRATE](#classdronecore_1_1_drone_core_1a2b20d34acc312ffe6197aebdc6769a86) = 57600 - 
@@ -102,9 +101,9 @@ Callback type for discover and timeout notifications.
 ## Member Function Documentation
 
 
-### add_any_connection() {#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021}
+### add_any_connection() {#classdronecore_1_1_drone_core_1a4d456788b98920c58b07e6a280642168}
 ```cpp
-ConnectionResult dronecore::DroneCore::add_any_connection(const std::string &connection_url=DEFAULT_UDP_CONNECTION_URL)
+ConnectionResult dronecore::DroneCore::add_any_connection(const std::string &connection_url)
 ```
 
 
@@ -113,18 +112,15 @@ Adds Connection via URL.
 Supports connection: Serial, TCP or UDP. Connection URL format should be:
 <ul>
 <li><p>UDP - udp://[Bind_host][:Bind_port]</p></li>
-<li><p>TCP - tcp://[Server_host][:Server_port]</p></li>
-<li><p>Serial - serial://[Dev_Node][:Baudrate]</p></li>
+<li><p>TCP - tcp://[Remote_host][:Remote_port]</p></li>
+<li><p>Serial - serial://Dev_Node[:Baudrate]</p></li>
 </ul>
 
 
-Default URL : udp://:14540.
+Default URL : udp://0.0.0.0:14540.
 <ul>
-<li><p>Default Bind host IP is localhost(127.0.0.1)</p></li>
+<li><p>Default Bind host IP is any local interface (0.0.0.0)</p></li>
 </ul>
-
-
-> **Warning** Serial connections are not supported on Windows (they are supported on Linux and macOS).
 
 **Parameters**
 
@@ -134,18 +130,55 @@ Default URL : udp://:14540.
 
 &emsp;[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) - The result of adding the connection.
 
-### add_udp_connection() {#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb}
+### add_udp_connection() {#classdronecore_1_1_drone_core_1a38e5715ec8817515ccaba5034da30bcd}
 ```cpp
-ConnectionResult dronecore::DroneCore::add_udp_connection(int local_port_number=DEFAULT_UDP_PORT)
+ConnectionResult dronecore::DroneCore::add_udp_connection(int local_port=DEFAULT_UDP_PORT)
 ```
 
 
 Adds a UDP connection to the specified port number.
 
+Any incoming connections are accepted (0.0.0.0).
 
 **Parameters**
 
-* int **local_port_number** - The local UDP port to listen to (defaults to 14540, the same as mavros).
+* int **local_port** - The local UDP port to listen to (defaults to 14540, the same as MAVROS).
+
+**Returns**
+
+&emsp;[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) - The result of adding the connection.
+
+### add_udp_connection() {#classdronecore_1_1_drone_core_1a2137a809643ef22d8b14617bf9897fac}
+```cpp
+ConnectionResult dronecore::DroneCore::add_udp_connection(const std::string &local_ip, int local_port=DEFAULT_UDP_PORT)
+```
+
+
+Adds a UDP connection to the specified port number and local interface.
+
+To accept only local connections of the machine, use 127.0.0.1. For any incoming connections, use 0.0.0.0.
+
+**Parameters**
+
+* const std::string& **local_ip** - 
+* int **local_port** - The local UDP port to listen to (defaults to 14540, the same as MAVROS).
+
+**Returns**
+
+&emsp;[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) - The result of adding the connection.
+
+### add_tcp_connection() {#classdronecore_1_1_drone_core_1abaa49c13d6277177974a09ccffde82e1}
+```cpp
+ConnectionResult dronecore::DroneCore::add_tcp_connection(int remote_port=DEFAULT_TCP_REMOTE_PORT)
+```
+
+
+Adds a TCP connection with a specific port number on localhost.
+
+
+**Parameters**
+
+* int **remote_port** - The TCP port to connect to (defaults to 5760).
 
 **Returns**
 
@@ -169,19 +202,18 @@ Adds a TCP connection with a specific IP address and port number.
 
 &emsp;[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) - The result of adding the connection.
 
-### add_serial_connection() {#classdronecore_1_1_drone_core_1abde7ed4d42875dc85c73d34fedab2902}
+### add_serial_connection() {#classdronecore_1_1_drone_core_1aa84b8bfba099631267a0319169c23c8e}
 ```cpp
-ConnectionResult dronecore::DroneCore::add_serial_connection(const std::string &dev_path=DEFAULT_SERIAL_DEV_PATH, int baudrate=DEFAULT_SERIAL_BAUDRATE)
+ConnectionResult dronecore::DroneCore::add_serial_connection(const std::string &dev_path, int baudrate=DEFAULT_SERIAL_BAUDRATE)
 ```
 
 
 Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
 
-> **Warning** This method is not supported on Windows (it is supported on Linux and macOS).
 
 **Parameters**
 
-* const std::string& **dev_path** - COM or UART dev node name/path (defaults to "/dev/ttyS0").
+* const std::string& **dev_path** - COM or UART dev node name/path (e.g. "/dev/ttyS0", or "COM3" on Windows).
 * int **baudrate** - Baudrate of the serial port (defaults to 57600).
 
 **Returns**
@@ -309,10 +341,10 @@ This sets a callback that will be notified if no heartbeat of the system has bee
 ## Field Documentation
 
 
-### DEFAULT_UDP_CONNECTION_URL {#classdronecore_1_1_drone_core_1aef2ad569dd9a7d0762b1d17d21e7f598}
+### DEFAULT_UDP_BIND_IP {#classdronecore_1_1_drone_core_1a58ace8e05507a0ca301718bcd09785cf}
 
 ```cpp
-constexpr auto dronecore::DroneCore::DEFAULT_UDP_CONNECTION_URL = "udp://:14540"
+constexpr auto dronecore::DroneCore::DEFAULT_UDP_BIND_IP = "0.0.0.0"
 ```
 
 
@@ -334,13 +366,6 @@ constexpr auto dronecore::DroneCore::DEFAULT_TCP_REMOTE_IP = "127.0.0.1"
 
 ```cpp
 constexpr int dronecore::DroneCore::DEFAULT_TCP_REMOTE_PORT = 5760
-```
-
-
-### DEFAULT_SERIAL_DEV_PATH {#classdronecore_1_1_drone_core_1a67928c93b8b8f2ab65cf28a4b6d9436f}
-
-```cpp
-constexpr auto dronecore::DroneCore::DEFAULT_SERIAL_DEV_PATH = "/dev/ttyS0"
 ```
 
 
