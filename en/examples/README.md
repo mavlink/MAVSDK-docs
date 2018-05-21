@@ -19,11 +19,10 @@ The examples are "largely" built and run in the same way, as described in the fo
 
 ## Trying the Examples {#trying_the_examples}
 
-The examples are designed to automatically connect to a [simulated PX4 vehicle](https://dev.px4.io/en/simulation/) that is running on the same computer.
+The easiest way to test the examples is to use a [simulated PX4 vehicle](https://dev.px4.io/en/simulation/) that is running on the same computer.
+First start PX4 in SITL (Simulation), optionally start *QGroundControl* to observe the vehicle, then build and run the example code. 
 
-In order to test them, first start PX4 in SITL (Simulation), optionally start *QGroundControl* to observe the vehicle, then build and run the example code. 
-
-> **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540). The examples connect to this port by default, using [DroneCore::add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb).
+> **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540). The examples connect to this port using either [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a4d456788b98920c58b07e6a280642168) or [add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a38e5715ec8817515ccaba5034da30bcd).
 
 
 ### Setting up a Simulator
@@ -82,21 +81,23 @@ cd example/takeoff_and_land/
 mkdir build && cd build
 cmake .. -G "Visual Studio 15 2017 Win64"
 cmake --build .
-.\Debug\takeoff_and_land.exe
 ```
 
 > **Note** The debug binary for the example is stored under **\Debug** folder.
 
 ### Running the Examples {#running_the_examples}
 
-On Linux/macOS you can then run the new executable (from the **\build** directory):
+You can then run the new executable, specifying the connection URL as the first argument.
+When running with the Simulator, you will use the connection string: `udp://:14540`
+ 
+On Linux/macOS you would run the following (from the **\build** directory): 
 ```sh
-./takeoff_and_land
+./takeoff_and_land udp://:14540
 ```
 
-For Windows you launch the file from the **\build\Debug\** directory:
-```sh
-.\Debug\takeoff_and_land.exe
+For Windows you would run the following (from the **\build\Debug\** directory):
+```cmd
+.\Debug\takeoff_and_land.exe udp://:14540
 ```
 
 

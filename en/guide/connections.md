@@ -6,9 +6,9 @@ In order to detect vehicles you must first specify the communication ports that 
 
 ## Monitoring a Port
 
-Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021), [add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a7a04fbacf95eb6b21418032c8287dfbb), [add_tcp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a725640cb53c0d077e753ea2d22717b68) or [add_serial_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abde7ed4d42875dc85c73d34fedab2902). All the methods are used similarly, and return immediately with a [ConnectionResult](../api_reference/namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) indicating whether they succeeded.
+Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a4d456788b98920c58b07e6a280642168), [add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a38e5715ec8817515ccaba5034da30bcd), [add_tcp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abaa49c13d6277177974a09ccffde82e1) or [add_serial_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1aa84b8bfba099631267a0319169c23c8e). All the methods are used similarly, and return immediately with a [ConnectionResult](../api_reference/namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) indicating whether they succeeded.
 
-The [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a384ae5189b047dd3df8d7e90c42fa021) method can be used to set up monitoring for any of the supported port types (while the other methods set up specific connection types). The connection details are specified using the string formats shown below:
+The [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a4d456788b98920c58b07e6a280642168) method can be used to set up monitoring for any of the supported port types (while the other methods set up specific connection types). The connection details are specified using the string formats shown below:
 
 Connection | URL Format
 --- | ---
@@ -16,20 +16,19 @@ UDP | `udp://[Bind_host][:Bind_port]`
 TCP | `tcp://[Server_host][:Server_port]`
 Serial | `serial://[Dev_Node][:Baudrate]`
 
-The code snippet below shows how to set up monitoring with `add_any_connection()` using the default connection (`udp://127.0.0.1:14540`):
+The code snippet below shows how to set up monitoring with `add_any_connection()`:
 
 ```cpp
 DroneCore dc;
-ConnectionResult connection_result = dc.add_any_connection(); 
+std::string connection_url="udp://0.0.0.0:14540";
+ConnectionResult connection_result = dc.add_any_connection(connection_url);
 ASSERT_EQ(connection_result,ConnectionResult::SUCCESS)
 ```
 
-> **Note** The default connection is to the [standard PX4 broadcast UDP port](https://dev.px4.io/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
+> **Note** The connection string used above (`udp://0.0.0.0:14540`) is to the [standard PX4 broadcast UDP port](https://dev.px4.io/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
 
-DroneCore also provides the [connection_result_str()](../api_reference/namespacedronecore.md#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8) method, which you can use to create a human-readable string for the [ConnectionResult](../api_reference/namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc). The code fragment below shows how you might print this string to the console:
+DroneCore also provides the [connection_result_str()](../api_reference/namespacedronecore.md#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8) method, which you can use to create a human-readable string for the [ConnectionResult](../api_reference/namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc). The code fragment below shows how you might print the string for the preceding code fragment to the console:
 ```cpp
-DroneCore dc;
-ConnectionResult connection_result = dc.add_udp_connection();
 std::cout << "Connection string: " << connection_result_str(connection_result) << std::endl;
 ```
 

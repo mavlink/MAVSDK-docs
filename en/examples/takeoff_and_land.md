@@ -15,34 +15,49 @@ The example terminal output should be similar to that shown below:
 > **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
 
 ```sh
-$ ./takeoff_and_land 
+$ ./takeoff_and_land udp://:14540
+```
+```sh
 Waiting to discover system...
-[03:34:57|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:210)
-[03:34:57|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
+[03:15:08|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
+[03:15:08|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:286)
+[03:15:08|Debug] Component Autopilot added. (mavlink_system.cpp:330)
+[03:15:08|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-18/0 (mavlink_system.cpp:267)
+[03:15:09|Debug] Found 1 component(s). (mavlink_system.cpp:462)
+[03:15:09|Debug] Discovered 4294967298 (mavlink_system.cpp:464)
 Discovered system with UUID: 4294967298
-Arming...
-Taking off...
-[03:34:59|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:225)
-[03:34:59|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:225)
-[03:34:59|Debug] MAVLink: info: Takeoff detected (device_impl.cpp:225)
-[03:34:59|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:225)
+[03:15:09|Debug] We got an ack: 520 (mavlink_commands.cpp:140)
+[03:15:10|Debug] We got an ack: 511 (mavlink_commands.cpp:140)
+[03:15:10|Debug] We got an ack: 511 (mavlink_commands.cpp:140)
+Vehicle is getting ready to arm
 Altitude: 0 m
-Altitude: 1.381 m
-Altitude: 2.283 m
-Altitude: 2.519 m
-Altitude: 2.55 m
-Altitude: 2.53 m
-Altitude: 2.508 m
-Altitude: 2.491 m
-Altitude: 2.479 m
-Altitude: 2.471 m
+Vehicle is getting ready to arm
+Altitude: -0.002 m
+Arming...
+[03:15:12|Debug] We got an ack: 176 (mavlink_commands.cpp:140)
+[03:15:12|Debug] We got an ack: 400 (mavlink_commands.cpp:140)
+Taking off...
+[03:15:12|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:267)
+[03:15:12|Debug] We got an ack: 176 (mavlink_commands.cpp:140)
+[03:15:12|Debug] We got an ack: 22 (mavlink_commands.cpp:140)
+[03:15:12|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:267)
+[03:15:12|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:267)
+[03:15:12|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:267)
+Altitude: 0.95 m
+Altitude: 2.113 m
+Altitude: 2.457 m
+...
+Altitude: 2.494 m
+Altitude: 2.497 m
+Altitude: 2.498 m
 Landing...
-[03:35:09|Debug] MAVLink: info: Landing at current position (device_impl.cpp:225)
-Altitude: 2.321 m
-Altitude: 1.587 m
-Altitude: 0.813 m
-Altitude: 0.025 m
-Altitude: -0.483 m
+[03:15:22|Debug] We got an ack: 21 (mavlink_commands.cpp:140)
+[03:15:22|Debug] MAVLink: info: Landing at current position (mavlink_system.cpp:267)
+Altitude: 1.945 m
+Altitude: 1.192 m
+Altitude: 0.475 m
+Altitude: -0.222 m
+Altitude: -0.665 m
 Finished...
 ```
 
