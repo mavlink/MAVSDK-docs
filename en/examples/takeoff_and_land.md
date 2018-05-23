@@ -19,45 +19,38 @@ $ ./takeoff_and_land udp://:14540
 ```
 ```sh
 Waiting to discover system...
-[03:15:08|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
-[03:15:08|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:286)
-[03:15:08|Debug] Component Autopilot added. (mavlink_system.cpp:330)
-[03:15:08|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-18/0 (mavlink_system.cpp:267)
-[03:15:09|Debug] Found 1 component(s). (mavlink_system.cpp:462)
-[03:15:09|Debug] Discovered 4294967298 (mavlink_system.cpp:464)
+[11:51:14|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
+[11:51:14|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:286)
+[11:51:14|Debug] Component Autopilot added. (mavlink_system.cpp:349)
+[11:51:14|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-23/0 (mavlink_system.cpp:286)
+[11:51:15|Debug] Found 1 component(s). (mavlink_system.cpp:481)
+[11:51:15|Debug] Discovered 4294967298 (mavlink_system.cpp:483)
 Discovered system with UUID: 4294967298
-[03:15:09|Debug] We got an ack: 520 (mavlink_commands.cpp:140)
-[03:15:10|Debug] We got an ack: 511 (mavlink_commands.cpp:140)
-[03:15:10|Debug] We got an ack: 511 (mavlink_commands.cpp:140)
+Vehicle is getting ready to arm
+Vehicle is getting ready to arm
+Altitude: 0.007 m
 Vehicle is getting ready to arm
 Altitude: 0 m
-Vehicle is getting ready to arm
-Altitude: -0.002 m
 Arming...
-[03:15:12|Debug] We got an ack: 176 (mavlink_commands.cpp:140)
-[03:15:12|Debug] We got an ack: 400 (mavlink_commands.cpp:140)
 Taking off...
-[03:15:12|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:267)
-[03:15:12|Debug] We got an ack: 176 (mavlink_commands.cpp:140)
-[03:15:12|Debug] We got an ack: 22 (mavlink_commands.cpp:140)
-[03:15:12|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:267)
-[03:15:12|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:267)
-[03:15:12|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:267)
-Altitude: 0.95 m
-Altitude: 2.113 m
-Altitude: 2.457 m
+[11:51:29|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:286)
+[11:51:29|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:286)
+[11:51:30|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:286)
+[11:51:30|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:286)
+Altitude: 0.048 m
+Altitude: 1.6 m
+Altitude: 2.26 m
 ...
-Altitude: 2.494 m
-Altitude: 2.497 m
-Altitude: 2.498 m
+Altitude: 2.506 m
+Altitude: 2.486 m
+[11:51:39|Debug] MAVLink: info: data link #0 lost (mavlink_system.cpp:286)
+Altitude: 2.479 m
 Landing...
-[03:15:22|Debug] We got an ack: 21 (mavlink_commands.cpp:140)
-[03:15:22|Debug] MAVLink: info: Landing at current position (mavlink_system.cpp:267)
-Altitude: 1.945 m
-Altitude: 1.192 m
-Altitude: 0.475 m
-Altitude: -0.222 m
-Altitude: -0.665 m
+[11:51:39|Debug] MAVLink: info: Landing at current position (mavlink_system.cpp:286)
+Altitude: 2.277 m
+...
+Altitude: 0.099 m
+Altitude: -0.464 m
 Finished...
 ```
 
@@ -115,7 +108,16 @@ using namespace std::chrono;
 #define TELEMETRY_CONSOLE_TEXT "\033[34m" //Turn text on console blue
 #define NORMAL_CONSOLE_TEXT "\033[0m"  //Restore normal console colour
 
-void usage(std::string arg);
+void usage(std::string bin_name)
+{
+    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
+              << "Connection URL format should be :" << std::endl
+              << " For TCP : tcp://[server_host][:server_port]" << std::endl
+              << " For UDP : udp://[bind_host][:bind_port]" << std::endl
+              << " For Serial : serial:///path/to/serial/dev[:baudrate]" << std::endl
+              << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
+}
+
 
 int main(int argc, char **argv)
 {
@@ -124,12 +126,12 @@ int main(int argc, char **argv)
     ConnectionResult connection_result;
 
     bool discovered_system = false;
-    if (argc == 1) {
-        usage(argv[0]);
-        connection_result = dc.add_any_connection();
-    } else {
+    if (argc == 2) {
         connection_url = argv[1];
         connection_result = dc.add_any_connection(connection_url);
+    } else {
+        usage(argv[0]);
+        return 1;
     }
 
     if (connection_result != ConnectionResult::SUCCESS) {
@@ -218,15 +220,5 @@ int main(int argc, char **argv)
     sleep_for(seconds(5));
     std::cout << "Finished..." << std::endl;
     return 0;
-}
-
-void usage(std::string arg)
-{
-    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << arg << " [connection_url]" << std::endl
-              << "Connection URL format should be :" << std::endl
-              << " For TCP : tcp://[server_host][:server_port]" << std::endl
-              << " For UDP : udp://[bind_host][:bind_port]" << std::endl
-              << " For Serial : serial:///path/to/serial/dev[:baudrate]" << std::endl;
-    std::cout << "Default connection URL is udp://:14540" << std::endl;
 }
 ```

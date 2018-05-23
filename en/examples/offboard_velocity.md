@@ -14,22 +14,24 @@ The example terminal output should be similar to that shown below:
 > **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
 
 ```
-$ ./offboard 
-ubuntu@ubuntu:~/DroneCore/example/offboard_velocity/build$ ./offboard 
+$ ./offboard udp://:14540
+```
+```
 Wait for system to connect via heartbeat
-[03:48:52|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:210)
-[03:48:52|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2017-11-14/2 (device_impl.cpp:225)
-[03:48:53|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
-Waiting for system to be ready
-...
+[12:53:03|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
+[12:53:03|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:286)
+[12:53:03|Debug] Component Autopilot added. (mavlink_system.cpp:349)
+[12:53:03|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-23/0 (mavlink_system.cpp:286)
+[12:53:04|Debug] Found 1 component(s). (mavlink_system.cpp:481)
+[12:53:04|Debug] Discovered 4294967298 (mavlink_system.cpp:483)
 Waiting for system to be ready
 System is ready
 Armed
-[03:49:07|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:225)
+[12:53:05|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:286)
 In Air...
-[03:49:07|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:225)
-[03:49:07|Debug] MAVLink: info: Takeoff detected (device_impl.cpp:225)
-[03:49:07|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (device_impl.cpp:225)
+[12:53:05|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:286)
+[12:53:05|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:286)
+[12:53:05|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:286)
 [NED] Offboard started
 [NED] Turn to face East
 [NED] Go North and back South
@@ -46,7 +48,7 @@ In Air...
 [BODY] Fly a circle sideways
 [BODY] Wait for a bit
 [BODY] Offboard stopped
-[03:50:31|Debug] MAVLink: info: Landing at current position (device_impl.cpp:225)
+[12:54:29|Debug] MAVLink: info: Landing at current position (mavlink_system.cpp:286)
 Landed
 ```
 
@@ -259,12 +261,39 @@ bool offb_ctrl_body(std::shared_ptr<dronecore::Offboard> offboard)
     return true;
 }
 
-int main(int, char **)
+
+void usage(std::string bin_name)
+{
+    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
+              << "Connection URL format should be :" << std::endl
+              << " For TCP : tcp://[server_host][:server_port]" << std::endl
+              << " For UDP : udp://[bind_host][:bind_port]" << std::endl
+              << " For Serial : serial:///path/to/serial/dev[:baudrate]" << std::endl
+              << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
+}
+
+
+int main(int argc, char **argv)
 {
     DroneCore dc;
+    std::string connection_url;
+    ConnectionResult connection_result;
 
-    ConnectionResult conn_result = dc.add_udp_connection();
-    connection_error_exit(conn_result, "Connection failed");
+    if (argc == 2) {
+        connection_url = argv[1];
+        connection_result = dc.add_any_connection(connection_url);
+    } else {
+        usage(argv[0]);
+        return 1;
+    }
+
+    if (connection_result != ConnectionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Connection failed: "
+                  << connection_result_str(connection_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
+        return 1;
+    }
+
 
     // Wait for the system to connect via heartbeat
     while (!dc.is_connected()) {

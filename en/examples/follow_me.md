@@ -24,8 +24,10 @@ The example terminal output should be similar to that shown below:
 
 > **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
 
+``` 
+$ ./follow_me udp://:14540
 ```
-$ ./follow_me 
+```
 Wait for system to connect via heartbeat
 [02:47:19|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:206)
 [02:47:19|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:310)
@@ -35,16 +37,14 @@ Wait for system to connect via heartbeat
 [02:47:20|Debug] Discovered 4294967298 (mavlink_system.cpp:460)
 [02:47:20|Info ] FollowMe: Applying default FollowMe configuration FollowMe to the system... (follow_me_impl.cpp:186)
 Waiting for system to be ready
-Waiting for system to be ready
 System is ready
 Armed
-[02:47:22|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:263)
+[02:47:22|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:286)
 In Air...
-[02:47:23|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:263)
-[02:47:23|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:263)
+[02:47:23|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:286)
+[02:47:23|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:286)
 [02:47:23|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:263)
 [FlightMode: Takeoff] Vehicle is at: nan, nan degrees.
-[FlightMode: Hold] Vehicle is at: nan, nan degrees.
 [FlightMode: Hold] Vehicle is at: nan, nan degrees.
 [02:47:28|Debug] FollowMe: Waiting for the system confirmation of the new configuration.. (follow_me_impl.cpp:98)
 [02:47:28|Info ] FollowMe: Configured: Min height: 20 meters, Follow distance: 8 meters, Follow direction: Front right, Responsiveness: 0.5 (follow_me_impl.cpp:101)
@@ -56,7 +56,7 @@ In Air...
 [FlightMode: FollowMe] Vehicle is at: 47.3976, 8.5457 degrees.
 [FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54573 degrees.
 waiting until landed
-[02:48:05|Debug] MAVLink: info: Landing at current position (mavlink_system.cpp:263)
+[12:47:05|Debug] MAVLink: info: Landing at current position (mavlink_system.cpp:286)
 waiting until landed
 waiting until landed
 ...
@@ -87,16 +87,19 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(follow_me)
 
-find_package(Boost 1.66 COMPONENTS REQUIRED system)
-include_directories(${Boost_INCLUDE_DIR})
-
-if(NOT MSVC)
-    add_definitions("-std=c++11 -Wall -Wextra -Werror")
-else()
-    add_definitions("-std=c++11 -WX -W2")
+if (MSVC)
+    find_package(Boost 1.64 COMPONENTS system date_time REQUIRED )
     include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
     link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
+    add_definitions("-std=c++11 -WX -W2")
+    # This is to avoid auto-linking of libraries that we don't build
+    add_definitions("-DBOOST_ALL_NO_LIB")
+else()
+    find_package(Boost 1.58 COMPONENTS system REQUIRED )
+    add_definitions("-std=c++11 -Wall -Wextra -Werror")
 endif()
+
+include_directories(${Boost_INCLUDE_DIR})
 
 add_executable(follow_me
     follow_me.cpp
@@ -108,6 +111,7 @@ target_link_libraries(follow_me
     dronecore
     dronecore_action
     dronecore_follow_me
+    dronecore_telemetry
 )
 ```
 
@@ -151,12 +155,38 @@ inline void action_error_exit(ActionResult result, const std::string &message);
 inline void follow_me_error_exit(FollowMe::Result result, const std::string &message);
 inline void connection_error_exit(ConnectionResult result, const std::string &message);
 
-int main(int, char **)
+void usage(std::string bin_name)
+{
+    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
+              << "Connection URL format should be :" << std::endl
+              << " For TCP : tcp://[server_host][:server_port]" << std::endl
+              << " For UDP : udp://[bind_host][:bind_port]" << std::endl
+              << " For Serial : serial:///path/to/serial/dev[:baudrate]" << std::endl
+              << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
+}
+
+
+int main(int argc, char **argv)
 {
     DroneCore dc;
+    std::string connection_url;
+    ConnectionResult connection_result;
 
-    ConnectionResult conn_result = dc.add_udp_connection();
-    connection_error_exit(conn_result, "Connection failed");
+    if (argc == 2) {
+        connection_url = argv[1];
+        connection_result = dc.add_any_connection(connection_url);
+    } else {
+        usage(argv[0]);
+        return 1;
+    }
+
+    if (connection_result != ConnectionResult::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Connection failed: "
+                  << connection_result_str(connection_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
+        return 1;
+    }
+
 
     // Wait for the system to connect via heartbeat
     while (!dc.is_connected()) {

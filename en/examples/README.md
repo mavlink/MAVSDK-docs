@@ -31,9 +31,10 @@ PX4 supports a [number of simulators](https://dev.px4.io/en/simulation/). In ord
 
 > **Note** JMAVSim can only be used to simulate multicopters. Gazebo additionally supports a number of [other vehicles](https://dev.px4.io/en/simulation/gazebo.html#html#running-the-simulation) (e.g. VTOL, Rovers, fixed-wing etc.).
 
-After running a standard installation, a multicopter simulation can be started from the PX4 **/Firmware** directory using the command:
-* jMAVSim: `make posix_sitl_default jmavsim`
-* Gazebo: `make posix_sitl_default gazebo`
+After running a standard installation, a simulation can be started from the PX4 **/Firmware** directory using the command:
+* Multicopter (jMAVSim): `make posix_sitl_default jmavsim`
+* Multicopter (Gazebo): `make posix_sitl_default gazebo`
+* VTOL (Gazebo):  `make posix_sitl_default gazebo_standard_vtol`
 
 
 ### Using QGroundControl
@@ -87,7 +88,7 @@ cmake --build .
 
 ### Running the Examples {#running_the_examples}
 
-You can then run the new executable, specifying the connection URL as the first argument.
+You can then run the example, specifying the connection URL as the first argument.
 When running with the Simulator, you will use the connection string: `udp://:14540`
  
 On Linux/macOS you would run the following (from the **\build** directory): 
