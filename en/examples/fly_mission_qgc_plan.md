@@ -20,75 +20,72 @@ The example terminal output should be similar to that shown below:
 > **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
 
 ```
-$ ./fly_qgc_mission 
-Usage: ./fly_qgc_mission <path of QGC Mission plan>
-Importing mission from Default mission plan: ../../../plugins/mission/qgroundcontrol_sample.plan
+$ ./fly_qgc_mission udp://:14540
+```
+```
+Connection URL: udp://:14540
+Importing mission from mission plan: ../../../plugins/mission/qgroundcontrol_sample.plan
 Waiting to discover system...
-[02:25:09|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:211)
-[02:25:09|Debug] MAVLink: info: DISARMED by auto disarm on land (system.cpp:247)
-[02:25:09|Debug] Discovered 4294967298 (dronecore_impl.cpp:219)
+[01:11:21|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
+[01:11:21|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:286)
+[01:11:21|Debug] Component Autopilot added. (mavlink_system.cpp:349)
+[01:11:21|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-23/0 (mavlink_system.cpp:286)
+[01:11:22|Debug] Found 1 component(s). (mavlink_system.cpp:481)
+[01:11:22|Debug] Discovered 4294967298 (mavlink_system.cpp:483)
 Discovered system with UUID: 4294967298
 Waiting for system to be ready
+...
 Waiting for system to be ready
 System ready
 Found 8 mission items in the given QGC plan.
 Uploading mission...
-[02:25:11|Debug] Send mission item 0 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 1 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 2 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 3 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 4 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 5 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 6 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 7 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 8 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 9 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 10 (mission_impl.cpp:781)
-[02:25:11|Debug] Send mission item 11 (mission_impl.cpp:781)
-[02:25:12|Debug] Send mission item 12 (mission_impl.cpp:781)
-[02:25:12|Debug] Send mission item 13 (mission_impl.cpp:781)
-[02:25:12|Debug] Send mission item 14 (mission_impl.cpp:781)
+[01:11:30|Debug] Send mission item 0 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 1 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 2 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 3 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 4 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 5 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 6 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 7 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 8 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 9 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 10 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 11 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 12 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 13 (mission_impl.cpp:904)
+[01:11:30|Debug] Send mission item 14 (mission_impl.cpp:904)
+[01:11:30|Info ] Mission accepted (mission_impl.cpp:162)
 Mission uploaded.
 Arming...
-[02:25:12|Info ] Mission accepted (mission_impl.cpp:146)
 Armed.
 Starting mission.
-[02:25:12|Debug] MAVLink: info: ARMED by arm/disarm component command (device.cpp:247)
-[02:25:12|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-02-15/0 (device.cpp:247)
+[01:11:30|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:286)
 Started mission.
-[02:25:12|Debug] MAVLink: info: Executing mission. (device.cpp:247)
-[02:25:12|Debug] MAVLink: info: Takeoff to 15.0 meters above home. (device.cpp:247)
-[02:25:12|Debug] MAVLink: info: Takeoff detected (device.cpp:247)
+[01:11:30|Debug] MAVLink: info: Executing mission. (mavlink_system.cpp:286)
+[01:11:30|Debug] MAVLink: info: Takeoff to 15.0 meters above home. (mavlink_system.cpp:286)
+[01:11:30|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:286)
 Mission status update: 0 / 8
 Mission status update: 1 / 8
 Mission status update: 1 / 8
-Mission status update: 1 / 8
-Mission status update: 1 / 8
 Mission status update: 2 / 8
-Mission status update: 2 / 8
-Mission status update: 2 / 8
+...
 Mission status update: 2 / 8
 Mission status update: 3 / 8
-Mission status update: 3 / 8
-Mission status update: 3 / 8
-Mission status update: 3 / 8
+...
 Mission status update: 4 / 8
-Mission status update: 4 / 8
-Mission status update: 4 / 8
+...
 Mission status update: 4 / 8
 Mission status update: 5 / 8
-Mission status update: 5 / 8
-Mission status update: 5 / 8
+...
 Mission status update: 5 / 8
 Mission status update: 6 / 8
-Mission status update: 6 / 8
-Mission status update: 6 / 8
+...
 Mission status update: 6 / 8
 Mission status update: 7 / 8
+...
 Mission status update: 7 / 8
-Mission status update: 7 / 8
-[02:26:19|Debug] MAVLink: info: Mission finished, loitering. (device.cpp:247)
 Mission status update: 8 / 8
+[01:12:41|Debug] MAVLink: info: Mission finished, loitering. (mavlink_system.cpp:286)
 Commanding RTL...
 Commanded RTL.
 ```
@@ -187,20 +184,43 @@ inline void handle_mission_err_exit(Mission::Result result, const std::string &m
 inline void handle_connection_err_exit(ConnectionResult result,
                                        const std::string &message);
 
+
+
+void usage(std::string bin_name)
+{
+    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name <<
+              " <connection_url> [path of QGC Mission plan]" << std::endl
+              << "Connection URL format should be :" << std::endl
+              << " For TCP : tcp://[server_host][:server_port]" << std::endl
+              << " For UDP : udp://[bind_host][:bind_port]" << std::endl
+              << " For Serial : serial:///path/to/serial/dev[:baudrate]" << std::endl
+              << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
+}
+
+
 int main(int argc, char **argv)
 {
+    DroneCore dc;
+    std::string connection_url;
+    ConnectionResult connection_result;
+
+
     // Locate path of QGC Sample plan
     std::string qgc_plan = "../../../plugins/mission/qgroundcontrol_sample.plan";
 
-    if (argc != 2) {
-        std::cout << "Usage: " << argv[0] << " <path of QGC Mission plan>\n";
-        std::cout << "Importing mission from Default mission plan: " << qgc_plan << std::endl;
-    } else if (argc == 2) {
-        std::cout << "Importing mission from mission plan: " << qgc_plan << std::endl;
-        qgc_plan = argv[1];
+    if (argc != 2 && argc != 3) {
+        usage(argv[0]);
+        return 1;
     }
 
-    DroneCore dc;
+    connection_url = argv[1];
+    if (argc == 3) {
+        qgc_plan = argv[2];
+    }
+
+    std::cout << "Connection URL: " << connection_url << std::endl;
+    std::cout << "Importing mission from mission plan: " << qgc_plan << std::endl;
+
 
     {
         auto prom = std::make_shared<std::promise<void>>();
@@ -212,7 +232,7 @@ int main(int argc, char **argv)
             prom->set_value();
         });
 
-        ConnectionResult connection_result = dc.add_udp_connection();
+        connection_result = dc.add_any_connection(connection_url);
         handle_connection_err_exit(connection_result, "Connection failed: ");
 
         future_result.get();
