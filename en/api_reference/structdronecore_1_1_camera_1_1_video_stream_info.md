@@ -12,7 +12,7 @@ Information about video stream.
 
 Type | Description
 --- | ---
-enum [Status](#structdronecore_1_1_camera_1_1_video_stream_info_1a2d081c6a9b50ec958046b5227cf8345c) | 
+enum [Status](#structdronecore_1_1_camera_1_1_video_stream_info_1a2d081c6a9b50ec958046b5227cf8345c) | [Status](structdronecore_1_1_camera_1_1_status.md) type.
 
 ## Data Fields
 
@@ -26,6 +26,9 @@ enum [dronecore::Camera::VideoStreamInfo::Status](structdronecore_1_1_camera_1_1
 
 
 ### enum Status {#structdronecore_1_1_camera_1_1_video_stream_info_1a2d081c6a9b50ec958046b5227cf8345c}
+
+
+[Status](structdronecore_1_1_camera_1_1_status.md) type.
 
 
 Value | Description

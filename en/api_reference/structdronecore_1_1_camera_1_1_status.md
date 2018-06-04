@@ -12,7 +12,7 @@ Information about camera status.
 
 Type | Description
 --- | ---
-enum [StorageStatus](#structdronecore_1_1_camera_1_1_status_1afa86d9f3e4aee66d5696821eb9ffdae2) | 
+enum [StorageStatus](#structdronecore_1_1_camera_1_1_status_1afa86d9f3e4aee66d5696821eb9ffdae2) | Storage status type.
 
 ## Data Fields
 
@@ -34,6 +34,9 @@ float [total_storage_mib](#structdronecore_1_1_camera_1_1_status_1aeb60a963b4fc6
 
 
 ### enum StorageStatus {#structdronecore_1_1_camera_1_1_status_1afa86d9f3e4aee66d5696821eb9ffdae2}
+
+
+Storage status type.
 
 
 Value | Description

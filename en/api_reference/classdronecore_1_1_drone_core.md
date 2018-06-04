@@ -32,7 +32,7 @@ Type | Name | Description
 [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_udp_connection](#classdronecore_1_1_drone_core_1a2137a809643ef22d8b14617bf9897fac) (const std::string & local_ip, int local_port=[DEFAULT_UDP_PORT](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1aa989b494349529f412b36984a46f2ca6)) | Adds a UDP connection to the specified port number and local interface.
 [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_tcp_connection](#classdronecore_1_1_drone_core_1abaa49c13d6277177974a09ccffde82e1) (int remote_port=[DEFAULT_TCP_REMOTE_PORT](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a0ded56f7f5873f17e424343ed7b2e5af)) | Adds a TCP connection with a specific port number on localhost.
 [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_tcp_connection](#classdronecore_1_1_drone_core_1aae9952302358ca587f300ca004a83776) (const std::string & remote_ip, int remote_port=[DEFAULT_TCP_REMOTE_PORT](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a0ded56f7f5873f17e424343ed7b2e5af)) | Adds a TCP connection with a specific IP address and port number.
-[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_serial_connection](#classdronecore_1_1_drone_core_1aa84b8bfba099631267a0319169c23c8e) (const std::string & dev_path, int baudrate=DEFAULT_SERIAL_BAUDRATE) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
+[ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) | [add_serial_connection](#classdronecore_1_1_drone_core_1aa84b8bfba099631267a0319169c23c8e) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a2b20d34acc312ffe6197aebdc6769a86)) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
 std::vector< uint64_t > | [system_uuids](#classdronecore_1_1_drone_core_1ac9503e701727ffa0293a30a6c8326f10) () const | Get vector of system UUIDs.
 [System](classdronecore_1_1_system.md) & | [system](#classdronecore_1_1_drone_core_1ac9b0cdfc518ff036d7edf450153fe941) () const | Get the first discovered system.
 [System](classdronecore_1_1_system.md) & | [system](#classdronecore_1_1_drone_core_1ab6082fca008ae58b79e87676336506ac) (uint64_t uuid)const | Get the system with the specified UUID.
@@ -53,10 +53,10 @@ static constexpr int [DEFAULT_UDP_PORT](#classdronecore_1_1_drone_core_1aa989b49
 static constexpr auto [DEFAULT_TCP_REMOTE_IP](#classdronecore_1_1_drone_core_1ade2086911d3052093fb87717f58a99b2) = "127.0.0.1" - Default TCP remote IP (localhost).
 
 
-static constexpr int [DEFAULT_TCP_REMOTE_PORT](#classdronecore_1_1_drone_core_1a0ded56f7f5873f17e424343ed7b2e5af) = 5760 - Default serial baudrate.
+static constexpr int [DEFAULT_TCP_REMOTE_PORT](#classdronecore_1_1_drone_core_1a0ded56f7f5873f17e424343ed7b2e5af) = 5760 - Default TCP remote port.
 
 
-static constexpr int [DEFAULT_SERIAL_BAUDRATE](#classdronecore_1_1_drone_core_1a2b20d34acc312ffe6197aebdc6769a86) = 57600 - 
+static constexpr int [DEFAULT_SERIAL_BAUDRATE](#classdronecore_1_1_drone_core_1a2b20d34acc312ffe6197aebdc6769a86) = 57600 - Default serial baudrate.
 
 
 ## Constructor & Destructor Documentation
@@ -154,7 +154,7 @@ To accept only local connections of the machine, use 127.0.0.1. For any incoming
 
 **Parameters**
 
-* const std::string& **local_ip** - 
+* const std::string& **local_ip** - The local UDP IP address to listen to.
 * int **local_port** - The local UDP port to listen to (defaults to 14540, the same as MAVROS).
 
 **Returns**
@@ -364,7 +364,6 @@ constexpr auto dronecore::DroneCore::DEFAULT_TCP_REMOTE_IP = "127.0.0.1"
 
 Default TCP remote IP (localhost).
 
-Default TCP remote port.
 
 ### DEFAULT_TCP_REMOTE_PORT {#classdronecore_1_1_drone_core_1a0ded56f7f5873f17e424343ed7b2e5af}
 
@@ -373,7 +372,7 @@ constexpr int dronecore::DroneCore::DEFAULT_TCP_REMOTE_PORT = 5760
 ```
 
 
-Default serial baudrate.
+Default TCP remote port.
 
 
 ### DEFAULT_SERIAL_BAUDRATE {#classdronecore_1_1_drone_core_1a2b20d34acc312ffe6197aebdc6769a86}
@@ -381,4 +380,7 @@ Default serial baudrate.
 ```cpp
 constexpr int dronecore::DroneCore::DEFAULT_SERIAL_BAUDRATE = 57600
 ```
+
+
+Default serial baudrate.
 

@@ -34,7 +34,7 @@ enum [Mode](#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53) | [Ca
 std::function< void([Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41))> [result_callback_t](#classdronecore_1_1_camera_1a56dad71243eb163159eb240883497de7) | Callback type for asynchronous [Camera](classdronecore_1_1_camera.md) calls.
 std::function< void([Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41), const [Mode](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53) &)> [mode_callback_t](#classdronecore_1_1_camera_1aad2a5b8de0e3d131ddcea57b0362559a) | Callback type for asynchronous camera mode calls.
 std::function< void([CaptureInfo](structdronecore_1_1_camera_1_1_capture_info.md))> [capture_info_callback_t](#classdronecore_1_1_camera_1a925fa5261c7b9805d17871392881584d) | Callback type for capture info updates.
-std::function< void([Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41), const [Status](structdronecore_1_1_camera_1_1_status.md) &)> [get_status_callback_t](#classdronecore_1_1_camera_1a3ea9bc0ef624e56c602c47e9860bc9d6) | Callback type to get status.
+std::function< void([Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41), [Status](structdronecore_1_1_camera_1_1_status.md))> [get_status_callback_t](#classdronecore_1_1_camera_1a376de495ea22cdc282509300974c55e7) | Callback type to get status.
 std::function< void([Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41), const std::string &)> [get_option_callback_t](#classdronecore_1_1_camera_1a0f26145d52eeb4f997dbcfe0bbe7b4a7) | Callback type to get an option.
 
 ## Public Member Functions
@@ -55,14 +55,15 @@ void | [start_photo_interval_async](#classdronecore_1_1_camera_1a38520327452e287
 void | [stop_photo_interval_async](#classdronecore_1_1_camera_1af3c2fa47f834872ca7c01e3161180eaa) (const [result_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a56dad71243eb163159eb240883497de7) & callback) | Stop photo interval (asynchronous).
 void | [start_video_async](#classdronecore_1_1_camera_1a816aae9a3a513616cd84859a2c11090f) (const [result_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a56dad71243eb163159eb240883497de7) & callback) | Start video capture (asynchronous).
 void | [stop_video_async](#classdronecore_1_1_camera_1a2d4cb350fb627ea4d441e47af8a5d1a2) (const [result_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a56dad71243eb163159eb240883497de7) & callback) | Stop video capture (asynchronous).
-void | [set_mode_async](#classdronecore_1_1_camera_1a47bdbc62d27b78dfdc27a315037fc49a) ([Mode](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53) mode, const [mode_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1aad2a5b8de0e3d131ddcea57b0362559a) & callback) | Setter for camera mode (asynchronous).
+[Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41) | [set_mode](#classdronecore_1_1_camera_1a842458fb0b95b8bde1e3a487c6a06636) (const [Mode](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53) mode) | Setter for camera mode (synchronous).
+void | [set_mode_async](#classdronecore_1_1_camera_1a7f01420faa7069fb524574f1e8b9b09b) (const [Mode](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53) mode, const [mode_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1aad2a5b8de0e3d131ddcea57b0362559a) & callback) | Setter for camera mode (asynchronous).
 void | [get_mode_async](#classdronecore_1_1_camera_1a530d68aafeac46c4d1c16fac4b115490) (const [mode_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1aad2a5b8de0e3d131ddcea57b0362559a) & callback) | Getter for camera mode (asynchronous).
 void | [set_video_stream_settings](#classdronecore_1_1_camera_1a9a059a12960396051500fa7f4e2710f7) (const [VideoStreamSettings](structdronecore_1_1_camera_1_1_video_stream_settings.md) & settings) | Sets video stream settings.
 [Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41) | [get_video_stream_info](#classdronecore_1_1_camera_1a1137d3b38b134e0e3ba7d88048448a1f) ([VideoStreamInfo](structdronecore_1_1_camera_1_1_video_stream_info.md) & info) | Get video stream information (synchronous).
 [Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41) | [start_video_streaming](#classdronecore_1_1_camera_1a1abbf7e3287e95c987a6d46b60f4e8fa) () | Starts video streaming (synchronous).
 [Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41) | [stop_video_streaming](#classdronecore_1_1_camera_1a017f92a972bfbb96ff503d6ff83e841c) () | Stop the current video streaming (synchronous).
 void | [capture_info_async](#classdronecore_1_1_camera_1a3ec64d057112170f7b5f8c2cb0dcb05e) ([capture_info_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a925fa5261c7b9805d17871392881584d) callback) | Subscribe to capture info updates (asynchronous).
-void | [get_status_async](#classdronecore_1_1_camera_1a9194c34754f227ecd0977fd703cd75c3) ([get_status_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a3ea9bc0ef624e56c602c47e9860bc9d6) callback) | Get camera status (asynchronous).
+void | [get_status_async](#classdronecore_1_1_camera_1a9194c34754f227ecd0977fd703cd75c3) ([get_status_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a376de495ea22cdc282509300974c55e7) callback) | Get camera status (asynchronous).
 bool | [get_possible_settings](#classdronecore_1_1_camera_1ae243af289509a947c6acae2b114dfe60) (std::vector< std::string > & settings) | Get settings that can be changed.
 bool | [get_possible_options](#classdronecore_1_1_camera_1a6fb081ce851550f5f3801435c9c60ce7) (const std::string & setting_name, std::vector< std::string > & options) | Get possible options for a setting that can be selected.
 void | [get_option_async](#classdronecore_1_1_camera_1a551b362675fefeca303b928079b45f2d) (const std::string & setting, const [get_option_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a0f26145d52eeb4f997dbcfe0bbe7b4a7) & callback) | Get an option of a setting (asynchronous).
@@ -155,10 +156,10 @@ typedef std::function<void(CaptureInfo)> dronecore::Camera::capture_info_callbac
 Callback type for capture info updates.
 
 
-### typedef get_status_callback_t {#classdronecore_1_1_camera_1a3ea9bc0ef624e56c602c47e9860bc9d6}
+### typedef get_status_callback_t {#classdronecore_1_1_camera_1a376de495ea22cdc282509300974c55e7}
 
 ```cpp
-typedef std::function<void(Result, const Status &)> dronecore::Camera::get_status_callback_t
+typedef std::function<void(Result, Status)> dronecore::Camera::get_status_callback_t
 ```
 
 
@@ -186,6 +187,7 @@ Possible results returned for camera commands.
 
 Value | Description
 --- | ---
+<span id="classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | The result is unknown. 
 <span id="classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | [Camera](classdronecore_1_1_camera.md) command executed successfully. 
 <span id="classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41aca69f96c768067fbff6c911ca87bccc9"></span> `IN_PROGRESS` | [Camera](classdronecore_1_1_camera.md) command is in progress. 
 <span id="classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41a802706a9238e2928077f97736854bad4"></span> `BUSY` | [Camera](classdronecore_1_1_camera.md) is busy and rejected command. 
@@ -193,7 +195,6 @@ Value | Description
 <span id="classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41abb1ca97ec761fc37101737ba0aa2e7c5"></span> `ERROR` | An error has occurred while executing the command. 
 <span id="classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | [Camera](classdronecore_1_1_camera.md) has not responded in time and the command has timed out. 
 <span id="classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41a817407ec3b637cb00de7413fd38429a1"></span> `WRONG_ARGUMENT` | The command has wrong arguments. 
-<span id="classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | The result is unknown. 
 
 ### enum Mode {#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53}
 
@@ -363,9 +364,26 @@ This stops a video recording, previously started with [start_video_async()](clas
 
 * const [result_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a56dad71243eb163159eb240883497de7)& **callback** - Function to call with result of request.
 
-### set_mode_async() {#classdronecore_1_1_camera_1a47bdbc62d27b78dfdc27a315037fc49a}
+### set_mode() {#classdronecore_1_1_camera_1a842458fb0b95b8bde1e3a487c6a06636}
 ```cpp
-void dronecore::Camera::set_mode_async(Mode mode, const mode_callback_t &callback)
+Result dronecore::Camera::set_mode(const Mode mode)
+```
+
+
+Setter for camera mode (synchronous).
+
+
+**Parameters**
+
+* const [Mode](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53) **mode** - [Camera](classdronecore_1_1_camera.md) mode to set
+
+**Returns**
+
+&emsp;[Result](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1ac4006505d99fc66a8c7516ecd3222a41) - SUCCESS if mode is set, error otherwise.
+
+### set_mode_async() {#classdronecore_1_1_camera_1a7f01420faa7069fb524574f1e8b9b09b}
+```cpp
+void dronecore::Camera::set_mode_async(const Mode mode, const mode_callback_t &callback)
 ```
 
 
@@ -374,7 +392,7 @@ Setter for camera mode (asynchronous).
 
 **Parameters**
 
-* [Mode](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53) **mode** - [Camera](classdronecore_1_1_camera.md) mode to set.
+* const [Mode](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a06a76346c678cfe6789b3420951c8e53) **mode** - [Camera](classdronecore_1_1_camera.md) mode to set.
 * const [mode_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1aad2a5b8de0e3d131ddcea57b0362559a)& **callback** - Function to call with result of request.
 
 ### get_mode_async() {#classdronecore_1_1_camera_1a530d68aafeac46c4d1c16fac4b115490}
@@ -481,7 +499,7 @@ Get camera status (asynchronous).
 
 **Parameters**
 
-* [get_status_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a3ea9bc0ef624e56c602c47e9860bc9d6) **callback** - Function to call with camera status.
+* [get_status_callback_t](classdronecore_1_1_camera.md#classdronecore_1_1_camera_1a376de495ea22cdc282509300974c55e7) **callback** - Function to call with camera status.
 
 ### get_possible_settings() {#classdronecore_1_1_camera_1ae243af289509a947c6acae2b114dfe60}
 ```cpp
