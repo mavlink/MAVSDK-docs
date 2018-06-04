@@ -15,34 +15,19 @@ This class represents a system, made up of one or more components (e.g. autopilo
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [System](#classdronecore_1_1_system_1a04b6c349f03f7e733f36cbbdd2db49b6) (DroneCoreImpl & parent, uint8_t system_id, uint8_t comp_id) | Constructor.
 &nbsp; | [~System](#classdronecore_1_1_system_1abeed98bdc18e63fc3632a3a0d1c9c097) () | Destructor.
 &nbsp; | [System](#classdronecore_1_1_system_1a61860ab94c3fdcab5c2321aedd69faf1) (const [System](classdronecore_1_1_system.md) &)=delete | Copy constructor (object is not copyable).
 bool | [has_autopilot](#classdronecore_1_1_system_1ab8b0fca82ac033d36d602231bee65a15) () const | Checks whether the system has an autopilot.
 bool | [is_standalone](#classdronecore_1_1_system_1a07624a4ea1e4d22be85e9c4b635ea921) () const | Checks whether the system is a standalone (non-autopilot).
 bool | [has_camera](#classdronecore_1_1_system_1a29398f091973a76b5631e37a71af0e43) (int camera_id=-1)const | Checks whether the system has a camera with the given camera ID.
 bool | [has_gimbal](#classdronecore_1_1_system_1ae4e577b84fc7ff268935264e247a6668) () const | Checks whether the system has a gimbal.
+bool | [is_connected](#classdronecore_1_1_system_1a90114c6c4a4fe3f300855ca9fe1ccc4e) () const | Checks if the system is connected.
+uint64_t | [get_uuid](#classdronecore_1_1_system_1a2af26455c21d0796340f0b14bed28e8a) () const | Get the UUID of the system.
 const [System](classdronecore_1_1_system.md) & | [operator=](#classdronecore_1_1_system_1ab7e8e98e739dd153d775c4dec1f322a7) (const [System](classdronecore_1_1_system.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
 
-
-### System() {#classdronecore_1_1_system_1a04b6c349f03f7e733f36cbbdd2db49b6}
-```cpp
-dronecore::System::System(DroneCoreImpl &parent, uint8_t system_id, uint8_t comp_id)
-```
-
-
-Constructor.
-
-This constructor is not (and should not be) directly called by application code.
-
-**Parameters**
-
-* DroneCoreImpl& **parent** - 
-* uint8_t **system_id** - System id.
-* uint8_t **comp_id** - Component id.
 
 ### ~System() {#classdronecore_1_1_system_1abeed98bdc18e63fc3632a3a0d1c9c097}
 ```cpp
@@ -125,6 +110,33 @@ Checks whether the system has a gimbal.
 **Returns**
 
 &emsp;bool - `true` if the system has a gimbal, false otherwise.
+
+### is_connected() {#classdronecore_1_1_system_1a90114c6c4a4fe3f300855ca9fe1ccc4e}
+```cpp
+bool dronecore::System::is_connected() const
+```
+
+
+Checks if the system is connected.
+
+A system is connected when heartbeats are arriving (discovered and not timed out).
+
+**Returns**
+
+&emsp;bool - `true` if the system is connected.
+
+### get_uuid() {#classdronecore_1_1_system_1a2af26455c21d0796340f0b14bed28e8a}
+```cpp
+uint64_t dronecore::System::get_uuid() const
+```
+
+
+Get the UUID of the system.
+
+
+**Returns**
+
+&emsp;uint64_t - UUID of system.
 
 ### operator=() {#classdronecore_1_1_system_1ab7e8e98e739dd153d775c4dec1f322a7}
 ```cpp

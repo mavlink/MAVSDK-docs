@@ -34,17 +34,25 @@ Type | Name | Description
 --- | --- | ---
 const char * | [action_result_str](#namespacedronecore_1aa3b1897424479e1e7d5d079a5037957d) ([ActionResult](namespacedronecore.md#namespacedronecore_1aedb56a8f642ce3cb7bc4b940c67033c5) result) | Returns a human-readable English string for an ActionResult.
 const char * | [connection_result_str](#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8) (const [ConnectionResult](namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) result) | Returns a human-readable English string for a ConnectionResult.
-bool | [operator==](#namespacedronecore_1a7c3473f77d60654f451d6e48f4e3d386) (const [MissionItem](classdronecore_1_1_mission_item.md) & lhs, const [MissionItem](classdronecore_1_1_mission_item.md) & rhs) |
-std::ostream & | [operator<<](#namespacedronecore_1a062cf568f140581dba03c6b97c65077e) (std::ostream & str, [MissionItem](classdronecore_1_1_mission_item.md) const & mission_item) |
-std::ostream & | [operator<<](#namespacedronecore_1a2ca7e28c68f825c8a181761533745c19) (std::ostream & str, [MissionItem::CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) const & camera_action) |
-bool | [operator==](#namespacedronecore_1a0363203162fba53fefe7d4d60cd3b1c9) (const [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) & lhs, const [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) & rhs) |
-std::ostream & | [operator<<](#namespacedronecore_1a9bc5f60e2e310023bbd0ed436250b217) (std::ostream & str, [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) const & position) |
-bool | [operator==](#namespacedronecore_1ab044bfb4b8bceac15f4ef1f7959775d8) (const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) & lhs, const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) & rhs) |
-std::ostream & | [operator<<](#namespacedronecore_1a33d736c83c404d96c46ff9a7f4750fb1) (std::ostream & str, [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) const & health) |
-bool | [operator==](#namespacedronecore_1a65e8014734a31eaf756b98b672dd6466) (const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) & lhs, const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) & rhs) |
-std::ostream & | [operator<<](#namespacedronecore_1a80860746c1bda3cc94fb5ab3962cd6f6) (std::ostream & str, [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) const & gps_info) |
-bool | [operator==](#namespacedronecore_1ae113d4a3da31a7baa40029e3a1833e86) (const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) & lhs, const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) & rhs) |
-std::ostream & | [operator<<](#namespacedronecore_1a5e9f9c205d03cca66694584afb649155) (std::ostream & str, [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) const & battery) |
+bool | [operator==](#namespacedronecore_1a7c3473f77d60654f451d6e48f4e3d386) (const [MissionItem](classdronecore_1_1_mission_item.md) & lhs, const [MissionItem](classdronecore_1_1_mission_item.md) & rhs) | Equal operator to compare two [MissionItem](classdronecore_1_1_mission_item.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1a062cf568f140581dba03c6b97c65077e) (std::ostream & str, [MissionItem](classdronecore_1_1_mission_item.md) const & mission_item) | Stream operator to print infos about a [MissionItem](classdronecore_1_1_mission_item.md).
+std::ostream & | [operator<<](#namespacedronecore_1a2ca7e28c68f825c8a181761533745c19) (std::ostream & str, [MissionItem::CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a) const & camera_action) | Stream operator to print infos about a [MissionItem::CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a).
+bool | [operator==](#namespacedronecore_1a0363203162fba53fefe7d4d60cd3b1c9) (const [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) & lhs, const [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) & rhs) | Equal operator to compare two [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1a9bc5f60e2e310023bbd0ed436250b217) (std::ostream & str, [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) const & position) | Stream operator to print information about a [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md).
+bool | [operator==](#namespacedronecore_1ab044bfb4b8bceac15f4ef1f7959775d8) (const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) & lhs, const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) & rhs) | Equal operator to compare two [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1a33d736c83c404d96c46ff9a7f4750fb1) (std::ostream & str, [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) const & health) | Stream operator to print information about a [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md).
+bool | [operator==](#namespacedronecore_1a65e8014734a31eaf756b98b672dd6466) (const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) & lhs, const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) & rhs) | Equal operator to compare two [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1a80860746c1bda3cc94fb5ab3962cd6f6) (std::ostream & str, [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) const & gps_info) | Stream operator to print information about a [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md).
+bool | [operator==](#namespacedronecore_1ae113d4a3da31a7baa40029e3a1833e86) (const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) & lhs, const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) & rhs) | Equal operator to compare two [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1a5e9f9c205d03cca66694584afb649155) (std::ostream & str, [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) const & battery) | Stream operator to print information about a [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md).
+bool | [operator==](#namespacedronecore_1a76393963fd7c444510369aa84f75a510) (const [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) & lhs, const [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) & rhs) | Equal operator to compare two [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1a64ba6a17f16435543665842c77978b7f) (std::ostream & str, [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) const & quaternion) | Stream operator to print information about a [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md).
+bool | [operator==](#namespacedronecore_1ab79eb5727113df246d7a9831bd6d411e) (const [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) & lhs, const [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) & rhs) | Equal operator to compare two [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1a74ec1af5c36cf3c5709655b28079c041) (std::ostream & str, [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) const & euler_angle) | Stream operator to print information about a [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md).
+bool | [operator==](#namespacedronecore_1aedab25310e4642ea7bc35c2dd04040a3) (const [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) & lhs, const [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) & rhs) | Equal operator to compare two [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1a30d9e948976cd9da8692f0e68fab9241) (std::ostream & str, [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) const & ground_speed) | Stream operator to print information about a [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md).
+bool | [operator==](#namespacedronecore_1a6b84d191db124cabb9115a37fb01958a) (const [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) & lhs, const [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) & rhs) | Equal operator to compare two [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) objects.
+std::ostream & | [operator<<](#namespacedronecore_1abd2ed9cab741fc0c46d270a6df643d94) (std::ostream & str, [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) const & rc_status) | Stream operator to print information about a [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md).
 
 ## Enumeration Type Documentation
 
@@ -156,6 +164,9 @@ bool dronecore::operator==(const MissionItem &lhs, const MissionItem &rhs)
 ```
 
 
+Equal operator to compare two [MissionItem](classdronecore_1_1_mission_item.md) objects.
+
+
 **Parameters**
 
 * const [MissionItem](classdronecore_1_1_mission_item.md)& **lhs** - 
@@ -163,7 +174,7 @@ bool dronecore::operator==(const MissionItem &lhs, const MissionItem &rhs)
 
 **Returns**
 
-&emsp;bool - 
+&emsp;bool - `true` if items are equal.
 
 ### operator<<() {#namespacedronecore_1a062cf568f140581dba03c6b97c65077e}
 
@@ -175,6 +186,9 @@ std::ostream& dronecore::operator<<(std::ostream &str, MissionItem const &missio
 ```
 
 
+Stream operator to print infos about a [MissionItem](classdronecore_1_1_mission_item.md).
+
+
 **Parameters**
 
 * std::ostream& **str** - 
@@ -182,7 +196,7 @@ std::ostream& dronecore::operator<<(std::ostream &str, MissionItem const &missio
 
 **Returns**
 
-&emsp;std::ostream & - 
+&emsp;std::ostream & - A reference to the stream.
 
 ### operator<<() {#namespacedronecore_1a2ca7e28c68f825c8a181761533745c19}
 
@@ -194,6 +208,9 @@ std::ostream& dronecore::operator<<(std::ostream &str, MissionItem::CameraAction
 ```
 
 
+Stream operator to print infos about a [MissionItem::CameraAction](classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1a0cdd25121e5ed6930080ac022857887a).
+
+
 **Parameters**
 
 * std::ostream& **str** - 
@@ -201,7 +218,7 @@ std::ostream& dronecore::operator<<(std::ostream &str, MissionItem::CameraAction
 
 **Returns**
 
-&emsp;std::ostream & - 
+&emsp;std::ostream & - A reference to the stream.
 
 ### operator==() {#namespacedronecore_1a0363203162fba53fefe7d4d60cd3b1c9}
 
@@ -213,6 +230,9 @@ bool dronecore::operator==(const Telemetry::Position &lhs, const Telemetry::Posi
 ```
 
 
+Equal operator to compare two [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md) objects.
+
+
 **Parameters**
 
 * const [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md)& **lhs** - 
@@ -220,7 +240,7 @@ bool dronecore::operator==(const Telemetry::Position &lhs, const Telemetry::Posi
 
 **Returns**
 
-&emsp;bool - 
+&emsp;bool - `true` if items are equal.
 
 ### operator<<() {#namespacedronecore_1a9bc5f60e2e310023bbd0ed436250b217}
 
@@ -232,6 +252,9 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Position const
 ```
 
 
+Stream operator to print information about a [Telemetry::Position](structdronecore_1_1_telemetry_1_1_position.md).
+
+
 **Parameters**
 
 * std::ostream& **str** - 
@@ -239,7 +262,7 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Position const
 
 **Returns**
 
-&emsp;std::ostream & - 
+&emsp;std::ostream & - A reference to the stream.
 
 ### operator==() {#namespacedronecore_1ab044bfb4b8bceac15f4ef1f7959775d8}
 
@@ -251,6 +274,9 @@ bool dronecore::operator==(const Telemetry::Health &lhs, const Telemetry::Health
 ```
 
 
+Equal operator to compare two [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md) objects.
+
+
 **Parameters**
 
 * const [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md)& **lhs** - 
@@ -258,7 +284,7 @@ bool dronecore::operator==(const Telemetry::Health &lhs, const Telemetry::Health
 
 **Returns**
 
-&emsp;bool - 
+&emsp;bool - `true` if items are equal.
 
 ### operator<<() {#namespacedronecore_1a33d736c83c404d96c46ff9a7f4750fb1}
 
@@ -270,6 +296,9 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Health const &
 ```
 
 
+Stream operator to print information about a [Telemetry::Health](structdronecore_1_1_telemetry_1_1_health.md).
+
+
 **Parameters**
 
 * std::ostream& **str** - 
@@ -277,7 +306,7 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Health const &
 
 **Returns**
 
-&emsp;std::ostream & - 
+&emsp;std::ostream & - A reference to the stream.
 
 ### operator==() {#namespacedronecore_1a65e8014734a31eaf756b98b672dd6466}
 
@@ -289,6 +318,9 @@ bool dronecore::operator==(const Telemetry::GPSInfo &lhs, const Telemetry::GPSIn
 ```
 
 
+Equal operator to compare two [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md) objects.
+
+
 **Parameters**
 
 * const [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md)& **lhs** - 
@@ -296,7 +328,7 @@ bool dronecore::operator==(const Telemetry::GPSInfo &lhs, const Telemetry::GPSIn
 
 **Returns**
 
-&emsp;bool - 
+&emsp;bool - `true` if items are equal.
 
 ### operator<<() {#namespacedronecore_1a80860746c1bda3cc94fb5ab3962cd6f6}
 
@@ -308,6 +340,9 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::GPSInfo const 
 ```
 
 
+Stream operator to print information about a [Telemetry::GPSInfo](structdronecore_1_1_telemetry_1_1_g_p_s_info.md).
+
+
 **Parameters**
 
 * std::ostream& **str** - 
@@ -315,7 +350,7 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::GPSInfo const 
 
 **Returns**
 
-&emsp;std::ostream & - 
+&emsp;std::ostream & - A reference to the stream.
 
 ### operator==() {#namespacedronecore_1ae113d4a3da31a7baa40029e3a1833e86}
 
@@ -327,6 +362,9 @@ bool dronecore::operator==(const Telemetry::Battery &lhs, const Telemetry::Batte
 ```
 
 
+Equal operator to compare two [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md) objects.
+
+
 **Parameters**
 
 * const [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md)& **lhs** - 
@@ -334,7 +372,7 @@ bool dronecore::operator==(const Telemetry::Battery &lhs, const Telemetry::Batte
 
 **Returns**
 
-&emsp;bool - 
+&emsp;bool - `true` if items are equal.
 
 ### operator<<() {#namespacedronecore_1a5e9f9c205d03cca66694584afb649155}
 
@@ -346,6 +384,9 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Battery const 
 ```
 
 
+Stream operator to print information about a [Telemetry::Battery](structdronecore_1_1_telemetry_1_1_battery.md).
+
+
 **Parameters**
 
 * std::ostream& **str** - 
@@ -353,4 +394,180 @@ std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Battery const 
 
 **Returns**
 
-&emsp;std::ostream & - 
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecore_1a76393963fd7c444510369aa84f75a510}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::Quaternion &lhs, const Telemetry::Quaternion &rhs)
+```
+
+
+Equal operator to compare two [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md)& **lhs** - 
+* const [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecore_1a64ba6a17f16435543665842c77978b7f}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::Quaternion const &quaternion)
+```
+
+
+Stream operator to print information about a [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md) const& **quaternion** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecore_1ab79eb5727113df246d7a9831bd6d411e}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::EulerAngle &lhs, const Telemetry::EulerAngle &rhs)
+```
+
+
+Equal operator to compare two [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md)& **lhs** - 
+* const [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecore_1a74ec1af5c36cf3c5709655b28079c041}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::EulerAngle const &euler_angle)
+```
+
+
+Stream operator to print information about a [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::EulerAngle](structdronecore_1_1_telemetry_1_1_euler_angle.md) const& **euler_angle** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecore_1aedab25310e4642ea7bc35c2dd04040a3}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::GroundSpeedNED &lhs, const Telemetry::GroundSpeedNED &rhs)
+```
+
+
+Equal operator to compare two [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md)& **lhs** - 
+* const [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecore_1a30d9e948976cd9da8692f0e68fab9241}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::GroundSpeedNED const &ground_speed)
+```
+
+
+Stream operator to print information about a [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::GroundSpeedNED](structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md) const& **ground_speed** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecore_1a6b84d191db124cabb9115a37fb01958a}
+
+```
+#include: telemetry.h
+```
+```cpp
+bool dronecore::operator==(const Telemetry::RCStatus &lhs, const Telemetry::RCStatus &rhs)
+```
+
+
+Equal operator to compare two [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md)& **lhs** - 
+* const [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecore_1abd2ed9cab741fc0c46d270a6df643d94}
+
+```
+#include: telemetry.h
+```
+```cpp
+std::ostream& dronecore::operator<<(std::ostream &str, Telemetry::RCStatus const &rc_status)
+```
+
+
+Stream operator to print information about a [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) const& **rc_status** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.

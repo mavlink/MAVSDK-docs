@@ -7,7 +7,9 @@ The API is used to supply the position(s) for the [target](../api_reference/stru
 - Apple: [Core Location Framework](https://developer.apple.com/documentation/corelocation)
 - Windows: [Windows.Devices.Geolocation](https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Geolocation)
 
-> **Warning** Running *QGroundControl* at the same time as DroneCore *Follow Me* may result in unpredictable behaviour. See [QGC #6141](https://github.com/mavlink/qgroundcontrol/issues/6141) for more information.
+> **Warning** Running *QGroundControl* at the same time as DroneCore *Follow Me* may result in unpredictable behaviour as both send position updates. 
+> You **must** ensure that *GSC Position Streaming* is disabled. 
+> Use the latest *QGC Daily Build* and ensure that the **[Application Setting > General](https://docs.qgroundcontrol.com/en/SettingsView/General.html) > Miscellaneous > Stream GCS Position** is set to *Never*.
 
 ## Create the Plugin
 

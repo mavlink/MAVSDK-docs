@@ -14,56 +14,42 @@ The example terminal output should be similar to that shown below:
 > **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
 
 ```
-$ ./fly_mission 
+$ ./fly_mission udp://:14540
+```
+```
 Waiting to discover system...
-[03:42:51|Info ] New system on: 127.0.0.1:14557 (udp_connection.cpp:210)
-[03:42:51|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2017-11-14/2 (device_impl.cpp:225)
-[03:42:51|Debug] Discovered 4294967298 (dronecore_impl.cpp:234)
+[01:04:37|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
+[01:04:37|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:286)
+[01:04:37|Debug] Component Autopilot added. (mavlink_system.cpp:349)
+[01:04:37|Debug] Found 1 component(s). (mavlink_system.cpp:481)
+[01:04:37|Debug] Discovered 4294967298 (mavlink_system.cpp:483)
 Discovered system with UUID: 4294967298
-Waiting for system to be ready
-...
 Waiting for system to be ready
 System ready
 Creating and uploading mission
 Uploading mission...
-[03:43:07|Debug] Send mission item 0 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 1 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 2 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 3 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 4 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 5 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 6 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 7 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 8 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 9 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 10 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 11 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 12 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 13 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 14 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 15 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 16 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 17 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 18 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 19 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 20 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 21 (mission_impl.cpp:712)
-[03:43:07|Debug] Send mission item 22 (mission_impl.cpp:712)
-[03:43:07|Info ] Mission accepted (mission_impl.cpp:136)
+[01:04:38|Debug] Send mission item 0 (mission_impl.cpp:904)
+[01:04:38|Debug] Send mission item 1 (mission_impl.cpp:904)
+[01:04:38|Debug] Send mission item 2 (mission_impl.cpp:904)
+...
+[01:04:38|Debug] Send mission item 21 (mission_impl.cpp:904)
+[01:04:38|Debug] Send mission item 22 (mission_impl.cpp:904)
+[01:04:38|Info ] Mission accepted (mission_impl.cpp:162)
 Mission uploaded.
 Arming...
-[03:43:07|Debug] MAVLink: info: ARMED by arm/disarm component command (device_impl.cpp:225)
 Armed.
 Starting mission.
+[01:04:38|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:286)
 Started mission.
-[03:43:07|Debug] MAVLink: info: Executing mission. (device_impl.cpp:225)
-[03:43:07|Debug] MAVLink: info: Takeoff to 10.0 meters above home. (device_impl.cpp:225)
-[03:43:07|Debug] MAVLink: info: Takeoff detected (device_impl.cpp:225)
+[01:04:38|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-23/0 (mavlink_system.cpp:286)
+[01:04:38|Debug] MAVLink: info: Executing mission. (mavlink_system.cpp:286)
+[01:04:38|Debug] MAVLink: info: Takeoff to 10.0 meters above home. (mavlink_system.cpp:286)
+[01:04:38|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:286)
 Mission status update: 0 / 6
+...
 Mission status update: 0 / 6
 Mission status update: 1 / 6
-Mission status update: 1 / 6
-Mission status update: 1 / 6
+...
 Mission status update: 1 / 6
 Mission status update: 2 / 6
 Pausing mission...
@@ -71,30 +57,28 @@ Mission paused.
 Resuming mission...
 Resumed mission.
 Mission status update: 2 / 6
+...
 Mission status update: 2 / 6
-Mission status update: 2 / 6
 Mission status update: 3 / 6
-Mission status update: 3 / 6
-Mission status update: 3 / 6
+...
 Mission status update: 3 / 6
 Mission status update: 4 / 6
+...
 Mission status update: 4 / 6
-Mission status update: 4 / 6
-Mission status update: 4 / 6
 Mission status update: 5 / 6
+...
 Mission status update: 5 / 6
-Mission status update: 5 / 6
-Mission status update: 5 / 6
-[03:44:10|Debug] MAVLink: info: Mission finished, loitering. (device_impl.cpp:225)
+[01:05:40|Debug] MAVLink: info: Mission finished, loitering. (mavlink_system.cpp:286)
 Mission status update: 6 / 6
 Commanding RTL...
 Commanded RTL.
-[03:44:10|Debug] MAVLink: info: RTL: return at 498 m (10 m above home) (device_impl.cpp:225)
-[03:44:18|Debug] MAVLink: info: RTL: descend to 493 m (5 m above home) (device_impl.cpp:225)
-[03:44:22|Debug] MAVLink: info: RTL: loiter 5.0s (device_impl.cpp:225)
-[03:44:27|Debug] MAVLink: info: RTL: land at home (device_impl.cpp:225)
-[03:44:40|Debug] MAVLink: info: Landing detected (device_impl.cpp:225)
-[03:44:43|Debug] MAVLink: info: DISARMED by auto disarm on land (device_impl.cpp:225)
+[01:05:40|Debug] MAVLink: info: RTL: climb to 518 m (30 m above home) (mavlink_system.cpp:286)
+[01:05:48|Debug] MAVLink: info: RTL: return at 518 m (30 m above home) (mavlink_system.cpp:286)
+[01:05:55|Debug] MAVLink: info: RTL: descend to 493 m (5 m above home) (mavlink_system.cpp:286)
+[01:06:13|Debug] MAVLink: info: RTL: loiter 5.0s (mavlink_system.cpp:286)
+[01:06:18|Debug] MAVLink: critical: RTL: land at home (mavlink_system.cpp:286)
+[01:06:29|Debug] MAVLink: info: Landing detected (mavlink_system.cpp:286)
+[01:06:33|Debug] MAVLink: info: DISARMED by auto disarm on land (mavlink_system.cpp:286)
 Mission status update: 6 / 6
 Disarmed, exiting.
 ```
@@ -188,7 +172,18 @@ static std::shared_ptr<MissionItem> make_mission_item(double latitude_deg,
                                                       float gimbal_yaw_deg,
                                                       MissionItem::CameraAction camera_action);
 
-int main(int /*argc*/, char ** /*argv*/)
+void usage(std::string bin_name)
+{
+    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
+              << "Connection URL format should be :" << std::endl
+              << " For TCP : tcp://[server_host][:server_port]" << std::endl
+              << " For UDP : udp://[bind_host][:bind_port]" << std::endl
+              << " For Serial : serial:///path/to/serial/dev[:baudrate]" << std::endl
+              << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
+}
+
+
+int main(int argc, char **argv)
 {
     DroneCore dc;
 
@@ -202,8 +197,23 @@ int main(int /*argc*/, char ** /*argv*/)
             prom->set_value();
         });
 
-        ConnectionResult connection_result = dc.add_udp_connection();
-        handle_connection_err_exit(connection_result, "Connection failed: ");
+        std::string connection_url;
+        ConnectionResult connection_result;
+
+        if (argc == 2) {
+            connection_url = argv[1];
+            connection_result = dc.add_any_connection(connection_url);
+        } else {
+            usage(argv[0]);
+            return 1;
+        }
+
+        if (connection_result != ConnectionResult::SUCCESS) {
+            std::cout << ERROR_CONSOLE_TEXT << "Connection failed: "
+                      << connection_result_str(connection_result)
+                      << NORMAL_CONSOLE_TEXT << std::endl;
+            return 1;
+        }
 
         future_result.get();
     }
