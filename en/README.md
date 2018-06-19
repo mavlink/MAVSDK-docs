@@ -1,29 +1,32 @@
-<div style="float:right; padding:10px; margin-right:20px;"><a href="http://dronecore.io/"><img src="../assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/></a></div>
-# DroneCore Guide
+<!-- <div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../assets/site/dronecore_logo_full.png" title="Dronecode SDK Logo" width="400px"/></a></div> -->
+# Dronecode SDK
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-DroneCore-ff69b4.svg)](http://discuss.px4.io/c/dronecore)  
 <!-- 
 [![Releases](https://img.shields.io/github/release/PX4/Firmware.svg)](https://github.com/PX4/Firmware/releases) 
 -->
 
-*DroneCore* is a [MAVLink](http://mavlink.org) Library for the [PX4 flight stack](http://px4.io), with APIs for C++, Python, Android, and iOS (coming soon). 
+The *Dronecode SDK* is a [MAVLink](http://mavlink.org) Library for the [PX4 flight stack](http://px4.io), with APIs for C++, Python, Android, and iOS (coming soon). 
 
-> **Tip** DroneCore is the best way to integrate with PX4 over MAVLink! 
+> **Tip** The SDK is the best way to integrate with PX4 over MAVLink! 
   It is supported by [Dronecode](https://www.dronecode.org/), ensuring that it is robust, well tested, and maintained. 
 
-The library provides a simple core API for managing one or more vehicles, providing programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
+The library provides a simple core C++ API for managing one or more vehicles, providing programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
 
-Developers can extend the library using plugins in order to add any other required MAVLink API (for example, to integrate PX4 with custom cameras, gimbals, or other hardware over MAVLink).
+Developers can extend the SDK using plugins in order to add any other required MAVLink API (for example, to integrate PX4 with custom cameras, gimbals, or other hardware over MAVLink).
 
-DroneCore can run on a vehicle-based companion computer or on a ground-based GCS or mobile device. These devices have significantly more processing power that an ordinary flight controller, enabling tasks like computer vision, obstacle avoidance, and route planning.
+The library can run on a vehicle-based companion computer or on a ground-based GCS or mobile device. 
+These devices have significantly more processing power that an ordinary flight controller, enabling tasks like computer vision, obstacle avoidance, and route planning.
 
 ## Project Status
 
-DroneCore is still in pre-alpha development. 
+The SDK is still in alpha development. 
 - The core C++ API has been created and is (largely) stable.
 - Currently you can only develop in C++. 
-  - [gRPC](https://grpc.io/) is being used to write the cross-platform wrappers.
+  Cross-platform wrappers are being developed using [gRPC](https://grpc.io/) and [Reactive Extensions](http://reactivex.io/).
 
-To use DroneCore you will need to [build the C++ library](contributing/build.md). The [Guide](guide/README.md) explains how to write C++ DroneCore apps. A number complete examples can be found [here](examples/README.md).
+To use the SDK you will need to [build the C++ library](contributing/build.md). 
+The [Guide](guide/README.md) explains how to write SDK apps using C++. 
+A number complete examples can be found [here](examples/README.md).
 
 
 ## Library Features
@@ -36,7 +39,7 @@ The library is:
 - Cross-platform (Linux, macOS, Windows, iOS, Android).
 - Extensible, using compile-time plugins.
 
-The main features provided by the simple core API are (in all programing languages):
+The main features provided by the core API are (in all programing languages):
 
 * Connect to and manage up to 255 vehicles via a TCP, UDP or serial connection.
 * Get information about vehicles (vendor, software versions, product versions etc.)
@@ -64,7 +67,7 @@ The most important classes are:
 - [Offboard](/api_reference/classdronecore_1_1_offboard.md): Control a drone with velocity commands.
 - [Gimbal](/api_reference/classdronecore_1_1_gimbal.md): Control a gimbal.
 - [Camera](/api_reference/classdronecore_1_1_camera.md): Control a camera.
-- [FollowMe](/api_reference/classdronecore_1_1_follow_me.md): Drone tracks a position supplied by DroneCore.
+- [FollowMe](/api_reference/classdronecore_1_1_follow_me.md): Drone tracks a position supplied by the SDK.
 - [Logging](/api_reference/classdronecore_1_1_logging.md): Data logging and streaming from the vehicle.
 
 
@@ -77,7 +80,8 @@ Developers who want to contribute to the API will need to build the C++ library 
 
 ## Getting Help
 
-This guide contains information and examples showing how to use DroneCore. If you have specific questions that are not answered by the documentation, these can be raised on:
+This guide contains information and examples showing how to use the SDK. 
+If you have specific questions that are not answered by the documentation, these can be raised on:
 
 * [Discuss board](http://discuss.px4.io/c/dronecore)
 * [Slack DroneCore Channel](https://px4.slack.com/messages/C68J8H32A) (get a [Slack login here](http://slack.px4.io))
@@ -85,17 +89,17 @@ This guide contains information and examples showing how to use DroneCore. If yo
 Use Github for bug reports/enhancement requests:
 
 * [C++ API](https://github.com/dronecore/DroneCore/issues)
-* [Documentation](https://github.com/dronecore/docs/issues/)
+* [Documentation](https://github.com/dronecore/sdk_docs/issues)
 <!-- Add info about where Python etc API issues are reported). -->
 
 ## Contributing
 
-DroneCore welcomes contributions! If you want to help or have suggestions/bug reports [please get in touch with the development team](#getting-help). 
+We welcome contributions! If you want to help or have suggestions/bug reports [please get in touch with the development team](#getting-help). 
 
-The [Contributing](contributing/README.md) section contains everything you need to contribute, including topics about building DroneCore from source code, running our integration and unit tests, and all other aspects of core development. 
+The [Contributing](contributing/README.md) section contains everything you need to contribute, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development. 
 
 
 ## License
 
-* DroneCore is licensed under the permissive [BSD 3-clause](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/LICENSE.md).
-* This *DroneCore Developer Documentation* is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
+* The *Dronecode SDK* is licensed under the permissive [BSD 3-clause](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/LICENSE.md).
+* This documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
