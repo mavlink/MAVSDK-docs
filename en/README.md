@@ -1,4 +1,4 @@
-<!-- <div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../assets/site/dronecore_logo_full.png" title="Dronecode SDK Logo" width="400px"/></a></div> -->
+<div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../assets/site/sdk_logo_full.jpg" title="Dronecode SDK Logo" width="400px"/></a></div>
 # Dronecode SDK
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-DroneCore-ff69b4.svg)](http://discuss.px4.io/c/dronecore)  [![jenkins build status](http://ci.px4.io:8080/buildStatus/icon?job=DroneCore/develop)](http://ci.px4.io:8080/blue/organizations/jenkins/DroneCore/activity)
 [![travis-ci build status](https://travis-ci.org/dronecore/DroneCore.svg?branch=develop)](https://travis-ci.org/dronecore/DroneCore)
