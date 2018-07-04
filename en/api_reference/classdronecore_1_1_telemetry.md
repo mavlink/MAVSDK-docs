@@ -22,9 +22,15 @@ struct [Health](structdronecore_1_1_telemetry_1_1_health.md)
 
 struct [Position](structdronecore_1_1_telemetry_1_1_position.md)
 
+struct [PositionNED](structdronecore_1_1_telemetry_1_1_position_n_e_d.md)
+
+struct [PositionVelocityNED](structdronecore_1_1_telemetry_1_1_position_velocity_n_e_d.md)
+
 struct [Quaternion](structdronecore_1_1_telemetry_1_1_quaternion.md)
 
 struct [RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md)
+
+struct [VelocityNED](structdronecore_1_1_telemetry_1_1_velocity_n_e_d.md)
 
 ## Public Types
 
@@ -34,6 +40,7 @@ Type | Description
 enum [FlightMode](#classdronecore_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a) | Flight modes.
 enum [Result](#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | Results enum for telemetry requests.
 std::function< void([Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc))> [result_callback_t](#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) | Callback type for telemetry requests.
+std::function< void([PositionVelocityNED](structdronecore_1_1_telemetry_1_1_position_velocity_n_e_d.md))> [position_velocity_ned_callback_t](#classdronecore_1_1_telemetry_1af76ec7176a25bda1eca41408d78f14d2) | Callback type for kinematic (position and velocity) updates.
 std::function< void([Position](structdronecore_1_1_telemetry_1_1_position.md))> [position_callback_t](#classdronecore_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) | Callback type for position updates.
 std::function< void(bool [in_air](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ae6cc80856eb3e57b9598dbea4b0a4a78))> [in_air_callback_t](#classdronecore_1_1_telemetry_1a99189e3b07a193d756ceaeaa1a91d833) | Callback type for in-air updates.
 std::function< void(bool [armed](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0ca7da7922c22509ce6d55d4ad19bcf7))> [armed_callback_t](#classdronecore_1_1_telemetry_1a832876c9db780e356bc365d3efb33655) | Callback type for armed updates (asynchronous).
@@ -55,6 +62,7 @@ Type | Name | Description
 &nbsp; | [Telemetry](#classdronecore_1_1_telemetry_1acf7e2bbc7351de67be6d2a4ad03f5268) ([System](classdronecore_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classdronecore_1_1_system.md).
 &nbsp; | [~Telemetry](#classdronecore_1_1_telemetry_1ade5f44873d1fd5a5ec63037307920095) () | Destructor (internal use only).
 &nbsp; | [Telemetry](#classdronecore_1_1_telemetry_1a91a3319d9040bd89d241be3d8b2e9a5e) (const [Telemetry](classdronecore_1_1_telemetry.md) &)=delete | Copy constructor (object is not copyable).
+[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_position_velocity_ned](#classdronecore_1_1_telemetry_1a74682309a8c04cc3a34ea54e536a69a4) (double rate_hz) | Set rate of kinematic (position and velocity) updates (synchronous).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_position](#classdronecore_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da) (double rate_hz) | Set rate of position updates (synchronous).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_home_position](#classdronecore_1_1_telemetry_1a9d89866f6672fbe3b88047e7ba295bf9) (double rate_hz) | Set rate of home position updates (synchronous).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_in_air](#classdronecore_1_1_telemetry_1aed902b38ff4380a8927340c291e183f5) (double rate_hz) | Set rate of in-air status updates (synchronous).
@@ -64,6 +72,7 @@ Type | Name | Description
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_gps_info](#classdronecore_1_1_telemetry_1a7b31a3bafe6bfa4c3a9698d06fdb226d) (double rate_hz) | Set rate of GPS information updates (synchronous).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_battery](#classdronecore_1_1_telemetry_1a004c386df5e28c458a9ac56fa45f7dfe) (double rate_hz) | Set rate of battery status updates (synchronous).
 [Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) | [set_rate_rc_status](#classdronecore_1_1_telemetry_1a9fe7d6275bf8a330673f9890481d5b4a) (double rate_hz) | Set rate of RC status updates (synchronous).
+void | [set_rate_position_velocity_ned_async](#classdronecore_1_1_telemetry_1aafe73a272784a182fbdd61bd4735806c) (double rate_hz, [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) callback) | Set rate of kinematic (position and velocity) updates (asynchronous).
 void | [set_rate_position_async](#classdronecore_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288) (double rate_hz, [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) callback) | Set rate of position updates (asynchronous).
 void | [set_rate_home_position_async](#classdronecore_1_1_telemetry_1a2540af7d324392aa7d3749568c74c140) (double rate_hz, [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) callback) | Set rate of home position updates (asynchronous).
 void | [set_rate_in_air_async](#classdronecore_1_1_telemetry_1aac06f897f6eff775f458ea3979f2ae68) (double rate_hz, [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) callback) | Set rate of in-air status updates (asynchronous).
@@ -73,6 +82,7 @@ void | [set_rate_ground_speed_ned_async](#classdronecore_1_1_telemetry_1adeff560
 void | [set_rate_gps_info_async](#classdronecore_1_1_telemetry_1a8e65a2cf6a47faeca762866e06ee581f) (double rate_hz, [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) callback) | Set rate of GPS information updates (asynchronous).
 void | [set_rate_battery_async](#classdronecore_1_1_telemetry_1a52d686b80c498d8ecb66e8a59de12e3d) (double rate_hz, [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) callback) | Set rate of battery status updates (asynchronous).
 void | [set_rate_rc_status_async](#classdronecore_1_1_telemetry_1a931cdcb687aca9253ed6c183a977986f) (double rate_hz, [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) callback) | Set rate of RC status updates (asynchronous).
+[PositionVelocityNED](structdronecore_1_1_telemetry_1_1_position_velocity_n_e_d.md) | [position_velocity_ned](#classdronecore_1_1_telemetry_1ac4dfd6092df5b3d1cef0e429fd7cf02c) () const | Get the current kinematic (position and velocity) in NED frame (synchronous).
 [Position](structdronecore_1_1_telemetry_1_1_position.md) | [position](#classdronecore_1_1_telemetry_1aa272d9fb09a850b815c78cbdf47311e1) () const | Get the current position (synchronous).
 [Position](structdronecore_1_1_telemetry_1_1_position.md) | [home_position](#classdronecore_1_1_telemetry_1a48c7bfa911ac4ecbc3dd7c374dc2ac74) () const | Get the home position (synchronous).
 bool | [in_air](#classdronecore_1_1_telemetry_1ae6cc80856eb3e57b9598dbea4b0a4a78) () const | Get the in-air status (synchronous).
@@ -88,6 +98,7 @@ bool | [armed](#classdronecore_1_1_telemetry_1a0ca7da7922c22509ce6d55d4ad19bcf7)
 [Health](structdronecore_1_1_telemetry_1_1_health.md) | [health](#classdronecore_1_1_telemetry_1a17ba227e4324b7033d0175ecab3d64bc) () const | Get the current health status (synchronous).
 bool | [health_all_ok](#classdronecore_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29) () const | Returns true if the overall health is ok (synchronous).
 [RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) | [rc_status](#classdronecore_1_1_telemetry_1a1f60325b7b4b31c5c02baafd025e7bf0) () const | Get the RC status (synchronous).
+void | [position_velocity_ned_async](#classdronecore_1_1_telemetry_1a098020139dc7746058b4bb391c09d30b) ([position_velocity_ned_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1af76ec7176a25bda1eca41408d78f14d2) callback) | Subscribe to kinematic (position and velocity) updates (asynchronous).
 void | [position_async](#classdronecore_1_1_telemetry_1ac4a01ef44f175ef9a84a984268708722) ([position_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) callback) | Subscribe to position updates (asynchronous).
 void | [home_position_async](#classdronecore_1_1_telemetry_1a3a90030b4259e8cf6979883d3271b0e3) ([position_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) callback) | Subscribe to home position updates (asynchronous).
 void | [in_air_async](#classdronecore_1_1_telemetry_1a0f97d0730c7f1481e82355944a99a5cf) ([in_air_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a99189e3b07a193d756ceaeaa1a91d833) callback) | Subscribe to in-air updates (asynchronous).
@@ -168,6 +179,16 @@ typedef std::function<void(Result)> dronecore::Telemetry::result_callback_t
 
 
 Callback type for telemetry requests.
+
+
+### typedef position_velocity_ned_callback_t {#classdronecore_1_1_telemetry_1af76ec7176a25bda1eca41408d78f14d2}
+
+```cpp
+typedef std::function<void(PositionVelocityNED)> dronecore::Telemetry::position_velocity_ned_callback_t
+```
+
+
+Callback type for kinematic (position and velocity) updates.
 
 
 ### typedef position_callback_t {#classdronecore_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3}
@@ -375,6 +396,27 @@ Value | Description
 ## Member Function Documentation
 
 
+### set_rate_position_velocity_ned() {#classdronecore_1_1_telemetry_1a74682309a8c04cc3a34ea54e536a69a4}
+```cpp
+Result dronecore::Telemetry::set_rate_position_velocity_ned(double rate_hz)
+```
+
+
+Set rate of kinematic (position and velocity) updates (synchronous).
+
+
+**Parameters**
+
+* double **rate_hz** - Rate in Hz.
+
+**Returns**
+
+&emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
+
+**See Also:**
+- [PositionVelocityNED](structdronecore_1_1_telemetry_1_1_position_velocity_n_e_d.md)
+
+
 ### set_rate_position() {#classdronecore_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da}
 ```cpp
 Result dronecore::Telemetry::set_rate_position(double rate_hz)
@@ -528,6 +570,24 @@ Set rate of RC status updates (synchronous).
 
 &emsp;[Result](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a5bfab85edb7c160e156133a9643964bc) - Result of request.
 
+### set_rate_position_velocity_ned_async() {#classdronecore_1_1_telemetry_1aafe73a272784a182fbdd61bd4735806c}
+```cpp
+void dronecore::Telemetry::set_rate_position_velocity_ned_async(double rate_hz, result_callback_t callback)
+```
+
+
+Set rate of kinematic (position and velocity) updates (asynchronous).
+
+
+**Parameters**
+
+* double **rate_hz** - Rate in Hz.
+* [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
+
+**See Also:**
+- [PositionVelocityNED](structdronecore_1_1_telemetry_1_1_position_velocity_n_e_d.md)
+
+
 ### set_rate_position_async() {#classdronecore_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288}
 ```cpp
 void dronecore::Telemetry::set_rate_position_async(double rate_hz, result_callback_t callback)
@@ -653,6 +713,19 @@ Set rate of RC status updates (asynchronous).
 
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a0375deb06bf63988c664a319a5d67fdf) **callback** - Callback to receive request result.
+
+### position_velocity_ned() {#classdronecore_1_1_telemetry_1ac4dfd6092df5b3d1cef0e429fd7cf02c}
+```cpp
+PositionVelocityNED dronecore::Telemetry::position_velocity_ned() const
+```
+
+
+Get the current kinematic (position and velocity) in NED frame (synchronous).
+
+
+**Returns**
+
+&emsp;[PositionVelocityNED](structdronecore_1_1_telemetry_1_1_position_velocity_n_e_d.md) - [PositionVelocityNED](structdronecore_1_1_telemetry_1_1_position_velocity_n_e_d.md).
 
 ### position() {#classdronecore_1_1_telemetry_1aa272d9fb09a850b815c78cbdf47311e1}
 ```cpp
@@ -850,6 +923,19 @@ Get the RC status (synchronous).
 **Returns**
 
 &emsp;[RCStatus](structdronecore_1_1_telemetry_1_1_r_c_status.md) - RC status.
+
+### position_velocity_ned_async() {#classdronecore_1_1_telemetry_1a098020139dc7746058b4bb391c09d30b}
+```cpp
+void dronecore::Telemetry::position_velocity_ned_async(position_velocity_ned_callback_t callback)
+```
+
+
+Subscribe to kinematic (position and velocity) updates (asynchronous).
+
+
+**Parameters**
+
+* [position_velocity_ned_callback_t](classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1af76ec7176a25bda1eca41408d78f14d2) **callback** - Function to call with updates.
 
 ### position_async() {#classdronecore_1_1_telemetry_1ac4a01ef44f175ef9a84a984268708722}
 ```cpp

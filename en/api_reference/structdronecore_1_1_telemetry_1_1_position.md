@@ -4,7 +4,7 @@
 ----
 
 
-[Position](structdronecore_1_1_telemetry_1_1_position.md) type. 
+[Position](structdronecore_1_1_telemetry_1_1_position.md) type in global coordinates. 
 
 
 ## Data Fields
