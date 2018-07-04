@@ -1,4 +1,4 @@
-<!-- <img src="./assets/site/dronecore_logo_full.png" align="right" title="DroneCore Logo" width="400px"/> -->
+<img src="./assets/site/sdk_logo_full.jpg" align="right" title="Dronecode SDK Logo" width="400px"/>
 
 # Dronecode SDK Documentation Source
 

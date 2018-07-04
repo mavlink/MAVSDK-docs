@@ -2,7 +2,7 @@
     "gitbook": ">= 3.2.2",
     "title": "Dronecode SDK Guide", 
     "variables": {
-        "logo": "./assets/site/dronecore_logo_full.png",
+        "logo": "./assets/site/sdk_logo_full.jpg",
         "github_branch": "develop"
     },
     "plugins": [

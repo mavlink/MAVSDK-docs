@@ -1,4 +1,4 @@
-<!-- <div style="float:right; padding:10px; margin-right:20px;"><a href="http://dronecore.io/"><img src="../../assets/site/dronecore_logo_full.png" title="DroneCore Logo" width="400px"/></a></div> -->
+<div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../../assets/site/sdk_logo_full.jpg" title="Dronecode SDK Logo" width="400px"/></a></div>
 
 # Getting Started
 
