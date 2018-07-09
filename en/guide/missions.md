@@ -2,12 +2,12 @@
 
 The DroneCore Mission API allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions. Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
-Missions are *managed* though the [Mission](../api_reference/classdronecore_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc. The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects.
+Missions are *managed* though the [Mission](../api_reference/classdronecode__sdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc. The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecode__sdk_1_1_mission_item.md) objects.
 
 
 ## Supported Mission Commands {#supported_mission_commands}
 
-The [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) class abstracts a small but useful subset of the mission commands supported by PX4 (and the MAVLink specification):
+The [MissionItem](../api_reference/classdronecode__sdk_1_1_mission_item.md) class abstracts a small but useful subset of the mission commands supported by PX4 (and the MAVLink specification):
 
 The supported set is:
 * [MAV_CMD_NAV_WAYPOINT](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_WAYPOINT)
@@ -66,12 +66,12 @@ The `mission` pointer can then used to access the plugin API (as shown in the fo
 
 ## Defining a Mission
 
-A mission must be defined as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects as shown below:
+A mission must be defined as a vector of [MissionItem](../api_reference/classdronecode__sdk_1_1_mission_item.md) objects as shown below:
 ```cpp
 std::vector<std::shared_ptr<MissionItem>> mission_items;
 ```
 
-You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classdronecore_1_1_mission_item.md#classdronecore_1_1_mission_item_1ab5897670c8830fc3514036d6ee99b582)). 
+You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classdronecode__sdk_1_1_mission_item.md#classdronecode__sdk_1_1_mission_item_1ab5897670c8830fc3514036d6ee99b582)). 
 ```cpp
 // Create MissionItem and set its position
 std::shared_ptr<MissionItem> new_item(new MissionItem());
@@ -148,7 +148,7 @@ DroneCore allows you to import a mission from a *QGroundControl* plan (the impor
 
 > **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#sync) (**Plan View > Sync Tool**, and then select **Save to File**).
 
-The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) method. The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
+The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) method. The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
 
 The code fragment below shows how to import mission items from a plan:
 ```cpp
@@ -164,7 +164,7 @@ The mission (`mission_items`) can then be uploaded as shown in the section [Uplo
 
 ## Uploading a Mission {#uploading_mission}
 
-Use [Mission::upload_mission_async()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) to upload the mission defined in the previous section.
+Use [Mission::upload_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) to upload the mission defined in the previous section.
 
 The example below shows how this is done, using promises to wait on the result.
 
@@ -190,7 +190,7 @@ The example below shows how this is done, using promises to wait on the result.
 
 ## Starting/Pausing Missions 
 
-Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a9e032c6b2bc35cf6e7e19e07747fb0d3). The vehicle must already have a mission (the mission need not have been uploaded through *DroneCore*).
+Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a9e032c6b2bc35cf6e7e19e07747fb0d3). The vehicle must already have a mission (the mission need not have been uploaded through *DroneCore*).
 
 The code fragment below shows how this is done, using promises to wait on the result.
 
@@ -212,7 +212,7 @@ The code fragment below shows how this is done, using promises to wait on the re
 }
 ```
 
-To pause a mission use [Mission::pause_mission_async()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a65f729cf954586507ecd8dc07a510dd1). The code is almost exactly the same as for starting a mission:
+To pause a mission use [Mission::pause_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a65f729cf954586507ecd8dc07a510dd1). The code is almost exactly the same as for starting a mission:
 
 ```cpp
 {
@@ -236,7 +236,7 @@ To pause a mission use [Mission::pause_mission_async()](../api_reference/classdr
 
 ## Monitoring Progress
 
-Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a3290fc79eb22f899528328adfca48a61), which receives a regular callback with the current `MissionItem` number and the total number of items.
+Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a3290fc79eb22f899528328adfca48a61), which receives a regular callback with the current `MissionItem` number and the total number of items.
 
 The code fragment just takes a lambda function that reports the current status. 
 
@@ -249,9 +249,9 @@ mission->subscribe_progress( [](int current, int total) {
 > **Note** The mission is complete when `current == total`.
 
 The following synchronous methods are also available for checking mission progress:
-* [mission_finished()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1abf3463efaa18147a1c179e7449503829) - Checks if mission has been finished.
-* [current_mission_item()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a1faa448b32cd0028923b22de0cc78e9c) - Returns the current mission item index.
-* [total_mission_items()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a9d2195ec1af301c51002f8cb99aa22e9) - Gets the total number of items.
+* [mission_finished()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1abf3463efaa18147a1c179e7449503829) - Checks if mission has been finished.
+* [current_mission_item()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a1faa448b32cd0028923b22de0cc78e9c) - Returns the current mission item index.
+* [total_mission_items()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a9d2195ec1af301c51002f8cb99aa22e9) - Gets the total number of items.
 
 > **Note** The mission is (also) complete when `current_mission_item()` == `total_mission_items()`.
 
@@ -266,7 +266,7 @@ At time of writing the Mission API does not provide takeoff, land or "return to 
 
 ## Downloading Missions
 
-Use [Mission::download_mission_async()](../api_reference/classdronecore_1_1_mission.md#classdronecore_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) to download a mission from the vehicle. The mission is downloaded as a vector of [MissionItem](../api_reference/classdronecore_1_1_mission_item.md) objects, that you can then view or manipulate as required.
+Use [Mission::download_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) to download a mission from the vehicle. The mission is downloaded as a vector of [MissionItem](../api_reference/classdronecode__sdk_1_1_mission_item.md) objects, that you can then view or manipulate as required.
 
 > **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands). 
 > Missions created using *QGroundControl* are not guaranteed to successfully download! 

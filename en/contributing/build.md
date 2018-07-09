@@ -1,9 +1,9 @@
 # Building DroneCore from Source
 
-This section explains how to [build](#build_dronecore_cpp) and [install](#install-artifacts) the DroneCore C++ library from source (both "natively" and in docker) for all our target platforms. It also shows how to build DroneCore with extensions and build the API Reference documentation. 
+This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the DroneCore C++ library from source (both "natively" and in docker) for all our target platforms. It also shows how to build DroneCore with extensions and build the API Reference documentation. 
 
 
-## Build the C++ Library {#build_dronecore_cpp}
+## Build the C++ Library {#build_sdk_cpp}
 
 This section explains how to build the DroneCore C++ library from source, 
 along with its unit and integration tests. 
@@ -23,7 +23,7 @@ Then follow the instructions for building the library on [Linux](#linux).
 
 ### Linux
 
-To build the *DroneCore* C++ Library on Linux (or macOS after installing the [preconditions above](#mac-os-x)):
+To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the [preconditions above](#mac-os-x)):
 
 1. First install the dependencies
    ```bash
@@ -61,7 +61,7 @@ To build the *DroneCore* C++ Library on Linux (or macOS after installing the [pr
      ```
 
 
-1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build [DroneCore C++ apps](../guide/toolchain.md), but not to run DroneCore test code.
+1. (Optionally) "Install" the *Dronecode SDK* [as described below](#install-artifacts). This is required in order to build [Dronecode SDK C++ apps](../guide/toolchain.md), but not to run SDK test code.
 
 
 ### Windows
@@ -74,8 +74,8 @@ To build the library in Windows, you need:
 
 > **Note** The instructions below assume you downloaded [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
-To build the *DroneCore* C++ Library on Windows:
-1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork): 
+To build the *Dronecode SDK* C++ Library on Windows:
+1. Clone the [Dronecode SDK repository](https://github.com/dronecore/DroneCore) (or your fork): 
    ```sh
    git clone https://github.com/dronecore/DroneCore.git
    cd DroneCore
@@ -99,7 +99,7 @@ To build the *DroneCore* C++ Library on Windows:
    cd C:\curl-7.56.1\winbuild
    nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
    ```
-1. Then build *DroneCore* in Windows:
+1. Then build the SDK in Windows:
    ```sh
    cd /your/path/to/DroneCore
    mkdir build && cd build
@@ -117,12 +117,12 @@ To build the *DroneCore* C++ Library on Windows:
      set CL=/MP
      ```
 
-1. (Optionally) "Install" DroneCore [as described below](#install-artifacts). This is required in order to build [Dronecore C++ apps](../guide/toolchain.md), but not to run DroneCore test code.
+1. (Optionally) "Install" the SDK [as described below](#install-artifacts). This is required in order to build [Dronecode SDK C++ apps](../guide/toolchain.md), but not to run SDK test code.
 
 
-## Install DroneCore {#install-artifacts}
+## Install the SDK {#install-artifacts}
 
-*Installing* builds DroneCore **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). DroneCore supports installation system-wide by default. You can also install files locally/relative to the DroneCore tree if needed.
+*Installing* builds the SDK **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). The SDK supports installation system-wide by default. You can also install files locally/relative to the DroneCore tree if needed.
 
 > **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)) so you will need to [install DroneCore locally](#dronecore_local_install).
 >
@@ -130,11 +130,11 @@ To build the *DroneCore* C++ Library on Windows:
 
 ### System-wide Install {#dronecore_system_wide_install}
 
-System-wide installation copies DroneCore to the standard system-wide locations for your platform (On Ubuntu Linux this is **/usr/local/**).
+System-wide installation copies the SDK headers and binaries to the standard system-wide locations for your platform (On Ubuntu Linux this is **/usr/local/**).
 
-> **Warning** System-wide installation overwrites any previously installed version of DroneCore. 
+> **Warning** System-wide installation overwrites any previously installed version of the SDK. 
 
-To install DroneCore system-wide:
+To install the SDK system-wide:
 
 ```sh
 make clean  #REQUIRED!
@@ -145,12 +145,13 @@ sudo make default install  # sudo required to install files to system directorie
 sudo ldconfig  # update linker cache
 ```
 
-> **Note** The first time you build DroneCore you may also need to [update the linker cache](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html). On Ubuntu this is done with `sudo ldconfig`, as shown above.
+> **Note** The first time you build the SDK you may also need to [update the linker cache](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html). 
+  On Ubuntu this is done with `sudo ldconfig`, as shown above.
 
 
 ### Local Install {#dronecore_local_install}
 
-Local installation copies DroneCore headers/library to a user-specified location in the DroneCore directory.
+Local installation copies the SDK headers/library to a user-specified location inside the SDK source directory.
 
 On Linux/macOS use the `INSTALL_PREFIX` variable to specify a path relative to the **DroneCore/build/** folder
 (or an absolute path).
@@ -213,7 +214,7 @@ make ios_simulator install
 
 ## Building in Docker
 
-You can also build DroneCore on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). 
+You can also build the SDK on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). 
 
 > **Tip** There are docker containers based on Fedora and Ubuntu. It doesn't matter which you use!
 

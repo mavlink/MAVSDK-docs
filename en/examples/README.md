@@ -22,7 +22,7 @@ The examples are "largely" built and run in the same way, as described in the fo
 The easiest way to test the examples is to use a [simulated PX4 vehicle](https://dev.px4.io/en/simulation/) that is running on the same computer.
 First start PX4 in SITL (Simulation), optionally start *QGroundControl* to observe the vehicle, then build and run the example code. 
 
-> **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540). The examples connect to this port using either [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a4d456788b98920c58b07e6a280642168) or [add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a38e5715ec8817515ccaba5034da30bcd).
+> **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540). The examples connect to this port using either [add_any_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1a4d456788b98920c58b07e6a280642168) or [add_udp_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1a38e5715ec8817515ccaba5034da30bcd).
 
 
 ### Setting up a Simulator

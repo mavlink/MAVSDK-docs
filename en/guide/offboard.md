@@ -1,6 +1,6 @@
 # Offboard Control
 
-The [Offboard](../api_reference/classdronecore_1_1_offboard.md) module provides a simple API 
+The [Offboard](../api_reference/classdronecode__sdk_1_1_offboard.md) module provides a simple API 
 for controlling the vehicle using velocity and yaw setpoints. It is useful for tasks requiring direct control from a companion computer; for example to implement collision avoidance.
 
 > **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/en/flight_modes/offboard.html). The class can only be used with copter and VTOL vehicles (not fixed wing - a PX4 limitation) and currently only supports *velocity setpoint commands* (PX4 additionally supports position and thrust setpoints). 
@@ -46,9 +46,9 @@ The `offboard` pointer can then used to access the plugin API (as shown in the f
 
 ## Starting/Stopping Offboard Mode
 
-To use offboard mode you must first create a setpoint using either [set_velocity_ned()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) or [set_velocity_body()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc). You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts. 
+To use offboard mode you must first create a setpoint using either [set_velocity_ned()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) or [set_velocity_body()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc). You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts. 
 
-After you have created a setpoint call [start()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a658454f130f7b19d56f23347a448f1b9) or [start_async()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) to switch to offboard mode. 
+After you have created a setpoint call [start()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a658454f130f7b19d56f23347a448f1b9) or [start_async()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) to switch to offboard mode. 
 
 ```cpp
 // Create a setpoint before starting offboard mode (in this case a null setpoint)
@@ -62,12 +62,12 @@ if (result != Offboard::Result::SUCCESS) {
     }
 ```
 
-The methods return/complete with a [Result](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) indicating whether the command was successful. 
-Above we use the synchronous API, and then use [Offboard::result_str()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a8eb7467e48fe354d34bc45637ca9f5b8) to get a human readable string for the returned enum. 
+The methods return/complete with a [Result](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) indicating whether the command was successful. 
+Above we use the synchronous API, and then use [Offboard::result_str()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a8eb7467e48fe354d34bc45637ca9f5b8) to get a human readable string for the returned enum. 
 
 You can change the setpoints as needed (new setpoints replace any old setpoints).
 
-To stop offboard mode call [Offboard::stop()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1ae223c08f1ffc694b26d847cab7738406) or [stop_async()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a). 
+To stop offboard mode call [Offboard::stop()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1ae223c08f1ffc694b26d847cab7738406) or [stop_async()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a). 
 DroneCore will then clear the current setpoint and put the vehicle into 
 [Hold flight mode](https://docs.px4.io/en/flight_modes/hold.html). 
 The synchronous API is used as shown below:
@@ -97,7 +97,7 @@ The following sections provide some common usage examples.
 
 The `set_velocity_ned()` can be used to move towards any particular compass direction - e.g. North, West, South-East, etc. 
 
-Calling `set_velocity_ned()` using an initialiser list type declaration for the [VelocityNEDYaw](../api_reference/structdronecore_1_1_offboard_1_1_velocity_n_e_d_yaw.md) argument, the first three values are the 
+Calling `set_velocity_ned()` using an initialiser list type declaration for the [VelocityNEDYaw](../api_reference/structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) argument, the first three values are the 
 velocity components in North, East, and Down directions (in metres/second). 
 
 Examples:
@@ -152,7 +152,7 @@ It is not possible to control the rate or direction that the vehicle will use to
 ### Turn/Yaw Vehicle in specified Direction/at Rate
 
 The `set_velocity_body()` can be used to rotate the vehicle at a specific rate and in a specified direction. 
-This is set in [VelocityBodyYawspeed::yawspeed_deg_s](../api_reference/structdronecore_1_1_offboard_1_1_velocity_body_yawspeed.md#structdronecore_1_1_offboard_1_1_velocity_body_yawspeed_1a6858130475964eb2d5c5a4236b7f1e31), as the angular rate in degrees/second. If viewed from above, the vehicle will turn clockwise if the value is positive and anticlockwise if it is negative. 
+This is set in [VelocityBodyYawspeed::yawspeed_deg_s](../api_reference/structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md#structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed_1a6858130475964eb2d5c5a4236b7f1e31), as the angular rate in degrees/second. If viewed from above, the vehicle will turn clockwise if the value is positive and anticlockwise if it is negative. 
 
 Calling `set_velocity_body()` using an initialiser list type declaration the final (fourth) value is the yaw rate/direction.
 
@@ -205,9 +205,9 @@ real-world use case you might use telemetry or sensors to control when the setpo
 ## Monitoring Offboard Mode
 
 The vehicle may change out of offboard mode outside the control of your application (for example if a GCS were to put the vehicle into *Hold mode*).
-In this case, DroneCore will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classdronecore_1_1_offboard.md#classdronecore_1_1_offboard_1a44d9284ef03c8cf6f37a77b2f3cadaf0) will change from `true` to `false`.
+In this case, DroneCore will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a44d9284ef03c8cf6f37a77b2f3cadaf0) will change from `true` to `false`.
 
-Calls to change the setpoint do not return an error! Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)).
+Calls to change the setpoint do not return an error! Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)).
 
 
 ## Further Information

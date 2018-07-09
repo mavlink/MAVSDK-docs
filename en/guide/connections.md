@@ -6,9 +6,9 @@ In order to detect vehicles you must first specify the communication ports that 
 
 ## Monitoring a Port
 
-Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a4d456788b98920c58b07e6a280642168), [add_udp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a38e5715ec8817515ccaba5034da30bcd), [add_tcp_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1abaa49c13d6277177974a09ccffde82e1) or [add_serial_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1aa84b8bfba099631267a0319169c23c8e). All the methods are used similarly, and return immediately with a [ConnectionResult](../api_reference/namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) indicating whether they succeeded.
+Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1a4d456788b98920c58b07e6a280642168), [add_udp_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1a38e5715ec8817515ccaba5034da30bcd), [add_tcp_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1abaa49c13d6277177974a09ccffde82e1) or [add_serial_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1aa84b8bfba099631267a0319169c23c8e). All the methods are used similarly, and return immediately with a [ConnectionResult](../api_reference/namespacedronecode__sdk.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc) indicating whether they succeeded.
 
-The [add_any_connection()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a4d456788b98920c58b07e6a280642168) method can be used to set up monitoring for any of the supported port types (while the other methods set up specific connection types). The connection details are specified using the string formats shown below:
+The [add_any_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1a4d456788b98920c58b07e6a280642168) method can be used to set up monitoring for any of the supported port types (while the other methods set up specific connection types). The connection details are specified using the string formats shown below:
 
 Connection | URL Format
 --- | ---
@@ -27,7 +27,7 @@ ASSERT_EQ(connection_result,ConnectionResult::SUCCESS)
 
 > **Note** The connection string used above (`udp://0.0.0.0:14540`) is to the [standard PX4 broadcast UDP port](https://dev.px4.io/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
 
-DroneCore also provides the [connection_result_str()](../api_reference/namespacedronecore.md#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8) method, which you can use to create a human-readable string for the [ConnectionResult](../api_reference/namespacedronecore.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc). The code fragment below shows how you might print the string for the preceding code fragment to the console:
+DroneCore also provides the [connection_result_str()](../api_reference/namespacedronecode__sdk.md#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8) method, which you can use to create a human-readable string for the [ConnectionResult](../api_reference/namespacedronecode__sdk.md#namespacedronecore_1a42d7afdc816d7f750e1a8d4282da0ddc). The code fragment below shows how you might print the string for the preceding code fragment to the console:
 ```cpp
 std::cout << "Connection string: " << connection_result_str(connection_result) << std::endl;
 ```
@@ -35,7 +35,7 @@ std::cout << "Connection string: " << connection_result_str(connection_result) <
 
 ### Register for System-Detection Notifications
 
-DroneCore monitors any added communication ports for new systems, which are distinguished by vehicle [UUID](../api_reference/classdronecore_1_1_info.md#classdronecore_1_1_info_1a49c7dd5f1a369c8296f0c3a2443bc031). Clients can register for notification when new systems are discovered using [register_on_discover()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a864ec7349eba67b02b8b3792f6c388f9), and for systems timing out (no longer connected) using [register_on_timeout()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ad8c0dc0100449d21a46a787c810e8978). 
+DroneCore monitors any added communication ports for new systems, which are distinguished by vehicle [UUID](../api_reference/classdronecode__sdk_1_1_info.md#classdronecode__sdk_1_1_info_1a49c7dd5f1a369c8296f0c3a2443bc031). Clients can register for notification when new systems are discovered using [register_on_discover()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1a864ec7349eba67b02b8b3792f6c388f9), and for systems timing out (no longer connected) using [register_on_timeout()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1ad8c0dc0100449d21a46a787c810e8978). 
 
 The methods are used in the same way, and invoke a callback function with the UUID of the system that was discovered/disconnected. This UUID can then be used to get a `System` object for managing the associated vehicle (see [Accessing Systems](#accessing-systems) below).
 
@@ -55,7 +55,7 @@ dc.register_on_discover([](uint64_t uuid) {
 ## Iterating all Systems
 
 You can iterate all system UUIDs that have been detected by DroneCore 
-(since it was started, over all communication ports) using the [system_uuids()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ac9503e701727ffa0293a30a6c8326f10) method. This returns a vector of [UUID](../api_reference/classdronecore_1_1_info.md#classdronecore_1_1_info_1a49c7dd5f1a369c8296f0c3a2443bc031) values, from which you can get `System` objects that are used to manage vehicles. 
+(since it was started, over all communication ports) using the [system_uuids()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1ac9503e701727ffa0293a30a6c8326f10) method. This returns a vector of [UUID](../api_reference/classdronecode__sdk_1_1_info.md#classdronecode__sdk_1_1_info_1a49c7dd5f1a369c8296f0c3a2443bc031) values, from which you can get `System` objects that are used to manage vehicles. 
 
 The following code fragment shows how to iterate through the UUIDs (in this case, just printing them to standard `cout`).
 
@@ -68,12 +68,12 @@ for ( auto i = system_vector.begin(); i != system_vector.end(); i++ ) {
 ```
 
 The vector contains UUIDs for all systems detected by DroneCore, including those that may no longer be connected. 
-You can use [DroneCore::is_connected(uint64_t)](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23) to determine if the system with a particular UUID is connected or not. If you're only expecting a single connection, then you can use the parameterless `is_connected()` method.
+You can use [DroneCore::is_connected(uint64_t)](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1a2f78c2263df997d38cf508e327fcde23) to determine if the system with a particular UUID is connected or not. If you're only expecting a single connection, then you can use the parameterless `is_connected()` method.
 
 
 ## Accessing Systems
 
-Once `DroneCore` has provided you with a vehicle `UUID` you can use the [DroneCore::system()](../api_reference/classdronecore_1_1_drone_core.md#classdronecore_1_1_drone_core_1ab6082fca008ae58b79e87676336506ac) method to get its associated [System](../api_reference/classdronecore_1_1_system.md) object:
+Once `DroneCore` has provided you with a vehicle `UUID` you can use the [DroneCore::system()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_drone_core_1ab6082fca008ae58b79e87676336506ac) method to get its associated [System](../api_reference/classdronecode__sdk_1_1_system.md) object:
 
 ```cpp
 DroneCore dc;

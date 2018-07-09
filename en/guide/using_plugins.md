@@ -1,6 +1,6 @@
 # Managing Systems/Vehicles (Using Plugins)
 
-Access to drone information, telemetry and control objects are provided by a number of different *plugins*. For example, the [Action](../api_reference/classdronecore_1_1_action.md) plugin is used to arm, takeoff and land the vehicle, while the [Telemetry](../guide/telemetry.md) plugin can be used to query the vehicle GPS status, flight mode, etc. A separate plugin instance must be created for each system that needs it. 
+Access to drone information, telemetry and control objects are provided by a number of different *plugins*. For example, the [Action](../api_reference/classdronecode__sdk_1_1_action.md) plugin is used to arm, takeoff and land the vehicle, while the [Telemetry](../guide/telemetry.md) plugin can be used to query the vehicle GPS status, flight mode, etc. A separate plugin instance must be created for each system that needs it. 
 
 > **Note** All plugins are declared/used in the same way. This topic uses the `Action` plugin for the purposes of the demonstration. 
 

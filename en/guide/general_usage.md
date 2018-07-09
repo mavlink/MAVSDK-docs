@@ -4,9 +4,9 @@ This topic provides general/overview information about how DroneCore is used, de
 
 ## Object Management
 
-[DroneCore](../api_reference/classdronecore_1_1_drone_core.md) is the main library class. Applications must create a `DroneCore` object and destroy it during application shut down. The object is usually created as an automatic variable that is cleaned up when it goes out of scope (you can also dynamically create/destroy the object using `new`/`delete`).
+[DroneCore](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md) is the main library class. Applications must create a `DroneCore` object and destroy it during application shut down. The object is usually created as an automatic variable that is cleaned up when it goes out of scope (you can also dynamically create/destroy the object using `new`/`delete`).
 
-API consumers use [DroneCore](../api_reference/classdronecore_1_1_drone_core.md) to discover and connect to [System](../api_reference/classdronecore_1_1_system.md) objects (vehicles/cameras etc.). 
+API consumers use [DroneCore](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md) to discover and connect to [System](../api_reference/classdronecode__sdk_1_1_system.md) objects (vehicles/cameras etc.). 
 
 Access to drone information and control objects are provided [by plugins](../guide/using_plugins.md) (e.g. Telemetry, Action, Mission etc.). Plugin objects are instantiated with a *specific* `System` object (a plugin instance must be created for every system that needs it). 
 
@@ -19,7 +19,7 @@ DroneCore APIs do not raise exceptions! Instead, methods that can fail return su
 
 > **Tip** The error code usually reflects acknowledgment from the vehicle that it will perform the requested action (or not). The operation itself may not yet have completed (e.g. taking off).
 
-The various classes also all provide methods getting human readable strings from their associated enum (e.g. [connection_result_str()](../api_reference/namespacedronecore.md#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8), [Telemetry::result_str()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a)). You can see how these are used in the example code.
+The various classes also all provide methods getting human readable strings from their associated enum (e.g. [connection_result_str()](../api_reference/namespacedronecode__sdk.md#namespacedronecore_1a71899c532d8bedfa9654160fc175cce8), [Telemetry::result_str()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a05c6355b7f8743250b2a7a611ea5fb4a)). You can see how these are used in the example code.
 
 
 ## Shared Vehicle Control
@@ -27,7 +27,7 @@ The various classes also all provide methods getting human readable strings from
 A vehicle can receive commands from multiple sources, including a Ground Control Station, or other MAVLink applications.
 
 DroneCore applications that are running in environments where this is possible can explicitly monitor for changes in flight mode 
-(outside application control) and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classdronecore_1_1_telemetry.md#classdronecore_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)). 
+(outside application control) and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)). 
 
 
 ## API Limitations/Behaviour
@@ -52,7 +52,7 @@ The rate at which update messages are sent by the vehicle can be specified using
 
 `Action` methods (and any other "vehicle instructions") return when the vehicle has confirmed that the message was received and will be acted on (or not). The methods do not wait for the commanded action to complete.
 
-So, for example, the [Action::land()](../api_reference/classdronecore_1_1_action.md#classdronecore_1_1_action_1a08367528cdf25404b7db6db457e3c6f9) method returns as soon as the vehicle confirms it will land, but will actually land at some later point. 
+So, for example, the [Action::land()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a08367528cdf25404b7db6db457e3c6f9) method returns as soon as the vehicle confirms it will land, but will actually land at some later point. 
 
 The implication is that developers will need to separately monitor the completion of the requested actions, if this is important to the application.
 
