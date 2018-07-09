@@ -37,7 +37,7 @@ make posix gazebo
 Then press **Ctrl+C** to stop the simulation and run the integration tests:
 
 ```
-cd wherever/DroneCore/
+cd wherever/DronecodeSDK/
 AUTOSTART_SITL=1 make run_integration_tests
 ```
 

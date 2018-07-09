@@ -3,7 +3,8 @@
 The [Offboard](../api_reference/classdronecode__sdk_1_1_offboard.md) SDK plugin provides a simple API for controlling the vehicle using velocity and yaw setpoints. 
 It is useful for tasks requiring direct control from a companion computer; for example to implement collision avoidance.
 
-> **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/en/flight_modes/offboard.html). The class can only be used with copter and VTOL vehicles (not fixed wing - a PX4 limitation) and currently only supports *velocity setpoint commands* (PX4 additionally supports position and thrust setpoints). 
+> **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/en/flight_modes/offboard.html). 
+  The class can only be used with copter and VTOL vehicles (not fixed wing - a PX4 limitation) and currently only supports *velocity setpoint commands* (PX4 additionally supports position and thrust setpoints). 
 
 Client code must specify a setpoint before starting *Offboard mode*. 
 The Offboard plugin automatically resends setpoints at 20Hz (PX4 requires that setpoints are minimally resent at 2Hz). 
@@ -18,20 +19,20 @@ If more precise control is required, clients can call the setpoint methods at wh
 The main steps are:
 
 1. Link the plugin library into your application. 
-   Do this by adding `dronecore_offboard` to the `target_link_libraries` section of the app's *cmake* build definition file
+   Do this by adding `dronecode_sdk_offboard` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
-     dronecore
+     dronecode_sdk
      ...
-     dronecore_offboard
+     dronecode_sdk_offboard
      ...
    )
    ```
 1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
-   #include <dronecore/dronecore.h>
-   DroneCore dc;
+   #include <dronecode_sdk/dronecode_sdk.h>
+   DronecodeSDK dc;
    ConnectionResult conn_result = dc.add_udp_connection();
    // Wait for the system to connect via heartbeat
    while (!dc.is_connected()) {
@@ -42,7 +43,7 @@ The main steps are:
    ```
 1. Create a shared pointer to an instance of `Offboard` instantiated with the `system`: 
    ```
-   #include <dronecore/offboard.h>
+   #include <dronecode_sdk/offboard.h>
    auto offboard = std::make_shared<Offboard>(system);
    ```
 
@@ -50,7 +51,8 @@ The `offboard` pointer can then used to access the plugin API (as shown in the f
 
 ## Starting/Stopping Offboard Mode
 
-To use offboard mode you must first create a setpoint using either [set_velocity_ned()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) or [set_velocity_body()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc). You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts. 
+To use offboard mode you must first create a setpoint using either [set_velocity_ned()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) or [set_velocity_body()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc). 
+You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts. 
 
 After you have created a setpoint call [start()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a658454f130f7b19d56f23347a448f1b9) or [start_async()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) to switch to offboard mode. 
 
@@ -92,7 +94,9 @@ if (result != Offboard::Result::SUCCESS) {
 The API provides methods to set velocity and yaw components using the NED frame (`set_velocity_ned()`) and the body frame (`set_velocity_body()`). 
 The difference is that NED is relative to an absolute co-ordinate system (North, East, Down) while body frame is relative to the vehicle orientation (front, right, down).
 
-The NED frame is used to move towards a specific compass direction or face the vehicle in a specific compass direction. Body frame is usually used for tasks where the vehicle needs to *deviate* from the current path (e.g. to avoid an obstacle) or to rotate the vehicle at a specific rate. Movement up/down is the same in either frame.
+The NED frame is used to move towards a specific compass direction or face the vehicle in a specific compass direction. 
+Body frame is usually used for tasks where the vehicle needs to *deviate* from the current path (e.g. to avoid an obstacle) or to rotate the vehicle at a specific rate. 
+Movement up/down is the same in either frame.
 
 The following sections provide some common usage examples.
 
@@ -222,6 +226,6 @@ Additional information/examples for the Offboard API are linked below:
 
 * [Example: Offboard Velocity](../examples/offboard_velocity.md)
 * Integration tests:
-  * [offboard_velocity.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/offboard_velocity.cpp)
+  * [offboard_velocity.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/offboard_velocity.cpp)
 
 

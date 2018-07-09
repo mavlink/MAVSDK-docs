@@ -46,7 +46,7 @@ It might also come in handy whenever any other REST resources are required.
 
 ### How are plugins added?
 
-Plugins need to have the correct structure and be placed in the [plugins directory](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). It is also possible to create [SDK Extensions](../guide/sdk_extensions.md) that contain plugins outside of the SDK tree.
+Plugins need to have the correct structure and be placed in the [plugins directory](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/plugins). It is also possible to create [SDK Extensions](../guide/sdk_extensions.md) that contain plugins outside of the SDK tree.
 
 ### Can a plugin depend on another one?
 

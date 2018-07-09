@@ -7,7 +7,7 @@ This topic contains the SDK C++ formatting and coding guidelines.
 
 ## Formatting and White Space
 
-All **.cpp** and **.h** files should be formatted according to the [astyle](http://astyle.sourceforge.net/) settings defined by [astylerc](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/astylerc).
+All **.cpp** and **.h** files should be formatted according to the [astyle](http://astyle.sourceforge.net/) settings defined by [astylerc](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/astylerc).
 
 To automatically fix the formatting, run the command:
 

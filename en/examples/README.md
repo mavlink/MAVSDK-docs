@@ -79,7 +79,7 @@ Make sure that you [install the library and headers locally](../contributing/bui
 cmake --build . --target install
 ```
 
-Modify the example as described in [Building C++ Apps > DroneCore Installed Locally](../guide/toolchain.md#sdk_local_install) (this is required for Windows).
+Modify the example as described in [Building C++ Apps > SDK Installed Locally](../guide/toolchain.md#sdk_local_install) (this is required for Windows).
 
 Build the example as described in [Building C++ Apps](../guide/toolchain.md#windows). Below we show how for the *takeoff_and_land* example, but all the other examples are built in the same way:
 ```sh

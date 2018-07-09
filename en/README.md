@@ -90,7 +90,7 @@ If you have specific questions that are not answered by the documentation, these
 
 Use Github for bug reports/enhancement requests:
 
-* [C++ API](https://github.com/dronecore/DroneCore/issues)
+* [C++ API](https://github.com/Dronecode/DronecodeSDK/issues)
 * [Documentation](https://github.com/dronecore/sdk_docs/issues)
 <!-- Add info about where Python etc API issues are reported). -->
 
@@ -103,5 +103,5 @@ The [Contributing](contributing/README.md) section contains everything you need 
 
 ## License
 
-* The *Dronecode SDK* is licensed under the permissive [BSD 3-clause](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/LICENSE.md).
+* The *Dronecode SDK* is licensed under the permissive [BSD 3-clause](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/LICENSE.md).
 * This documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.

@@ -33,20 +33,20 @@ General instructions are provided in the topic: [Using Plugins](../guide/using_p
 The main steps are:
 
 1. Link the plugin library into your application. 
-   Do this by adding `dronecore_telemetry` to the `target_link_libraries` section of the app's *cmake* build definition file
+   Do this by adding `dronecode_sdk_telemetry` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
-     dronecore
+     dronecode_sdk
      ...
-     dronecore_telemetry
+     dronecode_sdk_telemetry
      ...
    )
    ```
 1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
-   #include <dronecore/dronecore.h>
-   DroneCore dc;
+   #include <dronecode_sdk/dronecode_sdk.h>
+   DronecodeSDK dc;
    ConnectionResult conn_result = dc.add_udp_connection();
    // Wait for the system to connect via heartbeat
    while (!dc.is_connected()) {
@@ -57,7 +57,7 @@ The main steps are:
    ```
 1. Create a shared pointer to an instance of `Telemetry` instantiated with the `system`: 
    ```
-   #include <dronecore/telemetry.h>
+   #include <dronecode_sdk/telemetry.h>
    auto telemetry = std::make_shared<Telemetry>(system);
    ```
 
@@ -106,11 +106,14 @@ To set the position update rate asynchronously with [set_rate_position_async()](
 
 ## Getting Regular Updates
 
-The best way to get telemetry updates is to use the asynchronous methods. These methods are non-blocking - they take a callback function argument and return immediately. The callback will be invoked with a populated `struct` of the associated type as soon as an update message arrives from the vehicle. The rate at which this occurs can be set through the API [as discussed above](#update-rate). 
+The best way to get telemetry updates is to use the asynchronous methods. 
+These methods are non-blocking - they take a callback function argument and return immediately. 
+The callback will be invoked with a populated `struct` of the associated type as soon as an update message arrives from the vehicle. 
+The rate at which this occurs can be set through the API [as discussed above](#update-rate). 
 
 For example, the [Telemetry::position_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288) has the following prototype, where [position_callback_t](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) is called with a populated [Position](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_position.md):
 ```cpp
-void dronecore::Telemetry::position_async(position_callback_t callback)
+void dronecode_sdk::Telemetry::position_async(position_callback_t callback)
 ```
 
 The code fragment below shows this method being use with a lambda function for the callback, which simply prints out the current position and altitude).
@@ -125,9 +128,12 @@ telemetry->position_async([](Telemetry::Position position) {
 
 ## Detecting Changes (only)
 
-The asynchronous callbacks are updated every time new information is provided by the vehicle. For some types of telemetry you may only wish to report only when the value changes.
+The asynchronous callbacks are updated every time new information is provided by the vehicle. 
+For some types of telemetry you may only wish to report only when the value changes.
 
-The example below shows how to use [flight_mode_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a) to report only when the current flight mode changes. The example uses a lambda function callback that captures a variable for the last mode. This variable is compared to the current flight mode to determine whether the value has changed and needs to be reported.
+The example below shows how to use [flight_mode_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a) to report only when the current flight mode changes. 
+The example uses a lambda function callback that captures a variable for the last mode. 
+This variable is compared to the current flight mode to determine whether the value has changed and needs to be reported.
 
 ```cpp
 // Set up callback to monitor flight mode 'changes' 
@@ -143,14 +149,17 @@ telemetry->flight_mode_async([&oldFlightMode](Telemetry::FlightMode flightMode) 
 
 This same approach can be used to report only messages that meet some condition.
 
-> **Tip** In future we may add a mechanism *in the API* to support just reporting changes: [Issue #63](https://github.com/dronecore/DroneCore/issues/63).
+> **Tip** In future we may add a mechanism *in the API* to support just reporting changes: [Issue #63](https://github.com/Dronecode/DronecodeSDK/issues/63).
 
 
 ## Blocking Telemetry Requests (State Management)
 
-Some commands/vehicle operations must be performed in a certain sequence, or can only be called when the vehicle reaches a certain state. For example, in order to takeoff the vehicle must first be armed, and in order to arm, the vehicle must have a home position/GPS lock. For these cases you will want to monitor for the vehicle being in a certain state and block other commands until it is ready to proceed. 
+Some commands/vehicle operations must be performed in a certain sequence, or can only be called when the vehicle reaches a certain state. 
+For example, in order to takeoff the vehicle must first be armed, and in order to arm, the vehicle must have a home position/GPS lock. 
+For these cases you will want to monitor for the vehicle being in a certain state and block other commands until it is ready to proceed. 
 
-Often the easiest approach is to use synchronous methods and poll for the result. For example, the following code shows how you might poll for whether the vehicle is ready to arm ([health_all_ok()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29)).
+Often the easiest approach is to use synchronous methods and poll for the result. 
+For example, the following code shows how you might poll for whether the vehicle is ready to arm ([health_all_ok()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29)).
 
 ```cpp
 // Check if vehicle is ready to arm
@@ -189,10 +198,10 @@ Usually though it is easier to understand program flow using the approach above.
 
 Additional information/examples for the Telemetry API are linked below:
 
-* [DroneCore Examples](../examples/README.md)
+* [SDK Examples](../examples/README.md)
 * Integration tests:
-  * [telemetry_async.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_async.cpp)
-  * [telemetry_health.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_health.cpp)
-  * [telemetry_modes.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_modes.cpp)
-  * [telemetry_simple.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/telemetry_simple.cpp)
+  * [telemetry_async.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_async.cpp)
+  * [telemetry_health.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_health.cpp)
+  * [telemetry_modes.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_modes.cpp)
+  * [telemetry_simple.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_simple.cpp)
 

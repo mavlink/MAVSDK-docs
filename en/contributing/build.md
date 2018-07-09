@@ -31,12 +31,12 @@ To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the
    sudo apt-get update -y
    sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev libtinyxml2-dev doxygen -y
    ```
-   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/docker).
+   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/docker).
 
-1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork): 
+1. Clone the [DronecodeSDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork): 
    ```sh
-   git clone https://github.com/dronecore/DroneCore.git
-   cd DroneCore
+   git clone https://github.com/Dronecode/DronecodeSDK.git
+   cd DronecodeSDK
    ```
 1. Checkout the release/branch you want to build (the `develop` branch is checked out by default).
    * Latest stable build (`master`):
@@ -76,10 +76,10 @@ To build the library in Windows, you need:
 > **Note** The instructions below assume you downloaded [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
 To build the *Dronecode SDK* C++ Library on Windows:
-1. Clone the [Dronecode SDK repository](https://github.com/dronecore/DroneCore) (or your fork): 
+1. Clone the [Dronecode SDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork): 
    ```sh
-   git clone https://github.com/dronecore/DroneCore.git
-   cd DroneCore
+   git clone https://github.com/Dronecode/DronecodeSDK.git
+   cd DronecodeSDK
    ```
 1. Checkout the release/branch you want to build (the `develop` branch is checked out by default).
    * Latest stable build (`master`):
@@ -102,7 +102,7 @@ To build the *Dronecode SDK* C++ Library on Windows:
    ```
 1. Then build the SDK in Windows:
    ```sh
-   cd /your/path/to/DroneCore
+   cd /your/path/to/DronecodeSDK
    mkdir build && cd build
    cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.56.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.56.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 15 2017 Win64" ..
    cmake --build .
@@ -123,9 +123,10 @@ To build the *Dronecode SDK* C++ Library on Windows:
 
 ## Install the SDK {#install-artifacts}
 
-*Installing* builds the SDK **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). The SDK supports installation system-wide by default. You can also install files locally/relative to the DroneCore tree if needed.
+*Installing* builds the SDK **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). 
+The SDK supports installation system-wide by default. You can also install files locally/relative to the DronecodeSDK tree if needed.
 
-> **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)) so you will need to [install DroneCore locally](#sdk_local_install).
+> **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/Dronecode/DronecodeSDK/issues/155)) so you will need to [install the SDK locally](#sdk_local_install).
 >
 > Windows gurus, we'd [love your help](../README.md#getting-help) to implement this).
 
@@ -154,9 +155,9 @@ sudo ldconfig  # update linker cache
 
 Local installation copies the SDK headers/library to a user-specified location inside the SDK source directory.
 
-On Linux/macOS use the `INSTALL_PREFIX` variable to specify a path relative to the **DroneCore/build/** folder
+On Linux/macOS use the `INSTALL_PREFIX` variable to specify a path relative to the **DronecodeSDK/build/** folder
 (or an absolute path).
-For example, to install into the **DroneCore/install/** folder you would call:
+For example, to install into the **DronecodeSDK/install/** folder you would call:
 
 ```sh
 make clean  #REQUIRED!
@@ -221,35 +222,45 @@ You can also build the SDK on your host computer with a toolchain running in a [
 
 The main steps are:
 
-1. Install Docker on your host computer.
-1. Clone the [DroneCore repository](https://github.com/dronecore/DroneCore) (or your fork) and update the submodules:
+1. Install Docker on your host computer
+   > **Tip** The easiest way to do this on Ubuntu is to use the [convenience script here](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-convenience-script).
+1. Clone the [DronecodeSDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork) and update the submodules:
    ```sh
-   git clone https://github.com/dronecore/DroneCore.git
-   cd DroneCore
+   git clone https://github.com/Dronecode/DronecodeSDK.git
+   cd DronecodeSDK
    git submodule update --init --recursive
    ```
-1. Enter either of the following commands in your host's terminal:
-   * Fedora
+1. Enter one of the following commands in your host's terminal:
+   * Fedora 27 
      ```sh
-     docker run --rm -it -v $HOME/DroneCore:/root/DroneCore:rw dronecore/dronecore-fedora-27 bash
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-fedora-27 bash
      ```
-   * Ubuntu
+   * Fedora 28
      ```sh
-     docker run --rm -it -v $HOME/DroneCore:/root/DroneCore:rw dronecore/dronecore-ubuntu-16.04 bash
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-fedora-28 bash
      ```
-
-   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side). You need to specify the left-side path to the DroneCore repository on your host and the container path must be set as above. 
+   * Ubuntu 16.04 LTS
+     ```sh
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-ubuntu-16.04 bash 
+     ```
+   * Ubuntu 18.04 LTS
+     ```sh
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-ubuntu-18.04 bash 
+     ```
+     
+   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side). 
+   > You need to specify the left-side path to the DronecodeSDK repository on your host and the container path must be set as above. 
    > The `--rm` automatically cleans up leftover docker containers after you exit the docker container.
 
-   Docker will download an image from [Docker Hub](https://hub.docker.com/u/dronecore/), use it to create a container, and then open a bash prompt:
+   Docker will download the selected image from [Docker Hub](https://hub.docker.com/u/dronecode/), use it to create a container, and then open a bash prompt:
    ```
-   root*81ebe14d0c1a:~/Dronecore#
+   root*81ebe14d0c1a:~/DroneCore#
    ```
 1. In the terminal you can build the SDK using the normal Linux `make` commands:
    ```sh
    # Build the C++ library
    make default
-   # Build and install DroneCore
+   # Build and install the SDK
    make default install
    # Run code-style check
    make fix_style
@@ -257,42 +268,39 @@ The main steps are:
    make clean
    ```
 
-> **Note** Files built in a Docker container are owned by root. In order to clean up the **build** and **install** folders you will need to either call `make clean` in the container or `sudo make clean` in the host computer (or `sudo rm -r build`).
+> **Note** Files built in a *Docker* container are owned by root. In order to clean up the **build** and **install** folders you will need to either call `make clean` in the container or `sudo make clean` in the host computer (or `sudo rm -r build`).
 
-### Running single docker commands
+### Running Single Docker Commands
 
-You can also run build commands directly from your host (rather than opening bash). Below we show this using the Ubuntu docker image:
+You can also run build commands directly from your host (rather than opening bash). Below we show this using the Ubuntu 16.04 docker image:
 
 To make and install the C++ Library:
 ```bash
-docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:rw dronecore/dronecore-ubuntu-16.04 make install
+docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-ubuntu-16.04 make install
 ```
 
 To run the code style check:
 ```bash
-docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:rw dronecore/dronecore-ubuntu-16.04 make fix_style
+docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-ubuntu-16.04 make fix_style
 ```
 
 ### Building the Docker Image
 
-The approach above downloads a container image based on Ubuntu 16.04 ([dronecore/dronecore-ubuntu-16.04](https://hub.docker.com/r/dronecore/dronecore-ubuntu-16.04/)) or Fedora 27 ([dronecore/dronecore-fedora-27](https://hub.docker.com/r/dronecore/dronecore-fedora-27/)) from Docker Hub.
+The approach above downloads a [container image](https://hub.docker.com/r/dronecode/) from Docker Hub based on Ubuntu 16.04, Ubuntu 18.04, Fedora 27 or Fedora 28. 
 
-You can also build the images yourself using the files in [Dronecode SDK/docker](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/docker). The image can be used in the same way as the one from Docker Hub.
+You can also build the images yourself using the files in [DronecodeSDK/docker](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/docker). The image can be used in the same way as the one from Docker Hub.
+
+To build the Ubuntu 16.04 image (the other's follow the same pattern):
 
 1. Open a command prompt/terminal in the root of the SDK source repository.
-1. Build the images as shown:
-   * Fedora 
-     ```sh
-     docker build -f docker/Dockerfile-Fedora-27 -t my_image .
-     ```
-   * Ubuntu 
+1. Build the image as shown:
      ```sh
      docker build -f docker/Dockerfile-Ubuntu-16.04 -t my_image .
      ```
    `my_image` can then be used to refer to the image in later steps.
 1. Open a bash prompt using the newly created image:
    ```sh
-   docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:rw my_image bash
+   docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DroneCore:rw my_image bash
    ```
 
 ## Build SDK Extensions {#sdk_extensions}
@@ -324,6 +332,6 @@ The files are created in **/install/docs/markdown**.
 
 <span></span>
 > **Note** The *generate_docs.sh* script [builds the library](../contributing/build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**. 
-> The [generate_markdown_from_doxygen_xml.py](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script 
+> The [generate_markdown_from_doxygen_xml.py](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script 
 > is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.
 

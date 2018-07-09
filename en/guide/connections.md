@@ -21,7 +21,7 @@ Serial | `serial://[Dev_Node][:Baudrate]`
 The code snippet below shows how to set up monitoring with `add_any_connection()`:
 
 ```cpp
-DroneCore dc;
+DronecodeSDK dc;
 std::string connection_url="udp://0.0.0.0:14540";
 ConnectionResult connection_result = dc.add_any_connection(connection_url);
 ASSERT_EQ(connection_result,ConnectionResult::SUCCESS)
@@ -49,7 +49,7 @@ This UUID can then be used to get a `System` object for managing the associated 
 The code fragment below shows how to register a callback (in this case the callback is a lambda function that just prints the UUID value to standard `cout`).
 
 ```cpp
-DroneCore dc;
+DronecodeSDK dc;
 ... //add ports
 dc.register_on_discover([](uint64_t uuid) {
     std::cout << "Discovered system with UUID: " << uuid << std::endl;
@@ -82,7 +82,7 @@ If you're only expecting a single connection, then you can use the parameterless
 Once `DronecodeSDK` has provided you with a vehicle `UUID` you can use the [DronecodeSDK::system()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1a33dbbe477d4f321cff32c7cea1aee4eb) method to get its associated [System](../api_reference/classdronecode__sdk_1_1_system.md) object:
 
 ```cpp
-DroneCore dc;
+DronecodeSDK dc;
 //... 
 //Use UUID named uuid to get the associated System
 System &system = dc.system(uuid);

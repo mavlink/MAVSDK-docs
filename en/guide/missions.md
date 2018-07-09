@@ -31,26 +31,27 @@ Additionally, the following commands are supported only for mission import/downl
 
 ## Create the Plugin
 
-> **Tip** `Mission` objects are created in the same way as other DroneCore plugins. 
+> **Tip** `Mission` objects are created in the same way as other Dronecode SDK plugins. 
   General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
 
 The main steps are:
 
 1. Link the plugin library into your application. 
-   Do this by adding `dronecore_mission` to the `target_link_libraries` section of the app's *cmake* build definition file
+   Do this by adding `dronecode_sdk_mission` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
-     dronecore
+     dronecode_sdk
      ...
-     dronecore_mission
+    dronecode_sdk_mission
      ...
    )
    ```
-1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
+1. [Create a connection](../guide/connections.md) to a `system`. 
+   For example (basic code without error checking):
    ```
-   #include <dronecore/dronecore.h>
-   DroneCore dc;
+   #include <dronecode_sdk/dronecode_sdk.h>
+   DronecodeSDK dc;
    ConnectionResult conn_result = dc.add_udp_connection();
    // Wait for the system to connect via heartbeat
    while (!dc.is_connected()) {
@@ -61,7 +62,7 @@ The main steps are:
    ```
 1. Create a shared pointer to an instance of `Mission` instantiated with the `system`: 
    ```
-   #include <dronecore/mission.h>
+   #include <dronecode_sdk/mission.h>
    auto mission = std::make_shared<Mission>(system);
    ```
 
@@ -75,7 +76,8 @@ A mission must be defined as a vector of [MissionItem](../api_reference/classdro
 std::vector<std::shared_ptr<MissionItem>> mission_items;
 ```
 
-You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classdronecode__sdk_1_1_mission_item.md#classdronecode__sdk_1_1_mission_item_1ab5897670c8830fc3514036d6ee99b582)). 
+You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. 
+The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classdronecode__sdk_1_1_mission_item.md#classdronecode__sdk_1_1_mission_item_1ab5897670c8830fc3514036d6ee99b582)). 
 ```cpp
 // Create MissionItem and set its position
 std::shared_ptr<MissionItem> new_item(new MissionItem());
@@ -151,7 +153,8 @@ mission_items.push_back(
 
 > **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#sync) (**Plan View > Sync Tool**, and then select **Save to File**).
 
-The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) method. The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
+The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) method. 
+The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
 
 The code fragment below shows how to import mission items from a plan:
 ```cpp
@@ -193,7 +196,8 @@ The example below shows how this is done, using promises to wait on the result.
 
 ## Starting/Pausing Missions 
 
-Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a9e032c6b2bc35cf6e7e19e07747fb0d3). The vehicle must already have a mission (the mission need not have been uploaded through *DroneCore*).
+Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a9e032c6b2bc35cf6e7e19e07747fb0d3). 
+The vehicle must already have a mission (the mission need not have been uploaded using the SDK).
 
 The code fragment below shows how this is done, using promises to wait on the result.
 
@@ -323,8 +327,8 @@ The code fragment below shows how to download a mission:
 * [Example:Fly Mission](../examples/fly_mission.md)
 * [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md)
 * Integration tests:
-  * [mission.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission.cpp)
-  * [mission_change_speed.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
-  * [mission_survey.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)
+  * [mission.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/mission.cpp)
+  * [mission_change_speed.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
+  * [mission_survey.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)
 * Unit Tests:
-  * [mission_import_qgc_test.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/plugins/mission/mission_import_qgc_test.cpp)
+  * [mission_import_qgc_test.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/plugins/mission/mission_import_qgc_test.cpp)

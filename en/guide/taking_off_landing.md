@@ -26,7 +26,6 @@ The main steps are:
      dronecode_sdk_action
      ...
    )
-)
    ```
 1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
@@ -182,7 +181,7 @@ while (current_position<target_alt) {
 
 The best way to land the vehicle at the current location is to use the [land()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a08367528cdf25404b7db6db457e3c6f9) or [land_async()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a7f10240cde2ff237795e3688802d857b) methods. If the command is accepted the vehicle will change to the [Land mode](https://docs.px4.io/en/flight_modes/land.html) and land at the current point. 
 
-> **Note** DroneCore does not at time of writing recommend other approaches for landing: land mission items are not supported and manually landing the vehicle using the offboard is not as safe. 
+> **Note** The SDK does not at time of writing recommend other approaches for landing: land mission items are not supported and manually landing the vehicle using the offboard is not as safe. 
 
 The code below shows how to use the land action.
 
@@ -207,7 +206,8 @@ std::cout << "Disarmed, exiting." << std::endl;
 
 ## Return/RTL
 
-[Return mode](https://docs.px4.io/en/flight_modes/return.html) (also known as "Return to Launch", "Return to Land", "Return to Home") flies the vehicle back to the home position and may also land the vehicle (depending on vehicle configuration). This mode is invoked from DroneCore using the [return_to_launch()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a740a3bf125560edaf810865a616b2d24) or [return_to_launch_async()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1aa1253c356c7628d329dfa98d78eb39ee) methods. 
+[Return mode](https://docs.px4.io/en/flight_modes/return.html) (also known as "Return to Launch", "Return to Land", "Return to Home") flies the vehicle back to the home position and may also land the vehicle (depending on vehicle configuration). 
+This mode is invoked from `Action` using the [return_to_launch()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a740a3bf125560edaf810865a616b2d24) or [return_to_launch_async()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1aa1253c356c7628d329dfa98d78eb39ee) methods. 
 
 The code below shows how to use the synchronous method:
 
@@ -239,17 +239,19 @@ You can get/set the normal horizontal velocity used in *Return mode*, *Hold mode
 * [set_max_speed()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1abc27410a9b2a938b21ab59c5ef9ee941)
 * [get_max_speed_m_s](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1abc27410a9b2a938b21ab59c5ef9ee941)
 
-> **Note** These methods get/set the [MPC_XY_CRUISE](https://dev.px4.io/en/advanced/parameter_reference.html#MPC_XY_CRUISE) parameter. They are used in the same way as the other `Action` methods.
+> **Note** These methods get/set the [MPC_XY_CRUISE](https://dev.px4.io/en/advanced/parameter_reference.html#MPC_XY_CRUISE) parameter. 
+  They are used in the same way as the other `Action` methods.
 
 
 
 ## Switch Between VTOL Modes {#transition_vtol}
 
-DroneCore provides methods to transition between VTOL fixed wing and multicopter modes, with both synchronous and asynchronous versions:
+`Action` provides methods to transition between VTOL fixed wing and multicopter modes, with both synchronous and asynchronous versions:
 * [transition_to_fixedwing()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a559e6cfa22f937acc0bbd1f9ac4e54fa), [transition_to_multicopter()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a3af080379382fedbc3ad8bdbaf3c4e4c)
 * [transition_to_fixedwing_async()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1af5b02f05ffdc2e0787a7633410710d9d), [transition_to_multicopter_async()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a053aa7430852a4200b201abda1b3b3e4)
 
-The associated action will only be executed for VTOL vehicles (on other vehicle types the command will fail with a `Result` of `VTOL_TRANSITION_SUPPORT_UNKNOWN` or `NO_VTOL_TRANSITION_SUPPORT`). The command will succeed if called when the vehicle is already in the mode.
+The associated action will only be executed for VTOL vehicles (on other vehicle types the command will fail with a `Result` of `VTOL_TRANSITION_SUPPORT_UNKNOWN` or `NO_VTOL_TRANSITION_SUPPORT`). 
+The command will succeed if called when the vehicle is already in the mode.
 
 The code fragment below shows how to call the synchronous action to transition to fixed wing, 
 and to print the result of the call (the other synchronous method is used in the same way). 
@@ -271,8 +273,8 @@ Additional information/examples for the Action API are linked below:
 * [Example: Takeoff and Land](../examples/takeoff_and_land.md)
 * [Example: VTOL Transitions](../examples/transition_vtol_fixed_wing.md)
 * Integration tests:
-  * [simple_hover.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/simple_hover.cpp)
-  * [async_hover.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/async_hover.cpp)
-  * [takeoff_and_kill.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/takeoff_and_kill.cpp)
-  * [transition_multicopter_fixedwing.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/transition_multicopter_fixedwing.cpp)
+  * [simple_hover.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/simple_hover.cpp)
+  * [async_hover.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/async_hover.cpp)
+  * [takeoff_and_kill.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/takeoff_and_kill.cpp)
+  * [transition_multicopter_fixedwing.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/transition_multicopter_fixedwing.cpp)
 

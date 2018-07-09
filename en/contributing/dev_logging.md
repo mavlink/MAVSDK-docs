@@ -12,7 +12,7 @@ The API methods display a custom message, prepending a timestamp and the type of
 
 ### Usage
 
-The API is defined in [core/log.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/log.h) (and made available to integration tests via [core/integration_test_helper.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/integration_test_helper.h)). 
+The API is defined in [core/log.h](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/core/log.h) (and made available to integration tests via [core/integration_test_helper.h](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/core/integration_test_helper.h)). 
 
 The API methods are called as shown below for `LogDebug()`, with the left shift operator (`<<`) used to append the message-specific text.
 
@@ -37,6 +37,6 @@ Function | Description | Example
 Basic logging is defined in source for both incoming (handled/ignored) and sent MAVLink messages.
 
 This functionality is disabled by default, and available only in debug builds. 
-To enable the logs, set `#define MESSAGE_DEBUGGING 1` in [core/system.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/system.cpp)
+To enable the logs, set `#define MESSAGE_DEBUGGING 1` in [core/system.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/core/system.cpp)
 
-<!-- Added: https://github.com/dronecore/DroneCore/pull/194 -->
+<!-- Added: https://github.com/Dronecode/DronecodeSDK/pull/194 -->

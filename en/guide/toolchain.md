@@ -15,7 +15,7 @@ Below we explain how to set up a minimal build setup (**CMakeLists.txt**) file f
 
 The sections below show how you can set up the file for when the SDK is [installed system wide](../contributing/build.md#sdk_system_wide_install) (the default) or [locally](../contributing/build.md#sdk_local_install).
 
-> **Warning** SDK system-wide installation is not supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)). 
+> **Warning** SDK system-wide installation is not supported on Windows (see [#155](https://github.com/Dronecode/DronecodeSDK/issues/155)). 
 >  Instead build the app using a [local SDK installation](#sdk_local_install).
 >
 >  Windows gurus, we'd [love your help](../README.md#getting-help) to implement this).
@@ -71,7 +71,7 @@ because you need to specify where the build should find both headers and library
 The changes to the file (with respect to the previous version) are shown below. 
 You have to change the same information as before: *your_project_name*, *your_executable_name* and *your_source_file*. 
 
-> **Note** The example file below assumes that the SDK was installed locally into the directory **DroneCore/install/** and that the application is nested two levels deep (at the same level as the SDK example code).
+> **Note** The example file below assumes that the SDK was installed locally into the directory **DronecodeSDK/install/** and that the application is nested two levels deep (at the same level as the SDK example code).
 
 ```cmake
 cmake_minimum_required(VERSION 2.8.12)
@@ -106,7 +106,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/../../install/include
 )
 
-# Specify variable 'dronecode_sdk_lib' containing location of DroneCore library.
+# Specify variable 'dronecode_sdk_lib' containing location of the SDK library.
 if(MSVC)
     set(dronecode_sdk_lib "${CMAKE_SOURCE_DIR}/../../install/lib/dronecode_sdk.lib")
 else()
@@ -117,7 +117,7 @@ endif()
 target_link_libraries(your_executable_name
     # Add  'dronecode_sdk_lib' variable defining where the SDK library can be found.
     ${dronecode_sdk_lib}
-    # dronecode_sdk # Link against library named dronecore in standard install location
+    # dronecode_sdk # Link against library named dronecode_sdk_lib in standard install location
     # ... add any other linked libraries
 )
 ```

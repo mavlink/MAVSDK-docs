@@ -1,9 +1,9 @@
 # Writing Plugins
 
-The *Dronecode SDK* is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/core) and multiple independent [plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). 
+The *Dronecode SDK* is split into a [core](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/core) and multiple independent [plugins](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/plugins). 
 
 Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. 
-The [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
+The [CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
 
 > **Note** Plugins can also be defined in [SDK Extensions](../guide/sdk_extensions.md). 
 > These are defined and tested in exactly the same way as "standard" SDK plugins. 
@@ -19,7 +19,7 @@ Integration tests for all plugins in the library are stored in **integration_tes
 A simplified view of the folder structure is shown below (showing relevant directories for both the SDK and [SDK Extensions](../guide/sdk_extensions.md)): 
 
 ```
-├── DroneCore
+├── DronecodeSDK
 │   ├── core
 │   ├── integration_tests
 │   └── plugins
@@ -48,11 +48,11 @@ Each plugin must have the same files/structure, as shown for the "example" plugi
 
 ## Create a Plugin
 
-To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins) (e.g. 
-[Action](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/action),
-[Telemetry](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/telemetry), etc.) or the [example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
+To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/plugins) (e.g. 
+[Action](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/plugins/action),
+[Telemetry](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/plugins/telemetry), etc.) or the [example](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
 
-Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/plugins/example/CMakeLists.txt) as appropriate:
+Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/external_example/plugins/example/CMakeLists.txt) as appropriate:
 * Modify plugin filenames as appropriate
 * Add additional libraries using the variable `additional_libs`:
   ```
@@ -67,7 +67,7 @@ Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/d
 
 ## Plugin Code
 
-The [standard plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins) can be reviewed for guidance on
+The [standard plugins](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/plugins) can be reviewed for guidance on
 how to write plugin code, including how to send and process MAVLink messages.
 
 
@@ -85,7 +85,7 @@ Plugin authors should provide an implementation of the following `PluginImplBase
 * [init()](#init)/[deinit()](#deinit): These are called when a system is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `System` instantiated. This includes calls that set up callbacks.
 * [enable()](#enable)/[disable()](#disable): These are called when a vehicle is discovered or has timed out. They should be used for managing resources needed to access a connected system/vehicle (e.g. getting a parameter or changing a setting).
 
-The [external example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) provides a minimal implementation.
+The [external example](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/external_example) provides a minimal implementation.
 
 Additional detail is provided for methods below.
 
@@ -142,7 +142,7 @@ provides an excellent overview of how tests are written and used.
 ### Writing Unit Tests
 
 Most of the existing plugins do not have unit tests, 
-because we do not yet have the ability to [mock MAVLink communications](https://github.com/dronecore/DroneCore/issues/148) (needed to test most plugins). 
+because we do not yet have the ability to [mock MAVLink communications](https://github.com/Dronecode/DronecodeSDK/issues/148) (needed to test most plugins). 
 Unit tests are therefore considered optional!
 
 > **Tip** Comprehensive integration tests should be written instead, with the simulator providing appropriate MAVLink messages.
@@ -169,25 +169,25 @@ set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)
 
 #### Unit Test Code
 
-Unit tests typically include the file to be tested, **dronecore.h**, and **gtest.h**. 
+Unit tests typically include the file to be tested, **dronecode_sdk.h**, and **gtest.h**. 
 There are no standard shared test unit resources so test functions are declared using `TEST`. 
 All tests in a file should share the same test-case name (the first argument to `TEST`).
 
-The skeleton [example plugin unit test](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/plugins/example/example_impl_test.cpp) is shown below: 
+The skeleton [example plugin unit test](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/external_example/plugins/example/example_impl_test.cpp) is shown below: 
 ```cpp
 #include "example_impl.h"
-#include "dronecore.h"
+#include "dronecode_sdk.h"
 #include "global_include.h"
 #include <gtest/gtest.h>
 
-namespace dronecore {
+namespace dronecode_sdk {
 
 TEST(ExampleImpl, NoTest)
 {
     ASSERT_TRUE(true);
 }
 
-} // namespace dronecore
+} // namespace dronecode_sdk
 ```
 
 
@@ -197,7 +197,7 @@ TEST(ExampleImpl, NoTest)
 The SDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
 
 > **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
-> and the [integration_tests](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/integration_tests) 
+> and the [integration_tests](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/integration_tests) 
 > for our existing plugins to better understand how to write your own!
 
 
@@ -206,9 +206,9 @@ The SDK provides the `integration_tests_runner` application for running the inte
 In order to run an integration test it needs to be added to the `integration_tests_runner` program.
 
 Integration tests for core functionality and plugins delivered by the project 
-are stored in [DroneCore/integration_tests](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/integration_tests). 
+are stored in [DronecodeSDK/integration_tests](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/integration_tests). 
 The files are added to the test program in that folder's 
-[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/CMakeLists.txt) file:
+[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/CMakeLists.txt) file:
 
 ```cmake
 # This includes all GTests that run integration tests
@@ -245,26 +245,26 @@ add_executable(external_example_integration_tests_runner
 
 #### Integration Test Files/Code
 
-The main SDK-specific functionality is provided by [integration_test_helper.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/integration_test_helper.h). 
+The main SDK-specific functionality is provided by [integration_test_helper.h](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/core/integration_test_helper.h). 
 This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
 > **Note** All tests must be declared using `TEST_F` and have a first argument `SitlTest` as shown. 
   This is required in order to use the shared class to set up and tear down the simulator between tests.
 
-The example integration test [hello_world.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/integration_tests/hello_world.cpp) demonstrates this below. 
+The example integration test [hello_world.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/external_example/integration_tests/hello_world.cpp) demonstrates this below. 
 
 ```cpp
 #include <iostream>
 #include <unistd.h>
-#include "dronecore.h"
+#include "dronecode_sdk.h"
 #include "plugins/example/example.h"
 #include "integration_test_helper.h"
 
-using namespace dronecore;
+using namespace dronecode_sdk;
 
 TEST_F(SitlTest, ExampleHello)
 {
-    DroneCore dc;
+    DronecodeSDK dc;
 
     ConnectionResult ret = dc.add_udp_connection();
     ASSERT_EQ(ret, ConnectionResult::SUCCESS);

@@ -34,7 +34,7 @@ $ ./follow_me udp://:14540
 ```
 Wait for system to connect via heartbeat
 [02:47:19|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:206)
-[02:47:19|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:310)
+[02:47:19|Debug] New: System ID: 1 Comp ID: 1 (dronecode_sdk_impl.cpp:310)
 [02:47:19|Debug] Component Autopilot added. (mavlink_system.cpp:326)
 [02:47:19|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-02/0 (mavlink_system.cpp:263)
 [02:47:20|Debug] Found 1 component(s). (mavlink_system.cpp:458)
@@ -81,10 +81,10 @@ The operation of the "SDK-specific" part of this code is discussed in the guide:
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/fly_mission).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/fly_mission).
 
 
-[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/follow_me/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/follow_me/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -112,48 +112,48 @@ add_executable(follow_me
 
 target_link_libraries(follow_me
     LINK_PUBLIC ${Boost_LIBRARIES}
-    dronecore
-    dronecore_action
-    dronecore_follow_me
-    dronecore_telemetry
+    dronecode_sdk
+    dronecode_sdk_action
+    dronecode_sdk_follow_me
+    dronecode_sdk_telemetry
 )
 ```
 
-[follow_me.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/follow_me/follow_me.cpp)
+[follow_me.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/follow_me/follow_me.cpp)
 
 ```cpp
 /**
-* @file follow_me.cpp
-*
-* @brief Example that demonstrates the usage of Follow Me plugin.
-* The example registers with FakeLocationProvider for location updates
-* and sends them to the Follow Me plugin which are sent to drone. You can observe
-* drone following you. We print last location of the drone in flight mode callback.
-*
-* @author Shakthi Prashanth <shakthi.prashanth.m@intel.com>
-* @date 2018-01-03
-*/
+ * @file follow_me.cpp
+ *
+ * @brief Example that demonstrates the usage of Follow Me plugin.
+ * The example registers with FakeLocationProvider for location updates
+ * and sends them to the Follow Me plugin which are sent to drone. You can observe
+ * drone following you. We print last location of the drone in flight mode callback.
+ *
+ * @author Shakthi Prashanth <shakthi.prashanth.m@intel.com>
+ * @date 2018-01-03
+ */
 
 #include <chrono>
-#include <dronecore/action.h>
-#include <dronecore/dronecore.h>
-#include <dronecore/follow_me.h>
-#include <dronecore/telemetry.h>
+#include <dronecode_sdk/action.h>
+#include <dronecode_sdk/dronecode_sdk.h>
+#include <dronecode_sdk/follow_me.h>
+#include <dronecode_sdk/telemetry.h>
 #include <iostream>
 #include <memory>
 #include <thread>
 
 #include "fake_location_provider.h"
 
-using namespace dronecore;
+using namespace dronecode_sdk;
 using namespace std::placeholders; // for `_1`
 using namespace std::chrono; // for seconds(), milliseconds(), etc
-using namespace std::this_thread;  // for sleep_for()
+using namespace std::this_thread; // for sleep_for()
 
 // For coloring output
-#define ERROR_CONSOLE_TEXT "\033[31m" //Turn text on console red
-#define TELEMETRY_CONSOLE_TEXT "\033[34m" //Turn text on console blue
-#define NORMAL_CONSOLE_TEXT "\033[0m"  //Restore normal console colour
+#define ERROR_CONSOLE_TEXT "\033[31m" // Turn text on console red
+#define TELEMETRY_CONSOLE_TEXT "\033[34m" // Turn text on console blue
+#define NORMAL_CONSOLE_TEXT "\033[0m" // Restore normal console colour
 
 inline void action_error_exit(ActionResult result, const std::string &message);
 inline void follow_me_error_exit(FollowMe::Result result, const std::string &message);
@@ -169,10 +169,9 @@ void usage(std::string bin_name)
               << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
 }
 
-
 int main(int argc, char **argv)
 {
-    DroneCore dc;
+    DronecodeSDK dc;
     std::string connection_url;
     ConnectionResult connection_result;
 
@@ -185,12 +184,11 @@ int main(int argc, char **argv)
     }
 
     if (connection_result != ConnectionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Connection failed: "
-                  << connection_result_str(connection_result)
+        std::cout << ERROR_CONSOLE_TEXT
+                  << "Connection failed: " << connection_result_str(connection_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
-
 
     // Wait for the system to connect via heartbeat
     while (!dc.is_connected()) {
@@ -216,13 +214,14 @@ int main(int argc, char **argv)
     std::cout << "Armed" << std::endl;
 
     // Subscribe to receive updates on flight mode. You can find out whether FollowMe is active.
-    telemetry->flight_mode_async(
-    std::bind([&](Telemetry::FlightMode flight_mode) {
-        const FollowMe::TargetLocation last_location = follow_me->get_last_location();
-        std::cout << "[FlightMode: " << Telemetry::flight_mode_str(flight_mode)
-                  << "] Vehicle is at: " << last_location.latitude_deg << ", "
-                  << last_location.longitude_deg << " degrees." << std::endl;
-    }, std::placeholders::_1));
+    telemetry->flight_mode_async(std::bind(
+        [&](Telemetry::FlightMode flight_mode) {
+            const FollowMe::TargetLocation last_location = follow_me->get_last_location();
+            std::cout << "[FlightMode: " << Telemetry::flight_mode_str(flight_mode)
+                      << "] Vehicle is at: " << last_location.latitude_deg << ", "
+                      << last_location.longitude_deg << " degrees." << std::endl;
+        },
+        std::placeholders::_1));
 
     // Takeoff
     ActionResult takeoff_result = action->takeoff();
@@ -230,7 +229,8 @@ int main(int argc, char **argv)
     std::cout << "In Air..." << std::endl;
     sleep_for(seconds(5)); // Wait for drone to reach takeoff altitude
 
-    // Configure Min height of the drone to be "20 meters" above home & Follow direction as "Front right".
+    // Configure Min height of the drone to be "20 meters" above home & Follow direction as "Front
+    // right".
     FollowMe::Config config;
     config.min_height_m = 20.0;
     config.follow_direction = FollowMe::Config::FollowDirection::FRONT_RIGHT;
@@ -242,7 +242,8 @@ int main(int argc, char **argv)
 
     boost::asio::io_service io; // for event loop
     std::unique_ptr<FakeLocationProvider> location_provider(new FakeLocationProvider(io));
-    // Register for platform-specific Location provider. We're using FakeLocationProvider for the example.
+    // Register for platform-specific Location provider. We're using FakeLocationProvider for the
+    // example.
     location_provider->request_location_updates([&system, &follow_me](double lat, double lon) {
         follow_me->set_target_location({lat, lon, 0.0, 0.f, 0.f, 0.f});
     });
@@ -270,8 +271,8 @@ int main(int argc, char **argv)
 inline void action_error_exit(ActionResult result, const std::string &message)
 {
     if (result != ActionResult::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << action_result_str(
-                      result) << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cerr << ERROR_CONSOLE_TEXT << message << action_result_str(result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -279,8 +280,8 @@ inline void action_error_exit(ActionResult result, const std::string &message)
 inline void follow_me_error_exit(FollowMe::Result result, const std::string &message)
 {
     if (result != FollowMe::Result::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << FollowMe::result_str(
-                      result) << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cerr << ERROR_CONSOLE_TEXT << message << FollowMe::result_str(result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -288,15 +289,14 @@ inline void follow_me_error_exit(FollowMe::Result result, const std::string &mes
 inline void connection_error_exit(ConnectionResult result, const std::string &message)
 {
     if (result != ConnectionResult::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message
-                  << connection_result_str(result)
+        std::cerr << ERROR_CONSOLE_TEXT << message << connection_result_str(result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
 ```
 
-[fake_location_provider.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/follow_me/fake_location_provider.h)
+[fake_location_provider.h](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/follow_me/fake_location_provider.h)
 
 ```cpp
 #pragma once
@@ -305,7 +305,7 @@ inline void connection_error_exit(ConnectionResult result, const std::string &me
 /**
   ********************************************************************************************
   ********************************************************************************************
-  Important note: Boost isn't a dependency for DroneCore library.
+  Important note: Boost isn't a dependency for the Dronecode SDK library.
   We're using Boost::Asio in this example ONLY to simulate asynchronous Fake location provider.
   Applications on platforms Android, Windows, Apple, etc should make use of their platform-specific
   Location Provider in place of FakeLocationProvider.
@@ -317,24 +317,19 @@ inline void connection_error_exit(ConnectionResult result, const std::string &me
 
 /**
  * @brief The FakeLocationProvider class
- * This class provides periodic reports on the fake location of the device.
+ * This class provides periodic reports on the fake location of the system.
  */
-class FakeLocationProvider
-{
+class FakeLocationProvider {
 public:
     typedef std::function<void(double lat, double lon)> location_callback_t;
 
-    FakeLocationProvider(boost::asio::io_service &io)
-        : timer_(io, boost::posix_time::seconds(1))
-    {}
+    FakeLocationProvider(boost::asio::io_service &io) : timer_(io, boost::posix_time::seconds(1)) {}
 
-    ~FakeLocationProvider()
-    {}
+    ~FakeLocationProvider() {}
 
     void request_location_updates(location_callback_t callback);
 
 private:
-
     void compute_next_location();
 
     boost::asio::deadline_timer timer_;
@@ -349,11 +344,15 @@ private:
 };
 ```
 
-[fake_location_provider.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/follow_me/fake_location_provider.cpp)
+[fake_location_provider.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/follow_me/fake_location_provider.cpp)
 
 ```cpp
-
 #include "fake_location_provider.h"
+#include <chrono> // for seonds()
+#include <thread> // for sleep_for()
+
+using std::this_thread::sleep_for;
+using std::chrono::seconds;
 
 void FakeLocationProvider::request_location_updates(location_callback_t callback)
 {
@@ -370,42 +369,42 @@ void FakeLocationProvider::compute_next_location()
         latitude_deg_ -= LATITUDE_DEG_PER_METER * 4;
         timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
         timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep(1);
+        sleep_for(seconds(1));
     }
     if (count_++ < 20) {
         location_callback_(latitude_deg_, longitude_deg_);
         longitude_deg_ += LONGITUDE_DEG_PER_METER * 4;
         timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
         timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep(1);
+        sleep_for(seconds(1));
     }
     if (count_++ < 30) {
         location_callback_(latitude_deg_, longitude_deg_);
         latitude_deg_ += LATITUDE_DEG_PER_METER * 4;
         timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
         timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep(1);
+        sleep_for(seconds(1));
     }
     if (count_++ < 40) {
         location_callback_(latitude_deg_, longitude_deg_);
         longitude_deg_ -= LONGITUDE_DEG_PER_METER * 4;
         timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
         timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep(1);
+        sleep_for(seconds(1));
     }
     if (count_++ < 50) {
         location_callback_(latitude_deg_, longitude_deg_);
         latitude_deg_ -= LATITUDE_DEG_PER_METER * 3;
         timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
         timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep(1);
+        sleep_for(seconds(1));
     }
     if (count_++ < MAX_LOCATIONS) {
         location_callback_(latitude_deg_, longitude_deg_);
         longitude_deg_ += LONGITUDE_DEG_PER_METER * 3;
         timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
         timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep(1);
+        sleep_for(seconds(1));
     }
 }
 
