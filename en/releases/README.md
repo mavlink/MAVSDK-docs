@@ -1,3 +1,5 @@
 # Releases
 
-> **Warning** DroneCore is still in pre-alpha. No releases have been made.
+> **Warning** The SDK is still in alpha.
+
+SDK releases can be found on [Github here](https://github.com/Dronecode/DronecodeSDK/releases).

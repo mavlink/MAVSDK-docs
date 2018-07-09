@@ -6,9 +6,12 @@ Making quick fixes to existing text or raising issues is very easy. More complic
 
 ## Overview
 
-This guide is written in [markdown](https://toolchain.gitbook.com/syntax/markdown.html) wiki syntax and stored in the Github [dronecore/docs](https://github.com/dronecore/docs) repo. The book is hosted on [Gitbook.com](https://www.gitbook.com/) and is automatically rebuilt whenever the master branch of the repo is updated. You can also rebuild it locally using the [Gitbook toolchain](https://toolchain.gitbook.com/).
+This guide is written in [markdown](https://toolchain.gitbook.com/syntax/markdown.html) wiki syntax and stored in the Github [dronecore/sdk_docs](https://github.com/dronecore/sdk_docs) repo. 
+The book is hosted on [Gitbook.com](https://www.gitbook.com/) and is automatically rebuilt whenever the master branch of the repo is updated. 
+You can also rebuild it locally using the [Gitbook toolchain](https://toolchain.gitbook.com/).
 
-The [API Reference](../api_reference/README.md) section is compiled from source code into markdown using a [separate toolchain](#api-reference) and then copied into Github. Updates to the reference should be made in the [source code repository](https://github.com/dronecore/DroneCore) (see [API Reference](#api-reference) below for more information).
+The [API Reference](../api_reference/README.md) section is compiled from source code into markdown using a [separate toolchain](#api-reference) and then copied into Github. 
+Updates to the reference should be made in the [source code repository](https://github.com/Dronecode/DronecodeSDK) (see [API Reference](#api-reference) below for more information).
 
 The guide is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) - if you make any changes then they will be made available under the same license. 
 
@@ -44,7 +47,7 @@ To raise an issue against the documentation:
 
 ## Making a Big Change
 
-If you want to make more significant changes or additions to the documentation you will need to set up Git and the gitbook toolchain (this allows you to render the documentation and check that links work). 
+If you want to make more significant changes or additions to the documentation you will need to set up *Git* and the *Gitbook* toolchain (this allows you to render the documentation and check that links work). 
 
 For setup information see: [Gitbook toolchain](https://toolchain.gitbook.com/setup.html).
 
@@ -52,8 +55,8 @@ For setup information see: [Gitbook toolchain](https://toolchain.gitbook.com/set
 ## API Reference
 
 The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax. 
-You can extract the documentation to markdown files (one per class) on macOS or Linux using the instructions in [Building DroneCore from Source > Build API Reference Documentation](../contributing/build.md#build_api_reference).
+You can extract the documentation to markdown files (one per class) on macOS or Linux using the instructions in [Building SDK from Source > Build API Reference Documentation](../contributing/build.md#build_api_reference).
 
-In order to include new API reference in the *DroneCore Guide* it must be manually added to the [Github repository](https://github.com/dronecore/docs/):
-* Copy the files into the [docs/en/api_reference](https://github.com/dronecore/docs/tree/{{ book.github_branch }}/en/api_reference) folder
-* *New* APIs should be added to appropriate sections in the [docs/en/SUMMARY.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/SUMMARY.md), [docs/en/api_reference/README.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/api_reference/README.md) and overview [docs/en/README.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/README.md#api-overview).
+In order to include new API reference in the *SDK Documentation* it must be manually added to the [Github repository](https://github.com/dronecore/sdk_docs/):
+- Copy the files into the [docs/en/api_reference](https://github.com/dronecore/sdk_docs/tree/{{ book.github_branch }}/en/api_reference) folder
+- *New* APIs should be added to appropriate sections in the [sdk_docs/en/SUMMARY.md](https://github.com/dronecore/sdk_docs/blob/{{ book.github_branch }}/en/SUMMARY.md), [sdk_docs/en/api_reference/README.md](https://github.com/dronecore/docs/blob/{{ book.github_branch }}/en/api_reference/README.md) and overview [sdk_docs/en/README.md](https://github.com/dronecore/sdk_docs/blob/{{ book.github_branch }}/en/README.md#api-overview).

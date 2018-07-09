@@ -1,7 +1,7 @@
 # Testing
 
-*DroneCore* has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) (`gtest`). 
-The unit tests are run every time new code is committed to DroneCore codelines, and must pass before the code can be merged.
+The SDK has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) (`gtest`). 
+The unit tests are run every time new code is committed to the SDK codelines, and must pass before the code can be merged.
 
 This topic shows how to run the existing tests.
 
@@ -37,7 +37,7 @@ make posix gazebo
 Then press **Ctrl+C** to stop the simulation and run the integration tests:
 
 ```
-cd wherever/DroneCore/
+cd wherever/DronecodeSDK/
 AUTOSTART_SITL=1 make run_integration_tests
 ```
 

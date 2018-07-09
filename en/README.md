@@ -2,7 +2,7 @@
 # Dronecode SDK
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-DroneCore-ff69b4.svg)](http://discuss.px4.io/c/dronecore)  [![jenkins build status](http://ci.px4.io:8080/buildStatus/icon?job=DroneCore/develop)](http://ci.px4.io:8080/blue/organizations/jenkins/DroneCore/activity)
 [![travis-ci build status](https://travis-ci.org/dronecore/DroneCore.svg?branch=develop)](https://travis-ci.org/dronecore/DroneCore)
-[![appveyor build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/julianoes/dronecore/branch/develop)
+[![appveyor build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/julianoes/dronecore/branch/develop) 
 [![Coverage Status](https://coveralls.io/repos/github/dronecore/DroneCore/badge.svg?branch=develop)](https://coveralls.io/github/dronecore/DroneCore?branch=develop)
 
 The *Dronecode SDK* is a [MAVLink](https://mavlink.io/en/) Library for the [PX4 flight stack](http://px4.io), with APIs for C++, Python, Android, and iOS (coming soon). 
@@ -48,27 +48,29 @@ The main features provided by the core API are (in all programing languages):
 * Create and manage missions.
 * Control a camera and gimbal both inside and outside of missions.
 * Send commands to directly control vehicle movement.
+* Send commands to start sensor calibration.
 
 See the [FAQ](getting_started/faq.md) for answers to common questions about the library. 
 
 
 ## API Overview
 
-[DroneCore](/api_reference/classdronecore_1_1_drone_core.md) is the main library class. API consumers use [DroneCore](/api_reference/classdronecore_1_1_drone_core.md) to discover and access vehicles ([System](/api_reference/classdronecore_1_1_system.md) objects), which in turn provide access to all other drone information and control objects (e.g. [Telemetry](/api_reference/classdronecore_1_1_telemetry.md), [Mission](/api_reference/classdronecore_1_1_mission.md) etc.).
+[DronecodeSDK](/api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md) is the main library class. API consumers use [DronecodeSDK](/api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md) to discover and access vehicles ([System](/api_reference/classdronecode__sdk_1_1_system.md) objects), which in turn provide access to all other drone information and control objects (e.g. [Telemetry](/api_reference/classdronecode__sdk_1_1_telemetry.md), [Mission](/api_reference/classdronecode__sdk_1_1_mission.md) etc.).
 
 The most important classes are:
 
-- [DroneCore](/api_reference/classdronecore_1_1_drone_core.md): Discover and connect to vehicles ([System](/api_reference/classdronecore_1_1_system.md)).
-- [System](/api_reference/classdronecore_1_1_system.md): Represents a connected vehicle (e.g. a copter or VTOL drone). It provides access to vehicle information and control through the classes listed below.
-- [Info](/api_reference/classdronecore_1_1_info.md): Basic version information about the hardware and/or software of a system.
-- [Telemetry](/api_reference/classdronecore_1_1_telemetry.md): Get vehicle telemetry and state information ([Battery](/api_reference/structdronecore_1_1_telemetry_1_1_battery.md), [EulerAngle](/api_reference/structdronecore_1_1_telemetry_1_1_euler_angle.md), [GPSInfo](/api_reference/structdronecore_1_1_telemetry_1_1_g_p_s_info.md), [GroundSpeedNED](/api_reference/structdronecore_1_1_telemetry_1_1_ground_speed_n_e_d.md), [Health](/api_reference/structdronecore_1_1_telemetry_1_1_health.md), [Position](/api_reference/structdronecore_1_1_telemetry_1_1_position.md), [Quaternion](/api_reference/structdronecore_1_1_telemetry_1_1_quaternion.md), [RCStatus](/api_reference/structdronecore_1_1_telemetry_1_1_r_c_status.md)) and set telemetry update rates.
-- [Action](/api_reference/classdronecore_1_1_action.md): Simple drone actions including arming, taking off, and landing.
-- [Mission](/api_reference/classdronecore_1_1_mission.md): Waypoint mission creation and upload/download. Missions are created from [MissionItem](/api_reference/classdronecore_1_1_mission_item.md) objects.
-- [Offboard](/api_reference/classdronecore_1_1_offboard.md): Control a drone with velocity commands.
-- [Gimbal](/api_reference/classdronecore_1_1_gimbal.md): Control a gimbal.
-- [Camera](/api_reference/classdronecore_1_1_camera.md): Control a camera.
-- [FollowMe](/api_reference/classdronecore_1_1_follow_me.md): Drone tracks a position supplied by the SDK.
-- [Logging](/api_reference/classdronecore_1_1_logging.md): Data logging and streaming from the vehicle.
+- [DronecodeSDK](/api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md): Discover and connect to vehicles ([System](/api_reference/classdronecode__sdk_1_1_system.md)).
+- [System](/api_reference/classdronecode__sdk_1_1_system.md): Represents a connected vehicle (e.g. a copter or VTOL drone). It provides access to vehicle information and control through the classes listed below.
+- [Info](/api_reference/classdronecode__sdk_1_1_info.md): Basic version information about the hardware and/or software of a system.
+- [Telemetry](/api_reference/classdronecode__sdk_1_1_telemetry.md): Get vehicle telemetry and state information ([Battery](/api_reference/structdronecode__sdk_1_1_telemetry_1_1_battery.md), [EulerAngle](/api_reference/structdronecode__sdk_1_1_telemetry_1_1_euler_angle.md), [GPSInfo](/api_reference/structdronecode__sdk_1_1_telemetry_1_1_g_p_s_info.md), [GroundSpeedNED](/api_reference/structdronecode__sdk_1_1_telemetry_1_1_ground_speed_n_e_d.md), [Health](/api_reference/structdronecode__sdk_1_1_telemetry_1_1_health.md), [Position](/api_reference/structdronecode__sdk_1_1_telemetry_1_1_position.md), [Quaternion](/api_reference/structdronecode__sdk_1_1_telemetry_1_1_quaternion.md), [RCStatus](/api_reference/structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md)) and set telemetry update rates.
+- [Action](/api_reference/classdronecode__sdk_1_1_action.md): Simple drone actions including arming, taking off, and landing.
+- [Mission](/api_reference/classdronecode__sdk_1_1_mission.md): Waypoint mission creation and upload/download. Missions are created from [MissionItem](/api_reference/classdronecode__sdk_1_1_mission_item.md) objects.
+- [Offboard](/api_reference/classdronecode__sdk_1_1_offboard.md): Control a drone with velocity commands.
+- [Gimbal](/api_reference/classdronecode__sdk_1_1_gimbal.md): Control a gimbal.
+- [Camera](/api_reference/classdronecode__sdk_1_1_camera.md): Control a camera.
+- [FollowMe](/api_reference/classdronecode__sdk_1_1_follow_me.md): Drone tracks a position supplied by the SDK.
+- [Calibration](/api_reference/classdronecode__sdk_1_1_calibration.md):  Calibrate sensors (e.g.: gyro, accelerometer, and magnetometer).
+- [Logging](/api_reference/classdronecode__sdk_1_1_logging.md): Data logging and streaming from the vehicle.
 
 
 ## Getting Started
@@ -88,7 +90,7 @@ If you have specific questions that are not answered by the documentation, these
 
 Use Github for bug reports/enhancement requests:
 
-* [C++ API](https://github.com/dronecore/DroneCore/issues)
+* [C++ API](https://github.com/Dronecode/DronecodeSDK/issues)
 * [Documentation](https://github.com/dronecore/sdk_docs/issues)
 <!-- Add info about where Python etc API issues are reported). -->
 
@@ -101,5 +103,5 @@ The [Contributing](contributing/README.md) section contains everything you need 
 
 ## License
 
-* The *Dronecode SDK* is licensed under the permissive [BSD 3-clause](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/LICENSE.md).
+* The *Dronecode SDK* is licensed under the permissive [BSD 3-clause](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/LICENSE.md).
 * This documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.

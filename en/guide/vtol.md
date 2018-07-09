@@ -1,17 +1,17 @@
 # VTOL Support
 
-DroneCore has basic support for VTOL vehicles. 
+The SDK has basic support for VTOL vehicles. 
 
 > **Note** Most design and test effort has gone into multicopter support. 
 > [Get in touch](../README.md#getting-help) if you would like to help enhance the VTOL/Fixed-wing experience! 
 
 ## Supported Functionality
 
-Much of the functionality in DroneCore is generic, and useful on all vehicle types. 
+Much of the functionality in the SDK is generic, and useful on all vehicle types. 
 At time of writing the only *VTOL-specific* functionality are the actions to 
 [transition between fixed wing and copter modes](../guide/taking_off_landing.md#transition_vtol).
 
-DroneCore can command VTOL vehicles to:
+The SDK can be used to command VTOL vehicles to:
 
 - Take off and land in *multicopter* mode.
 - Fly in multicopter mode and transition to fly in fixed wing mode. 
@@ -36,5 +36,5 @@ Additional information/examples are linked below:
 * [Guide: Taking Off and Landing > Transition to fixed wing mode](../guide/taking_off_landing.md#transition_vtol)
 * [Example: VTOL Transitions](../examples/transition_vtol_fixed_wing.md)
 * Integration tests:
-  * [transition_multicopter_fixedwing.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/integration_tests/transition_multicopter_fixedwing.cpp)
+  * [transition_multicopter_fixedwing.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/transition_multicopter_fixedwing.cpp)
 

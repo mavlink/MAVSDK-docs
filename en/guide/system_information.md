@@ -1,6 +1,6 @@
 # System Information
 
-The [Info](../api_reference/classdronecore_1_1_info.md) class is used to get system (vehicle) information, including the UUID (MAVLink `SYS_ID` if no UUID is stored in hardware), PX4 firmware version, vendor firmware version, host OS version (e.g. for NuttX) and vendor and product ids/names. 
+The [Info](../api_reference/classdronecode__sdk_1_1_info.md) class is used to get system (vehicle) information, including the UUID (MAVLink `SYS_ID` if no UUID is stored in hardware), PX4 firmware version, vendor firmware version, host OS version (e.g. for NuttX) and vendor and product ids/names. 
 
 > **Note** Not all version information will necessarily be relevant on all vehicles. Where this occurs the 
 hardware may return garbage values (for example, the simulator provides garbage values for the vendor 
@@ -8,14 +8,14 @@ firmware semantic version).
 
 ## Preconditions
 
-The following code assumes that you already have included DroneCore (`#include <dronecore/dronecore.h>`) and that there is a [connection to a system](../guide/connections.md) obtained as shown below:
+The following code assumes that you already have included `dronecode_sdk.h` (`#include <dronecode_sdk/dronecode_sdk.h>`) and that there is a [connection to a system](../guide/connections.md) obtained as shown below:
 ```cpp
 System &system = dc.system(); 
 ```
 
 The code also assumes that you have defined `info`, a shared pointer to an instance of the `Info` class associated with the system (see [Using Plugins](../guide/using_plugins.md)):
 ```cpp
-#include <dronecore/info.h>
+#include <dronecode_sdk/info.h>
 auto info = std::make_shared<Info>(system);
 ```
 
@@ -59,4 +59,5 @@ std::cout << "  vendor_id: " << systemProduct.vendor_id<< std::endl
           << "  product_name: " << systemProduct.product_id<< std::endl;
 ```
 
-> **Tip** It is possible to query for the information before all values have been retrieved. Note above how we use `Info::is_complete()` to check that the version information (`Info::Version` and `Info::Product`) has all been obtained from the vehicle before printing it.
+> **Tip** It is possible to query for the information before all values have been retrieved. 
+  Note above how we use `Info::is_complete()` to check that the version information (`Info::Version` and `Info::Product`) has all been obtained from the vehicle before printing it.
