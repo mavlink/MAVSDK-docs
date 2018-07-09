@@ -96,7 +96,7 @@ cmake --build .
 You can then run the example, specifying the connection URL as the first argument.
 When running with the Simulator, you will use the connection string: `udp://:14540`
  
-On Linux/macOS you would run the following (from the **\build** directory): 
+On Linux/macOS you would run the following (from the **/build** directory): 
 ```sh
 ./takeoff_and_land udp://:14540
 ```

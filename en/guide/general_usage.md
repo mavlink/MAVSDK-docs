@@ -4,7 +4,9 @@ This topic provides general/overview information about how the *Dronecode SDK* i
 
 ## Object Management
 
-[DronecodeSDK](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md) is the main library class. Applications must create a `DronecodeSDK` object and destroy it during application shut down. The object is usually created as an automatic variable that is cleaned up when it goes out of scope (you can also dynamically create/destroy the object using `new`/`delete`).
+[DronecodeSDK](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md) is the main library class. 
+Applications must create a `DronecodeSDK` object and destroy it during application shut down. 
+The object is usually created as an automatic variable that is cleaned up when it goes out of scope (you can also dynamically create/destroy the object using `new`/`delete`).
 
 API consumers use [DronecodeSDK](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md) to discover and connect to [System](../api_reference/classdronecode__sdk_1_1_system.md) objects (vehicles/cameras etc.). 
 
@@ -37,23 +39,30 @@ SDK applications, which are running in environments where it is possible, can ex
 
 ### Supported Vehicles
 
-The SDK has been designed to manage *aircraft* that use the PX4 autopilot. It has primarily been tested for use with multicopters, but also has basic support for fixed wing and [VTOL](../guide/vtol.md).
+The SDK has been designed to manage *aircraft* that use the PX4 autopilot. 
+It has primarily been tested for use with multicopters, but also has basic support for fixed wing and [VTOL](../guide/vtol.md).
 
-The APIs include methods that do not make sense for other vehicle types - including "takeoff" and "land". While ground vehicles may work, they are not supported and are untested.
+The APIs include methods that do not make sense for other vehicle types - including "takeoff" and "land". 
+While ground vehicles may work, they are not supported and are untested.
+Similarly, other autopilots may well work, but, they are not explicitly supported and are untested.
 
 
 ### Telemetry/Information
 
-The SDK gets and stores vehicle state/telemetry information from received MAVLink messages. The information is supplied to callback subscribers as soon as message updates are received. Clients can also query the API synchronously, and will get the information from the last received message (depending on channel latency, this information will become increasingly "stale" between messages).
+The SDK gets and stores vehicle state/telemetry information from received MAVLink messages. 
+The information is supplied to callback subscribers as soon as message updates are received. 
+Clients can also query the API synchronously, and will get the information from the last received message (depending on channel latency, this information will become increasingly "stale" between messages).
 
-The rate at which update messages are sent by the vehicle can be specified using the API (but will be limited by the bandwidth of the channel). Developers need to use a channel and a message update rate that allows their desired control algorithm to be effective - there is no point trying to use computer vision over an unreliable high-latency link.
+The rate at which update messages are sent by the vehicle can be specified using the API (but will be limited by the bandwidth of the channel). 
+Developers need to use a channel and a message update rate that allows their desired control algorithm to be effective - there is no point trying to use computer vision over an unreliable high-latency link.
 
 `Info` information does not change for a particular vehicle, so will be accurate whenever read.
 
 
 ### Actions/Offboard
 
-`Action` methods (and any other "vehicle instructions") return when the vehicle has confirmed that the message was received and will be acted on (or not). The methods do not wait for the commanded action to complete.
+`Action` methods (and any other "vehicle instructions") return when the vehicle has confirmed that the message was received and will be acted on (or not). 
+The methods do not wait for the commanded action to complete.
 
 So, for example, the [Action::land()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a25490d09fd2905b96de2c2c6e52e5f7b) method returns as soon as the vehicle confirms it will land, but will actually land at some later point. 
 

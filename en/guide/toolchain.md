@@ -23,7 +23,8 @@ The sections below show how you can set up the file for when the SDK is [install
 
 ### SDK Installed System-wide {#sdk_installed_system_wide}
 
-A "template" **CMakeLists.txt** is shown below. Most of file is boilerplate - the main things you need to change are *your_project_name*, *your_executable_name* and *your_source_file*. You should also make sure that any plugins used by your app are listed in the `target_link_libraries` section.
+A "template" **CMakeLists.txt** is shown below. 
+Most of file is boilerplate - the main things you need to change are *your_project_name*, *your_executable_name* and *your_source_file*. You should also make sure that any plugins used by your app are listed in the `target_link_libraries` section.
 
 ```cmake
 cmake_minimum_required(VERSION 2.8.12)
@@ -48,9 +49,9 @@ add_executable(your_executable_name
 
 # Specify your app's executable name and a list of linked libraries
 target_link_libraries(your_executable_name
-    dronecore  #All apps link against dronecore library
-    dronecore_action  # If action plugin used by app ...
-    dronecore_telemetry If telemetry plugin used by app ...
+    dronecode_sdk          #All apps link against dronecode_sdk library
+    dronecode_sdk_action      # If action plugin used by app ...
+    dronecode_sdk_telemetry   #If telemetry plugin used by app ...
     # ... Any other linked libraries
 )
 ```
@@ -94,7 +95,7 @@ add_executable(your_executable_name
 Remove/comment this section (Not using "system wide" SDK)
 ```cmake
 #target_link_libraries(your_executable_name
-#    dronecore  #All apps link against dronecore library
+#    dronecode_sdk  #All apps link against dronecode_sdk library
     # ... any other linked libraries
 #)
 ```
@@ -105,26 +106,26 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/../../install/include
 )
 
-# Specify variable 'dronecore_lib' containing location of DroneCore library.
+# Specify variable 'dronecode_sdk_lib' containing location of DroneCore library.
 if(MSVC)
-    set(dronecore_lib "${CMAKE_SOURCE_DIR}/../../install/lib/dronecore.lib")
+    set(dronecode_sdk_lib "${CMAKE_SOURCE_DIR}/../../install/lib/dronecode_sdk.lib")
 else()
-    set(dronecore_lib "${CMAKE_SOURCE_DIR}/../../install/lib/libdronecore.so")
+    set(dronecode_sdk_lib "${CMAKE_SOURCE_DIR}/../../install/lib/libdronecode_sdk.so")
 endif()
 
 # Specify your app's executable name and a list of linked libraries
 target_link_libraries(your_executable_name
-    # Add  'dronecore_lib' variable defining where the DroneCore library can be found. 
-    ${dronecore_lib}
-    # dronecore # Link against library named dronecore in standard install location
-    # ... any other linked libraries
+    # Add  'dronecode_sdk_lib' variable defining where the SDK library can be found.
+    ${dronecode_sdk_lib}
+    # dronecode_sdk # Link against library named dronecore in standard install location
+    # ... add any other linked libraries
 )
 ```
 
 
 ## Building the App
 
-This section assumes that you have already [built and installed the DroneCore C++ Library](../contributing/build.md) and that your example has a **CMakeLists.txt** in its root directory. 
+This section assumes that you have already [built and installed the SDK C++ Library](../contributing/build.md) and that your example has a **CMakeLists.txt** in its root directory. 
 
 ### Linux/macOS
 

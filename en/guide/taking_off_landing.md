@@ -17,20 +17,21 @@ General instructions are provided in the topic: [Using Plugins](../guide/using_p
 The main steps are:
 
 1. Link the plugin library into your application. 
-   Do this by adding `dronecore_action` to the `target_link_libraries` section of the app's *cmake* build definition file
+   Do this by adding `dronecode_sdk_action` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
-     dronecore
+     dronecode_sdk
      ...
-     dronecore_action
+     dronecode_sdk_action
      ...
    )
+)
    ```
 1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
-   #include <dronecore/dronecore.h>
-   DroneCore dc;
+   #include <dronecode_sdk/dronecode_sdk.h>
+   DronecodeSDK dc;
    ConnectionResult conn_result = dc.add_udp_connection();
    // Wait for the system to connect via heartbeat
    while (!dc.is_connected()) {
@@ -41,7 +42,7 @@ The main steps are:
    ```
 1. Create a shared pointer to an instance of `Action` instantiated with the `system`: 
    ```
-   #include <dronecore/action.h>
+   #include <dronecode_sdk/action.h>
    auto action = std::make_shared<Action>(system);
    ```
 
