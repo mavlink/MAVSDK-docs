@@ -1,8 +1,10 @@
 # Missions
 
-The DroneCore Mission API allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions. Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
+The Mission API (plugin) allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions. 
+Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
-Missions are *managed* though the [Mission](../api_reference/classdronecode__sdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc. The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecode__sdk_1_1_mission_item.md) objects.
+Missions are *managed* though the [Mission](../api_reference/classdronecode__sdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc. 
+The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classdronecode__sdk_1_1_mission_item.md) objects.
 
 
 ## Supported Mission Commands {#supported_mission_commands}
@@ -24,16 +26,18 @@ Additionally, the following commands are supported only for mission import/downl
 * [MAV_CMD_NAV_TAKEOFF](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_TAKEOFF)
 
 > **Tip** The Mission API does not (at time of writing) provide explicit functionality to "repeat", takeoff, return to land etc. 
-> DroneCore provides some omitted functionality through the [Action](../guide/taking_off_landing.md) API.
+> The SDK provides some omitted functionality through the [Action](../guide/taking_off_landing.md) API.
 
 
 ## Create the Plugin
 
-> **Tip** `Mission` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+> **Tip** `Mission` objects are created in the same way as other DroneCore plugins. 
+  General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
 
 The main steps are:
 
-1. Link the plugin library into your application. Do this by adding `dronecore_mission` to the `target_link_libraries` section of the app's *cmake* build definition file
+1. Link the plugin library into your application. 
+   Do this by adding `dronecore_mission` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
@@ -96,20 +100,19 @@ new_item2->set_camera_action(MissionItem::CameraAction::TAKE_PHOTO);
 mission_items.push_back(new_item2);
 ```
 
-> **Note** The autopilot has sensible default values for the attributes. If you do set a value (e.g. the desired speed) 
-then it will be the default for the remainder of the mission.
+> **Note** The autopilot has sensible default values for the attributes. 
+  If you do set a value (e.g. the desired speed) then it will be the default for the remainder of the mission.
 
 <span></span>
 > **Note** There are also getter methods for querying the current value of `MissionItem` attributes. 
-The default values of most fields are `NaN` (which means they are ignored/not sent).
+  The default values of most fields are `NaN` (which means they are ignored/not sent).
 
 The mission (`mission_items`) can then be uploaded as shown in the section [Uploading a Mission](#uploading_mission) below.
 
 ### Convenience Function
 
 The [Fly Mission](../examples/fly_mission.md) uses a convenience function to create `MissionItem` objects. 
-Using this approach you have to specify every attribute for every mission item, whether or not the 
-value is actually used.
+Using this approach you have to specify every attribute for every mission item, whether or not the value is actually used.
 
 The definition and use of this function is shown below:
 
@@ -144,7 +147,7 @@ mission_items.push_back(
 
 ## Import a Mission from a QGC Plan {#import_qgc_plan}
 
-DroneCore allows you to import a mission from a *QGroundControl* plan (the imported mission can then be uploaded to a vehicle).
+`Mission` allows you to import a mission from a *QGroundControl* plan (the imported mission can then be uploaded to a vehicle).
 
 > **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#sync) (**Plan View > Sync Tool**, and then select **Save to File**).
 
@@ -212,7 +215,8 @@ The code fragment below shows how this is done, using promises to wait on the re
 }
 ```
 
-To pause a mission use [Mission::pause_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a65f729cf954586507ecd8dc07a510dd1). The code is almost exactly the same as for starting a mission:
+To pause a mission use [Mission::pause_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a65f729cf954586507ecd8dc07a510dd1). 
+The code is almost exactly the same as for starting a mission:
 
 ```cpp
 {
@@ -236,7 +240,8 @@ To pause a mission use [Mission::pause_mission_async()](../api_reference/classdr
 
 ## Monitoring Progress
 
-Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a3290fc79eb22f899528328adfca48a61), which receives a regular callback with the current `MissionItem` number and the total number of items.
+Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a3290fc79eb22f899528328adfca48a61), 
+which receives a regular callback with the current `MissionItem` number and the total number of items.
 
 The code fragment just takes a lambda function that reports the current status. 
 
@@ -258,15 +263,18 @@ The following synchronous methods are also available for checking mission progre
 
 ## Taking Off, Landing, Returning
 
-If using a copter or VTOL vehicle then PX4 will automatically takeoff when it is armed and a mission is started (even without a takeoff mission item). For Fixed Wing vehicles the vehicle must be launched before starting a mission.
+If using a copter or VTOL vehicle then PX4 will automatically takeoff when it is armed and a mission is started (even without a takeoff mission item). 
+For Fixed Wing vehicles the vehicle must be launched before starting a mission.
 
-At time of writing the Mission API does not provide takeoff, land or "return to launch" `MissionItems`. If required you can instead use the appropriate commands in the [Action](../guide/taking_off_landing.md) class.
+At time of writing the Mission API does not provide takeoff, land or "return to launch" `MissionItems`. 
+If required you can instead use the appropriate commands in the [Action](../guide/taking_off_landing.md) class.
 
 <!-- Update if we get new mission items -->
 
 ## Downloading Missions
 
-Use [Mission::download_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) to download a mission from the vehicle. The mission is downloaded as a vector of [MissionItem](../api_reference/classdronecode__sdk_1_1_mission_item.md) objects, that you can then view or manipulate as required.
+Use [Mission::download_mission_async()](../api_reference/classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) to download a mission from the vehicle. 
+The mission is downloaded as a vector of [MissionItem](../api_reference/classdronecode__sdk_1_1_mission_item.md) objects, that you can then view or manipulate as required.
 
 > **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands). 
 > Missions created using *QGroundControl* are not guaranteed to successfully download! 

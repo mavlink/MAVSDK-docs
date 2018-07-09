@@ -1,11 +1,12 @@
-# Building DroneCore from Source
+# Building SDK from Source
 
-This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the DroneCore C++ library from source (both "natively" and in docker) for all our target platforms. It also shows how to build DroneCore with extensions and build the API Reference documentation. 
+This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the *Dronecode SDK* C++ library from source (both "natively" and in docker) for all our target platforms. 
+It also shows how to build the SDK with extensions and build the API Reference documentation. 
 
 
 ## Build the C++ Library {#build_sdk_cpp}
 
-This section explains how to build the DroneCore C++ library from source, 
+This section explains how to build the SDK C++ library from source, 
 along with its unit and integration tests. 
 Build artifacts are created in the **build** subdirectory.
 
@@ -124,11 +125,11 @@ To build the *Dronecode SDK* C++ Library on Windows:
 
 *Installing* builds the SDK **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). The SDK supports installation system-wide by default. You can also install files locally/relative to the DroneCore tree if needed.
 
-> **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)) so you will need to [install DroneCore locally](#dronecore_local_install).
+> **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/dronecore/DroneCore/issues/155)) so you will need to [install DroneCore locally](#sdk_local_install).
 >
 > Windows gurus, we'd [love your help](../README.md#getting-help) to implement this).
 
-### System-wide Install {#dronecore_system_wide_install}
+### System-wide Install {#sdk_system_wide_install}
 
 System-wide installation copies the SDK headers and binaries to the standard system-wide locations for your platform (On Ubuntu Linux this is **/usr/local/**).
 
@@ -149,7 +150,7 @@ sudo ldconfig  # update linker cache
   On Ubuntu this is done with `sudo ldconfig`, as shown above.
 
 
-### Local Install {#dronecore_local_install}
+### Local Install {#sdk_local_install}
 
 Local installation copies the SDK headers/library to a user-specified location inside the SDK source directory.
 
@@ -278,7 +279,7 @@ The approach above downloads a container image based on Ubuntu 16.04 ([dronecore
 
 You can also build the images yourself using the files in [Dronecode SDK/docker](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/docker). The image can be used in the same way as the one from Docker Hub.
 
-1. Open a command prompt/terminal in the root of the DroneCore repository.
+1. Open a command prompt/terminal in the root of the SDK source repository.
 1. Build the images as shown:
    * Fedora 
      ```sh
@@ -294,7 +295,7 @@ You can also build the images yourself using the files in [Dronecode SDK/docker]
    docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:rw my_image bash
    ```
 
-## Build SDK Extensions {#dronecore_extensions}
+## Build SDK Extensions {#sdk_extensions}
 
 The *Dronecode SDK* can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the SDK at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
 

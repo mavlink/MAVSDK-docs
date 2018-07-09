@@ -1,6 +1,6 @@
 # Example: Fly Mission
 
-The [Fly Mission](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/fly_mission) example shows how to create, upload, and run, pause, and restart missions using DroneCore.
+The [Fly Mission](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/fly_mission) example shows how to create, upload, and run, pause, and restart missions using the SDK.
 
 ![Fly Mission QGC Screenshot](../../assets/examples/fly_mission/fly_mission_example_qgc.jpg)
 
@@ -11,7 +11,8 @@ The example is built and run in the normal way ([as described here](../examples/
 
 The example terminal output should be similar to that shown below:
 
-> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
+> **Note** This is from a debug build of the SDK. 
+  A release build will omit the "Debug" messages.
 
 ```
 $ ./fly_mission udp://:14540

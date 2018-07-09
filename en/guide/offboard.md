@@ -1,20 +1,24 @@
 # Offboard Control
 
-The [Offboard](../api_reference/classdronecode__sdk_1_1_offboard.md) module provides a simple API 
-for controlling the vehicle using velocity and yaw setpoints. It is useful for tasks requiring direct control from a companion computer; for example to implement collision avoidance.
+The [Offboard](../api_reference/classdronecode__sdk_1_1_offboard.md) SDK plugin provides a simple API for controlling the vehicle using velocity and yaw setpoints. 
+It is useful for tasks requiring direct control from a companion computer; for example to implement collision avoidance.
 
 > **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/en/flight_modes/offboard.html). The class can only be used with copter and VTOL vehicles (not fixed wing - a PX4 limitation) and currently only supports *velocity setpoint commands* (PX4 additionally supports position and thrust setpoints). 
 
-Client code must specify a setpoint before starting *Offboard mode*. DroneCore automatically resends setpoints at 20Hz (PX4 requires that setpoints are minimally resent at 2Hz). If more precise control is required, clients can call the setpoint methods at whatever rate is required.
+Client code must specify a setpoint before starting *Offboard mode*. 
+The Offboard plugin automatically resends setpoints at 20Hz (PX4 requires that setpoints are minimally resent at 2Hz). 
+If more precise control is required, clients can call the setpoint methods at whatever rate is required.
 
 
 ## Create the Plugin
 
-> **Tip** `Offboard` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+> **Tip** `Offboard` objects are created in the same way as other SDK plugins. 
+  General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
 
 The main steps are:
 
-1. Link the plugin library into your application. Do this by adding `dronecore_offboard` to the `target_link_libraries` section of the app's *cmake* build definition file
+1. Link the plugin library into your application. 
+   Do this by adding `dronecore_offboard` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
@@ -68,8 +72,7 @@ Above we use the synchronous API, and then use [Offboard::result_str()](../api_r
 You can change the setpoints as needed (new setpoints replace any old setpoints).
 
 To stop offboard mode call [Offboard::stop()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1ae223c08f1ffc694b26d847cab7738406) or [stop_async()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a). 
-DroneCore will then clear the current setpoint and put the vehicle into 
-[Hold flight mode](https://docs.px4.io/en/flight_modes/hold.html). 
+The SDK will then clear the current setpoint and put the vehicle into [Hold flight mode](https://docs.px4.io/en/flight_modes/hold.html). 
 The synchronous API is used as shown below:
 
 ```cpp
@@ -97,8 +100,8 @@ The following sections provide some common usage examples.
 
 The `set_velocity_ned()` can be used to move towards any particular compass direction - e.g. North, West, South-East, etc. 
 
-Calling `set_velocity_ned()` using an initialiser list type declaration for the [VelocityNEDYaw](../api_reference/structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) argument, the first three values are the 
-velocity components in North, East, and Down directions (in metres/second). 
+Calling `set_velocity_ned()` using an initialiser list type declaration for the [VelocityNEDYaw](../api_reference/structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) argument, 
+the first three values are the velocity components in North, East, and Down directions (in metres/second). 
 
 Examples:
 
@@ -114,7 +117,8 @@ Examples:
 
 ### Go Up or Down
 
-Both co-ordinate systems use the same definition for "down", and both methods take an argument where the third value is used to specify the velocity component in this direction. The following examples show how you set the velocity component down (positive) or up (negative) using the two methods:
+Both co-ordinate systems use the same definition for "down", and both methods take an argument where the third value is used to specify the velocity component in this direction. 
+The following examples show how you set the velocity component down (positive) or up (negative) using the two methods:
 
 Examples:
 
@@ -147,11 +151,11 @@ Examples:
   ```
 
 It is not possible to control the rate or direction that the vehicle will use to turn towards the setpoint direction (it will turn in whatever direction reaches the setpoint fastest).
-  
+
 
 ### Turn/Yaw Vehicle in specified Direction/at Rate
 
-The `set_velocity_body()` can be used to rotate the vehicle at a specific rate and in a specified direction. 
+The `set_velocity_body()` can be used to rotate the vehicle at a specific rate and in a specified direction.
 This is set in [VelocityBodyYawspeed::yawspeed_deg_s](../api_reference/structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md#structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed_1a6858130475964eb2d5c5a4236b7f1e31), as the angular rate in degrees/second. If viewed from above, the vehicle will turn clockwise if the value is positive and anticlockwise if it is negative. 
 
 Calling `set_velocity_body()` using an initialiser list type declaration the final (fourth) value is the yaw rate/direction.
@@ -169,7 +173,8 @@ Examples:
   
 ### Fly Forwards 
 
-Use `set_velocity_body()` to set the velocity components relative to the body frame. To fly forwards, simply set the first parameter (`Offboard::VelocityBodyYawspeed::forward_m_s`) when the vehicle is not rotating.
+Use `set_velocity_body()` to set the velocity components relative to the body frame.
+To fly forwards, simply set the first parameter (`Offboard::VelocityBodyYawspeed::forward_m_s`) when the vehicle is not rotating.
 
 ```cpp
 offboard->set_velocity_body({5.0f, 0.0f, 0.0f, 0.0f});
@@ -177,7 +182,8 @@ offboard->set_velocity_body({5.0f, 0.0f, 0.0f, 0.0f});
 
 ### Fly a Circle
     
-To fly a circle, use `set_velocity_body()` with both forward and rotational components. This will force the vehicle to travel in a curved path.
+To fly a circle, use `set_velocity_body()` with both forward and rotational components.
+This will force the vehicle to travel in a curved path.
 
 ```cpp
 offboard->set_velocity_body({5.0f, 0.0f, 0.0f, 30.0f});
@@ -192,22 +198,22 @@ offboard->set_velocity_body({0.0f, -5.0f, 0.0f, -30.0f});
 
 ## Position/Thrust Setpoints
 
-DroneCore does not support position or thrust setpoints (at time of writing).
+The SDK does not support position or thrust setpoints (at time of writing).
 
 
 ## Waiting on Setpoints
 
 The vehicle will obey the last setpoint called (when you call a setpoint the last one is cleared). 
-The DroneCore examples use timers to separate commands (e.g. `sleep_for(seconds(8))`) but in a
-real-world use case you might use telemetry or sensors to control when the setpoint is changed.
+The SDK examples use timers to separate commands (e.g. `sleep_for(seconds(8))`) but in a real-world use case you might use telemetry or sensors to control when the setpoint is changed.
 
 
 ## Monitoring Offboard Mode
 
 The vehicle may change out of offboard mode outside the control of your application (for example if a GCS were to put the vehicle into *Hold mode*).
-In this case, DroneCore will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a44d9284ef03c8cf6f37a77b2f3cadaf0) will change from `true` to `false`.
+In this case, the SDK will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a44d9284ef03c8cf6f37a77b2f3cadaf0) will change from `true` to `false`.
 
-Calls to change the setpoint do not return an error! Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)).
+Calls to change the setpoint do not return an error! 
+Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)).
 
 
 ## Further Information

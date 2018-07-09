@@ -9,7 +9,8 @@ The [Fly QGroundControl Plan Mission](https://github.com/dronecore/DroneCore/tre
 
 The example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
-> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). Alternatively you can specify the plan to load when you start the example:
+> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). 
+  Alternatively you can specify the plan to load when you start the example:
   ```
   ./fly_qgc_mission <path of QGC Mission plan>
   ```
@@ -17,7 +18,8 @@ The example is built and run in the normal way ([as described here](../examples/
 
 The example terminal output should be similar to that shown below:
 
-> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
+> **Note** This is from a debug build of the SDK. 
+  A release build will omit the "Debug" messages.
 
 ```
 $ ./fly_qgc_mission udp://:14540

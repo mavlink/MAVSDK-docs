@@ -1,19 +1,22 @@
 # Writing Plugins
 
-DroneCore is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/core) and multiple independent [plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). 
+The *Dronecode SDK* is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/core) and multiple independent [plugins](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins). 
 
-Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. The [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
+Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. 
+The [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
 
 > **Note** Plugins can also be defined in [SDK Extensions](../guide/sdk_extensions.md). 
-> These are defined and tested in exactly the same way as "standard" DroneCore plugins. 
+> These are defined and tested in exactly the same way as "standard" SDK plugins. 
 
 ## Plugin Architecture
 
-Plugins should be written so that they are independent of each other (they will still need to be dependent on the core source). This allows plugins to be removed/replaced as needed at the cost of some duplicated functionality across the plugin modules.
+Plugins should be written so that they are independent of each other (they will still need to be dependent on the core source). 
+This allows plugins to be removed/replaced as needed at the cost of some duplicated functionality across the plugin modules.
 
-The code for each plugin (and its unit test if one has been defined) is stored in a sub-folder of the **plugins** directory. Integration tests for all plugins in the library are stored in **integration_tests**.
+The code for each plugin (and its unit test if one has been defined) is stored in a sub-folder of the **plugins** directory. 
+Integration tests for all plugins in the library are stored in **integration_tests**.
 
-A simplified view of the folder structure is shown below (showing relevant directories for both DroneCore and a DroneCore Extension): 
+A simplified view of the folder structure is shown below (showing relevant directories for both the SDK and [SDK Extensions](../guide/sdk_extensions.md)): 
 
 ```
 ├── DroneCore
@@ -23,7 +26,7 @@ A simplified view of the folder structure is shown below (showing relevant direc
 │       ├── action
 │       ├── ...
 │       └── telemetry
-├── DroneCore_Extensions
+├── SDK_Extensions
 │   ├── integration_tests
 │   └── plugins
 │       ├── camera
@@ -46,7 +49,7 @@ Each plugin must have the same files/structure, as shown for the "example" plugi
 ## Create a Plugin
 
 To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins) (e.g. 
-[Action](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/action), 
+[Action](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/action),
 [Telemetry](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/telemetry), etc.) or the [example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
 
 Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/plugins/example/CMakeLists.txt) as appropriate:
@@ -75,7 +78,8 @@ All plugins should derive their implementation from `PluginImplBase` (**core/plu
 
 ### Plugin Enable/Disable
 
-DroneCore provides virtual methods that a plugin should implement allow DroneCore to better manage resources. For example, to prevent callback being created before the `System` is instantiated, or messages being sent when a vehicle is not connected.
+The SDK provides virtual methods that a plugin should implement to allow the core to better manage resources. 
+For example, to prevent callback being created before the `System` is instantiated, or messages being sent when a vehicle is not connected.
 
 Plugin authors should provide an implementation of the following `PluginImplBase` pure virtual methods:
 * [init()](#init)/[deinit()](#deinit): These are called when a system is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `System` instantiated. This includes calls that set up callbacks.
@@ -91,15 +95,16 @@ Additional detail is provided for methods below.
 virtual void init() = 0
 ```
 
-The `init()` method is called when a plugin is instantiated. This happens when a `System` is constructed (this does not mean that the system actually exists and is connected - it might just be an empty dummy system).
+The `init()` method is called when a plugin is instantiated. 
+This happens when a `System` is constructed (this does not mean that the system actually exists and is connected - it might just be an empty dummy system).
 
-Plugins should do initialization steps with other parts of DroneCore at this state, e.g. set up callbacks with `_parent` (`DeviceImpl`).
+Plugins should do initialization steps with other parts of the SDK at this state, e.g. set up callbacks with `_parent` (`DeviceImpl`).
 
 ##### deinit() {#deinit}
 ```cpp
 virtual void deinit() = 0
 ```
-The `deinit()` method is called before a plugin is destroyed. This usually happens only at the very end, when a DroneCore instance is destroyed.
+The `deinit()` method is called before a plugin is destroyed. This usually happens only at the very end, when a `Dronecode SDK` instance is destroyed.
 
 Plugins should cleanup anything that was set up during `init()`.
 
@@ -107,7 +112,9 @@ Plugins should cleanup anything that was set up during `init()`.
 ```cpp
 virtual void enable() = 0
 ```
-The `enable()` method is called when a system is discovered (connected). Plugins should do all initialization/configuration steps that require a system to be connected. For example, setting/getting parameters.
+The `enable()` method is called when a system is discovered (connected). 
+Plugins should do all initialization/configuration steps that require a system to be connected. 
+For example, setting/getting parameters.
 
 If any threads, call_every or timeouts are needed, they can be started in this method.
 
@@ -115,7 +122,8 @@ If any threads, call_every or timeouts are needed, they can be started in this m
 ```cpp
 virtual void disable() = 0
 ```
-The `disable()` method is called when a system has timed out. The method is also called before `deinit()` is called to stop any systems with active plugins from communicating (in order to prevent warnings and errors because communication to the system no longer works).
+The `disable()` method is called when a system has timed out. 
+The method is also called before `deinit()` is called to stop any systems with active plugins from communicating (in order to prevent warnings and errors because communication to the system no longer works).
 
 If any threads, call_every, or timeouts are running, they should be stopped in this method.
 
@@ -128,13 +136,13 @@ The tests should be exhaustive, and cover all aspects of using the plugin API.
 The [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)
 provides an excellent overview of how tests are written and used.
 
-> **Note** Testing is the same for plugins that are part of DroneCore and part of 
-[SDK Extensions](../guide/sdk_extensions.md).
+> **Note** Testing is the same for plugins in SDK and the [SDK Extensions](../guide/sdk_extensions.md).
 
 
 ### Writing Unit Tests
 
-Most of the existing plugins do not have unit tests, because we do not yet have the ability to [mock MAVLink communications](https://github.com/dronecore/DroneCore/issues/148) (needed to test most plugins). 
+Most of the existing plugins do not have unit tests, 
+because we do not yet have the ability to [mock MAVLink communications](https://github.com/dronecore/DroneCore/issues/148) (needed to test most plugins). 
 Unit tests are therefore considered optional!
 
 > **Tip** Comprehensive integration tests should be written instead, with the simulator providing appropriate MAVLink messages.
@@ -145,7 +153,7 @@ Unit test files are stored in the same directory as their associated source code
 Often they test the implementation (rather than the public API), 
 and hence are named with the suffix **_impl_test.cpp**.
 
-In order to include a test in the DroneCore unit test program (`unit_tests_runner`), 
+In order to include a test in the SDK unit test program (`unit_tests_runner`), 
 it must be added to the `UNIT_TEST_SOURCES` variable in the plugin **CMakeLists.txt** file.
 
 For example, to add the **example_impl_test.cpp** unit test you would 
@@ -161,8 +169,9 @@ set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)
 
 #### Unit Test Code
 
-Unit tests typically include the file to be tested, **dronecore.h**, and **gtest.h**. There are no standard shared test unit resources so 
-test functions are declared using `TEST`. All tests in a file should share the same test-case name (the first argument to `TEST`).
+Unit tests typically include the file to be tested, **dronecore.h**, and **gtest.h**. 
+There are no standard shared test unit resources so test functions are declared using `TEST`. 
+All tests in a file should share the same test-case name (the first argument to `TEST`).
 
 The skeleton [example plugin unit test](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/plugins/example/example_impl_test.cpp) is shown below: 
 ```cpp
@@ -185,8 +194,7 @@ TEST(ExampleImpl, NoTest)
 
 ### Writing Integration Tests {#integration_tests}
 
-DroneCore provides the `integration_tests_runner` application for running the integration tests and 
-some helper code to make it easier to log tests and run them against the simulator.
+The SDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
 
 > **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
 > and the [integration_tests](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/integration_tests) 
@@ -237,12 +245,11 @@ add_executable(external_example_integration_tests_runner
 
 #### Integration Test Files/Code
 
-The main DroneCore-specific functionality is provided by [integration_test_helper.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/integration_test_helper.h). 
-This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md) 
-and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
+The main SDK-specific functionality is provided by [integration_test_helper.h](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/core/integration_test_helper.h). 
+This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
-> **Note** All tests must be declared using `TEST_F` and have a first argument `SitlTest` as shown. This is required
-> in order to use the shared class to set up and tear down the simulator between tests.
+> **Note** All tests must be declared using `TEST_F` and have a first argument `SitlTest` as shown. 
+  This is required in order to use the shared class to set up and tear down the simulator between tests.
 
 The example integration test [hello_world.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/integration_tests/hello_world.cpp) demonstrates this below. 
 
@@ -281,11 +288,9 @@ TEST_F(SitlTest, ExampleHello)
 > Do not write example code until the plugin has been accepted!
 
 A simple example should be written that demonstrates basic usage of its API by 3rd parties. 
-The example need not cover all functionality, but should demonstrate enough that developers 
-can see how it is used and how the example might be extended.
+The example need not cover all functionality, but should demonstrate enough that developers can see how it is used and how the example might be extended.
 
-Where possible examples should demonstrate realistic use cases such that the code
-can usefully be copied and reused by external developers.
+Where possible examples should demonstrate realistic use cases such that the code can usefully be copied and reused by external developers.
 
 
 ## Documentation

@@ -29,9 +29,9 @@ A simplified view of a "typical" extension directory is shown below (in this cas
 │       └── etc.
 ```
 
-## Create a DroneCore Extension Library
+## Create an SDK Extension Library
 
-To create a new C++ Dronecode SDK Extension Library, first copy [DroneCore/external_example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) to the same folder level as the DroneCore directory.
+To create a new C++ *Dronecode SDK* Extension Library, first copy [DroneCore/external_example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example) to the same folder level as the DroneCore directory.
 Then rename the top level folder as desired.
 
 The *external_example* contains a single integration test (**hello_world.cpp**) and a single plugin (**/example**) 
@@ -58,8 +58,7 @@ Plugins in extension libraries are exactly the same as "normal" SDK plugins
 
 [Writing Plugins](../contributing/plugins.md) explains how to write or modify plugins.
 
-> **Tip** To create a new plugin you can either copy and modify an existing DroneCore plugin
-> or start from the example plugin shown above.
+> **Tip** To create a new plugin you can either copy and modify an existing SDK plugin or start from the example plugin shown above.
 
 
 ## Testing
@@ -75,8 +74,8 @@ The test runner for the "external example" is defined in
 
 ## Building 
 
-To build the *Dronecode SDK* so that it includes the extension library, specify the top level directory `EXTERNAL_DIR` in the `make` command 
-(only one external directory can be specified). 
+To build the *Dronecode SDK* so that it includes the extension library, 
+specify the top level directory `EXTERNAL_DIR` in the `make` command (only one external directory can be specified). 
 
 To build and install a parallel folder named *SDK_Extensions* (from within the DroneCore directory) you would enter:
 

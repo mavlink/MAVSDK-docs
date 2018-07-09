@@ -5,7 +5,9 @@ It shows how to send the drone both the current position of the target (`FollowM
 
 ![Follow Me QGC Screenshot](../../assets/examples/follow_me/follow_me_example_qgc.jpg)
 
-> **Note** A real application using this API will get the position information from the underlying operating system. The example uses a fake position source (`FakeLocationProvider`) to enable it to be run on computers that do not have position information. The `FakeLocationProvider` emulates the typical usage of common positioning APIs used in Android, Linux and iPhone.
+> **Note** A real application using this API will get the position information from the underlying operating system. 
+  The example uses a fake position source (`FakeLocationProvider`) to enable it to be run on computers that do not have position information. 
+  The `FakeLocationProvider` emulates the typical usage of common positioning APIs used in Android, Linux and iPhone.
 
 
 ## Running the Example {#run_example}
@@ -16,13 +18,15 @@ Special notes for this example:
   ```sh
   sudo apt-get install libboost-all-dev
   ```
-* To use *QGroundControl* with this example you **must** ensure that *GSC Position Streaming* is disabled (otherwise QGC and DroneCore will both send position updates and they will conflict). To do this use the latest *QGC Daily Build* and ensure that the **[Application Setting > General](https://docs.qgroundcontrol.com/en/SettingsView/General.html) > Miscellaneous > Stream GCS Position** is set to *Never*.
+* To use *QGroundControl* with this example you **must** ensure that *GSC Position Streaming* is disabled (otherwise QGC and the SDK will both send position updates and they will conflict). 
+  To do this use the latest *QGC Daily Build* and ensure that the **[Application Setting > General](https://docs.qgroundcontrol.com/en/SettingsView/General.html) > Miscellaneous > Stream GCS Position** is set to *Never*.
 
 Otherwise the example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
 The example terminal output should be similar to that shown below:
 
-> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
+> **Note** This is from a debug build of the SDK. 
+  A release build will omit the "Debug" messages.
 
 ``` 
 $ ./follow_me udp://:14540
@@ -72,7 +76,7 @@ Landed...
 The example registers with `FakeLocationProvider` for location updates. 
 These are passed to the Follow Me plugin, which in turn sends them to the vehicle. 
 
-The operation of the "DroneCore" part of this code is discussed in the guide: [Follow Me](../guide/follow_me.md).
+The operation of the "SDK-specific" part of this code is discussed in the guide: [Follow Me](../guide/follow_me.md).
 
 
 ## Source code {#source_code}

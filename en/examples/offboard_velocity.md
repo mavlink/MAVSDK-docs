@@ -11,7 +11,8 @@ The example is built and run [as described here](../examples/README.md#trying_th
 
 The example terminal output should be similar to that shown below:
 
-> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
+> **Note** This is from a debug build of the SDK. 
+  A release build will omit the "Debug" messages.
 
 ```
 $ ./offboard udp://:14540

@@ -1,8 +1,9 @@
 # Telemetry
 
-The [Telemetry](../api_reference/classdronecode__sdk_1_1_telemetry.md) class provides simple methods for getting vehicle telemetry, including state and flight mode information.
+The [Telemetry](../api_reference/classdronecode__sdk_1_1_telemetry.md) class is used to get vehicle telemetry, including state and flight mode information.
 
-All the methods have both synchronous and asynchronous versions, and users can set the rate at which the vehicle provides updates for each type of information. All the methods of a particular type (synchronous, asynchronous, and set_rate methods) are used in the same way.
+All the methods have both synchronous and asynchronous versions, and users can set the rate at which the vehicle provides updates for each type of information. 
+All the methods of a particular type (synchronous, asynchronous, and set_rate methods) are used in the same way.
 
 
 ## API Overview
@@ -26,11 +27,13 @@ In addition there are a number of methods that return vehicle "state":
 
 ## Create the Plugin
 
-> **Tip** `Telemetry` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+> **Tip** `Telemetry` objects are created in the same way as objects in other SDK plugins. 
+General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
 
 The main steps are:
 
-1. Link the plugin library into your application. Do this by adding `dronecore_telemetry` to the `target_link_libraries` section of the app's *cmake* build definition file
+1. Link the plugin library into your application. 
+   Do this by adding `dronecore_telemetry` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
@@ -178,7 +181,8 @@ Similarly, you can use the asynchronous method and block
 }
 ```
 
-Depending on the architecture of your application, you may even wish to arm the vehicle in your callback function. Usually though it is easier to understand program flow using the approach above.
+Depending on the architecture of your application, you may even wish to arm the vehicle in your callback function. 
+Usually though it is easier to understand program flow using the approach above.
 
 
 ## Further Information

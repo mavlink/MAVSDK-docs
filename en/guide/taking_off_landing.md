@@ -1,20 +1,23 @@
 # Actions (Take-off, Landing, Arming, etc)
 
-DroneCore provides the [Action](../api_reference/classdronecode__sdk_1_1_action.md) class for commanding the vehicle to arm, takeoff, land, return home and land, disarm, kill and transition between VTOL modes. 
+The [Action](../api_reference/classdronecode__sdk_1_1_action.md) class is used for commanding the vehicle to arm, takeoff, land, return home and land, disarm, kill and transition between VTOL modes. 
 
-Most of the methods have both synchronous and asynchronous versions. The methods send commands to a vehicle, and return/complete with the vehicle's response. It is important to understand that a successful response indicates whether or not the vehicle intends to act on the command, not that it has finished the action (e.g. arming, landing, taking off etc.).
+Most of the methods have both synchronous and asynchronous versions. 
+The methods send commands to a vehicle, and return/complete with the vehicle's response. 
+It is important to understand that a successful response indicates whether or not the vehicle intends to act on the command, not that it has finished the action (e.g. arming, landing, taking off etc.).
 
 > **Note** The implication is that you may need to monitor for completion of actions!
 
 
-
 ## Create the Plugin
 
-> **Tip** `Action` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+> **Tip** `Action` objects are created in the same way as for other SDK plugins. 
+General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
 
 The main steps are:
 
-1. Link the plugin library into your application. Do this by adding `dronecore_action` to the `target_link_libraries` section of the app's *cmake* build definition file
+1. Link the plugin library into your application. 
+   Do this by adding `dronecore_action` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
@@ -49,9 +52,9 @@ The `action` pointer can then used to access the plugin API (as shown in the fol
 
 ## Taking Off
 
-The recommended way to take off using DroneCore (and PX4) is to use either of the [takeoff()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a1d6244edfd39272d97bf8b126eb98629) or [takeoff_async()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a2aec10a2b14f5e82f05edc6e2feac83e) methods. If a takeoff command is accepted the vehicle will change to the [Takeoff mode](https://docs.px4.io/en/flight_modes/takeoff.html), fly to the takeoff altitude, and then hover (in takeoff mode) until another instruction is received. 
+The recommended way to take off using the SDK (and PX4) is to use either of the [takeoff()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a1d6244edfd39272d97bf8b126eb98629) or [takeoff_async()](../api_reference/classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a2aec10a2b14f5e82f05edc6e2feac83e) methods. If a takeoff command is accepted the vehicle will change to the [Takeoff mode](https://docs.px4.io/en/flight_modes/takeoff.html), fly to the takeoff altitude, and then hover (in takeoff mode) until another instruction is received. 
 
-> **Note** PX4/DroneCore also provides other ways to take off:
+> **Note** PX4/SDK also provides other ways to take off:
 > - A copter or VTOL will take off automatically if a mission is started (fixed-wing will not). 
 > - You can also take off by manually driving the vehicle using the offboard API. 
 

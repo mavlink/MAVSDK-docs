@@ -1,17 +1,19 @@
 # Example: VTOL Transitions
 
-This example shows how you can use DroneCore to transition between VTOL copter and fixed-wing modes (and back).
+This example shows how you can use the SDK [Action](../api_reference/classdronecode__sdk_1_1_action.md) class to transition between VTOL copter and fixed-wing modes (and back).
 
 ![VTOL Transition QGC Screenshot](../../assets/examples/transition_vtol_fixed_wing/transition_vtol_fixed_wing_example_qgc.png)
 
 
 ## Running the Example {#run_example}
 
-The example must be run against a VTOL aircraft (simulated or otherwise). Otherwise the example is built and run [in the standard way](../examples/README.md#trying_the_examples).
+The example must be run against a VTOL aircraft (simulated or otherwise). 
+Otherwise the example is built and run [in the standard way](../examples/README.md#trying_the_examples).
 
-> **Tip** Instructions for running the Gazebo simulator for a standard VTOL can be found here: [PX4 Development Guide > Gazebo Simulation](https://dev.px4.io/en/simulation/gazebo.html#standard-vtol). jMAVSim does not support VTOL simulation.
+> **Tip** Instructions for running the Gazebo simulator for a standard VTOL can be found here: [PX4 Development Guide > Gazebo Simulation](https://dev.px4.io/en/simulation/gazebo.html#standard-vtol). 
+  jMAVSim does not support VTOL simulation.
 
-The example terminal output for a debug build of DroneCore should be similar to that shown below (a release build will omit the "Debug" messages):
+The example terminal output for a debug build of the SDK should be similar to that shown below (a release build will omit the "Debug" messages):
 
 ```
 $ ./transition_vtol_fixed_wing udp://:14540

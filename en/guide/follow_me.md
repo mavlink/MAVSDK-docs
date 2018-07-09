@@ -7,17 +7,19 @@ The API is used to supply the position(s) for the [target](../api_reference/stru
 - Apple: [Core Location Framework](https://developer.apple.com/documentation/corelocation)
 - Windows: [Windows.Devices.Geolocation](https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Geolocation)
 
-> **Warning** Running *QGroundControl* at the same time as DroneCore *Follow Me* may result in unpredictable behaviour as both send position updates. 
+> **Warning** Running *QGroundControl* at the same time as the SDK *Follow Me* may result in unpredictable behaviour as both send position updates. 
 > You **must** ensure that *GSC Position Streaming* is disabled. 
 > Use the latest *QGC Daily Build* and ensure that the **[Application Setting > General](https://docs.qgroundcontrol.com/en/SettingsView/General.html) > Miscellaneous > Stream GCS Position** is set to *Never*.
 
 ## Create the Plugin
 
-> **Tip** `FollowMe` objects are created in the same way as other DroneCore plugins. General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
+> **Tip** `FollowMe` objects are created in the same way as other SDK plugins. 
+General instructions are provided in the topic: [Using Plugins](../guide/using_plugins.md).
 
 The main steps are:
 
-1. Link the plugin library into your application. Do this by adding `dronecore_follow_me` to the `target_link_libraries` section of the app's *cmake* build definition file
+1. Link the plugin library into your application. 
+   Do this by adding `dronecore_follow_me` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name

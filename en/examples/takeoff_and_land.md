@@ -1,8 +1,9 @@
 # Example: Takeoff and Land
 
-This simple example shows the basic use of many DroneCore features. 
+This simple example shows the basic use of many *Dronecode SDK* features. 
 
-It sets up a UDP connection, waits for a vehicle (system) to appear, arms it, and commands it to takeoff and then land again. While flying the vehicle receives telemetry. The example is implemented in C++ (only).
+It sets up a UDP connection, waits for a vehicle (system) to appear, arms it, and commands it to takeoff and then land again. 
+While flying the vehicle receives telemetry. The example is implemented in C++ (only).
 
 > **Tip** The full source code for the example [can be found here](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/takeoff_land).
 
@@ -12,7 +13,8 @@ The example is built and run [as described here](../examples/README.md#trying_th
 
 The example terminal output should be similar to that shown below:
 
-> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
+> **Note** This is from a debug build of the SDK. 
+  A release build will omit the "Debug" messages.
 
 ```sh
 $ ./takeoff_and_land udp://:14540
