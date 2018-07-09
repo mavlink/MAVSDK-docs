@@ -244,7 +244,7 @@ The main steps are:
    ```
    root*81ebe14d0c1a:~/Dronecore#
    ```
-1. In the terminal you can build DroneCore using the normal Linux `make` commands:
+1. In the terminal you can build the SDK using the normal Linux `make` commands:
    ```sh
    # Build the C++ library
    make default
@@ -276,7 +276,7 @@ docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:
 
 The approach above downloads a container image based on Ubuntu 16.04 ([dronecore/dronecore-ubuntu-16.04](https://hub.docker.com/r/dronecore/dronecore-ubuntu-16.04/)) or Fedora 27 ([dronecore/dronecore-fedora-27](https://hub.docker.com/r/dronecore/dronecore-fedora-27/)) from Docker Hub.
 
-You can also build the images yourself using the files in [DroneCore/docker](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/docker). The image can be used in the same way as the one from Docker Hub.
+You can also build the images yourself using the files in [Dronecode SDK/docker](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/docker). The image can be used in the same way as the one from Docker Hub.
 
 1. Open a command prompt/terminal in the root of the DroneCore repository.
 1. Build the images as shown:
@@ -294,17 +294,17 @@ You can also build the images yourself using the files in [DroneCore/docker](htt
    docker run --rm -it -v $HOME/<path-to-dronecore-repo>/DroneCore:/root/DroneCore:rw my_image bash
    ```
 
-## Build DroneCore Extensions {#dronecore_extensions}
+## Build SDK Extensions {#dronecore_extensions}
 
-DroneCore can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the DroneCore at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
+The *Dronecode SDK* can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the SDK at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
 
-The commands to build and install DroneCore with an extension library are:
+The commands to build and install the SDK with an extension library are:
 ```
 make clean   # This is required!
 make default EXTERNAL_DIR=relative_path_to_external_directory
 sudo make default install
 ```
-See [DroneCore Extensions](../guide/dronecore_extensions.md) for more information.
+See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
 
 ## Build API Reference Documentation {#build_api_reference}

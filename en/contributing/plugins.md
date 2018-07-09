@@ -4,7 +4,7 @@ DroneCore is split into a [core](https://github.com/dronecore/DroneCore/tree/{{ 
 
 Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. The [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
 
-> **Note** Plugins can also be defined in [DroneCore Extensions](../guide/dronecore_extensions.md). 
+> **Note** Plugins can also be defined in [SDK Extensions](../guide/sdk_extensions.md). 
 > These are defined and tested in exactly the same way as "standard" DroneCore plugins. 
 
 ## Plugin Architecture
@@ -47,7 +47,7 @@ Each plugin must have the same files/structure, as shown for the "example" plugi
 
 To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins) (e.g. 
 [Action](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/action), 
-[Telemetry](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/telemetry), etc.) or the [example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [DroneCore Extension](../guide/dronecore_extensions.md) folder).
+[Telemetry](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/plugins/telemetry), etc.) or the [example](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
 
 Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/external_example/plugins/example/CMakeLists.txt) as appropriate:
 * Modify plugin filenames as appropriate
@@ -129,7 +129,7 @@ The [Google Test Primer](https://github.com/google/googletest/blob/master/google
 provides an excellent overview of how tests are written and used.
 
 > **Note** Testing is the same for plugins that are part of DroneCore and part of 
-[DroneCore Extensions](../guide/dronecore_extensions.md).
+[SDK Extensions](../guide/sdk_extensions.md).
 
 
 ### Writing Unit Tests
@@ -218,7 +218,7 @@ add_executable(integration_tests_runner
 )
 ```
 
-Integration tests for [DroneCore Extensions](../guide/dronecore_extensions.md) are handled in the exactly the same way: 
+Integration tests for [SDK Extensions](../guide/sdk_extensions.md) are handled in the exactly the same way: 
 ```
 external_example       ## The (example) SDK/external plugin directory.
 ├── integration_tests
