@@ -233,19 +233,19 @@ The main steps are:
 1. Enter one of the following commands in your host's terminal:
    * Fedora 27 
      ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-fedora-27 bash
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-fedora-27 bash
      ```
    * Fedora 28
      ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-fedora-28 bash
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-fedora-28 bash
      ```
    * Ubuntu 16.04 LTS
      ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-ubuntu-16.04 bash 
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-16.04 bash 
      ```
    * Ubuntu 18.04 LTS
      ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-ubuntu-18.04 bash 
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-18.04 bash 
      ```
      
    > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side). 
@@ -254,7 +254,7 @@ The main steps are:
 
    Docker will download the selected image from [Docker Hub](https://hub.docker.com/u/dronecode/), use it to create a container, and then open a bash prompt:
    ```
-   root*81ebe14d0c1a:~/DroneCore#
+   root*81ebe14d0c1a:~/DronecodeSDK#
    ```
 1. In the terminal you can build the SDK using the normal Linux `make` commands:
    ```sh
@@ -276,12 +276,12 @@ You can also run build commands directly from your host (rather than opening bas
 
 To make and install the C++ Library:
 ```bash
-docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-ubuntu-16.04 make install
+docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-16.04 make install
 ```
 
 To run the code style check:
 ```bash
-docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DroneCore:rw dronecode/dronecode-sdk-ubuntu-16.04 make fix_style
+docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-16.04 make fix_style
 ```
 
 ### Building the Docker Image
@@ -300,7 +300,7 @@ To build the Ubuntu 16.04 image (the other's follow the same pattern):
    `my_image` can then be used to refer to the image in later steps.
 1. Open a bash prompt using the newly created image:
    ```sh
-   docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DroneCore:rw my_image bash
+   docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DronecodeSDK:rw my_image bash
    ```
 
 ## Build SDK Extensions {#sdk_extensions}
