@@ -26,6 +26,7 @@ Type | Name | Description
 void | [calibrate_gyro_async](#classdronecode__sdk_1_1_calibration_1aa7ec9bc9ed62fa23d0d370ec2809b44b) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) callback) | Perform gyro calibration (asynchronous call).
 void | [calibrate_accelerometer_async](#classdronecode__sdk_1_1_calibration_1ac82675b0235bc7ed8c0a3259739e0bea) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) callback) | Perform accelerometer calibration (asynchronous call).
 void | [calibrate_magnetometer_async](#classdronecode__sdk_1_1_calibration_1ae69b7a5e7308f7f9176152a30ff9049f) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) callback) | Perform magnetometer calibration (asynchronous call).
+void | [calibrate_gimbal_accelerometer_async](#classdronecode__sdk_1_1_calibration_1a1a5fe007db8e548b1305126a94f441af) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) callback) | Perform gimbal accelerometer calibration (asynchronous call).
 const [Calibration](classdronecode__sdk_1_1_calibration.md) & | [operator=](#classdronecode__sdk_1_1_calibration_1a347cb2bc05828fc1cbb40bebfc50cabc) (const [Calibration](classdronecode__sdk_1_1_calibration.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -151,6 +152,19 @@ void dronecode_sdk::Calibration::calibrate_magnetometer_async(calibration_callba
 
 
 Perform magnetometer calibration (asynchronous call).
+
+
+**Parameters**
+
+* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) **callback** - Function to receive result and progress of calibration.
+
+### calibrate_gimbal_accelerometer_async() {#classdronecode__sdk_1_1_calibration_1a1a5fe007db8e548b1305126a94f441af}
+```cpp
+void dronecode_sdk::Calibration::calibrate_gimbal_accelerometer_async(calibration_callback_t callback)
+```
+
+
+Perform gimbal accelerometer calibration (asynchronous call).
 
 
 **Parameters**

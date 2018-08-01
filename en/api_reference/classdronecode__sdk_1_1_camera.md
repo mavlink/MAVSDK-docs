@@ -84,7 +84,7 @@ bool | [get_possible_setting_options](#classdronecode__sdk_1_1_camera_1a1addc544
 bool | [get_possible_options](#classdronecode__sdk_1_1_camera_1a2f15420107cf5efd0c1fe41ff2a007e2) (const std::string & setting_id, std::vector< [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) > & options) | Get possible options for a setting that can be selected.
 [Camera::Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) | [get_option](#classdronecode__sdk_1_1_camera_1a339bd5252a991d761d61d92e5a5ff337) (const std::string & setting_id, [Option](structdronecode__sdk_1_1_camera_1_1_option.md) & option) | Get an option of a setting (synchronous).
 void | [get_option_async](#classdronecode__sdk_1_1_camera_1a491f0ae27e7c20efcad23a06250d9e7a) (const std::string & setting_id, const [get_option_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a35680fbbfbd46601c772a7b0ed434fb7) & callback) | Get an option of a setting (asynchronous).
-void | [set_option_async](#classdronecode__sdk_1_1_camera_1aadffb7c8d7c6b10181cda0a4b3ab66a0) (const std::string & setting_id, const [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) & option, const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350) & callback) | Set an option of a setting (asynchronous).
+void | [set_option_async](#classdronecode__sdk_1_1_camera_1a6632712abfe481ff1cd663788ad77995) (const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350) & callback, const std::string & setting_id, const [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) & option) | Set an option of a setting (asynchronous).
 void | [subscribe_current_settings](#classdronecode__sdk_1_1_camera_1a3118ea942d89d33e66e7ae937fe3a8fc) (const [subscribe_current_settings_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a69ac5b28b392c02bc6d24e917f0323d3) & callback) | Subscribe to currently selected settings (asynchronous).
 void | [subscribe_possible_setting_options](#classdronecode__sdk_1_1_camera_1a374904d4bde4804084c77112310eb514) (const [subscribe_possible_setting_options_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a6873ea9adf206a006a234fabb48b06c2) & callback) | Subscribe to all possible setting options (asynchronous).
 bool | [get_setting_str](#classdronecode__sdk_1_1_camera_1a037a62e1d42815cb3bbfeecd5602197f) (const std::string & setting_id, std::string & description) | Get the human readable string of a setting.
@@ -709,9 +709,9 @@ Get an option of a setting (asynchronous).
 * const std::string& **setting_id** - The machine readable name of the setting.
 * const [get_option_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a35680fbbfbd46601c772a7b0ed434fb7)& **callback** - The callback to get the result and selected option.
 
-### set_option_async() {#classdronecode__sdk_1_1_camera_1aadffb7c8d7c6b10181cda0a4b3ab66a0}
+### set_option_async() {#classdronecode__sdk_1_1_camera_1a6632712abfe481ff1cd663788ad77995}
 ```cpp
-void dronecode_sdk::Camera::set_option_async(const std::string &setting_id, const Camera::Option &option, const result_callback_t &callback)
+void dronecode_sdk::Camera::set_option_async(const result_callback_t &callback, const std::string &setting_id, const Camera::Option &option)
 ```
 
 
@@ -720,9 +720,9 @@ Set an option of a setting (asynchronous).
 
 **Parameters**
 
+* const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350)& **callback** - The callback to get the result.
 * const std::string& **setting_id** - The machine readable name of the setting.
 * const [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md)& **option** - The machine readable name of the option value.
-* const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350)& **callback** - The callback to get the result.
 
 ### subscribe_current_settings() {#classdronecode__sdk_1_1_camera_1a3118ea942d89d33e66e7ae937fe3a8fc}
 ```cpp
