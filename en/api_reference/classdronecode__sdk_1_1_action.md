@@ -44,10 +44,12 @@ void | [land_async](#classdronecode__sdk_1_1_action_1a69b781f22f5d624fe36d3af99c
 void | [return_to_launch_async](#classdronecode__sdk_1_1_action_1a722a90a796c69ece78742fda4a90fc82) ([result_callback_t](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1af8c876ed20fc97dc1338578028638949) callback) | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
 void | [transition_to_fixedwing_async](#classdronecode__sdk_1_1_action_1a6d544dca4db484867fbe702fcfaddf84) ([result_callback_t](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1af8c876ed20fc97dc1338578028638949) callback) | Send command to transition the drone to fixedwing (asynchronous).
 void | [transition_to_multicopter_async](#classdronecode__sdk_1_1_action_1abecc30198261ac816519a4f33ebfbc4d) ([result_callback_t](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1af8c876ed20fc97dc1338578028638949) callback) | Send command to transition the drone to multicopter (asynchronous).
-void | [set_takeoff_altitude](#classdronecode__sdk_1_1_action_1a40d0fc1edbddb727c35561b2b1769389) (float relative_altitude_m) | Set takeoff altitude above ground.
-float | [get_takeoff_altitude_m](#classdronecode__sdk_1_1_action_1ad4f09232bd7e38ae992972ea9debc9fc) () const | Get the takeoff altitude.
-void | [set_max_speed](#classdronecode__sdk_1_1_action_1ab1f97d81d47acb604a6ffed96472229d) (float speed_m_s) | Set vehicle maximum speed.
-float | [get_max_speed_m_s](#classdronecode__sdk_1_1_action_1ab082a9a783d7ca809d109de10c15551d) () const | Get the vehicle maximum speed.
+[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [set_takeoff_altitude](#classdronecode__sdk_1_1_action_1ab1d989fb0ecddb92b16d02ed53cab1f7) (float relative_altitude_m) | Set takeoff altitude above ground.
+std::pair< [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e), float > | [get_takeoff_altitude](#classdronecode__sdk_1_1_action_1ab32c557ca167a41631042f9ce75b97f1) () const | Get the takeoff altitude.
+[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [set_max_speed](#classdronecode__sdk_1_1_action_1a19e8bdfd64b87799da6ff0dbdf65923f) (float speed_m_s) | Set vehicle maximum speed.
+std::pair< [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e), float > | [get_max_speed](#classdronecode__sdk_1_1_action_1a610034c63aa08e85ed3b8f7a8b34e0c2) () const | Get the vehicle maximum speed.
+[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [set_return_to_launch_return_altitude](#classdronecode__sdk_1_1_action_1a916cbb12d886b51ae5fbc1a9460aaeaf) (float relative_altitude_m) | Set the return to launch minimum return altitude.
+std::pair< [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e), float > | [get_return_to_launch_return_altitude](#classdronecode__sdk_1_1_action_1a44a22fbf70f16b7c253c1bf6ffc0db4a) () const | Get the return to launch minimum return altitude.
 const [Action](classdronecode__sdk_1_1_action.md) & | [operator=](#classdronecode__sdk_1_1_action_1a823b493fd0bc5219fb13ca5ca05e4cff) (const [Action](classdronecode__sdk_1_1_action.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -160,7 +162,7 @@ ActionResult dronecode_sdk::Action::takeoff() const
 
 Send command to *take off and hover* (synchronous).
 
-This switches the drone into position control mode and commands it to take off and hover at the takeoff altitude (set using [set_takeoff_altitude()](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a40d0fc1edbddb727c35561b2b1769389)).
+This switches the drone into position control mode and commands it to take off and hover at the takeoff altitude (set using [set_takeoff_altitude()](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1ab1d989fb0ecddb92b16d02ed53cab1f7)).
 
 
 Note that the vehicle must be armed before it can take off.
@@ -275,7 +277,7 @@ void dronecode_sdk::Action::takeoff_async(result_callback_t callback)
 
 Send command to *take off and hover* (asynchronous).
 
-This switches the drone into position control mode and commands it to take off and hover at the takeoff altitude set using [set_takeoff_altitude()](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a40d0fc1edbddb727c35561b2b1769389).
+This switches the drone into position control mode and commands it to take off and hover at the takeoff altitude set using [set_takeoff_altitude()](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1ab1d989fb0ecddb92b16d02ed53cab1f7).
 
 
 Note that the vehicle must be armed before it can take off.
@@ -340,9 +342,9 @@ The associated action will only be executed for VTOL vehicles (on other vehicle 
 
 * [result_callback_t](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1af8c876ed20fc97dc1338578028638949) **callback** - Function to call with result of request.
 
-### set_takeoff_altitude() {#classdronecode__sdk_1_1_action_1a40d0fc1edbddb727c35561b2b1769389}
+### set_takeoff_altitude() {#classdronecode__sdk_1_1_action_1ab1d989fb0ecddb92b16d02ed53cab1f7}
 ```cpp
-void dronecode_sdk::Action::set_takeoff_altitude(float relative_altitude_m)
+ActionResult dronecode_sdk::Action::set_takeoff_altitude(float relative_altitude_m)
 ```
 
 
@@ -353,9 +355,13 @@ Set takeoff altitude above ground.
 
 * float **relative_altitude_m** - Takeoff altitude relative to takeoff location, in meters.
 
-### get_takeoff_altitude_m() {#classdronecode__sdk_1_1_action_1ad4f09232bd7e38ae992972ea9debc9fc}
+**Returns**
+
+&emsp;[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) - Result of request.
+
+### get_takeoff_altitude() {#classdronecode__sdk_1_1_action_1ab32c557ca167a41631042f9ce75b97f1}
 ```cpp
-float dronecode_sdk::Action::get_takeoff_altitude_m() const
+std::pair<ActionResult, float> dronecode_sdk::Action::get_takeoff_altitude() const
 ```
 
 
@@ -364,11 +370,11 @@ Get the takeoff altitude.
 
 **Returns**
 
-&emsp;float - takeoff Takeoff altitude relative to ground/takeoff location, in meters.
+&emsp;std::pair< [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e), float > - A pair containing the result of request and if successful, the takeoff altitude relative to ground/takeoff location, in meters.
 
-### set_max_speed() {#classdronecode__sdk_1_1_action_1ab1f97d81d47acb604a6ffed96472229d}
+### set_max_speed() {#classdronecode__sdk_1_1_action_1a19e8bdfd64b87799da6ff0dbdf65923f}
 ```cpp
-void dronecode_sdk::Action::set_max_speed(float speed_m_s)
+ActionResult dronecode_sdk::Action::set_max_speed(float speed_m_s)
 ```
 
 
@@ -379,9 +385,13 @@ Set vehicle maximum speed.
 
 * float **speed_m_s** - Maximum speed in metres/second.
 
-### get_max_speed_m_s() {#classdronecode__sdk_1_1_action_1ab082a9a783d7ca809d109de10c15551d}
+**Returns**
+
+&emsp;[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) - Result of request.
+
+### get_max_speed() {#classdronecode__sdk_1_1_action_1a610034c63aa08e85ed3b8f7a8b34e0c2}
 ```cpp
-float dronecode_sdk::Action::get_max_speed_m_s() const
+std::pair<ActionResult, float> dronecode_sdk::Action::get_max_speed() const
 ```
 
 
@@ -390,7 +400,42 @@ Get the vehicle maximum speed.
 
 **Returns**
 
-&emsp;float - Maximum speed in metres/second.
+&emsp;std::pair< [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e), float > - A pair containing the result of the request and if successful, the maximum speed in metres/second.
+
+### set_return_to_launch_return_altitude() {#classdronecode__sdk_1_1_action_1a916cbb12d886b51ae5fbc1a9460aaeaf}
+```cpp
+ActionResult dronecode_sdk::Action::set_return_to_launch_return_altitude(float relative_altitude_m)
+```
+
+
+Set the return to launch minimum return altitude.
+
+When return to launch is initiated, the vehicle climbs to the return altitude if it is lower and stays at the current altitude if higher than the return altitude. Then it returns to the home location and lands there.
+
+**Parameters**
+
+* float **relative_altitude_m** - Return altitude relative to takeoff location, in meters.
+
+**Returns**
+
+&emsp;[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) - Result of request.
+
+### get_return_to_launch_return_altitude() {#classdronecode__sdk_1_1_action_1a44a22fbf70f16b7c253c1bf6ffc0db4a}
+```cpp
+std::pair<ActionResult, float> dronecode_sdk::Action::get_return_to_launch_return_altitude() const
+```
+
+
+Get the return to launch minimum return altitude.
+
+
+**Returns**
+
+&emsp;std::pair< [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e), float > - A pair containing the result of the request and if successful, the return altitude relative to takeoff location, in meters.
+
+**See Also:**
+- [set_return_to_launch_return_altitude](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a916cbb12d886b51ae5fbc1a9460aaeaf).
+
 
 ### operator=() {#classdronecode__sdk_1_1_action_1a823b493fd0bc5219fb13ca5ca05e4cff}
 ```cpp
