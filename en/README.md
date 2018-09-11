@@ -91,3 +91,10 @@ The [Contributing](contributing/README.md) (C++) section contains everything you
 * The *Dronecode SDK* is licensed under the permissive [BSD 3-clause](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/LICENSE.md).
 * This documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
+## Governance
+
+The DronecodeSDK project is hosted under the governance of the [Dronecode Foundation](https://www.dronecode.org/).
+
+<a href="https://www.dronecode.org/" style="padding:20px" ><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
+<a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>
+<div style="padding:10px">&nbsp</div>
