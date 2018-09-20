@@ -4,11 +4,13 @@
 ----
 
 
-Information about a picture just captured. 
+[Information](structdronecode__sdk_1_1_camera_1_1_information.md) about a picture just captured. 
 
 
 ## Data Structures
 
+
+struct [EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md)
 
 struct [Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md)
 
@@ -19,7 +21,9 @@ struct [Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quatern
 
 struct [dronecode_sdk::Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md) [position](#structdronecode__sdk_1_1_camera_1_1_capture_info_1ac820f2cd756043a9623f26055ca096a0)  - [Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md) of drone/camera when image was captured.
 
-struct [dronecode_sdk::Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) [quaternion](#structdronecode__sdk_1_1_camera_1_1_capture_info_1a8f6637ee6ee56c1ee2ee3260f4b43d2a)  - [Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) of camera orientation.
+struct [dronecode_sdk::Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) [attitude_quaternion](#structdronecode__sdk_1_1_camera_1_1_capture_info_1a87e2b8236a6804af88c074004dfe3ce2)  - [Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) of camera orientation.
+
+struct [dronecode_sdk::Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) [attitude_euler_angle](#structdronecode__sdk_1_1_camera_1_1_capture_info_1a304055fe45a5770f48208288045dba7f)  - Euler Angle of camera orientation.
 
 uint64_t [time_utc_us](#structdronecode__sdk_1_1_camera_1_1_capture_info_1a48bd4b59b8378f9b350fec07d5b67aa8)  - Timestamp in UTC (since UNIX epoch) in microseconds.
 
@@ -43,14 +47,24 @@ struct dronecode_sdk::Camera::CaptureInfo::Position  dronecode_sdk::Camera::Capt
 [Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md) of drone/camera when image was captured.
 
 
-### quaternion {#structdronecode__sdk_1_1_camera_1_1_capture_info_1a8f6637ee6ee56c1ee2ee3260f4b43d2a}
+### attitude_quaternion {#structdronecode__sdk_1_1_camera_1_1_capture_info_1a87e2b8236a6804af88c074004dfe3ce2}
 
 ```cpp
-struct dronecode_sdk::Camera::CaptureInfo::Quaternion  dronecode_sdk::Camera::CaptureInfo::quaternion
+struct dronecode_sdk::Camera::CaptureInfo::Quaternion  dronecode_sdk::Camera::CaptureInfo::attitude_quaternion
 ```
 
 
 [Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) of camera orientation.
+
+
+### attitude_euler_angle {#structdronecode__sdk_1_1_camera_1_1_capture_info_1a304055fe45a5770f48208288045dba7f}
+
+```cpp
+struct dronecode_sdk::Camera::CaptureInfo::EulerAngle  dronecode_sdk::Camera::CaptureInfo::attitude_euler_angle
+```
+
+
+Euler Angle of camera orientation.
 
 
 ### time_utc_us {#structdronecode__sdk_1_1_camera_1_1_capture_info_1a48bd4b59b8378f9b350fec07d5b67aa8}

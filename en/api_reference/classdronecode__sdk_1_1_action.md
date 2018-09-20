@@ -31,9 +31,11 @@ Type | Name | Description
 [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [arm](#classdronecode__sdk_1_1_action_1a9c967b6dc0df5ce1de591fea76169153) () const | Send command to *arm* the drone (synchronous).
 [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [disarm](#classdronecode__sdk_1_1_action_1a00cda2e6285f1bc2e654c3d4121ac713) () const | Send command to *disarm* the drone (synchronous).
 [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [kill](#classdronecode__sdk_1_1_action_1aa027b3f706e5e1d8e986900bcf59eeea) () const | Send command to *kill* the drone (synchronous).
+[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [reboot](#classdronecode__sdk_1_1_action_1ac6a075d39f2e5ddeaf13fc550ad780fd) () const | Send command to *reboot* the drone components.
 [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [takeoff](#classdronecode__sdk_1_1_action_1a968b8d7370d707578cda0c67395a760e) () const | Send command to *take off and hover* (synchronous).
 [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [land](#classdronecode__sdk_1_1_action_1a25490d09fd2905b96de2c2c6e52e5f7b) () const | Send command to *land* at the current position (synchronous).
 [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [return_to_launch](#classdronecode__sdk_1_1_action_1a4a9c2107d7c9fd5f558fa35c0cc15d0c) () const | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
+[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [goto_location](#classdronecode__sdk_1_1_action_1a05d56d9e9bf1c4d68ccf20c6607bab5c) (double latitude_deg, double longitude_deg, float altitude_amsl_m, float yaw_deg) | Send command to reposition the vehicle to a specific WGS84 global position.
 [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [transition_to_fixedwing](#classdronecode__sdk_1_1_action_1af2955e3dafa2133eae1d137c06d68e85) () const | Send command to transition the drone to fixedwing.
 [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | [transition_to_multicopter](#classdronecode__sdk_1_1_action_1a10d5dfab8141cb66b94c22f05cda89cf) () const | Send command to transition the drone to multicopter.
 void | [arm_async](#classdronecode__sdk_1_1_action_1ad295c4f5fb38636d1603dd1c401ca4a1) ([result_callback_t](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1af8c876ed20fc97dc1338578028638949) callback) | Send command to *arm* the drone (asynchronous).
@@ -154,6 +156,20 @@ This will disarm a drone irrespective of whether it is landed or flying. Note th
 
 &emsp;[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) - ActionResult of request.
 
+### reboot() {#classdronecode__sdk_1_1_action_1ac6a075d39f2e5ddeaf13fc550ad780fd}
+```cpp
+ActionResult dronecode_sdk::Action::reboot() const
+```
+
+
+Send command to *reboot* the drone components.
+
+This will reboot the autopilot, onboard computer, camera and gimbal.
+
+**Returns**
+
+&emsp;[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) - ActionResult of request.
+
 ### takeoff() {#classdronecode__sdk_1_1_action_1a968b8d7370d707578cda0c67395a760e}
 ```cpp
 ActionResult dronecode_sdk::Action::takeoff() const
@@ -194,6 +210,27 @@ ActionResult dronecode_sdk::Action::return_to_launch() const
 Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
 
 This switches the drone into [RTL mode](https://docs.px4.io/en/flight_modes/rtl.html) which generally means it will rise up to a certain altitude to clear any obstacles before heading back to the launch (takeoff) position and land there.
+
+**Returns**
+
+&emsp;[ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) - ActionResult of request.
+
+### goto_location() {#classdronecode__sdk_1_1_action_1a05d56d9e9bf1c4d68ccf20c6607bab5c}
+```cpp
+ActionResult dronecode_sdk::Action::goto_location(double latitude_deg, double longitude_deg, float altitude_amsl_m, float yaw_deg)
+```
+
+
+Send command to reposition the vehicle to a specific WGS84 global position.
+
+This sends the vehicle to a specified lattitude/longitude/altitude coordinates.
+
+**Parameters**
+
+* double **latitude_deg** - Latitude in degrees
+* double **longitude_deg** - Longitude in degrees
+* float **altitude_amsl_m** - Altitude AMSL in meters
+* float **yaw_deg** - Yaw angle in degrees
 
 **Returns**
 

@@ -18,6 +18,8 @@ Synchronous and asynchronous variants of the camera methods are supplied.
 
 struct [CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md)
 
+struct [Information](structdronecode__sdk_1_1_camera_1_1_information.md)
+
 struct [Option](structdronecode__sdk_1_1_camera_1_1_option.md)
 
 struct [Setting](structdronecode__sdk_1_1_camera_1_1_setting.md)
@@ -67,6 +69,7 @@ void | [start_photo_interval_async](#classdronecode__sdk_1_1_camera_1a912717b118
 void | [stop_photo_interval_async](#classdronecode__sdk_1_1_camera_1a05ed862e0ab91f9ec96a1f95454d7c4b) (const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350) & callback) | Stop photo interval (asynchronous).
 void | [start_video_async](#classdronecode__sdk_1_1_camera_1a2296942890cbdc7286fc17bed6a469e8) (const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350) & callback) | Start video capture (asynchronous).
 void | [stop_video_async](#classdronecode__sdk_1_1_camera_1a19600848ad65b548c3aca3cd0723dd9e) (const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350) & callback) | Stop video capture (asynchronous).
+[Information](structdronecode__sdk_1_1_camera_1_1_information.md) | [get_information](#classdronecode__sdk_1_1_camera_1a04c06e984eec6da983a4217fa2c9b1a6) () | Get general camera information.
 [Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) | [set_mode](#classdronecode__sdk_1_1_camera_1affe639d8bf6a68872465b97420123e67) (const [Mode](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1abfab7c03f8ed13db0fe856c4e392f99c) mode) | Setter for camera mode (synchronous).
 void | [set_mode_async](#classdronecode__sdk_1_1_camera_1acd5ead4f51a996a0fdc4565143fae43f) (const [Mode](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1abfab7c03f8ed13db0fe856c4e392f99c) mode, const [mode_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a13c53bd44c1f67c837ba81a532fb6f32) & callback) | Setter for camera mode (asynchronous).
 void | [get_mode_async](#classdronecode__sdk_1_1_camera_1adf841eb57aee5face71f2cdfb1feec3e) (const [mode_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a13c53bd44c1f67c837ba81a532fb6f32) & callback) | Getter for camera mode (asynchronous).
@@ -87,8 +90,8 @@ void | [get_option_async](#classdronecode__sdk_1_1_camera_1a491f0ae27e7c20efcad2
 void | [set_option_async](#classdronecode__sdk_1_1_camera_1a6632712abfe481ff1cd663788ad77995) (const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350) & callback, const std::string & setting_id, const [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) & option) | Set an option of a setting (asynchronous).
 void | [subscribe_current_settings](#classdronecode__sdk_1_1_camera_1a3118ea942d89d33e66e7ae937fe3a8fc) (const [subscribe_current_settings_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a69ac5b28b392c02bc6d24e917f0323d3) & callback) | Subscribe to currently selected settings (asynchronous).
 void | [subscribe_possible_setting_options](#classdronecode__sdk_1_1_camera_1a374904d4bde4804084c77112310eb514) (const [subscribe_possible_setting_options_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a6873ea9adf206a006a234fabb48b06c2) & callback) | Subscribe to all possible setting options (asynchronous).
-bool | [get_setting_str](#classdronecode__sdk_1_1_camera_1a037a62e1d42815cb3bbfeecd5602197f) (const std::string & setting_id, std::string & description) | Get the human readable string of a setting.
-bool | [get_option_str](#classdronecode__sdk_1_1_camera_1a3899b2a7e46c75dc8bc50c3994f269f1) (const std::string & setting_id, const std::string & option_id, std::string & description) | Get the human readable string of an option.
+void | [format_storage_async](#classdronecode__sdk_1_1_camera_1aa87323029de611e5299a0ccd72c580a2) ([result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350) callback) | Format storage (e.g. SD card) in camera (asynchronous).
+[Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) | [format_storage](#classdronecode__sdk_1_1_camera_1a91d12b3535dc03b87e7a9cf37c276c9f) () | Format storage (e.g. SD card) in camera (synchronous).
 const [Camera](classdronecode__sdk_1_1_camera.md) & | [operator=](#classdronecode__sdk_1_1_camera_1a313b91c05716c94f8097605641968576) (const [Camera](classdronecode__sdk_1_1_camera.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -443,6 +446,19 @@ This stops a video recording, previously started with [start_video_async()](clas
 
 * const [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350)& **callback** - Function to call with result of request.
 
+### get_information() {#classdronecode__sdk_1_1_camera_1a04c06e984eec6da983a4217fa2c9b1a6}
+```cpp
+Information dronecode_sdk::Camera::get_information()
+```
+
+
+Get general camera information.
+
+
+**Returns**
+
+&emsp;[Information](structdronecode__sdk_1_1_camera_1_1_information.md) - The camera information struct.
+
 ### set_mode() {#classdronecode__sdk_1_1_camera_1affe639d8bf6a68872465b97420123e67}
 ```cpp
 Result dronecode_sdk::Camera::set_mode(const Mode mode)
@@ -640,7 +656,6 @@ bool dronecode_sdk::Camera::get_possible_setting_options(std::vector< std::strin
 
 Get settings that can be changed.
 
-The list of settings consists of machine readable parameters, for a human readable desription of the setting use [get_setting_str()](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a037a62e1d42815cb3bbfeecd5602197f).
 
 **Parameters**
 
@@ -650,10 +665,6 @@ The list of settings consists of machine readable parameters, for a human readab
 
 &emsp;bool - true request was successful.
 
-**See Also:**
-- [get_setting_str](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a037a62e1d42815cb3bbfeecd5602197f)
-
-
 ### get_possible_options() {#classdronecode__sdk_1_1_camera_1a2f15420107cf5efd0c1fe41ff2a007e2}
 ```cpp
 bool dronecode_sdk::Camera::get_possible_options(const std::string &setting_id, std::vector< Camera::Option > &options)
@@ -662,7 +673,6 @@ bool dronecode_sdk::Camera::get_possible_options(const std::string &setting_id, 
 
 Get possible options for a setting that can be selected.
 
-The list of options consists of machine readable option values, for a human readable description of the option use [get_option_str()](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a3899b2a7e46c75dc8bc50c3994f269f1).
 
 **Parameters**
 
@@ -672,10 +682,6 @@ The list of options consists of machine readable option values, for a human read
 **Returns**
 
 &emsp;bool - true if request was successful.
-
-**See Also:**
-- [get_option_str](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a3899b2a7e46c75dc8bc50c3994f269f1)
-
 
 ### get_option() {#classdronecode__sdk_1_1_camera_1a339bd5252a991d761d61d92e5a5ff337}
 ```cpp
@@ -750,42 +756,33 @@ Subscribe to all possible setting options (asynchronous).
 
 * const [subscribe_possible_setting_options_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1a6873ea9adf206a006a234fabb48b06c2)& **callback** - Function to call when possible options have been updated.
 
-### get_setting_str() {#classdronecode__sdk_1_1_camera_1a037a62e1d42815cb3bbfeecd5602197f}
+### format_storage_async() {#classdronecode__sdk_1_1_camera_1aa87323029de611e5299a0ccd72c580a2}
 ```cpp
-bool dronecode_sdk::Camera::get_setting_str(const std::string &setting_id, std::string &description)
+void dronecode_sdk::Camera::format_storage_async(result_callback_t callback)
 ```
 
 
-Get the human readable string of a setting.
+Format storage (e.g. SD card) in camera (asynchronous).
 
+> **Note** This will delete all content of the camera storage (e.g. SD card).
 
 **Parameters**
 
-* const std::string& **setting_id** - The machine readable setting name.
-* std::string& **description** - The human readable string of the setting to get.
+* [result_callback_t](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1ac5397f374d932c39d2ea91a882c65350) **callback** - Callback to get result.
 
-**Returns**
-
-&emsp;bool - true if call was successful and the description has been set.
-
-### get_option_str() {#classdronecode__sdk_1_1_camera_1a3899b2a7e46c75dc8bc50c3994f269f1}
+### format_storage() {#classdronecode__sdk_1_1_camera_1a91d12b3535dc03b87e7a9cf37c276c9f}
 ```cpp
-bool dronecode_sdk::Camera::get_option_str(const std::string &setting_id, const std::string &option_id, std::string &description)
+Result dronecode_sdk::Camera::format_storage()
 ```
 
 
-Get the human readable string of an option.
+Format storage (e.g. SD card) in camera (synchronous).
 
-
-**Parameters**
-
-* const std::string& **setting_id** - The machine readable setting name.
-* const std::string& **option_id** - The machine readable option value.
-* std::string& **description** - The human readable string of the option to get.
+> **Note** This will delete all content of the camera storage (e.g. SD card).
 
 **Returns**
 
-&emsp;bool - true if call was successful and the description has been set.
+&emsp;[Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) - result of request.
 
 ### operator=() {#classdronecode__sdk_1_1_camera_1a313b91c05716c94f8097605641968576}
 ```cpp

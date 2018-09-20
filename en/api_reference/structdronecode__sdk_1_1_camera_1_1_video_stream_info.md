@@ -4,7 +4,7 @@
 ----
 
 
-Information about video stream. 
+[Information](structdronecode__sdk_1_1_camera_1_1_information.md) about video stream. 
 
 
 ## Public Types

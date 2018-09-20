@@ -4,7 +4,7 @@
 ----
 
 
-Information about camera status. 
+[Information](structdronecode__sdk_1_1_camera_1_1_information.md) about camera status. 
 
 
 ## Public Types
@@ -28,6 +28,10 @@ float [used_storage_mib](#structdronecode__sdk_1_1_camera_1_1_status_1ab6389346d
 float [available_storage_mib](#structdronecode__sdk_1_1_camera_1_1_status_1af4e8ca1fbec381f4759a66d535f83ca5)  - Available storage in MiB.
 
 float [total_storage_mib](#structdronecode__sdk_1_1_camera_1_1_status_1a41ee93b8baf849c185193b2599b13583)  - Total storage in MiB.
+
+float [recording_time_s](#structdronecode__sdk_1_1_camera_1_1_status_1ace3e9b3d3c6001b62be78b998c4d8dea)  - Elapsed time since starting a video recording in seconds.
+
+std::string [media_folder_name](#structdronecode__sdk_1_1_camera_1_1_status_1a548eb272c14f6493e349ddd18328dce1)  - Current folder name where media is saved.
 
 
 ## Member Enumeration Documentation
@@ -106,4 +110,24 @@ float dronecode_sdk::Camera::Status::total_storage_mib
 
 
 Total storage in MiB.
+
+
+### recording_time_s {#structdronecode__sdk_1_1_camera_1_1_status_1ace3e9b3d3c6001b62be78b998c4d8dea}
+
+```cpp
+float dronecode_sdk::Camera::Status::recording_time_s
+```
+
+
+Elapsed time since starting a video recording in seconds.
+
+
+### media_folder_name {#structdronecode__sdk_1_1_camera_1_1_status_1a548eb272c14f6493e349ddd18328dce1}
+
+```cpp
+std::string dronecode_sdk::Camera::Status::media_folder_name
+```
+
+
+Current folder name where media is saved.
 
