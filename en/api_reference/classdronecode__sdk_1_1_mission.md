@@ -28,6 +28,8 @@ Type | Name | Description
 &nbsp; | [Mission](#classdronecode__sdk_1_1_mission_1a1fbfbebf4812b806af482188490f12a1) (const [Mission](classdronecode__sdk_1_1_mission.md) &)=delete | Copy constructor (object is not copyable).
 void | [upload_mission_async](#classdronecode__sdk_1_1_mission_1abe18ceecd0afba9c109ed216c77212f0) (const std::vector< std::shared_ptr< [MissionItem](classdronecode__sdk_1_1_mission_item.md) >> & mission_items, [result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1adab3125b28a8d7b7ed90a81ea56b0115) callback) | Uploads a vector of mission items to the system (asynchronous).
 void | [download_mission_async](#classdronecode__sdk_1_1_mission_1a786b73a354af0b45b75caa36d197c336) ([mission_items_and_result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a319a5311e997cf351557e8663abc7d84) callback) | Downloads a vector of mission items from the system (asynchronous).
+void | [set_return_to_launch_after_mission](#classdronecode__sdk_1_1_mission_1af7059e3e2ea1b7ee86591815c28922e7) (bool enable) | Set whether to trigger Return-to-Launch (RTL) after mission is complete.
+bool | [get_return_to_launch_after_mission](#classdronecode__sdk_1_1_mission_1a891af41a68131c5e5053cbdc1606edd4) () | Get whether to trigger Return-to-Launch (RTL) after mission is complete.
 void | [start_mission_async](#classdronecode__sdk_1_1_mission_1aa4bfbd0e5e06692a96f0301fbe7bbbc3) ([result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1adab3125b28a8d7b7ed90a81ea56b0115) callback) | Starts the mission (asynchronous).
 void | [pause_mission_async](#classdronecode__sdk_1_1_mission_1a720993b72dcea4634aab3ed206124101) ([result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1adab3125b28a8d7b7ed90a81ea56b0115) callback) | Pauses the mission (asynchronous).
 void | [set_current_mission_item_async](#classdronecode__sdk_1_1_mission_1a48410e3f4e104d9db139418d9200c560) (int current, [result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1adab3125b28a8d7b7ed90a81ea56b0115) callback) | Sets the mission item index to go to (asynchronous).
@@ -193,6 +195,37 @@ The method will fail if any of the downloaded mission items are not supported by
 **Parameters**
 
 * [mission_items_and_result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a319a5311e997cf351557e8663abc7d84) **callback** - Callback to receive mission items and result of this request.
+
+### set_return_to_launch_after_mission() {#classdronecode__sdk_1_1_mission_1af7059e3e2ea1b7ee86591815c28922e7}
+```cpp
+void dronecode_sdk::Mission::set_return_to_launch_after_mission(bool enable)
+```
+
+
+Set whether to trigger Return-to-Launch (RTL) after mission is complete.
+
+This enables/disables to command RTL at the end of a mission.
+
+
+> **Note** After setting this option, the mission needs to be re-uploaded.
+
+**Parameters**
+
+* bool **enable** - Enables RTL after mission is complete.
+
+### get_return_to_launch_after_mission() {#classdronecode__sdk_1_1_mission_1a891af41a68131c5e5053cbdc1606edd4}
+```cpp
+bool dronecode_sdk::Mission::get_return_to_launch_after_mission()
+```
+
+
+Get whether to trigger Return-to-Launch (RTL) after mission is complete.
+
+> **Note** Before getting this option, it needs to be set, or a mission needs to be downloaded.
+
+**Returns**
+
+&emsp;bool - True if RTL after mission is complete is enabled.
 
 ### start_mission_async() {#classdronecode__sdk_1_1_mission_1aa4bfbd0e5e06692a96f0301fbe7bbbc3}
 ```cpp

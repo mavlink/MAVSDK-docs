@@ -12,6 +12,8 @@ Type to represent a setting with a list of options to choose from.
 
 std::string [setting_id](#structdronecode__sdk_1_1_camera_1_1_setting_options_1a96c7ddf5a335f0ac08cdb1c7e3ebb8cc)  -
 
+std::string [setting_description](#structdronecode__sdk_1_1_camera_1_1_setting_options_1ad6e0999aebaab4f12e944742bd668dcb)  -
+
 std::vector< [Option](structdronecode__sdk_1_1_camera_1_1_option.md) > [options](#structdronecode__sdk_1_1_camera_1_1_setting_options_1a143768fc2ac553119141e293f736eb9f)  -
 
 
@@ -26,6 +28,15 @@ std::string dronecode_sdk::Camera::SettingOptions::setting_id
 
 
 Name of the setting (machine readable).
+
+### setting_description {#structdronecode__sdk_1_1_camera_1_1_setting_options_1ad6e0999aebaab4f12e944742bd668dcb}
+
+```cpp
+std::string dronecode_sdk::Camera::SettingOptions::setting_description
+```
+
+
+Description of the setting (human readable).
 
 ### options {#structdronecode__sdk_1_1_camera_1_1_setting_options_1a143768fc2ac553119141e293f736eb9f}
 

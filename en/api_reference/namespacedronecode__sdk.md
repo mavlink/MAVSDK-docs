@@ -45,6 +45,8 @@ bool | [operator==](#namespacedronecode__sdk_1a0f55e3a611b189a4226f781d6e1e6a79)
 std::ostream & | [operator<<](#namespacedronecode__sdk_1ab42bdc52694ac9b0536d2f54498f2a3f) (std::ostream & str, [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md) const & position) | Stream operator to print information about a [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md).
 bool | [operator==](#namespacedronecode__sdk_1a7d2a4365c11cbdb95b75461b3e89fadb) (const [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) & lhs, const [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) & rhs) | Equal operator to compare two [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a70ac9b5c74bd9a096310437d15b7a7af) (std::ostream & str, [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) const & quaternion) | Stream operator to print information about a [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md).
+bool | [operator==](#namespacedronecode__sdk_1a76036f0cedd4f8e1563a7bbb3c466fde) (const [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) & lhs, const [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) & rhs) | Equal operator to compare two [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) objects.
+std::ostream & | [operator<<](#namespacedronecode__sdk_1a1e7dda26b31744e5dfc7f3bdd04bdfec) (std::ostream & str, [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) const & euler_angle) | Stream operator to print information about a [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md).
 bool | [operator==](#namespacedronecode__sdk_1aff9ef154aeb90ee7d4c45b5105e2ca64) (const [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md) & lhs, const [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md) & rhs) | Equal operator to compare two [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a07d9af9a6403f725836286d9c310d16a) (std::ostream & str, [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md) const & status) | Stream operator to print information about a [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md).
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a3da4cb141f25449077e53da307d99d0b) (std::ostream & str, [Camera::Status::StorageStatus](structdronecode__sdk_1_1_camera_1_1_status.md#structdronecode__sdk_1_1_camera_1_1_status_1ad5fe84902ac4bba14fa77825f1828879) const & storage_status) | Stream operator to print information about a [Camera::Status::StorageStatus](structdronecode__sdk_1_1_camera_1_1_status.md#structdronecode__sdk_1_1_camera_1_1_status_1ad5fe84902ac4bba14fa77825f1828879).
@@ -393,6 +395,50 @@ Stream operator to print information about a [Camera::CaptureInfo::Quaternion](s
 
 * std::ostream& **str** - 
 * [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) const& **quaternion** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a76036f0cedd4f8e1563a7bbb3c466fde}
+
+```
+#include: camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::CaptureInfo::EulerAngle &lhs, const Camera::CaptureInfo::EulerAngle &rhs)
+```
+
+
+Equal operator to compare two [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) objects.
+
+
+**Parameters**
+
+* const [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md)& **lhs** - 
+* const [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a1e7dda26b31744e5dfc7f3bdd04bdfec}
+
+```
+#include: camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo::EulerAngle const &euler_angle)
+```
+
+
+Stream operator to print information about a [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) const& **euler_angle** - 
 
 **Returns**
 
