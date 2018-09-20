@@ -36,7 +36,7 @@ The Dronecode SDK is in beta development.
   > **Tip** The Dronecode-SDK-Swift is in alpha development. 
     We plan to make our first official (beta) release in the coming weeks.
 
-* C++ Developers should start at the [C++ Library](../cpp/README.md#dronecode-sdk-c-library).
+* C++ Developers should start at the [C++ Library](cpp/README.md).
 
 * Developers who want to contribute to the API will need to build the C++ library (and other programming language wrappers) from source. For more information see the [contributing section](#contributing) below.
  
