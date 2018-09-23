@@ -48,7 +48,7 @@ The most important classes are:
 - [Camera](/api_reference/classdronecode__sdk_1_1_camera.md): Control a camera.
 - [FollowMe](/api_reference/classdronecode__sdk_1_1_follow_me.md): Drone tracks a position supplied by the SDK.
 - [Calibration](/api_reference/classdronecode__sdk_1_1_calibration.md):  Calibrate sensors (e.g.: gyro, accelerometer, and magnetometer).
-- [Logging](/api_reference/classdronecode__sdk_1_1_logging.md): Data logging and streaming from the vehicle.
+- [LogFiles](/api_reference/classdronecode__sdk_1_1_log_files.md): Download log files from the vehicle.
 
 
 ## Contributing/Extending

@@ -66,7 +66,8 @@
       * [struct Config](api_reference/structdronecode__sdk_1_1_follow_me_1_1_config.md)
       * [struct TargetLocation ](api_reference/structdronecode__sdk_1_1_follow_me_1_1_target_location.md)
     * [class Calibration](api_reference/classdronecode__sdk_1_1_calibration.md)
-    * [class Logging](api_reference/classdronecode__sdk_1_1_logging.md)
+    * [class LogFiles](api_reference/classdronecode__sdk_1_1_log_files.md)
+      * [struct Entry](api_reference/structdronecode__sdk_1_1_log_files_1_1_entry.md)
     * [namespace dronecode_sdk (globals)](api_reference/namespacedronecode__sdk.md)
   
   * [Contributing](contributing/README.md)
