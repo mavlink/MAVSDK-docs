@@ -14,7 +14,7 @@ Namespace for all [dronecode_sdk](namespacedronecode__sdk.md) types.
 * [dronecode_sdk::FollowMe](classdronecode__sdk_1_1_follow_me.md)
 * [dronecode_sdk::Gimbal](classdronecode__sdk_1_1_gimbal.md)
 * [dronecode_sdk::Info](classdronecode__sdk_1_1_info.md)
-* [dronecode_sdk::Logging](classdronecode__sdk_1_1_logging.md)
+* [dronecode_sdk::LogFiles](classdronecode__sdk_1_1_log_files.md)
 * [dronecode_sdk::Mission](classdronecode__sdk_1_1_mission.md)
 * [dronecode_sdk::MissionItem](classdronecode__sdk_1_1_mission_item.md)
 * [dronecode_sdk::Offboard](classdronecode__sdk_1_1_offboard.md)
