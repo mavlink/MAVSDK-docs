@@ -32,42 +32,71 @@ The example terminal output should be similar to that shown below:
 $ ./follow_me udp://:14540
 ```
 ```
+[01:55:59|Info ] DronecodeSDK version: 0.2.8 (dronecode_sdk_impl.cpp:25)
 Wait for system to connect via heartbeat
-[02:47:19|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:206)
-[02:47:19|Debug] New: System ID: 1 Comp ID: 1 (dronecode_sdk_impl.cpp:310)
-[02:47:19|Debug] Component Autopilot added. (mavlink_system.cpp:326)
-[02:47:19|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-02/0 (mavlink_system.cpp:263)
-[02:47:20|Debug] Found 1 component(s). (mavlink_system.cpp:458)
-[02:47:20|Debug] Discovered 4294967298 (mavlink_system.cpp:460)
-[02:47:20|Info ] FollowMe: Applying default FollowMe configuration FollowMe to the system... (follow_me_impl.cpp:186)
+[01:55:59|Info ] New device on: 127.0.0.1:14580 (udp_connection.cpp:200)
+[01:55:59|Debug] New: System ID: 1 Comp ID: 1 (dronecode_sdk_impl.cpp:286)
+[01:55:59|Debug] Component Autopilot added. (system_impl.cpp:335)
+[01:56:00|Debug] Found 1 component(s). (system_impl.cpp:462)
+[01:56:00|Debug] Discovered 4294967298 (system_impl.cpp:464)
+Waiting for system to be ready
+...
 Waiting for system to be ready
 System is ready
 Armed
-[02:47:22|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:286)
+[01:56:07|Debug] MAVLink: info: ARMED by arm/disarm component command (system_impl.cpp:273)
 In Air...
-[02:47:23|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:286)
-[02:47:23|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:286)
-[02:47:23|Debug] MAVLink: critical: Using minimum takeoff altitude: 2.50 m (mavlink_system.cpp:263)
+[01:56:07|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (system_impl.cpp:273)
+[01:56:07|Debug] MAVLink: info: Takeoff detected (system_impl.cpp:273)
+[01:56:07|Debug] MAVLink: info: Using minimum takeoff altitude: 2.50 m (system_impl.cpp:273)
+[FlightMode: Takeoff] Vehicle is at: nan, nan degrees.
 [FlightMode: Takeoff] Vehicle is at: nan, nan degrees.
 [FlightMode: Hold] Vehicle is at: nan, nan degrees.
-[02:47:28|Debug] FollowMe: Waiting for the system confirmation of the new configuration.. (follow_me_impl.cpp:98)
-[02:47:28|Info ] FollowMe: Configured: Min height: 20 meters, Follow distance: 8 meters, Follow direction: Front right, Responsiveness: 0.5 (follow_me_impl.cpp:101)
+[01:56:12|Debug] Waiting for the system confirmation of the new configuration.. (follow_me_impl.cpp:81)
 [FlightMode: FollowMe] Vehicle is at: nan, nan degrees.
 [FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54559 degrees.
 [FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3975, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3975, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54559 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54563 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54567 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.5457 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54574 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54577 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54581 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54588 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54592 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3974, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3975, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3975, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3975, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54595 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54592 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54588 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54581 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54577 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54574 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.5457 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54567 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54563 degrees.
+[FlightMode: FollowMe] Vehicle is at: 47.3977, 8.54563 degrees.
+waiting until landed
+[01:56:53|Debug] MAVLink: info: Landing at current position (system_impl.cpp:273)
+waiting until landed
 ...
-[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54567 degrees.
-[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.5457 degrees.
-[FlightMode: FollowMe] Vehicle is at: 47.3976, 8.54573 degrees.
 waiting until landed
-[12:47:05|Debug] MAVLink: info: Landing at current position (mavlink_system.cpp:286)
-waiting until landed
-waiting until landed
-...
-waiting until landed
-waiting until landed
-[02:48:37|Debug] MAVLink: info: Landing detected (mavlink_system.cpp:263)
-waiting until landed
+[01:57:12|Debug] MAVLink: info: Landing detected (system_impl.cpp:273)
+[01:57:12|Debug] MAVLink: info: DISARMED by auto disarm on land (system_impl.cpp:273)
 Landed...
 ```
 
@@ -91,19 +120,19 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(follow_me)
 
-if (MSVC)
-    find_package(Boost 1.64 COMPONENTS system date_time REQUIRED )
+find_package(Threads REQUIRED)
+
+if(NOT MSVC)
+    add_definitions("-std=c++11 -Wall -Wextra -Werror")
+    # Line below required if /usr/local/include is not in your default includes
+    # include_directories(/usr/local/include)
+    # Line below required if /usr/local/lib is not in your default linker path
+    # link_directories(/usr/local/lib)
+else()
     include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
     link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
     add_definitions("-std=c++11 -WX -W2")
-    # This is to avoid auto-linking of libraries that we don't build
-    add_definitions("-DBOOST_ALL_NO_LIB")
-else()
-    find_package(Boost 1.58 COMPONENTS system REQUIRED )
-    add_definitions("-std=c++11 -Wall -Wextra -Werror")
 endif()
-
-include_directories(${Boost_INCLUDE_DIR})
 
 add_executable(follow_me
     follow_me.cpp
@@ -111,7 +140,7 @@ add_executable(follow_me
 )
 
 target_link_libraries(follow_me
-    LINK_PUBLIC ${Boost_LIBRARIES}
+    ${CMAKE_THREAD_LIBS_INIT}
     dronecode_sdk
     dronecode_sdk_action
     dronecode_sdk_follow_me
@@ -232,22 +261,24 @@ int main(int argc, char **argv)
     // Configure Min height of the drone to be "20 meters" above home & Follow direction as "Front
     // right".
     FollowMe::Config config;
-    config.min_height_m = 20.0;
-    config.follow_direction = FollowMe::Config::FollowDirection::FRONT_RIGHT;
+    config.min_height_m = 10.0;
+    config.follow_direction = FollowMe::Config::FollowDirection::BEHIND;
     FollowMe::Result follow_me_result = follow_me->set_config(config);
 
     // Start Follow Me
     follow_me_result = follow_me->start();
     follow_me_error_exit(follow_me_result, "Failed to start FollowMe mode");
 
-    boost::asio::io_service io; // for event loop
-    std::unique_ptr<FakeLocationProvider> location_provider(new FakeLocationProvider(io));
+    FakeLocationProvider location_provider;
     // Register for platform-specific Location provider. We're using FakeLocationProvider for the
     // example.
-    location_provider->request_location_updates([&system, &follow_me](double lat, double lon) {
+    location_provider.request_location_updates([&follow_me](double lat, double lon) {
         follow_me->set_target_location({lat, lon, 0.0, 0.f, 0.f, 0.f});
     });
-    io.run(); // will run as long as location updates continue to happen.
+
+    while (location_provider.is_running()) {
+        sleep_for(seconds(1));
+    }
 
     // Stop Follow Me
     follow_me_result = follow_me->stop();
@@ -302,18 +333,8 @@ inline void connection_error_exit(ConnectionResult result, const std::string &me
 #pragma once
 
 #include <functional>
-/**
-  ********************************************************************************************
-  ********************************************************************************************
-  Important note: Boost isn't a dependency for the Dronecode SDK library.
-  We're using Boost::Asio in this example ONLY to simulate asynchronous Fake location provider.
-  Applications on platforms Android, Windows, Apple, etc should make use of their platform-specific
-  Location Provider in place of FakeLocationProvider.
-  ********************************************************************************************
-  ********************************************************************************************
-  */
-#include <boost/asio.hpp>
-#include <boost/date_time/posix_time/posix_time.hpp>
+#include <atomic>
+#include <thread>
 
 /**
  * @brief The FakeLocationProvider class
@@ -323,16 +344,21 @@ class FakeLocationProvider {
 public:
     typedef std::function<void(double lat, double lon)> location_callback_t;
 
-    FakeLocationProvider(boost::asio::io_service &io) : timer_(io, boost::posix_time::seconds(1)) {}
+    FakeLocationProvider();
 
-    ~FakeLocationProvider() {}
+    ~FakeLocationProvider();
 
     void request_location_updates(location_callback_t callback);
+    bool is_running() { return !should_exit_; };
 
 private:
-    void compute_next_location();
+    void start();
+    void stop();
+    void compute_locations();
 
-    boost::asio::deadline_timer timer_;
+    std::thread *thread_{nullptr};
+    std::atomic<bool> should_exit_{false};
+
     location_callback_t location_callback_ = nullptr;
     double latitude_deg_ = 47.3977419;
     double longitude_deg_ = 8.5455938;
@@ -347,6 +373,7 @@ private:
 [fake_location_provider.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/follow_me/fake_location_provider.cpp)
 
 ```cpp
+
 #include "fake_location_provider.h"
 #include <chrono> // for seonds()
 #include <thread> // for sleep_for()
@@ -354,62 +381,62 @@ private:
 using std::this_thread::sleep_for;
 using std::chrono::seconds;
 
+FakeLocationProvider::FakeLocationProvider() {}
+
+FakeLocationProvider::~FakeLocationProvider()
+{
+    stop();
+}
+
 void FakeLocationProvider::request_location_updates(location_callback_t callback)
 {
     location_callback_ = callback;
-    timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
+    stop();
+    start();
 }
 
-// Rudimentary location provider whose successive lat, lon combination
-// makes Drone revolve in a semi-circular path.
-void FakeLocationProvider::compute_next_location()
+void FakeLocationProvider::start()
 {
-    if (count_++ < 10) {
-        location_callback_(latitude_deg_, longitude_deg_);
-        latitude_deg_ -= LATITUDE_DEG_PER_METER * 4;
-        timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
-        timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep_for(seconds(1));
-    }
-    if (count_++ < 20) {
-        location_callback_(latitude_deg_, longitude_deg_);
-        longitude_deg_ += LONGITUDE_DEG_PER_METER * 4;
-        timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
-        timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep_for(seconds(1));
-    }
-    if (count_++ < 30) {
-        location_callback_(latitude_deg_, longitude_deg_);
-        latitude_deg_ += LATITUDE_DEG_PER_METER * 4;
-        timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
-        timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep_for(seconds(1));
-    }
-    if (count_++ < 40) {
-        location_callback_(latitude_deg_, longitude_deg_);
-        longitude_deg_ -= LONGITUDE_DEG_PER_METER * 4;
-        timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
-        timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep_for(seconds(1));
-    }
-    if (count_++ < 50) {
-        location_callback_(latitude_deg_, longitude_deg_);
-        latitude_deg_ -= LATITUDE_DEG_PER_METER * 3;
-        timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
-        timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep_for(seconds(1));
-    }
-    if (count_++ < MAX_LOCATIONS) {
-        location_callback_(latitude_deg_, longitude_deg_);
-        longitude_deg_ += LONGITUDE_DEG_PER_METER * 3;
-        timer_.expires_at(timer_.expires_at() + boost::posix_time::seconds(1));
-        timer_.async_wait(std::bind(&FakeLocationProvider::compute_next_location, this));
-        sleep_for(seconds(1));
+    should_exit_ = false;
+    thread_ = new std::thread(&FakeLocationProvider::compute_locations, this);
+}
+
+void FakeLocationProvider::stop()
+{
+    should_exit_ = true;
+
+    if (thread_) {
+        thread_->join();
+        delete thread_;
+        thread_ = nullptr;
     }
 }
 
-const size_t FakeLocationProvider::MAX_LOCATIONS = 60u;
+// Rudimentary location provider to draw a square.
+void FakeLocationProvider::compute_locations()
+{
+    while (!should_exit_) {
+        if (count_ < 10) {
+            location_callback_(latitude_deg_, longitude_deg_);
+            latitude_deg_ -= LATITUDE_DEG_PER_METER * 4;
+        } else if (count_ < 20) {
+            location_callback_(latitude_deg_, longitude_deg_);
+            longitude_deg_ += LONGITUDE_DEG_PER_METER * 4;
+        } else if (count_ < 30) {
+            location_callback_(latitude_deg_, longitude_deg_);
+            latitude_deg_ += LATITUDE_DEG_PER_METER * 4;
+        } else if (count_ < 40) {
+            location_callback_(latitude_deg_, longitude_deg_);
+            longitude_deg_ -= LONGITUDE_DEG_PER_METER * 4;
+        } else {
+            // We're done.
+            should_exit_ = true;
+        }
+        sleep_for(seconds(1));
+        ++count_;
+    }
+}
+
 const double FakeLocationProvider::LATITUDE_DEG_PER_METER = 0.000009044;
 const double FakeLocationProvider::LONGITUDE_DEG_PER_METER = 0.000008985;
 ```
-
