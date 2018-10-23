@@ -34,6 +34,15 @@ Currently this means that GPS is required.
 In future we also expect PX4 to support local positioning methods (optical flow or visual-inertial odometry), 
 at which point indoor use will also become possible.
 
+### What UAV flight stacks are supported?
+
+The SDK is optimised for use with the PX4 flight stack and all testing is done against PX4.
+
+While many features should work on other flight stacks there may be implementation differences at the [MAVLink microservices level](https://mavlink.io/en/protocol/overview.html) that mean not every API will work. 
+For example, PX4 and ArduPilot implement the parameter protocol differently, and use different modes for accepting commands from a companion computer.
+
+> **Note** The SDK welcomes contributions to better support flight stacks other than PX4.
+> We do however expect contributors to also help with testing and maintenance support for using the SDK with their autopilot.
 
 ### Are serial connections supported?
 
