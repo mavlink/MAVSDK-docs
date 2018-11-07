@@ -23,6 +23,7 @@ bool | [has_camera](#classdronecode__sdk_1_1_system_1aeb1b529b51317bc5d346720139
 bool | [has_gimbal](#classdronecode__sdk_1_1_system_1ab540753165cc0e65094e107822675fe0) () const | Checks whether the system has a gimbal.
 bool | [is_connected](#classdronecode__sdk_1_1_system_1aed68c810fa02f73ab089fe7f6605e0ae) () const | Checks if the system is connected.
 uint64_t | [get_uuid](#classdronecode__sdk_1_1_system_1a195a32bba02b8e0d7e8dce3fa98cc440) () const | Get the UUID of the system.
+void | [register_component_discovered_callback](#classdronecode__sdk_1_1_system_1aa315b9523fe060301db6a8046a56f792) ([discover_callback_t](namespacedronecode__sdk.md#namespacedronecode__sdk_1ab69992dcff4fa10237868962c7ad7de5) callback)const | Register a callback to be called when a component is discovered.
 const [System](classdronecode__sdk_1_1_system.md) & | [operator=](#classdronecode__sdk_1_1_system_1af49f5528da27c3fd1e6d8559a80f55e4) (const [System](classdronecode__sdk_1_1_system.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -137,6 +138,19 @@ Get the UUID of the system.
 **Returns**
 
 &emsp;uint64_t - UUID of system.
+
+### register_component_discovered_callback() {#classdronecode__sdk_1_1_system_1aa315b9523fe060301db6a8046a56f792}
+```cpp
+void dronecode_sdk::System::register_component_discovered_callback(discover_callback_t callback) const
+```
+
+
+Register a callback to be called when a component is discovered.
+
+
+**Parameters**
+
+* [discover_callback_t](namespacedronecode__sdk.md#namespacedronecode__sdk_1ab69992dcff4fa10237868962c7ad7de5) **callback** - a function of type void(ComponentType) which will be called with the component type of the new component.
 
 ### operator=() {#classdronecode__sdk_1_1_system_1af49f5528da27c3fd1e6d8559a80f55e4}
 ```cpp

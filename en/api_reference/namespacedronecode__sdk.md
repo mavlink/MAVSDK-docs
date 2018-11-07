@@ -28,6 +28,7 @@ Type | Description
 --- | ---
 enum [ActionResult](#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | Possible results returned for commanded actions.
 enum [ConnectionResult](#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96) | Result type returned when adding a connection.
+enum [ComponentType](#namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823e) | Component Types.
 
 ## Functions
 
@@ -94,7 +95,7 @@ Possible results returned for commanded actions.
 
 Value | Description
 --- | ---
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ea696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
+<span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823ea696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
 <span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ead0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Success. The action command was accepted by the vehicle. 
 <span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861eafeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system is connected error. 
 <span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861eac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
@@ -133,6 +134,24 @@ Value | Description
 <span id="namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96a588cf56f08269878b055227a8490de67"></span> `DESTINATION_IP_UNKNOWN` | Connection IP is unknown. 
 <span id="namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96a9532aa7fe8e205a02479a2e43d05f6b1"></span> `CONNECTIONS_EXHAUSTED` | Connections exhausted. 
 <span id="namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96a269972fd1df83e8f423abead920f8780"></span> `CONNECTION_URL_INVALID` | URL invalid. 
+
+### enum ComponentType {#namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823e}
+
+```
+#include: system.h
+```
+
+
+Component Types.
+
+
+Value | Description
+--- | ---
+<span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823eaf3017582814e5f96b7281b7b561ba685"></span> `UNKNOWN` |  
+<span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823ea696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
+<span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823ea465bc7e344d319648550ecbf186533cf"></span> `AUTOPILOT` |  
+<span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823eafd8eef12b6ff726e56d809b955def4e0"></span> `CAMERA` |  
+<span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823ea91ec9534b0a4ee9ba9daf730dd057aec"></span> `GIMBAL` |  
 
 ## Function Documentation
 
