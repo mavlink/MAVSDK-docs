@@ -7,13 +7,18 @@
 The [Calibration](classdronecode__sdk_1_1_calibration.md) class enables to calibrate sensors of a drone such as gyro, accelerometer, and magnetometer. 
 
 
+## Data Structures
+
+
+struct [ProgressData](structdronecode__sdk_1_1_calibration_1_1_progress_data.md)
+
 ## Public Types
 
 
 Type | Description
 --- | ---
-enum [Result](#classdronecode__sdk_1_1_calibration_1a425b76c213bb478762a375d3aef4e644) | Possible results returned for camera commands.
-std::function< void([Result](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a425b76c213bb478762a375d3aef4e644) result, float progress, const std::string &text)> [calibration_callback_t](#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) | Callback type for asynchronous calibration call.
+enum [Result](#classdronecode__sdk_1_1_calibration_1a425b76c213bb478762a375d3aef4e644) | Possible results returned for calibration commands.
+std::function< void(const [Result](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a425b76c213bb478762a375d3aef4e644) result, const [ProgressData](structdronecode__sdk_1_1_calibration_1_1_progress_data.md))> [calibration_callback_t](#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) | Callback type for asynchronous calibration call.
 
 ## Public Member Functions
 
@@ -23,10 +28,10 @@ Type | Name | Description
 &nbsp; | [Calibration](#classdronecode__sdk_1_1_calibration_1aa559a3d7bffccf86b37e17e180c9dc0f) ([System](classdronecode__sdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classdronecode__sdk_1_1_system.md).
 &nbsp; | [~Calibration](#classdronecode__sdk_1_1_calibration_1a0b012f09aa192147e3f50068625dd094) () | Destructor (internal use only).
 &nbsp; | [Calibration](#classdronecode__sdk_1_1_calibration_1a7e28c4fcb6244db88fa91bc56dee9a37) (const [Calibration](classdronecode__sdk_1_1_calibration.md) &)=delete | Copy constructor (object is not copyable).
-void | [calibrate_gyro_async](#classdronecode__sdk_1_1_calibration_1aa7ec9bc9ed62fa23d0d370ec2809b44b) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) callback) | Perform gyro calibration (asynchronous call).
-void | [calibrate_accelerometer_async](#classdronecode__sdk_1_1_calibration_1ac82675b0235bc7ed8c0a3259739e0bea) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) callback) | Perform accelerometer calibration (asynchronous call).
-void | [calibrate_magnetometer_async](#classdronecode__sdk_1_1_calibration_1ae69b7a5e7308f7f9176152a30ff9049f) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) callback) | Perform magnetometer calibration (asynchronous call).
-void | [calibrate_gimbal_accelerometer_async](#classdronecode__sdk_1_1_calibration_1a1a5fe007db8e548b1305126a94f441af) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) callback) | Perform gimbal accelerometer calibration (asynchronous call).
+void | [calibrate_gyro_async](#classdronecode__sdk_1_1_calibration_1aa7ec9bc9ed62fa23d0d370ec2809b44b) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) callback) | Perform gyro calibration (asynchronous call).
+void | [calibrate_accelerometer_async](#classdronecode__sdk_1_1_calibration_1ac82675b0235bc7ed8c0a3259739e0bea) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) callback) | Perform accelerometer calibration (asynchronous call).
+void | [calibrate_magnetometer_async](#classdronecode__sdk_1_1_calibration_1ae69b7a5e7308f7f9176152a30ff9049f) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) callback) | Perform magnetometer calibration (asynchronous call).
+void | [calibrate_gimbal_accelerometer_async](#classdronecode__sdk_1_1_calibration_1a1a5fe007db8e548b1305126a94f441af) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) callback) | Perform gimbal accelerometer calibration (asynchronous call).
 const [Calibration](classdronecode__sdk_1_1_calibration.md) & | [operator=](#classdronecode__sdk_1_1_calibration_1a347cb2bc05828fc1cbb40bebfc50cabc) (const [Calibration](classdronecode__sdk_1_1_calibration.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -83,10 +88,10 @@ Copy constructor (object is not copyable).
 ## Member Typdef Documentation
 
 
-### typedef calibration_callback_t {#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5}
+### typedef calibration_callback_t {#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1}
 
 ```cpp
-typedef std::function<void(Result result, float progress, const std::string &text)> dronecode_sdk::Calibration::calibration_callback_t
+typedef std::function<void(const Result result, const ProgressData)> dronecode_sdk::Calibration::calibration_callback_t
 ```
 
 
@@ -99,7 +104,7 @@ Callback type for asynchronous calibration call.
 ### enum Result {#classdronecode__sdk_1_1_calibration_1a425b76c213bb478762a375d3aef4e644}
 
 
-Possible results returned for camera commands.
+Possible results returned for calibration commands.
 
 
 Value | Description
@@ -130,7 +135,7 @@ Perform gyro calibration (asynchronous call).
 
 **Parameters**
 
-* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) **callback** - Function to receive result and progress of calibration.
+* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) **callback** - Function to receive result and progress of calibration.
 
 ### calibrate_accelerometer_async() {#classdronecode__sdk_1_1_calibration_1ac82675b0235bc7ed8c0a3259739e0bea}
 ```cpp
@@ -143,7 +148,7 @@ Perform accelerometer calibration (asynchronous call).
 
 **Parameters**
 
-* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) **callback** - Function to receive result and progress of calibration.
+* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) **callback** - Function to receive result and progress of calibration.
 
 ### calibrate_magnetometer_async() {#classdronecode__sdk_1_1_calibration_1ae69b7a5e7308f7f9176152a30ff9049f}
 ```cpp
@@ -156,7 +161,7 @@ Perform magnetometer calibration (asynchronous call).
 
 **Parameters**
 
-* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) **callback** - Function to receive result and progress of calibration.
+* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) **callback** - Function to receive result and progress of calibration.
 
 ### calibrate_gimbal_accelerometer_async() {#classdronecode__sdk_1_1_calibration_1a1a5fe007db8e548b1305126a94f441af}
 ```cpp
@@ -169,7 +174,7 @@ Perform gimbal accelerometer calibration (asynchronous call).
 
 **Parameters**
 
-* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a422dff19595da9cd7a9c4de6caef5dc5) **callback** - Function to receive result and progress of calibration.
+* [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) **callback** - Function to receive result and progress of calibration.
 
 ### operator=() {#classdronecode__sdk_1_1_calibration_1a347cb2bc05828fc1cbb40bebfc50cabc}
 ```cpp
