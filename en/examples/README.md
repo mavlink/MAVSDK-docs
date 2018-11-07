@@ -64,7 +64,7 @@ sudo make default install
 
 Then build the example:
 ```sh
-cd example/takeoff_and_land/
+cd example/takeoff_land/
 mkdir build && cd build
 cmake ..
 make
@@ -81,9 +81,9 @@ cmake --build . --target install
 
 Modify the example as described in [Building C++ Apps > SDK Installed Locally](../guide/toolchain.md#sdk_local_install) (this is required for Windows).
 
-Build the example as described in [Building C++ Apps](../guide/toolchain.md#windows). Below we show how for the *takeoff_and_land* example, but all the other examples are built in the same way:
+Build the example as described in [Building C++ Apps](../guide/toolchain.md#windows). Below we show how for the *takeoff_land* example, but all the other examples are built in the same way:
 ```sh
-cd example/takeoff_and_land/
+cd example/takeoff_land/
 mkdir build && cd build
 cmake .. -G "Visual Studio 15 2017 Win64"
 cmake --build .
