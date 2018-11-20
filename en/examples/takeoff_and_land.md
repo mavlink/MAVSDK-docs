@@ -68,6 +68,10 @@ project(takeoff_and_land)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
+    # Line below required if /usr/local/include is not in your default includes
+    #include_directories(/usr/local/include)
+    # Line below required if /usr/local/lib is not in your default linker path
+    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
     include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
@@ -94,6 +98,7 @@ target_link_libraries(takeoff_and_land
 
 #include <chrono>
 #include <cstdint>
+#include <dronecode_sdk/system.h>
 #include <dronecode_sdk/action.h>
 #include <dronecode_sdk/dronecode_sdk.h>
 #include <dronecode_sdk/telemetry.h>
@@ -118,6 +123,12 @@ void usage(std::string bin_name)
               << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
 }
 
+void component_discovered(ComponentType component_type)
+{
+    std::cout << NORMAL_CONSOLE_TEXT << "Discovered a component with type "
+              << unsigned(component_type) << std::endl;
+}
+
 int main(int argc, char **argv)
 {
     DronecodeSDK dc;
@@ -140,6 +151,11 @@ int main(int argc, char **argv)
         return 1;
     }
 
+    // We don't need to specify the UUID if it's only one system anyway.
+    // If there were multiple, we could specify it with:
+    // dc.system(uint64_t uuid);
+    System &system = dc.system();
+
     std::cout << "Waiting to discover system..." << std::endl;
     dc.register_on_discover([&discovered_system](uint64_t uuid) {
         std::cout << "Discovered system with UUID: " << uuid << std::endl;
@@ -156,10 +172,9 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    // We don't need to specify the UUID if it's only one system anyway.
-    // If there were multiple, we could specify it with:
-    // dc.system(uint64_t uuid);
-    System &system = dc.system();
+    // Register a callback so we get told when components (camera, gimbal) etc
+    // are found.
+    system.register_component_discovered_callback(component_discovered);
 
     auto telemetry = std::make_shared<Telemetry>(system);
     auto action = std::make_shared<Action>(system);
@@ -189,19 +204,19 @@ int main(int argc, char **argv)
 
     // Arm vehicle
     std::cout << "Arming..." << std::endl;
-    const ActionResult arm_result = action->arm();
+    const Action::Result arm_result = action->arm();
 
-    if (arm_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << action_result_str(arm_result)
+    if (arm_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << Action::result_str(arm_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
     // Take off
     std::cout << "Taking off..." << std::endl;
-    const ActionResult takeoff_result = action->takeoff();
-    if (takeoff_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << action_result_str(takeoff_result)
+    const Action::Result takeoff_result = action->takeoff();
+    if (takeoff_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << Action::result_str(takeoff_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -210,9 +225,9 @@ int main(int argc, char **argv)
     sleep_for(seconds(10));
 
     std::cout << "Landing..." << std::endl;
-    const ActionResult land_result = action->land();
-    if (land_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << action_result_str(land_result)
+    const Action::Result land_result = action->land();
+    if (land_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << Action::result_str(land_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
