@@ -41,6 +41,7 @@
   * [struct TargetLocation](structdronecode__sdk_1_1_follow_me_1_1_target_location.md)
 * [class Calibration](classdronecode__sdk_1_1_calibration.md)
   * [struct ProgressData](structdronecode__sdk_1_1_calibration_1_1_progress_data.md)
+* [class ParamsRaw](classdronecode__sdk_1_1_params_raw.md)
 * [class LogFiles](classdronecode__sdk_1_1_log_files.md)
   * [struct Entry](structdronecode__sdk_1_1_log_files_1_1_entry.md)
 * [namespace dronecode_sdk (globals)](namespacedronecode__sdk.md)
