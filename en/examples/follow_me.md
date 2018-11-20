@@ -125,9 +125,9 @@ find_package(Threads REQUIRED)
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
     # Line below required if /usr/local/include is not in your default includes
-    # include_directories(/usr/local/include)
+    #include_directories(/usr/local/include)
     # Line below required if /usr/local/lib is not in your default linker path
-    # link_directories(/usr/local/lib)
+    #link_directories(/usr/local/lib)
 else()
     include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
     link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
@@ -184,7 +184,7 @@ using namespace std::this_thread; // for sleep_for()
 #define TELEMETRY_CONSOLE_TEXT "\033[34m" // Turn text on console blue
 #define NORMAL_CONSOLE_TEXT "\033[0m" // Restore normal console colour
 
-inline void action_error_exit(ActionResult result, const std::string &message);
+inline void action_error_exit(Action::Result result, const std::string &message);
 inline void follow_me_error_exit(FollowMe::Result result, const std::string &message);
 inline void connection_error_exit(ConnectionResult result, const std::string &message);
 
@@ -238,7 +238,7 @@ int main(int argc, char **argv)
     std::cout << "System is ready" << std::endl;
 
     // Arm
-    ActionResult arm_result = action->arm();
+    Action::Result arm_result = action->arm();
     action_error_exit(arm_result, "Arming failed");
     std::cout << "Armed" << std::endl;
 
@@ -253,7 +253,7 @@ int main(int argc, char **argv)
         std::placeholders::_1));
 
     // Takeoff
-    ActionResult takeoff_result = action->takeoff();
+    Action::Result takeoff_result = action->takeoff();
     action_error_exit(takeoff_result, "Takeoff failed");
     std::cout << "In Air..." << std::endl;
     sleep_for(seconds(5)); // Wait for drone to reach takeoff altitude
@@ -288,7 +288,7 @@ int main(int argc, char **argv)
     telemetry->flight_mode_async(nullptr);
 
     // Land
-    const ActionResult land_result = action->land();
+    const Action::Result land_result = action->land();
     action_error_exit(land_result, "Landing failed");
     while (telemetry->in_air()) {
         std::cout << "waiting until landed" << std::endl;
@@ -299,10 +299,10 @@ int main(int argc, char **argv)
 }
 
 // Handles Action's result
-inline void action_error_exit(ActionResult result, const std::string &message)
+inline void action_error_exit(Action::Result result, const std::string &message)
 {
-    if (result != ActionResult::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << action_result_str(result)
+    if (result != Action::Result::SUCCESS) {
+        std::cerr << ERROR_CONSOLE_TEXT << message << Action::result_str(result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
@@ -373,7 +373,6 @@ private:
 [fake_location_provider.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/follow_me/fake_location_provider.cpp)
 
 ```cpp
-
 #include "fake_location_provider.h"
 #include <chrono> // for seonds()
 #include <thread> // for sleep_for()

@@ -18,6 +18,7 @@ Namespace for all [dronecode_sdk](namespacedronecode__sdk.md) types.
 * [dronecode_sdk::Mission](classdronecode__sdk_1_1_mission.md)
 * [dronecode_sdk::MissionItem](classdronecode__sdk_1_1_mission_item.md)
 * [dronecode_sdk::Offboard](classdronecode__sdk_1_1_offboard.md)
+* [dronecode_sdk::ParamsRaw](classdronecode__sdk_1_1_params_raw.md)
 * [dronecode_sdk::PluginBase](classdronecode__sdk_1_1_plugin_base.md)
 * [dronecode_sdk::System](classdronecode__sdk_1_1_system.md)
 * [dronecode_sdk::Telemetry](classdronecode__sdk_1_1_telemetry.md)
@@ -26,7 +27,6 @@ Namespace for all [dronecode_sdk](namespacedronecode__sdk.md) types.
 
 Type | Description
 --- | ---
-enum [ActionResult](#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) | Possible results returned for commanded actions.
 enum [ConnectionResult](#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96) | Result type returned when adding a connection.
 enum [ComponentType](#namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823e) | Component Types.
 
@@ -34,7 +34,6 @@ enum [ComponentType](#namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823e
 
 Type | Name | Description
 --- | --- | ---
-const char * | [action_result_str](#namespacedronecode__sdk_1a317e77ee37b9d47c863d1ee1cf3d20e0) ([ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) result) | Returns a human-readable English string for an ActionResult.
 bool | [operator==](#namespacedronecode__sdk_1a82242e25d08fb2850466f638701c7540) (const [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) & lhs, const [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) & rhs) | Equal operator to compare two [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1aa7c99052d48e71a3ac48569651485d42) (std::ostream & str, [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) const & video_stream_settings) | Stream operator to print information about a [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md).
 bool | [operator==](#namespacedronecode__sdk_1a02742286ab6aaaa6df3de594bc20b749) (const [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) & lhs, const [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) & rhs) | Equal operator to compare two [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) objects.
@@ -82,32 +81,6 @@ std::ostream & | [operator<<](#namespacedronecode__sdk_1a4acb99b3d173ad128a40830
 ## Enumeration Type Documentation
 
 
-### enum ActionResult {#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e}
-
-```
-#include: action_result.h
-```
-
-
-Possible results returned for commanded actions.
-
-> **Note** [DronecodeSDK](classdronecode__sdk_1_1_dronecode_s_d_k.md) does not throw exceptions. Instead a result of this type will be returned when you execute actions.
-
-Value | Description
---- | ---
-<span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823ea696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ead0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Success. The action command was accepted by the vehicle. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861eafeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system is connected error. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861eac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ea802706a9238e2928077f97736854bad4"></span> `BUSY` | Vehicle busy error. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ea6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command refused by vehicle. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ea939d986bd1af6a2e1db07a61a60f7ae2"></span> `COMMAND_DENIED_LANDED_STATE_UNKNOWN` | Command refused because landed state is unknown. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ead7e95e2842caf0baff502fbd1290fd69"></span> `COMMAND_DENIED_NOT_LANDED` | Command refused because vehicle not landed. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ea070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Timeout waiting for command acknowledgement from vehicle. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ea59e19d623bfb3a7a60195410afcbe31f"></span> `VTOL_TRANSITION_SUPPORT_UNKNOWN` | hybrid/VTOL transition refused because VTOL support is unknown. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861eaf3712e88cb2a09f0d5b72e8e493b53be"></span> `NO_VTOL_TRANSITION_SUPPORT` | Vehicle does not support hybrid/VTOL transitions. 
-<span id="namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861ea637905cbbdef76bf168f9a036968526a"></span> `PARAMETER_ERROR` | Error getting or setting parameter. 
-
 ### enum ConnectionResult {#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96}
 
 ```
@@ -148,34 +121,12 @@ Component Types.
 Value | Description
 --- | ---
 <span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823eaf3017582814e5f96b7281b7b561ba685"></span> `UNKNOWN` |  
-<span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823ea696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
 <span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823ea465bc7e344d319648550ecbf186533cf"></span> `AUTOPILOT` |  
 <span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823eafd8eef12b6ff726e56d809b955def4e0"></span> `CAMERA` |  
 <span id="namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823ea91ec9534b0a4ee9ba9daf730dd057aec"></span> `GIMBAL` |  
 
 ## Function Documentation
 
-
-### action_result_str() {#namespacedronecode__sdk_1a317e77ee37b9d47c863d1ee1cf3d20e0}
-
-```
-#include: action_result.h
-```
-```cpp
-const char* dronecode_sdk::action_result_str(ActionResult result)
-```
-
-
-Returns a human-readable English string for an ActionResult.
-
-
-**Parameters**
-
-* [ActionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a03f15ca37e363d61087d14b709b1861e) **result** - The enum value for which a human readable string is required.
-
-**Returns**
-
-&emsp;const char * - Human readable string for the ActionResult.
 
 ### operator==() {#namespacedronecode__sdk_1a82242e25d08fb2850466f638701c7540}
 
