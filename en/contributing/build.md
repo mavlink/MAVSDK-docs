@@ -20,9 +20,9 @@ First install:
   brew install cmake
   ```
 
-Then follow the instructions for building the library on [Linux](#linux).
+Then follow the instructions for building the library on [Linux](#build_cpp_linux).
 
-### Linux
+### Linux {#build_cpp_linux}
 
 To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the [preconditions above](#mac-os-x)):
 
@@ -314,6 +314,42 @@ make default EXTERNAL_DIR=relative_path_to_external_directory
 sudo make default install
 ```
 See [SDK Extensions](../guide/sdk_extensions.md) for more information.
+
+## Building the Backend {#build_backend}
+
+The *Dronecode SDK* programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/Dronecode/DronecodeSDK-Python#dronecodesdk-python)) share a common backend, which may optionally be built as part of the C++ library.
+
+The build additionally depends on libraries for the *Go* programming language, and the *make* option `BUILD_BACKEND=1`.
+Otherwise the build is exactly the same as usual.
+
+### Ubuntu {#build_backend_ubuntu}
+
+To build the backend on Ubuntu:
+1. [Setup/Build the C++ Library on Linux](#build_cpp_linux)
+1. Install additional dependencies  
+   ```
+   sudo apt-get install golang
+   ```
+1. Navigate into the SDK directory and clean any existing build artifacts
+   ```
+   cd DronecodeSDK
+   make distclean
+   ```
+1. Build the project:
+   ```
+   make BUILD_BACKEND=1
+   ```
+
+
+### macOS {#build_backend_macos}
+
+TBD
+
+### Windows {#build_backend_windows}
+
+TBD
+
+
 
 
 ## Build API Reference Documentation {#build_api_reference}
