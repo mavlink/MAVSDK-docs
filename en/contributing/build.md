@@ -10,7 +10,7 @@ This section explains how to build the SDK C++ library from source,
 along with its unit and integration tests. 
 Build artifacts are created in the **build** subdirectory.
 
-### macOS {#mac-os-x}
+### macOS {#build_cpp_mac_os}
 
 First install:
 * [XCode](https://developer.apple.com/xcode/) (for *clang*)
@@ -24,7 +24,7 @@ Then follow the instructions for building the library on [Linux](#build_cpp_linu
 
 ### Linux {#build_cpp_linux}
 
-To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the [preconditions above](#mac-os-x)):
+To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the [preconditions above](#build_cpp_mac_os)):
 
 1. First install the dependencies
    ```bash
@@ -65,7 +65,7 @@ To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the
 1. (Optionally) "Install" the *Dronecode SDK* [as described below](#install-artifacts). This is required in order to build [Dronecode SDK C++ apps](../guide/toolchain.md), but not to run SDK test code.
 
 
-### Windows
+### Windows {#build_cpp_windows}
 
 To build the library in Windows, you need:
 
@@ -170,7 +170,7 @@ cmake --build . --target install
 ```
 
 
-## Build for Android
+## Build for Android {#build_cpp_android}
 
 > **Tip** You must first build the C++ Library (as shown above).
 
@@ -198,7 +198,7 @@ make android install
 ```
 
 
-## Build for iOS
+## Build for iOS {#build_cpp_iOS}
 
 > **Tip** You must first build the C++ Library (as shown above).
 
@@ -330,26 +330,30 @@ To build the backend on Ubuntu:
    ```
    sudo apt-get install golang
    ```
-1. Navigate into the SDK directory and clean any existing build artifacts
+1. Navigate into the SDK directory and build the project
    ```
    cd DronecodeSDK
-   make distclean
-   ```
-1. Build the project:
-   ```
    make BUILD_BACKEND=1
    ```
 
 
 ### macOS {#build_backend_macos}
 
-TBD
+To build the backend on macOS:
+1. [Setup/Build the C++ Library on macOS](#build_cpp_mac_os)
+1. Install additional dependencies  
+   ```
+   brew install go
+   ```
+1. Navigate into the SDK directory and build the project
+   ```
+   cd DronecodeSDK
+   make BUILD_BACKEND=1
+   ```
 
 ### Windows {#build_backend_windows}
 
 TBD
-
-
 
 
 ## Build API Reference Documentation {#build_api_reference}
