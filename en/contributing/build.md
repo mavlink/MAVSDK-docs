@@ -378,7 +378,7 @@ The files are created in **/install/docs/markdown**.
 
 ## Troubleshooting
 
-The vast majority of common build issues are resolved by updating submodules and cleaning the distribution:
+The vast majority of common build issues can be resolved by updating submodules and cleaning the distribution:
 ```
 cd DronecodeSDK
 git submodule update --recursive
