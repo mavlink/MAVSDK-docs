@@ -1,7 +1,7 @@
 # Building SDK from Source
 
 This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the *Dronecode SDK* C++ library from source (both "natively" and in docker) for all our target platforms. 
-It also shows how to build the SDK with extensions and build the API Reference documentation. 
+It also shows how to build the SDK with extensions and build the API Reference documentation.
 
 
 ## Build the C++ Library {#build_sdk_cpp}
@@ -10,7 +10,7 @@ This section explains how to build the SDK C++ library from source,
 along with its unit and integration tests. 
 Build artifacts are created in the **build** subdirectory.
 
-### macOS {#mac-os-x}
+### macOS {#build_cpp_mac_os}
 
 First install:
 * [XCode](https://developer.apple.com/xcode/) (for *clang*)
@@ -20,11 +20,11 @@ First install:
   brew install cmake
   ```
 
-Then follow the instructions for building the library on [Linux](#linux).
+Then follow the instructions for building the library on [Linux](#build_cpp_linux).
 
-### Linux
+### Linux {#build_cpp_linux}
 
-To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the [preconditions above](#mac-os-x)):
+To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the [preconditions above](#build_cpp_mac_os)):
 
 1. First install the dependencies
    ```bash
@@ -65,7 +65,7 @@ To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the
 1. (Optionally) "Install" the *Dronecode SDK* [as described below](#install-artifacts). This is required in order to build [Dronecode SDK C++ apps](../guide/toolchain.md), but not to run SDK test code.
 
 
-### Windows
+### Windows {#build_cpp_windows}
 
 To build the library in Windows, you need:
 
@@ -170,7 +170,7 @@ cmake --build . --target install
 ```
 
 
-## Build for Android
+## Build for Android {#build_cpp_android}
 
 > **Tip** You must first build the C++ Library (as shown above).
 
@@ -198,7 +198,7 @@ make android install
 ```
 
 
-## Build for iOS
+## Build for iOS {#build_cpp_iOS}
 
 > **Tip** You must first build the C++ Library (as shown above).
 
@@ -315,6 +315,46 @@ sudo make default install
 ```
 See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
+## Building the Backend {#build_backend}
+
+The *Dronecode SDK* programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/Dronecode/DronecodeSDK-Python#dronecodesdk-python)) share a common backend, which may optionally be built as part of the C++ library.
+
+The build additionally depends on libraries for the *Go* programming language, and the *make* option `BUILD_BACKEND=1`.
+Otherwise the build is exactly the same as usual.
+
+### Ubuntu {#build_backend_ubuntu}
+
+To build the backend on Ubuntu:
+1. [Setup/Build the C++ Library on Linux](#build_cpp_linux)
+1. Install additional dependencies  
+   ```
+   sudo apt-get install golang
+   ```
+1. Navigate into the SDK directory and build the project
+   ```
+   cd DronecodeSDK
+   make BUILD_BACKEND=1
+   ```
+
+
+### macOS {#build_backend_macos}
+
+To build the backend on macOS:
+1. [Setup/Build the C++ Library on macOS](#build_cpp_mac_os)
+1. Install additional dependencies  
+   ```
+   brew install go
+   ```
+1. Navigate into the SDK directory and build the project
+   ```
+   cd DronecodeSDK
+   make BUILD_BACKEND=1
+   ```
+
+### Windows {#build_backend_windows}
+
+TBD
+
 
 ## Build API Reference Documentation {#build_api_reference}
 
@@ -335,3 +375,14 @@ The files are created in **/install/docs/markdown**.
 > The [generate_markdown_from_doxygen_xml.py](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script 
 > is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.
 
+
+## Troubleshooting
+
+The vast majority of common build issues are resolved by updating submodules and cleaning the distribution:
+```
+cd DronecodeSDK
+git submodule update --recursive
+make distclean
+```
+
+Then attempt to build again.
