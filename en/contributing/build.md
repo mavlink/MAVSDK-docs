@@ -1,7 +1,7 @@
 # Building SDK from Source
 
 This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the *Dronecode SDK* C++ library from source (both "natively" and in docker) for all our target platforms. 
-It also shows how to build the SDK with extensions and build the API Reference documentation. 
+It also shows how to build the SDK with extensions and build the API Reference documentation.
 
 
 ## Build the C++ Library {#build_sdk_cpp}
@@ -375,3 +375,14 @@ The files are created in **/install/docs/markdown**.
 > The [generate_markdown_from_doxygen_xml.py](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script 
 > is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.
 
+
+## Troubleshooting
+
+The vast majority of common build issues are resolved by updating submodules and cleaning the distribution:
+```
+cd DronecodeSDK
+git submodule update --recursive
+make distclean
+```
+
+Then attempt to build again.
