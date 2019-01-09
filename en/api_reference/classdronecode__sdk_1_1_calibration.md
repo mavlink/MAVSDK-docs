@@ -32,6 +32,7 @@ void | [calibrate_gyro_async](#classdronecode__sdk_1_1_calibration_1aa7ec9bc9ed6
 void | [calibrate_accelerometer_async](#classdronecode__sdk_1_1_calibration_1ac82675b0235bc7ed8c0a3259739e0bea) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) callback) | Perform accelerometer calibration (asynchronous call).
 void | [calibrate_magnetometer_async](#classdronecode__sdk_1_1_calibration_1ae69b7a5e7308f7f9176152a30ff9049f) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) callback) | Perform magnetometer calibration (asynchronous call).
 void | [calibrate_gimbal_accelerometer_async](#classdronecode__sdk_1_1_calibration_1a1a5fe007db8e548b1305126a94f441af) ([calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) callback) | Perform gimbal accelerometer calibration (asynchronous call).
+void | [cancel_calibration](#classdronecode__sdk_1_1_calibration_1af92b4f38751e701f68dfeca454e15737) () | Cancel ongoing calibration.
 const [Calibration](classdronecode__sdk_1_1_calibration.md) & | [operator=](#classdronecode__sdk_1_1_calibration_1a347cb2bc05828fc1cbb40bebfc50cabc) (const [Calibration](classdronecode__sdk_1_1_calibration.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -175,6 +176,15 @@ Perform gimbal accelerometer calibration (asynchronous call).
 **Parameters**
 
 * [calibration_callback_t](classdronecode__sdk_1_1_calibration.md#classdronecode__sdk_1_1_calibration_1a80de297cc0a8a77d81902cf765aa77a1) **callback** - Function to receive result and progress of calibration.
+
+### cancel_calibration() {#classdronecode__sdk_1_1_calibration_1af92b4f38751e701f68dfeca454e15737}
+```cpp
+void dronecode_sdk::Calibration::cancel_calibration()
+```
+
+
+Cancel ongoing calibration.
+
 
 ### operator=() {#classdronecode__sdk_1_1_calibration_1a347cb2bc05828fc1cbb40bebfc50cabc}
 ```cpp

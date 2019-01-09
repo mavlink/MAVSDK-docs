@@ -27,7 +27,9 @@ Type | Name | Description
 &nbsp; | [~Mission](#classdronecode__sdk_1_1_mission_1a21637e7a71c29a95f573a5c44ee0bd26) () | Destructor (internal use only).
 &nbsp; | [Mission](#classdronecode__sdk_1_1_mission_1a1fbfbebf4812b806af482188490f12a1) (const [Mission](classdronecode__sdk_1_1_mission.md) &)=delete | Copy constructor (object is not copyable).
 void | [upload_mission_async](#classdronecode__sdk_1_1_mission_1abe18ceecd0afba9c109ed216c77212f0) (const std::vector< std::shared_ptr< [MissionItem](classdronecode__sdk_1_1_mission_item.md) >> & mission_items, [result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1adab3125b28a8d7b7ed90a81ea56b0115) callback) | Uploads a vector of mission items to the system (asynchronous).
+void | [upload_mission_cancel](#classdronecode__sdk_1_1_mission_1a86cfb102df0d17c57bc5a6d1a3fdfdd0) () | Cancel a mission upload (asynchronous).
 void | [download_mission_async](#classdronecode__sdk_1_1_mission_1a786b73a354af0b45b75caa36d197c336) ([mission_items_and_result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a319a5311e997cf351557e8663abc7d84) callback) | Downloads a vector of mission items from the system (asynchronous).
+void | [download_mission_cancel](#classdronecode__sdk_1_1_mission_1af60c8a7f3f8bea6abe77e3986d85d11b) () | Cancel a mission download (asynchronous).
 void | [set_return_to_launch_after_mission](#classdronecode__sdk_1_1_mission_1af7059e3e2ea1b7ee86591815c28922e7) (bool enable) | Set whether to trigger Return-to-Launch (RTL) after mission is complete.
 bool | [get_return_to_launch_after_mission](#classdronecode__sdk_1_1_mission_1a891af41a68131c5e5053cbdc1606edd4) () | Get whether to trigger Return-to-Launch (RTL) after mission is complete.
 void | [start_mission_async](#classdronecode__sdk_1_1_mission_1aa4bfbd0e5e06692a96f0301fbe7bbbc3) ([result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1adab3125b28a8d7b7ed90a81ea56b0115) callback) | Starts the mission (asynchronous).
@@ -163,6 +165,7 @@ Value | Description
 <span id="classdronecode__sdk_1_1_mission_1a819b8fdcf5a49f76e690c2c16adf572da44090b5626a9be3103d4e3624470635c"></span> `FAILED_TO_OPEN_QGC_PLAN` | Failed to open QGroundControl plan. 
 <span id="classdronecode__sdk_1_1_mission_1a819b8fdcf5a49f76e690c2c16adf572da503c552313ebdaf4cd93b1e5b5525a4f"></span> `FAILED_TO_PARSE_QGC_PLAN` | Failed to parse QGroundControl plan. 
 <span id="classdronecode__sdk_1_1_mission_1a819b8fdcf5a49f76e690c2c16adf572da0118056c7c9e890a242c9bdb961dac82"></span> `UNSUPPORTED_MISSION_CMD` | Unsupported mission command. 
+<span id="classdronecode__sdk_1_1_mission_1a819b8fdcf5a49f76e690c2c16adf572da9f935beb31030ad0d4d26126c0f39bf2"></span> `CANCELLED` | [Mission](classdronecode__sdk_1_1_mission.md) upload or download has been cancelled. 
 
 ## Member Function Documentation
 
@@ -182,6 +185,16 @@ The mission items are uploaded to a drone. Once uploaded the mission can be star
 * const std::vector< std::shared_ptr< [MissionItem](classdronecode__sdk_1_1_mission_item.md) >>& **mission_items** - Reference to vector of mission items.
 * [result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1adab3125b28a8d7b7ed90a81ea56b0115) **callback** - Callback to receive result of this request.
 
+### upload_mission_cancel() {#classdronecode__sdk_1_1_mission_1a86cfb102df0d17c57bc5a6d1a3fdfdd0}
+```cpp
+void dronecode_sdk::Mission::upload_mission_cancel()
+```
+
+
+Cancel a mission upload (asynchronous).
+
+This cancels an ongoing mission upload. The mission upload will fail with the result [Result::CANCELLED](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a819b8fdcf5a49f76e690c2c16adf572da9f935beb31030ad0d4d26126c0f39bf2).
+
 ### download_mission_async() {#classdronecode__sdk_1_1_mission_1a786b73a354af0b45b75caa36d197c336}
 ```cpp
 void dronecode_sdk::Mission::download_mission_async(mission_items_and_result_callback_t callback)
@@ -195,6 +208,16 @@ The method will fail if any of the downloaded mission items are not supported by
 **Parameters**
 
 * [mission_items_and_result_callback_t](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a319a5311e997cf351557e8663abc7d84) **callback** - Callback to receive mission items and result of this request.
+
+### download_mission_cancel() {#classdronecode__sdk_1_1_mission_1af60c8a7f3f8bea6abe77e3986d85d11b}
+```cpp
+void dronecode_sdk::Mission::download_mission_cancel()
+```
+
+
+Cancel a mission download (asynchronous).
+
+This cancels an ongoing mission download. The mission download will fail with the result [Result::CANCELLED](classdronecode__sdk_1_1_mission.md#classdronecode__sdk_1_1_mission_1a819b8fdcf5a49f76e690c2c16adf572da9f935beb31030ad0d4d26126c0f39bf2).
 
 ### set_return_to_launch_after_mission() {#classdronecode__sdk_1_1_mission_1af7059e3e2ea1b7ee86591815c28922e7}
 ```cpp
