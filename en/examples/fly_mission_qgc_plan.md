@@ -1,6 +1,6 @@
 # Example: Fly QGroundControl Plan Mission
 
-The [Fly QGroundControl Plan Mission](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/fly_qgc_mission) example shows how to import a *QGroundControl* mission plan, upload it to a vehicle, run the mission, and then command Return mode ("RTL").
+The [Fly QGroundControl Plan Mission](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/fly_qgc_mission) example shows how to import a *QGroundControl* mission plan, upload it to a vehicle, run the mission, and then command Return mode ("RTL").
 
 ![Fly Mission QGC Screenshot - From Plan](../../assets/examples/fly_qgc_mission/fly_qgc_plan_mission_example_qgc.jpg)
 
@@ -9,15 +9,16 @@ The [Fly QGroundControl Plan Mission](https://github.com/dronecore/DroneCore/tre
 
 The example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
-> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). Alternatively you can specify the plan to load when you start the example:
+> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). 
+  Alternatively you can specify the plan to load when you start the example:
   ```
   ./fly_qgc_mission <path of QGC Mission plan>
   ```
 
-
 The example terminal output should be similar to that shown below:
 
-> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
+> **Note** This is from a debug build of the SDK. 
+  A release build will omit the "Debug" messages.
 
 ```
 $ ./fly_qgc_mission udp://:14540
@@ -26,66 +27,60 @@ $ ./fly_qgc_mission udp://:14540
 Connection URL: udp://:14540
 Importing mission from mission plan: ../../../plugins/mission/qgroundcontrol_sample.plan
 Waiting to discover system...
-[01:11:21|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
-[01:11:21|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:286)
-[01:11:21|Debug] Component Autopilot added. (mavlink_system.cpp:349)
-[01:11:21|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-23/0 (mavlink_system.cpp:286)
-[01:11:22|Debug] Found 1 component(s). (mavlink_system.cpp:481)
-[01:11:22|Debug] Discovered 4294967298 (mavlink_system.cpp:483)
+[09:52:04|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
+[09:52:04|Debug] New: System ID: 1 Comp ID: 1 (dronecode_sdk_impl.cpp:292)
+[09:52:04|Debug] Component Autopilot added. (system_impl.cpp:339)
+[09:52:04|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-07-09/1 (system_impl.cpp:277)
+[09:52:04|Debug] Found 1 component(s). (system_impl.cpp:466)
+[09:52:04|Debug] Discovered 4294967298 (system_impl.cpp:468)
 Discovered system with UUID: 4294967298
-Waiting for system to be ready
-...
 Waiting for system to be ready
 System ready
 Found 8 mission items in the given QGC plan.
 Uploading mission...
-[01:11:30|Debug] Send mission item 0 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 1 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 2 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 3 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 4 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 5 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 6 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 7 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 8 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 9 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 10 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 11 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 12 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 13 (mission_impl.cpp:904)
-[01:11:30|Debug] Send mission item 14 (mission_impl.cpp:904)
-[01:11:30|Info ] Mission accepted (mission_impl.cpp:162)
+[09:52:05|Debug] Send mission item 0 (mission_impl.cpp:898)
+[09:52:05|Debug] Send mission item 1 (mission_impl.cpp:898)
+...
+[09:52:05|Debug] Send mission item 13 (mission_impl.cpp:898)
+[09:52:05|Debug] Send mission item 14 (mission_impl.cpp:898)
+[09:52:05|Info ] Mission accepted (mission_impl.cpp:163)
 Mission uploaded.
 Arming...
+[09:52:05|Debug] MAVLink: info: ARMED by arm/disarm component command (system_impl.cpp:277)
 Armed.
 Starting mission.
-[01:11:30|Debug] MAVLink: info: ARMED by arm/disarm component command (mavlink_system.cpp:286)
 Started mission.
-[01:11:30|Debug] MAVLink: info: Executing mission. (mavlink_system.cpp:286)
-[01:11:30|Debug] MAVLink: info: Takeoff to 15.0 meters above home. (mavlink_system.cpp:286)
-[01:11:30|Debug] MAVLink: info: Takeoff detected (mavlink_system.cpp:286)
-Mission status update: 0 / 8
-Mission status update: 1 / 8
+[09:52:06|Debug] MAVLink: info: Executing Mission (system_impl.cpp:277)
+[09:52:06|Debug] MAVLink: info: Takeoff to 10.0 meters above home. (system_impl.cpp:277)
+[09:52:06|Debug] MAVLink: info: Takeoff detected (system_impl.cpp:277)
+Mission status update: Mission status update: 1 / 8
+1 / 8
+Mission status update: Mission status update: 11 / 8 / 8
+
 Mission status update: 1 / 8
 Mission status update: 2 / 8
 ...
 Mission status update: 2 / 8
 Mission status update: 3 / 8
 ...
+Mission status update: 3 / 8
 Mission status update: 4 / 8
-...
+Mission status update: 4 / 8
 Mission status update: 4 / 8
 Mission status update: 5 / 8
 ...
+Mission status update: 5 / 8
+[09:52:58|Debug] MAVLink: critical: MANUAL CONTROL LOST (at t=75098ms) (system_impl.cpp:277)
+[09:52:58|Debug] MAVLink: info: MANUAL CONTROL REGAINED after 519ms (system_impl.cpp:277)
 Mission status update: 5 / 8
 Mission status update: 6 / 8
 ...
 Mission status update: 6 / 8
 Mission status update: 7 / 8
-...
+..
 Mission status update: 7 / 8
+[09:53:06|Debug] MAVLink: info: Mission finished, loitering. (system_impl.cpp:277)
 Mission status update: 8 / 8
-[01:12:41|Debug] MAVLink: info: Mission finished, loitering. (mavlink_system.cpp:286)
 Commanding RTL...
 Commanded RTL.
 ```
@@ -103,10 +98,10 @@ The specific code for importing missions is discussed in the guide: [Missions > 
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/fly_qgc_mission).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/fly_qgc_mission).
 
 
-[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/fly_qgc_mission/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -115,6 +110,10 @@ project(fly_qgc_mission)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
+    # Line below required if /usr/local/include is not in your default includes
+    #include_directories(/usr/local/include)
+    # Line below required if /usr/local/lib is not in your default linker path
+    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
     include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
@@ -126,70 +125,70 @@ add_executable(fly_qgc_mission
 )
 
 target_link_libraries(fly_qgc_mission
-    dronecore
-    dronecore_action
-    dronecore_mission
-    dronecore_telemetry
+    dronecode_sdk
+    dronecode_sdk_action
+    dronecode_sdk_mission
+    dronecode_sdk_telemetry
 )
 ```
 
-[fly_qgc_mission.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/fly_qgc_mission/fly_qgc_mission.cpp)
+[fly_qgc_mission.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/fly_qgc_mission.cpp)
 
 ```cpp
 /**
-* @file fly_qgc_mission.cpp
-*
-* @brief Demonstrates how to import mission items from QGroundControl plan,
-* and fly them using DroneCore.
-*
-* Steps to run this example:
-* 1. (a) Create a Mission in QGroundControl and save them to a file (.plan) (OR)
-*    (b) Use a pre-created sample mission plan in "plugins/mission/qgroundcontrol_sample.plan".
-*    Click [here](https://user-images.githubusercontent.com/26615772/31763673-972c5bb6-b4dc-11e7-8ff0-f8b39b6b88c3.png) to see what sample mission plan in QGroundControl looks like.
-* 2. Run the example by passing path of the QGC mission plan as argument (By default, sample mission plan is imported).
-*
-* Example description:
-* 1. Imports QGC mission items from .plan file.
-* 2. Uploads mission items to vehicle.
-* 3. Starts mission from first mission item.
-* 4. Commands RTL once QGC Mission is accomplished.
-*
-* @author Shakthi Prashanth M <shakthi.prashanth.m@intel.com>,
-*         Julian Oes <julian@oes.ch>
-* @date 2018-02-04
-*/
+ * @file fly_qgc_mission.cpp
+ *
+ * @brief Demonstrates how to import mission items from QGroundControl plan,
+ * and fly them using the Dronecode SDK.
+ *
+ * Steps to run this example:
+ * 1. (a) Create a Mission in QGroundControl and save them to a file (.plan) (OR)
+ *    (b) Use a pre-created sample mission plan in "plugins/mission/qgroundcontrol_sample.plan".
+ *    Click
+ * [here](https://user-images.githubusercontent.com/26615772/31763673-972c5bb6-b4dc-11e7-8ff0-f8b39b6b88c3.png)
+ * to see what sample mission plan in QGroundControl looks like.
+ * 2. Run the example by passing path of the QGC mission plan as argument (By default, sample
+ * mission plan is imported).
+ *
+ * Example description:
+ * 1. Imports QGC mission items from .plan file.
+ * 2. Uploads mission items to vehicle.
+ * 3. Starts mission from first mission item.
+ * 4. Commands RTL once QGC Mission is accomplished.
+ *
+ * @author Shakthi Prashanth M <shakthi.prashanth.m@intel.com>,
+ *         Julian Oes <julian@oes.ch>
+ * @date 2018-02-04
+ */
 
-#include <dronecore/action.h>
-#include <dronecore/dronecore.h>
-#include <dronecore/mission.h>
-#include <dronecore/telemetry.h>
+#include <dronecode_sdk/action.h>
+#include <dronecode_sdk/dronecode_sdk.h>
+#include <dronecode_sdk/mission.h>
+#include <dronecode_sdk/telemetry.h>
 #include <functional>
 #include <future>
 #include <iostream>
 #include <memory>
 
-#define ERROR_CONSOLE_TEXT "\033[31m" //Turn text on console red
-#define TELEMETRY_CONSOLE_TEXT "\033[34m" //Turn text on console blue
-#define NORMAL_CONSOLE_TEXT "\033[0m"  //Restore normal console colour
+#define ERROR_CONSOLE_TEXT "\033[31m" // Turn text on console red
+#define TELEMETRY_CONSOLE_TEXT "\033[34m" // Turn text on console blue
+#define NORMAL_CONSOLE_TEXT "\033[0m" // Restore normal console colour
 
-using namespace dronecore;
+using namespace dronecode_sdk;
 using namespace std::chrono; // for seconds(), milliseconds()
 using namespace std::this_thread; // for sleep_for()
 
 // Handles Action's result
-inline void handle_action_err_exit(ActionResult result, const std::string &message);
+inline void handle_action_err_exit(Action::Result result, const std::string &message);
 // Handles Mission's result
 inline void handle_mission_err_exit(Mission::Result result, const std::string &message);
 // Handles Connection result
-inline void handle_connection_err_exit(ConnectionResult result,
-                                       const std::string &message);
-
-
+inline void handle_connection_err_exit(ConnectionResult result, const std::string &message);
 
 void usage(std::string bin_name)
 {
-    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name <<
-              " <connection_url> [path of QGC Mission plan]" << std::endl
+    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name
+              << " <connection_url> [path of QGC Mission plan]" << std::endl
               << "Connection URL format should be :" << std::endl
               << " For TCP : tcp://[server_host][:server_port]" << std::endl
               << " For UDP : udp://[bind_host][:bind_port]" << std::endl
@@ -197,13 +196,11 @@ void usage(std::string bin_name)
               << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
 }
 
-
 int main(int argc, char **argv)
 {
-    DroneCore dc;
+    DronecodeSDK dc;
     std::string connection_url;
     ConnectionResult connection_result;
-
 
     // Locate path of QGC Sample plan
     std::string qgc_plan = "../../../plugins/mission/qgroundcontrol_sample.plan";
@@ -220,7 +217,6 @@ int main(int argc, char **argv)
 
     std::cout << "Connection URL: " << connection_url << std::endl;
     std::cout << "Importing mission from mission plan: " << qgc_plan << std::endl;
-
 
     {
         auto prom = std::make_shared<std::promise<void>>();
@@ -268,18 +264,16 @@ int main(int argc, char **argv)
         std::cerr << "No missions! Exiting..." << std::endl;
         exit(EXIT_FAILURE);
     }
-    std::cout << "Found " << mission_items.size() << " mission items in the given QGC plan." <<
-              std::endl;
+    std::cout << "Found " << mission_items.size() << " mission items in the given QGC plan."
+              << std::endl;
 
     {
         std::cout << "Uploading mission..." << std::endl;
         // Wrap the asynchronous upload_mission function using std::future.
         auto prom = std::make_shared<std::promise<Mission::Result>>();
         auto future_result = prom->get_future();
-        mission->upload_mission_async(
-        mission_items, [prom](Mission::Result result) {
-            prom->set_value(result);
-        });
+        mission->upload_mission_async(mission_items,
+                                      [prom](Mission::Result result) { prom->set_value(result); });
 
         const Mission::Result result = future_result.get();
         handle_mission_err_exit(result, "Mission upload failed: ");
@@ -287,13 +281,12 @@ int main(int argc, char **argv)
     }
 
     std::cout << "Arming..." << std::endl;
-    const ActionResult arm_result = action->arm();
+    const Action::Result arm_result = action->arm();
     handle_action_err_exit(arm_result, "Arm failed: ");
     std::cout << "Armed." << std::endl;
 
     // Before starting the mission subscribe to the mission progress.
-    mission->subscribe_progress(
-    [](int current, int total) {
+    mission->subscribe_progress([](int current, int total) {
         std::cout << "Mission status update: " << current << " / " << total << std::endl;
     });
 
@@ -301,8 +294,7 @@ int main(int argc, char **argv)
         std::cout << "Starting mission." << std::endl;
         auto prom = std::make_shared<std::promise<Mission::Result>>();
         auto future_result = prom->get_future();
-        mission->start_mission_async(
-        [prom](Mission::Result result) {
+        mission->start_mission_async([prom](Mission::Result result) {
             prom->set_value(result);
             std::cout << "Started mission." << std::endl;
         });
@@ -321,9 +313,10 @@ int main(int argc, char **argv)
     {
         // Mission complete. Command RTL to go home.
         std::cout << "Commanding RTL..." << std::endl;
-        const ActionResult result = action->return_to_launch();
-        if (result != ActionResult::SUCCESS) {
-            std::cout << "Failed to command RTL (" << action_result_str(result) << ")" << std::endl;
+        const Action::Result result = action->return_to_launch();
+        if (result != Action::Result::SUCCESS) {
+            std::cout << "Failed to command RTL (" << Action::result_str(result) << ")"
+                      << std::endl;
         } else {
             std::cout << "Commanded RTL." << std::endl;
         }
@@ -332,11 +325,11 @@ int main(int argc, char **argv)
     return 0;
 }
 
-inline void handle_action_err_exit(ActionResult result, const std::string &message)
+inline void handle_action_err_exit(Action::Result result, const std::string &message)
 {
-    if (result != ActionResult::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << action_result_str(
-                      result) << NORMAL_CONSOLE_TEXT << std::endl;
+    if (result != Action::Result::SUCCESS) {
+        std::cerr << ERROR_CONSOLE_TEXT << message << Action::result_str(result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -344,19 +337,17 @@ inline void handle_action_err_exit(ActionResult result, const std::string &messa
 inline void handle_mission_err_exit(Mission::Result result, const std::string &message)
 {
     if (result != Mission::Result::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << Mission::result_str(
-                      result) << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cerr << ERROR_CONSOLE_TEXT << message << Mission::result_str(result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
 
 // Handles connection result
-inline void handle_connection_err_exit(ConnectionResult result,
-                                       const std::string &message)
+inline void handle_connection_err_exit(ConnectionResult result, const std::string &message)
 {
     if (result != ConnectionResult::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message
-                  << connection_result_str(result)
+        std::cerr << ERROR_CONSOLE_TEXT << message << connection_result_str(result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }

@@ -1,17 +1,19 @@
 # Example: VTOL Transitions
 
-This example shows how you can use DroneCore to transition between VTOL copter and fixed-wing modes (and back).
+This example shows how you can use the SDK [Action](../api_reference/classdronecode__sdk_1_1_action.md) class to transition between VTOL copter and fixed-wing modes (and back).
 
 ![VTOL Transition QGC Screenshot](../../assets/examples/transition_vtol_fixed_wing/transition_vtol_fixed_wing_example_qgc.png)
 
 
 ## Running the Example {#run_example}
 
-The example must be run against a VTOL aircraft (simulated or otherwise). Otherwise the example is built and run [in the standard way](../examples/README.md#trying_the_examples).
+The example must be run against a VTOL aircraft (simulated or otherwise). 
+Otherwise the example is built and run [in the standard way](../examples/README.md#trying_the_examples).
 
-> **Tip** Instructions for running the Gazebo simulator for a standard VTOL can be found here: [PX4 Development Guide > Gazebo Simulation](https://dev.px4.io/en/simulation/gazebo.html#standard-vtol). jMAVSim does not support VTOL simulation.
+> **Tip** Instructions for running the Gazebo simulator for a standard VTOL can be found here: [PX4 Development Guide > Gazebo Simulation](https://dev.px4.io/en/simulation/gazebo.html#standard-vtol). 
+  jMAVSim does not support VTOL simulation.
 
-The example terminal output for a debug build of DroneCore should be similar to that shown below (a release build will omit the "Debug" messages):
+The example terminal output for a debug build of the SDK should be similar to that shown below (a release build will omit the "Debug" messages):
 
 ```
 $ ./transition_vtol_fixed_wing udp://:14540
@@ -70,10 +72,10 @@ The operation of the transition code is discussed in the guide: [Takeoff and Lan
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/transition_vtol_fixed_wing).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/transition_vtol_fixed_wing).
 
 
-[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -82,6 +84,10 @@ project(transition_vtol_fixed_wing)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
+    # Line below required if /usr/local/include is not in your default includes
+    #include_directories(/usr/local/include)
+    # Line below required if /usr/local/lib is not in your default linker path
+    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
     include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
@@ -93,85 +99,62 @@ add_executable(transition_vtol_fixed_wing
 )
 
 target_link_libraries(transition_vtol_fixed_wing
-    dronecore
-    dronecore_action
-    dronecore_telemetry
+    dronecode_sdk
+    dronecode_sdk_action
+    dronecode_sdk_telemetry
 )
 ```
 
-[transition_vtol_fixed_wing.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
+[transition_vtol_fixed_wing.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
 
 ```cpp
-
 #include <chrono>
 #include <cstdint>
-#include <dronecore/action.h>
-#include <dronecore/dronecore.h>
-#include <dronecore/telemetry.h>
 #include <iostream>
 #include <thread>
+#include <cmath>
+#include <dronecode_sdk/dronecode_sdk.h>
+#include <dronecode_sdk/action.h>
+#include <dronecode_sdk/telemetry.h>
 
 using std::this_thread::sleep_for;
+using std::chrono::seconds;
 using std::chrono::milliseconds;
-using namespace dronecore;
+using namespace dronecode_sdk;
 
-#define ERROR_CONSOLE_TEXT "\033[31m" //Turn text on console red
-#define TELEMETRY_CONSOLE_TEXT "\033[34m" //Turn text on console blue
-#define NORMAL_CONSOLE_TEXT "\033[0m"  //Restore normal console colour
+static constexpr auto ERROR_CONSOLE_TEXT = "\033[31m";
+static constexpr auto TELEMETRY_CONSOLE_TEXT = "\033[34m";
+static constexpr auto NORMAL_CONSOLE_TEXT = "\033[0m";
 
-
-void usage(std::string bin_name)
-{
-    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
-              << "Connection URL format should be :" << std::endl
-              << " For TCP : tcp://[server_host][:server_port]" << std::endl
-              << " For UDP : udp://[bind_host][:bind_port]" << std::endl
-              << " For Serial : serial:///path/to/serial/dev[:baudrate]" << std::endl
-              << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
-}
-
+void usage(const std::string &bin_name);
 
 int main(int argc, char **argv)
 {
-    DroneCore dc;
-    std::string connection_url;
-    ConnectionResult connection_result;
-
-    bool discovered_system = false;
-
-    if (argc == 2) {
-        connection_url = argv[1];
-        connection_result = dc.add_any_connection(connection_url);
-    } else {
+    if (argc != 2) {
         usage(argv[0]);
         return 1;
     }
 
+    const std::string connection_url = argv[1];
+
+    DronecodeSDK dc;
+
+    // Add connection specified by CLI argument.
+    const ConnectionResult connection_result = dc.add_any_connection(connection_url);
     if (connection_result != ConnectionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Connection failed: "
-                  << connection_result_str(connection_result)
+        std::cout << ERROR_CONSOLE_TEXT
+                  << "Connection failed: " << connection_result_str(connection_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
-    std::cout << "Waiting to discover system..." << std::endl;
-    dc.register_on_discover([&discovered_system](uint64_t uuid) {
-        std::cout << "Discovered system with UUID: " << uuid << std::endl;
-        discovered_system = true;
-    });
-
-    // We usually receive heartbeats at 1Hz, therefore we should find a system after around 2 seconds.
-    sleep_for(std::chrono::seconds(2));
-
-
-    if (!discovered_system) {
-        std::cout << ERROR_CONSOLE_TEXT << "No system found, exiting." << NORMAL_CONSOLE_TEXT << std::endl;
-        return 1;
+    // We need an autopilot connected to start.
+    while (!dc.system().has_autopilot()) {
+        sleep_for(seconds(1));
+        std::cout << "Waiting for system to connect." << std::endl;
     }
 
-    // We don't need to specify the UUID if it's only one system anyway.
-    // If there were multiple, we could specify it with:
-    // dc.system(uint64_t uuid);
+    // Get system and plugins.
     System &system = dc.system();
     auto telemetry = std::make_shared<Telemetry>(system);
     auto action = std::make_shared<Action>(system);
@@ -179,95 +162,114 @@ int main(int argc, char **argv)
     // We want to listen to the altitude of the drone at 1 Hz.
     const Telemetry::Result set_rate_result = telemetry->set_rate_position(1.0);
     if (set_rate_result != Telemetry::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Setting rate failed:" << Telemetry::result_str(
-                      set_rate_result) << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cout << ERROR_CONSOLE_TEXT
+                  << "Setting rate failed: " << Telemetry::result_str(set_rate_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
-
-    // Set up callback to monitor altitude while the vehicle is in flight
+    // Set up callback to monitor altitude.
     telemetry->position_async([](Telemetry::Position position) {
-        std::cout << TELEMETRY_CONSOLE_TEXT // set to blue
-                  << "Altitude: " << position.relative_altitude_m << " m"
-                  << NORMAL_CONSOLE_TEXT // set to default color again
-                  << std::endl;
+        std::cout << TELEMETRY_CONSOLE_TEXT << "Altitude: " << position.relative_altitude_m << " m"
+                  << NORMAL_CONSOLE_TEXT << std::endl;
     });
 
-    // Wait until vehicle is ready to arm.
-    while (telemetry->health_all_ok() != true) {
-        std::cout << ERROR_CONSOLE_TEXT << "Vehicle not ready to arm" << NORMAL_CONSOLE_TEXT << std::endl;
-        sleep_for(std::chrono::seconds(1));
+    // Wait until we are ready to arm.
+    while (!telemetry->health_all_ok()) {
+        std::cout << "Waiting for vehicle to be ready to arm..." << std::endl;
+        sleep_for(seconds(1));
     }
 
     // Arm vehicle
-    std::cout << "Arming..." << std::endl;
-    const ActionResult arm_result = action->arm();
+    std::cout << "Arming." << std::endl;
+    const Action::Result arm_result = action->arm();
 
-    if (arm_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << action_result_str(
-                      arm_result) << NORMAL_CONSOLE_TEXT << std::endl;
+    if (arm_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Arming failed: " << Action::result_str(arm_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
     // Take off
-    std::cout << "Taking off..." << std::endl;
-    const ActionResult takeoff_result = action->takeoff();
-    if (takeoff_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << action_result_str(
-                      takeoff_result) << NORMAL_CONSOLE_TEXT << std::endl;
+    std::cout << "Taking off." << std::endl;
+    const Action::Result takeoff_result = action->takeoff();
+    if (takeoff_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:n" << Action::result_str(takeoff_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
-    // Wait
-    std::this_thread::sleep_for(std::chrono::seconds(10));
+    // Wait while it takes off.
+    sleep_for(seconds(10));
 
-    std::cout << "Transition to fixedwing..." << std::endl;
-    const ActionResult fw_result = action->transition_to_fixedwing();
+    std::cout << "Transition to fixedwing." << std::endl;
+    const Action::Result fw_result = action->transition_to_fixedwing();
 
-    if (fw_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Transition to fixed wing failed: " << action_result_str(
-                      fw_result) << NORMAL_CONSOLE_TEXT << std::endl;
-        //return 1;
+    if (fw_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT
+                  << "Transition to fixed wing failed: " << Action::result_str(fw_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
+        return 1;
     }
 
-    // Wait
-    std::this_thread::sleep_for(std::chrono::seconds(10));
+    // Let it transition and start loitering.
+    sleep_for(seconds(30));
 
+    // Send it South.
+    std::cout << "Sending it to location." << std::endl;
+    // We pass latitude and longitude but leave altitude and yaw unset by passing NAN.
+    const Action::Result goto_result = action->goto_location(47.3633001, 8.5428515, NAN, NAN);
+    if (goto_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT
+                  << "Goto command failed: " << Action::result_str(goto_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
+        return 1;
+    }
+
+    // Let it fly South for a bit.
+    sleep_for(seconds(20));
+
+    // Let's stop before reaching the goto point and go back to hover.
     std::cout << "Transition back to multicopter..." << std::endl;
-    const ActionResult mc_result = action->transition_to_multicopter();
-    if (mc_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Transition to multi copter failed:" << action_result_str(
-                      mc_result) << NORMAL_CONSOLE_TEXT << std::endl;
-        //    return 1;
+    const Action::Result mc_result = action->transition_to_multicopter();
+    if (mc_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT
+                  << "Transition to multi copter failed: " << Action::result_str(mc_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
+        return 1;
     }
 
-    // Wait
-    std::this_thread::sleep_for(std::chrono::seconds(5));
+    // Wait for the transition to be carried out.
+    sleep_for(seconds(5));
 
-    // Return to launch
-    std::cout << "Return to launch..." << std::endl;
-    const ActionResult rtl_result = action->return_to_launch();
-    if (rtl_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Returning to launch failed:" << action_result_str(
-                      rtl_result) << NORMAL_CONSOLE_TEXT << std::endl;
-        //    return 1;
-    }
-
-    // Wait
-    std::this_thread::sleep_for(std::chrono::seconds(20));
-
-    // Land
+    // Now just land here.
     std::cout << "Landing..." << std::endl;
-    const ActionResult land_result = action->land();
-    if (land_result != ActionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << action_result_str(
-                      land_result) << NORMAL_CONSOLE_TEXT << std::endl;
-        //    return 1;
+    const Action::Result land_result = action->land();
+    if (land_result != Action::Result::SUCCESS) {
+        std::cout << ERROR_CONSOLE_TEXT << "Land failed: " << Action::result_str(land_result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
+        return 1;
     }
 
-    // We are relying on auto-disarming but let's keep watching the telemetry for a bit longer.
-    std::this_thread::sleep_for(std::chrono::seconds(5));
-    std::cout << "Finished..." << std::endl;
+    // Wait until disarmed.
+    while (telemetry->armed()) {
+        std::cout << "Waiting for vehicle to land and disarm." << std::endl;
+        sleep_for(seconds(1));
+    }
+
+    std::cout << "Disarmed, exiting." << std::endl;
+
     return 0;
+}
+
+void usage(const std::string &bin_name)
+{
+    std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
+              << "Connection URL format should be :" << std::endl
+              << " For TCP : tcp://[server_host][:server_port]" << std::endl
+              << " For UDP : udp://[bind_host][:bind_port]" << std::endl
+              << " For Serial : serial:///path/to/serial/dev[:baudrate]" << std::endl
+              << std::endl
+              << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
 }
 ```

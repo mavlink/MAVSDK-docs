@@ -11,7 +11,8 @@ The example is built and run [as described here](../examples/README.md#trying_th
 
 The example terminal output should be similar to that shown below:
 
-> **Note** This is from a debug build of DroneCore. A release build will omit the "Debug" messages.
+> **Note** This is from a debug build of the SDK. 
+  A release build will omit the "Debug" messages.
 
 ```
 $ ./offboard udp://:14540
@@ -19,7 +20,7 @@ $ ./offboard udp://:14540
 ```
 Wait for system to connect via heartbeat
 [12:53:03|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
-[12:53:03|Debug] New: System ID: 1 Comp ID: 1 (dronecore_impl.cpp:286)
+[12:53:03|Debug] New: System ID: 1 Comp ID: 1 (dronecode_sdk_impl.cpp:286)
 [12:53:03|Debug] Component Autopilot added. (mavlink_system.cpp:349)
 [12:53:03|Debug] MAVLink: info: [logger] file: rootfs/fs/microsd/log/2018-05-23/0 (mavlink_system.cpp:286)
 [12:53:04|Debug] Found 1 component(s). (mavlink_system.cpp:481)
@@ -58,10 +59,10 @@ The operation of most of this code is discussed in the guide: [Offboard Control]
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/dronecore/DroneCore/tree/{{ book.github_branch }}/example/offboard_velocity).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/offboard_velocity).
 
 
-[CMakeLists.txt](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/offboard_velocity/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/offboard_velocity/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -70,6 +71,10 @@ project(offboard)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
+    # Line below required if /usr/local/include is not in your default includes
+    #include_directories(/usr/local/include)
+    # Line below required if /usr/local/lib is not in your default linker path
+    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
     add_definitions("-D_USE_MATH_DEFINES") # For M_PI
@@ -82,14 +87,14 @@ add_executable(offboard
 )
 
 target_link_libraries(offboard
-    dronecore
-    dronecore_action
-    dronecore_offboard
-    dronecore_telemetry
+    dronecode_sdk
+    dronecode_sdk_action
+    dronecode_sdk_offboard
+    dronecode_sdk_telemetry
 )
 ```
 
-[offboard_velocity.cpp](https://github.com/dronecore/DroneCore/blob/{{ book.github_branch }}/example/offboard_velocity/offboard_velocity.cpp)
+[offboard_velocity.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/offboard_velocity/offboard_velocity.cpp)
 
 ```cpp
 /**
@@ -103,28 +108,28 @@ target_link_libraries(offboard
 
 #include <chrono>
 #include <cmath>
-#include <dronecore/action.h>
-#include <dronecore/dronecore.h>
-#include <dronecore/offboard.h>
-#include <dronecore/telemetry.h>
+#include <dronecode_sdk/action.h>
+#include <dronecode_sdk/dronecode_sdk.h>
+#include <dronecode_sdk/offboard.h>
+#include <dronecode_sdk/telemetry.h>
 #include <iostream>
 #include <thread>
 
-using namespace dronecore;
+using namespace dronecode_sdk;
 using std::this_thread::sleep_for;
 using std::chrono::milliseconds;
 using std::chrono::seconds;
 
-#define ERROR_CONSOLE_TEXT "\033[31m" //Turn text on console red
-#define TELEMETRY_CONSOLE_TEXT "\033[34m" //Turn text on console blue
-#define NORMAL_CONSOLE_TEXT "\033[0m"  //Restore normal console colour
+#define ERROR_CONSOLE_TEXT "\033[31m" // Turn text on console red
+#define TELEMETRY_CONSOLE_TEXT "\033[34m" // Turn text on console blue
+#define NORMAL_CONSOLE_TEXT "\033[0m" // Restore normal console colour
 
 // Handles Action's result
-inline void action_error_exit(ActionResult result, const std::string &message)
+inline void action_error_exit(Action::Result result, const std::string &message)
 {
-    if (result != ActionResult::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << action_result_str(
-                      result) << NORMAL_CONSOLE_TEXT << std::endl;
+    if (result != Action::Result::SUCCESS) {
+        std::cerr << ERROR_CONSOLE_TEXT << message << Action::result_str(result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -133,8 +138,8 @@ inline void action_error_exit(ActionResult result, const std::string &message)
 inline void offboard_error_exit(Offboard::Result result, const std::string &message)
 {
     if (result != Offboard::Result::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << Offboard::result_str(
-                      result) << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cerr << ERROR_CONSOLE_TEXT << message << Offboard::result_str(result)
+                  << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -143,8 +148,7 @@ inline void offboard_error_exit(Offboard::Result result, const std::string &mess
 inline void connection_error_exit(ConnectionResult result, const std::string &message)
 {
     if (result != ConnectionResult::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message
-                  << connection_result_str(result)
+        std::cerr << ERROR_CONSOLE_TEXT << message << connection_result_str(result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
@@ -161,7 +165,7 @@ inline void offboard_log(const std::string &offb_mode, const std::string msg)
  *
  * returns true if everything went well in Offboard control, exits with a log otherwise.
  */
-bool offb_ctrl_ned(std::shared_ptr<dronecore::Offboard> offboard)
+bool offb_ctrl_ned(std::shared_ptr<dronecode_sdk::Offboard> offboard)
 {
     const std::string offb_mode = "NED";
     // Send it once before starting offboard, otherwise it will be rejected.
@@ -171,7 +175,7 @@ bool offb_ctrl_ned(std::shared_ptr<dronecore::Offboard> offboard)
     offboard_error_exit(offboard_result, "Offboard start failed");
     offboard_log(offb_mode, "Offboard started");
 
-    offboard_log(offb_mode,  "Turn to face East");
+    offboard_log(offb_mode, "Turn to face East");
     offboard->set_velocity_ned({0.0f, 0.0f, 0.0f, 90.0f});
     sleep_for(seconds(1)); // Let yaw settle.
 
@@ -180,7 +184,7 @@ bool offb_ctrl_ned(std::shared_ptr<dronecore::Offboard> offboard)
         const float one_cycle = 2.0f * (float)M_PI;
         const unsigned steps = 2 * unsigned(one_cycle / step_size);
 
-        offboard_log(offb_mode,  "Go North and back South");
+        offboard_log(offb_mode, "Go North and back South");
         for (unsigned i = 0; i < steps; ++i) {
             float vx = 5.0f * sinf(i * step_size);
             offboard->set_velocity_ned({vx, 0.0f, 0.0f, 90.0f});
@@ -188,16 +192,15 @@ bool offb_ctrl_ned(std::shared_ptr<dronecore::Offboard> offboard)
         }
     }
 
-    offboard_log(offb_mode,  "Turn to face West");
+    offboard_log(offb_mode, "Turn to face West");
     offboard->set_velocity_ned({0.0f, 0.0f, 0.0f, 270.0f});
     sleep_for(seconds(2));
-
 
     offboard_log(offb_mode, "Go up 2 m/s, turn to face South");
     offboard->set_velocity_ned({0.0f, 0.0f, -2.0f, 180.0f});
     sleep_for(seconds(4));
 
-    offboard_log(offb_mode,  "Go down 1 m/s, turn to face North");
+    offboard_log(offb_mode, "Go down 1 m/s, turn to face North");
     offboard->set_velocity_ned({0.0f, 0.0f, 1.0f, 0.0f});
     sleep_for(seconds(4));
 
@@ -214,9 +217,8 @@ bool offb_ctrl_ned(std::shared_ptr<dronecore::Offboard> offboard)
  *
  * returns true if everything went well in Offboard control, exits with a log otherwise.
  */
-bool offb_ctrl_body(std::shared_ptr<dronecore::Offboard> offboard)
+bool offb_ctrl_body(std::shared_ptr<dronecode_sdk::Offboard> offboard)
 {
-
     const std::string offb_mode = "BODY";
 
     // Send it once before starting offboard, otherwise it will be rejected.
@@ -261,7 +263,6 @@ bool offb_ctrl_body(std::shared_ptr<dronecore::Offboard> offboard)
     return true;
 }
 
-
 void usage(std::string bin_name)
 {
     std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
@@ -272,10 +273,9 @@ void usage(std::string bin_name)
               << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
 }
 
-
 int main(int argc, char **argv)
 {
-    DroneCore dc;
+    DronecodeSDK dc;
     std::string connection_url;
     ConnectionResult connection_result;
 
@@ -288,12 +288,11 @@ int main(int argc, char **argv)
     }
 
     if (connection_result != ConnectionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT << "Connection failed: "
-                  << connection_result_str(connection_result)
+        std::cout << ERROR_CONSOLE_TEXT
+                  << "Connection failed: " << connection_result_str(connection_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
-
 
     // Wait for the system to connect via heartbeat
     while (!dc.is_connected()) {
@@ -313,15 +312,14 @@ int main(int argc, char **argv)
     }
     std::cout << "System is ready" << std::endl;
 
-    ActionResult arm_result = action->arm();
+    Action::Result arm_result = action->arm();
     action_error_exit(arm_result, "Arming failed");
     std::cout << "Armed" << std::endl;
 
-    ActionResult takeoff_result = action->takeoff();
+    Action::Result takeoff_result = action->takeoff();
     action_error_exit(takeoff_result, "Takeoff failed");
     std::cout << "In Air..." << std::endl;
     sleep_for(seconds(5));
-
 
     //  using local NED co-ordinates
     bool ret = offb_ctrl_ned(offboard);
@@ -335,7 +333,7 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    const ActionResult land_result = action->land();
+    const Action::Result land_result = action->land();
     action_error_exit(land_result, "Landing failed");
 
     // We are relying on auto-disarming but let's keep watching the telemetry for a bit longer.
