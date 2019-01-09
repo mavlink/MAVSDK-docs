@@ -19,6 +19,8 @@ Client code must specify a setpoint before starting offboard mode. [DronecodeSDK
 ## Data Structures
 
 
+struct [AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md)
+
 struct [VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md)
 
 struct [VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md)
@@ -46,6 +48,7 @@ void | [stop_async](#classdronecode__sdk_1_1_offboard_1a2ff3262dbc6194def28bb9b3
 bool | [is_active](#classdronecode__sdk_1_1_offboard_1ac3c75fcd1ae1e6b00090eccd03696479) () const | Check if offboard control is active.
 void | [set_velocity_ned](#classdronecode__sdk_1_1_offboard_1a95dfbe096a363e21bfd035258e786350) ([VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
 void | [set_velocity_body](#classdronecode__sdk_1_1_offboard_1ad87778386509911269b87766c0f1830f) ([VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
+void | [set_attitude_rate](#classdronecode__sdk_1_1_offboard_1a511ba0314a4217c3ac3020ab2b0dfd23) ([AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) attitude_rate) | Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust in percentage.
 const [Offboard](classdronecode__sdk_1_1_offboard.md) & | [operator=](#classdronecode__sdk_1_1_offboard_1a8cfbf6cbcb4fbdcf1574f0455632a372) (const [Offboard](classdronecode__sdk_1_1_offboard.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -230,6 +233,19 @@ Set the velocity body coordinates and yaw angular rate.
 **Parameters**
 
 * [VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) **velocity_body_yawspeed** - Velocity and yaw angular rate `struct`.
+
+### set_attitude_rate() {#classdronecode__sdk_1_1_offboard_1a511ba0314a4217c3ac3020ab2b0dfd23}
+```cpp
+void dronecode_sdk::Offboard::set_attitude_rate(AttitudeRate attitude_rate)
+```
+
+
+Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust in percentage.
+
+
+**Parameters**
+
+* [AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) **attitude_rate** - roll, pitch and yaw angular rate along with thrust in percentage.
 
 ### operator=() {#classdronecode__sdk_1_1_offboard_1a8cfbf6cbcb4fbdcf1574f0455632a372}
 ```cpp
