@@ -17,6 +17,7 @@ Namespace for all [dronecode_sdk](namespacedronecode__sdk.md) types.
 * [dronecode_sdk::LogFiles](classdronecode__sdk_1_1_log_files.md)
 * [dronecode_sdk::Mission](classdronecode__sdk_1_1_mission.md)
 * [dronecode_sdk::MissionItem](classdronecode__sdk_1_1_mission_item.md)
+* [dronecode_sdk::MissionRaw](classdronecode__sdk_1_1_mission_raw.md)
 * [dronecode_sdk::Offboard](classdronecode__sdk_1_1_offboard.md)
 * [dronecode_sdk::ParamsRaw](classdronecode__sdk_1_1_params_raw.md)
 * [dronecode_sdk::PluginBase](classdronecode__sdk_1_1_plugin_base.md)
@@ -34,6 +35,7 @@ enum [ComponentType](#namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823e
 
 Type | Name | Description
 --- | --- | ---
+const char * | [connection_result_str](#namespacedronecode__sdk_1a4f99d135d291363375982e84b6928f38) (const [ConnectionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96) result) | Returns a human-readable English string for a ConnectionResult.
 bool | [operator==](#namespacedronecode__sdk_1a82242e25d08fb2850466f638701c7540) (const [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) & lhs, const [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) & rhs) | Equal operator to compare two [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1aa7c99052d48e71a3ac48569651485d42) (std::ostream & str, [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) const & video_stream_settings) | Stream operator to print information about a [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md).
 bool | [operator==](#namespacedronecode__sdk_1a02742286ab6aaaa6df3de594bc20b749) (const [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) & lhs, const [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) & rhs) | Equal operator to compare two [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) objects.
@@ -56,7 +58,6 @@ bool | [operator==](#namespacedronecode__sdk_1a20a75b99effdc66a173a8c004cee5d2c)
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a06b19acda75aa4e8a94da496f98ba365) (std::ostream & str, [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) const & option) | Stream operator to print information about a [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md).
 bool | [operator==](#namespacedronecode__sdk_1a331f8f2bf99003deb769b3b1475a33ef) (const [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md) & lhs, const [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md) & rhs) | Equal operator to compare two [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a12ce002e343392b13fd8aee1dd58a1a7) (std::ostream & str, [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md) const & setting_options) | Stream operator to print information about a [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md).
-const char * | [connection_result_str](#namespacedronecode__sdk_1a4f99d135d291363375982e84b6928f38) (const [ConnectionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96) result) | Returns a human-readable English string for a ConnectionResult.
 bool | [operator==](#namespacedronecode__sdk_1add402a7e54e431c79040066cf0eb009a) (const [MissionItem](classdronecode__sdk_1_1_mission_item.md) & lhs, const [MissionItem](classdronecode__sdk_1_1_mission_item.md) & rhs) | Equal operator to compare two [MissionItem](classdronecode__sdk_1_1_mission_item.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a099ffe3cf3144ce815d31b2d1798ee1f) (std::ostream & str, [MissionItem](classdronecode__sdk_1_1_mission_item.md) const & mission_item) | Stream operator to print infos about a [MissionItem](classdronecode__sdk_1_1_mission_item.md).
 std::ostream & | [operator<<](#namespacedronecode__sdk_1aba2a59ff24c643d38cd2f8f953d12aa0) (std::ostream & str, [MissionItem::CameraAction](classdronecode__sdk_1_1_mission_item.md#classdronecode__sdk_1_1_mission_item_1a636a841437572871ab82e01e1c41f447) const & camera_action) | Stream operator to print infos about a [MissionItem::CameraAction](classdronecode__sdk_1_1_mission_item.md#classdronecode__sdk_1_1_mission_item_1a636a841437572871ab82e01e1c41f447).
@@ -128,490 +129,6 @@ Value | Description
 ## Function Documentation
 
 
-### operator==() {#namespacedronecode__sdk_1a82242e25d08fb2850466f638701c7540}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::VideoStreamSettings &lhs, const Camera::VideoStreamSettings &rhs)
-```
-
-
-Equal operator to compare two [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) objects.
-
-
-**Parameters**
-
-* const [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md)& **lhs** - 
-* const [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1aa7c99052d48e71a3ac48569651485d42}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::VideoStreamSettings const &video_stream_settings)
-```
-
-
-Stream operator to print information about a [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) const& **video_stream_settings** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1a02742286ab6aaaa6df3de594bc20b749}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::VideoStreamInfo &lhs, const Camera::VideoStreamInfo &rhs)
-```
-
-
-Equal operator to compare two [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) objects.
-
-
-**Parameters**
-
-* const [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md)& **lhs** - 
-* const [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1ad8a864387c1cfecba3a1f03e5a282930}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::VideoStreamInfo const &video_stream_info)
-```
-
-
-Stream operator to print information about a [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) const& **video_stream_info** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator<<() {#namespacedronecode__sdk_1a97e8676daa01b814bca7f65dc9e9ac7e}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::VideoStreamInfo::Status const &video_stream_info_status)
-```
-
-
-Stream operator to print information about a [Camera::VideoStreamInfo::Status](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md#structdronecode__sdk_1_1_camera_1_1_video_stream_info_1a69b67b304c04a7d9bb0a8efb43927c85).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::VideoStreamInfo::Status](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md#structdronecode__sdk_1_1_camera_1_1_video_stream_info_1a69b67b304c04a7d9bb0a8efb43927c85) const& **video_stream_info_status** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1a07cc6e440564c2d7df62cad87257cd76}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::CaptureInfo &lhs, const Camera::CaptureInfo &rhs)
-```
-
-
-Equal operator to compare two [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md) objects.
-
-
-**Parameters**
-
-* const [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md)& **lhs** - 
-* const [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1a7830ff2413c4a1846365f69e37212c53}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo const &capture_info)
-```
-
-
-Stream operator to print information about a [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md) const& **capture_info** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1a0f55e3a611b189a4226f781d6e1e6a79}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::CaptureInfo::Position &lhs, const Camera::CaptureInfo::Position &rhs)
-```
-
-
-Equal operator to compare two [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md) objects.
-
-
-**Parameters**
-
-* const [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md)& **lhs** - 
-* const [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1ab42bdc52694ac9b0536d2f54498f2a3f}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo::Position const &position)
-```
-
-
-Stream operator to print information about a [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md) const& **position** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1a7d2a4365c11cbdb95b75461b3e89fadb}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::CaptureInfo::Quaternion &lhs, const Camera::CaptureInfo::Quaternion &rhs)
-```
-
-
-Equal operator to compare two [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) objects.
-
-
-**Parameters**
-
-* const [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md)& **lhs** - 
-* const [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1a70ac9b5c74bd9a096310437d15b7a7af}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo::Quaternion const &quaternion)
-```
-
-
-Stream operator to print information about a [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) const& **quaternion** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1a76036f0cedd4f8e1563a7bbb3c466fde}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::CaptureInfo::EulerAngle &lhs, const Camera::CaptureInfo::EulerAngle &rhs)
-```
-
-
-Equal operator to compare two [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) objects.
-
-
-**Parameters**
-
-* const [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md)& **lhs** - 
-* const [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1a1e7dda26b31744e5dfc7f3bdd04bdfec}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo::EulerAngle const &euler_angle)
-```
-
-
-Stream operator to print information about a [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) const& **euler_angle** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1aff9ef154aeb90ee7d4c45b5105e2ca64}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::Status &lhs, const Camera::Status &rhs)
-```
-
-
-Equal operator to compare two [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md) objects.
-
-
-**Parameters**
-
-* const [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md)& **lhs** - 
-* const [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1a07d9af9a6403f725836286d9c310d16a}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::Status const &status)
-```
-
-
-Stream operator to print information about a [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md) const& **status** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator<<() {#namespacedronecode__sdk_1a3da4cb141f25449077e53da307d99d0b}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::Status::StorageStatus const &storage_status)
-```
-
-
-Stream operator to print information about a [Camera::Status::StorageStatus](structdronecode__sdk_1_1_camera_1_1_status.md#structdronecode__sdk_1_1_camera_1_1_status_1ad5fe84902ac4bba14fa77825f1828879).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::Status::StorageStatus](structdronecode__sdk_1_1_camera_1_1_status.md#structdronecode__sdk_1_1_camera_1_1_status_1ad5fe84902ac4bba14fa77825f1828879) const& **storage_status** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1a596966db6df9040ecf28a89d68dacbe1}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::Setting &lhs, const Camera::Setting &rhs)
-```
-
-
-Equal operator to compare two [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md) objects.
-
-
-**Parameters**
-
-* const [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md)& **lhs** - 
-* const [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1a0b5d611637e34d8e86ed27089a3b3e8f}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::Setting const &setting)
-```
-
-
-Stream operator to print information about a [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md) const& **setting** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1a20a75b99effdc66a173a8c004cee5d2c}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::Option &lhs, const Camera::Option &rhs)
-```
-
-
-Equal operator to compare two [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) objects.
-
-
-**Parameters**
-
-* const [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md)& **lhs** - 
-* const [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1a06b19acda75aa4e8a94da496f98ba365}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::Option const &option)
-```
-
-
-Stream operator to print information about a [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) const& **option** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
-### operator==() {#namespacedronecode__sdk_1a331f8f2bf99003deb769b3b1475a33ef}
-
-```
-#include: camera.h
-```
-```cpp
-bool dronecode_sdk::operator==(const Camera::SettingOptions &lhs, const Camera::SettingOptions &rhs)
-```
-
-
-Equal operator to compare two [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md) objects.
-
-
-**Parameters**
-
-* const [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md)& **lhs** - 
-* const [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md)& **rhs** - 
-
-**Returns**
-
-&emsp;bool - `true` if items are equal.
-
-### operator<<() {#namespacedronecode__sdk_1a12ce002e343392b13fd8aee1dd58a1a7}
-
-```
-#include: camera.h
-```
-```cpp
-std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::SettingOptions const &setting_options)
-```
-
-
-Stream operator to print information about a [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md).
-
-
-**Parameters**
-
-* std::ostream& **str** - 
-* [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md) const& **setting_options** - 
-
-**Returns**
-
-&emsp;std::ostream & - A reference to the stream.
-
 ### connection_result_str() {#namespacedronecode__sdk_1a4f99d135d291363375982e84b6928f38}
 
 ```
@@ -633,10 +150,494 @@ Returns a human-readable English string for a ConnectionResult.
 
 &emsp;const char * - Human readable string for the ConnectionResult.
 
+### operator==() {#namespacedronecode__sdk_1a82242e25d08fb2850466f638701c7540}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::VideoStreamSettings &lhs, const Camera::VideoStreamSettings &rhs)
+```
+
+
+Equal operator to compare two [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) objects.
+
+
+**Parameters**
+
+* const [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md)& **lhs** - 
+* const [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1aa7c99052d48e71a3ac48569651485d42}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::VideoStreamSettings const &video_stream_settings)
+```
+
+
+Stream operator to print information about a [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::VideoStreamSettings](structdronecode__sdk_1_1_camera_1_1_video_stream_settings.md) const& **video_stream_settings** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a02742286ab6aaaa6df3de594bc20b749}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::VideoStreamInfo &lhs, const Camera::VideoStreamInfo &rhs)
+```
+
+
+Equal operator to compare two [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) objects.
+
+
+**Parameters**
+
+* const [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md)& **lhs** - 
+* const [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1ad8a864387c1cfecba3a1f03e5a282930}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::VideoStreamInfo const &video_stream_info)
+```
+
+
+Stream operator to print information about a [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::VideoStreamInfo](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md) const& **video_stream_info** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacedronecode__sdk_1a97e8676daa01b814bca7f65dc9e9ac7e}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::VideoStreamInfo::Status const &video_stream_info_status)
+```
+
+
+Stream operator to print information about a [Camera::VideoStreamInfo::Status](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md#structdronecode__sdk_1_1_camera_1_1_video_stream_info_1a69b67b304c04a7d9bb0a8efb43927c85).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::VideoStreamInfo::Status](structdronecode__sdk_1_1_camera_1_1_video_stream_info.md#structdronecode__sdk_1_1_camera_1_1_video_stream_info_1a69b67b304c04a7d9bb0a8efb43927c85) const& **video_stream_info_status** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a07cc6e440564c2d7df62cad87257cd76}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::CaptureInfo &lhs, const Camera::CaptureInfo &rhs)
+```
+
+
+Equal operator to compare two [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md) objects.
+
+
+**Parameters**
+
+* const [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md)& **lhs** - 
+* const [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a7830ff2413c4a1846365f69e37212c53}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo const &capture_info)
+```
+
+
+Stream operator to print information about a [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::CaptureInfo](structdronecode__sdk_1_1_camera_1_1_capture_info.md) const& **capture_info** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a0f55e3a611b189a4226f781d6e1e6a79}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::CaptureInfo::Position &lhs, const Camera::CaptureInfo::Position &rhs)
+```
+
+
+Equal operator to compare two [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md) objects.
+
+
+**Parameters**
+
+* const [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md)& **lhs** - 
+* const [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1ab42bdc52694ac9b0536d2f54498f2a3f}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo::Position const &position)
+```
+
+
+Stream operator to print information about a [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::CaptureInfo::Position](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_position.md) const& **position** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a7d2a4365c11cbdb95b75461b3e89fadb}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::CaptureInfo::Quaternion &lhs, const Camera::CaptureInfo::Quaternion &rhs)
+```
+
+
+Equal operator to compare two [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) objects.
+
+
+**Parameters**
+
+* const [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md)& **lhs** - 
+* const [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a70ac9b5c74bd9a096310437d15b7a7af}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo::Quaternion const &quaternion)
+```
+
+
+Stream operator to print information about a [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::CaptureInfo::Quaternion](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) const& **quaternion** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a76036f0cedd4f8e1563a7bbb3c466fde}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::CaptureInfo::EulerAngle &lhs, const Camera::CaptureInfo::EulerAngle &rhs)
+```
+
+
+Equal operator to compare two [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) objects.
+
+
+**Parameters**
+
+* const [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md)& **lhs** - 
+* const [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a1e7dda26b31744e5dfc7f3bdd04bdfec}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::CaptureInfo::EulerAngle const &euler_angle)
+```
+
+
+Stream operator to print information about a [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::CaptureInfo::EulerAngle](structdronecode__sdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) const& **euler_angle** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1aff9ef154aeb90ee7d4c45b5105e2ca64}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::Status &lhs, const Camera::Status &rhs)
+```
+
+
+Equal operator to compare two [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md) objects.
+
+
+**Parameters**
+
+* const [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md)& **lhs** - 
+* const [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a07d9af9a6403f725836286d9c310d16a}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::Status const &status)
+```
+
+
+Stream operator to print information about a [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::Status](structdronecode__sdk_1_1_camera_1_1_status.md) const& **status** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacedronecode__sdk_1a3da4cb141f25449077e53da307d99d0b}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::Status::StorageStatus const &storage_status)
+```
+
+
+Stream operator to print information about a [Camera::Status::StorageStatus](structdronecode__sdk_1_1_camera_1_1_status.md#structdronecode__sdk_1_1_camera_1_1_status_1ad5fe84902ac4bba14fa77825f1828879).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::Status::StorageStatus](structdronecode__sdk_1_1_camera_1_1_status.md#structdronecode__sdk_1_1_camera_1_1_status_1ad5fe84902ac4bba14fa77825f1828879) const& **storage_status** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a596966db6df9040ecf28a89d68dacbe1}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::Setting &lhs, const Camera::Setting &rhs)
+```
+
+
+Equal operator to compare two [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md) objects.
+
+
+**Parameters**
+
+* const [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md)& **lhs** - 
+* const [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a0b5d611637e34d8e86ed27089a3b3e8f}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::Setting const &setting)
+```
+
+
+Stream operator to print information about a [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::Setting](structdronecode__sdk_1_1_camera_1_1_setting.md) const& **setting** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a20a75b99effdc66a173a8c004cee5d2c}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::Option &lhs, const Camera::Option &rhs)
+```
+
+
+Equal operator to compare two [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) objects.
+
+
+**Parameters**
+
+* const [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md)& **lhs** - 
+* const [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a06b19acda75aa4e8a94da496f98ba365}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::Option const &option)
+```
+
+
+Stream operator to print information about a [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md) const& **option** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a331f8f2bf99003deb769b3b1475a33ef}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Camera::SettingOptions &lhs, const Camera::SettingOptions &rhs)
+```
+
+
+Equal operator to compare two [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md) objects.
+
+
+**Parameters**
+
+* const [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md)& **lhs** - 
+* const [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a12ce002e343392b13fd8aee1dd58a1a7}
+
+```
+#include: plugins/camera/camera.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Camera::SettingOptions const &setting_options)
+```
+
+
+Stream operator to print information about a [Camera::Option](structdronecode__sdk_1_1_camera_1_1_option.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Camera::SettingOptions](structdronecode__sdk_1_1_camera_1_1_setting_options.md) const& **setting_options** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
 ### operator==() {#namespacedronecode__sdk_1add402a7e54e431c79040066cf0eb009a}
 
 ```
-#include: mission_item.h
+#include: plugins/mission/mission_item.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const MissionItem &lhs, const MissionItem &rhs)
@@ -658,7 +659,7 @@ Equal operator to compare two [MissionItem](classdronecode__sdk_1_1_mission_item
 ### operator<<() {#namespacedronecode__sdk_1a099ffe3cf3144ce815d31b2d1798ee1f}
 
 ```
-#include: mission_item.h
+#include: plugins/mission/mission_item.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, MissionItem const &mission_item)
@@ -680,7 +681,7 @@ Stream operator to print infos about a [MissionItem](classdronecode__sdk_1_1_mis
 ### operator<<() {#namespacedronecode__sdk_1aba2a59ff24c643d38cd2f8f953d12aa0}
 
 ```
-#include: mission_item.h
+#include: plugins/mission/mission_item.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, MissionItem::CameraAction const &camera_action)
@@ -702,7 +703,7 @@ Stream operator to print infos about a [MissionItem::CameraAction](classdronecod
 ### operator==() {#namespacedronecode__sdk_1a70e13ff33048ec0b6a8d100dc813a84a}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::PositionVelocityNED &lhs, const Telemetry::PositionVelocityNED &rhs)
@@ -724,7 +725,7 @@ Equal operator to compare two [Telemetry::PositionVelocityNED](structdronecode__
 ### operator==() {#namespacedronecode__sdk_1aeee7bba4738b277d079f347b8f48a1e7}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::Position &lhs, const Telemetry::Position &rhs)
@@ -746,7 +747,7 @@ Equal operator to compare two [Telemetry::Position](structdronecode__sdk_1_1_tel
 ### operator<<() {#namespacedronecode__sdk_1a1d3838c8844e1dc4a784c789f29f5267}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::Position const &position)
@@ -768,7 +769,7 @@ Stream operator to print information about a [Telemetry::Position](structdroneco
 ### operator==() {#namespacedronecode__sdk_1a023eddb27d7cee0950801ce1e1445ada}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::Health &lhs, const Telemetry::Health &rhs)
@@ -790,7 +791,7 @@ Equal operator to compare two [Telemetry::Health](structdronecode__sdk_1_1_telem
 ### operator<<() {#namespacedronecode__sdk_1a28f6d4519e116bed2fb0457455742ee1}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::Health const &health)
@@ -812,7 +813,7 @@ Stream operator to print information about a [Telemetry::Health](structdronecode
 ### operator==() {#namespacedronecode__sdk_1ab03745281710b020b9ac76daf16140ed}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::GPSInfo &lhs, const Telemetry::GPSInfo &rhs)
@@ -834,7 +835,7 @@ Equal operator to compare two [Telemetry::GPSInfo](structdronecode__sdk_1_1_tele
 ### operator<<() {#namespacedronecode__sdk_1ae92c2a91b6fa86a56494a6086299d60d}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::GPSInfo const &gps_info)
@@ -856,7 +857,7 @@ Stream operator to print information about a [Telemetry::GPSInfo](structdronecod
 ### operator==() {#namespacedronecode__sdk_1a5cb7b16c1ebe37da78b81a40da3137da}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::Battery &lhs, const Telemetry::Battery &rhs)
@@ -878,7 +879,7 @@ Equal operator to compare two [Telemetry::Battery](structdronecode__sdk_1_1_tele
 ### operator<<() {#namespacedronecode__sdk_1a6299693fefce3144cf2ba0a27c4dd955}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::Battery const &battery)
@@ -900,7 +901,7 @@ Stream operator to print information about a [Telemetry::Battery](structdronecod
 ### operator==() {#namespacedronecode__sdk_1aa65226e58f9b3c7f134d9c195ece6424}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::Quaternion &lhs, const Telemetry::Quaternion &rhs)
@@ -922,7 +923,7 @@ Equal operator to compare two [Telemetry::Quaternion](structdronecode__sdk_1_1_t
 ### operator<<() {#namespacedronecode__sdk_1a082304afec256131fcc09564cbc805e5}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::Quaternion const &quaternion)
@@ -944,7 +945,7 @@ Stream operator to print information about a [Telemetry::Quaternion](structdrone
 ### operator==() {#namespacedronecode__sdk_1aa6e3534d0274ff548533fe554938c46c}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::EulerAngle &lhs, const Telemetry::EulerAngle &rhs)
@@ -966,7 +967,7 @@ Equal operator to compare two [Telemetry::EulerAngle](structdronecode__sdk_1_1_t
 ### operator<<() {#namespacedronecode__sdk_1a5ffcb10a86abe49a909a3641689974de}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::EulerAngle const &euler_angle)
@@ -988,7 +989,7 @@ Stream operator to print information about a [Telemetry::EulerAngle](structdrone
 ### operator==() {#namespacedronecode__sdk_1aaf687fbbe3cfe22bc3f5af30595d4b2e}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::GroundSpeedNED &lhs, const Telemetry::GroundSpeedNED &rhs)
@@ -1010,7 +1011,7 @@ Equal operator to compare two [Telemetry::GroundSpeedNED](structdronecode__sdk_1
 ### operator<<() {#namespacedronecode__sdk_1ab1411c69c211b5eb231f1ad4ff893679}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::GroundSpeedNED const &ground_speed)
@@ -1032,7 +1033,7 @@ Stream operator to print information about a [Telemetry::GroundSpeedNED](structd
 ### operator==() {#namespacedronecode__sdk_1a2146a33adf4b5d158aff9b6e53fd06ab}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 bool dronecode_sdk::operator==(const Telemetry::RCStatus &lhs, const Telemetry::RCStatus &rhs)
@@ -1054,7 +1055,7 @@ Equal operator to compare two [Telemetry::RCStatus](structdronecode__sdk_1_1_tel
 ### operator<<() {#namespacedronecode__sdk_1a4acb99b3d173ad128a4083096dac1995}
 
 ```
-#include: telemetry.h
+#include: plugins/telemetry/telemetry.h
 ```
 ```cpp
 std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::RCStatus const &rc_status)

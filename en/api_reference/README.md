@@ -44,6 +44,8 @@
 * [class Calibration](classdronecode__sdk_1_1_calibration.md)
   * [struct ProgressData](structdronecode__sdk_1_1_calibration_1_1_progress_data.md)
 * [class ParamsRaw](classdronecode__sdk_1_1_params_raw.md)
+* [class MissionRaw](classdronecode__sdk_1_1_mission_raw.md)
+  * [struct MavlinkMissionItemInt](structdronecode__sdk_1_1_mission_raw_1_1_mavlink_mission_item_int.md)
 * [class LogFiles](classdronecode__sdk_1_1_log_files.md)
   * [struct Entry](structdronecode__sdk_1_1_log_files_1_1_entry.md)
 * [namespace dronecode_sdk (globals)](namespacedronecode__sdk.md)

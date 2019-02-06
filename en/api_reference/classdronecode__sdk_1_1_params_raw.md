@@ -44,7 +44,7 @@ Constructor. Creates the plugin for a specific [System](classdronecode__sdk_1_1_
 The plugin is typically created as shown below: 
 
 ```cpp
-auto info = std::make_shared<ParamsRaw>(system);
+auto params_raw = std::make_shared<ParamsRaw>(system);
 ```
 
 **Parameters**
