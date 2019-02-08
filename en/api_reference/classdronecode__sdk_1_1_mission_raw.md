@@ -4,7 +4,16 @@
 ----
 
 
-The [MissionRaw](classdronecode__sdk_1_1_mission_raw.md) class enables direct direct access to MAVLink mission items. 
+The [MissionRaw](classdronecode__sdk_1_1_mission_raw.md) class enables direct access to MAVLink mission items. 
+
+
+This plugin gives direct access to the MAVLink mission protocol which means full control over waypoints and waypoint actions/commands. However, this means that not all functionality provided is actually implemented or correctly supported by a flight controller.
+
+
+For a tested, simpler subset in mission functionality, it is recommended to use the [Mission](classdronecode__sdk_1_1_mission.md) plugin.
+
+
+> **Note** Currently, only downloading the mission items is implemented, uploading could be added in the future if required.
 
 
 ## Data Structures
