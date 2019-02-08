@@ -15,6 +15,7 @@ Namespace for all [dronecode_sdk](namespacedronecode__sdk.md) types.
 * [dronecode_sdk::Gimbal](classdronecode__sdk_1_1_gimbal.md)
 * [dronecode_sdk::Info](classdronecode__sdk_1_1_info.md)
 * [dronecode_sdk::LogFiles](classdronecode__sdk_1_1_log_files.md)
+* [dronecode_sdk::MavlinkPassthrough](classdronecode__sdk_1_1_mavlink_passthrough.md)
 * [dronecode_sdk::Mission](classdronecode__sdk_1_1_mission.md)
 * [dronecode_sdk::MissionItem](classdronecode__sdk_1_1_mission_item.md)
 * [dronecode_sdk::MissionRaw](classdronecode__sdk_1_1_mission_raw.md)
