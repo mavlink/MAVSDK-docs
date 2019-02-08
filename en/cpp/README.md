@@ -51,6 +51,13 @@ The most important classes are:
 - [LogFiles](/api_reference/classdronecode__sdk_1_1_log_files.md): Download log files from the vehicle.
 
 
+The following APIs provide more direct access to underlying MAVLink messages/types.
+They should only be used where features are missing from the main APIs above.
+* [ParamsRaw](/api_reference/classdronecode__sdk_1_1_params_raw.md): Raw access to get and set parameters.
+* [MissionRaw](/api_reference/classdronecode__sdk_1_1_mission_raw.md): Direct access to MAVLink mission items.
+* [MavlinkPassthrough](/api_reference/classdronecode__sdk_1_1_mavlink_passthrough.md): Provides full/direct MAVLink access
+
+
 ## Contributing/Extending
 
 The [Contributing](../contributing/README.md) section contains everything you need to contribute to the C++ API, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development. 
