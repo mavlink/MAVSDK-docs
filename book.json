@@ -3,7 +3,7 @@
     "title": "Dronecode SDK Guide", 
     "variables": {
         "logo": "./assets/site/sdk_logo_full.jpg",
-        "github_branch": "master"
+        "github_branch": "v0.14.0"
     },
     "plugins": [
         "youtube",
