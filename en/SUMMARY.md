@@ -4,6 +4,7 @@
   * [FAQ](getting_started/faq.md)
 <!-- * [Quick Start](getting_started/README.md) -->
 * [iOS/Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html)
+* [Python](https://github.com/dronecode/dronecodesdk-python#dronecodesdk-python)
 * [C++ (Dronecode Core)](cpp/README.md)
   * [Guide](guide/README.md)
     * [Usage/Paradigms](guide/general_usage.md)
@@ -76,7 +77,6 @@
       * [struct MavlinkMissionItemInt](api_reference/structdronecode__sdk_1_1_mission_raw_1_1_mavlink_mission_item_int.md)
     * [MavlinkPassthrough](/api_reference/classdronecode__sdk_1_1_mavlink_passthrough.md)
     * [namespace dronecode_sdk (globals)](api_reference/namespacedronecode__sdk.md)
-  
   * [Contributing](contributing/README.md)
     * [Building Source](contributing/build.md)
     * [Testing](contributing/test.md)
