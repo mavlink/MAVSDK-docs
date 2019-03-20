@@ -343,7 +343,7 @@ To build the backend on macOS:
 1. [Setup/Build the C++ Library on macOS](#build_cpp_mac_os)
 1. Install additional dependencies
    ```
-   brew install go
+   brew install go openssl
    ```
 1. Navigate into the SDK directory and build the project
    ```
