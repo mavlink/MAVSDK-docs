@@ -31,7 +31,7 @@ Make sure that the [PX4 Gazebo simulation](https://dev.px4.io/en/simulation/gaze
 
 ```
 cd wherever/Firmware/
-make posix gazebo
+make px4_sitl gazebo
 ```
 
 Then press **Ctrl+C** to stop the simulation and run the integration tests:
@@ -53,7 +53,7 @@ Build and run the PX4 simulation manually:
 
 ```
 cd wherever/Firmware/
-make posix gazebo
+make px4_sitl gazebo
 ```
 
 Then run the tests as shown:

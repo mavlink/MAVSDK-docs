@@ -35,9 +35,9 @@ In order to set up the [jMAVSim](https://dev.px4.io/en/simulation/jmavsim.html) 
   Gazebo additionally supports a number of [other vehicles](https://dev.px4.io/en/simulation/gazebo.html#html#running-the-simulation) (e.g. VTOL, Rovers, fixed-wing etc.).
 
 After running a standard installation, a simulation can be started from the PX4 **/Firmware** directory using the command:
-* Multicopter (jMAVSim): `make posix_sitl_default jmavsim`
-* Multicopter (Gazebo): `make posix_sitl_default gazebo`
-* VTOL (Gazebo):  `make posix_sitl_default gazebo_standard_vtol`
+* Multicopter (jMAVSim): `make px4_sitl jmavsim`
+* Multicopter (Gazebo): `make px4_sitl gazebo`
+* VTOL (Gazebo):  `make px4_sitl gazebo_standard_vtol`
 
 
 ### Using QGroundControl
