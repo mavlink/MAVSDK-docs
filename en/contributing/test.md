@@ -1,6 +1,6 @@
 # Testing
 
-The SDK has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) (`gtest`). 
+The SDK has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) (`gtest`).
 The unit tests are run every time new code is committed to the SDK codelines, and must pass before the code can be merged.
 
 This topic shows how to run the existing tests.
@@ -10,10 +10,10 @@ This topic shows how to run the existing tests.
 
 ## Running Unit Tests
 
-To run all unit tests: 
+To run all unit tests:
 
 ```
-make run_unit_tests 
+make run_unit_tests
 ```
 
 
@@ -21,7 +21,7 @@ make run_unit_tests
 
 Tests can be run against the simulator (either manually starting PX4 SITL or letting the tests start it automatically) or against a real vehicle.
 
-> **Tip** To run SITL you will need to install the *Gazebo* simulator. 
+> **Tip** To run SITL you will need to install the *Gazebo* simulator.
 This is included as part of the standard PX4 installation for [macOS](https://dev.px4.io/en/setup/dev_env_mac.html)
 and [Linux](https://dev.px4.io/en/setup/dev_env_linux.html#development-toolchain). It does not run on Windows.
 
@@ -58,7 +58,7 @@ make posix gazebo
 
 Then run the tests as shown:
 ```
-make run_integration_tests 
+make run_integration_tests
 ```
 
 ### Run With a Real Vehicle
@@ -68,7 +68,7 @@ make run_integration_tests
 Make sure you are connected to a vehicle and check the connection using e.g.:
 
 ```
-make && build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"  
+make && build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
 ```
 
 
