@@ -36,7 +36,7 @@ Type | Name | Description
 [Result](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a7075ba49da42a7e5122b3c9a1979df6d) | [takeoff](#classdronecode__sdk_1_1_action_1abbcce1c335e6aec78917af9e705e235e) () const | Send command to *take off and hover* (synchronous).
 [Result](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a7075ba49da42a7e5122b3c9a1979df6d) | [land](#classdronecode__sdk_1_1_action_1af50fb3a17784557281ac37e83022575f) () const | Send command to *land* at the current position (synchronous).
 [Result](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a7075ba49da42a7e5122b3c9a1979df6d) | [return_to_launch](#classdronecode__sdk_1_1_action_1aae04fe166fac96b2efadee26f91de3d1) () const | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
-[Result](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a7075ba49da42a7e5122b3c9a1979df6d) | [goto_location](#classdronecode__sdk_1_1_action_1ab6bcb58fdac1aa7e699f89ed605c7666) (double latitude_deg, double longitude_deg, float altitude_amsl_m, float yaw_deg) | Send command to reposition the vehicle to a specific WGS84 global position.
+[Result](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a7075ba49da42a7e5122b3c9a1979df6d) | [goto_location](#classdronecode__sdk_1_1_action_1ab6bcb58fdac1aa7e699f89ed605c7666) (double latitude_deg, double longitude_deg, float altitude_amsl_m, float yaw_deg) | Send command to move the vehicle to a specific global position.
 [Result](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a7075ba49da42a7e5122b3c9a1979df6d) | [transition_to_fixedwing](#classdronecode__sdk_1_1_action_1a80c1336efa7b165df4beadb64435f31a) () const | Send command to transition the drone to fixedwing.
 [Result](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1a7075ba49da42a7e5122b3c9a1979df6d) | [transition_to_multicopter](#classdronecode__sdk_1_1_action_1ab18e5b60e262e5dc9e6cb9479a285b2a) () const | Send command to transition the drone to multicopter.
 void | [arm_async](#classdronecode__sdk_1_1_action_1ad295c4f5fb38636d1603dd1c401ca4a1) ([result_callback_t](classdronecode__sdk_1_1_action.md#classdronecode__sdk_1_1_action_1ac20e209e6ad3fce8e1b755f025a6581b) callback) | Send command to *arm* the drone (asynchronous).
@@ -254,16 +254,16 @@ Result dronecode_sdk::Action::goto_location(double latitude_deg, double longitud
 ```
 
 
-Send command to reposition the vehicle to a specific WGS84 global position.
+Send command to move the vehicle to a specific global position.
 
-This sends the vehicle to a specified lattitude/longitude/altitude coordinates.
+The latitude and longitude are given in degrees (WGS84 frame) and the altitude in meters AMSL (above mean sea level).
 
 **Parameters**
 
-* double **latitude_deg** - Latitude in degrees
-* double **longitude_deg** - Longitude in degrees
-* float **altitude_amsl_m** - Altitude AMSL in meters
-* float **yaw_deg** - Yaw angle in degrees
+* double **latitude_deg** - Latitude in degrees.
+* double **longitude_deg** - Longitude in degrees.
+* float **altitude_amsl_m** - Altitude AMSL in meters.
+* float **yaw_deg** - Yaw angle in degrees (Frame is NED, 0 is North, positive is clockwise).
 
 **Returns**
 

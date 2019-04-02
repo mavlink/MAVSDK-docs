@@ -1,13 +1,13 @@
 # Building SDK from Source
 
-This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the *Dronecode SDK* C++ library from source (both "natively" and in docker) for all our target platforms. 
+This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the *Dronecode SDK* C++ library from source (both "natively" and in docker) for all our target platforms.
 It also shows how to build the SDK with extensions and build the API Reference documentation.
 
 
 ## Build the C++ Library {#build_sdk_cpp}
 
-This section explains how to build the SDK C++ library from source, 
-along with its unit and integration tests. 
+This section explains how to build the SDK C++ library from source,
+along with its unit and integration tests.
 Build artifacts are created in the **build** subdirectory.
 
 ### macOS {#build_cpp_mac_os}
@@ -33,7 +33,7 @@ To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the
    ```
    > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/docker).
 
-1. Clone the [DronecodeSDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork): 
+1. Clone the [DronecodeSDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork):
    ```sh
    git clone https://github.com/Dronecode/DronecodeSDK.git
    cd DronecodeSDK
@@ -76,7 +76,7 @@ To build the library in Windows, you need:
 > **Note** The instructions below assume you downloaded [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
 To build the *Dronecode SDK* C++ Library on Windows:
-1. Clone the [Dronecode SDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork): 
+1. Clone the [Dronecode SDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork):
    ```sh
    git clone https://github.com/Dronecode/DronecodeSDK.git
    cd DronecodeSDK
@@ -123,7 +123,7 @@ To build the *Dronecode SDK* C++ Library on Windows:
 
 ## Install the SDK {#install-artifacts}
 
-*Installing* builds the SDK **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)). 
+*Installing* builds the SDK **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)).
 The SDK supports installation system-wide by default. You can also install files locally/relative to the DronecodeSDK tree if needed.
 
 > **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/Dronecode/DronecodeSDK/issues/155)) so you will need to [install the SDK locally](#sdk_local_install).
@@ -134,7 +134,7 @@ The SDK supports installation system-wide by default. You can also install files
 
 System-wide installation copies the SDK headers and binaries to the standard system-wide locations for your platform (On Ubuntu Linux this is **/usr/local/**).
 
-> **Warning** System-wide installation overwrites any previously installed version of the SDK. 
+> **Warning** System-wide installation overwrites any previously installed version of the SDK.
 
 To install the SDK system-wide:
 
@@ -147,7 +147,7 @@ sudo make default install  # sudo required to install files to system directorie
 sudo ldconfig  # update linker cache
 ```
 
-> **Note** The first time you build the SDK you may also need to [update the linker cache](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html). 
+> **Note** The first time you build the SDK you may also need to [update the linker cache](http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html).
   On Ubuntu this is done with `sudo ldconfig`, as shown above.
 
 
@@ -216,7 +216,7 @@ make ios_simulator install
 
 ## Building in Docker
 
-You can also build the SDK on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly). 
+You can also build the SDK on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly).
 
 > **Tip** There are docker containers based on Fedora and Ubuntu. It doesn't matter which you use!
 
@@ -231,7 +231,7 @@ The main steps are:
    git submodule update --init --recursive
    ```
 1. Enter one of the following commands in your host's terminal:
-   * Fedora 27 
+   * Fedora 27
      ```sh
      docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-fedora-27 bash
      ```
@@ -241,15 +241,15 @@ The main steps are:
      ```
    * Ubuntu 16.04 LTS
      ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-16.04 bash 
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-16.04 bash
      ```
    * Ubuntu 18.04 LTS
      ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-18.04 bash 
+     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-18.04 bash
      ```
-     
-   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side). 
-   > You need to specify the left-side path to the DronecodeSDK repository on your host and the container path must be set as above. 
+
+   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side).
+   > You need to specify the left-side path to the DronecodeSDK repository on your host and the container path must be set as above.
    > The `--rm` automatically cleans up leftover docker containers after you exit the docker container.
 
    Docker will download the selected image from [Docker Hub](https://hub.docker.com/u/dronecode/), use it to create a container, and then open a bash prompt:
@@ -286,7 +286,7 @@ docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DronecodeSDK:
 
 ### Building the Docker Image
 
-The approach above downloads a [container image](https://hub.docker.com/r/dronecode/) from Docker Hub based on Ubuntu 16.04, Ubuntu 18.04, Fedora 27 or Fedora 28. 
+The approach above downloads a [container image](https://hub.docker.com/r/dronecode/) from Docker Hub based on Ubuntu 16.04, Ubuntu 18.04, Fedora 27 or Fedora 28.
 
 You can also build the images yourself using the files in [DronecodeSDK/docker](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/docker). The image can be used in the same way as the one from Docker Hub.
 
@@ -326,7 +326,7 @@ Otherwise the build is exactly the same as usual.
 
 To build the backend on Ubuntu:
 1. [Setup/Build the C++ Library on Linux](#build_cpp_linux)
-1. Install additional dependencies  
+1. Install additional dependencies
    ```
    sudo apt-get install golang
    ```
@@ -341,9 +341,9 @@ To build the backend on Ubuntu:
 
 To build the backend on macOS:
 1. [Setup/Build the C++ Library on macOS](#build_cpp_mac_os)
-1. Install additional dependencies  
+1. Install additional dependencies
    ```
-   brew install go
+   brew install go openssl
    ```
 1. Navigate into the SDK directory and build the project
    ```
@@ -358,7 +358,7 @@ TBD
 
 ## Build API Reference Documentation {#build_api_reference}
 
-The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax. 
+The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax.
 
 Extract the documentation to markdown files (one per class) on macOS or Linux using the commands:
 ```bash
@@ -368,11 +368,11 @@ make distclean     # Required (clean build)
 ```
 The files are created in **/install/docs/markdown**.
 
-> **Note** Extracting the API reference does not yet work automatically on Windows. 
+> **Note** Extracting the API reference does not yet work automatically on Windows.
 
 <span></span>
-> **Note** The *generate_docs.sh* script [builds the library](../contributing/build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**. 
-> The [generate_markdown_from_doxygen_xml.py](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script 
+> **Note** The *generate_docs.sh* script [builds the library](../contributing/build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**.
+> The [generate_markdown_from_doxygen_xml.py](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script
 > is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.
 
 
