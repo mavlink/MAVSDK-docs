@@ -3,7 +3,7 @@
     "title": "Dronecode SDK Guide", 
     "variables": {
         "logo": "./assets/site/sdk_logo_full.jpg",
-        "github_branch": "master"
+        "github_branch": "v0.15.0"
     },
     "plugins": [
         "youtube",
@@ -21,7 +21,7 @@
     "pluginsConfig": {
 
         "page-footer-ex":{
-            "copyright":"© Dronecode 2017. License:   <a href='https://creativecommons.org/licenses/by/4.0/'>CC BY 4.0</a>",
+            "copyright":"© Dronecode 2017-2019. License:   <a href='https://creativecommons.org/licenses/by/4.0/'>CC BY 4.0</a>",
             "update_label":"Updated: ",
             "update_format":"YYYY-MM-DD HH:mm:ss"
         },
