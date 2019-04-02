@@ -20,7 +20,7 @@ Namespace for all [dronecode_sdk](namespacedronecode__sdk.md) types.
 * [dronecode_sdk::MissionItem](classdronecode__sdk_1_1_mission_item.md)
 * [dronecode_sdk::MissionRaw](classdronecode__sdk_1_1_mission_raw.md)
 * [dronecode_sdk::Offboard](classdronecode__sdk_1_1_offboard.md)
-* [dronecode_sdk::ParamsRaw](classdronecode__sdk_1_1_params_raw.md)
+* [dronecode_sdk::Param](classdronecode__sdk_1_1_param.md)
 * [dronecode_sdk::PluginBase](classdronecode__sdk_1_1_plugin_base.md)
 * [dronecode_sdk::System](classdronecode__sdk_1_1_system.md)
 * [dronecode_sdk::Telemetry](classdronecode__sdk_1_1_telemetry.md)
@@ -65,6 +65,9 @@ std::ostream & | [operator<<](#namespacedronecode__sdk_1aba2a59ff24c643d38cd2f8f
 bool | [operator==](#namespacedronecode__sdk_1a70e13ff33048ec0b6a8d100dc813a84a) (const [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) & lhs, const [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) & rhs) | Equal operator to compare two [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) objects.
 bool | [operator==](#namespacedronecode__sdk_1aeee7bba4738b277d079f347b8f48a1e7) (const [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) & lhs, const [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) & rhs) | Equal operator to compare two [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a1d3838c8844e1dc4a784c789f29f5267) (std::ostream & str, [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) const & position) | Stream operator to print information about a [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md).
+std::ostream & | [operator<<](#namespacedronecode__sdk_1a1fa26d63643cccf9c7b8a2361ba20688) (std::ostream & str, [Telemetry::PositionNED](structdronecode__sdk_1_1_telemetry_1_1_position_n_e_d.md) const & position_ned) | Stream operator to print information about a [Telemetry::PositionNED](structdronecode__sdk_1_1_telemetry_1_1_position_n_e_d.md).
+std::ostream & | [operator<<](#namespacedronecode__sdk_1ad94e3e98805a83094010f1ed0599005f) (std::ostream & str, [Telemetry::VelocityNED](structdronecode__sdk_1_1_telemetry_1_1_velocity_n_e_d.md) const & velocity_ned) | Stream operator to print information about a [Telemetry::VelocityNED](structdronecode__sdk_1_1_telemetry_1_1_velocity_n_e_d.md).
+std::ostream & | [operator<<](#namespacedronecode__sdk_1a52df542023f743fd2ad0dd647389a0ab) (std::ostream & str, [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) const & position_velocity_ned) | Stream operator to print information about a [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md).
 bool | [operator==](#namespacedronecode__sdk_1a023eddb27d7cee0950801ce1e1445ada) (const [Telemetry::Health](structdronecode__sdk_1_1_telemetry_1_1_health.md) & lhs, const [Telemetry::Health](structdronecode__sdk_1_1_telemetry_1_1_health.md) & rhs) | Equal operator to compare two [Telemetry::Health](structdronecode__sdk_1_1_telemetry_1_1_health.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a28f6d4519e116bed2fb0457455742ee1) (std::ostream & str, [Telemetry::Health](structdronecode__sdk_1_1_telemetry_1_1_health.md) const & health) | Stream operator to print information about a [Telemetry::Health](structdronecode__sdk_1_1_telemetry_1_1_health.md).
 bool | [operator==](#namespacedronecode__sdk_1ab03745281710b020b9ac76daf16140ed) (const [Telemetry::GPSInfo](structdronecode__sdk_1_1_telemetry_1_1_g_p_s_info.md) & lhs, const [Telemetry::GPSInfo](structdronecode__sdk_1_1_telemetry_1_1_g_p_s_info.md) & rhs) | Equal operator to compare two [Telemetry::GPSInfo](structdronecode__sdk_1_1_telemetry_1_1_g_p_s_info.md) objects.
@@ -109,6 +112,7 @@ Value | Description
 <span id="namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96a588cf56f08269878b055227a8490de67"></span> `DESTINATION_IP_UNKNOWN` | Connection IP is unknown. 
 <span id="namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96a9532aa7fe8e205a02479a2e43d05f6b1"></span> `CONNECTIONS_EXHAUSTED` | Connections exhausted. 
 <span id="namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96a269972fd1df83e8f423abead920f8780"></span> `CONNECTION_URL_INVALID` | URL invalid. 
+<span id="namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96a70b509145d288ea71f707a45fa6538bb"></span> `BAUDRATE_UNKNOWN` | Baudrate unknown. 
 
 ### enum ComponentType {#namespacedronecode__sdk_1a19aedbe22879fce9e10f588c16ee823e}
 
@@ -762,6 +766,72 @@ Stream operator to print information about a [Telemetry::Position](structdroneco
 
 * std::ostream& **str** - 
 * [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) const& **position** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacedronecode__sdk_1a1fa26d63643cccf9c7b8a2361ba20688}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::PositionNED const &position_ned)
+```
+
+
+Stream operator to print information about a [Telemetry::PositionNED](structdronecode__sdk_1_1_telemetry_1_1_position_n_e_d.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::PositionNED](structdronecode__sdk_1_1_telemetry_1_1_position_n_e_d.md) const& **position_ned** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacedronecode__sdk_1ad94e3e98805a83094010f1ed0599005f}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::VelocityNED const &velocity_ned)
+```
+
+
+Stream operator to print information about a [Telemetry::VelocityNED](structdronecode__sdk_1_1_telemetry_1_1_velocity_n_e_d.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::VelocityNED](structdronecode__sdk_1_1_telemetry_1_1_velocity_n_e_d.md) const& **velocity_ned** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacedronecode__sdk_1a52df542023f743fd2ad0dd647389a0ab}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::PositionVelocityNED const &position_velocity_ned)
+```
+
+
+Stream operator to print information about a [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) const& **position_velocity_ned** - 
 
 **Returns**
 

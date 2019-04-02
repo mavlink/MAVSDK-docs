@@ -18,6 +18,7 @@ An instance of this class must be created (first) in order to use the library. T
 
 Type | Description
 --- | ---
+enum [Configuration](#classdronecode__sdk_1_1_dronecode_s_d_k_1a3cb7c3712a0f330d29b30b501dfab947) | Possible configurations.
 std::function< void(uint64_t uuid)> [event_callback_t](#classdronecode__sdk_1_1_dronecode_s_d_k_1a56579e10311b046b887fdec0c313a4b8) | Callback type for discover and timeout notifications.
 
 ## Public Member Functions
@@ -33,6 +34,7 @@ Type | Name | Description
 [ConnectionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96) | [add_tcp_connection](#classdronecode__sdk_1_1_dronecode_s_d_k_1a7c543c91cf9209745c60a5b4bb6a59b1) (int remote_port=[DEFAULT_TCP_REMOTE_PORT](classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1a27efab91c255ec80da081b3a2667130a)) | Adds a TCP connection with a specific port number on localhost.
 [ConnectionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96) | [add_tcp_connection](#classdronecode__sdk_1_1_dronecode_s_d_k_1ae1fda663ab173e0b1dfc644f630506e4) (const std::string & remote_ip, int remote_port=[DEFAULT_TCP_REMOTE_PORT](classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1a27efab91c255ec80da081b3a2667130a)) | Adds a TCP connection with a specific IP address and port number.
 [ConnectionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96) | [add_serial_connection](#classdronecode__sdk_1_1_dronecode_s_d_k_1a3b9dfa07541777ec16d9ada6423650b0) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1a535901e195f2910ce16bd85fca2c2e9d)) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
+void | [set_configuration](#classdronecode__sdk_1_1_dronecode_s_d_k_1aa173ce1f22cbd3985fc9177392c7896b) ([Configuration](classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1a3cb7c3712a0f330d29b30b501dfab947) configuration) | Set `Configuration` of SDK.
 std::vector< uint64_t > | [system_uuids](#classdronecode__sdk_1_1_dronecode_s_d_k_1adff0ce5e9bd666103a3ec5274ecb9b47) () const | Get vector of system UUIDs.
 [System](classdronecode__sdk_1_1_system.md) & | [system](#classdronecode__sdk_1_1_dronecode_s_d_k_1a33dbbe477d4f321cff32c7cea1aee4eb) () const | Get the first discovered system.
 [System](classdronecode__sdk_1_1_system.md) & | [system](#classdronecode__sdk_1_1_dronecode_s_d_k_1ad8138a15ad24f448733b76b267c62121) (uint64_t uuid)const | Get the system with the specified UUID.
@@ -97,6 +99,20 @@ Callback type for discover and timeout notifications.
 **Parameters**
 
 * **uuid** - UUID of system (or MAVLink system ID for systems that don't have a UUID).
+
+## Member Enumeration Documentation
+
+
+### enum Configuration {#classdronecode__sdk_1_1_dronecode_s_d_k_1a3cb7c3712a0f330d29b30b501dfab947}
+
+
+Possible configurations.
+
+
+Value | Description
+--- | ---
+<span id="classdronecode__sdk_1_1_dronecode_s_d_k_1a3cb7c3712a0f330d29b30b501dfab947af64f82089eddc6133add8c55c65d6687"></span> `GroundStation` | SDK is used as a ground station. 
+<span id="classdronecode__sdk_1_1_dronecode_s_d_k_1a3cb7c3712a0f330d29b30b501dfab947a8f2f82e1a7aa48819e9530d5c4977477"></span> `CompanionComputer` | SDK is used on a companion computer onboard the system (e.g. drone). 
 
 ## Member Function Documentation
 
@@ -213,6 +229,20 @@ Adds a serial connection with a specific port (COM or UART dev node) and baudrat
 **Returns**
 
 &emsp;[ConnectionResult](namespacedronecode__sdk.md#namespacedronecode__sdk_1a8ba260cb5fc0837533a86e236d205c96) - The result of adding the connection.
+
+### set_configuration() {#classdronecode__sdk_1_1_dronecode_s_d_k_1aa173ce1f22cbd3985fc9177392c7896b}
+```cpp
+void dronecode_sdk::DronecodeSDK::set_configuration(Configuration configuration)
+```
+
+
+Set `Configuration` of SDK.
+
+The default configuration is [Configuration::GroundStation](classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1a3cb7c3712a0f330d29b30b501dfab947af64f82089eddc6133add8c55c65d6687) The configuration is used in order to set the MAVLink system ID, the component ID, as well as the MAV_TYPE accordingly.
+
+**Parameters**
+
+* [Configuration](classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1a3cb7c3712a0f330d29b30b501dfab947) **configuration** - Configuration chosen.
 
 ### system_uuids() {#classdronecode__sdk_1_1_dronecode_s_d_k_1adff0ce5e9bd666103a3ec5274ecb9b47}
 ```cpp
