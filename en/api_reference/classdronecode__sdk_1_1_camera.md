@@ -7,7 +7,7 @@
 The [Camera](classdronecode__sdk_1_1_camera.md) class can be used to manage cameras that implement the MAVLink [Camera](classdronecode__sdk_1_1_camera.md) Protocol: [https://mavlink.io/en/protocol/camera.html](https://mavlink.io/en/protocol/camera.html). 
 
 
-Currently only a single camera is supported. When multiple cameras are supported the plugin will need to be instantiated separately for every camera.
+Currently only a single camera is supported. When multiple cameras are supported the plugin will need to be instantiated separately for every camera and the camera selected using `select_camera`.
 
 
 Synchronous and asynchronous variants of the camera methods are supplied. 
@@ -59,6 +59,7 @@ Type | Name | Description
 &nbsp; | [Camera](#classdronecode__sdk_1_1_camera_1ab578fe3d602cd2c9f916c454f00208db) ([System](classdronecode__sdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classdronecode__sdk_1_1_system.md).
 &nbsp; | [~Camera](#classdronecode__sdk_1_1_camera_1a858b876e442b38f4b9953de0f5fcbfd5) () | Destructor (internal use only).
 &nbsp; | [Camera](#classdronecode__sdk_1_1_camera_1a944afb176f249e97183edf97f9a3313e) (const [Camera](classdronecode__sdk_1_1_camera.md) &)=delete | Copy constructor (object is not copyable).
+[Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) | [select_camera](#classdronecode__sdk_1_1_camera_1ab3abe48c717107c732bd2ed2428de18a) (unsigned id) | Select camera to interact with.
 [Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) | [take_photo](#classdronecode__sdk_1_1_camera_1ae62b17fc618d9734aad479737a2af775) () | Take photo (synchronous).
 [Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) | [start_photo_interval](#classdronecode__sdk_1_1_camera_1a8c958ad6a09ead28b6ed9cdd5be2f411) (float interval_s) | Start photo interval (synchronous).
 [Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) | [stop_photo_interval](#classdronecode__sdk_1_1_camera_1adebc3692071d0309e9c3015789a5a253) () | Stop photo interval (synchronous).
@@ -292,6 +293,24 @@ Value | Description
 
 ## Member Function Documentation
 
+
+### select_camera() {#classdronecode__sdk_1_1_camera_1ab3abe48c717107c732bd2ed2428de18a}
+```cpp
+Result dronecode_sdk::Camera::select_camera(unsigned id)
+```
+
+
+Select camera to interact with.
+
+It is recommended to instantiate multiple camera plugins to deal with multiple cameras and to select the camera once right after creating the plugin.
+
+**Parameters**
+
+* unsigned **id** - The camera ID from 0 to 5.
+
+**Returns**
+
+&emsp;[Result](classdronecode__sdk_1_1_camera.md#classdronecode__sdk_1_1_camera_1af195d32b1a669d8dbb28220b45f7c069) - Result of request.
 
 ### take_photo() {#classdronecode__sdk_1_1_camera_1ae62b17fc618d9734aad479737a2af775}
 ```cpp

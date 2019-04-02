@@ -21,6 +21,8 @@ Client code must specify a setpoint before starting offboard mode. [DronecodeSDK
 
 struct [AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md)
 
+struct [PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md)
+
 struct [VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md)
 
 struct [VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md)
@@ -46,6 +48,7 @@ Type | Name | Description
 void | [start_async](#classdronecode__sdk_1_1_offboard_1a8181092c3a3cac5e62dfcef4f10363de) ([result_callback_t](classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a02563418f94499b40d27543b3f486034) callback) | Start offboard control (asynchronous).
 void | [stop_async](#classdronecode__sdk_1_1_offboard_1a2ff3262dbc6194def28bb9b3d5684e68) ([result_callback_t](classdronecode__sdk_1_1_offboard.md#classdronecode__sdk_1_1_offboard_1a02563418f94499b40d27543b3f486034) callback) | Stop offboard control (asynchronous).
 bool | [is_active](#classdronecode__sdk_1_1_offboard_1ac3c75fcd1ae1e6b00090eccd03696479) () const | Check if offboard control is active.
+void | [set_position_ned](#classdronecode__sdk_1_1_offboard_1a127749d168fe4e7ddb40ba4c6747bb4a) ([PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) position_ned_yaw) | Set the position in NED coordinates and yaw.
 void | [set_velocity_ned](#classdronecode__sdk_1_1_offboard_1a95dfbe096a363e21bfd035258e786350) ([VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
 void | [set_velocity_body](#classdronecode__sdk_1_1_offboard_1ad87778386509911269b87766c0f1830f) ([VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
 void | [set_attitude_rate](#classdronecode__sdk_1_1_offboard_1a511ba0314a4217c3ac3020ab2b0dfd23) ([AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) attitude_rate) | Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust in percentage.
@@ -207,6 +210,19 @@ Check if offboard control is active.
 **Returns**
 
 &emsp;bool - `true` if active
+
+### set_position_ned() {#classdronecode__sdk_1_1_offboard_1a127749d168fe4e7ddb40ba4c6747bb4a}
+```cpp
+void dronecode_sdk::Offboard::set_position_ned(PositionNEDYaw position_ned_yaw)
+```
+
+
+Set the position in NED coordinates and yaw.
+
+
+**Parameters**
+
+* [PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) **position_ned_yaw** - Position and yaw `struct`.
 
 ### set_velocity_ned() {#classdronecode__sdk_1_1_offboard_1a95dfbe096a363e21bfd035258e786350}
 ```cpp

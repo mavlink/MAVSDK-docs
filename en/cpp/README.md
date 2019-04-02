@@ -53,7 +53,7 @@ The most important classes are:
 
 The following APIs provide more direct access to underlying MAVLink messages/types.
 They should only be used where features are missing from the main APIs above.
-* [ParamsRaw](/api_reference/classdronecode__sdk_1_1_params_raw.md): Raw access to get and set parameters.
+* [Param](/api_reference/classdronecode__sdk_1_1_param.md): Raw access to get and set parameters.
 * [MissionRaw](/api_reference/classdronecode__sdk_1_1_mission_raw.md): Direct access to MAVLink mission items.
 * [MavlinkPassthrough](/api_reference/classdronecode__sdk_1_1_mavlink_passthrough.md): Provides full/direct MAVLink access
 
