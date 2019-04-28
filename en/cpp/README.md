@@ -1,6 +1,6 @@
 <div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../../assets/site/sdk_logo_full.jpg" title="Dronecode SDK Logo" width="400px"/></a></div>
 # Dronecode SDK C++ Library
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-DroneCore-ff69b4.svg)](http://discuss.px4.io/c/dronecore) [![jenkins build status](http://ci.px4.io:8080/buildStatus/icon?job=Dronecode/DronecodeSDK/develop)](http://ci.px4.io:8080/blue/organizations/jenkins/Dronecode%2FDronecodeSDK/branches/)
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-Dronecode%20SDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![jenkins build status](http://ci.px4.io:8080/buildStatus/icon?job=Dronecode/DronecodeSDK/develop)](http://ci.px4.io:8080/blue/organizations/jenkins/Dronecode%2FDronecodeSDK/branches/)
 [![travis-ci build status](https://travis-ci.org/Dronecode/DronecodeSDK.svg?branch=develop)](https://travis-ci.org/Dronecode/DronecodeSDK)
 [![appveyor build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/julianoes/dronecore/branch/develop)
 [![Coverage Status](https://coveralls.io/repos/github/Dronecode/DronecodeSDK/badge.svg?branch=develop)](https://coveralls.io/github/Dronecode/DronecodeSDK?branch=develop)
