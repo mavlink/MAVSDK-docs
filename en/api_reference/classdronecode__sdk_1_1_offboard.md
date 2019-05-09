@@ -19,6 +19,8 @@ Client code must specify a setpoint before starting offboard mode. [DronecodeSDK
 ## Data Structures
 
 
+struct [Attitude](structdronecode__sdk_1_1_offboard_1_1_attitude.md)
+
 struct [AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md)
 
 struct [PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md)
@@ -51,6 +53,7 @@ bool | [is_active](#classdronecode__sdk_1_1_offboard_1ac3c75fcd1ae1e6b00090eccd0
 void | [set_position_ned](#classdronecode__sdk_1_1_offboard_1a127749d168fe4e7ddb40ba4c6747bb4a) ([PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) position_ned_yaw) | Set the position in NED coordinates and yaw.
 void | [set_velocity_ned](#classdronecode__sdk_1_1_offboard_1a95dfbe096a363e21bfd035258e786350) ([VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
 void | [set_velocity_body](#classdronecode__sdk_1_1_offboard_1ad87778386509911269b87766c0f1830f) ([VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
+void | [set_attitude](#classdronecode__sdk_1_1_offboard_1aa8210f10366afadd99787b1df3e601a9) ([Attitude](structdronecode__sdk_1_1_offboard_1_1_attitude.md) attitude) | Set the attitude in terms of roll, pitch and yaw in degrees with thrust in percentage.
 void | [set_attitude_rate](#classdronecode__sdk_1_1_offboard_1a511ba0314a4217c3ac3020ab2b0dfd23) ([AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) attitude_rate) | Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust in percentage.
 const [Offboard](classdronecode__sdk_1_1_offboard.md) & | [operator=](#classdronecode__sdk_1_1_offboard_1a8cfbf6cbcb4fbdcf1574f0455632a372) (const [Offboard](classdronecode__sdk_1_1_offboard.md) &)=delete | Equality operator (object is not copyable).
 
@@ -129,6 +132,7 @@ Results for offboard requests.
 
 Value | Description
 --- | ---
+<span id="classdronecode__sdk_1_1_offboard_1a1f515eed9d23c450254233ea87131c09a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
 <span id="classdronecode__sdk_1_1_offboard_1a1f515eed9d23c450254233ea87131c09ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
 <span id="classdronecode__sdk_1_1_offboard_1a1f515eed9d23c450254233ea87131c09afeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system connected. 
 <span id="classdronecode__sdk_1_1_offboard_1a1f515eed9d23c450254233ea87131c09ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
@@ -136,7 +140,6 @@ Value | Description
 <span id="classdronecode__sdk_1_1_offboard_1a1f515eed9d23c450254233ea87131c09a6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command denied. 
 <span id="classdronecode__sdk_1_1_offboard_1a1f515eed9d23c450254233ea87131c09a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Request timeout. 
 <span id="classdronecode__sdk_1_1_offboard_1a1f515eed9d23c450254233ea87131c09abe5140e11d47ef100aaf22a20c6f46b2"></span> `NO_SETPOINT_SET` |  Can't start without setpoint set.
-<span id="classdronecode__sdk_1_1_offboard_1a1f515eed9d23c450254233ea87131c09a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
 
 ## Member Function Documentation
 
@@ -249,6 +252,19 @@ Set the velocity body coordinates and yaw angular rate.
 **Parameters**
 
 * [VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) **velocity_body_yawspeed** - Velocity and yaw angular rate `struct`.
+
+### set_attitude() {#classdronecode__sdk_1_1_offboard_1aa8210f10366afadd99787b1df3e601a9}
+```cpp
+void dronecode_sdk::Offboard::set_attitude(Attitude attitude)
+```
+
+
+Set the attitude in terms of roll, pitch and yaw in degrees with thrust in percentage.
+
+
+**Parameters**
+
+* [Attitude](structdronecode__sdk_1_1_offboard_1_1_attitude.md) **attitude** - roll, pitch and yaw in degrees along with thrust in percentage.
 
 ### set_attitude_rate() {#classdronecode__sdk_1_1_offboard_1a511ba0314a4217c3ac3020ab2b0dfd23}
 ```cpp
