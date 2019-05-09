@@ -21,7 +21,7 @@
     "pluginsConfig": {
 
         "page-footer-ex":{
-            "copyright":"© Dronecode 2017. License:   <a href='https://creativecommons.org/licenses/by/4.0/'>CC BY 4.0</a>",
+            "copyright":"© Dronecode 2017-2019. License:   <a href='https://creativecommons.org/licenses/by/4.0/'>CC BY 4.0</a>",
             "update_label":"Updated: ",
             "update_format":"YYYY-MM-DD HH:mm:ss"
         },
