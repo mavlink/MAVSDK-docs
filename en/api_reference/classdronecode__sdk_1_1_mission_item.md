@@ -28,6 +28,7 @@ Type | Name | Description
 void | [set_position](#classdronecode__sdk_1_1_mission_item_1a8469fed0b53e808d1929ef2fd58c79f9) (double latitude_deg, double longitude_deg) | Set the position of a mission item.
 void | [set_relative_altitude](#classdronecode__sdk_1_1_mission_item_1a77e41fe9772b873b270dc8a214771e56) (float altitude_m) | Set the relative altitude of a mission item.
 void | [set_fly_through](#classdronecode__sdk_1_1_mission_item_1a86478814f2f461274e0ac532390b0709) (bool fly_through) | Set the fly-through property of a mission item.
+void | [set_acceptance_radius](#classdronecode__sdk_1_1_mission_item_1a0b2b8df0aebec2d7acdc31f114d669fc) (float radius_m) | Set the acceptance radius property of a mission item.
 void | [set_speed](#classdronecode__sdk_1_1_mission_item_1a5404dd53832bc27d3d7a0a6bd94f6468) (float speed_m_s) | Set the speed to use after a mission item.
 void | [set_gimbal_pitch_and_yaw](#classdronecode__sdk_1_1_mission_item_1a9603f1d1821a834b8347b932645a34dc) (float pitch_deg, float yaw_deg) | Set the pitch and yaw angle of a gimbal at that mission item.
 void | [set_loiter_time](#classdronecode__sdk_1_1_mission_item_1abdae197c436236200026233ee55979d4) (float loiter_time_s) | Set loiter time in seconds.
@@ -38,6 +39,7 @@ double | [get_longitude_deg](#classdronecode__sdk_1_1_mission_item_1a85743f19dda
 bool | [has_position_set](#classdronecode__sdk_1_1_mission_item_1a9cb97c6c0572f8036e85b7a2c0fbc5ca) () const | Reports whether position info (Lat, Lon) was set for this mission item.
 float | [get_relative_altitude_m](#classdronecode__sdk_1_1_mission_item_1a55addd10b5dce0b425ad41f08e03cbea) () const | Get the relative altitude of a mission item.
 bool | [get_fly_through](#classdronecode__sdk_1_1_mission_item_1a81ad2b651efff62ff9b7f522a27a21a9) () const | Get the fly-through property of a mission item.
+float | [get_acceptance_radius_m](#classdronecode__sdk_1_1_mission_item_1a861064af7d8fb7ca672ade5d4a7736ac) () const | Get the acceptance radius of a mission item.
 float | [get_speed_m_s](#classdronecode__sdk_1_1_mission_item_1a8072b6cec779c2fa21da586dcd27cacb) () const | Get the speed to be used after this mission item.
 float | [get_gimbal_pitch_deg](#classdronecode__sdk_1_1_mission_item_1ac0d6e210ee5cc3f99adef9b67a4e02b8) () const | Get the gimbal pitch of a mission item.
 float | [get_gimbal_yaw_deg](#classdronecode__sdk_1_1_mission_item_1abe4c8f82f997ccb19d07393d7bafea89) () const | Get the gimbal yaw of a mission item.
@@ -152,6 +154,19 @@ Set the fly-through property of a mission item.
 **Parameters**
 
 * bool **fly_through** - If `true` the drone will fly through the waypoint without stopping. If `false` the drone will come to a stop at the waypoint before continuing.
+
+### set_acceptance_radius() {#classdronecode__sdk_1_1_mission_item_1a0b2b8df0aebec2d7acdc31f114d669fc}
+```cpp
+void dronecode_sdk::MissionItem::set_acceptance_radius(float radius_m)
+```
+
+
+Set the acceptance radius property of a mission item.
+
+
+**Parameters**
+
+* float **radius_m** - Radius in meters around the mission_item where it will be considered as reached.
 
 ### set_speed() {#classdronecode__sdk_1_1_mission_item_1a5404dd53832bc27d3d7a0a6bd94f6468}
 ```cpp
@@ -285,6 +300,19 @@ Get the fly-through property of a mission item.
 **Returns**
 
 &emsp;bool - true if the drone will fly through the waypoint without stopping. false if the drone will come to a stop at the waypoint before continuing.
+
+### get_acceptance_radius_m() {#classdronecode__sdk_1_1_mission_item_1a861064af7d8fb7ca672ade5d4a7736ac}
+```cpp
+float dronecode_sdk::MissionItem::get_acceptance_radius_m() const
+```
+
+
+Get the acceptance radius of a mission item.
+
+
+**Returns**
+
+&emsp;float - Acceptance radius in meters.
 
 ### get_speed_m_s() {#classdronecode__sdk_1_1_mission_item_1a8072b6cec779c2fa21da586dcd27cacb}
 ```cpp

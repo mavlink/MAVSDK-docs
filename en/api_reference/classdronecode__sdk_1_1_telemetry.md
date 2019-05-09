@@ -30,6 +30,8 @@ struct [Quaternion](structdronecode__sdk_1_1_telemetry_1_1_quaternion.md)
 
 struct [RCStatus](structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md)
 
+struct [StatusText](structdronecode__sdk_1_1_telemetry_1_1_status_text.md)
+
 struct [VelocityNED](structdronecode__sdk_1_1_telemetry_1_1_velocity_n_e_d.md)
 
 ## Public Types
@@ -43,6 +45,7 @@ std::function< void([Result](classdronecode__sdk_1_1_telemetry.md#classdronecode
 std::function< void([PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md))> [position_velocity_ned_callback_t](#classdronecode__sdk_1_1_telemetry_1a6a584ef033a162eb56cf8c45589a8ffd) | Callback type for kinematic (position and velocity) updates.
 std::function< void([Position](structdronecode__sdk_1_1_telemetry_1_1_position.md))> [position_callback_t](#classdronecode__sdk_1_1_telemetry_1a325501dc02e5c85cc7ad74ef233b3ff6) | Callback type for position updates.
 std::function< void(bool [in_air](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a2f22522ddfde00b97dbfad84864a1730))> [in_air_callback_t](#classdronecode__sdk_1_1_telemetry_1af64278aec30c32f4b8db9d427ba9c48c) | Callback type for in-air updates.
+std::function< void([StatusText](structdronecode__sdk_1_1_telemetry_1_1_status_text.md) [status_text](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ae97f81f4f564b02ffd2c0ef241f9feee))> [status_text_callback_t](#classdronecode__sdk_1_1_telemetry_1abd606e783a8ca44b9b87d7eb82a9b980) | Callback for mavlink status text updates.
 std::function< void(bool [armed](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a76b05cc86c9152eabbda6b0051b8605d))> [armed_callback_t](#classdronecode__sdk_1_1_telemetry_1ad4be5f2c17988fa53b0c59affb64e9a2) | Callback type for armed updates (asynchronous).
 std::function< void([Quaternion](structdronecode__sdk_1_1_telemetry_1_1_quaternion.md) quaternion)> [attitude_quaternion_callback_t](#classdronecode__sdk_1_1_telemetry_1a4fe1cb6af59d7ecabb26563f6c33079d) | Callback type for attitude updates in quaternion.
 std::function< void([EulerAngle](structdronecode__sdk_1_1_telemetry_1_1_euler_angle.md) euler_angle)> [attitude_euler_angle_callback_t](#classdronecode__sdk_1_1_telemetry_1a0db7573bc74c00231c96cb87a5711e96) | Callback type for attitude updates in Euler angles.
@@ -85,6 +88,7 @@ void | [set_rate_rc_status_async](#classdronecode__sdk_1_1_telemetry_1a3984dea26
 [PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) | [position_velocity_ned](#classdronecode__sdk_1_1_telemetry_1a21b0683af83e65884fdd460a45eb85d8) () const | Get the current kinematic (position and velocity) in NED frame (synchronous).
 [Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) | [position](#classdronecode__sdk_1_1_telemetry_1ae1d845b0f461a5e50f425939c1efccd2) () const | Get the current position (synchronous).
 [Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) | [home_position](#classdronecode__sdk_1_1_telemetry_1a76ad20dab72e02523b5637900aaab9da) () const | Get the home position (synchronous).
+[StatusText](structdronecode__sdk_1_1_telemetry_1_1_status_text.md) | [status_text](#classdronecode__sdk_1_1_telemetry_1ae97f81f4f564b02ffd2c0ef241f9feee) () const | Get status text (synchronous).
 bool | [in_air](#classdronecode__sdk_1_1_telemetry_1a2f22522ddfde00b97dbfad84864a1730) () const | Get the in-air status (synchronous).
 bool | [armed](#classdronecode__sdk_1_1_telemetry_1a76b05cc86c9152eabbda6b0051b8605d) () const | Get the arming status (synchronous).
 [Quaternion](structdronecode__sdk_1_1_telemetry_1_1_quaternion.md) | [attitude_quaternion](#classdronecode__sdk_1_1_telemetry_1a2e05a480489c3b5a9b1f825b62d3434b) () const | Get the current attitude in quaternions (synchronous).
@@ -102,6 +106,7 @@ void | [position_velocity_ned_async](#classdronecode__sdk_1_1_telemetry_1a2d910e
 void | [position_async](#classdronecode__sdk_1_1_telemetry_1a2a19fb93315e33a2dad6720b36ec9389) ([position_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a325501dc02e5c85cc7ad74ef233b3ff6) callback) | Subscribe to position updates (asynchronous).
 void | [home_position_async](#classdronecode__sdk_1_1_telemetry_1ad94dbcc5ed4ebb8f377d11a2ea72f6fc) ([position_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a325501dc02e5c85cc7ad74ef233b3ff6) callback) | Subscribe to home position updates (asynchronous).
 void | [in_air_async](#classdronecode__sdk_1_1_telemetry_1a1027180f38628306ddfd1d6e66ae067b) ([in_air_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1af64278aec30c32f4b8db9d427ba9c48c) callback) | Subscribe to in-air updates (asynchronous).
+void | [status_text_async](#classdronecode__sdk_1_1_telemetry_1aecc39d5aab5500a94c6516c9fcc6bc9a) ([status_text_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1abd606e783a8ca44b9b87d7eb82a9b980) callback) | Subscribe to status text updates (asynchronous).
 void | [armed_async](#classdronecode__sdk_1_1_telemetry_1a9382a19ea66f1d99f3780fa88abea3fd) ([armed_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ad4be5f2c17988fa53b0c59affb64e9a2) callback) | Subscribe to armed updates (asynchronous).
 void | [attitude_quaternion_async](#classdronecode__sdk_1_1_telemetry_1ac9633b72e0a38f5d5ec7f98d63ff1944) ([attitude_quaternion_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a4fe1cb6af59d7ecabb26563f6c33079d) callback) | Subscribe to attitude updates in quaternion (asynchronous).
 void | [attitude_euler_angle_async](#classdronecode__sdk_1_1_telemetry_1a6da4a219d31fffcbf2223f80bfa063f4) ([attitude_euler_angle_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a0db7573bc74c00231c96cb87a5711e96) callback) | Subscribe to attitude updates in Euler angles (asynchronous).
@@ -214,6 +219,20 @@ Callback type for in-air updates.
 **Parameters**
 
 * **in_air** - true if in-air (flying) and not on-ground (landed).
+
+### typedef status_text_callback_t {#classdronecode__sdk_1_1_telemetry_1abd606e783a8ca44b9b87d7eb82a9b980}
+
+```cpp
+typedef std::function<void(StatusText status_text)> dronecode_sdk::Telemetry::status_text_callback_t
+```
+
+
+Callback for mavlink status text updates.
+
+
+**Parameters**
+
+* **status** - text with message type and text.
 
 ### typedef armed_callback_t {#classdronecode__sdk_1_1_telemetry_1ad4be5f2c17988fa53b0c59affb64e9a2}
 
@@ -753,6 +772,19 @@ Get the home position (synchronous).
 
 &emsp;[Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) - Home position.
 
+### status_text() {#classdronecode__sdk_1_1_telemetry_1ae97f81f4f564b02ffd2c0ef241f9feee}
+```cpp
+StatusText dronecode_sdk::Telemetry::status_text() const
+```
+
+
+Get status text (synchronous).
+
+
+**Returns**
+
+&emsp;[StatusText](structdronecode__sdk_1_1_telemetry_1_1_status_text.md) - Status text.
+
 ### in_air() {#classdronecode__sdk_1_1_telemetry_1a2f22522ddfde00b97dbfad84864a1730}
 ```cpp
 bool dronecode_sdk::Telemetry::in_air() const
@@ -975,6 +1007,19 @@ Subscribe to in-air updates (asynchronous).
 **Parameters**
 
 * [in_air_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1af64278aec30c32f4b8db9d427ba9c48c) **callback** - Function to call with updates.
+
+### status_text_async() {#classdronecode__sdk_1_1_telemetry_1aecc39d5aab5500a94c6516c9fcc6bc9a}
+```cpp
+void dronecode_sdk::Telemetry::status_text_async(status_text_callback_t callback)
+```
+
+
+Subscribe to status text updates (asynchronous).
+
+
+**Parameters**
+
+* [status_text_callback_t](classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1abd606e783a8ca44b9b87d7eb82a9b980) **callback** - Function to call with updates.
 
 ### armed_async() {#classdronecode__sdk_1_1_telemetry_1a9382a19ea66f1d99f3780fa88abea3fd}
 ```cpp
