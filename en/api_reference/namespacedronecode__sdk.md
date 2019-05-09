@@ -62,6 +62,14 @@ std::ostream & | [operator<<](#namespacedronecode__sdk_1a12ce002e343392b13fd8aee
 bool | [operator==](#namespacedronecode__sdk_1add402a7e54e431c79040066cf0eb009a) (const [MissionItem](classdronecode__sdk_1_1_mission_item.md) & lhs, const [MissionItem](classdronecode__sdk_1_1_mission_item.md) & rhs) | Equal operator to compare two [MissionItem](classdronecode__sdk_1_1_mission_item.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a099ffe3cf3144ce815d31b2d1798ee1f) (std::ostream & str, [MissionItem](classdronecode__sdk_1_1_mission_item.md) const & mission_item) | Stream operator to print infos about a [MissionItem](classdronecode__sdk_1_1_mission_item.md).
 std::ostream & | [operator<<](#namespacedronecode__sdk_1aba2a59ff24c643d38cd2f8f953d12aa0) (std::ostream & str, [MissionItem::CameraAction](classdronecode__sdk_1_1_mission_item.md#classdronecode__sdk_1_1_mission_item_1a636a841437572871ab82e01e1c41f447) const & camera_action) | Stream operator to print infos about a [MissionItem::CameraAction](classdronecode__sdk_1_1_mission_item.md#classdronecode__sdk_1_1_mission_item_1a636a841437572871ab82e01e1c41f447).
+bool | [operator==](#namespacedronecode__sdk_1a681c639d97b9212243038edd9e255177) (const [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) & lhs, const [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) & rhs) | Equal operator to compare two [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) objects.
+std::ostream & | [operator<<](#namespacedronecode__sdk_1a76198dd0c20cef978ef3a06832325a55) (std::ostream & str, [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) const & attitude_rate) | Stream operator to print information about a [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md).
+bool | [operator==](#namespacedronecode__sdk_1a2b45a0749fc1fc43edec1885021929d4) (const [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) & lhs, const [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) & rhs) | Equal operator to compare two [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) objects.
+std::ostream & | [operator<<](#namespacedronecode__sdk_1a068c09d23cddb5afc265efae6f1dacd1) (std::ostream & str, [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) const & position_ned_yaw) | Stream operator to print information about a [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md).
+bool | [operator==](#namespacedronecode__sdk_1a72f45c81c82b40facfbbe8e285104005) (const [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) & lhs, const [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) & rhs) | Equal operator to compare two [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) objects.
+std::ostream & | [operator<<](#namespacedronecode__sdk_1abfc5394df8c9b9065db92e9d0f7a5293) (std::ostream & str, [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) const & velocity_body_yawspeed) | Stream operator to print information about a [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md).
+bool | [operator==](#namespacedronecode__sdk_1ae5d6f7a8f8a7454983371f9444ed3c4b) (const [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) & lhs, const [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) & rhs) | Equal operator to compare two [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) objects.
+std::ostream & | [operator<<](#namespacedronecode__sdk_1a116282786dfc4ef5492382f5a3d0b08a) (std::ostream & str, [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) const & velocity_ned_yaw) | Stream operator to print information about a [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md).
 bool | [operator==](#namespacedronecode__sdk_1a70e13ff33048ec0b6a8d100dc813a84a) (const [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) & lhs, const [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) & rhs) | Equal operator to compare two [Telemetry::PositionVelocityNED](structdronecode__sdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) objects.
 bool | [operator==](#namespacedronecode__sdk_1aeee7bba4738b277d079f347b8f48a1e7) (const [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) & lhs, const [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) & rhs) | Equal operator to compare two [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a1d3838c8844e1dc4a784c789f29f5267) (std::ostream & str, [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md) const & position) | Stream operator to print information about a [Telemetry::Position](structdronecode__sdk_1_1_telemetry_1_1_position.md).
@@ -82,6 +90,7 @@ bool | [operator==](#namespacedronecode__sdk_1aaf687fbbe3cfe22bc3f5af30595d4b2e)
 std::ostream & | [operator<<](#namespacedronecode__sdk_1ab1411c69c211b5eb231f1ad4ff893679) (std::ostream & str, [Telemetry::GroundSpeedNED](structdronecode__sdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) const & ground_speed) | Stream operator to print information about a [Telemetry::GroundSpeedNED](structdronecode__sdk_1_1_telemetry_1_1_ground_speed_n_e_d.md).
 bool | [operator==](#namespacedronecode__sdk_1a2146a33adf4b5d158aff9b6e53fd06ab) (const [Telemetry::RCStatus](structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md) & lhs, const [Telemetry::RCStatus](structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md) & rhs) | Equal operator to compare two [Telemetry::RCStatus](structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md) objects.
 std::ostream & | [operator<<](#namespacedronecode__sdk_1a4acb99b3d173ad128a4083096dac1995) (std::ostream & str, [Telemetry::RCStatus](structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md) const & rc_status) | Stream operator to print information about a [Telemetry::RCStatus](structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md).
+std::ostream & | [operator<<](#namespacedronecode__sdk_1ac4d265b14ca92c347875ef8f85a2d2eb) (std::ostream & str, [Telemetry::StatusText](structdronecode__sdk_1_1_telemetry_1_1_status_text.md) const & status_text) | Stream operator to print information about a [Telemetry::StatusText](structdronecode__sdk_1_1_telemetry_1_1_status_text.md).
 
 ## Enumeration Type Documentation
 
@@ -705,6 +714,182 @@ Stream operator to print infos about a [MissionItem::CameraAction](classdronecod
 
 &emsp;std::ostream & - A reference to the stream.
 
+### operator==() {#namespacedronecode__sdk_1a681c639d97b9212243038edd9e255177}
+
+```
+#include: plugins/offboard/offboard.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Offboard::AttitudeRate &lhs, const Offboard::AttitudeRate &rhs)
+```
+
+
+Equal operator to compare two [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) objects.
+
+
+**Parameters**
+
+* const [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md)& **lhs** - 
+* const [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a76198dd0c20cef978ef3a06832325a55}
+
+```
+#include: plugins/offboard/offboard.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Offboard::AttitudeRate const &attitude_rate)
+```
+
+
+Stream operator to print information about a [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Offboard::AttitudeRate](structdronecode__sdk_1_1_offboard_1_1_attitude_rate.md) const& **attitude_rate** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a2b45a0749fc1fc43edec1885021929d4}
+
+```
+#include: plugins/offboard/offboard.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Offboard::PositionNEDYaw &lhs, const Offboard::PositionNEDYaw &rhs)
+```
+
+
+Equal operator to compare two [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) objects.
+
+
+**Parameters**
+
+* const [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md)& **lhs** - 
+* const [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a068c09d23cddb5afc265efae6f1dacd1}
+
+```
+#include: plugins/offboard/offboard.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Offboard::PositionNEDYaw const &position_ned_yaw)
+```
+
+
+Stream operator to print information about a [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Offboard::PositionNEDYaw](structdronecode__sdk_1_1_offboard_1_1_position_n_e_d_yaw.md) const& **position_ned_yaw** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1a72f45c81c82b40facfbbe8e285104005}
+
+```
+#include: plugins/offboard/offboard.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Offboard::VelocityBodyYawspeed &lhs, const Offboard::VelocityBodyYawspeed &rhs)
+```
+
+
+Equal operator to compare two [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) objects.
+
+
+**Parameters**
+
+* const [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md)& **lhs** - 
+* const [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1abfc5394df8c9b9065db92e9d0f7a5293}
+
+```
+#include: plugins/offboard/offboard.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Offboard::VelocityBodyYawspeed const &velocity_body_yawspeed)
+```
+
+
+Stream operator to print information about a [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Offboard::VelocityBodyYawspeed](structdronecode__sdk_1_1_offboard_1_1_velocity_body_yawspeed.md) const& **velocity_body_yawspeed** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacedronecode__sdk_1ae5d6f7a8f8a7454983371f9444ed3c4b}
+
+```
+#include: plugins/offboard/offboard.h
+```
+```cpp
+bool dronecode_sdk::operator==(const Offboard::VelocityNEDYaw &lhs, const Offboard::VelocityNEDYaw &rhs)
+```
+
+
+Equal operator to compare two [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) objects.
+
+
+**Parameters**
+
+* const [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md)& **lhs** - 
+* const [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacedronecode__sdk_1a116282786dfc4ef5492382f5a3d0b08a}
+
+```
+#include: plugins/offboard/offboard.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Offboard::VelocityNEDYaw const &velocity_ned_yaw)
+```
+
+
+Stream operator to print information about a [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Offboard::VelocityNEDYaw](structdronecode__sdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) const& **velocity_ned_yaw** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
 ### operator==() {#namespacedronecode__sdk_1a70e13ff33048ec0b6a8d100dc813a84a}
 
 ```
@@ -1140,6 +1325,28 @@ Stream operator to print information about a [Telemetry::RCStatus](structdroneco
 
 * std::ostream& **str** - 
 * [Telemetry::RCStatus](structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md) const& **rc_status** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacedronecode__sdk_1ac4d265b14ca92c347875ef8f85a2d2eb}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& dronecode_sdk::operator<<(std::ostream &str, Telemetry::StatusText const &status_text)
+```
+
+
+Stream operator to print information about a [Telemetry::StatusText](structdronecode__sdk_1_1_telemetry_1_1_status_text.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::StatusText](structdronecode__sdk_1_1_telemetry_1_1_status_text.md) const& **status_text** - 
 
 **Returns**
 

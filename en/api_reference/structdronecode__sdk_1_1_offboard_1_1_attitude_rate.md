@@ -4,7 +4,7 @@
 ----
 
 
-Type for Attitude rate commands in body coordinates (roll, pitch, yaw angular rate and Thrust). 
+Type for [Attitude](structdronecode__sdk_1_1_offboard_1_1_attitude.md) rate commands in body coordinates (roll, pitch, yaw angular rate and Thrust). 
 
 
 ## Data Fields
