@@ -46,7 +46,7 @@ The Dronecode SDK is in beta development.
 This guide contains information and examples showing how to use the SDK. 
 If you have specific questions that are not answered by the documentation, these can be raised on:
 
-* [Discuss board](https://discuss.px4.io/c/sdk)
+* [Discuss board](https://discuss.px4.io/c/mavsdk)
 * [Slack (#mavsdk)](https://px4.slack.com/messages/C68J8H32A) (get a [Slack login here](http://slack.px4.io))
 
 Use Github for bug reports/enhancement requests:
