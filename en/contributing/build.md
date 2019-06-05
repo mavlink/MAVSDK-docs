@@ -29,7 +29,7 @@ To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the
 1. First install the dependencies
    ```bash
    sudo apt-get update -y
-   sudo apt-get install cmake build-essential colordiff astyle git libcurl4-openssl-dev libtinyxml2-dev doxygen -y
+   sudo apt-get install cmake build-essential colordiff git doxygen -y
    ```
    > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/docker).
 
@@ -53,16 +53,15 @@ To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the
    ```
 1. Build the (debug) C++ library by calling:
    ```sh
-   make default
+   cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
+   cmake --build build/default
    ```
-   > **Tip** You can build *release* binaries by setting `BUILD_TYPE=Release` as shown below:
+   > **Tip** You can build *release* binaries by setting `CMAKE_BUILD_TYPE=Release` as shown below:
      ```sh
-     make clean
-     BUILD_TYPE=Release make
+     cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
+     cmake --build build/default
      ```
-
-
-1. (Optionally) "Install" the *Dronecode SDK* [as described below](#install-artifacts). This is required in order to build [Dronecode SDK C++ apps](../guide/toolchain.md), but not to run SDK test code.
+1. "Install" the *Dronecode SDK* [as described below](#install-artifacts).
 
 
 ### Windows {#build_cpp_windows}
@@ -71,9 +70,6 @@ To build the library in Windows, you need:
 
 - [Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#58852): Download and install (only the "Visual C+ Build Tools" are needed from installer).
 - [cmake](https://cmake.org/download/): Download the installer and run it. Make sure to tick "add to PATH" during the installation.
-- [curl](https://curl.haxx.se/): Download the source, extract and build it, and make the directory of the header files available as described below.
-
-> **Note** The instructions below assume you downloaded [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) and extracted to the root of your C drive. You can use a different *curl* if you want.
 
 To build the *Dronecode SDK* C++ Library on Windows:
 1. Clone the [Dronecode SDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork):
@@ -94,23 +90,16 @@ To build the *Dronecode SDK* C++ Library on Windows:
    ```sh
    git submodule update --init --recursive
    ```
-1. Download the [curl-7.56.1.zip](https://curl.haxx.se/download/curl-7.56.1.zip) source and extract it to the root of your C drive.
-1. Open the *VS2015 x64 Native Tools Command Prompt*, go to the source directory and enter:
-   ```sh
-   cd C:\curl-7.56.1\winbuild
-   nmake /f Makefile.vc mode=static VC=15 MACHINE=x64 DEBUG=no
-   ```
 1. Then build the SDK in Windows:
    ```sh
    cd /your/path/to/DronecodeSDK
-   mkdir build && cd build
-   cmake -DWIN_CURL_INCLUDE_DIR:STRING=C:\\curl-7.56.1\\include -DWIN_CURL_LIB:STRING="C:\curl-7.56.1\builds\libcurl-vc15-x64-release-static-ipv6-sspi-winssl\lib\libcurl_a.lib" -G "Visual Studio 15 2017 Win64" ..
-   cmake --build .
+   cmake -G "Visual Studio 15 2017" -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
+   cmake --build build/default --config Debug
    ```
 
-   > **Tip** You can generate *release* binaries by setting `--config Release` in the build step (`--config Debug` is used by default):
+   > **Tip** You can generate *release* binaries by setting `--config Release` in the build step:
      ```sh
-     cmake --build . --config Release
+     cmake --build build --config Release
      ```
    <span></span>
    > **Tip** To use more than one CPU core to build set this before building:
@@ -118,7 +107,7 @@ To build the *Dronecode SDK* C++ Library on Windows:
      set CL=/MP
      ```
 
-1. (Optionally) "Install" the SDK [as described below](#install-artifacts). This is required in order to build [Dronecode SDK C++ apps](../guide/toolchain.md), but not to run SDK test code.
+1. "Install" the SDK [as described below](#install-artifacts).
 
 
 ## Install the SDK {#install-artifacts}
@@ -132,16 +121,14 @@ The SDK supports installation system-wide by default. You can also install files
 
 ### System-wide Install {#sdk_system_wide_install}
 
-System-wide installation copies the SDK headers and binaries to the standard system-wide locations for your platform (On Ubuntu Linux this is **/usr/local/**).
+System-wide installation copies the SDK headers and binaries to the standard system-wide locations for your platform (e.g. on Ubuntu Linux this is **/usr/local/**).
 
 > **Warning** System-wide installation overwrites any previously installed version of the SDK.
 
 To install the SDK system-wide:
 
 ```sh
-make clean  #REQUIRED!
-make default
-sudo make default install  # sudo required to install files to system directories!
+sudo cmake --build build/default --target install # sudo is required to install to system directories!
 
 # First installation only
 sudo ldconfig  # update linker cache
@@ -155,20 +142,19 @@ sudo ldconfig  # update linker cache
 
 Local installation copies the SDK headers/library to a user-specified location inside the SDK source directory.
 
-On Linux/macOS use the `INSTALL_PREFIX` variable to specify a path relative to the **DronecodeSDK/build/** folder
+On Linux/macOS use the `CMAKE_INSTALL_PREFIX` variable to specify a path relative to the folder from which you call `cmake`
 (or an absolute path).
 For example, to install into the **DronecodeSDK/install/** folder you would call:
 
 ```sh
-make clean  #REQUIRED!
-INSTALL_PREFIX=../../install make default install
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -H.
+cmake --build build/default --target install
 ```
 
-On Windows specify `--target install` when building, as shown:
-```sh
-cmake --build . --target install
-```
-
+> **Tip** If you already have run cmake without setting `CMAKE_INSTALL_PREFIX`, you may need to clean the build first:
+     ```sh
+     rm -rf build/default
+     ```
 
 ## Build for Android {#build_cpp_android}
 
@@ -200,118 +186,29 @@ make android install
 
 ## Build for iOS {#build_cpp_iOS}
 
-> **Tip** You must first build the C++ Library (as shown above).
+> **Warning** You must first build the C++ Library (as shown above).
 
 To build for real iOS devices on macOS:
 
 ```sh
-make ios install
+cmake -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -Bbuild/ios -H.
+cmake --build build/ios
 ```
 
 Build for the iOS simulator on macOS:
 
 ```sh
-make ios_simulator install
+cmake -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -H.
 ```
-
-## Building in Docker
-
-You can also build the SDK on your host computer with a toolchain running in a [Docker](https://docs.docker.com/) container (this saves you from having to install or manage the toolchain directly).
-
-> **Tip** There are docker containers based on Fedora and Ubuntu. It doesn't matter which you use!
-
-The main steps are:
-
-1. Install Docker on your host computer
-   > **Tip** The easiest way to do this on Ubuntu is to use the [convenience script here](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-convenience-script).
-1. Clone the [DronecodeSDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork) and update the submodules:
-   ```sh
-   git clone https://github.com/Dronecode/DronecodeSDK.git
-   cd DronecodeSDK
-   git submodule update --init --recursive
-   ```
-1. Enter one of the following commands in your host's terminal:
-   * Fedora 27
-     ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-fedora-27 bash
-     ```
-   * Fedora 28
-     ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-fedora-28 bash
-     ```
-   * Ubuntu 16.04 LTS
-     ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-16.04 bash
-     ```
-   * Ubuntu 18.04 LTS
-     ```sh
-     docker run --rm -it -v $HOME/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-18.04 bash
-     ```
-
-   > **Note** The `-v` flag maps a directory on your host (left side) to a path in the container (right side).
-   > You need to specify the left-side path to the DronecodeSDK repository on your host and the container path must be set as above.
-   > The `--rm` automatically cleans up leftover docker containers after you exit the docker container.
-
-   Docker will download the selected image from [Docker Hub](https://hub.docker.com/u/dronecode/), use it to create a container, and then open a bash prompt:
-   ```
-   root*81ebe14d0c1a:~/DronecodeSDK#
-   ```
-1. In the terminal you can build the SDK using the normal Linux `make` commands:
-   ```sh
-   # Build the C++ library
-   make default
-   # Build and install the SDK
-   make default install
-   # Run code-style check
-   make fix_style
-   # Clean the build
-   make clean
-   ```
-
-> **Note** Files built in a *Docker* container are owned by root. In order to clean up the **build** and **install** folders you will need to either call `make clean` in the container or `sudo make clean` in the host computer (or `sudo rm -r build`).
-
-### Running Single Docker Commands
-
-You can also run build commands directly from your host (rather than opening bash). Below we show this using the Ubuntu 16.04 docker image:
-
-To make and install the C++ Library:
-```bash
-docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-16.04 make install
-```
-
-To run the code style check:
-```bash
-docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DronecodeSDK:rw dronecode/dronecode-sdk-ubuntu-16.04 make fix_style
-```
-
-### Building the Docker Image
-
-The approach above downloads a [container image](https://hub.docker.com/r/dronecode/) from Docker Hub based on Ubuntu 16.04, Ubuntu 18.04, Fedora 27 or Fedora 28.
-
-You can also build the images yourself using the files in [DronecodeSDK/docker](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/docker). The image can be used in the same way as the one from Docker Hub.
-
-To build the Ubuntu 16.04 image (the other's follow the same pattern):
-
-1. Open a command prompt/terminal in the root of the SDK source repository.
-1. Build the image as shown:
-     ```sh
-     docker build -f docker/Dockerfile-Ubuntu-16.04 -t my_image .
-     ```
-   `my_image` can then be used to refer to the image in later steps.
-1. Open a bash prompt using the newly created image:
-   ```sh
-   docker run --rm -it -v $HOME/<path-to-sdk-repo>/DronecodeSDK:/root/DronecodeSDK:rw my_image bash
-   ```
 
 ## Build SDK Extensions {#sdk_extensions}
 
 The *Dronecode SDK* can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the SDK at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
 
-The commands to build and install the SDK with an extension library are:
-```
-make clean   # This is required!
-make default EXTERNAL_DIR=relative_path_to_external_directory
-sudo make default install
+The commands to build the SDK with an extension library are:
+```sh
+cmake -DEXTERNAL_DIR=relative_path_to_external_directory -Dbuild/default -H.
+cmake --build build/default
 ```
 See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
@@ -319,42 +216,41 @@ See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
 The *Dronecode SDK* programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/Dronecode/DronecodeSDK-Python#dronecodesdk-python)) share a common backend, which may optionally be built as part of the C++ library.
 
-The build additionally depends on libraries for the *Go* programming language, and the *make* option `BUILD_BACKEND=1`.
-Otherwise the build is exactly the same as usual.
+The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option. Otherwise the build is exactly the same as usual. 
+
+> **Tip** When building the backend, we usually like to link all the dependencies statically, and therefore we set `-DBUILD_SHARED_LIBS=OFF` (or don't specify it, because the default is `OFF`).
 
 ### Ubuntu {#build_backend_ubuntu}
 
 To build the backend on Ubuntu:
-1. [Setup/Build the C++ Library on Linux](#build_cpp_linux)
-1. Install additional dependencies
-   ```
-   sudo apt-get install golang
-   ```
+1. [Setup the C++ Library on Linux](#build_cpp_linux)
 1. Navigate into the SDK directory and build the project
    ```
    cd DronecodeSDK
-   make BUILD_BACKEND=1
+   cmake -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake --build build/default
    ```
-
 
 ### macOS {#build_backend_macos}
 
 To build the backend on macOS:
-1. [Setup/Build the C++ Library on macOS](#build_cpp_mac_os)
-1. Install additional dependencies
-   ```
-   brew install go openssl
-   ```
+1. [Setup the C++ Library on macOS](#build_cpp_mac_os)
 1. Navigate into the SDK directory and build the project
    ```
    cd DronecodeSDK
-   make BUILD_BACKEND=1
+   cmake -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake --build build/default
    ```
 
 ### Windows {#build_backend_windows}
 
-TBD
-
+To build the backend on Windows:
+1. [Setup the C++ Library on Windows(#build_cpp_windows)
+1. Navigate into the SDK directory and build the project
+   ```
+   cmake -G "Visual Studio 15 2017" -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake --build build/default
+   ```
 
 ## Build API Reference Documentation {#build_api_reference}
 
@@ -362,9 +258,8 @@ The C++ source code is annotated using comments using [Doxygen](http://doxygen.n
 
 Extract the documentation to markdown files (one per class) on macOS or Linux using the commands:
 ```bash
-rm -R install  # Required (remove previous install/docs)
-make distclean     # Required (clean build)
-./generate_docs.sh
+rm -rf docs/install  # Remove previous docs
+./tools/generate_docs.sh
 ```
 The files are created in **/install/docs/markdown**.
 
@@ -382,7 +277,7 @@ The vast majority of common build issues can be resolved by updating submodules 
 ```
 cd DronecodeSDK
 git submodule update --recursive
-make distclean
+rm -rf build
 ```
 
 Then attempt to build again.
