@@ -60,6 +60,7 @@ pipeline {
       when {
         anyOf {
           branch "master"
+          branch "develop"
           branch "pr-jenkins"
           branch "v1.*"
           branch "v0.*"
