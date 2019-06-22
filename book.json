@@ -61,7 +61,15 @@
         },      
         
         "versions": {
-            "type": "branches"
+            "gitbookConfigURL": "https://raw.githubusercontent.com/mavlink/MAVSDK-docs/develop/book.json",
+            "options": [
+
+                {
+                    "value": "/develop/en/",
+                    "text": "develop"
+                }
+                
+            ]
         }
         
     } 
