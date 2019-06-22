@@ -1,6 +1,6 @@
 # Example: VTOL Transitions
 
-This example shows how you can use the SDK [Action](../api_reference/classdronecode__sdk_1_1_action.md) class to transition between VTOL copter and fixed-wing modes (and back).
+This example shows how you can use the SDK [Action](../api_reference/classmavsdk_1_1_action.md) class to transition between VTOL copter and fixed-wing modes (and back).
 
 ![VTOL Transition QGC Screenshot](../../assets/examples/transition_vtol_fixed_wing/transition_vtol_fixed_wing_example_qgc.png)
 
@@ -72,10 +72,10 @@ The operation of the transition code is discussed in the guide: [Takeoff and Lan
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/transition_vtol_fixed_wing).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/transition_vtol_fixed_wing).
 
 
-[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -84,28 +84,24 @@ project(transition_vtol_fixed_wing)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
-    # Line below required if /usr/local/include is not in your default includes
-    #include_directories(/usr/local/include)
-    # Line below required if /usr/local/lib is not in your default linker path
-    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
-    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
+
+find_package(MAVSDK REQUIRED)
 
 add_executable(transition_vtol_fixed_wing
     transition_vtol_fixed_wing.cpp
 )
 
 target_link_libraries(transition_vtol_fixed_wing
-    dronecode_sdk
-    dronecode_sdk_action
-    dronecode_sdk_telemetry
+    MAVSDK::mavsdk_action
+    MAVSDK::mavsdk_telemetry
+    MAVSDK::mavsdk
 )
 ```
 
-[transition_vtol_fixed_wing.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
+[transition_vtol_fixed_wing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
 
 ```cpp
 #include <chrono>
@@ -113,14 +109,14 @@ target_link_libraries(transition_vtol_fixed_wing
 #include <iostream>
 #include <thread>
 #include <cmath>
-#include <dronecode_sdk/dronecode_sdk.h>
-#include <dronecode_sdk/action.h>
-#include <dronecode_sdk/telemetry.h>
+#include <mavsdk/mavsdk.h>
+#include <mavsdk/plugins/action/action.h>
+#include <mavsdk/plugins/telemetry/telemetry.h>
 
 using std::this_thread::sleep_for;
 using std::chrono::seconds;
 using std::chrono::milliseconds;
-using namespace dronecode_sdk;
+using namespace mavsdk;
 
 static constexpr auto ERROR_CONSOLE_TEXT = "\033[31m";
 static constexpr auto TELEMETRY_CONSOLE_TEXT = "\033[34m";
@@ -137,7 +133,7 @@ int main(int argc, char **argv)
 
     const std::string connection_url = argv[1];
 
-    DronecodeSDK dc;
+    Mavsdk dc;
 
     // Add connection specified by CLI argument.
     const ConnectionResult connection_result = dc.add_any_connection(connection_url);

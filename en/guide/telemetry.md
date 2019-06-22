@@ -1,6 +1,6 @@
 # Telemetry
 
-The [Telemetry](../api_reference/classdronecode__sdk_1_1_telemetry.md) class is used to get vehicle telemetry, including state and flight mode information.
+The [Telemetry](../api_reference/classmavsdk_1_1_telemetry.md) class is used to get vehicle telemetry, including state and flight mode information.
 
 All the methods have both synchronous and asynchronous versions, and users can set the rate at which the vehicle provides updates for each type of information. 
 All the methods of a particular type (synchronous, asynchronous, and set_rate methods) are used in the same way.
@@ -10,17 +10,17 @@ All the methods of a particular type (synchronous, asynchronous, and set_rate me
 
 The `Telemetry` API provides methods to return the following types of information:
 
-* [Position](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_position.md) - latitude and longitude in degrees, and altitude relative to sea level and to the takeoff altitude.
-* [Battery](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_battery.md) - voltage and percentage power remaining.
-* [GroundSpeedNED](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) - velocity components in NED coordinates.
-* Vehicle attitude/orientation - as a [Quaternion](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_quaternion.md) or [EulerAngle](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_euler_angle.md)
-* [GPSInfo](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_g_p_s_info.md) - type of fix, if any, and number of satellites.
-* [Health](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_health.md) - calibration status of various sensors and confirmation that position estimates are good enough for position control.
-* [RCStatus](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_r_c_status.md) - connection status, signal strength, and whether RC has ever been connected.
+* [Position](../api_reference/structmavsdk_1_1_telemetry_1_1_position.md) - latitude and longitude in degrees, and altitude relative to sea level and to the takeoff altitude.
+* [Battery](../api_reference/structmavsdk_1_1_telemetry_1_1_battery.md) - voltage and percentage power remaining.
+* [GroundSpeedNED](../api_reference/structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) - velocity components in NED coordinates.
+* Vehicle attitude/orientation - as a [Quaternion](../api_reference/structmavsdk_1_1_telemetry_1_1_quaternion.md) or [EulerAngle](../api_reference/structmavsdk_1_1_telemetry_1_1_euler_angle.md)
+* [GPSInfo](../api_reference/structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) - type of fix, if any, and number of satellites.
+* [Health](../api_reference/structmavsdk_1_1_telemetry_1_1_health.md) - calibration status of various sensors and confirmation that position estimates are good enough for position control.
+* [RCStatus](../api_reference/structmavsdk_1_1_telemetry_1_1_r_c_status.md) - connection status, signal strength, and whether RC has ever been connected.
 
 In addition there are a number of methods that return vehicle "state":
-* Current flight mode ([FlightModes](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a)).
-* Whether the vehicle is "all healthy" (aggregates the vehicle [Health](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_health.md) information). This is used to check if the vehicle is *ready* to arm.
+* Current flight mode ([FlightModes](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a881d44b3a1522ea14bff8834edd4145a)).
+* Whether the vehicle is "all healthy" (aggregates the vehicle [Health](../api_reference/structmavsdk_1_1_telemetry_1_1_health.md) information). This is used to check if the vehicle is *ready* to arm.
 * Whether the vehicle is armed/disarmed.
 * Whether the vehicle is flying/in air.
 
@@ -33,20 +33,20 @@ General instructions are provided in the topic: [Using Plugins](../guide/using_p
 The main steps are:
 
 1. Link the plugin library into your application. 
-   Do this by adding `dronecode_sdk_telemetry` to the `target_link_libraries` section of the app's *cmake* build definition file
+   Do this by adding `mavsdk_telemetry` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
    target_link_libraries(your_application_name
-     dronecode_sdk
+     mavsdk
      ...
-     dronecode_sdk_telemetry
+     mavsdk_telemetry
      ...
    )
    ```
 1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
-   #include <dronecode_sdk/dronecode_sdk.h>
-   DronecodeSDK dc;
+   #include <mavsdk/mavsdk.h>
+   Mavsdk dc;
    ConnectionResult conn_result = dc.add_udp_connection();
    // Wait for the system to connect via heartbeat
    while (!dc.is_connected()) {
@@ -57,7 +57,7 @@ The main steps are:
    ```
 1. Create a shared pointer to an instance of `Telemetry` instantiated with the `system`: 
    ```
-   #include <dronecode_sdk/telemetry.h>
+   #include <mavsdk/plugins/telemetry/telemetry.h>
    auto telemetry = std::make_shared<Telemetry>(system);
    ```
 
@@ -72,7 +72,7 @@ The telemetry update rate determines the frequency at which callbacks will be in
 
 The rate-setting methods are all used in the same way, so we just show one example for both the asynchronous and synchronous methods below. In both cases we set the rate for position updates.
 
-To set the position update rate synchronously (in this case using [set_rate_position()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da)):
+To set the position update rate synchronously (in this case using [set_rate_position()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ae7a6e1313b1508fef7163287aa77a6da)):
 ```cpp
 // Set position update rate to 1 Hz.
 const Telemetry::Result set_rate_result = telemetry->set_rate_position(1.0);
@@ -82,7 +82,7 @@ if (set_rate_result != Telemetry::Result::SUCCESS) {
 }
 ```
 
-To set the position update rate asynchronously with [set_rate_position_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288) (here we use a *promise* to block until we have a result):
+To set the position update rate asynchronously with [set_rate_position_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288) (here we use a *promise* to block until we have a result):
 ```cpp
 {
     std::cout << "Setting rate updates..." << std::endl;
@@ -111,9 +111,9 @@ These methods are non-blocking - they take a callback function argument and retu
 The callback will be invoked with a populated `struct` of the associated type as soon as an update message arrives from the vehicle. 
 The rate at which this occurs can be set through the API [as discussed above](#update-rate). 
 
-For example, the [Telemetry::position_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288) has the following prototype, where [position_callback_t](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) is called with a populated [Position](../api_reference/structdronecode__sdk_1_1_telemetry_1_1_position.md):
+For example, the [Telemetry::position_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aeac791b919a172f96b9b3e6ecb07e288) has the following prototype, where [position_callback_t](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0b6f61942324aa2cb56e4c6cc97f41c3) is called with a populated [Position](../api_reference/structmavsdk_1_1_telemetry_1_1_position.md):
 ```cpp
-void dronecode_sdk::Telemetry::position_async(position_callback_t callback)
+void mavsdk::Telemetry::position_async(position_callback_t callback)
 ```
 
 The code fragment below shows this method being use with a lambda function for the callback, which simply prints out the current position and altitude).
@@ -131,7 +131,7 @@ telemetry->position_async([](Telemetry::Position position) {
 The asynchronous callbacks are updated every time new information is provided by the vehicle. 
 For some types of telemetry you may only wish to report only when the value changes.
 
-The example below shows how to use [flight_mode_async()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a) to report only when the current flight mode changes. 
+The example below shows how to use [flight_mode_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a) to report only when the current flight mode changes. 
 The example uses a lambda function callback that captures a variable for the last mode. 
 This variable is compared to the current flight mode to determine whether the value has changed and needs to be reported.
 
@@ -149,7 +149,7 @@ telemetry->flight_mode_async([&oldFlightMode](Telemetry::FlightMode flightMode) 
 
 This same approach can be used to report only messages that meet some condition.
 
-> **Tip** In future we may add a mechanism *in the API* to support just reporting changes: [Issue #63](https://github.com/Dronecode/DronecodeSDK/issues/63).
+> **Tip** In future we may add a mechanism *in the API* to support just reporting changes: [Issue #63](https://github.com/mavlink/MAVSDK/issues/63).
 
 
 ## Blocking Telemetry Requests (State Management)
@@ -159,7 +159,7 @@ For example, in order to takeoff the vehicle must first be armed, and in order t
 For these cases you will want to monitor for the vehicle being in a certain state and block other commands until it is ready to proceed. 
 
 Often the easiest approach is to use synchronous methods and poll for the result. 
-For example, the following code shows how you might poll for whether the vehicle is ready to arm ([health_all_ok()](../api_reference/classdronecode__sdk_1_1_telemetry.md#classdronecode__sdk_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29)).
+For example, the following code shows how you might poll for whether the vehicle is ready to arm ([health_all_ok()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a630c91d8067e4084c4f303513a0aeb29)).
 
 ```cpp
 // Check if vehicle is ready to arm
@@ -200,8 +200,8 @@ Additional information/examples for the Telemetry API are linked below:
 
 * [SDK Examples](../examples/README.md)
 * Integration tests:
-  * [telemetry_async.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_async.cpp)
-  * [telemetry_health.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_health.cpp)
-  * [telemetry_modes.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_modes.cpp)
-  * [telemetry_simple.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_simple.cpp)
+  * [telemetry_async.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_async.cpp)
+  * [telemetry_health.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_health.cpp)
+  * [telemetry_modes.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_modes.cpp)
+  * [telemetry_simple.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_simple.cpp)
 

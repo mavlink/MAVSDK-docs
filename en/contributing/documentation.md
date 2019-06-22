@@ -11,7 +11,7 @@ The book is hosted on [Gitbook.com](https://www.gitbook.com/) and is automatical
 You can also rebuild it locally using the [Gitbook toolchain](https://toolchain.gitbook.com/).
 
 The [API Reference](../api_reference/README.md) section is compiled from source code into markdown using a [separate toolchain](#api-reference) and then copied into Github. 
-Updates to the reference should be made in the [source code repository](https://github.com/Dronecode/DronecodeSDK) (see [API Reference](#api-reference) below for more information).
+Updates to the reference should be made in the [source code repository](https://github.com/mavlink/MAVSDK) (see [API Reference](#api-reference) below for more information).
 
 The guide is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) - if you make any changes then they will be made available under the same license. 
 

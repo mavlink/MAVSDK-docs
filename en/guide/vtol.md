@@ -36,5 +36,5 @@ Additional information/examples are linked below:
 * [Guide: Taking Off and Landing > Transition to fixed wing mode](../guide/taking_off_landing.md#transition_vtol)
 * [Example: VTOL Transitions](../examples/transition_vtol_fixed_wing.md)
 * Integration tests:
-  * [transition_multicopter_fixedwing.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/transition_multicopter_fixedwing.cpp)
+  * [transition_multicopter_fixedwing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/transition_multicopter_fixedwing.cpp)
 

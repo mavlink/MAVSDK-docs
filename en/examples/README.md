@@ -2,7 +2,7 @@
 
 > **Tip** Information about *writing* example code is covered in the [Contributing > Writing Plugins](../contributing/plugins.md) (*plugin developers* should initially create [integration tests](../contributing/plugins.md#integration_tests) rather than examples for new code).
 
-This section contains examples showing how to use *Dronecode SDK*.
+This section contains examples showing how to use MAVSDK.
 
 Example | Description
 --- | ---
@@ -23,7 +23,8 @@ The examples are "largely" built and run in the same way, as described in the fo
 The easiest way to test the examples is to use a [simulated PX4 vehicle](https://dev.px4.io/en/simulation/) that is running on the same computer.
 First start PX4 in SITL (Simulation), optionally start *QGroundControl* to observe the vehicle, then build and run the example code.
 
-> **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540). The examples connect to this port using either [add_any_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1a51097e0dad30f0292a2ab4d3e9d91acf) or [add_udp_connection()](../api_reference/classdronecode__sdk_1_1_dronecode_s_d_k.md#classdronecode__sdk_1_1_dronecode_s_d_k_1ac242fb36bc018038fc1fc5ee4e5f21ad).
+> **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540).
+  The examples connect to this port using either [add_any_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a229888e2931c16d11edbed07b03174d4) or [add_udp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a868d224223d2f4e8de7d5e00863b6ceb).
 
 
 ### Setting up a Simulator
@@ -117,7 +118,7 @@ and you will be able to observe behaviour through the SDK terminal, SITL termina
 
 ### Linux: Error loading shared libraries
 
-The following error is raised when you run an application/example on Linux and the *Dronecode SDK* shared library cannot be found:
+The following error is raised when you run an application/example on Linux and the MAVSDK shared library cannot be found:
 
 ```
 error while loading shared libraries: libdronecode_sdk.so: cannot open shared object file: No such file or directory
