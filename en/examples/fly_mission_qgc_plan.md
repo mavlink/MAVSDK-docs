@@ -1,6 +1,6 @@
 # Example: Fly QGroundControl Plan Mission
 
-The [Fly QGroundControl Plan Mission](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/fly_qgc_mission) example shows how to import a *QGroundControl* mission plan, upload it to a vehicle, run the mission, and then command Return mode ("RTL").
+The [Fly QGroundControl Plan Mission](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/fly_qgc_mission) example shows how to import a *QGroundControl* mission plan, upload it to a vehicle, run the mission, and then command Return mode ("RTL").
 
 ![Fly Mission QGC Screenshot - From Plan](../../assets/examples/fly_qgc_mission/fly_qgc_plan_mission_example_qgc.jpg)
 
@@ -9,7 +9,7 @@ The [Fly QGroundControl Plan Mission](https://github.com/Dronecode/DronecodeSDK/
 
 The example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
-> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). 
+> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). 
   Alternatively you can specify the plan to load when you start the example:
   ```
   ./fly_qgc_mission <path of QGC Mission plan>
@@ -98,10 +98,10 @@ The specific code for importing missions is discussed in the guide: [Missions > 
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/fly_qgc_mission).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/fly_qgc_mission).
 
 
-[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -132,7 +132,7 @@ target_link_libraries(fly_qgc_mission
 )
 ```
 
-[fly_qgc_mission.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/fly_qgc_mission.cpp)
+[fly_qgc_mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/fly_qgc_mission.cpp)
 
 ```cpp
 /**

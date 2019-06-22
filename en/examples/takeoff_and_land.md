@@ -1,12 +1,12 @@
 # Example: Takeoff and Land
 
-This simple example shows the basic use of many *Dronecode SDK* features. 
+This simple example shows the basic use of many MAVSDK features. 
 
 It sets up a UDP connection, waits for a vehicle (system) to appear, arms it, and commands it to takeoff.
 After a short wait the vehicle lands. 
 While flying the vehicle receives telemetry. The example is implemented in C++ (only).
 
-> **Tip** The full source code for the example [can be found here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/takeoff_land).
+> **Tip** The full source code for the example [can be found here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/takeoff_land).
 
 ## Running the Example {#run_example}
 
@@ -57,9 +57,9 @@ Finished...
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/takeoff_land).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/takeoff_land).
 
-[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/takeoff_land/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/takeoff_land/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -89,7 +89,7 @@ target_link_libraries(takeoff_and_land
 )
 ```
 
-[takeoff_and_land.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/takeoff_land/takeoff_and_land.cpp)
+[takeoff_and_land.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/takeoff_land/takeoff_and_land.cpp)
 ```cpp
 //
 // Simple example to demonstrate how to use the Dronecode SDK.

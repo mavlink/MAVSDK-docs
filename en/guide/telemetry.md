@@ -149,7 +149,7 @@ telemetry->flight_mode_async([&oldFlightMode](Telemetry::FlightMode flightMode) 
 
 This same approach can be used to report only messages that meet some condition.
 
-> **Tip** In future we may add a mechanism *in the API* to support just reporting changes: [Issue #63](https://github.com/Dronecode/DronecodeSDK/issues/63).
+> **Tip** In future we may add a mechanism *in the API* to support just reporting changes: [Issue #63](https://github.com/mavlink/MAVSDK/issues/63).
 
 
 ## Blocking Telemetry Requests (State Management)
@@ -200,8 +200,8 @@ Additional information/examples for the Telemetry API are linked below:
 
 * [SDK Examples](../examples/README.md)
 * Integration tests:
-  * [telemetry_async.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_async.cpp)
-  * [telemetry_health.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_health.cpp)
-  * [telemetry_modes.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_modes.cpp)
-  * [telemetry_simple.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_simple.cpp)
+  * [telemetry_async.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_async.cpp)
+  * [telemetry_health.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_health.cpp)
+  * [telemetry_modes.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_modes.cpp)
+  * [telemetry_simple.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/telemetry_simple.cpp)
 

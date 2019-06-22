@@ -14,7 +14,7 @@ The [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.c
 
 ## C++
 
-This [Guide](../guide/README.md) explains how to write *Dronecode SDK* apps using C++. 
+This [Guide](../guide/README.md) explains how to write MAVSDK apps using C++. 
 A simple complete example can be found in [Takeoff and Land](../examples/takeoff_and_land.md).
 
 > **Note** At time of writing all users will need to [build the library](../contributing/build.md) in order to use it. 

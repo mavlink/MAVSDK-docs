@@ -1,6 +1,6 @@
 # SDK Paradigms/Usage
 
-This topic provides general/overview information about how the *Dronecode SDK* is used, designed and some limitations. 
+This topic provides general/overview information about how the MAVSDK is used, designed and some limitations. 
 
 ## Object Management
 
@@ -19,7 +19,7 @@ All objects are automatically cleaned up when the parent `DronecodeSDK` object i
 
 ## Error Handling
 
-*Dronecode SDK* APIs do not raise exceptions! Instead, methods that can fail return success or an error reason as `enum` values.
+MAVSDK APIs do not raise exceptions! Instead, methods that can fail return success or an error reason as `enum` values.
 
 > **Tip** The error code usually reflects acknowledgment from the vehicle that it will perform the requested action (or not). 
   The operation itself may not yet have completed (e.g. taking off).

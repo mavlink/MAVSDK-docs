@@ -327,8 +327,8 @@ The code fragment below shows how to download a mission:
 * [Example:Fly Mission](../examples/fly_mission.md)
 * [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md)
 * Integration tests:
-  * [mission.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/mission.cpp)
-  * [mission_change_speed.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
-  * [mission_survey.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)
+  * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission.cpp)
+  * [mission_change_speed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
+  * [mission_survey.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)
 * Unit Tests:
-  * [mission_import_qgc_test.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/plugins/mission/mission_import_qgc_test.cpp)
+  * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/plugins/mission/mission_import_qgc_test.cpp)

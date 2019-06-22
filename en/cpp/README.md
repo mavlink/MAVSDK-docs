@@ -1,9 +1,8 @@
 <div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/></a></div>
-# Dronecode SDK C++ Library
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-Dronecode%20SDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![jenkins build status](http://ci.px4.io:8080/buildStatus/icon?job=Dronecode/DronecodeSDK/develop)](http://ci.px4.io:8080/blue/organizations/jenkins/Dronecode%2FDronecodeSDK/branches/)
-[![travis-ci build status](https://travis-ci.org/Dronecode/DronecodeSDK.svg?branch=develop)](https://travis-ci.org/Dronecode/DronecodeSDK)
-[![appveyor build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/julianoes/dronecore/branch/develop)
-[![Coverage Status](https://coveralls.io/repos/github/Dronecode/DronecodeSDK/badge.svg?branch=develop)](https://coveralls.io/github/Dronecode/DronecodeSDK?branch=develop)
+# MAVSDK Core C++ Library
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-Dronecode%20SDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![travis-ci build status](https://travis-ci.org/mavlink/MAVSDK.svg?branch=develop)](https://travis-ci.org/mavlink/MAVSDK)
+[![Build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/Dronecode/dronecore/branch/develop)
+[![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=develop)](https://coveralls.io/github/mavlink/MAVSDK?branch=develop)
 
 The *MAVSDK Core* provides a simple C++ API for managing one or more vehicles via MAVLink.
 It enables programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
@@ -11,12 +10,13 @@ The C++ library is very performant, and can be used to enable tasks like compute
 
 Developers can extend the SDK, using plugins to add any other required MAVLink API (for example, to integrate PX4 with custom cameras, gimbals, or other hardware over MAVLink).
 
-The core library is used to provide the underlying implementation of the other Dronecode SDK libraries - e.g. [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html).
+The core library is used to provide the underlying implementation of the other MAVSDK libraries - e.g. [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html).
 
 
 ## Project Status
 
-The Dronecode SDK C++ core is in beta development.
+The MAVSDK C++ core is a robust and well-tested library that is already in use in production environments.
+Note however that the API is still being evolved and the project does not provide future compatibility guarantees.
 
 
 ## Getting Started
@@ -24,7 +24,7 @@ The Dronecode SDK C++ core is in beta development.
 At time of writing all users will need to [build the library](../contributing/build.md) in order to use it. 
 In the near future we'll have binary releases for the wrapper APIs.
 
-This [Guide](../guide/README.md) explains how to write *Dronecode SDK* apps using C++. 
+This [Guide](../guide/README.md) explains how to write MAVSDK apps using C++. 
 A simple complete example can be found in [Takeoff and Land](../examples/takeoff_and_land.md).
 
 Developers who want to create plugins and contribute to the API will need to build the C++ library (and other programming language wrappers) from source. 

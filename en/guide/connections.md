@@ -1,6 +1,6 @@
 # Connecting to Systems (Vehicles)
 
-The *Dronecode SDK* allows you to connect to multiple vehicles attached to the local WiFi network and/or via serial ports. 
+The MAVSDK allows you to connect to multiple vehicles attached to the local WiFi network and/or via serial ports. 
 
 In order to detect vehicles you must first specify the communication ports that the SDK will monitor for new systems. 
 Once monitoring a port, the SDK will automatically detect connected vehicles, add them to its collection, and notify registered users of connection and disconnection events.
@@ -94,5 +94,5 @@ System &system = dc.system(uuid);
 System &system = dc.system()
 ```
 
-The `System` is used by the *Dronecode SDK* plugin classes to query and control the vehicle. 
+The `System` is used by the MAVSDK plugin classes to query and control the vehicle. 
 For more information see [Using Plugins](../guide/using_plugins.md) (and the other guide topics).

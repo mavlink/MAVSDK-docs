@@ -274,8 +274,8 @@ Additional information/examples for the Action API are linked below:
 * [Example: Takeoff and Land](../examples/takeoff_and_land.md)
 * [Example: VTOL Transitions](../examples/transition_vtol_fixed_wing.md)
 * Integration tests:
-  * [simple_hover.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/simple_hover.cpp)
-  * [async_hover.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/async_hover.cpp)
-  * [takeoff_and_kill.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/takeoff_and_kill.cpp)
-  * [transition_multicopter_fixedwing.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/transition_multicopter_fixedwing.cpp)
+  * [simple_hover.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/simple_hover.cpp)
+  * [async_hover.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/async_hover.cpp)
+  * [takeoff_and_kill.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/takeoff_and_kill.cpp)
+  * [transition_multicopter_fixedwing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/transition_multicopter_fixedwing.cpp)
 

@@ -16,7 +16,7 @@ Below we explain how to set up a minimal build setup (**CMakeLists.txt**) file f
 
 The sections below show how you can set up the file for when the SDK is [installed system wide](../contributing/build.md#sdk_system_wide_install) (the default) or [locally](../contributing/build.md#sdk_local_install).
 
-> **Warning** SDK system-wide installation is not supported on Windows (see [#155](https://github.com/Dronecode/DronecodeSDK/issues/155)).
+> **Warning** SDK system-wide installation is not supported on Windows (see [#155](https://github.com/mavlink/MAVSDK/issues/155)).
 >  Instead build the app using a [local SDK installation](#sdk_local_install).
 >
 >  Windows gurus, we'd [love your help](../README.md#getting-help) to implement this).

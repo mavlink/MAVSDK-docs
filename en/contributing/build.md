@@ -1,6 +1,6 @@
 # Building SDK from Source
 
-This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the *Dronecode SDK* C++ library from source (both "natively" and in docker) for all our target platforms.
+This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the MAVSDK C++ library from source for all our target platforms.
 It also shows how to build the SDK with extensions and build the API Reference documentation.
 
 
@@ -24,19 +24,19 @@ Then follow the instructions for building the library on [Linux](#build_cpp_linu
 
 ### Linux {#build_cpp_linux}
 
-To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the [preconditions above](#build_cpp_mac_os)):
+To build the MAVSDK C++ Library on Linux (or macOS after installing the [preconditions above](#build_cpp_mac_os)):
 
 1. First install the dependencies
    ```bash
    sudo apt-get update -y
    sudo apt-get install cmake build-essential colordiff git doxygen -y
    ```
-   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/docker).
+   > **Note** If the build reports a missing dependency, confirm that the set above matches the requirements in the [appropriate docker file for your platform](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/docker).
 
-1. Clone the [DronecodeSDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork):
+1. Clone the [MAVSDK repository](https://github.com/mavlink/MAVSDK) (or your fork):
    ```sh
-   git clone https://github.com/Dronecode/DronecodeSDK.git
-   cd DronecodeSDK
+   git clone https://github.com/mavlink/MAVSDK.git
+   cd MAVSDK
    ```
 1. Checkout the release/branch you want to build (the `develop` branch is checked out by default).
    * Latest stable build (`master`):
@@ -61,7 +61,7 @@ To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the
      cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
      cmake --build build/default
      ```
-1. "Install" the *Dronecode SDK* [as described below](#install-artifacts).
+1. "Install" the MAVSDK [as described below](#install-artifacts).
 
 
 ### Windows {#build_cpp_windows}
@@ -69,13 +69,14 @@ To build the *Dronecode SDK* C++ Library on Linux (or macOS after installing the
 To build the library in Windows, you need:
 
 - [Build Tools for Visual Studio 2017](https://www.visualstudio.com/downloads/#58852): Download and install (only the "Visual C+ Build Tools" are needed from installer).
-- [cmake](https://cmake.org/download/): Download the installer and run it. Make sure to tick "add to PATH" during the installation.
+- [cmake](https://cmake.org/download/): Download the installer and run it.
+  Make sure to tick "add to PATH" during the installation.
 
-To build the *Dronecode SDK* C++ Library on Windows:
-1. Clone the [Dronecode SDK repository](https://github.com/Dronecode/DronecodeSDK) (or your fork):
+To build the MAVSDK C++ Library on Windows:
+1. Clone the [MAVSDK repository](https://github.com/mavlink/MAVSDK) (or your fork):
    ```sh
-   git clone https://github.com/Dronecode/DronecodeSDK.git
-   cd DronecodeSDK
+   git clone https://github.com/mavlink/MAVSDK.git
+   cd MAVSDK
    ```
 1. Checkout the release/branch you want to build (the `develop` branch is checked out by default).
    * Latest stable build (`master`):
@@ -90,9 +91,9 @@ To build the *Dronecode SDK* C++ Library on Windows:
    ```sh
    git submodule update --init --recursive
    ```
-1. Then build the SDK in Windows:
+1. Then build the MAVSDK in Windows:
    ```sh
-   cd /your/path/to/DronecodeSDK
+   cd /your/path/to/MAVSDK
    cmake -G "Visual Studio 15 2017" -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
    cmake --build build/default --config Debug
    ```
@@ -113,9 +114,9 @@ To build the *Dronecode SDK* C++ Library on Windows:
 ## Install the SDK {#install-artifacts}
 
 *Installing* builds the SDK **and** copies the libraries and header files into a "public" location so that they can be referenced by C++ applications (see [Building C++ Apps](../guide/toolchain.md)).
-The SDK supports installation system-wide by default. You can also install files locally/relative to the DronecodeSDK tree if needed.
+The SDK supports installation system-wide by default. You can also install files locally/relative to the MAVSDK tree if needed.
 
-> **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/Dronecode/DronecodeSDK/issues/155)) so you will need to [install the SDK locally](#sdk_local_install).
+> **Warning** System-wide installation is not yet supported on Windows (see [#155](https://github.com/mavlink/MAVSDK/issues/155)) so you will need to [install the SDK locally](#sdk_local_install).
 >
 > Windows gurus, we'd [love your help](../README.md#getting-help) to implement this).
 
@@ -203,7 +204,7 @@ cmake -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -B
 
 ## Build SDK Extensions {#sdk_extensions}
 
-The *Dronecode SDK* can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the SDK at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
+The MAVSDK can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the SDK at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
 
 The commands to build the SDK with an extension library are:
 ```sh
@@ -214,7 +215,7 @@ See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
 ## Building the Backend {#build_backend}
 
-The *Dronecode SDK* programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/Dronecode/DronecodeSDK-Python#dronecodesdk-python)) share a common backend, which may optionally be built as part of the C++ library.
+The MAVSDK programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/mavlink/MAVSDK-Python#dronecodesdk-python)) share a common backend, which may optionally be built as part of the C++ library.
 
 The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option. Otherwise the build is exactly the same as usual. 
 
@@ -226,7 +227,7 @@ To build the backend on Ubuntu:
 1. [Setup the C++ Library on Linux](#build_cpp_linux)
 1. Navigate into the SDK directory and build the project
    ```
-   cd DronecodeSDK
+   cd MAVSDK
    cmake -DBUILD_BACKEND=ON -Bbuild/default -H.
    cmake --build build/default
    ```
@@ -237,7 +238,7 @@ To build the backend on macOS:
 1. [Setup the C++ Library on macOS](#build_cpp_mac_os)
 1. Navigate into the SDK directory and build the project
    ```
-   cd DronecodeSDK
+   cd MAVSDK
    cmake -DBUILD_BACKEND=ON -Bbuild/default -H.
    cmake --build build/default
    ```
@@ -267,7 +268,7 @@ The files are created in **/install/docs/markdown**.
 
 <span></span>
 > **Note** The *generate_docs.sh* script [builds the library](../contributing/build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**.
-> The [generate_markdown_from_doxygen_xml.py](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script
+> The [generate_markdown_from_doxygen_xml.py](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/generate_markdown_from_doxygen_xml.py) script
 > is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.
 
 
@@ -275,7 +276,7 @@ The files are created in **/install/docs/markdown**.
 
 The vast majority of common build issues can be resolved by updating submodules and cleaning the distribution:
 ```
-cd DronecodeSDK
+cd MAVSDK
 git submodule update --recursive
 rm -rf build
 ```

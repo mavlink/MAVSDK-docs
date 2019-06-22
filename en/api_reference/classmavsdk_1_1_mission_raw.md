@@ -148,7 +148,7 @@ void mavsdk::MissionRaw::download_mission_async(mission_items_and_result_callbac
 
 Downloads a vector of mission items from the system (asynchronous).
 
-The method will fail if any of the downloaded mission items are not supported by the Dronecode SDK API.
+The method will fail if any of the downloaded mission items are not supported by the MAVSDK API.
 
 **Parameters**
 

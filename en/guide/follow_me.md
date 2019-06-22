@@ -121,4 +121,4 @@ Additional information/examples for the Follow Me API are linked below:
 
 * [Example:Follow Me Mode](../examples/follow_me.md)
 * Integration tests:
-  * [follow_me.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/integration_tests/follow_me.cpp)
+  * [follow_me.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/follow_me.cpp)

@@ -203,7 +203,7 @@ void mavsdk::Mission::download_mission_async(mission_items_and_result_callback_t
 
 Downloads a vector of mission items from the system (asynchronous).
 
-The method will fail if any of the downloaded mission items are not supported by the Dronecode SDK API.
+The method will fail if any of the downloaded mission items are not supported by the MAVSDK API.
 
 **Parameters**
 
@@ -391,7 +391,7 @@ static Result mavsdk::Mission::import_qgroundcontrol_mission(mission_items_t &mi
 
 Imports a **QGroundControl** (QGC) mission plan.
 
-The method composes the plan into a vector of [MissionItem](classmavsdk_1_1_mission_item.md) shared pointers that can then be uploaded to a vehicle. The method will fail if any of the imported mission items are not supported by the Dronecode SDK API.
+The method composes the plan into a vector of [MissionItem](classmavsdk_1_1_mission_item.md) shared pointers that can then be uploaded to a vehicle. The method will fail if any of the imported mission items are not supported by the MAVSDK API.
 
 **Parameters**
 

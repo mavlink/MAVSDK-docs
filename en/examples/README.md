@@ -2,7 +2,7 @@
 
 > **Tip** Information about *writing* example code is covered in the [Contributing > Writing Plugins](../contributing/plugins.md) (*plugin developers* should initially create [integration tests](../contributing/plugins.md#integration_tests) rather than examples for new code).
 
-This section contains examples showing how to use *Dronecode SDK*.
+This section contains examples showing how to use MAVSDK.
 
 Example | Description
 --- | ---
@@ -117,7 +117,7 @@ and you will be able to observe behaviour through the SDK terminal, SITL termina
 
 ### Linux: Error loading shared libraries
 
-The following error is raised when you run an application/example on Linux and the *Dronecode SDK* shared library cannot be found:
+The following error is raised when you run an application/example on Linux and the MAVSDK shared library cannot be found:
 
 ```
 error while loading shared libraries: libdronecode_sdk.so: cannot open shared object file: No such file or directory
