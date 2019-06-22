@@ -68,44 +68,39 @@ project(takeoff_and_land)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
-    # Line below required if /usr/local/include is not in your default includes
-    #include_directories(/usr/local/include)
-    # Line below required if /usr/local/lib is not in your default linker path
-    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
-    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
+
+find_package(MAVSDK REQUIRED)
 
 add_executable(takeoff_and_land
     takeoff_and_land.cpp
 )
 
 target_link_libraries(takeoff_and_land
-    dronecode_sdk
-    dronecode_sdk_telemetry
-    dronecode_sdk_action
+    MAVSDK::mavsdk_telemetry
+    MAVSDK::mavsdk_action
+    MAVSDK::mavsdk
 )
 ```
 
 [takeoff_and_land.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/takeoff_land/takeoff_and_land.cpp)
 ```cpp
 //
-// Simple example to demonstrate how to use the Dronecode SDK.
+// Simple example to demonstrate how to use the MAVSDK.
 //
 // Author: Julian Oes <julian@oes.ch>
 
 #include <chrono>
 #include <cstdint>
-#include <dronecode_sdk/system.h>
-#include <dronecode_sdk/action.h>
-#include <dronecode_sdk/dronecode_sdk.h>
-#include <dronecode_sdk/telemetry.h>
+#include <mavsdk/mavsdk.h>
+#include <mavsdk/plugins/action/action.h>
+#include <mavsdk/plugins/telemetry/telemetry.h>
 #include <iostream>
 #include <thread>
 
-using namespace dronecode_sdk;
+using namespace mavsdk;
 using namespace std::this_thread;
 using namespace std::chrono;
 
@@ -131,7 +126,7 @@ void component_discovered(ComponentType component_type)
 
 int main(int argc, char **argv)
 {
-    DronecodeSDK dc;
+    Mavsdk dc;
     std::string connection_url;
     ConnectionResult connection_result;
 
@@ -232,9 +227,17 @@ int main(int argc, char **argv)
         return 1;
     }
 
+    // Check if vehicle is still in air
+    while (telemetry->in_air()) {
+        std::cout << "Vehicle is landing..." << std::endl;
+        sleep_for(seconds(1));
+    }
+    std::cout << "Landed!" << std::endl;
+
     // We are relying on auto-disarming but let's keep watching the telemetry for a bit longer.
-    sleep_for(seconds(5));
+    sleep_for(seconds(3));
     std::cout << "Finished..." << std::endl;
+
     return 0;
 }
 ```

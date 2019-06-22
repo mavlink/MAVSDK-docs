@@ -107,27 +107,26 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(fly_mission)
 
+find_package(Threads REQUIRED)
+
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
-    # Line below required if /usr/local/include is not in your default includes
-    #include_directories(/usr/local/include)
-    # Line below required if /usr/local/lib is not in your default linker path
-    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
-    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
+
+find_package(MAVSDK REQUIRED)
 
 add_executable(fly_mission
     fly_mission.cpp
 )
 
 target_link_libraries(fly_mission
-    dronecode_sdk
-    dronecode_sdk_action
-    dronecode_sdk_mission
-    dronecode_sdk_telemetry
+    MAVSDK::mavsdk_action
+    MAVSDK::mavsdk_mission
+    MAVSDK::mavsdk_telemetry
+    MAVSDK::mavsdk
+    ${CMAKE_THREAD_LIBS_INIT}
 )
 ```
 
@@ -137,7 +136,7 @@ target_link_libraries(fly_mission
 /**
  * @file fly_mission.cpp
  *
- * @brief Demonstrates how to Add & Fly Waypoint missions using the Dronecode SDK.
+ * @brief Demonstrates how to Add & Fly Waypoint missions using the MAVSDK.
  * The example is summarised below:
  * 1. Adds mission items.
  * 2. Starts mission from first mission item.
@@ -149,10 +148,11 @@ target_link_libraries(fly_mission
  * @date 2017-09-06
  */
 
-#include <dronecode_sdk/action.h>
-#include <dronecode_sdk/dronecode_sdk.h>
-#include <dronecode_sdk/mission.h>
-#include <dronecode_sdk/telemetry.h>
+#include <mavsdk/mavsdk.h>
+#include <mavsdk/plugins/action/action.h>
+#include <mavsdk/plugins/mission/mission.h>
+#include <mavsdk/plugins/telemetry/telemetry.h>
+
 #include <functional>
 #include <future>
 #include <iostream>
@@ -162,7 +162,7 @@ target_link_libraries(fly_mission
 #define TELEMETRY_CONSOLE_TEXT "\033[34m" // Turn text on console blue
 #define NORMAL_CONSOLE_TEXT "\033[0m" // Restore normal console colour
 
-using namespace dronecode_sdk;
+using namespace mavsdk;
 using namespace std::placeholders; // for `_1`
 using namespace std::chrono; // for seconds(), milliseconds()
 using namespace std::this_thread; // for sleep_for()
@@ -195,7 +195,7 @@ void usage(std::string bin_name)
 
 int main(int argc, char **argv)
 {
-    DronecodeSDK dc;
+    Mavsdk dc;
 
     {
         auto prom = std::make_shared<std::promise<void>>();

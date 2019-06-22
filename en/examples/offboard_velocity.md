@@ -69,28 +69,28 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(offboard)
 
-if(NOT MSVC)
-    add_definitions("-std=c++11 -Wall -Wextra -Werror")
-    # Line below required if /usr/local/include is not in your default includes
-    #include_directories(/usr/local/include)
-    # Line below required if /usr/local/lib is not in your default linker path
-    #link_directories(/usr/local/lib)
-else()
+if(MINGW)
+    add_definitions("-D_USE_MATH_DEFINES") # For M_PI
+endif()
+
+if(MSVC)
     add_definitions("-std=c++11 -WX -W2")
     add_definitions("-D_USE_MATH_DEFINES") # For M_PI
-    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
+else()
+    add_definitions("-std=c++11 -Wall -Wextra -Werror")
 endif()
+
+find_package(MAVSDK REQUIRED)
 
 add_executable(offboard
     offboard_velocity.cpp
 )
 
 target_link_libraries(offboard
-    dronecode_sdk
-    dronecode_sdk_action
-    dronecode_sdk_offboard
-    dronecode_sdk_telemetry
+    MAVSDK::mavsdk_action
+    MAVSDK::mavsdk_offboard
+    MAVSDK::mavsdk_telemetry
+    MAVSDK::mavsdk
 )
 ```
 
@@ -108,14 +108,15 @@ target_link_libraries(offboard
 
 #include <chrono>
 #include <cmath>
-#include <dronecode_sdk/action.h>
-#include <dronecode_sdk/dronecode_sdk.h>
-#include <dronecode_sdk/offboard.h>
-#include <dronecode_sdk/telemetry.h>
 #include <iostream>
 #include <thread>
 
-using namespace dronecode_sdk;
+#include <mavsdk/mavsdk.h>
+#include <mavsdk/plugins/action/action.h>
+#include <mavsdk/plugins/offboard/offboard.h>
+#include <mavsdk/plugins/telemetry/telemetry.h>
+
+using namespace mavsdk;
 using std::this_thread::sleep_for;
 using std::chrono::milliseconds;
 using std::chrono::seconds;
@@ -165,7 +166,7 @@ inline void offboard_log(const std::string &offb_mode, const std::string msg)
  *
  * returns true if everything went well in Offboard control, exits with a log otherwise.
  */
-bool offb_ctrl_ned(std::shared_ptr<dronecode_sdk::Offboard> offboard)
+bool offb_ctrl_ned(std::shared_ptr<mavsdk::Offboard> offboard)
 {
     const std::string offb_mode = "NED";
     // Send it once before starting offboard, otherwise it will be rejected.
@@ -217,7 +218,7 @@ bool offb_ctrl_ned(std::shared_ptr<dronecode_sdk::Offboard> offboard)
  *
  * returns true if everything went well in Offboard control, exits with a log otherwise.
  */
-bool offb_ctrl_body(std::shared_ptr<dronecode_sdk::Offboard> offboard)
+bool offb_ctrl_body(std::shared_ptr<mavsdk::Offboard> offboard)
 {
     const std::string offb_mode = "BODY";
 
@@ -263,6 +264,42 @@ bool offb_ctrl_body(std::shared_ptr<dronecode_sdk::Offboard> offboard)
     return true;
 }
 
+/**
+ * Does Offboard control using attitude commands.
+ *
+ * returns true if everything went well in Offboard control, exits with a log otherwise.
+ */
+bool offb_ctrl_attitude(std::shared_ptr<mavsdk::Offboard> offboard)
+{
+    const std::string offb_mode = "ATTITUDE";
+
+    // Send it once before starting offboard, otherwise it will be rejected.
+    offboard->set_attitude({30.0f, 0.0f, 0.0f, 0.6f});
+
+    Offboard::Result offboard_result = offboard->start();
+    offboard_error_exit(offboard_result, "Offboard start failed");
+    offboard_log(offb_mode, "Offboard started");
+
+    offboard_log(offb_mode, "ROLL 30");
+    offboard->set_attitude({30.0f, 0.0f, 0.0f, 0.6f});
+    sleep_for(seconds(2)); // rolling
+
+    offboard_log(offb_mode, "ROLL -30");
+    offboard->set_attitude({-30.0f, 0.0f, 0.0f, 0.6f});
+    sleep_for(seconds(2)); // Let yaw settle.
+
+    offboard_log(offb_mode, "ROLL 0");
+    offboard->set_attitude({0.0f, 0.0f, 0.0f, 0.6f});
+    sleep_for(seconds(2)); // Let yaw settle.
+
+    // Now, stop offboard mode.
+    offboard_result = offboard->stop();
+    offboard_error_exit(offboard_result, "Offboard stop failed: ");
+    offboard_log(offb_mode, "Offboard stopped");
+
+    return true;
+}
+
 void usage(std::string bin_name)
 {
     std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
@@ -275,7 +312,7 @@ void usage(std::string bin_name)
 
 int main(int argc, char **argv)
 {
-    DronecodeSDK dc;
+    Mavsdk dc;
     std::string connection_url;
     ConnectionResult connection_result;
 
@@ -321,8 +358,14 @@ int main(int argc, char **argv)
     std::cout << "In Air..." << std::endl;
     sleep_for(seconds(5));
 
+    //  using attitude control
+    bool ret = offb_ctrl_attitude(offboard);
+    if (ret == false) {
+        return EXIT_FAILURE;
+    }
+
     //  using local NED co-ordinates
-    bool ret = offb_ctrl_ned(offboard);
+    ret = offb_ctrl_ned(offboard);
     if (ret == false) {
         return EXIT_FAILURE;
     }
@@ -336,9 +379,16 @@ int main(int argc, char **argv)
     const Action::Result land_result = action->land();
     action_error_exit(land_result, "Landing failed");
 
+    // Check if vehicle is still in air
+    while (telemetry->in_air()) {
+        std::cout << "Vehicle is landing..." << std::endl;
+        sleep_for(seconds(1));
+    }
+    std::cout << "Landed!" << std::endl;
+
     // We are relying on auto-disarming but let's keep watching the telemetry for a bit longer.
-    sleep_for(seconds(10));
-    std::cout << "Landed" << std::endl;
+    sleep_for(seconds(3));
+    std::cout << "Finished..." << std::endl;
 
     return EXIT_SUCCESS;
 }

@@ -84,24 +84,20 @@ project(transition_vtol_fixed_wing)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
-    # Line below required if /usr/local/include is not in your default includes
-    #include_directories(/usr/local/include)
-    # Line below required if /usr/local/lib is not in your default linker path
-    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
-    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
+
+find_package(MAVSDK REQUIRED)
 
 add_executable(transition_vtol_fixed_wing
     transition_vtol_fixed_wing.cpp
 )
 
 target_link_libraries(transition_vtol_fixed_wing
-    dronecode_sdk
-    dronecode_sdk_action
-    dronecode_sdk_telemetry
+    MAVSDK::mavsdk_action
+    MAVSDK::mavsdk_telemetry
+    MAVSDK::mavsdk
 )
 ```
 
@@ -113,14 +109,14 @@ target_link_libraries(transition_vtol_fixed_wing
 #include <iostream>
 #include <thread>
 #include <cmath>
-#include <dronecode_sdk/dronecode_sdk.h>
-#include <dronecode_sdk/action.h>
-#include <dronecode_sdk/telemetry.h>
+#include <mavsdk/mavsdk.h>
+#include <mavsdk/plugins/action/action.h>
+#include <mavsdk/plugins/telemetry/telemetry.h>
 
 using std::this_thread::sleep_for;
 using std::chrono::seconds;
 using std::chrono::milliseconds;
-using namespace dronecode_sdk;
+using namespace mavsdk;
 
 static constexpr auto ERROR_CONSOLE_TEXT = "\033[31m";
 static constexpr auto TELEMETRY_CONSOLE_TEXT = "\033[34m";
@@ -137,7 +133,7 @@ int main(int argc, char **argv)
 
     const std::string connection_url = argv[1];
 
-    DronecodeSDK dc;
+    Mavsdk dc;
 
     // Add connection specified by CLI argument.
     const ConnectionResult connection_result = dc.add_any_connection(connection_url);
