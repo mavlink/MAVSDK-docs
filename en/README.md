@@ -1,13 +1,13 @@
-<div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../assets/site/sdk_logo_full.jpg" title="Dronecode SDK Logo" width="400px"/></a></div>
+<div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/></a></div>
 
-# Dronecode SDK
+# MAVSDK
 
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-Dronecode%20SDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![jenkins build status](http://ci.px4.io:8080/buildStatus/icon?job=Dronecode/DronecodeSDK/develop)](http://ci.px4.io:8080/blue/organizations/jenkins/Dronecode%2FDronecodeSDK/branches/)
 [![travis-ci build status](https://travis-ci.org/Dronecode/DronecodeSDK.svg?branch=develop)](https://travis-ci.org/Dronecode/DronecodeSDK)
 [![appveyor build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/julianoes/dronecore/branch/develop)
 [![Coverage Status](https://coveralls.io/repos/github/Dronecode/DronecodeSDK/badge.svg?branch=develop)](https://coveralls.io/github/Dronecode/DronecodeSDK?branch=develop)
 
-The *Dronecode SDK* is a [MAVLink](https://mavlink.io/en/) Library for the [PX4 flight stack](http://px4.io), with APIs for [C++](cpp/README.md) and [iOS](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) (Python and Android are coming soon).
+The *MAVSDK* is a [MAVLink](https://mavlink.io/en/) Library for the [PX4 flight stack](http://px4.io), with APIs for [C++](cpp/README.md) and [iOS](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) (Python and Android are coming soon).
 
 > **Tip** The SDK is the best way to integrate with PX4 over MAVLink! 
   It is supported by [Dronecode](https://www.dronecode.org/), ensuring that it is robust, well tested, and maintained. 
@@ -90,12 +90,12 @@ The [Contributing](contributing/README.md) (C++) section contains everything you
 
 ## License
 
-* The *Dronecode SDK* is licensed under the permissive [BSD 3-clause](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/LICENSE.md).
+* The *MAVSDK* is licensed under the permissive [BSD 3-clause](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/LICENSE.md).
 * This documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
 ## Governance
 
-The DronecodeSDK project is hosted under the governance of the [Dronecode Foundation](https://www.dronecode.org/).
+The MAVSDK project is hosted under the governance of the [Dronecode Foundation](https://www.dronecode.org/).
 
 <a href="https://www.dronecode.org/" style="padding:20px" ><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
 <a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>

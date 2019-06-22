@@ -1,8 +1,8 @@
 {   
     "gitbook": ">= 3.2.2",
-    "title": "Dronecode SDK Guide", 
+    "title": "MAVSDK Guide", 
     "variables": {
-        "logo": "./assets/site/sdk_logo_full.jpg",
+        "logo": "./assets/site/sdk_logo_full.png",
         "github_branch": "develop"
     },
     "plugins": [
@@ -40,19 +40,19 @@
                     "label": "Bug tracker",
                     "icon": "fa fa-bug",
                     "position" : "left",
-                    "url": "https://github.com/dronecore/sdk_docs/issues/new?title=Doc+Bug:+{{title}}&body=DESCRIBE+PROBLEM+WITH+DOCS+HERE%0A%0ABug+Page:+[{{title}}]({{url}})"
+                    "url": "https://github.com/mavlink/MAVSDK-docs/issues/new?title=Doc+Bug:+{{title}}&body=DESCRIBE+PROBLEM+WITH+DOCS+HERE%0A%0ABug+Page:+[{{title}}]({{url}})"
                     
                 },
                 {
                     "label": "GitHub",
                     "icon": "fa fa-github",
-                    "url": "https://github.com/dronecore/sdk_docs"
+                    "url": "https://github.com/mavlink/MAVSDK-docs"
                 },
                 {
                     "label": "Edit page on github",
                     "icon": "fa fa-pencil-square-o",
                     "position" : "left",
-                    "url": "https://github.com/dronecore/sdk_docs/edit/develop/{{filepath_lang}}"
+                    "url": "https://github.com/mavlink/MAVSDK-docs/edit/develop/{{filepath_lang}}"
                 }
             ]
         },
