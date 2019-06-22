@@ -8,7 +8,7 @@ The *MAVSDK Core* provides a simple C++ API for managing one or more vehicles vi
 It enables programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
 The C++ library is very performant, and can be used to enable tasks like computer vision, obstacle avoidance, and route planning.
 
-Developers can extend the SDK, using plugins to add any other required MAVLink API (for example, to integrate PX4 with custom cameras, gimbals, or other hardware over MAVLink).
+Developers can extend the SDK, using plugins to add any other required MAVLink API (for example, to integrate a flight stack with custom cameras, gimbals, or other hardware over MAVLink).
 
 The core library is used to provide the underlying implementation of the other MAVSDK libraries - e.g. [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html).
 
@@ -45,6 +45,7 @@ The most important classes are:
 - [Action](/api_reference/classmavsdk_1_1_action.md): Simple drone actions including arming, taking off, and landing.
 - [Mission](/api_reference/classmavsdk_1_1_mission.md): Waypoint mission creation and upload/download. Missions are created from [MissionItem](/api_reference/classmavsdk_1_1_mission_item.md) objects.
 - [Offboard](/api_reference/classmavsdk_1_1_offboard.md): Control a drone with velocity commands.
+- [Geofence](/api_reference/classmavsdk_1_1_geofence.md): Specify a geofence.
 - [Gimbal](/api_reference/classmavsdk_1_1_gimbal.md): Control a gimbal.
 - [Camera](/api_reference/classmavsdk_1_1_camera.md): Control a camera.
 - [FollowMe](/api_reference/classmavsdk_1_1_follow_me.md): Drone tracks a position supplied by the SDK.
