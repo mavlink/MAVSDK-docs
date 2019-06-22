@@ -22,9 +22,10 @@ These (primarily) use [gRPC](https://grpc.io/) and [Reactive Extensions](http://
 
 ## Project Status
 
-The Dronecode SDK is in beta development. 
+The MAVSDK is a robust and well-tested library that is already in use in production environments.
 - The core C++ API has been created and is (largely) stable.
 - iOS development is supported using the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) library.
+- Python is supported using [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python)
 - Other cross-platform wrappers are actively being developed, and should be released soon.
 
 
@@ -32,12 +33,13 @@ The Dronecode SDK is in beta development.
 
 * iOS developers should read the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
 
-  > **Tip** The Dronecode-SDK-Swift is in alpha development. 
+  > **Tip** The MAVSDK-Swift is in alpha development. 
     We plan to make our first official (beta) release in the coming weeks.
 
 * C++ Developers should start at the [C++ Library](cpp/README.md).
 
-* Developers who want to contribute to the API will need to build the C++ library (and other programming language wrappers) from source. For more information see the [contributing section](#contributing) below.
+* Developers who want to contribute to the API will need to build the C++ library (and other programming language wrappers) from source.
+  For more information see the [contributing section](#contributing) below.
  
 
 ## Getting Help

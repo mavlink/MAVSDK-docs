@@ -135,7 +135,7 @@ target_link_libraries(fly_qgc_mission
  * @file fly_qgc_mission.cpp
  *
  * @brief Demonstrates how to import mission items from QGroundControl plan,
- * and fly them using the Dronecode SDK.
+ * and fly them using the MAVSDK.
  *
  * Steps to run this example:
  * 1. (a) Create a Mission in QGroundControl and save them to a file (.plan) (OR)

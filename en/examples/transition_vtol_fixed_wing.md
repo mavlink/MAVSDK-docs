@@ -1,6 +1,6 @@
 # Example: VTOL Transitions
 
-This example shows how you can use the SDK [Action](../api_reference/classdronecode__sdk_1_1_action.md) class to transition between VTOL copter and fixed-wing modes (and back).
+This example shows how you can use the SDK [Action](../api_reference/classmavsdk_1_1_action.md) class to transition between VTOL copter and fixed-wing modes (and back).
 
 ![VTOL Transition QGC Screenshot](../../assets/examples/transition_vtol_fixed_wing/transition_vtol_fixed_wing_example_qgc.png)
 

@@ -35,7 +35,7 @@ make px4_sitl gazebo
 Then press **Ctrl+C** to stop the simulation and run the integration tests:
 
 ```
-cd path/to/DronecodeSDK/
+cd path/to/MAVSDK/
 AUTOSTART_SITL=1 ./build/debug/src/integration_tests/integration_tests_runner
 ```
 
@@ -57,7 +57,7 @@ make px4_sitl gazebo
 Then run the tests as shown:
 
 ```
-cd path/to/DronecodeSDK/
+cd path/to/MAVSDK/
 ./build/debug/src/integration_tests/integration_tests_runner
 ```
 

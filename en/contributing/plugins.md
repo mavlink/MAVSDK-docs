@@ -19,7 +19,7 @@ Integration tests for all plugins in the library are stored in **integration_tes
 A simplified view of the folder structure is shown below (showing relevant directories for both the SDK and [SDK Extensions](../guide/sdk_extensions.md)): 
 
 ```
-├── DronecodeSDK
+├── MAVSDK
 │   ├── core
 │   ├── integration_tests
 │   └── plugins
@@ -169,25 +169,25 @@ set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)
 
 #### Unit Test Code
 
-Unit tests typically include the file to be tested, **dronecode_sdk.h**, and **gtest.h**. 
+Unit tests typically include the file to be tested, **mavsdk.h**, and **gtest.h**.
 There are no standard shared test unit resources so test functions are declared using `TEST`. 
 All tests in a file should share the same test-case name (the first argument to `TEST`).
 
-The skeleton [example plugin unit test](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/external_example/plugins/example/example_impl_test.cpp) is shown below: 
+The skeleton [example plugin unit test](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/plugins/example/example_impl_test.cpp) is shown below: 
 ```cpp
 #include "example_impl.h"
-#include "dronecode_sdk.h"
+#include "mavsdk.h"
 #include "global_include.h"
 #include <gtest/gtest.h>
 
-namespace dronecode_sdk {
+namespace mavsdk {
 
 TEST(ExampleImpl, NoTest)
 {
     ASSERT_TRUE(true);
 }
 
-} // namespace dronecode_sdk
+} // namespace mavsdk
 ```
 
 
@@ -206,9 +206,9 @@ The SDK provides the `integration_tests_runner` application for running the inte
 In order to run an integration test it needs to be added to the `integration_tests_runner` program.
 
 Integration tests for core functionality and plugins delivered by the project 
-are stored in [DronecodeSDK/integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/integration_tests). 
+are stored in [MAVSDK/src/integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests).
 The files are added to the test program in that folder's 
-[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/CMakeLists.txt) file:
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/CMakeLists.txt) file:
 
 ```cmake
 # This includes all GTests that run integration tests
@@ -251,12 +251,12 @@ This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md)
 > **Note** All tests must be declared using `TEST_F` and have a first argument `SitlTest` as shown. 
   This is required in order to use the shared class to set up and tear down the simulator between tests.
 
-The example integration test [hello_world.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/external_example/integration_tests/hello_world.cpp) demonstrates this below. 
+The example integration test [hello_world.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/integration_tests/hello_world.cpp) demonstrates this below. 
 
 ```cpp
 #include <iostream>
 #include <unistd.h>
-#include "dronecode_sdk.h"
+#include "mavsdk.h"
 #include "plugins/example/example.h"
 #include "integration_test_helper.h"
 
@@ -264,7 +264,7 @@ using namespace dronecode_sdk;
 
 TEST_F(SitlTest, ExampleHello)
 {
-    DronecodeSDK dc;
+    Mavsdk dc;
 
     ConnectionResult ret = dc.add_udp_connection();
     ASSERT_EQ(ret, ConnectionResult::SUCCESS);

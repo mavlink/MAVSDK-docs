@@ -145,7 +145,7 @@ Local installation copies the SDK headers/library to a user-specified location i
 
 On Linux/macOS use the `CMAKE_INSTALL_PREFIX` variable to specify a path relative to the folder from which you call `cmake`
 (or an absolute path).
-For example, to install into the **DronecodeSDK/install/** folder you would call:
+For example, to install into the **MAVSDK/install/** folder you would call:
 
 ```sh
 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -H.
