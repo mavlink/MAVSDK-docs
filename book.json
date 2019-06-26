@@ -65,11 +65,11 @@
             "options": [
 
                 {
-                    "value": "/develop/en/",
+                    "value": "https://mavsdk.mavlink.io/develop/en/",
                     "text": "develop"
                 },
                 {
-                    "value": "/v0.18.0/en/",
+                    "value": "https://mavsdk.mavlink.io/v0.18.0/en/",
                     "text": "v0.18.0"
                 }
                 
