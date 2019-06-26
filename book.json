@@ -16,7 +16,7 @@
         "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
         "validate-links",
         "theme-dronecode@git+https://github.com/dronecode/theme-dronecode.git",
-        "versions"
+        "versions-select@git+https://github.com/Dronecode/gitbook-plugin-versions-select.git"
     ],
     "pluginsConfig": {
 
