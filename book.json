@@ -1,9 +1,9 @@
 {   
     "gitbook": ">= 3.2.2",
-    "title": "MAVSDK Guide", 
+    "title": "MAVSDK Guide (v0.18.0)", 
     "variables": {
         "logo": "./assets/site/sdk_logo_full.png",
-        "github_branch": "develop"
+        "github_branch": "v0.18.0"
     },
     "plugins": [
         "youtube",
