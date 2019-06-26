@@ -67,6 +67,10 @@
                 {
                     "value": "/develop/en/",
                     "text": "develop"
+                },
+                {
+                    "value": "/v0.18.0/en/",
+                    "text": "v0.18.0"
                 }
                 
             ]
