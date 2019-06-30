@@ -54,7 +54,20 @@ See [QGroundControl > Download and Install](https://docs.qgroundcontrol.com/en/g
 To build the examples follow the instructions below, replacing *takeoff_and_land* with the name of the specific example.
 Any exceptions will be covered in the page for the associated example(s).
 
+
 #### Linux
+
+Ubuntu or Fedora users should install the MAVSDK C++ _*.deb_ or _*.rpm_ packages from the [Github release page](https://github.com/mavlink/MAVSDK/releases) in the normal way (or [build and install the SDK C++ Library](../contributing/build.md#sdk_system_wide_install) system-wide).
+
+Then build the example:
+```sh
+cd example/takeoff_land/
+mkdir build && cd build
+cmake ..
+make
+```
+
+#### macOS
 
 First [Build and install the SDK C++ Library](../contributing/build.md) system-wide using the command below:
 ```sh
@@ -70,6 +83,7 @@ mkdir build && cd build
 cmake ..
 make
 ```
+
 
 #### Windows
 

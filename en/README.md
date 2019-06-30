@@ -8,7 +8,7 @@
 
 The *MAVSDK* is a [MAVLink](https://mavlink.io/en/) Library with APIs for [C++](cpp/README.md), [iOS](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), Python and Android.
 
-> **Tip** The SDK is the best way to integrate with a flight stack over MAVLink! 
+> **Tip** The SDK is the best way to integrate with a flight stack over MAVLink!
   It is supported by [Dronecode](https://www.dronecode.org/), ensuring that it is robust, well tested, and maintained.
 
 The library provides a simple API for managing one or more vehicles, providing programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
@@ -22,11 +22,17 @@ These (primarily) use [gRPC](https://grpc.io/) and [Reactive Extensions](http://
 
 ## Project Status
 
-The MAVSDK is a robust and well-tested library that is already in use in production environments.
-- The core C++ API has been created and is (largely) stable.
-- iOS development is supported using the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) library.
-- Python is supported using [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python)
-- Other cross-platform wrappers are actively being developed, and should be released soon.
+The MAVSDK is a robust and well-tested library that is already being used in production environments.
+
+> **Note** Future compatibility is not guaranteed (the API is not "stable").
+
+The current status is:
+- C++ core library (2016). Used in production.
+- MAVSDK-Swift (2018): Used in production.
+- MAVSDK-Python (2019): First PyPi release 2019.
+- MAVSDK-Java (2019): Prototype.
+- MAVSDK-JavaScript (2019). Proof of concept.
+- Other cross-platform wrappers are actively being developed.
 
 
 ## Getting Started
@@ -36,14 +42,11 @@ The MAVSDK is a robust and well-tested library that is already in use in product
   The drone API is essentially the same as for the [C++ API](api_reference/README.md).
 * iOS developers should start from the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
 * C++ Developers should start at the [C++ Library](cpp/README.md).
-  For recent releases *Ubuntu* and *Fedora* users can install the SDK from _*.deb_ or _*.rpm_ packages in the [Github release](https://github.com/mavlink/MAVSDK/releases) page.
-* Developers who want to *contribute* to the API will need to build the C++ library (and other programming language wrappers) from source.
-  For more information see the [contributing section](#contributing) below.
  
 
 ## Getting Help
 
-This guide contains information and examples showing how to use the SDK. 
+This guide contains information and examples showing how to use the SDK.
 If you have specific questions that are not answered by the documentation, these can be raised on:
 
 * [Discuss board](https://discuss.px4.io/c/mavsdk)
