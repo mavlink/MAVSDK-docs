@@ -15,7 +15,7 @@ The library provides a simple API for managing one or more vehicles, providing p
 
 The library can run on a vehicle-based companion computer or on a ground-based GCS or mobile device (these devices have significantly more processing power that an ordinary flight controller, enabling tasks like computer vision, obstacle avoidance, and route planning).
 
-Developers can extend the core C++ SDK using plugins in order to add any other required MAVLink API (for example, to integrate PX4 with custom cameras, gimbals, or other hardware over MAVLink).
+Developers can extend the core C++ SDK using plugins in order to add any other required MAVLink API (for example, to integrate a flight controller with custom cameras, gimbals, or other hardware over MAVLink).
 
 Cross-platform wrappers for the core library are actively being developed.
 These (primarily) use [gRPC](https://grpc.io/) and [Reactive Extensions](http://reactivex.io/).
@@ -31,14 +31,13 @@ The MAVSDK is a robust and well-tested library that is already in use in product
 
 ## Getting Started
 
-* iOS developers should read the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
-
-  > **Tip** The MAVSDK-Swift is in alpha development. 
-    We plan to make our first official (beta) release in the coming weeks.
-
+* Python 3 developers install and use [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) from PyPi (`pip3 install mavsdk`). 
+  There is no further setup, so you can then immediately run the [examples](https://github.com/mavlink/MAVSDK-Python/tree/master/examples) in the normal way. 
+  The drone API is essentially the same as for the [C++ API](api_reference/README.md).
+* iOS developers should start from the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
 * C++ Developers should start at the [C++ Library](cpp/README.md).
-
-* Developers who want to contribute to the API will need to build the C++ library (and other programming language wrappers) from source.
+  For recent releases *Ubuntu* and *Fedora* users can install the SDK from _*.deb_ or _*.rpm_ packages in the [Github release](https://github.com/mavlink/MAVSDK/releases) page.
+* Developers who want to *contribute* to the API will need to build the C++ library (and other programming language wrappers) from source.
   For more information see the [contributing section](#contributing) below.
  
 
