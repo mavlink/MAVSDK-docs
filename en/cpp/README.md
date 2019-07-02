@@ -1,5 +1,4 @@
-<div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/></a></div>
-# MAVSDK Core C++ Library
+# MAVSDK Core C++ Library <div style="float:right; padding:10px; margin-right:20px;"><img src="../../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="180px"/></div>
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![travis-ci build status](https://travis-ci.org/mavlink/MAVSDK.svg?branch=develop)](https://travis-ci.org/mavlink/MAVSDK)
 [![Build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/Dronecode/dronecore/branch/develop)
 [![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=develop)](https://coveralls.io/github/mavlink/MAVSDK?branch=develop)
@@ -21,14 +20,12 @@ Note however that the API is still being evolved and the project does not provid
 
 ## Getting Started
 
-At time of writing all users will need to [build the library](../contributing/build.md) in order to use it. 
-In the near future we'll have binary releases for the wrapper APIs.
+*Ubuntu* and *Fedora* users can install the SDK from _*.deb_ or _*.rpm_ packages in the [Github release](https://github.com/mavlink/MAVSDK/releases) page.
 
-This [Guide](../guide/README.md) explains how to write MAVSDK apps using C++. 
+> **Note** Windows and macOS users will need to [build the library from source](../contributing/build.md) in order to use it.
+
+This [Guide](../guide/README.md) explains how to write MAVSDK apps using C++.
 A simple complete example can be found in [Takeoff and Land](../examples/takeoff_and_land.md).
-
-Developers who want to create plugins and contribute to the API will need to build the C++ library (and other programming language wrappers) from source. 
-For more information see the [contributing section](#contributing) below.
 
 
 ## API Overview
@@ -63,4 +60,6 @@ They should only be used where features are missing from the main APIs above.
 ## Contributing/Extending
 
 The [Contributing](../contributing/README.md) section contains everything you need to contribute to the C++ API, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development. 
+
+> **Tip** Developers who want to create plugins and contribute to the API will need to [build the library ](../contributing/build.md) (and other programming language wrappers) from source. 
 

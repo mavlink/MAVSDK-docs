@@ -1,6 +1,6 @@
-<div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/></a></div>
+# Getting Started <div style="float:right; padding:10px; margin-right:20px;"><img src="../../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="180px"/></div>
 
-# Getting Started
+<!-- NOTE, currently not built into final docset -->
 
 This topic explains how to set up a development environment and write a minimal example for all our supported programming languages/platforms.
 

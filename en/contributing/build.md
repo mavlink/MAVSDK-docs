@@ -6,8 +6,7 @@ It also shows how to build the SDK with extensions and build the API Reference d
 
 ## Build the C++ Library {#build_sdk_cpp}
 
-This section explains how to build the SDK C++ library from source,
-along with its unit and integration tests.
+This section explains how to build the SDK C++ library from source, along with its unit and integration tests.
 Build artifacts are created in the **build** subdirectory.
 
 ### macOS {#build_cpp_mac_os}
