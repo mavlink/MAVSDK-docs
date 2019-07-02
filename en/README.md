@@ -1,4 +1,4 @@
-<div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/></a></div>
+<img src="../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/>
 
 # MAVSDK ({{ book.github_branch }})
 
