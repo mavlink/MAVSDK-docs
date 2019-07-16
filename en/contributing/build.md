@@ -158,47 +158,25 @@ cmake --build build/default --target install
 
 ## Build for Android {#build_cpp_android}
 
-> **Tip** You must first build the C++ Library (as shown above).
+The MAVSDK programming-language-specific libraries share a common backend (called "mavsdk_server"), which may optionally be built as part of the C++ library. This section describes how to build it for Android, which is necessary only for contributors. If you want to use MAVSDK on Android, go to the [MAVSDK-Java](https://github.com/mavlink/MAVSDK-Java) documentation.
 
-To build for Android devices or simulators, you first need to install:
-- [Android NDK](https://developer.android.com/ndk/downloads/index.html)
-- [Android SDK](https://developer.android.com/studio/index.html)
-
-Also, you need to set these three environment variables:
-
-- `NDK_ROOT` to `<your-android-ndk>`
-- `ANDROID_TOOLCHAIN_CMAKE` to `<your-android-ndk>/build/cmake/android.toolchain.cmake`
-- `ANDROID_CMAKE_BIN` to `<your-android-sdk>/cmake/<version>/bin/cmake`
-
-E.g. you can add the lines below to your .bashrc, (or .zshrc for zshell users, or .profile):
-
-```sh
-export NDK_ROOT=$HOME/Android/android-ndk-r13
-export ANDROID_TOOLCHAIN_CMAKE=$HOME/Android/android-ndk-r13/build/cmake/android.toolchain.cmake
-export ANDROID_CMAKE_BIN=$HOME/Android/Sdk/cmake/3.6.3155560/bin/cmake
-```
-
-Then you build for all Android architectures:
-```sh
-make android install
-```
-
+Building for Android is a cross-compilation like the others, and can be done using dockcross (e.g. with the `dockcross/android-arm64` image). For that, go to the [cross-compilation](#cross_compilation_dockcross) section below.
 
 ## Build for iOS {#build_cpp_iOS}
 
-> **Warning** You must first build the C++ Library (as shown above).
+The MAVSDK programming-language-specific libraries share a common backend (called "mavsdk_server"), which may optionally be built as part of the C++ library. This section describes how to build it for iOS, which is necessary only for contributors. If you want to use MAVSDK on iOS, go to the [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) documentation.
 
 To build for real iOS devices on macOS:
 
 ```sh
-cmake -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -Bbuild/ios -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=OS -Bbuild/ios -H.
 cmake --build build/ios
 ```
 
 Build for the iOS simulator on macOS:
 
 ```sh
-cmake -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -H.
 ```
 
 ## Build SDK Extensions {#sdk_extensions}
@@ -212,39 +190,39 @@ cmake --build build/default
 ```
 See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
-## Building the Backend {#build_backend}
+## Building mavsdk_server {#build_mavsdk_server}
 
-The MAVSDK programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/mavlink/MAVSDK-Python#dronecodesdk-python)) share a common backend, which may optionally be built as part of the C++ library.
+The MAVSDK programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/mavlink/MAVSDK-Python)) share a common backend (called "mavsdk_server"), which may optionally be built as part of the C++ library.
 
 The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option. Otherwise the build is exactly the same as usual.
 
-> **Tip** When building the backend, we usually like to link all the dependencies statically, and therefore we set `-DBUILD_SHARED_LIBS=OFF` (or don't specify it, because the default is `OFF`).
+> **Tip** When building mavsdk_server, we usually like to link all the dependencies statically, and therefore we set `-DBUILD_SHARED_LIBS=OFF` (or don't specify it, because the default is `OFF`).
 
-### Ubuntu {#build_backend_ubuntu}
+### Ubuntu {#build_mavsdk_server_ubuntu}
 
-To build the backend on Ubuntu:
+To build mavsdk_server on Ubuntu:
 1. [Setup the C++ Library on Linux](#build_cpp_linux)
 1. Navigate into the SDK directory and build the project
    ```
    cd MAVSDK
-   cmake -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -Bbuild/default -H.
    cmake --build build/default
    ```
 
-### macOS {#build_backend_macos}
+### macOS {#build_mavsdk_server_macos}
 
-To build the backend on macOS:
+To build mavsdk_server on macOS:
 1. [Setup the C++ Library on macOS](#build_cpp_mac_os)
 1. Navigate into the SDK directory and build the project
    ```
    cd MAVSDK
-   cmake -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -Bbuild/default -H.
    cmake --build build/default
    ```
 
-### Windows {#build_backend_windows}
+### Windows {#build_mavsdk_server_windows}
 
-To build the backend on Windows:
+To build mavsdk_server on Windows:
 1. [Setup the C++ Library on Windows(#build_cpp_windows)
 1. Navigate into the SDK directory and build the project
    ```
