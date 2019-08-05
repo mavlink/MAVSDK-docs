@@ -4,7 +4,7 @@
 
 > **Warning** Under Construction.
 
-The [MAVSDK documentation](https://mavsdk.mavlink.io/en/) explains how to use the [MAVSDK](https://github.com/mavlink/MAVSDK) C++ MAVLink API Library, along with auto-generated wrapper APIs written in Python, Java and iOS (forthcoming).
+The [MAVSDK documentation](https://mavsdk.mavlink.io/) explains how to use the [MAVSDK](https://github.com/mavlink/MAVSDK) C++ MAVLink API Library, along with auto-generated wrapper APIs written in Python, Java and iOS (forthcoming).
 
 This repository contains the *source code* for the documentation.
 
