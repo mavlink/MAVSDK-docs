@@ -36,13 +36,13 @@ Type | Name | Description
 &nbsp; | [FollowMe](#classmavsdk_1_1_follow_me_1ab85b27fcd899f4861cd2e99c08083b9e) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~FollowMe](#classmavsdk_1_1_follow_me_1a7c8769bb4a10665d6df9b6043c86233b) () | Destructor (internal use only).
 &nbsp; | [FollowMe](#classmavsdk_1_1_follow_me_1a49025a79508f98211611fb2c03f36e88) (const [FollowMe](classmavsdk_1_1_follow_me.md) &)=delete | Copy constructor (object is not copyable).
-const [Config](structmavsdk_1_1_follow_me_1_1_config.md) & | [get_config](#classmavsdk_1_1_follow_me_1a5a39cc685ea4288363ef38ebbd628062) () const | Gets current [FollowMe](classmavsdk_1_1_follow_me.md) configuration.
+const [Config](structmavsdk_1_1_follow_me_1_1_config.md) & | [get_config](#classmavsdk_1_1_follow_me_1ae952cb2adeeacabcf7942fb12e0aa14f) () const | Gets current [FollowMe](classmavsdk_1_1_follow_me.md) configuration.
 [Result](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8) | [set_config](#classmavsdk_1_1_follow_me_1a1d7c0e5598769365aeaec8026578a977) (const [Config](structmavsdk_1_1_follow_me_1_1_config.md) & config) | Applies [FollowMe](classmavsdk_1_1_follow_me.md) configuration by sending it to system.
-bool | [is_active](#classmavsdk_1_1_follow_me_1a48ab77939257e52159bd9ed19335a7de) () const | Checks whether [FollowMe](classmavsdk_1_1_follow_me.md) is active.
+bool | [is_active](#classmavsdk_1_1_follow_me_1af537999b492ab1b7bb9fa8756a157de6) () const | Checks whether [FollowMe](classmavsdk_1_1_follow_me.md) is active.
 void | [set_target_location](#classmavsdk_1_1_follow_me_1a8423c855534f821aeb051997c1a576a5) (const [TargetLocation](structmavsdk_1_1_follow_me_1_1_target_location.md) & location) | Sets location of the moving target.
-const [TargetLocation](structmavsdk_1_1_follow_me_1_1_target_location.md) & | [get_last_location](#classmavsdk_1_1_follow_me_1ae78d10ea8c6a5a27dbc26c421d8ae48f) () const | Returns the last location of the target.
-[FollowMe::Result](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8) | [start](#classmavsdk_1_1_follow_me_1a54434262fb1351f6ad648879606b6dd7) () const | Starts [FollowMe](classmavsdk_1_1_follow_me.md) mode.
-[FollowMe::Result](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8) | [stop](#classmavsdk_1_1_follow_me_1a157c9a6e4047d317fcb54abc71b390e2) () const | Stops [FollowMe](classmavsdk_1_1_follow_me.md) mode.
+const [TargetLocation](structmavsdk_1_1_follow_me_1_1_target_location.md) & | [get_last_location](#classmavsdk_1_1_follow_me_1ade5cb2ac6a26c09ccbffeb229e71e709) () const | Returns the last location of the target.
+[FollowMe::Result](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8) | [start](#classmavsdk_1_1_follow_me_1af891a1242645127fd43313eaa8f1c74a) () const | Starts [FollowMe](classmavsdk_1_1_follow_me.md) mode.
+[FollowMe::Result](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8) | [stop](#classmavsdk_1_1_follow_me_1a38eefd9feb703dbc0511c56e6a0dce27) () const | Stops [FollowMe](classmavsdk_1_1_follow_me.md) mode.
 const [FollowMe](classmavsdk_1_1_follow_me.md) & | [operator=](#classmavsdk_1_1_follow_me_1a6292f6dd2c91cedde0e3b82952d83510) (const [FollowMe](classmavsdk_1_1_follow_me.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -124,7 +124,7 @@ Value | Description
 ## Member Function Documentation
 
 
-### get_config() {#classmavsdk_1_1_follow_me_1a5a39cc685ea4288363ef38ebbd628062}
+### get_config() {#classmavsdk_1_1_follow_me_1ae952cb2adeeacabcf7942fb12e0aa14f}
 ```cpp
 const Config& mavsdk::FollowMe::get_config() const
 ```
@@ -159,10 +159,10 @@ Applies [FollowMe](classmavsdk_1_1_follow_me.md) configuration by sending it to 
 &emsp;[Result](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8) - [FollowMe::Result::SUCCESS](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8ad0749aaba8b833466dfcbb0428e4f89c) if configuration is applied successfully, [FollowMe::Result::SET_CONFIG_FAILED](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8a93093f549a7c46c8f91528870edbe9e6) on failure. In case of failure, last configuration is preserved.
 
 **See Also:**
-- [get_config()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a5a39cc685ea4288363ef38ebbd628062)
+- [get_config()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1ae952cb2adeeacabcf7942fb12e0aa14f)
 
 
-### is_active() {#classmavsdk_1_1_follow_me_1a48ab77939257e52159bd9ed19335a7de}
+### is_active() {#classmavsdk_1_1_follow_me_1af537999b492ab1b7bb9fa8756a157de6}
 ```cpp
 bool mavsdk::FollowMe::is_active() const
 ```
@@ -198,10 +198,10 @@ An app can obtain the location of the moving target from Location framework of t
 * const [TargetLocation](structmavsdk_1_1_follow_me_1_1_target_location.md)& **location** - Location of the moving target.
 
 **See Also:**
-- [get_last_location()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1ae78d10ea8c6a5a27dbc26c421d8ae48f)
+- [get_last_location()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1ade5cb2ac6a26c09ccbffeb229e71e709)
 
 
-### get_last_location() {#classmavsdk_1_1_follow_me_1ae78d10ea8c6a5a27dbc26c421d8ae48f}
+### get_last_location() {#classmavsdk_1_1_follow_me_1ade5cb2ac6a26c09ccbffeb229e71e709}
 ```cpp
 const TargetLocation& mavsdk::FollowMe::get_last_location() const
 ```
@@ -218,7 +218,7 @@ Returns the last location of the target.
 - [set_target_location()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a8423c855534f821aeb051997c1a576a5)
 
 
-### start() {#classmavsdk_1_1_follow_me_1a54434262fb1351f6ad648879606b6dd7}
+### start() {#classmavsdk_1_1_follow_me_1af891a1242645127fd43313eaa8f1c74a}
 ```cpp
 FollowMe::Result mavsdk::FollowMe::start() const
 ```
@@ -231,7 +231,7 @@ Starts [FollowMe](classmavsdk_1_1_follow_me.md) mode.
 
 &emsp;[FollowMe::Result](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8) - [FollowMe::Result::SUCCESS](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8ad0749aaba8b833466dfcbb0428e4f89c) if succeeded, error otherwise.
 
-### stop() {#classmavsdk_1_1_follow_me_1a157c9a6e4047d317fcb54abc71b390e2}
+### stop() {#classmavsdk_1_1_follow_me_1a38eefd9feb703dbc0511c56e6a0dce27}
 ```cpp
 FollowMe::Result mavsdk::FollowMe::stop() const
 ```

@@ -16,6 +16,8 @@ std::string [setting_description](#structmavsdk_1_1_camera_1_1_setting_options_1
 
 std::vector< [Option](structmavsdk_1_1_camera_1_1_option.md) > [options](#structmavsdk_1_1_camera_1_1_setting_options_1a06b292df50c638625ef942b1a19917c3) {} -
 
+bool [is_range](#structmavsdk_1_1_camera_1_1_setting_options_1af6459fc1e354ec95f67f07248242a3b7) {false} -
+
 
 ## Field Documentation
 
@@ -45,4 +47,13 @@ std::vector<Option> mavsdk::Camera::SettingOptions::options {}
 ```
 
 
-List of options.
+List of options, or if range [min, max] or [min, max, interval].
+
+### is_range {#structmavsdk_1_1_camera_1_1_setting_options_1af6459fc1e354ec95f67f07248242a3b7}
+
+```cpp
+bool mavsdk::Camera::SettingOptions::is_range {false}
+```
+
+
+If [Option](structmavsdk_1_1_camera_1_1_option.md) is given as a range.

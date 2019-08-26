@@ -16,6 +16,7 @@ Synchronous and asynchronous variants of the gimbal methods are supplied.
 Type | Description
 --- | ---
 enum [Result](#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | Possible results returned for gimbal commands.
+enum [GimbalMode](#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) | [Gimbal](classmavsdk_1_1_gimbal.md) mode type.
 std::function< void([Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac))> [result_callback_t](#classmavsdk_1_1_gimbal_1a477da8c10a4598415f26270ad0cc1a81) | Callback type for asynchronous [Gimbal](classmavsdk_1_1_gimbal.md) calls.
 
 ## Public Member Functions
@@ -28,6 +29,8 @@ Type | Name | Description
 &nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1a1d1a20bd30dafe3adc7b326f3eeb3c68) (const [Gimbal](classmavsdk_1_1_gimbal.md) &)=delete | Copy constructor (object is not copyable).
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_pitch_and_yaw](#classmavsdk_1_1_gimbal_1a1a0c7a510f7246e60d35f57c9636c7e3) (float pitch_deg, float yaw_deg) | Set gimbal pitch and yaw angles (synchronous).
 void | [set_pitch_and_yaw_async](#classmavsdk_1_1_gimbal_1a46aa5276963e1a2afecd3e0b29569e50) (float pitch_deg, float yaw_deg, [result_callback_t](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a477da8c10a4598415f26270ad0cc1a81) callback) | Set gimbal pitch and yaw angles (asynchronous).
+[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_gimbal_mode](#classmavsdk_1_1_gimbal_1aae13a825ba0ba8691f016c65159d9233) (const [Gimbal::GimbalMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) gimbal_mode) | Set gimbal mode (synchronous).
+void | [set_gimbal_mode_async](#classmavsdk_1_1_gimbal_1ab365a81bfb4a880a5389b29a80ad1458) (const [Gimbal::GimbalMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) gimbal_mode, [result_callback_t](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a477da8c10a4598415f26270ad0cc1a81) callback) | Set gimbal mode (asynchronous).
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_roi_location](#classmavsdk_1_1_gimbal_1a903b755a37238f3f042c6cd19bc5ad0a) (double latitude_deg, double longitude_deg, float altitude_m) | Set gimbal region of interest (ROI).
 void | [set_roi_location_async](#classmavsdk_1_1_gimbal_1ad76f24fc98adbe32caaf86bb5d1a2f4f) (double latitude_deg, double longitude_deg, float altitude_m, [result_callback_t](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a477da8c10a4598415f26270ad0cc1a81) callback) | Set gimbal region of interest (ROI) (asynchronous).
 const [Gimbal](classmavsdk_1_1_gimbal.md) & | [operator=](#classmavsdk_1_1_gimbal_1ac9a6e1936f58ce8f957be7c6bcc0d134) (const [Gimbal](classmavsdk_1_1_gimbal.md) &)=delete | Equality operator (object is not copyable).
@@ -112,6 +115,17 @@ Value | Description
 <span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76aca070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Timeout. A timeout occured sending the command. 
 <span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76aca696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
 
+### enum GimbalMode {#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca}
+
+
+[Gimbal](classmavsdk_1_1_gimbal.md) mode type.
+
+
+Value | Description
+--- | ---
+<span id="classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dcaa1aa9914a1c1c677bc17d35b26ee85533"></span> `YAW_FOLLOW` | Yaw follow mode. 
+<span id="classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dcaa8790c7f1484d0e41ece170a55490901c"></span> `YAW_LOCK` | Yaw lock mode. 
+
 ## Member Function Documentation
 
 
@@ -128,7 +142,7 @@ This sets the desired pitch and yaw angles of a gimbal. The function will return
 **Parameters**
 
 * float **pitch_deg** - The pitch angle in degrees. Negative to point down.
-* float **yaw_deg** - The yaw angle in degrees. Positive for clock-wise, range -180..180 or 0..360.
+* float **yaw_deg** - The yaw angle in degrees. Positive for clock-wise, range -180..180 or 0..360. The yaw angle is relative to vehicle heading if the `GimbalMode` is `YAW_FOLLOW` and relative to absolute North if the `GimbalMode` is `YAW_LOCK`.
 
 **Returns**
 
@@ -147,7 +161,40 @@ This sets the desired pitch and yaw angles of a gimbal. The callback will be cal
 **Parameters**
 
 * float **pitch_deg** - The pitch angle in degrees. Negative to point down.
-* float **yaw_deg** - The yaw angle in degrees. Positive for clock-wise, range -180..180 or 0..360.
+* float **yaw_deg** - The yaw angle in degrees. Positive for clock-wise, range -180..180 or 0..360. The yaw angle is relative to vehicle heading if the `GimbalMode` is `YAW_FOLLOW` and relative to absolute North if the `GimbalMode` is `YAW_LOCK`.
+* [result_callback_t](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a477da8c10a4598415f26270ad0cc1a81) **callback** - Function to call with result of request.
+
+### set_gimbal_mode() {#classmavsdk_1_1_gimbal_1aae13a825ba0ba8691f016c65159d9233}
+```cpp
+Result mavsdk::Gimbal::set_gimbal_mode(const Gimbal::GimbalMode gimbal_mode)
+```
+
+
+Set gimbal mode (synchronous).
+
+This sets the desired yaw mode of a gimbal. The function will return when the command is accepted, however, it might take the gimbal longer to actually be set to the new angles.
+
+**Parameters**
+
+* const [Gimbal::GimbalMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) **gimbal_mode** - The mode to be set. Either yaw lock or yaw follow. Yaw lock will fix the gimbal poiting to an absolute direction. Yaw follow will point the gimbal to the vehicle heading.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) - Result of request.
+
+### set_gimbal_mode_async() {#classmavsdk_1_1_gimbal_1ab365a81bfb4a880a5389b29a80ad1458}
+```cpp
+void mavsdk::Gimbal::set_gimbal_mode_async(const Gimbal::GimbalMode gimbal_mode, result_callback_t callback)
+```
+
+
+Set gimbal mode (asynchronous).
+
+This sets the desired yaw mode of a gimbal. The function will return when the command is accepted, however, it might take the gimbal longer to actually be set to the new angles.
+
+**Parameters**
+
+* const [Gimbal::GimbalMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) **gimbal_mode** - The mode to be set. Either yaw lock or yaw follow. Yaw lock will fix the gimbal poiting to an absolute direction. Yaw follow will point the gimbal to the vehicle heading.
 * [result_callback_t](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a477da8c10a4598415f26270ad0cc1a81) **callback** - Function to call with result of request.
 
 ### set_roi_location() {#classmavsdk_1_1_gimbal_1a903b755a37238f3f042c6cd19bc5ad0a}

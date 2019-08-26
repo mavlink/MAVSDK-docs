@@ -29,16 +29,16 @@ Type | Name | Description
 &nbsp; | [Action](#classmavsdk_1_1_action_1a5e2a4d65f85d821be691a837453e56ee) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Action](#classmavsdk_1_1_action_1a20428abedfcd9fe413e16d2398ff99b4) () | Destructor (internal use only).
 &nbsp; | [Action](#classmavsdk_1_1_action_1a890855f6b3350166a9b0d191e322526b) (const [Action](classmavsdk_1_1_action.md) &)=delete | Copy constructor (object is not copyable).
-[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [arm](#classmavsdk_1_1_action_1a3ee123973982842f46a9f8b6cb952566) () const | Send command to *arm* the drone (synchronous).
-[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [disarm](#classmavsdk_1_1_action_1a44c61110965bcdd3dfb90a08d3c6b6b9) () const | Send command to *disarm* the drone (synchronous).
-[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [kill](#classmavsdk_1_1_action_1af40fc1ddf588b3796134a9303ebc3667) () const | Send command to *kill* the drone (synchronous).
-[Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [reboot](#classmavsdk_1_1_action_1a92f6639c7dcf4bb6d19c8c4a56b1c02e) () const | Send command to *reboot* the drone components.
-[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [takeoff](#classmavsdk_1_1_action_1a0121d39baf922b1d88283230207ab5d0) () const | Send command to *take off and hover* (synchronous).
-[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [land](#classmavsdk_1_1_action_1af6429e1bdb2875deebfe98ed53da3d41) () const | Send command to *land* at the current position (synchronous).
-[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [return_to_launch](#classmavsdk_1_1_action_1afd7c225df0495b0947f00e7d2dd64877) () const | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [arm](#classmavsdk_1_1_action_1ad1e15dd77bd359c05256e5a5ab83726f) () const | Send command to *arm* the drone (synchronous).
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [disarm](#classmavsdk_1_1_action_1a6c759e461902d8c427026554e439774f) () const | Send command to *disarm* the drone (synchronous).
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [kill](#classmavsdk_1_1_action_1a029f49ba496b23424095b47f73300d3a) () const | Send command to *kill* the drone (synchronous).
+[Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [reboot](#classmavsdk_1_1_action_1a8399ec8cfce871acb7617d35a683dec2) () const | Send command to *reboot* the drone components.
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [takeoff](#classmavsdk_1_1_action_1a9c1df1ac24144286d8b0d05b119787d1) () const | Send command to *take off and hover* (synchronous).
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [land](#classmavsdk_1_1_action_1a0383185c4f9a1afecd3da58b8158b079) () const | Send command to *land* at the current position (synchronous).
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [return_to_launch](#classmavsdk_1_1_action_1a699c3488106efc02d0f912f7b58db98a) () const | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [goto_location](#classmavsdk_1_1_action_1ac6a2496c569f02c1475a375e90a50550) (double latitude_deg, double longitude_deg, float altitude_amsl_m, float yaw_deg) | Send command to move the vehicle to a specific global position.
-[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [transition_to_fixedwing](#classmavsdk_1_1_action_1a8d5cf999a48ea3859ec75db27cf4fbda) () const | Send command to transition the drone to fixedwing.
-[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [transition_to_multicopter](#classmavsdk_1_1_action_1aac94bfb8613a8e9869e3620b3dc9bb8e) () const | Send command to transition the drone to multicopter.
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [transition_to_fixedwing](#classmavsdk_1_1_action_1af69cb37e52db442532fe82edcf479871) () const | Send command to transition the drone to fixedwing.
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [transition_to_multicopter](#classmavsdk_1_1_action_1a9be72a826ce1d0fbce501b07023ea6ce) () const | Send command to transition the drone to multicopter.
 void | [arm_async](#classmavsdk_1_1_action_1a64ac2dec2c36107f78df8b3dffa2bece) ([result_callback_t](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a11dc8f4beffb082ced5aa4da1f16a2a8) callback) | Send command to *arm* the drone (asynchronous).
 void | [disarm_async](#classmavsdk_1_1_action_1a63576bca2b437db3951c3fa1c0b2e534) ([result_callback_t](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a11dc8f4beffb082ced5aa4da1f16a2a8) callback) | Send command to *disarm* the drone (asynchronous).
 void | [kill_async](#classmavsdk_1_1_action_1a3527b7ff2de7bbc4cf2fce6836dd54b6) ([result_callback_t](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a11dc8f4beffb082ced5aa4da1f16a2a8) callback) | Send command to *kill* the drone (asynchronous).
@@ -48,11 +48,11 @@ void | [return_to_launch_async](#classmavsdk_1_1_action_1a2c840742bcfbc0d977e289
 void | [transition_to_fixedwing_async](#classmavsdk_1_1_action_1a862865ff6acfcfeed6f5a0d0936d0667) ([result_callback_t](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a11dc8f4beffb082ced5aa4da1f16a2a8) callback) | Send command to transition the drone to fixedwing (asynchronous).
 void | [transition_to_multicopter_async](#classmavsdk_1_1_action_1afb60f1d37112f88140d359a9e5e87043) ([result_callback_t](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a11dc8f4beffb082ced5aa4da1f16a2a8) callback) | Send command to transition the drone to multicopter (asynchronous).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [set_takeoff_altitude](#classmavsdk_1_1_action_1a784da0b31be4515636fb93302a8f58c2) (float relative_altitude_m) | Set takeoff altitude above ground.
-std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_takeoff_altitude](#classmavsdk_1_1_action_1a85df48432c5ed2c6e23831409139ed39) () const | Get the takeoff altitude.
+std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_takeoff_altitude](#classmavsdk_1_1_action_1ae35fc7237cb28597471bb40479fa3fba) () const | Get the takeoff altitude.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [set_max_speed](#classmavsdk_1_1_action_1aa2ea0a257043f75b7332606162aa20c2) (float speed_m_s) | Set vehicle maximum speed.
-std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_max_speed](#classmavsdk_1_1_action_1a0fd5abe057097d873ae218955c647bd8) () const | Get the vehicle maximum speed.
+std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_max_speed](#classmavsdk_1_1_action_1a8f4b8b486492b87bd4fa61b747ba674f) () const | Get the vehicle maximum speed.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [set_return_to_launch_return_altitude](#classmavsdk_1_1_action_1ad992f1d8eb4184d22289560c031a6ed4) (float relative_altitude_m) | Set the return to launch minimum return altitude.
-std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_return_to_launch_return_altitude](#classmavsdk_1_1_action_1a53bba9364fd54b5ac17b06eb3f99dc17) () const | Get the return to launch minimum return altitude.
+std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_return_to_launch_return_altitude](#classmavsdk_1_1_action_1aa6d5f759f9d966fab465ce979e70f78d) () const | Get the return to launch minimum return altitude.
 const [Action](classmavsdk_1_1_action.md) & | [operator=](#classmavsdk_1_1_action_1a1ff7e178b7ededc41bd9ccab0ca07457) (const [Action](classmavsdk_1_1_action.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -147,7 +147,7 @@ Value | Description
 ## Member Function Documentation
 
 
-### arm() {#classmavsdk_1_1_action_1a3ee123973982842f46a9f8b6cb952566}
+### arm() {#classmavsdk_1_1_action_1ad1e15dd77bd359c05256e5a5ab83726f}
 ```cpp
 Result mavsdk::Action::arm() const
 ```
@@ -161,7 +161,7 @@ Send command to *arm* the drone (synchronous).
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### disarm() {#classmavsdk_1_1_action_1a44c61110965bcdd3dfb90a08d3c6b6b9}
+### disarm() {#classmavsdk_1_1_action_1a6c759e461902d8c427026554e439774f}
 ```cpp
 Result mavsdk::Action::disarm() const
 ```
@@ -175,7 +175,7 @@ This will disarm a drone that considers itself landed. If flying, the drone shou
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### kill() {#classmavsdk_1_1_action_1af40fc1ddf588b3796134a9303ebc3667}
+### kill() {#classmavsdk_1_1_action_1a029f49ba496b23424095b47f73300d3a}
 ```cpp
 Result mavsdk::Action::kill() const
 ```
@@ -189,7 +189,7 @@ This will disarm a drone irrespective of whether it is landed or flying. Note th
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### reboot() {#classmavsdk_1_1_action_1a92f6639c7dcf4bb6d19c8c4a56b1c02e}
+### reboot() {#classmavsdk_1_1_action_1a8399ec8cfce871acb7617d35a683dec2}
 ```cpp
 Action::Result mavsdk::Action::reboot() const
 ```
@@ -203,7 +203,7 @@ This will reboot the autopilot, onboard computer, camera and gimbal.
 
 &emsp;[Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - [Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) of request.
 
-### takeoff() {#classmavsdk_1_1_action_1a0121d39baf922b1d88283230207ab5d0}
+### takeoff() {#classmavsdk_1_1_action_1a9c1df1ac24144286d8b0d05b119787d1}
 ```cpp
 Result mavsdk::Action::takeoff() const
 ```
@@ -220,7 +220,7 @@ Note that the vehicle must be armed before it can take off.
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### land() {#classmavsdk_1_1_action_1af6429e1bdb2875deebfe98ed53da3d41}
+### land() {#classmavsdk_1_1_action_1a0383185c4f9a1afecd3da58b8158b079}
 ```cpp
 Result mavsdk::Action::land() const
 ```
@@ -234,7 +234,7 @@ This switches the drone to [Land mode](https://docs.px4.io/en/flight_modes/land.
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### return_to_launch() {#classmavsdk_1_1_action_1afd7c225df0495b0947f00e7d2dd64877}
+### return_to_launch() {#classmavsdk_1_1_action_1a699c3488106efc02d0f912f7b58db98a}
 ```cpp
 Result mavsdk::Action::return_to_launch() const
 ```
@@ -269,7 +269,7 @@ The latitude and longitude are given in degrees (WGS84 frame) and the altitude i
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### transition_to_fixedwing() {#classmavsdk_1_1_action_1a8d5cf999a48ea3859ec75db27cf4fbda}
+### transition_to_fixedwing() {#classmavsdk_1_1_action_1af69cb37e52db442532fe82edcf479871}
 ```cpp
 Result mavsdk::Action::transition_to_fixedwing() const
 ```
@@ -283,7 +283,7 @@ The associated action will only be executed for VTOL vehicles (on other vehicle 
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### transition_to_multicopter() {#classmavsdk_1_1_action_1aac94bfb8613a8e9869e3620b3dc9bb8e}
+### transition_to_multicopter() {#classmavsdk_1_1_action_1a9be72a826ce1d0fbce501b07023ea6ce}
 ```cpp
 Result mavsdk::Action::transition_to_multicopter() const
 ```
@@ -429,7 +429,7 @@ Set takeoff altitude above ground.
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### get_takeoff_altitude() {#classmavsdk_1_1_action_1a85df48432c5ed2c6e23831409139ed39}
+### get_takeoff_altitude() {#classmavsdk_1_1_action_1ae35fc7237cb28597471bb40479fa3fba}
 ```cpp
 std::pair<Result, float> mavsdk::Action::get_takeoff_altitude() const
 ```
@@ -459,7 +459,7 @@ Set vehicle maximum speed.
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### get_max_speed() {#classmavsdk_1_1_action_1a0fd5abe057097d873ae218955c647bd8}
+### get_max_speed() {#classmavsdk_1_1_action_1a8f4b8b486492b87bd4fa61b747ba674f}
 ```cpp
 std::pair<Result, float> mavsdk::Action::get_max_speed() const
 ```
@@ -490,7 +490,7 @@ When return to launch is initiated, the vehicle climbs to the return altitude if
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### get_return_to_launch_return_altitude() {#classmavsdk_1_1_action_1a53bba9364fd54b5ac17b06eb3f99dc17}
+### get_return_to_launch_return_altitude() {#classmavsdk_1_1_action_1aa6d5f759f9d966fab465ce979e70f78d}
 ```cpp
 std::pair<Result, float> mavsdk::Action::get_return_to_launch_return_altitude() const
 ```

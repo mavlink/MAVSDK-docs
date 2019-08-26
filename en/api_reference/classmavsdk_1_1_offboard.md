@@ -19,6 +19,8 @@ Client code must specify a setpoint before starting offboard mode. [Mavsdk](clas
 ## Data Structures
 
 
+struct [ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md)
+
 struct [Attitude](structmavsdk_1_1_offboard_1_1_attitude.md)
 
 struct [AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md)
@@ -49,12 +51,13 @@ Type | Name | Description
 [Offboard::Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [stop](#classmavsdk_1_1_offboard_1a9a54e588bcfd5b0ffca27833ad4f6b10) () | Stop offboard control (synchronous).
 void | [start_async](#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606) ([result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) callback) | Start offboard control (asynchronous).
 void | [stop_async](#classmavsdk_1_1_offboard_1a243e63e27d3e6d4b927e6d9a3fe2e8e9) ([result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) callback) | Stop offboard control (asynchronous).
-bool | [is_active](#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5) () const | Check if offboard control is active.
+bool | [is_active](#classmavsdk_1_1_offboard_1ace61e87e04cac4275d53b97591ab4f7c) () const | Check if offboard control is active.
 void | [set_position_ned](#classmavsdk_1_1_offboard_1a0bcbc79ba1277f0e7ad110f86b902cc7) ([PositionNEDYaw](structmavsdk_1_1_offboard_1_1_position_n_e_d_yaw.md) position_ned_yaw) | Set the position in NED coordinates and yaw.
 void | [set_velocity_ned](#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39) ([VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
 void | [set_velocity_body](#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81) ([VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
 void | [set_attitude](#classmavsdk_1_1_offboard_1a49f92abcd755b71f92b79454c8b6c82f) ([Attitude](structmavsdk_1_1_offboard_1_1_attitude.md) attitude) | Set the attitude in terms of roll, pitch and yaw in degrees with thrust in percentage.
 void | [set_attitude_rate](#classmavsdk_1_1_offboard_1a862d78aa5c57ad77b249b69d028630c0) ([AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) attitude_rate) | Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust in percentage.
+void | [set_actuator_control](#classmavsdk_1_1_offboard_1af4b95e2ea3397e42e8ea8f8bd7d175cc) (const [ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) actuator_control) | Set direct actuator control values to groups #0 and #1. First 8 controls will go to control group 0, the following 8 controls to control group 1 (if actuator_control.num_controls more than 8).
 const [Offboard](classmavsdk_1_1_offboard.md) & | [operator=](#classmavsdk_1_1_offboard_1acb01657624668251c0a022bc3f8135cd) (const [Offboard](classmavsdk_1_1_offboard.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -200,7 +203,7 @@ The vehicle will be put into Hold mode: [https://docs.px4.io/en/flight_modes/hol
 
 * [result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) **callback** - Callback to receive request result.
 
-### is_active() {#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5}
+### is_active() {#classmavsdk_1_1_offboard_1ace61e87e04cac4275d53b97591ab4f7c}
 ```cpp
 bool mavsdk::Offboard::is_active() const
 ```
@@ -278,6 +281,19 @@ Set the attitude rate in terms of pitch, roll and yaw angular rate along with th
 **Parameters**
 
 * [AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) **attitude_rate** - roll, pitch and yaw angular rate along with thrust in percentage.
+
+### set_actuator_control() {#classmavsdk_1_1_offboard_1af4b95e2ea3397e42e8ea8f8bd7d175cc}
+```cpp
+void mavsdk::Offboard::set_actuator_control(const ActuatorControl actuator_control)
+```
+
+
+Set direct actuator control values to groups #0 and #1. First 8 controls will go to control group 0, the following 8 controls to control group 1 (if actuator_control.num_controls more than 8).
+
+
+**Parameters**
+
+* const [ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) **actuator_control** - actuators control values
 
 ### operator=() {#classmavsdk_1_1_offboard_1acb01657624668251c0a022bc3f8135cd}
 ```cpp

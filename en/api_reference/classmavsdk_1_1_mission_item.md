@@ -34,18 +34,18 @@ void | [set_gimbal_pitch_and_yaw](#classmavsdk_1_1_mission_item_1aee42aca98990f8
 void | [set_loiter_time](#classmavsdk_1_1_mission_item_1ad458170b2b6f282c1052cfcb7495586c) (float loiter_time_s) | Set loiter time in seconds.
 void | [set_camera_action](#classmavsdk_1_1_mission_item_1aecf47062d8254bbb89f8cfe390100217) ([CameraAction](classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1a132fb8fb01a95f7da406d6691a699b33) action) | Set the camera action for a mission item.
 void | [set_camera_photo_interval](#classmavsdk_1_1_mission_item_1a7eaeb877658d23d7df0b97592eace7e5) (double interval_s) | Set the camera photo interval.
-double | [get_latitude_deg](#classmavsdk_1_1_mission_item_1a3001afa82fa2ec6eb7868b6b745be1d5) () const | Get the latitude of a mission item.
-double | [get_longitude_deg](#classmavsdk_1_1_mission_item_1ad30b13797fa2f57af2de01c90e326cea) () const | Get the longitude of a mission item.
-bool | [has_position_set](#classmavsdk_1_1_mission_item_1a5735e0382f41aa445726c91ee1faa56b) () const | Reports whether position info (Lat, Lon) was set for this mission item.
-float | [get_relative_altitude_m](#classmavsdk_1_1_mission_item_1aa5be6daffe833e0695df566459c878f7) () const | Get the relative altitude of a mission item.
-bool | [get_fly_through](#classmavsdk_1_1_mission_item_1a595c0e9b76858155cf2f6637b802f453) () const | Get the fly-through property of a mission item.
-float | [get_acceptance_radius_m](#classmavsdk_1_1_mission_item_1a9d057dc8cb892a3dc4fbfdfb5db8dee5) () const | Get the acceptance radius of a mission item.
-float | [get_speed_m_s](#classmavsdk_1_1_mission_item_1a8ec7abb2efb0c7613c24e019a4c3045c) () const | Get the speed to be used after this mission item.
-float | [get_gimbal_pitch_deg](#classmavsdk_1_1_mission_item_1a7f4cb4f8c5c758a1d0ffec3367197fa0) () const | Get the gimbal pitch of a mission item.
-float | [get_gimbal_yaw_deg](#classmavsdk_1_1_mission_item_1a7d923a49f5c74c75436a60e1e0c6fdfe) () const | Get the gimbal yaw of a mission item.
-float | [get_loiter_time_s](#classmavsdk_1_1_mission_item_1a2d5d345406de899943102269a8e32360) () const | Get loiter time in seconds.
-[CameraAction](classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1a132fb8fb01a95f7da406d6691a699b33) | [get_camera_action](#classmavsdk_1_1_mission_item_1a8708b9f8684f301ad180577a7abcfb64) () const | Get the camera action set for this mission item.
-double | [get_camera_photo_interval_s](#classmavsdk_1_1_mission_item_1a873f750d6b19760a31d492d57775ea62) () const | Get the camera photo interval that was set for this mission item.
+double | [get_latitude_deg](#classmavsdk_1_1_mission_item_1aa11635d27a4c8188685db1d1e5ffc481) () const | Get the latitude of a mission item.
+double | [get_longitude_deg](#classmavsdk_1_1_mission_item_1a429837ada5a3e3f28c74fcb9c466d05b) () const | Get the longitude of a mission item.
+bool | [has_position_set](#classmavsdk_1_1_mission_item_1a46f3f4f0bb63788a2978757d2222822b) () const | Reports whether position info (Lat, Lon) was set for this mission item.
+float | [get_relative_altitude_m](#classmavsdk_1_1_mission_item_1aaae3518dee97e388de2fdfb4b776f6f2) () const | Get the relative altitude of a mission item.
+bool | [get_fly_through](#classmavsdk_1_1_mission_item_1a772528024a300eac6439f2faeed039df) () const | Get the fly-through property of a mission item.
+float | [get_acceptance_radius_m](#classmavsdk_1_1_mission_item_1a54ca475cd11aed47ec69c6ae4e629b50) () const | Get the acceptance radius of a mission item.
+float | [get_speed_m_s](#classmavsdk_1_1_mission_item_1a21da6f7924194d80099da1d4ed17f7d1) () const | Get the speed to be used after this mission item.
+float | [get_gimbal_pitch_deg](#classmavsdk_1_1_mission_item_1a82e1adbc95dc3526942a67860f21a826) () const | Get the gimbal pitch of a mission item.
+float | [get_gimbal_yaw_deg](#classmavsdk_1_1_mission_item_1ac44ac914ab0208e4e2245298fb60d54d) () const | Get the gimbal yaw of a mission item.
+float | [get_loiter_time_s](#classmavsdk_1_1_mission_item_1a8966494191d2e95382a7e8d0e4fc1b2a) () const | Get loiter time in seconds.
+[CameraAction](classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1a132fb8fb01a95f7da406d6691a699b33) | [get_camera_action](#classmavsdk_1_1_mission_item_1a3d846e1f02d80a482555500ef3a935e4) () const | Get the camera action set for this mission item.
+double | [get_camera_photo_interval_s](#classmavsdk_1_1_mission_item_1aca8c36395a5d4ec05e7c5a0b1ff2af52) () const | Get the camera photo interval that was set for this mission item.
 const [MissionItem](classmavsdk_1_1_mission_item.md) & | [operator=](#classmavsdk_1_1_mission_item_1af3737e3129abd684724b75a6b3690436) (const [MissionItem](classmavsdk_1_1_mission_item.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Member Functions
@@ -236,7 +236,7 @@ This only has an effect if used together with [CameraAction::START_PHOTO_INTERVA
 
 * double **interval_s** - Interval between photo captures in seconds.
 
-### get_latitude_deg() {#classmavsdk_1_1_mission_item_1a3001afa82fa2ec6eb7868b6b745be1d5}
+### get_latitude_deg() {#classmavsdk_1_1_mission_item_1aa11635d27a4c8188685db1d1e5ffc481}
 ```cpp
 double mavsdk::MissionItem::get_latitude_deg() const
 ```
@@ -249,7 +249,7 @@ Get the latitude of a mission item.
 
 &emsp;double - Latitude in degrees.
 
-### get_longitude_deg() {#classmavsdk_1_1_mission_item_1ad30b13797fa2f57af2de01c90e326cea}
+### get_longitude_deg() {#classmavsdk_1_1_mission_item_1a429837ada5a3e3f28c74fcb9c466d05b}
 ```cpp
 double mavsdk::MissionItem::get_longitude_deg() const
 ```
@@ -262,7 +262,7 @@ Get the longitude of a mission item.
 
 &emsp;double - Longitude in degrees.
 
-### has_position_set() {#classmavsdk_1_1_mission_item_1a5735e0382f41aa445726c91ee1faa56b}
+### has_position_set() {#classmavsdk_1_1_mission_item_1a46f3f4f0bb63788a2978757d2222822b}
 ```cpp
 bool mavsdk::MissionItem::has_position_set() const
 ```
@@ -275,7 +275,7 @@ Reports whether position info (Lat, Lon) was set for this mission item.
 
 &emsp;bool - true if Lat, Lon is set for this mission item.
 
-### get_relative_altitude_m() {#classmavsdk_1_1_mission_item_1aa5be6daffe833e0695df566459c878f7}
+### get_relative_altitude_m() {#classmavsdk_1_1_mission_item_1aaae3518dee97e388de2fdfb4b776f6f2}
 ```cpp
 float mavsdk::MissionItem::get_relative_altitude_m() const
 ```
@@ -288,7 +288,7 @@ Get the relative altitude of a mission item.
 
 &emsp;float - The altitude relative to the takeoff position in metres.
 
-### get_fly_through() {#classmavsdk_1_1_mission_item_1a595c0e9b76858155cf2f6637b802f453}
+### get_fly_through() {#classmavsdk_1_1_mission_item_1a772528024a300eac6439f2faeed039df}
 ```cpp
 bool mavsdk::MissionItem::get_fly_through() const
 ```
@@ -301,7 +301,7 @@ Get the fly-through property of a mission item.
 
 &emsp;bool - true if the drone will fly through the waypoint without stopping. false if the drone will come to a stop at the waypoint before continuing.
 
-### get_acceptance_radius_m() {#classmavsdk_1_1_mission_item_1a9d057dc8cb892a3dc4fbfdfb5db8dee5}
+### get_acceptance_radius_m() {#classmavsdk_1_1_mission_item_1a54ca475cd11aed47ec69c6ae4e629b50}
 ```cpp
 float mavsdk::MissionItem::get_acceptance_radius_m() const
 ```
@@ -314,7 +314,7 @@ Get the acceptance radius of a mission item.
 
 &emsp;float - Acceptance radius in meters.
 
-### get_speed_m_s() {#classmavsdk_1_1_mission_item_1a8ec7abb2efb0c7613c24e019a4c3045c}
+### get_speed_m_s() {#classmavsdk_1_1_mission_item_1a21da6f7924194d80099da1d4ed17f7d1}
 ```cpp
 float mavsdk::MissionItem::get_speed_m_s() const
 ```
@@ -327,7 +327,7 @@ Get the speed to be used after this mission item.
 
 &emsp;float - Speed in metres/second.
 
-### get_gimbal_pitch_deg() {#classmavsdk_1_1_mission_item_1a7f4cb4f8c5c758a1d0ffec3367197fa0}
+### get_gimbal_pitch_deg() {#classmavsdk_1_1_mission_item_1a82e1adbc95dc3526942a67860f21a826}
 ```cpp
 float mavsdk::MissionItem::get_gimbal_pitch_deg() const
 ```
@@ -340,7 +340,7 @@ Get the gimbal pitch of a mission item.
 
 &emsp;float - [Gimbal](classmavsdk_1_1_gimbal.md) pitch in degrees.
 
-### get_gimbal_yaw_deg() {#classmavsdk_1_1_mission_item_1a7d923a49f5c74c75436a60e1e0c6fdfe}
+### get_gimbal_yaw_deg() {#classmavsdk_1_1_mission_item_1ac44ac914ab0208e4e2245298fb60d54d}
 ```cpp
 float mavsdk::MissionItem::get_gimbal_yaw_deg() const
 ```
@@ -353,7 +353,7 @@ Get the gimbal yaw of a mission item.
 
 &emsp;float - [Gimbal](classmavsdk_1_1_gimbal.md) yaw in degrees.
 
-### get_loiter_time_s() {#classmavsdk_1_1_mission_item_1a2d5d345406de899943102269a8e32360}
+### get_loiter_time_s() {#classmavsdk_1_1_mission_item_1a8966494191d2e95382a7e8d0e4fc1b2a}
 ```cpp
 float mavsdk::MissionItem::get_loiter_time_s() const
 ```
@@ -366,7 +366,7 @@ Get loiter time in seconds.
 
 &emsp;float - Loiter time in seconds.
 
-### get_camera_action() {#classmavsdk_1_1_mission_item_1a8708b9f8684f301ad180577a7abcfb64}
+### get_camera_action() {#classmavsdk_1_1_mission_item_1a3d846e1f02d80a482555500ef3a935e4}
 ```cpp
 CameraAction mavsdk::MissionItem::get_camera_action() const
 ```
@@ -379,7 +379,7 @@ Get the camera action set for this mission item.
 
 &emsp;[CameraAction](classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1a132fb8fb01a95f7da406d6691a699b33) - [Camera](classmavsdk_1_1_camera.md) action enum value.
 
-### get_camera_photo_interval_s() {#classmavsdk_1_1_mission_item_1a873f750d6b19760a31d492d57775ea62}
+### get_camera_photo_interval_s() {#classmavsdk_1_1_mission_item_1aca8c36395a5d4ec05e7c5a0b1ff2af52}
 ```cpp
 double mavsdk::MissionItem::get_camera_photo_interval_s() const
 ```
