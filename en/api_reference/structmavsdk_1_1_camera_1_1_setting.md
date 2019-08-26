@@ -16,6 +16,8 @@ std::string [setting_description](#structmavsdk_1_1_camera_1_1_setting_1a6a86a6d
 
 [Option](structmavsdk_1_1_camera_1_1_option.md) [option](#structmavsdk_1_1_camera_1_1_setting_1a7ae3fde46fe0446a52563e521ea3d3e7) {} -
 
+bool [is_range](#structmavsdk_1_1_camera_1_1_setting_1ac11ee3ca5ed15460b27409a9d516a759) {false} -
+
 
 ## Field Documentation
 
@@ -46,3 +48,12 @@ Option mavsdk::Camera::Setting::option {}
 
 
 Selected option.
+
+### is_range {#structmavsdk_1_1_camera_1_1_setting_1ac11ee3ca5ed15460b27409a9d516a759}
+
+```cpp
+bool mavsdk::Camera::Setting::is_range {false}
+```
+
+
+If [Option](structmavsdk_1_1_camera_1_1_option.md) is given as a range.

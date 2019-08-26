@@ -40,14 +40,14 @@ Type | Description
 enum [Result](#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | Possible results returned for camera commands.
 enum [Mode](#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) | [Camera](classmavsdk_1_1_camera.md) mode type.
 std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf))> [result_callback_t](#classmavsdk_1_1_camera_1af685f3246e2c9e909acd34eede604a78) | Callback type for asynchronous [Camera](classmavsdk_1_1_camera.md) calls.
-std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), const [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) &)> [mode_callback_t](#classmavsdk_1_1_camera_1a8e519161be6b81de5b0199ad7500f01c) | Callback type for asynchronous camera mode calls.
+std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), const [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) &)> [mode_callback_t](#classmavsdk_1_1_camera_1a80ac6809a31a1fef9e398396f48c230b) | Callback type for asynchronous camera mode calls.
 std::function< void([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65))> [subscribe_mode_callback_t](#classmavsdk_1_1_camera_1a2e192f7058babf50350ca67b4e182311) | Callback type for camera mode subscription.
 std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), [VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md))> [get_video_stream_info_callback_t](#classmavsdk_1_1_camera_1aee360f2b81c01de025e09822c9f4fefb) | Callback type for asynchronous video stream info call.
 std::function< void([VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md))> [subscribe_video_stream_info_callback_t](#classmavsdk_1_1_camera_1acf186b5a738ceae773680300c25b8963) | Callback type for video stream info.
 std::function< void([CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md))> [capture_info_callback_t](#classmavsdk_1_1_camera_1aa3e2d58e59d03e02d9ddcdb8979a9d9f) | Callback type for capture info updates.
 std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), [Status](structmavsdk_1_1_camera_1_1_status.md))> [get_status_callback_t](#classmavsdk_1_1_camera_1a032cddeed41b596da72cadd488967f81) | Callback type to get status.
 std::function< void([Status](structmavsdk_1_1_camera_1_1_status.md))> [subscribe_status_callback_t](#classmavsdk_1_1_camera_1a46daf718ef0b20ef7d3dcdb92edd9107) | Callback type to subscribe to status updates.
-std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), const [Option](structmavsdk_1_1_camera_1_1_option.md) &)> [get_option_callback_t](#classmavsdk_1_1_camera_1a978684b51350a53b991c942a6d5516e4) | Callback type to get an option.
+std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), const [Option](structmavsdk_1_1_camera_1_1_option.md) &)> [get_option_callback_t](#classmavsdk_1_1_camera_1a30144e05163adff09295188dcf854a8c) | Callback type to get an option.
 std::function< void(const std::vector< [Setting](structmavsdk_1_1_camera_1_1_setting.md) >)> [subscribe_current_settings_callback_t](#classmavsdk_1_1_camera_1aec89b50d9d7aacd3999025e6af9a4537) | Callback type to get the currently selected settings.
 std::function< void(const std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) >)> [subscribe_possible_setting_options_callback_t](#classmavsdk_1_1_camera_1a8e6d20f6aead2fdd7ef4f5eea87afc0b) | Callback type to get possible setting options.
 
@@ -72,8 +72,8 @@ void | [start_video_async](#classmavsdk_1_1_camera_1a59500409cb9b6b375e2fb95c4e6
 void | [stop_video_async](#classmavsdk_1_1_camera_1a2af00a4739fda46a97699a5445244934) (const [result_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1af685f3246e2c9e909acd34eede604a78) & callback) | Stop video capture (asynchronous).
 [Information](structmavsdk_1_1_camera_1_1_information.md) | [get_information](#classmavsdk_1_1_camera_1a4f53cc13faad6d1e7232881f0cdd4e8f) () | Get general camera information.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [set_mode](#classmavsdk_1_1_camera_1a557241d62d86433781fe86c0c039ada3) (const [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode) | Setter for camera mode (synchronous).
-void | [set_mode_async](#classmavsdk_1_1_camera_1ab8baf90189d997be33689444af28d299) (const [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode, const [mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8e519161be6b81de5b0199ad7500f01c) & callback) | Setter for camera mode (asynchronous).
-void | [get_mode_async](#classmavsdk_1_1_camera_1a8c6ea001c393a0d49d19be54d5195a44) (const [mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8e519161be6b81de5b0199ad7500f01c) & callback) | Getter for camera mode (asynchronous).
+void | [set_mode_async](#classmavsdk_1_1_camera_1ab8baf90189d997be33689444af28d299) (const [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode, const [mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a80ac6809a31a1fef9e398396f48c230b) & callback) | Setter for camera mode (asynchronous).
+void | [get_mode_async](#classmavsdk_1_1_camera_1a8c6ea001c393a0d49d19be54d5195a44) (const [mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a80ac6809a31a1fef9e398396f48c230b) & callback) | Getter for camera mode (asynchronous).
 void | [subscribe_mode](#classmavsdk_1_1_camera_1aa366c1ac76c8083996a97d86cb1769e7) (const [subscribe_mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2e192f7058babf50350ca67b4e182311) callback) | Async subscription for camera mode updates (asynchronous).
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [get_video_stream_info](#classmavsdk_1_1_camera_1a6e099070d34896daffae871b5def94e3) ([VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md) & info) | Get video stream information (synchronous).
 void | [get_video_stream_info_async](#classmavsdk_1_1_camera_1ad98bdefee6ea01c7e251fcd33dbb19bf) (const [get_video_stream_info_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aee360f2b81c01de025e09822c9f4fefb) callback) | Get video stream information (asynchronous).
@@ -85,8 +85,9 @@ void | [get_status_async](#classmavsdk_1_1_camera_1a12c606c914924700ec3290dfbb37
 void | [subscribe_status](#classmavsdk_1_1_camera_1a3823140cea0f7e145f99cb18a34b48ad) (const [subscribe_status_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a46daf718ef0b20ef7d3dcdb92edd9107) callback) | Subscribe to status updates (asynchronous).
 bool | [get_possible_setting_options](#classmavsdk_1_1_camera_1a4d9ef3283a3fde980b7a0d864f4a3d02) (std::vector< std::string > & settings) | Get settings that can be changed.
 bool | [get_possible_options](#classmavsdk_1_1_camera_1a62e79ba028ca57540c10e544737bfc34) (const std::string & setting_id, std::vector< [Camera::Option](structmavsdk_1_1_camera_1_1_option.md) > & options) | Get possible options for a setting that can be selected.
+bool | [is_setting_range](#classmavsdk_1_1_camera_1ad1337a07240b1c9192170b4a265bad7b) (const std::string & setting_id) | Query if setting is a range setting.
 [Camera::Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [get_option](#classmavsdk_1_1_camera_1a32787e97209786b50811ef2a04954560) (const std::string & setting_id, [Option](structmavsdk_1_1_camera_1_1_option.md) & option) | Get an option of a setting (synchronous).
-void | [get_option_async](#classmavsdk_1_1_camera_1a766d2406904f1a06e7668bb0c2d8dd38) (const std::string & setting_id, const [get_option_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a978684b51350a53b991c942a6d5516e4) & callback) | Get an option of a setting (asynchronous).
+void | [get_option_async](#classmavsdk_1_1_camera_1a766d2406904f1a06e7668bb0c2d8dd38) (const std::string & setting_id, const [get_option_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a30144e05163adff09295188dcf854a8c) & callback) | Get an option of a setting (asynchronous).
 void | [set_option_async](#classmavsdk_1_1_camera_1ad36497ef20292f8b719cd3f66844abf1) (const [result_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1af685f3246e2c9e909acd34eede604a78) & callback, const std::string & setting_id, const [Camera::Option](structmavsdk_1_1_camera_1_1_option.md) & option) | Set an option of a setting (asynchronous).
 void | [subscribe_current_settings](#classmavsdk_1_1_camera_1a86c3b93eff94958893f2a2eaf7b0af02) (const [subscribe_current_settings_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aec89b50d9d7aacd3999025e6af9a4537) & callback) | Subscribe to currently selected settings (asynchronous).
 void | [subscribe_possible_setting_options](#classmavsdk_1_1_camera_1a1f36ef38920baf86bd2943f09cbb0f00) (const [subscribe_possible_setting_options_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8e6d20f6aead2fdd7ef4f5eea87afc0b) & callback) | Subscribe to all possible setting options (asynchronous).
@@ -158,10 +159,10 @@ typedef std::function<void(Result)> mavsdk::Camera::result_callback_t
 Callback type for asynchronous [Camera](classmavsdk_1_1_camera.md) calls.
 
 
-### typedef mode_callback_t {#classmavsdk_1_1_camera_1a8e519161be6b81de5b0199ad7500f01c}
+### typedef mode_callback_t {#classmavsdk_1_1_camera_1a80ac6809a31a1fef9e398396f48c230b}
 
 ```cpp
-typedef std::function<void(Result, const Mode &)> mavsdk::Camera::mode_callback_t
+typedef std::function<void(Result, const Mode&)> mavsdk::Camera::mode_callback_t
 ```
 
 
@@ -228,10 +229,10 @@ typedef std::function<void(Status)> mavsdk::Camera::subscribe_status_callback_t
 Callback type to subscribe to status updates.
 
 
-### typedef get_option_callback_t {#classmavsdk_1_1_camera_1a978684b51350a53b991c942a6d5516e4}
+### typedef get_option_callback_t {#classmavsdk_1_1_camera_1a30144e05163adff09295188dcf854a8c}
 
 ```cpp
-typedef std::function<void(Result, const Option &)> mavsdk::Camera::get_option_callback_t
+typedef std::function<void(Result, const Option&)> mavsdk::Camera::get_option_callback_t
 ```
 
 
@@ -506,7 +507,7 @@ Setter for camera mode (asynchronous).
 **Parameters**
 
 * const [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) **mode** - [Camera](classmavsdk_1_1_camera.md) mode to set.
-* const [mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8e519161be6b81de5b0199ad7500f01c)& **callback** - Function to call with result of request.
+* const [mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a80ac6809a31a1fef9e398396f48c230b)& **callback** - Function to call with result of request.
 
 ### get_mode_async() {#classmavsdk_1_1_camera_1a8c6ea001c393a0d49d19be54d5195a44}
 ```cpp
@@ -519,7 +520,7 @@ Getter for camera mode (asynchronous).
 
 **Parameters**
 
-* const [mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8e519161be6b81de5b0199ad7500f01c)& **callback** - Function to call with result of request.
+* const [mode_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a80ac6809a31a1fef9e398396f48c230b)& **callback** - Function to call with result of request.
 
 ### subscribe_mode() {#classmavsdk_1_1_camera_1aa366c1ac76c8083996a97d86cb1769e7}
 ```cpp
@@ -688,6 +689,24 @@ Get possible options for a setting that can be selected.
 
 &emsp;bool - true if request was successful.
 
+### is_setting_range() {#classmavsdk_1_1_camera_1ad1337a07240b1c9192170b4a265bad7b}
+```cpp
+bool mavsdk::Camera::is_setting_range(const std::string &setting_id)
+```
+
+
+Query if setting is a range setting.
+
+A range setting is not given by possible options but rather by [min, max] or [min, max, interval].
+
+**Parameters**
+
+* const std::string& **setting_id** - Name of setting (machine readable).
+
+**Returns**
+
+&emsp;bool - true if it is a range setting.
+
 ### get_option() {#classmavsdk_1_1_camera_1a32787e97209786b50811ef2a04954560}
 ```cpp
 Camera::Result mavsdk::Camera::get_option(const std::string &setting_id, Option &option)
@@ -718,7 +737,7 @@ Get an option of a setting (asynchronous).
 **Parameters**
 
 * const std::string& **setting_id** - The machine readable name of the setting.
-* const [get_option_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a978684b51350a53b991c942a6d5516e4)& **callback** - The callback to get the result and selected option.
+* const [get_option_callback_t](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a30144e05163adff09295188dcf854a8c)& **callback** - The callback to get the result and selected option.
 
 ### set_option_async() {#classmavsdk_1_1_camera_1ad36497ef20292f8b719cd3f66844abf1}
 ```cpp

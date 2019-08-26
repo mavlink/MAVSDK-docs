@@ -28,6 +28,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Mavsdk](#classmavsdk_1_1_mavsdk_1aad81f6df52096ea28d4e646ad7339461) () | Constructor.
 &nbsp; | [~Mavsdk](#classmavsdk_1_1_mavsdk_1ac1549f715d6857711b9b9e364a4ca351) () | Destructor.
+std::string | [version](#classmavsdk_1_1_mavsdk_1a576c6c3213f38948a5ae1a14bc4c5b57) () const | Returns the version of MAVSDK.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_any_connection](#classmavsdk_1_1_mavsdk_1a229888e2931c16d11edbed07b03174d4) (const std::string & connection_url) | Adds Connection via URL.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_udp_connection](#classmavsdk_1_1_mavsdk_1a605d3a89cd527222bf131b2c036dc899) (int local_port=[DEFAULT_UDP_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1affddcc7c7849ed86a0c7dab1166e657a)) | Adds a UDP connection to the specified port number.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_udp_connection](#classmavsdk_1_1_mavsdk_1a20b51cc972876eef5101e35a5c289c13) (const std::string & local_ip, int local_port=[DEFAULT_UDP_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1affddcc7c7849ed86a0c7dab1166e657a)) | Adds a UDP connection to the specified port number and local interface.
@@ -35,11 +36,11 @@ Type | Name | Description
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a950038afdd201f89e97a3e60e227869a) (const std::string & remote_ip, int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific IP address and port number.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_serial_connection](#classmavsdk_1_1_mavsdk_1a8f27dd954d74b0afdfa4348ce49a10a1) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a870d15142914f1db564c12f385d5489b)) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
 void | [set_configuration](#classmavsdk_1_1_mavsdk_1acaeea86253493dc15b6540d2100a1b86) ([Configuration](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413c) configuration) | Set `Configuration` of SDK.
-std::vector< uint64_t > | [system_uuids](#classmavsdk_1_1_mavsdk_1a80bd9c663d0e03c24f029fd77e914c3c) () const | Get vector of system UUIDs.
-[System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a2f3e89f37fffbbf1ee2c2089086ed33c) () const | Get the first discovered system.
-[System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a827200142a79685dd87fe200474780b8) (uint64_t uuid)const | Get the system with the specified UUID.
-bool | [is_connected](#classmavsdk_1_1_mavsdk_1aced99aea3a52c1245b1d80ff1f22cbd2) () const | Returns `true` if exactly one system is currently connected.
-bool | [is_connected](#classmavsdk_1_1_mavsdk_1a131d125416ede819e33dbf6ffc29a3ce) (uint64_t uuid)const | Returns `true` if a system is currently connected.
+std::vector< uint64_t > | [system_uuids](#classmavsdk_1_1_mavsdk_1adadb5c30e0397bc5a05d8dcad4903beb) () const | Get vector of system UUIDs.
+[System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a2a9b6f33eef4c610174d541d32cb16bb) () const | Get the first discovered system.
+[System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a3816fb199b4e3a32e36ef730d2abc1ba) (uint64_t uuid)const | Get the system with the specified UUID.
+bool | [is_connected](#classmavsdk_1_1_mavsdk_1a40c4d9acef4da2a491a4c391b78486e3) () const | Returns `true` if exactly one system is currently connected.
+bool | [is_connected](#classmavsdk_1_1_mavsdk_1a408b61bc1daf12daf8f8ac292f8ff552) (uint64_t uuid)const | Returns `true` if a system is currently connected.
 void | [register_on_discover](#classmavsdk_1_1_mavsdk_1aa8d55ab10da8f1b868003b44e99c2ecc) ([event_callback_t](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) callback) | Register callback for system discovery.
 void | [register_on_timeout](#classmavsdk_1_1_mavsdk_1a4baa7d2dd487e9cff12f5dda11ba3262) ([event_callback_t](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) callback) | Register callback for system timeout.
 
@@ -116,6 +117,20 @@ Value | Description
 
 ## Member Function Documentation
 
+
+### version() {#classmavsdk_1_1_mavsdk_1a576c6c3213f38948a5ae1a14bc4c5b57}
+```cpp
+std::string mavsdk::Mavsdk::version() const
+```
+
+
+Returns the version of MAVSDK.
+
+Note, you're not supposed to request the version too many times.
+
+**Returns**
+
+&emsp;std::string - A string containing the version.
 
 ### add_any_connection() {#classmavsdk_1_1_mavsdk_1a229888e2931c16d11edbed07b03174d4}
 ```cpp
@@ -244,7 +259,7 @@ The default configuration is [Configuration::GroundStation](classmavsdk_1_1_mavs
 
 * [Configuration](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413c) **configuration** - Configuration chosen.
 
-### system_uuids() {#classmavsdk_1_1_mavsdk_1a80bd9c663d0e03c24f029fd77e914c3c}
+### system_uuids() {#classmavsdk_1_1_mavsdk_1adadb5c30e0397bc5a05d8dcad4903beb}
 ```cpp
 std::vector<uint64_t> mavsdk::Mavsdk::system_uuids() const
 ```
@@ -258,7 +273,7 @@ This returns a vector of the UUIDs of all systems that have been discovered. If 
 
 &emsp;std::vector< uint64_t > - A vector containing the UUIDs.
 
-### system() {#classmavsdk_1_1_mavsdk_1a2f3e89f37fffbbf1ee2c2089086ed33c}
+### system() {#classmavsdk_1_1_mavsdk_1a2a9b6f33eef4c610174d541d32cb16bb}
 ```cpp
 System& mavsdk::Mavsdk::system() const
 ```
@@ -272,7 +287,7 @@ This returns the first discovered system or a null system if no system has yet b
 
 &emsp;[System](classmavsdk_1_1_system.md) & - A reference to a system.
 
-### system() {#classmavsdk_1_1_mavsdk_1a827200142a79685dd87fe200474780b8}
+### system() {#classmavsdk_1_1_mavsdk_1a3816fb199b4e3a32e36ef730d2abc1ba}
 ```cpp
 System& mavsdk::Mavsdk::system(uint64_t uuid) const
 ```
@@ -290,7 +305,7 @@ This returns a system for a given UUID if such a system has been discovered and 
 
 &emsp;[System](classmavsdk_1_1_system.md) & - A reference to the specified system.
 
-### is_connected() {#classmavsdk_1_1_mavsdk_1aced99aea3a52c1245b1d80ff1f22cbd2}
+### is_connected() {#classmavsdk_1_1_mavsdk_1a40c4d9acef4da2a491a4c391b78486e3}
 ```cpp
 bool mavsdk::Mavsdk::is_connected() const
 ```
@@ -307,7 +322,7 @@ If multiple systems have connected, this will return `false`.
 
 &emsp;bool - `true` if exactly one system is connected.
 
-### is_connected() {#classmavsdk_1_1_mavsdk_1a131d125416ede819e33dbf6ffc29a3ce}
+### is_connected() {#classmavsdk_1_1_mavsdk_1a408b61bc1daf12daf8f8ac292f8ff552}
 ```cpp
 bool mavsdk::Mavsdk::is_connected(uint64_t uuid) const
 ```

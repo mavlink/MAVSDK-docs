@@ -8,7 +8,7 @@
 
 
 **See Also:**
-- [get_config()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a5a39cc685ea4288363ef38ebbd628062), [set_config()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a1d7c0e5598769365aeaec8026578a977)
+- [get_config()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1ae952cb2adeeacabcf7942fb12e0aa14f), [set_config()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a1d7c0e5598769365aeaec8026578a977)
 - [Parameter Reference](https://docs.px4.io/en/advanced_config/parameter_reference.html#follow-target) (PX4 User Guide)
 
 
