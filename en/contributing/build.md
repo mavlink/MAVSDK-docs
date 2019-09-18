@@ -258,7 +258,7 @@ The C++ source code is annotated using comments using [Doxygen](http://doxygen.n
 
 Extract the documentation to markdown files (one per class) on macOS or Linux using the commands:
 ```bash
-rm -rf docs/install  # Remove previous docs
+rm -rf tools/docs # Remove previous docs
 ./tools/generate_docs.sh
 ```
 The files are created in **/install/docs/markdown**.
