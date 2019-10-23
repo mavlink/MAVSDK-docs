@@ -252,6 +252,33 @@ To build the backend on Windows:
    cmake --build build/default
    ```
 
+### Cross compilation using dockcross {#cross_compilation_dockcross}
+
+To compile for platforms like the Raspberry Pi, BeagleBone Blue or Nvidia Jetson, cross compilation is typically faster native compilation on the "embedded" device.
+
+We recommend to use [dockcross](https://github.com/dockcross/dockcross) which is a very convenient tool for cross compilation based on docker supporting many platforms.
+
+For example, use the commands below to build for `armv7`:
+
+1. Make sure docker is installed on your system.
+2. Navigator into the SDK directory, and use the commands below:
+   ```
+   cd MAVSDK
+   docker run --rm dockcross/linux-armv7 > ./dockcross-linux-armv7
+   chmod +x ./dockcross-linux-armv7
+   ./dockcross-linux-armv7 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -Bbuild/linux-armv7 -S.
+   ./dockcross-linux-armv7 cmake --build build/linux-armv7 -j 8
+   ```
+3. If all goes well, `mavsdk_server` is built. You can check the file with:
+   ```
+   ./dockcross-linux-armv7 file build/linux-armv7-release/src/backend/src/mavsdk_server
+   build/linux-armv7-release/src/backend/src/mavsdk_server: ELF 32-bit LSB executable, ARM, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 4.10.8, not stripped
+   ```
+4. This built binary can now be copied to the device:
+   ```
+   cp build/linux-armv7/src/backend/src/mavsdk_server somewhere/else
+   ```
+
 ## Build API Reference Documentation {#build_api_reference}
 
 The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax.
