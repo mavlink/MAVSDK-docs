@@ -254,14 +254,14 @@ To build the backend on Windows:
 
 ### Cross compilation using dockcross {#cross_compilation_dockcross}
 
-To compile for platforms like the Raspberry Pi, BeagleBone Blue or Nvidia Jetson, cross compilation is typically faster native compilation on the "embedded" device.
+To compile for platforms like the Raspberry Pi, BeagleBone Blue or Nvidia Jetson, cross compilation is typically faster than native compilation on the "embedded" device.
 
 We recommend to use [dockcross](https://github.com/dockcross/dockcross) which is a very convenient tool for cross compilation based on docker supporting many platforms.
 
 For example, use the commands below to build for `armv7`:
 
 1. Make sure docker is installed on your system.
-2. Navigator into the SDK directory, and use the commands below:
+2. Navigate into the SDK directory, and use the commands below:
    ```
    cd MAVSDK
    docker run --rm dockcross/linux-armv7 > ./dockcross-linux-armv7
