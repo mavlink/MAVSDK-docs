@@ -216,7 +216,7 @@ See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
 The MAVSDK programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/mavlink/MAVSDK-Python#dronecodesdk-python)) share a common backend, which may optionally be built as part of the C++ library.
 
-The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option. Otherwise the build is exactly the same as usual. 
+The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option. Otherwise the build is exactly the same as usual.
 
 > **Tip** When building the backend, we usually like to link all the dependencies statically, and therefore we set `-DBUILD_SHARED_LIBS=OFF` (or don't specify it, because the default is `OFF`).
 
