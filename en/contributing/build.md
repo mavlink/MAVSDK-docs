@@ -216,7 +216,7 @@ See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
 The MAVSDK programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/mavlink/MAVSDK-Python#dronecodesdk-python)) share a common backend, which may optionally be built as part of the C++ library.
 
-The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option. Otherwise the build is exactly the same as usual. 
+The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option. Otherwise the build is exactly the same as usual.
 
 > **Tip** When building the backend, we usually like to link all the dependencies statically, and therefore we set `-DBUILD_SHARED_LIBS=OFF` (or don't specify it, because the default is `OFF`).
 
@@ -250,6 +250,33 @@ To build the backend on Windows:
    ```
    cmake -G "Visual Studio 15 2017" -DBUILD_BACKEND=ON -Bbuild/default -H.
    cmake --build build/default
+   ```
+
+### Cross compilation using dockcross {#cross_compilation_dockcross}
+
+To compile for platforms like the Raspberry Pi, BeagleBone Blue or Nvidia Jetson, cross compilation is typically faster than native compilation on the "embedded" device.
+
+We recommend to use [dockcross](https://github.com/dockcross/dockcross) which is a very convenient tool for cross compilation based on docker supporting many platforms.
+
+For example, use the commands below to build for `armv7`:
+
+1. Make sure docker is installed on your system.
+2. Navigate into the SDK directory, and use the commands below:
+   ```
+   cd MAVSDK
+   docker run --rm dockcross/linux-armv7 > ./dockcross-linux-armv7
+   chmod +x ./dockcross-linux-armv7
+   ./dockcross-linux-armv7 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -Bbuild/linux-armv7 -S.
+   ./dockcross-linux-armv7 cmake --build build/linux-armv7 -j 8
+   ```
+3. If all goes well, `mavsdk_server` is built. You can check the file with:
+   ```
+   ./dockcross-linux-armv7 file build/linux-armv7-release/src/backend/src/mavsdk_server
+   build/linux-armv7-release/src/backend/src/mavsdk_server: ELF 32-bit LSB executable, ARM, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 4.10.8, not stripped
+   ```
+4. This built binary can now be copied to the device:
+   ```
+   cp build/linux-armv7/src/backend/src/mavsdk_server somewhere/else
    ```
 
 ## Build API Reference Documentation {#build_api_reference}
