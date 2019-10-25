@@ -30,7 +30,7 @@ The current status is:
 - MAVSDK-Swift (2018): Used in production.
 - MAVSDK-Python (2019): Used in production.
 - MAVSDK-Java (2019): Beta.
-- MAVSDK-JavaScript (2019). Proof of concept.
+- MAVSDK-JavaScript (2019): Proof of concept.
 - MAVSDK-Rust (2019): Proof of concept.
 - Other cross-platform wrappers are actively being developed.
 
