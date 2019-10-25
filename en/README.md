@@ -28,9 +28,10 @@ The MAVSDK is a robust and well-tested library that is already being used in pro
 The current status is:
 - C++ core library (2016). Used in production.
 - MAVSDK-Swift (2018): Used in production.
-- MAVSDK-Python (2019): First PyPi release 2019.
-- MAVSDK-Java (2019): Prototype.
+- MAVSDK-Python (2019): Used in production.
+- MAVSDK-Java (2019): Beta.
 - MAVSDK-JavaScript (2019). Proof of concept.
+- MAVSDK-Rust (2019): Proof of concept.
 - Other cross-platform wrappers are actively being developed.
 
 
