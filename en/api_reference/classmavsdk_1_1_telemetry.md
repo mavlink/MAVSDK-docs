@@ -34,7 +34,11 @@ struct [IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md)
 
 struct [MagneticFieldNED](structmavsdk_1_1_telemetry_1_1_magnetic_field_n_e_d.md)
 
+struct [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md)
+
 struct [Position](structmavsdk_1_1_telemetry_1_1_position.md)
+
+struct [PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md)
 
 struct [PositionNED](structmavsdk_1_1_telemetry_1_1_position_n_e_d.md)
 
@@ -43,6 +47,8 @@ struct [PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_
 struct [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)
 
 struct [RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md)
+
+struct [SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md)
 
 struct [StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md)
 
@@ -77,6 +83,7 @@ std::function< void([RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) [rc
 std::function< void(uint64_t time_us)> [unix_epoch_time_callback_t](#classmavsdk_1_1_telemetry_1a1738efef61d7b3be00f91a8ccc46bcf0) | Callback type for Unix Epoch Time updates.
 std::function< void([ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) [actuator_control_target](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a5b70793e4aada7613443ebe668f9f1bf))> [actuator_control_target_callback_t](#classmavsdk_1_1_telemetry_1a0e756d50d05d3d42314e160026c8ca5b) | Callback type for actuator control target updates (asynchronous).
 std::function< void([ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) [actuator_output_status](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa4c259b8a3c332847fe52e0a6b3cac74))> [actuator_output_status_callback_t](#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1) | Callback type for actuator output status target updates (asynchronous).
+std::function< void([Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) odometry)> [odometry_callback_t](#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2) | Callback type for odometry updates (asynchronous).
 
 ## Public Member Functions
 
@@ -99,6 +106,7 @@ Type | Name | Description
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_rc_status](#classmavsdk_1_1_telemetry_1a5ab00a099c7a7052433e652ed19466fd) (double rate_hz) | Set rate of RC status updates (synchronous).
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_actuator_control_target](#classmavsdk_1_1_telemetry_1ac20043a9f4159be71f34b418c440e321) (double rate_hz) | Set rate of actuator controls updates (synchronous).
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_actuator_output_status](#classmavsdk_1_1_telemetry_1a33daa659d9d1a1a0654a120c4e24bc1f) (double rate_hz) | Set rate of actuator output status updates (synchronous).
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_odometry](#classmavsdk_1_1_telemetry_1ab6d03cdb74a38aba42f0370d455b85d8) (double rate_hz) | Set rate of odometry updates (synchronous).
 void | [set_rate_position_velocity_ned_async](#classmavsdk_1_1_telemetry_1a618da18fabb0c13f07f1eb0c3e1e3395) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of kinematic (position and velocity) updates (asynchronous).
 void | [set_rate_position_async](#classmavsdk_1_1_telemetry_1aa8d3e034d11fccb1533d1a782618f4a4) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of position updates (asynchronous).
 void | [set_rate_home_position_async](#classmavsdk_1_1_telemetry_1a3b9a4de97101c11420b29f6ff010b164) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of home position updates (asynchronous).
@@ -111,7 +119,8 @@ void | [set_rate_gps_info_async](#classmavsdk_1_1_telemetry_1a09d9232f3fc83de09e
 void | [set_rate_battery_async](#classmavsdk_1_1_telemetry_1aa0c57683779b276c196543d1b11b4794) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of battery status updates (asynchronous).
 void | [set_rate_rc_status_async](#classmavsdk_1_1_telemetry_1ab293eac4daab1b8628e3adce311312ec) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of RC status updates (asynchronous).
 void | [set_rate_actuator_control_target_async](#classmavsdk_1_1_telemetry_1a5b05b2c7375376d4f02f17f9dbb318d2) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of actuator control target updates (asynchronous).
-void | [set_rate_actuator_output_status_async](#classmavsdk_1_1_telemetry_1ad02073ccb7735a51992a2499b605ebe4) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | et rate of actuator control target updates (asynchronous).
+void | [set_rate_actuator_output_status_async](#classmavsdk_1_1_telemetry_1ad02073ccb7735a51992a2499b605ebe4) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of actuator control target updates (asynchronous).
+void | [set_rate_odometry_async](#classmavsdk_1_1_telemetry_1ab0a70e00299c959a875d0a9ae89391fa) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of odometry updates (asynchronous).
 void | [set_unix_epoch_time_async](#classmavsdk_1_1_telemetry_1aecaac11aac355ed79d47b7fcf786fb2c) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of Unix Epoch Time update (asynchronous).
 [PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) | [position_velocity_ned](#classmavsdk_1_1_telemetry_1aeb1bbc4410ba6b437123c239b93bb83f) () const | Get the current kinematic (position and velocity) in NED frame (synchronous).
 [Position](structmavsdk_1_1_telemetry_1_1_position.md) | [position](#classmavsdk_1_1_telemetry_1a34bd2ed00a6a9fdf9c93e4dd2928e01c) () const | Get the current position (synchronous).
@@ -156,6 +165,7 @@ void | [health_all_ok_async](#classmavsdk_1_1_telemetry_1ae1a2f05a126a88b19e7807
 void | [landed_state_async](#classmavsdk_1_1_telemetry_1ac4a2cdf42f9597728d825f984f690f87) ([landed_state_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aaf77ff66f00bd82c911a7a76d15de41c) callback) | Subscribe to Landed state updates (asynchronous).
 void | [actuator_control_target_async](#classmavsdk_1_1_telemetry_1af9dcac19a2cdb6aee0815007c3b62eec) ([actuator_control_target_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0e756d50d05d3d42314e160026c8ca5b) callback) | Subscribe to actuator control target updates (asynchronous).
 void | [actuator_output_status_async](#classmavsdk_1_1_telemetry_1a97d11107e19675a9f5971423167cd307) ([actuator_output_status_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1) callback) | Subscribe to actuator output status target updates (asynchronous).
+void | [odometry_async](#classmavsdk_1_1_telemetry_1a12779f43e06fa2f69bf2a96f3b74cd7a) ([odometry_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2) callback) | Subscribe to odometry updates (asynchronous).
 void | [rc_status_async](#classmavsdk_1_1_telemetry_1a5c1cba91eb65f738470c51da4d74aecc) ([rc_status_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ade4c432133b83aa9612528117a2cd6d6) callback) | Subscribe to RC status updates (asynchronous).
 void | [unix_epoch_time_async](#classmavsdk_1_1_telemetry_1a31931da80d4ef9352b32e93e13d762b3) ([unix_epoch_time_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1738efef61d7b3be00f91a8ccc46bcf0) callback) | Subscribe to Unix Epoch Time updates (asynchronous).
 const [Telemetry](classmavsdk_1_1_telemetry.md) & | [operator=](#classmavsdk_1_1_telemetry_1a703ac978c925be8806921925cf16aca9) (const [Telemetry](classmavsdk_1_1_telemetry.md) &)=delete | Equality operator (object is not copyable).
@@ -498,6 +508,20 @@ Callback type for actuator output status target updates (asynchronous).
 
 * **callback** - Function to call with updates.
 
+### typedef odometry_callback_t {#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2}
+
+```cpp
+typedef std::function<void(Odometry odometry)> mavsdk::Telemetry::odometry_callback_t
+```
+
+
+Callback type for odometry updates (asynchronous).
+
+
+**Parameters**
+
+* **callback** - Function to call with updates.
+
 ## Member Enumeration Documentation
 
 
@@ -781,7 +805,25 @@ Result mavsdk::Telemetry::set_rate_actuator_output_status(double rate_hz)
 
 Set rate of actuator output status updates (synchronous).
 
-> **Note** o stop sending it completely, use a rate_hz of -1, for default rate use 0.
+> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
+
+**Parameters**
+
+* double **rate_hz** - Rate in Hz.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_odometry() {#classmavsdk_1_1_telemetry_1ab6d03cdb74a38aba42f0370d455b85d8}
+```cpp
+Result mavsdk::Telemetry::set_rate_odometry(double rate_hz)
+```
+
+
+Set rate of odometry updates (synchronous).
+
+> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
 
 **Parameters**
 
@@ -981,7 +1023,22 @@ void mavsdk::Telemetry::set_rate_actuator_output_status_async(double rate_hz, re
 ```
 
 
-et rate of actuator control target updates (asynchronous).
+Set rate of actuator control target updates (asynchronous).
+
+> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
+
+**Parameters**
+
+* double **rate_hz** - Rate in Hz.
+* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
+
+### set_rate_odometry_async() {#classmavsdk_1_1_telemetry_1ab0a70e00299c959a875d0a9ae89391fa}
+```cpp
+void mavsdk::Telemetry::set_rate_odometry_async(double rate_hz, result_callback_t callback)
+```
+
+
+Set rate of odometry updates (asynchronous).
 
 > **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
 
@@ -1568,6 +1625,19 @@ Subscribe to actuator output status target updates (asynchronous).
 **Parameters**
 
 * [actuator_output_status_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1) **callback** - Function to call with updates.
+
+### odometry_async() {#classmavsdk_1_1_telemetry_1a12779f43e06fa2f69bf2a96f3b74cd7a}
+```cpp
+void mavsdk::Telemetry::odometry_async(odometry_callback_t callback)
+```
+
+
+Subscribe to odometry updates (asynchronous).
+
+
+**Parameters**
+
+* [odometry_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2) **callback** - Function to call with updates.
 
 ### rc_status_async() {#classmavsdk_1_1_telemetry_1a5c1cba91eb65f738470c51da4d74aecc}
 ```cpp
