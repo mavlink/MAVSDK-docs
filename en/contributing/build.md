@@ -151,10 +151,10 @@ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=i
 cmake --build build/default --target install
 ```
 
-> **Tip** If you already have run cmake without setting `CMAKE_INSTALL_PREFIX`, you may need to clean the build first:
-     ```sh
-     rm -rf build/default
-     ```
+> **Tip** If you already have run *cmake* without setting `CMAKE_INSTALL_PREFIX`, you may need to clean the build first:
+  ```sh
+  rm -rf build/default
+  ```
 
 ## Build for Android {#build_cpp_android}
 
