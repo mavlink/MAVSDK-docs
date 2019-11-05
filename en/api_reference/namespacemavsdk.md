@@ -15,16 +15,20 @@ Namespace for all mavsdk types.
 * [mavsdk::Gimbal](classmavsdk_1_1_gimbal.md)
 * [mavsdk::Info](classmavsdk_1_1_info.md)
 * [mavsdk::LogFiles](classmavsdk_1_1_log_files.md)
+* [mavsdk::MavlinkFTP](classmavsdk_1_1_mavlink_f_t_p.md)
 * [mavsdk::MavlinkPassthrough](classmavsdk_1_1_mavlink_passthrough.md)
 * [mavsdk::Mavsdk](classmavsdk_1_1_mavsdk.md)
 * [mavsdk::Mission](classmavsdk_1_1_mission.md)
 * [mavsdk::MissionItem](classmavsdk_1_1_mission_item.md)
 * [mavsdk::MissionRaw](classmavsdk_1_1_mission_raw.md)
+* [mavsdk::Mocap](classmavsdk_1_1_mocap.md)
 * [mavsdk::Offboard](classmavsdk_1_1_offboard.md)
 * [mavsdk::Param](classmavsdk_1_1_param.md)
 * [mavsdk::PluginBase](classmavsdk_1_1_plugin_base.md)
+* [mavsdk::Shell](classmavsdk_1_1_shell.md)
 * [mavsdk::System](classmavsdk_1_1_system.md)
 * [mavsdk::Telemetry](classmavsdk_1_1_telemetry.md)
+* [mavsdk::Tune](classmavsdk_1_1_tune.md)
 
 ## Enumerations
 
@@ -63,6 +67,28 @@ std::ostream & | [operator<<](#namespacemavsdk_1a56a292413ed3441ae4ab74c998b6168
 bool | [operator==](#namespacemavsdk_1a7dd59dabb4ce1a28a4b28d033415e00d) (const [MissionItem](classmavsdk_1_1_mission_item.md) & lhs, const [MissionItem](classmavsdk_1_1_mission_item.md) & rhs) | Equal operator to compare two [MissionItem](classmavsdk_1_1_mission_item.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1a285b7c8eee38fd978aea94f48d31b549) (std::ostream & str, [MissionItem](classmavsdk_1_1_mission_item.md) const & mission_item) | Stream operator to print infos about a [MissionItem](classmavsdk_1_1_mission_item.md).
 std::ostream & | [operator<<](#namespacemavsdk_1ae2ef3a70228f55484d7cdb99b6f1d951) (std::ostream & str, [MissionItem::CameraAction](classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1a132fb8fb01a95f7da406d6691a699b33) const & camera_action) | Stream operator to print infos about a [MissionItem::CameraAction](classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1a132fb8fb01a95f7da406d6691a699b33).
+bool | [operator==](#namespacemavsdk_1aa6ca8f8a1e35a533554f103b2f10db41) (const [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md) & lhs, const [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md) & rhs) | Equal operator to compare two [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1a03a5b0c96cf3567c7279804fbe727a7a) (std::ostream & str, [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md) const & quaternion) | Stream operator to print information about a [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md).
+bool | [operator==](#namespacemavsdk_1a64f0c51b2730394b5c7438fa5e50fa82) (const [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) & lhs, const [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) & rhs) | Equal operator to compare two [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1a086c599090c5a8c2fb1ec6e7263e7d06) (std::ostream & str, [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) const & vision_position_estimate) | Stream operator to print information about a [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md).
+bool | [operator==](#namespacemavsdk_1af3b45742c0be2437dc3701147e764fd3) (const [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) & lhs, const [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) & rhs) | Equal operator to compare two [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1ae3c2087baeef27611f79b6bef105ad3b) (std::ostream & str, [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) const & attitude_position_mocap) | Stream operator to print information about a [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md).
+bool | [operator==](#namespacemavsdk_1a975dba86049dde7d218afc52c6004b88) (const [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md) & lhs, const [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md) & rhs) | Equal operator to compare two [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1ae53ca8e7988ad9bf7dbbf8041256d487) (std::ostream & str, [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md) const & odometry) | Stream operator to print information about a [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md).
+bool | [operator==](#namespacemavsdk_1a5bb6eb4f47b8e3ea02675eadf69fc6de) (const [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) & lhs, const [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) & rhs) | Equal operator to compare two [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) objects.
+bool | [operator!=](#namespacemavsdk_1ae3e5c998cc1ce436cb393a821b167449) (const [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) & lhs, const [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) & rhs) | Non Equal operator to compare two [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1a62300b5034352beca70ce90ad65920b5) (std::ostream & str, [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) const & position_body) | Stream operator to print information about a [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md).
+bool | [operator==](#namespacemavsdk_1a3eefe348e2abeb69150b2f8bc01f51b5) (const [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) & lhs, const [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) & rhs) | Equal operator to compare two [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) objects.
+bool | [operator!=](#namespacemavsdk_1aa9c9594da13d2814ded80f2b26202b96) (const [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) & lhs, const [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) & rhs) | Non Equal operator to compare two [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1a9bb8ac7c2475dfe4a151077580cf6a96) (std::ostream & str, [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) const & angle_body) | Stream operator to print information about a [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md).
+bool | [operator==](#namespacemavsdk_1a93e81295eeaec384db2b2a273974668c) (const [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) & lhs, const [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) & rhs) | Equal operator to compare two [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) objects.
+bool | [operator!=](#namespacemavsdk_1a20b7d15ef3f03b149628dd1681e56138) (const [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) & lhs, const [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) & rhs) | Non Equal operator to compare two [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1ae69dd5fdad5e32620080487b8a57b4f2) (std::ostream & str, [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) const & speed_body) | Stream operator to print information about a [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md).
+bool | [operator==](#namespacemavsdk_1a4e18c80ff2e51bd241b708f4cc884001) (const [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) & lhs, const [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) & rhs) | Equal operator to compare two [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) objects.
+bool | [operator!=](#namespacemavsdk_1a86d6cd74fda80037e2dd7e1f6f20c1d5) (const [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) & lhs, const [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) & rhs) | Non Equal operator to compare two [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1a74b74261cd75519d0775cf4c621b12b0) (std::ostream & str, [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) const & covariance) | Stream operator to print information about a [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md).
+bool | [operator==](#namespacemavsdk_1aa48b62768a00ab58b904a625693c5bd2) (const [Mocap::AngularVelocityBody](structmavsdk_1_1_mocap_1_1_angular_velocity_body.md) & lhs, const [Mocap::AngularVelocityBody](structmavsdk_1_1_mocap_1_1_angular_velocity_body.md) & rhs) | Equal operator to compare two [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1ae5c20947cf964462988bdd7b2dfffc8f) (std::ostream & str, [Mocap::AngularVelocityBody](structmavsdk_1_1_mocap_1_1_angular_velocity_body.md) const & angular_velocity_body) | Stream operator to print information about a [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md).
 bool | [operator==](#namespacemavsdk_1a22456bb4a0614ac6753f195e88e98771) (const [Offboard::ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) & lhs, const [Offboard::ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) & rhs) | Equal operator to compare two [Offboard::ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) objects.
 bool | [operator==](#namespacemavsdk_1a8fffe4f649d09ed4e0bddb93aa760927) (const [Offboard::Attitude](structmavsdk_1_1_offboard_1_1_attitude.md) & lhs, const [Offboard::Attitude](structmavsdk_1_1_offboard_1_1_attitude.md) & rhs) | Equal operator to compare two [Offboard::Attitude](structmavsdk_1_1_offboard_1_1_attitude.md) objects.
 bool | [operator==](#namespacemavsdk_1aa855b987ed2db4e060173cc7e56e99ac) (const [Offboard::AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) & lhs, const [Offboard::AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) & rhs) | Equal operator to compare two [Offboard::AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) objects.
@@ -75,6 +101,8 @@ bool | [operator==](#namespacemavsdk_1ab9227f4d8cdcc151ef5402a3cdbf435f) (const 
 std::ostream & | [operator<<](#namespacemavsdk_1abf2d76a08000245b4ea66aa0486c17f8) (std::ostream & str, [Offboard::VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) const & velocity_body_yawspeed) | Stream operator to print information about a [Offboard::VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md).
 bool | [operator==](#namespacemavsdk_1ab2170a8ed79eea8749c794dba578ec46) (const [Offboard::VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) & lhs, const [Offboard::VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) & rhs) | Equal operator to compare two [Offboard::VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1a437c3579b70f077f836ffe8fd04c0a6a) (std::ostream & str, [Offboard::VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) const & velocity_ned_yaw) | Stream operator to print information about a [Offboard::VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md).
+bool | [operator==](#namespacemavsdk_1acf7945a45f2162da2f6c5e5fbef1cd11) (const [Shell::ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md) & lhs, const [Shell::ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md) & rhs) | Equal operator to compare two `Shell::Quaternion` objects.
+std::ostream & | [operator<<](#namespacemavsdk_1a27b2c9ca4d68b07c6ae8e9874d046b7e) (std::ostream & str, [Shell::ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md) const & shell_message) | Stream operator to print information about a `Shell::Quaternion`.
 bool | [operator==](#namespacemavsdk_1a2f38aaafc84b4b7f46fd33cbbf3b8cba) (const [Telemetry::PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) & lhs, const [Telemetry::PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) & rhs) | Equal operator to compare two [Telemetry::PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) objects.
 bool | [operator==](#namespacemavsdk_1a191d2a0c2c6e28c1f49afb4bc4fe9b87) (const [Telemetry::Position](structmavsdk_1_1_telemetry_1_1_position.md) & lhs, const [Telemetry::Position](structmavsdk_1_1_telemetry_1_1_position.md) & rhs) | Equal operator to compare two [Telemetry::Position](structmavsdk_1_1_telemetry_1_1_position.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1aadeb8f386d025e70f4a029fdac856a43) (std::ostream & str, [Telemetry::Position](structmavsdk_1_1_telemetry_1_1_position.md) const & position) | Stream operator to print information about a [Telemetry::Position](structmavsdk_1_1_telemetry_1_1_position.md).
@@ -93,10 +121,12 @@ std::ostream & | [operator<<](#namespacemavsdk_1a27f1b3bce30accddfe5c874970853f2
 bool | [operator==](#namespacemavsdk_1a80896a794103e69c5ca72aa47f4b9011) (const [Telemetry::Battery](structmavsdk_1_1_telemetry_1_1_battery.md) & lhs, const [Telemetry::Battery](structmavsdk_1_1_telemetry_1_1_battery.md) & rhs) | Equal operator to compare two [Telemetry::Battery](structmavsdk_1_1_telemetry_1_1_battery.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1a3254ebf618e006568cfc724a2969a3a5) (std::ostream & str, [Telemetry::Battery](structmavsdk_1_1_telemetry_1_1_battery.md) const & battery) | Stream operator to print information about a [Telemetry::Battery](structmavsdk_1_1_telemetry_1_1_battery.md).
 bool | [operator==](#namespacemavsdk_1ada20caf18bf2781eb8f07117b247412d) (const [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) & lhs, const [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) & rhs) | Equal operator to compare two [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) objects.
+bool | [operator!=](#namespacemavsdk_1a7012f1fb2b649b8368f8d1d425ec07fe) (const [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) & lhs, const [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) & rhs) | NOT Equal operator to compare two [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1a74a1a53d8a08d5518f0b78e050c7fb36) (std::ostream & str, [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) const & quaternion) | Stream operator to print information about a [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md).
 bool | [operator==](#namespacemavsdk_1a1f9d8c8f29bb52e305784093433aedeb) (const [Telemetry::EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) & lhs, const [Telemetry::EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) & rhs) | Equal operator to compare two [Telemetry::EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1ad12d5557f83f327450850dca95706f9d) (std::ostream & str, [Telemetry::EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) const & euler_angle) | Stream operator to print information about a [Telemetry::EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md).
 bool | [operator==](#namespacemavsdk_1a0d233574317d93b8b8ca8290103b9665) (const [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) & lhs, const [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) & rhs) | Equal operator to compare two [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) objects.
+bool | [operator!=](#namespacemavsdk_1a3a613081d68b6ace7aa08bf7c229532b) (const [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) & lhs, const [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) & rhs) | NOT Equal operator to compare two [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1acc12a2c48632f9df27bb570243fffc45) (std::ostream & str, [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) const & angular_velocity_body) | Stream operator to print information about a [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md).
 bool | [operator==](#namespacemavsdk_1a79b26da66253b9ac9a12f672ed9fef51) (const [Telemetry::GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) & lhs, const [Telemetry::GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) & rhs) | Equal operator to compare two [Telemetry::GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1adbada9caa34e673e1f3b0e58d18a5f7c) (std::ostream & str, [Telemetry::GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) const & ground_speed) | Stream operator to print information about a [Telemetry::GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md).
@@ -107,6 +137,16 @@ bool | [operator==](#namespacemavsdk_1a11f3515a2b0d70f9ea6245ac33bdc810) (const 
 std::ostream & | [operator<<](#namespacemavsdk_1a966caf3457ac3d66ce225f98f40f1b26) (std::ostream & str, [Telemetry::ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) const & actuator_control_target) | Stream operator to print information about a [Telemetry::ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md).
 bool | [operator==](#namespacemavsdk_1a8c27b8f38eeed699ff115a8af2462eb2) (const [Telemetry::ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) & lhs, const [Telemetry::ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) & rhs) | Equal operator to compare two [Telemetry::ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1a42df5319986c9e76428a8a3776a9e047) (std::ostream & str, [Telemetry::ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) const & actuator_output_status) | Stream operator to print information about a [Telemetry::ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md).
+bool | [operator==](#namespacemavsdk_1ad9edef8dc0e36a68ccbe7cf166e015b8) (const [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) & lhs, const [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) & rhs) | Equal operator to compare two [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) objects.
+bool | [operator!=](#namespacemavsdk_1a60f3d8d4dc39a76711a8e1f19b091199) (const [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) & lhs, const [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) & rhs) | NOT Equal operator to compare two [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1ac74126a189e6b5490d3f0041a28a0ede) (std::ostream & str, [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) const & position_body) | Stream operator to print information about a [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md).
+bool | [operator==](#namespacemavsdk_1af42d6ab1817a54b6e9396bde72619a05) (const [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) & lhs, const [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) & rhs) | Equal operator to compare two [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) objects.
+bool | [operator!=](#namespacemavsdk_1a1abb41b17e6c2b5ab3c7b6fe3bd26a7c) (const [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) & lhs, const [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) & rhs) | NOT Equal operator to compare two [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1a86bb68eaafc3cf953a4c2ab2e7366bd8) (std::ostream & str, [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) const & speed_body) | Stream operator to print information about a [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md).
+bool | [operator==](#namespacemavsdk_1a7a46d0c154f60a10a2471f7f2ba30f14) (const [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) & lhs, const [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) & rhs) | Equal operator to compare two [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) objects.
+std::ostream & | [operator<<](#namespacemavsdk_1a94e6c2b07c573de063038cd18b0aa33e) (std::ostream & str, [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) const & odometry) | Stream operator to print information about a [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md).
+std::ostream & | [operator<<](#namespacemavsdk_1a4b0540e492099a01d4d0192751fe3f6f) (std::ostream & str, [Telemetry::FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) const & flight_mode) | Stream operator to print information about a [Telemetry::FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe).
+std::ostream & | [operator<<](#namespacemavsdk_1ab89f328c238fd7a3eca7353326c4f792) (std::ostream & str, [Telemetry::LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) const & landed_state) | Stream operator to print information about a [Telemetry::LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046).
 
 ## Enumeration Type Documentation
 
@@ -730,6 +770,490 @@ Stream operator to print infos about a [MissionItem::CameraAction](classmavsdk_1
 
 &emsp;std::ostream & - A reference to the stream.
 
+### operator==() {#namespacemavsdk_1aa6ca8f8a1e35a533554f103b2f10db41}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::Quaternion &lhs, const Mocap::Quaternion &rhs)
+```
+
+
+Equal operator to compare two [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md)& **lhs** - 
+* const [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1a03a5b0c96cf3567c7279804fbe727a7a}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::Quaternion const &quaternion)
+```
+
+
+Stream operator to print information about a [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::Quaternion](structmavsdk_1_1_mocap_1_1_quaternion.md) const& **quaternion** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1a64f0c51b2730394b5c7438fa5e50fa82}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::VisionPositionEstimate &lhs, const Mocap::VisionPositionEstimate &rhs)
+```
+
+
+Equal operator to compare two [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md)& **lhs** - 
+* const [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1a086c599090c5a8c2fb1ec6e7263e7d06}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::VisionPositionEstimate const &vision_position_estimate)
+```
+
+
+Stream operator to print information about a [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) const& **vision_position_estimate** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1af3b45742c0be2437dc3701147e764fd3}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::AttitudePositionMocap &lhs, const Mocap::AttitudePositionMocap &rhs)
+```
+
+
+Equal operator to compare two [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md)& **lhs** - 
+* const [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1ae3c2087baeef27611f79b6bef105ad3b}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::AttitudePositionMocap const &attitude_position_mocap)
+```
+
+
+Stream operator to print information about a [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) const& **attitude_position_mocap** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1a975dba86049dde7d218afc52c6004b88}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::Odometry &lhs, const Mocap::Odometry &rhs)
+```
+
+
+Equal operator to compare two [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md)& **lhs** - 
+* const [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1ae53ca8e7988ad9bf7dbbf8041256d487}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::Odometry const &odometry)
+```
+
+
+Stream operator to print information about a [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::Odometry](structmavsdk_1_1_mocap_1_1_odometry.md) const& **odometry** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1a5bb6eb4f47b8e3ea02675eadf69fc6de}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::PositionBody &lhs, const Mocap::PositionBody &rhs)
+```
+
+
+Equal operator to compare two [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md)& **lhs** - 
+* const [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator!=() {#namespacemavsdk_1ae3e5c998cc1ce436cb393a821b167449}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator!=(const Mocap::PositionBody &lhs, const Mocap::PositionBody &rhs)
+```
+
+
+Non Equal operator to compare two [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md)& **lhs** - 
+* const [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are not equal.
+
+### operator<<() {#namespacemavsdk_1a62300b5034352beca70ce90ad65920b5}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::PositionBody const &position_body)
+```
+
+
+Stream operator to print information about a [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::PositionBody](structmavsdk_1_1_mocap_1_1_position_body.md) const& **position_body** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1a3eefe348e2abeb69150b2f8bc01f51b5}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::AngleBody &lhs, const Mocap::AngleBody &rhs)
+```
+
+
+Equal operator to compare two [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md)& **lhs** - 
+* const [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are not equal.
+
+### operator!=() {#namespacemavsdk_1aa9c9594da13d2814ded80f2b26202b96}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator!=(const Mocap::AngleBody &lhs, const Mocap::AngleBody &rhs)
+```
+
+
+Non Equal operator to compare two [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md)& **lhs** - 
+* const [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are not equal.
+
+### operator<<() {#namespacemavsdk_1a9bb8ac7c2475dfe4a151077580cf6a96}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::AngleBody const &angle_body)
+```
+
+
+Stream operator to print information about a [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::AngleBody](structmavsdk_1_1_mocap_1_1_angle_body.md) const& **angle_body** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1a93e81295eeaec384db2b2a273974668c}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::SpeedBody &lhs, const Mocap::SpeedBody &rhs)
+```
+
+
+Equal operator to compare two [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md)& **lhs** - 
+* const [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator!=() {#namespacemavsdk_1a20b7d15ef3f03b149628dd1681e56138}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator!=(const Mocap::SpeedBody &lhs, const Mocap::SpeedBody &rhs)
+```
+
+
+Non Equal operator to compare two [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md)& **lhs** - 
+* const [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are not equal.
+
+### operator<<() {#namespacemavsdk_1ae69dd5fdad5e32620080487b8a57b4f2}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::SpeedBody const &speed_body)
+```
+
+
+Stream operator to print information about a [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md) const& **speed_body** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1a4e18c80ff2e51bd241b708f4cc884001}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::Covariance &lhs, const Mocap::Covariance &rhs)
+```
+
+
+Equal operator to compare two [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) objects.
+
+
+**Parameters**
+
+* const [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb)& **lhs** - 
+* const [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator!=() {#namespacemavsdk_1a86d6cd74fda80037e2dd7e1f6f20c1d5}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator!=(const Mocap::Covariance &lhs, const Mocap::Covariance &rhs)
+```
+
+
+Non Equal operator to compare two [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) objects.
+
+
+**Parameters**
+
+* const [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb)& **lhs** - 
+* const [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are not equal.
+
+### operator<<() {#namespacemavsdk_1a74b74261cd75519d0775cf4c621b12b0}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::Covariance const &covariance)
+```
+
+
+Stream operator to print information about a [Mocap::SpeedBody](structmavsdk_1_1_mocap_1_1_speed_body.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::Covariance](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a558daf6f193660cda5539a042ae91beb) const& **covariance** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1aa48b62768a00ab58b904a625693c5bd2}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+bool mavsdk::operator==(const Mocap::AngularVelocityBody &lhs, const Mocap::AngularVelocityBody &rhs)
+```
+
+
+Equal operator to compare two [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) objects.
+
+
+**Parameters**
+
+* const [Mocap::AngularVelocityBody](structmavsdk_1_1_mocap_1_1_angular_velocity_body.md)& **lhs** - 
+* const [Mocap::AngularVelocityBody](structmavsdk_1_1_mocap_1_1_angular_velocity_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1ae5c20947cf964462988bdd7b2dfffc8f}
+
+```
+#include: plugins/mocap/mocap.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Mocap::AngularVelocityBody const &angular_velocity_body)
+```
+
+
+Stream operator to print information about a [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Mocap::AngularVelocityBody](structmavsdk_1_1_mocap_1_1_angular_velocity_body.md) const& **angular_velocity_body** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
 ### operator==() {#namespacemavsdk_1a22456bb4a0614ac6753f195e88e98771}
 
 ```
@@ -989,6 +1513,50 @@ Stream operator to print information about a [Offboard::VelocityNEDYaw](structma
 
 * std::ostream& **str** - 
 * [Offboard::VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) const& **velocity_ned_yaw** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1acf7945a45f2162da2f6c5e5fbef1cd11}
+
+```
+#include: plugins/shell/shell.h
+```
+```cpp
+bool mavsdk::operator==(const Shell::ShellMessage &lhs, const Shell::ShellMessage &rhs)
+```
+
+
+Equal operator to compare two `Shell::Quaternion` objects.
+
+
+**Parameters**
+
+* const [Shell::ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md)& **lhs** - 
+* const [Shell::ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1a27b2c9ca4d68b07c6ae8e9874d046b7e}
+
+```
+#include: plugins/shell/shell.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Shell::ShellMessage const &shell_message)
+```
+
+
+Stream operator to print information about a `Shell::Quaternion`.
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Shell::ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md) const& **shell_message** - 
 
 **Returns**
 
@@ -1390,6 +1958,28 @@ Equal operator to compare two [Telemetry::Quaternion](structmavsdk_1_1_telemetry
 
 &emsp;bool - `true` if items are equal.
 
+### operator!=() {#namespacemavsdk_1a7012f1fb2b649b8368f8d1d425ec07fe}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+bool mavsdk::operator!=(const Telemetry::Quaternion &lhs, const Telemetry::Quaternion &rhs)
+```
+
+
+NOT Equal operator to compare two [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)& **lhs** - 
+* const [Telemetry::Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
 ### operator<<() {#namespacemavsdk_1a74a1a53d8a08d5518f0b78e050c7fb36}
 
 ```
@@ -1467,6 +2057,28 @@ bool mavsdk::operator==(const Telemetry::AngularVelocityBody &lhs, const Telemet
 
 
 Equal operator to compare two [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md)& **lhs** - 
+* const [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator!=() {#namespacemavsdk_1a3a613081d68b6ace7aa08bf7c229532b}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+bool mavsdk::operator!=(const Telemetry::AngularVelocityBody &lhs, const Telemetry::AngularVelocityBody &rhs)
+```
+
+
+NOT Equal operator to compare two [Telemetry::AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) objects.
 
 
 **Parameters**
@@ -1693,6 +2305,226 @@ Stream operator to print information about a [Telemetry::ActuatorControlTarget](
 
 * std::ostream& **str** - 
 * [Telemetry::ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) const& **actuator_output_status** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1ad9edef8dc0e36a68ccbe7cf166e015b8}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+bool mavsdk::operator==(const Telemetry::PositionBody &lhs, const Telemetry::PositionBody &rhs)
+```
+
+
+Equal operator to compare two [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md)& **lhs** - 
+* const [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator!=() {#namespacemavsdk_1a60f3d8d4dc39a76711a8e1f19b091199}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+bool mavsdk::operator!=(const Telemetry::PositionBody &lhs, const Telemetry::PositionBody &rhs)
+```
+
+
+NOT Equal operator to compare two [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md)& **lhs** - 
+* const [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1ac74126a189e6b5490d3f0041a28a0ede}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Telemetry::PositionBody const &position_body)
+```
+
+
+Stream operator to print information about a [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md) const& **position_body** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1af42d6ab1817a54b6e9396bde72619a05}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+bool mavsdk::operator==(const Telemetry::SpeedBody &lhs, const Telemetry::SpeedBody &rhs)
+```
+
+
+Equal operator to compare two [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md)& **lhs** - 
+* const [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator!=() {#namespacemavsdk_1a1abb41b17e6c2b5ab3c7b6fe3bd26a7c}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+bool mavsdk::operator!=(const Telemetry::SpeedBody &lhs, const Telemetry::SpeedBody &rhs)
+```
+
+
+NOT Equal operator to compare two [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md)& **lhs** - 
+* const [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1a86bb68eaafc3cf953a4c2ab2e7366bd8}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Telemetry::SpeedBody const &speed_body)
+```
+
+
+Stream operator to print information about a [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) const& **speed_body** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator==() {#namespacemavsdk_1a7a46d0c154f60a10a2471f7f2ba30f14}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+bool mavsdk::operator==(const Telemetry::Odometry &lhs, const Telemetry::Odometry &rhs)
+```
+
+
+Equal operator to compare two [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) objects.
+
+
+**Parameters**
+
+* const [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md)& **lhs** - 
+* const [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md)& **rhs** - 
+
+**Returns**
+
+&emsp;bool - `true` if items are equal.
+
+### operator<<() {#namespacemavsdk_1a94e6c2b07c573de063038cd18b0aa33e}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Telemetry::Odometry const &odometry)
+```
+
+
+Stream operator to print information about a [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) const& **odometry** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacemavsdk_1a4b0540e492099a01d4d0192751fe3f6f}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Telemetry::FlightMode const &flight_mode)
+```
+
+
+Stream operator to print information about a [Telemetry::FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) const& **flight_mode** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacemavsdk_1ab89f328c238fd7a3eca7353326c4f792}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Telemetry::LandedState const &landed_state)
+```
+
+
+Stream operator to print information about a [Telemetry::LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) const& **landed_state** - 
 
 **Returns**
 

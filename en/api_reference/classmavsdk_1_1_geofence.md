@@ -106,13 +106,13 @@ Possible results returned for geofence requests.
 
 Value | Description
 --- | ---
+<span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown result. 
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642abb1ca97ec761fc37101737ba0aa2e7c5"></span> `ERROR` | Error. 
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642ac8056eddde297ec65316ee409ff3a31b"></span> `TOO_MANY_GEOFENCE_ITEMS` | Too many [Polygon](structmavsdk_1_1_geofence_1_1_polygon.md) objects in the geofence. 
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642a802706a9238e2928077f97736854bad4"></span> `BUSY` | Vehicle busy. 
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Request timed out. 
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642af295a0c3e37c94f078e1c5476479132d"></span> `INVALID_ARGUMENT` | Invalid argument. 
-<span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Request succeeded. 
 
 ## Member Function Documentation
 
