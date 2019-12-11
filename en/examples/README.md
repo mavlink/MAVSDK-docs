@@ -7,7 +7,7 @@ This section contains examples showing how to use MAVSDK.
 Example | Description
 --- | ---
 [Battery](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/battery) | Simple example to demonstrate how to imitate a smart battery.
-[Calibrate](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/calibrate) | Simple exmaple showing how to initiate calibration of gyro, accelerometer, magnetometer.
+[Calibrate](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/calibrate) | Simple example showing how to initiate calibration of gyro, accelerometer, magnetometer.
 [Fly Mission](../examples/fly_mission.md) | Shows how to create, upload, and run missions.
 [Fly Multiple Drones](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/fly_multiple_drones) | Example to connect multiple vehicles and make them follow their own separate plan file. Also saves the telemetry information to CSV files.
 [Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) | Fly a mission imported from a *QGroundControl* mission plan.
