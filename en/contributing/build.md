@@ -158,13 +158,9 @@ cmake --build build/default --target install
 
 ## Build for Android {#build_cpp_android}
 
-The MAVSDK programming-language-specific libraries share a common backend (called "mavsdk_server"), which may optionally be built as part of the C++ library. This section describes how to build it for Android, which is necessary only for contributors. If you want to use MAVSDK on Android, go to the [MAVSDK-Java](https://github.com/mavlink/MAVSDK-Java) documentation.
-
-Building for Android is a cross-compilation like the others, and can be done using dockcross (e.g. with the `dockcross/android-arm64` image). For that, go to the [cross-compilation](#cross_compilation_dockcross) section below.
+Build for Android using the dockcross cross compiler, as described in the [cross-compilation](#cross_compilation_dockcross) section below (e.g. with the `dockcross/android-arm64` image).
 
 ## Build for iOS {#build_cpp_iOS}
-
-The MAVSDK programming-language-specific libraries share a common backend (called "mavsdk_server"), which may optionally be built as part of the C++ library. This section describes how to build it for iOS, which is necessary only for contributors. If you want to use MAVSDK on iOS, go to the [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) documentation.
 
 To build for real iOS devices on macOS:
 
@@ -179,9 +175,13 @@ Build for the iOS simulator on macOS:
 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -H.
 ```
 
+> **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_BACKEND=ON`).
+  This is required for contributors who want to *extend* the MAVSDK programming-language-specific libraries like [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), but is not required for developers who just want to *use* C++, *MAVSDK-Swift* or *MAVSDK-Python*.
+
 ## Build SDK Extensions {#sdk_extensions}
 
-The MAVSDK can be extended with plugins and integration tests that are defined "out of tree". These are declared inside a parallel directory that is included into the SDK at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
+The MAVSDK can be extended with plugins and integration tests that are defined "out of tree".
+These are declared inside a parallel directory that is included into the SDK at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
 
 The commands to build the SDK with an extension library are:
 ```sh
@@ -192,9 +192,11 @@ See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
 ## Building mavsdk_server {#build_mavsdk_server}
 
-The MAVSDK programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/mavlink/MAVSDK-Python)) share a common backend (called "mavsdk_server"), which may optionally be built as part of the C++ library.
+The MAVSDK programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/mavlink/MAVSDK-Python)) share a common backend (called "mavsdk_server").
+This may optionally be built as part of the C++ library.
 
-The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option. Otherwise the build is exactly the same as usual.
+The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option.
+Otherwise the build is exactly the same as usual.
 
 > **Tip** When building mavsdk_server, we usually like to link all the dependencies statically, and therefore we set `-DBUILD_SHARED_LIBS=OFF` (or don't specify it, because the default is `OFF`).
 
@@ -223,7 +225,7 @@ To build mavsdk_server on macOS:
 ### Windows {#build_mavsdk_server_windows}
 
 To build mavsdk_server on Windows:
-1. [Setup the C++ Library on Windows(#build_cpp_windows)
+1. [Setup the C++ Library on Windows](#build_cpp_windows)
 1. Navigate into the SDK directory and build the project
    ```
    cmake -G "Visual Studio 15 2017" -DBUILD_BACKEND=ON -Bbuild/default -H.
@@ -232,9 +234,9 @@ To build mavsdk_server on Windows:
 
 ### Cross compilation using dockcross {#cross_compilation_dockcross}
 
-To compile for platforms like the Raspberry Pi, BeagleBone Blue or Nvidia Jetson, cross compilation is typically faster than native compilation on the "embedded" device.
+Cross compilation is usually the fastest way to compile for "embedded" platforms like the Raspberry Pi, BeagleBone Blue or Nvidia Jetson (i.e. typically faster than native compilation on device itself).
 
-We recommend to use [dockcross](https://github.com/dockcross/dockcross) which is a very convenient tool for cross compilation based on docker supporting many platforms.
+We recommend using [dockcross](https://github.com/dockcross/dockcross), which is a very convenient tool for cross compilation based on docker (and which supports many platforms).
 
 For example, use the commands below to build for `armv7`:
 
@@ -252,11 +254,15 @@ For example, use the commands below to build for `armv7`:
    ./dockcross-linux-armv7 file build/linux-armv7-release/src/backend/src/mavsdk_server
    build/linux-armv7-release/src/backend/src/mavsdk_server: ELF 32-bit LSB executable, ARM, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 4.10.8, not stripped
    ```
-4. This built binary can now be copied to the device:
+4. The newly built binary can now be copied to the device:
    ```
    cp build/linux-armv7/src/backend/src/mavsdk_server somewhere/else
    ```
 
+> **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_BACKEND=ON`).
+  This is required for contributors who want to *extend* the MAVSDK programming-language-specific libraries like [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html).
+  It is not required for developers who just want to *use* C++, *MAVSDK-Swift* or *MAVSDK-Python*.
+  
 ## Build API Reference Documentation {#build_api_reference}
 
 The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax.
