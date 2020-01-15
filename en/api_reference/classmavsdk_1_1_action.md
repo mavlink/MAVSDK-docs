@@ -32,7 +32,8 @@ Type | Name | Description
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [arm](#classmavsdk_1_1_action_1ad1e15dd77bd359c05256e5a5ab83726f) () const | Send command to *arm* the drone (synchronous).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [disarm](#classmavsdk_1_1_action_1a6c759e461902d8c427026554e439774f) () const | Send command to *disarm* the drone (synchronous).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [kill](#classmavsdk_1_1_action_1a029f49ba496b23424095b47f73300d3a) () const | Send command to *kill* the drone (synchronous).
-[Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [reboot](#classmavsdk_1_1_action_1a8399ec8cfce871acb7617d35a683dec2) () const | Send command to *reboot* the drone components.
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [reboot](#classmavsdk_1_1_action_1ac941a50bba0602421fee6b7d2156aa1a) () const | Send command to *reboot* the drone components.
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [shutdown](#classmavsdk_1_1_action_1a08330bd10eed426a43d25e5d1017d985) () const | Send command to *shut down* the drone components.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [takeoff](#classmavsdk_1_1_action_1a9c1df1ac24144286d8b0d05b119787d1) () const | Send command to *take off and hover* (synchronous).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [land](#classmavsdk_1_1_action_1a0383185c4f9a1afecd3da58b8158b079) () const | Send command to *land* at the current position (synchronous).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [return_to_launch](#classmavsdk_1_1_action_1a699c3488106efc02d0f912f7b58db98a) () const | Send command to *return to the launch* (takeoff) position and *land* (asynchronous).
@@ -189,9 +190,9 @@ This will disarm a drone irrespective of whether it is landed or flying. Note th
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### reboot() {#classmavsdk_1_1_action_1a8399ec8cfce871acb7617d35a683dec2}
+### reboot() {#classmavsdk_1_1_action_1ac941a50bba0602421fee6b7d2156aa1a}
 ```cpp
-Action::Result mavsdk::Action::reboot() const
+Result mavsdk::Action::reboot() const
 ```
 
 
@@ -201,7 +202,21 @@ This will reboot the autopilot, onboard computer, camera and gimbal.
 
 **Returns**
 
-&emsp;[Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - [Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) of request.
+&emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - [Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) of request.
+
+### shutdown() {#classmavsdk_1_1_action_1a08330bd10eed426a43d25e5d1017d985}
+```cpp
+Result mavsdk::Action::shutdown() const
+```
+
+
+Send command to *shut down* the drone components.
+
+This will shut down the autopilot, onboard computer, camera and gimbal. This command should only be used when the autopilot is disarmed and autopilots commonly reject it if they are not already ready to shut down.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - [Action::Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) of request.
 
 ### takeoff() {#classmavsdk_1_1_action_1a9c1df1ac24144286d8b0d05b119787d1}
 ```cpp

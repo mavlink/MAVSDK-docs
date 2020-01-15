@@ -7,7 +7,7 @@
     },
     "plugins": [
         "youtube",
-        "richquotes",
+        "richquotes@git+https://github.com/Dronecode/gitbook-plugin-richquotes.git",
         "language-picker",
         "collapsible-menu",
         "page-toc-button",

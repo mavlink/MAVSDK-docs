@@ -534,6 +534,7 @@ For more information about flight modes, check out [https://docs.px4.io/en/confi
 
 Value | Description
 --- | ---
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Mode not known. 
 <span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea2baa69eafc7204f3bd8648eba580c489"></span> `READY` | Armed and ready to take off. 
 <span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea8fabc74a4ed0781d663336cbf8c9c53d"></span> `TAKEOFF` | Taking off. 
 <span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea0c6d9dfb485b43c6fba87439f9f73ac4"></span> `HOLD` | Hold mode (hovering in place (or circling for fixed-wing vehicles). 
@@ -542,7 +543,12 @@ Value | Description
 <span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea479a809c0b6eaaefd3b1df16f976df06"></span> `LAND` | Landing. 
 <span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea6687898e86a83f245901f96d313930b1"></span> `OFFBOARD` | [Offboard](classmavsdk_1_1_offboard.md) mode. 
 <span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feac4099cf323b2f571c3d4917db6b1a20d"></span> `FOLLOW_ME` | [FollowMe](classmavsdk_1_1_follow_me.md) mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Mode not known. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feaa60a6a471c0681e5a49c4f5d00f6bc5a"></span> `MANUAL` | Manual mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fead5e23b5225efc25c190be41834cacbd2"></span> `ALTCTL` | Altitude mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feaf97e5cf4e6989bd5601994704d76548d"></span> `POSCTL` | [Position](structmavsdk_1_1_telemetry_1_1_position.md) mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feac3f676dd6770bc216184ca9a9922d218"></span> `ACRO` | Acro mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea409f918b099f0b3588c14af1e76a44e1"></span> `STABILIZED` | Stabilize mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feae9f2c5d95e79dc39219e37558c79a82e"></span> `RATTITUDE` | Rattitude mode. 
 
 ### enum LandedState {#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046}
 

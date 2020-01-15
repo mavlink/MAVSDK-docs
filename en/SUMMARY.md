@@ -53,6 +53,7 @@
       * [struct LocalCoordinate](api_reference/structmavsdk_1_1geometry_1_1_coordinate_transformation_1_1_local_coordinate.md)
     * [class Gimbal](api_reference/classmavsdk_1_1_gimbal.md)
     * [class Info](api_reference/classmavsdk_1_1_info.md)
+      * [struct FlightInfo](api_reference/structmavsdk_1_1_info_1_1_flight_info.md)
       * [struct Identification](api_reference/structmavsdk_1_1_info_1_1_identification.md)
       * [struct Product](api_reference/structmavsdk_1_1_info_1_1_product.md)
       * [struct Version](api_reference/structmavsdk_1_1_info_1_1_version.md)
