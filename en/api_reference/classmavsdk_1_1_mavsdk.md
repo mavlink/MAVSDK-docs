@@ -113,6 +113,7 @@ Possible configurations.
 
 Value | Description
 --- | ---
+<span id="classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413ca6ca1d2b081cc474f42cb95e3d04e6e68"></span> `Autopilot` | SDK is used as an autopilot. 
 <span id="classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413caf64f82089eddc6133add8c55c65d6687"></span> `GroundStation` | SDK is used as a ground station. 
 <span id="classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413ca8f2f82e1a7aa48819e9530d5c4977477"></span> `CompanionComputer` | SDK is used on a companion computer onboard the system (e.g. drone). 
 

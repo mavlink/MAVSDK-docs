@@ -110,10 +110,10 @@ Possible results returned for gimbal commands.
 
 Value | Description
 --- | ---
+<span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76aca696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
 <span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76acad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Success. The gimbal command was accepted. 
 <span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76acabb1ca97ec761fc37101737ba0aa2e7c5"></span> `ERROR` | Error. An error occured sending the command. 
 <span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76aca070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Timeout. A timeout occured sending the command. 
-<span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76aca696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
 
 ### enum GimbalMode {#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca}
 

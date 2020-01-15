@@ -10,6 +10,8 @@ The [Info](classmavsdk_1_1_info.md) class provides basic infomation about the ha
 ## Data Structures
 
 
+struct [FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md)
+
 struct [Identification](structmavsdk_1_1_info_1_1_identification.md)
 
 struct [Product](structmavsdk_1_1_info_1_1_product.md)
@@ -34,6 +36,7 @@ Type | Name | Description
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Identification](structmavsdk_1_1_info_1_1_identification.md) > | [get_identification](#classmavsdk_1_1_info_1ab844bf3fa756127e2f8f332cb5552f1e) () const | Gets the identification of the system.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Version](structmavsdk_1_1_info_1_1_version.md) > | [get_version](#classmavsdk_1_1_info_1a307d73a1c0dc6494674a6d5febe550f1) () const | Get system version information.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Product](structmavsdk_1_1_info_1_1_product.md) > | [get_product](#classmavsdk_1_1_info_1a3592e5df164e9a7939aa3733ce867e1b) () const | Get system product information.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > | [get_flight_information](#classmavsdk_1_1_info_1aed5be4d7438da79e24d5bf12ca1fca28) () const | Get system flight information.
 const [Info](classmavsdk_1_1_info.md) & | [operator=](#classmavsdk_1_1_info_1a586eb91fd65d602bad1d016dca42b435) (const [Info](classmavsdk_1_1_info.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Attributes
@@ -151,6 +154,19 @@ Get system product information.
 **Returns**
 
 &emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Product](structmavsdk_1_1_info_1_1_product.md) > - a pair containing the result of the request and if successful, the product information about the system.
+
+### get_flight_information() {#classmavsdk_1_1_info_1aed5be4d7438da79e24d5bf12ca1fca28}
+```cpp
+std::pair<Result, FlightInfo> mavsdk::Info::get_flight_information() const
+```
+
+
+Get system flight information.
+
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > - a pair containing the result of the request and if successful, the flight information about the system.
 
 ### operator=() {#classmavsdk_1_1_info_1a586eb91fd65d602bad1d016dca42b435}
 ```cpp
