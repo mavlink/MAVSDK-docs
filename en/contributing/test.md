@@ -68,18 +68,18 @@ cd path/to/MAVSDK/
 To list all integration tests:
 
 ```
-./build/default/integration_tests/integration_tests_runner --gtest_list_tests
+./build/default/src/integration_tests/integration_tests_runner --gtest_list_tests
 ```
 
 To run a single integration test:
 
 ```
-./build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
+./build/default/src/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
 ```
 
 To run all telemetry tests:
 
 ```
-./build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.Telemetry*"
+./build/default/src/integration_tests/integration_tests_runner --gtest_filter="SitlTest.Telemetry*"
 ```
 
