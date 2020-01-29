@@ -125,7 +125,7 @@ Shell::Result mavsdk::Shell::shell_command(ShellMessage shell_message)
 
 Send the shell message.
 
-If shell_message.data string have not trailing `\n` symbol - it will be added.
+If shell_message.data string have not trailing newline - it will be added.
 
 
 If response data looks like not completed try to increase timeout value in request.
