@@ -114,6 +114,8 @@ std::ostream & | [operator<<](#namespacemavsdk_1a1fd300074aa856860f3e34a188c6027
 bool | [operator==](#namespacemavsdk_1adcab8806a13c1c144f53e6c5e057ef74) (const [Telemetry::IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) & lhs, const [Telemetry::IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) & rhs) | Equal operator to compare two [Telemetry::IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) objects.
 std::ostream & | [operator<<](#namespacemavsdk_1a286053a95544760553c2247ba98734c6) (std::ostream & str, [Telemetry::AccelerationNED](structmavsdk_1_1_telemetry_1_1_acceleration_n_e_d.md) const & acceleration_ned) | Stream operator to print information about a [Telemetry::AccelerationNED](structmavsdk_1_1_telemetry_1_1_acceleration_n_e_d.md).
 std::ostream & | [operator<<](#namespacemavsdk_1a7158b333ce6fbd7369bac079a6882e39) (std::ostream & str, [Telemetry::AngularVelocityNED](structmavsdk_1_1_telemetry_1_1_angular_velocity_n_e_d.md) const & angular_velocity_ned) | Stream operator to print information about a [Telemetry::AngularVelocityNED](structmavsdk_1_1_telemetry_1_1_angular_velocity_n_e_d.md).
+std::ostream & | [operator<<](#namespacemavsdk_1aeca02415e90d60f9366d9b72c034bd36) (std::ostream & str, [Telemetry::FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) const & fixedwing_metrics) | Stream operator to print information about a [Telemetry::FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md).
+std::ostream & | [operator<<](#namespacemavsdk_1a3d33c4f284e3bcb3a4ba117a7bd46928) (std::ostream & str, [Telemetry::GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) const & ground_truth) | Stream operator to print information about a [Telemetry::GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md).
 std::ostream & | [operator<<](#namespacemavsdk_1a443a8dd3120a70bc0ec9375d5e07df97) (std::ostream & str, [Telemetry::MagneticFieldNED](structmavsdk_1_1_telemetry_1_1_magnetic_field_n_e_d.md) const & magnetic_field) | Stream operator to print information about a [Telemetry::MagneticFieldNED](structmavsdk_1_1_telemetry_1_1_magnetic_field_n_e_d.md).
 std::ostream & | [operator<<](#namespacemavsdk_1afd59b0f8dbe8147d1192a374102c070d) (std::ostream & str, [Telemetry::IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) const & imu_reading_ned) | Stream operator to print information about a [Telemetry::IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md).
 bool | [operator==](#namespacemavsdk_1afb8fd460143b0b2cdd94182756b8ee02) (const [Telemetry::GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) & lhs, const [Telemetry::GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) & rhs) | Equal operator to compare two [Telemetry::GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) objects.
@@ -1799,6 +1801,50 @@ Stream operator to print information about a [Telemetry::AngularVelocityNED](str
 
 * std::ostream& **str** - 
 * [Telemetry::AngularVelocityNED](structmavsdk_1_1_telemetry_1_1_angular_velocity_n_e_d.md) const& **angular_velocity_ned** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacemavsdk_1aeca02415e90d60f9366d9b72c034bd36}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Telemetry::FixedwingMetrics const &fixedwing_metrics)
+```
+
+
+Stream operator to print information about a [Telemetry::FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) const& **fixedwing_metrics** - 
+
+**Returns**
+
+&emsp;std::ostream & - A reference to the stream.
+
+### operator<<() {#namespacemavsdk_1a3d33c4f284e3bcb3a4ba117a7bd46928}
+
+```
+#include: plugins/telemetry/telemetry.h
+```
+```cpp
+std::ostream& mavsdk::operator<<(std::ostream &str, Telemetry::GroundTruth const &ground_truth)
+```
+
+
+Stream operator to print information about a [Telemetry::GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md).
+
+
+**Parameters**
+
+* std::ostream& **str** - 
+* [Telemetry::GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) const& **ground_truth** - 
 
 **Returns**
 

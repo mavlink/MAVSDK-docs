@@ -24,9 +24,13 @@ struct [Battery](structmavsdk_1_1_telemetry_1_1_battery.md)
 
 struct [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)
 
+struct [FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md)
+
 struct [GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md)
 
 struct [GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md)
+
+struct [GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md)
 
 struct [Health](structmavsdk_1_1_telemetry_1_1_health.md)
 
@@ -71,6 +75,8 @@ std::function< void(bool [armed](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_te
 std::function< void([Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) quaternion)> [attitude_quaternion_callback_t](#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) | Callback type for attitude updates in quaternion.
 std::function< void([EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) euler_angle)> [attitude_euler_angle_callback_t](#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) | Callback type for attitude updates in Euler angles.
 std::function< void([AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) angular_velocity_body)> [attitude_angular_velocity_body_callback_t](#classmavsdk_1_1_telemetry_1a8253671d4203e542095c365617b98678) | Callback type for angular velocity updates in quaternion.
+std::function< void([FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) [fixedwing_metrics](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad759be5db9d392605b7cabda89ea97b6))> [fixedwing_metrics_callback_t](#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378) | Callback type for fixedwing_metrics updates.
+std::function< void([GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) [ground_truth](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a09f26112a60122b64019c69d70a89c41))> [ground_truth_callback_t](#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7) | Callback type for ground truth updates.
 std::function< void([GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) [ground_speed_ned](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aeef28c6d6a75e6dad1a2490d319e0d1a))> [ground_speed_ned_callback_t](#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23) | Callback type for ground speed (NED) updates.
 std::function< void([IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) [imu_reading_ned](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a6b32f761edeaa4c25624da2c8c9b3dd3))> [imu_reading_ned_callback_t](#classmavsdk_1_1_telemetry_1a40fd7ddb9eca5e36a7a4e8084dcbf75a) | Callback type for IMU (NED) updates.
 std::function< void([GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) [gps_info](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a7339764257e950702596dd7eca0afdb5))> [gps_info_callback_t](#classmavsdk_1_1_telemetry_1af34942b21fde18d723b300ebe6c40421) | Callback type for GPS information updates.
@@ -101,6 +107,8 @@ Type | Name | Description
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_camera_attitude](#classmavsdk_1_1_telemetry_1a60caa6177503040d9926eb75249c12af) (double rate_hz) | Set rate of camera attitude updates (synchronous).
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_ground_speed_ned](#classmavsdk_1_1_telemetry_1a229bfcf87a09f98ede59522817f8911c) (double rate_hz) | Set rate of ground speed (NED) updates (synchronous).
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_imu_reading_ned](#classmavsdk_1_1_telemetry_1a33dc024551cb3720e2d376cb0c3de16e) (double rate_hz) | Set rate of IMU reading (NED) updates (synchronous).
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_fixedwing_metrics](#classmavsdk_1_1_telemetry_1a432cc35ec708d7b8564a3e2136d4c81c) (double rate_hz) | Set rate of VFR HUD updates (synchronous).
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_ground_truth](#classmavsdk_1_1_telemetry_1a4363efd93942c48242939a079c1fd5b1) (double rate_hz) | Set rate of ground truth updates (synchronous).
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_gps_info](#classmavsdk_1_1_telemetry_1aaf3270f4688f586c65daa29f712df04b) (double rate_hz) | Set rate of GPS information updates (synchronous).
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_battery](#classmavsdk_1_1_telemetry_1a58135427b4f862bc41db8888cc328d08) (double rate_hz) | Set rate of battery status updates (synchronous).
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_rc_status](#classmavsdk_1_1_telemetry_1a5ab00a099c7a7052433e652ed19466fd) (double rate_hz) | Set rate of RC status updates (synchronous).
@@ -115,6 +123,8 @@ void | [set_rate_attitude_async](#classmavsdk_1_1_telemetry_1ae16699eb5a558b663b
 void | [set_rate_camera_attitude_async](#classmavsdk_1_1_telemetry_1a7f73b3bb2119a426b01af4370a90c9b9) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of camera attitude updates (asynchronous).
 void | [set_rate_ground_speed_ned_async](#classmavsdk_1_1_telemetry_1a813e26ab74c7200e09e8ad8c8ecb597a) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of ground speed (NED) updates (asynchronous).
 void | [set_rate_imu_reading_ned_async](#classmavsdk_1_1_telemetry_1a1ae11919b444e79bdafaa493dab39936) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of IMU reading (NED) updates (asynchronous).
+void | [set_rate_fixedwing_metrics_async](#classmavsdk_1_1_telemetry_1a8423249356038a0131bbd3efd4971808) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of VFR HUD updates (asynchronous).
+void | [set_rate_ground_truth_async](#classmavsdk_1_1_telemetry_1ad100d69c9ed882e2e4924c4bda4151f1) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of ground truth updates (asynchronous).
 void | [set_rate_gps_info_async](#classmavsdk_1_1_telemetry_1a09d9232f3fc83de09e1b97fbde9edd27) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of GPS information updates (asynchronous).
 void | [set_rate_battery_async](#classmavsdk_1_1_telemetry_1aa0c57683779b276c196543d1b11b4794) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of battery status updates (asynchronous).
 void | [set_rate_rc_status_async](#classmavsdk_1_1_telemetry_1ab293eac4daab1b8628e3adce311312ec) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of RC status updates (asynchronous).
@@ -132,6 +142,8 @@ bool | [armed](#classmavsdk_1_1_telemetry_1a6bef561265a4f705b0b6fddb3e25bd74) ()
 [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [attitude_quaternion](#classmavsdk_1_1_telemetry_1ad203d4f34eadd5136329bf8e554adbf7) () const | Get the current attitude in quaternions (synchronous).
 [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [attitude_euler_angle](#classmavsdk_1_1_telemetry_1a67f446265cbfe5b873f292a8172015a6) () const | Get the current attitude in Euler angles (synchronous).
 [AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) | [attitude_angular_velocity_body](#classmavsdk_1_1_telemetry_1a14ed2272ae43783cb78a58d6ea3174ca) () const | Get the current angular speed in rad/s (synchronous).
+[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) | [fixedwing_metrics](#classmavsdk_1_1_telemetry_1ad759be5db9d392605b7cabda89ea97b6) () const | Get the current fixedwing_metrics (synchronous).
+[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) | [ground_truth](#classmavsdk_1_1_telemetry_1a09f26112a60122b64019c69d70a89c41) () const | Get the current ground truth (synchronous).
 [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [camera_attitude_quaternion](#classmavsdk_1_1_telemetry_1ab02def16e920a453ea15770909797468) () const | Get the camera's attitude in quaternions (synchronous).
 [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [camera_attitude_euler_angle](#classmavsdk_1_1_telemetry_1ad2f98aa43d91f988de0f569a00333370) () const | Get the camera's attitude in Euler angles (synchronous).
 [GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) | [ground_speed_ned](#classmavsdk_1_1_telemetry_1aeef28c6d6a75e6dad1a2490d319e0d1a) () const | Get the current ground speed (NED) (synchronous).
@@ -153,6 +165,8 @@ void | [armed_async](#classmavsdk_1_1_telemetry_1ae73fc84556a85ecc07de33f5b1f8f8
 void | [attitude_quaternion_async](#classmavsdk_1_1_telemetry_1a73c1f4f96fd2ac08e8a6eae6bba00098) ([attitude_quaternion_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) callback) | Subscribe to attitude updates in quaternion (asynchronous).
 void | [attitude_euler_angle_async](#classmavsdk_1_1_telemetry_1ab7dba6f0da6bd624ae3ce7f2da5d50cd) ([attitude_euler_angle_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) callback) | Subscribe to attitude updates in Euler angles (asynchronous).
 void | [attitude_angular_velocity_body_async](#classmavsdk_1_1_telemetry_1a72d404d0a3b121fdcb9a3c3a22e2137c) ([attitude_angular_velocity_body_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8253671d4203e542095c365617b98678) callback) | Subscribe to attitude updates in angular velocity (asynchronous).
+void | [fixedwing_metrics_async](#classmavsdk_1_1_telemetry_1a82be69c764633d6c573b2dce1b40787e) ([fixedwing_metrics_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378) callback) | Subscribe to vfr hud updates in (asynchronous).
+void | [ground_truth_async](#classmavsdk_1_1_telemetry_1a4597194316986337ea6cd5fc33eabec4) ([ground_truth_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7) callback) | Subscribe to ground_truth updates in (asynchronous).
 void | [camera_attitude_quaternion_async](#classmavsdk_1_1_telemetry_1ae39f1c1769189fbd7e21fb216da7cfd2) ([attitude_quaternion_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) callback) | Subscribe to camera attitude updates in quaternion (asynchronous).
 void | [camera_attitude_euler_angle_async](#classmavsdk_1_1_telemetry_1adb78b9cb7d918970a19222e1a8101706) ([attitude_euler_angle_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) callback) | Subscribe to camera attitude updates in Euler angles (asynchronous).
 void | [ground_speed_ned_async](#classmavsdk_1_1_telemetry_1a3eb3256f1a4708a6cf19ac28bc6e3568) ([ground_speed_ned_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23) callback) | Subscribe to ground speed (NED) updates (asynchronous).
@@ -339,6 +353,34 @@ Callback type for angular velocity updates in quaternion.
 **Parameters**
 
 * **angular_velocity_body** - Angular velocity.
+
+### typedef fixedwing_metrics_callback_t {#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378}
+
+```cpp
+typedef std::function<void(FixedwingMetrics fixedwing_metrics)> mavsdk::Telemetry::fixedwing_metrics_callback_t
+```
+
+
+Callback type for fixedwing_metrics updates.
+
+
+**Parameters**
+
+* **fixedwing_metrics** - Fixed wing metrics.
+
+### typedef ground_truth_callback_t {#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7}
+
+```cpp
+typedef std::function<void(GroundTruth ground_truth)> mavsdk::Telemetry::ground_truth_callback_t
+```
+
+
+Callback type for ground truth updates.
+
+
+**Parameters**
+
+* **ground_truth** - Ground truth.
 
 ### typedef ground_speed_ned_callback_t {#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23}
 
@@ -731,6 +773,42 @@ Set rate of IMU reading (NED) updates (synchronous).
 
 &emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
 
+### set_rate_fixedwing_metrics() {#classmavsdk_1_1_telemetry_1a432cc35ec708d7b8564a3e2136d4c81c}
+```cpp
+Result mavsdk::Telemetry::set_rate_fixedwing_metrics(double rate_hz)
+```
+
+
+Set rate of VFR HUD updates (synchronous).
+
+> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
+
+**Parameters**
+
+* double **rate_hz** - Rate in Hz.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_ground_truth() {#classmavsdk_1_1_telemetry_1a4363efd93942c48242939a079c1fd5b1}
+```cpp
+Result mavsdk::Telemetry::set_rate_ground_truth(double rate_hz)
+```
+
+
+Set rate of ground truth updates (synchronous).
+
+> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
+
+**Parameters**
+
+* double **rate_hz** - Rate in Hz.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
 ### set_rate_gps_info() {#classmavsdk_1_1_telemetry_1aaf3270f4688f586c65daa29f712df04b}
 ```cpp
 Result mavsdk::Telemetry::set_rate_gps_info(double rate_hz)
@@ -961,7 +1039,37 @@ Set rate of IMU reading (NED) updates (asynchronous).
 **Parameters**
 
 * double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Cabllback to receive request result.
+* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
+
+### set_rate_fixedwing_metrics_async() {#classmavsdk_1_1_telemetry_1a8423249356038a0131bbd3efd4971808}
+```cpp
+void mavsdk::Telemetry::set_rate_fixedwing_metrics_async(double rate_hz, result_callback_t callback)
+```
+
+
+Set rate of VFR HUD updates (asynchronous).
+
+> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
+
+**Parameters**
+
+* double **rate_hz** - Rate in Hz.
+* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
+
+### set_rate_ground_truth_async() {#classmavsdk_1_1_telemetry_1ad100d69c9ed882e2e4924c4bda4151f1}
+```cpp
+void mavsdk::Telemetry::set_rate_ground_truth_async(double rate_hz, result_callback_t callback)
+```
+
+
+Set rate of ground truth updates (asynchronous).
+
+> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
+
+**Parameters**
+
+* double **rate_hz** - Rate in Hz.
+* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
 
 ### set_rate_gps_info_async() {#classmavsdk_1_1_telemetry_1a09d9232f3fc83de09e1b97fbde9edd27}
 ```cpp
@@ -1196,6 +1304,32 @@ Get the current angular speed in rad/s (synchronous).
 **Returns**
 
 &emsp;[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) - Angular speed.
+
+### fixedwing_metrics() {#classmavsdk_1_1_telemetry_1ad759be5db9d392605b7cabda89ea97b6}
+```cpp
+FixedwingMetrics mavsdk::Telemetry::fixedwing_metrics() const
+```
+
+
+Get the current fixedwing_metrics (synchronous).
+
+
+**Returns**
+
+&emsp;[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) - Fixed wing metrics.
+
+### ground_truth() {#classmavsdk_1_1_telemetry_1a09f26112a60122b64019c69d70a89c41}
+```cpp
+GroundTruth mavsdk::Telemetry::ground_truth() const
+```
+
+
+Get the current ground truth (synchronous).
+
+
+**Returns**
+
+&emsp;[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) - Ground truth.
 
 ### camera_attitude_quaternion() {#classmavsdk_1_1_telemetry_1ab02def16e920a453ea15770909797468}
 ```cpp
@@ -1472,6 +1606,32 @@ Subscribe to attitude updates in angular velocity (asynchronous).
 **Parameters**
 
 * [attitude_angular_velocity_body_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8253671d4203e542095c365617b98678) **callback** - Function to call with updates.
+
+### fixedwing_metrics_async() {#classmavsdk_1_1_telemetry_1a82be69c764633d6c573b2dce1b40787e}
+```cpp
+void mavsdk::Telemetry::fixedwing_metrics_async(fixedwing_metrics_callback_t callback)
+```
+
+
+Subscribe to vfr hud updates in (asynchronous).
+
+
+**Parameters**
+
+* [fixedwing_metrics_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378) **callback** - Function to call with updates.
+
+### ground_truth_async() {#classmavsdk_1_1_telemetry_1a4597194316986337ea6cd5fc33eabec4}
+```cpp
+void mavsdk::Telemetry::ground_truth_async(ground_truth_callback_t callback)
+```
+
+
+Subscribe to ground_truth updates in (asynchronous).
+
+
+**Parameters**
+
+* [ground_truth_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7) **callback** - Function to call with updates.
 
 ### camera_attitude_quaternion_async() {#classmavsdk_1_1_telemetry_1ae39f1c1769189fbd7e21fb216da7cfd2}
 ```cpp
