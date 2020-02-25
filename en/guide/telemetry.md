@@ -189,6 +189,7 @@ Similarly, you can use the asynchronous method and block
     // Now ready to arm
 }
 ```
+> **Note** Make sure to unsubscribe from the callback after it suceed using `telemetry->health_all_ok_async(nullptr)`. Otherwise you will run into an error because `prom->set_value()` is called more than once.
 
 Depending on the architecture of your application, you may even wish to arm the vehicle in your callback function. 
 Usually though it is easier to understand program flow using the approach above.
