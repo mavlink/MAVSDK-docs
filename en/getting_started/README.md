@@ -1,21 +1,20 @@
 # Getting Started <div style="float:right; padding:10px; margin-right:20px;"><img src="../../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="180px"/></div>
 
-<!-- NOTE, currently not built into final docset -->
-
 This topic explains how to set up a development environment and write a minimal example for all our supported programming languages/platforms.
 
 ## C++
 
-This [Guide](../guide/README.md) explains how to write MAVSDK apps using C++.
-A simple complete example can be found in [Takeoff and Land](../examples/takeoff_and_land.md).
+To install the library, you can [install pre-built binaries](#install_binaries) for various platforms or [build from source](#build_source).
 
-To install the library, you can install pre-built binaries for various platforms or build from source.
+Once MAVSDK is installed follow the [Takeoff and Land](../examples/takeoff_and_land.md) example to try it out.
 
-### Install pre-built binaries
+> **Note** This [Guide](../guide/README.md) explains how to write MAVSDK apps using C++.
+
+### Install pre-built binaries {#install_binaries}
 
 #### Windows
 
-> **Note** No binaries for Windows are available yet. For now building from source is required.
+> **Note** No binaries for Windows are available yet. For now [building from source](#build_source) is required.
 
 #### macOS
 
@@ -24,7 +23,6 @@ Use [brew](https://brew.sh/) to install the library:
 ```
 brew install mavsdk
 ```
-
 
 #### Ubuntu
 
@@ -52,7 +50,7 @@ It can e.g. be installed using `yay`:
 yay -S mavsdk
 ```
 
-### Build from source
+### Build from Source {#build_source}
 
 For development, or unsupported platforms, you can [build the library from source](../contributing/build.md).
 
@@ -60,3 +58,12 @@ For development, or unsupported platforms, you can [build the library from sourc
 ## iOS {#ios}
 
 [MAVSDK-Swift on GitHub](https://github.com/mavlink/MAVSDK-Swift) as well as the [reference docs](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) should contain everything needed for iOS development of MAVSDK apps.
+
+## Python
+
+To install [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python), simply run:
+```
+pip3 install mavsdk
+```
+
+Instructions for running examples (and building from source) can be found on the project Github repo: [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python)
