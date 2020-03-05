@@ -10,14 +10,6 @@ This section show how to install the MAVSDK core library on various platforms.
 > **Note** For most supported platforms you can download and install pre-built binaries.
   During development (and for some platforms - e.g. Windows), you must [build the library from source](../contributing/build.md).
 
-### Ubuntu
-
-Download the **.deb** file for your system from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) and install it using `dpkg`:
-
-```
-sudo dpkg -i mavsdk_0.24.0_ubuntu18.04_amd64.deb
-```
-
 ### macOS
 
 Use [brew](https://brew.sh/) to install the library:
@@ -30,6 +22,15 @@ brew install mavsdk
 
 > **Note** No binaries for Windows are available yet.
   For now you must [build the library from source](../contributing/build.md).
+
+
+### Ubuntu
+
+Download the **.deb** file for your system from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) and install it using `dpkg`:
+
+```
+sudo dpkg -i mavsdk_0.24.0_ubuntu18.04_amd64.deb
+```
 
 ### Fedora
 
@@ -63,6 +64,8 @@ Use `pip3` to install [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#m
 ```bash
 pip3 install mavsdk
 ```
+> **Note** MAVSDK-Python is currently only available for Windows, macOS, and Linux x86_64.
+  It is not yet suppported for Linux ARM platfroms like RPi (see [MAVSDK-Python#117](https://github.com/mavlink/MAVSDK-Python/issues/117)).
 
 
 ## Next Steps
