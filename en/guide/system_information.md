@@ -28,13 +28,13 @@ The code below shows how to query the UUID, version, and product, information an
 std::cout << " UUID: " << info->uuid() << std::endl;
 
 // Wait until version/firmware information has been populated from the vehicle
-while (!info->is_complete()) {
+while (info->get_identification().first==Info::Result::INFORMATION_NOT_RECEIVED_YET) {
     std::cout << "Waiting for Version information to populate from system." << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 // Get the system Version struct
-const Info::Version &systemVersion =  info->get_version();
+const Info::Version &systemVersion =  info->get_version().second;
 
 // Print out the vehicle version information.
 std::cout << "  flight_sw_major: " << systemVersion.flight_sw_major<< std::endl
@@ -50,7 +50,7 @@ std::cout << "  flight_sw_major: " << systemVersion.flight_sw_major<< std::endl
           << "  os_sw_git_hash: " << systemVersion.os_sw_git_hash<< std::endl;
 
 // Get the system Product struct
-const Info::Product &systemProduct =  info->get_product();
+const Info::Product &systemProduct =  info->get_product().second;
 
 // Print out the vehicle product information.
 std::cout << "  vendor_id: " << systemProduct.vendor_id<< std::endl
