@@ -41,7 +41,7 @@ The current status is:
 * Python 3 developers install and use [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) from PyPi (`pip3 install mavsdk`). 
   There is no further setup, so you can then immediately run the [examples](https://github.com/mavlink/MAVSDK-Python/tree/master/examples) in the normal way. 
   The drone API is essentially the same as for the [C++ API](api_reference/README.md).
-* iOS developers should start from the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
+* iOS developers should start from the [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
 * C++ Developers should start at the [C++ Library](cpp/README.md).
  
 
