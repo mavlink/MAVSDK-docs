@@ -19,7 +19,6 @@ First install the MAVSDK library on your platform
 
 > **Note** To use other platforms or programming languages see: [Installation](getting_started/installation.md).
 
-
 You will also to install a build toolchain to compile your code.
 However the required dependencies (e.g. `cmake`, compiler) are installed as part of [setting up the simulator](#simulator) (next step).
 
@@ -86,8 +85,7 @@ git clone https://github.com/mavlink/MAVSDK.git --recursive
 cd MAVSDK
 ```
 
-
-Then build the example on macOS or Linux:
+Build the takeoff and land example:
 ```sh
 cd example/takeoff_land/
 mkdir build && cd build
@@ -105,10 +103,12 @@ Then run the example app (from the **example/takeoff_land/build** directory) as 
 ./takeoff_and_land udp://:14540
 ```
 
-The MAVSDK application should connect to PX4, and you will be able to observe behaviour through the SDK terminal, SITL terminal, and/or *QGroundControl*.
+The MAVSDK application should connect to PX4, and you will be able to observe the example running in the SDK terminal, SITL terminal, and/or *QGroundControl*.
+The expected behaviour is shown here: [Example: Takeoff and Land](../examples/takeoff_and_land.md).
 
 > **Note** The first argument above is the connection string (`udp://:14540`).
   This is the standard PX4 UDP port for connecting to offboard APIs.
+  
 
 ## Next Steps
 
