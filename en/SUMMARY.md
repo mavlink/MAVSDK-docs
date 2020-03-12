@@ -2,10 +2,11 @@
 
 * [Introduction](README.md)
   * [FAQ](getting_started/faq.md)
-<!-- * [Quick Start](getting_started/README.md) -->
+* [Installation](getting_started/installation.md)
 * [iOS/Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html)
 * [Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python)
 * [C++ (MAVSDK Core)](cpp/README.md)
+  * [C++ QuickStart](cpp/quickstart.md)
   * [Guide](guide/README.md)
     * [Usage/Paradigms](guide/general_usage.md)
     * [Connecting to Systems (Vehicles)](guide/connections.md)
