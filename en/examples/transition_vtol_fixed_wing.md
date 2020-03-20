@@ -72,10 +72,10 @@ The operation of the transition code is discussed in the guide: [Takeoff and Lan
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/transition_vtol_fixed_wing).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/transition_vtol_fixed_wing).
 
 
-[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/transition_vtol_fixed_wing/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
