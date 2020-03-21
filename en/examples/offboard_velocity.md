@@ -59,10 +59,10 @@ The operation of most of this code is discussed in the guide: [Offboard Control]
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/offboard_velocity).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/offboard_velocity).
 
 
-[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/offboard_velocity/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/offboard_velocity/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)

@@ -6,20 +6,20 @@ This section contains examples showing how to use MAVSDK.
 
 Example | Description
 --- | ---
-[Battery](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/battery) | Simple example to demonstrate how to imitate a smart battery.
-[Calibrate](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/calibrate) | Simple example showing how to initiate calibration of gyro, accelerometer, magnetometer.
+[Battery](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/battery) | Simple example to demonstrate how to imitate a smart battery.
+[Calibrate](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/calibrate) | Simple example showing how to initiate calibration of gyro, accelerometer, magnetometer.
 [Fly Mission](../examples/fly_mission.md) | Shows how to create, upload, and run missions.
-[Fly Multiple Drones](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/fly_multiple_drones) | Example to connect multiple vehicles and make them follow their own separate plan file. Also saves the telemetry information to CSV files.
+[Fly Multiple Drones](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/fly_multiple_drones) | Example to connect multiple vehicles and make them follow their own separate plan file. Also saves the telemetry information to CSV files.
 [Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) | Fly a mission imported from a *QGroundControl* mission plan.
 [Follow Me Mode](../examples/offboard_velocity.md) | Demonstrates how to put vehicle in [Follow Me Mode](../guide/follow_me.md) and set the current target position and relative position of the drone.
-[GeoFence Inclusion](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/geofence_inclusion) | Demonstrates how to define and upload a simple polygonal inclusion GeoFence.
-[MAVLink FTP Client](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/mavlink_ftp_client) | Demonstrates how to create/use a [MAVLink FTP client](https://mavlink.io/en/services/ftp.html).
-[MAVLink FTP Server](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/mavlink_ftp_server) | Demonstrates how to start/set up a [MAVLink FTP server](https://mavlink.io/en/services/ftp.html).
-[Multiple Drones](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/multiple_drones) | Example to connect multiple vehicles and make them take off and land in parallel.
+[GeoFence Inclusion](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/geofence_inclusion) | Demonstrates how to define and upload a simple polygonal inclusion GeoFence.
+[MAVLink FTP Client](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/mavlink_ftp_client) | Demonstrates how to create/use a [MAVLink FTP client](https://mavlink.io/en/services/ftp.html).
+[MAVLink FTP Server](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/mavlink_ftp_server) | Demonstrates how to start/set up a [MAVLink FTP server](https://mavlink.io/en/services/ftp.html).
+[Multiple Drones](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/multiple_drones) | Example to connect multiple vehicles and make them take off and land in parallel.
 [Offboard Velocity Control](../examples/offboard_velocity.md) | Demonstrates how to control a vehicle in Offboard mode using velocity commands (in both the NED and body frames).
 [Takeoff and Land](../examples/takeoff_and_land.md) | Shows basic usage of the SDK (connect to port, detect system (vehicle), arm, takeoff, land, get telemetry)
 [VTOL Transitions](../examples/transition_vtol_fixed_wing.md) | Shows how to transition a VTOL vehicle between copter and fixed-wing modes.
-[Tune](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/example/tune) | Shows how to construct and play a tune.
+[Tune](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/tune) | Shows how to construct and play a tune.
 
 The examples are "largely" built and run in the same way, as described in the following section (any exceptions are covered in the page for the associated example).
 
