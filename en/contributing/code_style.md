@@ -2,12 +2,14 @@
 
 This topic contains the SDK C++ formatting and coding guidelines.
 
-> **Note** These guidelines are not written in stone!   
+> **Note** These guidelines are not written in stone!
 >   [Start a discussion](../README.md#getting-help) if you have suggestions for improvement \(the project will consider anything other than "matters of personal taste"\).
 
 ## Formatting and White Space
 
 All **.cpp** and **.h** files should be formatted according to the `.clang-format` style.
+
+### Fix style
 
 To automatically fix the formatting, run the command:
 
@@ -15,18 +17,59 @@ To automatically fix the formatting, run the command:
 ./tools/fix_style.sh .
 ```
 
+If you don't have clang-format version **9.0** or later installed, you can use a docker image or install it as explained below:
+
+### Use clang-format in docker
+
+You can just use the pre-built docker image:
+
+```
+tools/run-docker.sh tools/fix_style.sh .
+```
+
+### Install clang-format
+
+You need to have at least clang-format  installed.
+
+### macOS
+
+Install clang-format using brew:
+
+```
+brew install clang-format
+```
+
+### Ubuntu 18.04
+
+Install clang-format-9:
+
+```
+sudo apt-get install clang-format-9
+```
+
+### Ubuntu 16.04
+
+You need to add the llvm repository to install clang-format-9:
+
+```
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-9 main"
+apt-get update
+apt-get install clang-format-9
+```
+
 ## General Guidelines
 
 The following general guidelines should be used for all code:
 
-* C++11 is encouraged to allow developers to use C++11 features and the standard library.   
+* C++11 is encouraged to allow developers to use C++11 features and the standard library.
   Examples:
 
   * [`std::function`](http://en.cppreference.com/w/cpp/utility/functional/function) and [lambda expressions](http://en.cppreference.com/w/cpp/language/lambda)
   * [`std::vector`](http://en.cppreference.com/w/cpp/container/vector), [`std::map`](http://www.cplusplus.com/reference/map/map/)
   * [`std::thread`](http://www.cplusplus.com/reference/thread/thread/), [`std::mutex`](http://en.cppreference.com/w/cpp/thread/mutex)
 
-* `using namespace std` is discouraged \([read why](https://stackoverflow.com/questions/1452721/why-is-using-namespace-std-considered-bad-practice)\).   
+* `using namespace std` is discouraged \([read why](https://stackoverflow.com/questions/1452721/why-is-using-namespace-std-considered-bad-practice)\).
   If needed specific declarations can be used in the source files such as `using std::this_thread::sleep_for` to reduce verbosity.
 
 * The usage of namespacing wherever possible is encouraged \(e.g. `enum class` is to be used over `enum`\).
