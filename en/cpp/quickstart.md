@@ -17,7 +17,7 @@ First install the MAVSDK library on your platform
   sudo dpkg -i mavsdk_0.24.0_ubuntu18.04_amd64.deb
   ```
 
-> **Note** To use other platforms or programming languages see: [Installation](getting_started/installation.md).
+> **Note** To use other platforms or programming languages see: [Installation](../getting_started/installation.md).
 
 You will also to install a build toolchain to compile your code.
 However the required dependencies (e.g. `cmake`, compiler) are installed as part of [setting up the simulator](#simulator) (next step).
@@ -64,7 +64,7 @@ To set up and run the PX4 JMAVSim multicopter simulator on MacOS or Ubuntu:
    HEADLESS=1 make px4_sitl jmavsim 
    ```
 
-> **Tip** PX4 supports a [number of simulators](https://dev.px4.io/en/simulation/) including [jMAVSim](https://dev.px4.io/en/simulation/jmavsim.html) and [Gazebo](https://dev.px4.io/en/simulation/gazebo.html).
+> **Tip** PX4 supports a [number of simulators](https://dev.px4.io/master/en/simulation/) including [jMAVSim](https://dev.px4.io/master/en/simulation/jmavsim.html) and [Gazebo](https://dev.px4.io/master/en/simulation/gazebo.html).
   Use *Gazebo* if you need to simulate a VTOL or Fixed wing vehicle (jMAVSim can only simulate multicopters).
 
 

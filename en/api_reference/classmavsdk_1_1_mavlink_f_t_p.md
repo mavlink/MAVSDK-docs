@@ -41,7 +41,7 @@ void | [set_timeout](#classmavsdk_1_1_mavlink_f_t_p_1ae1eed534af3efc2bec7bd4fd45
 void | [set_retries](#classmavsdk_1_1_mavlink_f_t_p_1a53fc2f01aab159ac2c0454a2ca7e8a33) (uint32_t retries) | Set number of retries after timeout for Mavlink FTP operation.
 void | [set_root_dir](#classmavsdk_1_1_mavlink_f_t_p_1aedeedce9d80d001db2f85d14b3f15427) (const std::string & root_dir) | Set root dir for Mavlink FTP server.
 void | [set_target_component_id](#classmavsdk_1_1_mavlink_f_t_p_1a834ed33ff876a36fa9149bdf0b649290) (uint8_t component_id) | Set target component id. By default it is the autopilot.
-uint8_t | [get_our_compid](#classmavsdk_1_1_mavlink_f_t_p_1ad54ded27ff301bbdc5cd62752e7e8196) () const | Get our own component ID.
+uint8_t | [get_our_compid](#classmavsdk_1_1_mavlink_f_t_p_1a53dc9a4c243b6638faf6d074783f1f5d) () const | Get our own component ID.
 const [MavlinkFTP](classmavsdk_1_1_mavlink_f_t_p.md) & | [operator=](#classmavsdk_1_1_mavlink_f_t_p_1ae39d40f73c47c18a7179225cda9a7a0b) (const [MavlinkFTP](classmavsdk_1_1_mavlink_f_t_p.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -373,7 +373,7 @@ Set target component id. By default it is the autopilot.
 
 * uint8_t **component_id** - Target component id
 
-### get_our_compid() {#classmavsdk_1_1_mavlink_f_t_p_1ad54ded27ff301bbdc5cd62752e7e8196}
+### get_our_compid() {#classmavsdk_1_1_mavlink_f_t_p_1a53dc9a4c243b6638faf6d074783f1f5d}
 ```cpp
 uint8_t mavsdk::MavlinkFTP::get_our_compid() const
 ```

@@ -1,6 +1,6 @@
 # Writing Plugins
 
-The MAVSDK is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins). 
+The MAVSDK is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins). 
 
 Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. 
 The [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
@@ -48,11 +48,11 @@ Each plugin must have the same files/structure, as shown for the "example" plugi
 
 ## Create a Plugin
 
-To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins) (e.g. 
-[Action](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins/action),
-[Telemetry](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins/telemetry), etc.) or the [example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
+To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins) (e.g. 
+[Action](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/action),
+[Telemetry](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/telemetry), etc.) or the [example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/external_example/plugins/example/) plugin into the **plugins** directory (either in the MAVSDK tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
 
-Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/external_example/plugins/example/CMakeLists.txt) as appropriate:
+Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/plugins/example/CMakeLists.txt) as appropriate:
 * Modify plugin filenames as appropriate
 * Add additional libraries using the variable `additional_libs`:
   ```
@@ -67,7 +67,7 @@ Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/m
 
 ## Plugin Code
 
-The [standard plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins) can be reviewed for guidance on
+The [standard plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins) can be reviewed for guidance on
 how to write plugin code, including how to send and process MAVLink messages.
 
 
@@ -85,7 +85,7 @@ Plugin authors should provide an implementation of the following `PluginImplBase
 * [init()](#init)/[deinit()](#deinit): These are called when a system is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `System` instantiated. This includes calls that set up callbacks.
 * [enable()](#enable)/[disable()](#disable): These are called when a vehicle is discovered or has timed out. They should be used for managing resources needed to access a connected system/vehicle (e.g. getting a parameter or changing a setting).
 
-The [external example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/external_example) provides a minimal implementation.
+The [external example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/external_example) provides a minimal implementation.
 
 Additional detail is provided for methods below.
 
@@ -133,7 +133,7 @@ If any threads, call_every, or timeouts are running, they should be stopped in t
 Tests must be created for all new and updated plugin code. 
 The tests should be exhaustive, and cover all aspects of using the plugin API.
 
-The [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)
+The [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md)
 provides an excellent overview of how tests are written and used.
 
 > **Note** Testing is the same for plugins in SDK and the [SDK Extensions](../guide/sdk_extensions.md).
@@ -161,7 +161,7 @@ append the following lines to its **CMakeLists.txt**:
 
 ```cmake 
 list(APPEND UNIT_TEST_SOURCES
-    ${CMAKE_SOURCE_DIR}/plugins/mission/example_impl_test.cpp
+    ${CMAKE_SOURCE_DIR}/src/plugins/mission/example_impl_test.cpp
 )
 set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)
 ``` 
@@ -196,8 +196,8 @@ TEST(ExampleImpl, NoTest)
 
 The SDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
 
-> **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
-> and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/integration_tests) 
+> **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md) 
+> and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests) 
 > for our existing plugins to better understand how to write your own!
 
 
@@ -245,7 +245,7 @@ add_executable(external_example_integration_tests_runner
 
 #### Integration Test Files/Code
 
-The main SDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/core/integration_test_helper.h). 
+The main SDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/integration_test_helper.h).
 This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
 > **Note** All tests must be declared using `TEST_F` and have a first argument `SitlTest` as shown. 

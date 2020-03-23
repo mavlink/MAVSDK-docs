@@ -144,7 +144,7 @@ target_link_libraries(follow_me
 )
 ```
 
-[follow_me.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/follow_me/follow_me.cpp)
+[follow_me.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/follow_me/follow_me.cpp)
 
 ```cpp
 /**
@@ -323,7 +323,7 @@ inline void connection_error_exit(ConnectionResult result, const std::string &me
 }
 ```
 
-[fake_location_provider.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/follow_me/fake_location_provider.h)
+[fake_location_provider.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/follow_me/fake_location_provider.h)
 
 ```cpp
 #pragma once
@@ -366,7 +366,7 @@ private:
 };
 ```
 
-[fake_location_provider.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/follow_me/fake_location_provider.cpp)
+[fake_location_provider.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/follow_me/fake_location_provider.cpp)
 
 ```cpp
 

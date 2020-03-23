@@ -51,7 +51,7 @@ Type | Name | Description
 [Offboard::Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [stop](#classmavsdk_1_1_offboard_1a9a54e588bcfd5b0ffca27833ad4f6b10) () | Stop offboard control (synchronous).
 void | [start_async](#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606) ([result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) callback) | Start offboard control (asynchronous).
 void | [stop_async](#classmavsdk_1_1_offboard_1a243e63e27d3e6d4b927e6d9a3fe2e8e9) ([result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) callback) | Stop offboard control (asynchronous).
-bool | [is_active](#classmavsdk_1_1_offboard_1ace61e87e04cac4275d53b97591ab4f7c) () const | Check if offboard control is active.
+bool | [is_active](#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5) () const | Check if offboard control is active.
 void | [set_position_ned](#classmavsdk_1_1_offboard_1a0bcbc79ba1277f0e7ad110f86b902cc7) ([PositionNEDYaw](structmavsdk_1_1_offboard_1_1_position_n_e_d_yaw.md) position_ned_yaw) | Set the position in NED coordinates and yaw.
 void | [set_velocity_ned](#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39) ([VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
 void | [set_velocity_body](#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81) ([VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
@@ -169,7 +169,7 @@ Offboard::Result mavsdk::Offboard::stop()
 
 Stop offboard control (synchronous).
 
-The vehicle will be put into Hold mode: [https://docs.px4.io/en/flight_modes/hold.html](https://docs.px4.io/en/flight_modes/hold.html)
+The vehicle will be put into Hold mode: [https://docs.px4.io/master/en/flight_modes/hold.html](https://docs.px4.io/master/en/flight_modes/hold.html)
 
 **Returns**
 
@@ -197,13 +197,13 @@ void mavsdk::Offboard::stop_async(result_callback_t callback)
 
 Stop offboard control (asynchronous).
 
-The vehicle will be put into Hold mode: [https://docs.px4.io/en/flight_modes/hold.html](https://docs.px4.io/en/flight_modes/hold.html)
+The vehicle will be put into Hold mode: [https://docs.px4.io/master/en/flight_modes/hold.html](https://docs.px4.io/master/en/flight_modes/hold.html)
 
 **Parameters**
 
 * [result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) **callback** - Callback to receive request result.
 
-### is_active() {#classmavsdk_1_1_offboard_1ace61e87e04cac4275d53b97591ab4f7c}
+### is_active() {#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5}
 ```cpp
 bool mavsdk::Offboard::is_active() const
 ```

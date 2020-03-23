@@ -1,6 +1,6 @@
 # Testing
 
-The SDK has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) (`gtest`).
+The SDK has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/primer.md) (`gtest`).
 The unit tests are run every time new code is committed to the SDK codelines, and must pass before the code can be merged.
 
 This topic shows how to run the existing tests.
@@ -20,12 +20,13 @@ To run all unit tests:
 Tests can be run against the simulator (either manually starting PX4 SITL or letting the tests start it automatically) or against a real vehicle.
 
 > **Tip** To run SITL you will need to install the _Gazebo_ simulator.
-> This is included as part of the standard PX4 installation for [macOS](https://dev.px4.io/en/setup/dev_env_mac.html)
-> and [Linux](https://dev.px4.io/en/setup/dev_env_linux.html#development-toolchain). It does not run on Windows.
+> This is included as part of the standard PX4 installation for [macOS](https://dev.px4.io/master/en/setup/dev_env_mac.html)
+> and [Linux](https://dev.px4.io/master/en/setup/dev_env_linux.html).
+> It does not run on Windows.
 
 ### Autostart PX4 SITL
 
-Make sure that the [PX4 Gazebo simulation](https://dev.px4.io/en/simulation/gazebo.html) is built and works:
+Make sure that the [PX4 Gazebo simulation](https://dev.px4.io/master/en/simulation/gazebo.html) is built and works:
 
 ```
 cd path/to/Firmware/

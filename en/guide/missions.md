@@ -77,7 +77,7 @@ std::vector<std::shared_ptr<MissionItem>> mission_items;
 ```
 
 You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. 
-The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1ab5897670c8830fc3514036d6ee99b582)). 
+The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1abe17a24cf27fa0b6d632f39f8d7d15f3)).
 ```cpp
 // Create MissionItem and set its position
 std::shared_ptr<MissionItem> new_item(new MissionItem());
@@ -151,9 +151,9 @@ mission_items.push_back(
 
 `Mission` allows you to import a mission from a *QGroundControl* plan (the imported mission can then be uploaded to a vehicle).
 
-> **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#sync) (**Plan View > Sync Tool**, and then select **Save to File**).
+> **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#file) (**Plan View > Sync Tool**, and then select **Save to File**).
 
-The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) method. 
+The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1aa0a937d18e9ce2c4f346aa9ee8a1a6d9) method.
 The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
 
 The code fragment below shows how to import mission items from a plan:
@@ -170,7 +170,7 @@ The mission (`mission_items`) can then be uploaded as shown in the section [Uplo
 
 ## Uploading a Mission {#uploading_mission}
 
-Use [Mission::upload_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) to upload the mission defined in the previous section.
+Use [Mission::upload_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ad6117cf541865249900201fe6305f5a1) to upload the mission defined in the previous section.
 
 The example below shows how this is done, using promises to wait on the result.
 
@@ -196,7 +196,7 @@ The example below shows how this is done, using promises to wait on the result.
 
 ## Starting/Pausing Missions 
 
-Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a9e032c6b2bc35cf6e7e19e07747fb0d3). 
+Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1af0a6404b7af085759bc6dad518eea525).
 The vehicle must already have a mission (the mission need not have been uploaded using the SDK).
 
 The code fragment below shows how this is done, using promises to wait on the result.
@@ -219,7 +219,7 @@ The code fragment below shows how this is done, using promises to wait on the re
 }
 ```
 
-To pause a mission use [Mission::pause_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a65f729cf954586507ecd8dc07a510dd1). 
+To pause a mission use [Mission::pause_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a39a0434bb2e731ccca7c0f2d579b0ee8). 
 The code is almost exactly the same as for starting a mission:
 
 ```cpp
@@ -244,7 +244,7 @@ The code is almost exactly the same as for starting a mission:
 
 ## Monitoring Progress
 
-Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a3290fc79eb22f899528328adfca48a61), 
+Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1aa882278b493a2390ca0b3cf7027b3a01), 
 which receives a regular callback with the current `MissionItem` number and the total number of items.
 
 The code fragment just takes a lambda function that reports the current status. 
@@ -258,9 +258,9 @@ mission->subscribe_progress( [](int current, int total) {
 > **Note** The mission is complete when `current == total`.
 
 The following synchronous methods are also available for checking mission progress:
-* [mission_finished()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1abf3463efaa18147a1c179e7449503829) - Checks if mission has been finished.
-* [current_mission_item()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a1faa448b32cd0028923b22de0cc78e9c) - Returns the current mission item index.
-* [total_mission_items()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a9d2195ec1af301c51002f8cb99aa22e9) - Gets the total number of items.
+* [mission_finished()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a5861a4c6325ca1eeb1cc1d37004a7f61) - Checks if mission has been finished.
+* [current_mission_item()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a25afa022a4206bd1055a692937f9b916) - Returns the current mission item index.
+* [total_mission_items()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a97c07cbcf5e9c54d5776cd86e4228311) - Gets the total number of items.
 
 > **Note** The mission is (also) complete when `current_mission_item()` == `total_mission_items()`.
 
@@ -277,7 +277,7 @@ If required you can instead use the appropriate commands in the [Action](../guid
 
 ## Downloading Missions
 
-Use [Mission::download_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) to download a mission from the vehicle. 
+Use [Mission::download_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a23173385eef570b9802402fc047104c1) to download a mission from the vehicle.
 The mission is downloaded as a vector of [MissionItem](../api_reference/classmavsdk_1_1_mission_item.md) objects, that you can then view or manipulate as required.
 
 > **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands). 
@@ -323,12 +323,12 @@ The code fragment below shows how to download a mission:
 
 ## Further Information
 
-* [Mission Flight Mode](https://docs.px4.io/en/flight_modes/mission.html) (PX4 User Guide)
+* [Mission Flight Mode](https://docs.px4.io/master/en/flight_modes/mission.html) (PX4 User Guide)
 * [Example:Fly Mission](../examples/fly_mission.md)
 * [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md)
 * Integration tests:
-  * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission.cpp)
-  * [mission_change_speed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
-  * [mission_survey.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)
+  * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission.cpp)
+  * [mission_change_speed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_change_speed.cpp)
+  * [mission_survey.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_survey.cpp)
 * Unit Tests:
-  * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/plugins/mission/mission_import_qgc_test.cpp)
+  * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/mission_import_qgc_test.cpp)
