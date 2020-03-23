@@ -1,6 +1,6 @@
 # Writing Plugins
 
-The MAVSDK is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins). 
+The MAVSDK is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins). 
 
 Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. 
 The [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
@@ -85,7 +85,7 @@ Plugin authors should provide an implementation of the following `PluginImplBase
 * [init()](#init)/[deinit()](#deinit): These are called when a system is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `System` instantiated. This includes calls that set up callbacks.
 * [enable()](#enable)/[disable()](#disable): These are called when a vehicle is discovered or has timed out. They should be used for managing resources needed to access a connected system/vehicle (e.g. getting a parameter or changing a setting).
 
-The [external example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/external_example) provides a minimal implementation.
+The [external example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/external_example) provides a minimal implementation.
 
 Additional detail is provided for methods below.
 
@@ -245,7 +245,7 @@ add_executable(external_example_integration_tests_runner
 
 #### Integration Test Files/Code
 
-The main SDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/core/integration_test_helper.h). 
+The main SDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/integration_test_helper.h).
 This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
 > **Note** All tests must be declared using `TEST_F` and have a first argument `SitlTest` as shown. 

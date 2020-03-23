@@ -55,7 +55,7 @@ The `follow_me` pointer can then used to access the plugin API (as shown in the 
 ## Set the Follow Configuration
 
 By default the vehicle will follow directly behind the target at a height and distance of 8 metres. 
-You can (optionally) call [set_config()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1aedf746d4a0eebdaaddc3d1ba0aeb6720) at any time to specify a different height, follow distance, relative position (front left/right/centre or behind) and responsiveness to target movements. 
+You can (optionally) call [set_config()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a1d7c0e5598769365aeaec8026578a977) at any time to specify a different height, follow distance, relative position (front left/right/centre or behind) and responsiveness to target movements.
 
 The code fragment below shows how to set the configuration:
 ```cpp

@@ -45,14 +45,14 @@ The main steps are:
    auto action = std::make_shared<Action>(system);
    ```
 
-The `action` pointer can then used to access the plugin API (as shown in the following sections). 
+The `action` pointer can then used to access the plugin API (as shown in the following sections).
 
 > **Note** Some of the sections below additionally assume you have created a `Telemetry` instance that can be accessed using `telemetry`.
 
 
 ## Taking Off
 
-The recommended way to take off using the SDK (and PX4) is to use either of the [takeoff()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a1d6244edfd39272d97bf8b126eb98629) or [takeoff_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a2aec10a2b14f5e82f05edc6e2feac83e) methods. If a takeoff command is accepted the vehicle will change to the [Takeoff mode](https://docs.px4.io/master/en/flight_modes/takeoff.html), fly to the takeoff altitude, and then hover (in takeoff mode) until another instruction is received. 
+The recommended way to take off using the SDK (and PX4) is to use either of the [takeoff()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a0121d39baf922b1d88283230207ab5d0) or [takeoff_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a05325bd5c29aa533b95c344e25aa47dd) methods. If a takeoff command is accepted the vehicle will change to the [Takeoff mode](https://docs.px4.io/master/en/flight_modes/takeoff.html), fly to the takeoff altitude, and then hover (in takeoff mode) until another instruction is received.
 
 > **Note** PX4/SDK also provides other ways to take off:
 > - A copter or VTOL will take off automatically if a mission is started (fixed-wing will not). 
@@ -251,7 +251,7 @@ You can get/set the normal horizontal velocity used in *Return mode*, *Hold mode
 ## Switch Between VTOL Modes {#transition_vtol}
 
 `Action` provides methods to transition between VTOL fixed wing and multicopter modes, with both synchronous and asynchronous versions:
-* [transition_to_fixedwing()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a559e6cfa22f937acc0bbd1f9ac4e54fa), [transition_to_multicopter()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a3af080379382fedbc3ad8bdbaf3c4e4c)
+* [transition_to_fixedwing()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a8d5cf999a48ea3859ec75db27cf4fbda), [transition_to_multicopter()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1aac94bfb8613a8e9869e3620b3dc9bb8e)
 * [transition_to_fixedwing_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ace04a08fdcdd171bc27a86f5f33daeef), [transition_to_multicopter_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1afc5b0e0502685c0a894cbb8445828e8c)
 
 The associated action will only be executed for VTOL vehicles (on other vehicle types the command will fail with a `Result` of `VTOL_TRANSITION_SUPPORT_UNKNOWN` or `NO_VTOL_TRANSITION_SUPPORT`). 
@@ -278,7 +278,7 @@ Additional information/examples for the Action API are linked below:
 * [Example: VTOL Transitions](../examples/transition_vtol_fixed_wing.md)
 * Integration tests:
   * [simple_hover.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/simple_hover.cpp)
-  * [async_hover.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/async_hover.cpp)
-  * [takeoff_and_kill.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/takeoff_and_kill.cpp)
-  * [transition_multicopter_fixedwing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/transition_multicopter_fixedwing.cpp)
+  * [action_hover_async.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/action_hover_async.cpp)
+  * [action_takeoff_and_kill.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/action_takeoff_and_kill.cpp)
+  * [action_transition_multicopter_fixedwing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/action_transition_multicopter_fixedwing.cpp)
 

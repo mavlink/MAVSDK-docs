@@ -77,7 +77,7 @@ std::vector<std::shared_ptr<MissionItem>> mission_items;
 ```
 
 You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. 
-The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1ab5897670c8830fc3514036d6ee99b582)). 
+The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1abe17a24cf27fa0b6d632f39f8d7d15f3)).
 ```cpp
 // Create MissionItem and set its position
 std::shared_ptr<MissionItem> new_item(new MissionItem());
@@ -153,7 +153,7 @@ mission_items.push_back(
 
 > **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#file) (**Plan View > Sync Tool**, and then select **Save to File**).
 
-The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) method. 
+The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1aa0a937d18e9ce2c4f346aa9ee8a1a6d9) method.
 The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
 
 The code fragment below shows how to import mission items from a plan:
@@ -170,7 +170,7 @@ The mission (`mission_items`) can then be uploaded as shown in the section [Uplo
 
 ## Uploading a Mission {#uploading_mission}
 
-Use [Mission::upload_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a414b5b6d0c66af695a725e92003872b5) to upload the mission defined in the previous section.
+Use [Mission::upload_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ad6117cf541865249900201fe6305f5a1) to upload the mission defined in the previous section.
 
 The example below shows how this is done, using promises to wait on the result.
 
@@ -196,7 +196,7 @@ The example below shows how this is done, using promises to wait on the result.
 
 ## Starting/Pausing Missions 
 
-Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a9e032c6b2bc35cf6e7e19e07747fb0d3). 
+Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1af0a6404b7af085759bc6dad518eea525).
 The vehicle must already have a mission (the mission need not have been uploaded using the SDK).
 
 The code fragment below shows how this is done, using promises to wait on the result.
@@ -244,7 +244,7 @@ The code is almost exactly the same as for starting a mission:
 
 ## Monitoring Progress
 
-Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a3290fc79eb22f899528328adfca48a61), 
+Asynchronously monitor progress using [Mission::subscribe_progress()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1aa882278b493a2390ca0b3cf7027b3a01), 
 which receives a regular callback with the current `MissionItem` number and the total number of items.
 
 The code fragment just takes a lambda function that reports the current status. 

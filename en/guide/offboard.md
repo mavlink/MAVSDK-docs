@@ -160,7 +160,7 @@ It is not possible to control the rate or direction that the vehicle will use to
 ### Turn/Yaw Vehicle in specified Direction/at Rate
 
 The `set_velocity_body()` can be used to rotate the vehicle at a specific rate and in a specified direction.
-This is set in [VelocityBodyYawspeed::yawspeed_deg_s](../api_reference/structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md#structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed_1a6858130475964eb2d5c5a4236b7f1e31), as the angular rate in degrees/second. If viewed from above, the vehicle will turn clockwise if the value is positive and anticlockwise if it is negative. 
+This is set in [VelocityBodyYawspeed::yawspeed_deg_s](../api_reference/structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md#structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed_1a102d7011d9a87c6e103f1c1b92d169ee), as the angular rate in degrees/second. If viewed from above, the vehicle will turn clockwise if the value is positive and anticlockwise if it is negative.
 
 Calling `set_velocity_body()` using an initialiser list type declaration the final (fourth) value is the yaw rate/direction.
 
