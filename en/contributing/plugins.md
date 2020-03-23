@@ -67,7 +67,7 @@ Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/m
 
 ## Plugin Code
 
-The [standard plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins) can be reviewed for guidance on
+The [standard plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins) can be reviewed for guidance on
 how to write plugin code, including how to send and process MAVLink messages.
 
 
@@ -197,7 +197,7 @@ TEST(ExampleImpl, NoTest)
 The SDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
 
 > **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md) 
-> and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/integration_tests) 
+> and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests) 
 > for our existing plugins to better understand how to write your own!
 
 

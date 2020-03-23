@@ -277,7 +277,6 @@ Additional information/examples for the Action API are linked below:
 * [Example: Takeoff and Land](../examples/takeoff_and_land.md)
 * [Example: VTOL Transitions](../examples/transition_vtol_fixed_wing.md)
 * Integration tests:
-  * [simple_hover.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/simple_hover.cpp)
   * [action_hover_async.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/action_hover_async.cpp)
   * [action_takeoff_and_kill.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/action_takeoff_and_kill.cpp)
   * [action_transition_multicopter_fixedwing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/action_transition_multicopter_fixedwing.cpp)
