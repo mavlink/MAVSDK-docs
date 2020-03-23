@@ -3,7 +3,7 @@
 The [Offboard](../api_reference/classmavsdk_1_1_offboard.md) SDK plugin provides a simple API for controlling the vehicle using velocity and yaw setpoints. 
 It is useful for tasks requiring direct control from a companion computer; for example to implement collision avoidance.
 
-> **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/en/flight_modes/offboard.html). 
+> **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/master/en/flight_modes/offboard.html). 
   The class can only be used with copter and VTOL vehicles (not fixed wing - a PX4 limitation) and currently only supports *velocity setpoint commands* (PX4 additionally supports position and thrust setpoints). 
 
 Client code must specify a setpoint before starting *Offboard mode*. 
@@ -51,10 +51,10 @@ The `offboard` pointer can then used to access the plugin API (as shown in the f
 
 ## Starting/Stopping Offboard Mode
 
-To use offboard mode you must first create a setpoint using either [set_velocity_ned()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a9e7f369a8f7459dc7705f4453a8c307d) or [set_velocity_body()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1ad9dc585be1bc2dba699cf089d4c274cc). 
-You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts. 
+To use offboard mode you must first create a setpoint using either [set_velocity_ned()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39) or [set_velocity_body()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81). 
+You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts.
 
-After you have created a setpoint call [start()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a658454f130f7b19d56f23347a448f1b9) or [start_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a5dd9d18eedb0e4a8f1bbbeebf6f99aa8) to switch to offboard mode. 
+After you have created a setpoint call [start()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a3f0b71195ae6cb445237b192e3b8343f) or [start_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606) to switch to offboard mode. 
 
 ```cpp
 // Create a setpoint before starting offboard mode (in this case a null setpoint)
@@ -68,13 +68,13 @@ if (result != Offboard::Result::SUCCESS) {
     }
 ```
 
-The methods return/complete with a [Result](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a0f6e5e9f73289f27dc99abbb3ab572ed) indicating whether the command was successful. 
-Above we use the synchronous API, and then use [Offboard::result_str()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a8eb7467e48fe354d34bc45637ca9f5b8) to get a human readable string for the returned enum. 
+The methods return/complete with a [Result](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) indicating whether the command was successful. 
+Above we use the synchronous API, and then use [Offboard::result_str()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a3402d7e3dc8b4ff15598dfd67af0644b) to get a human readable string for the returned enum.
 
 You can change the setpoints as needed (new setpoints replace any old setpoints).
 
-To stop offboard mode call [Offboard::stop()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1ae223c08f1ffc694b26d847cab7738406) or [stop_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1afbe6f50f63d3bc43acc4dfc2f797ca0a). 
-The SDK will then clear the current setpoint and put the vehicle into [Hold flight mode](https://docs.px4.io/en/flight_modes/hold.html). 
+To stop offboard mode call [Offboard::stop()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a9a54e588bcfd5b0ffca27833ad4f6b10) or [stop_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606). 
+The SDK will then clear the current setpoint and put the vehicle into [Hold flight mode](https://docs.px4.io/master/en/flight_modes/hold.html). 
 The synchronous API is used as shown below:
 
 ```cpp
@@ -214,10 +214,10 @@ The SDK examples use timers to separate commands (e.g. `sleep_for(seconds(8))`) 
 ## Monitoring Offboard Mode
 
 The vehicle may change out of offboard mode outside the control of your application (for example if a GCS were to put the vehicle into *Hold mode*).
-In this case, the SDK will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a44d9284ef03c8cf6f37a77b2f3cadaf0) will change from `true` to `false`.
+In this case, the SDK will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5) will change from `true` to `false`.
 
 Calls to change the setpoint do not return an error! 
-Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac8842dec06db4bd54c8c2ba2deb0d34a)).
+Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1adede4202304e53466b4df41367a75878)).
 
 
 ## Further Information
@@ -226,6 +226,6 @@ Additional information/examples for the Offboard API are linked below:
 
 * [Example: Offboard Velocity](../examples/offboard_velocity.md)
 * Integration tests:
-  * [offboard_velocity.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/offboard_velocity.cpp)
+  * [offboard_velocity.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/offboard_velocity.cpp)
 
 

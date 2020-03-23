@@ -572,7 +572,7 @@ Callback type for odometry updates (asynchronous).
 
 Flight modes.
 
-For more information about flight modes, check out [https://docs.px4.io/en/config/flight_mode.html](https://docs.px4.io/en/config/flight_mode.html).
+For more information about flight modes, check out [https://docs.px4.io/master/en/config/flight_mode.html](https://docs.px4.io/master/en/config/flight_mode.html).
 
 Value | Description
 --- | ---

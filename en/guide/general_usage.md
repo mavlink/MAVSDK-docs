@@ -10,10 +10,10 @@ The object is usually created as an automatic variable that is cleaned up when i
 
 API consumers use [Mavsdk](../api_reference/classmavsdk_1_1_mavsdk.md) to discover and connect to [System](../api_reference/classmavsdk_1_1_system.md) objects (vehicles/cameras etc.). 
 
-Access to drone information and control objects are provided [by plugins](../guide/using_plugins.md) (e.g. Telemetry, Action, Mission etc.). 
-Plugin objects are instantiated with a *specific* `System` object (a plugin instance must be created for every system that needs it). 
+Access to drone information and control objects are provided [by plugins](../guide/using_plugins.md) (e.g. Telemetry, Action, Mission etc.).
+Plugin objects are instantiated with a *specific* `System` object (a plugin instance must be created for every system that needs it).
 
-Plugin objects are created as shared pointers that will be destroyed when all associated handles are out of scope. 
+Plugin objects are created as shared pointers that will be destroyed when all associated handles are out of scope.
 All objects are automatically cleaned up when the parent `Mavsdk` object is destroyed.
 
 
@@ -24,7 +24,7 @@ MAVSDK APIs do not raise exceptions! Instead, methods that can fail return succe
 > **Tip** The error code usually reflects acknowledgment from the vehicle that it will perform the requested action (or not). 
   The operation itself may not yet have completed (e.g. taking off).
 
-The various classes also all provide methods getting human readable strings from their associated enum (e.g. [connection_result_str()](../api_reference/namespacemavsdk.md#namespacemavsdk_1a59e8a165c1edafab6ab0c04df2c83679), [Telemetry::result_str()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a046457e28886493a677fe7d35627bacc)). You can see how these are used in the example code.
+The various classes also all provide methods getting human readable strings from their associated enum (e.g. [connection_result_str()](../api_reference/namespacemavsdk.md#namespacemavsdk_1a59e8a165c1edafab6ab0c04df2c83679), [Telemetry::result_str()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a20bff42d7bb42c002ef7217cf98990e8)). You can see how these are used in the example code.
 
 
 ## Shared Vehicle Control
@@ -32,7 +32,7 @@ The various classes also all provide methods getting human readable strings from
 A vehicle can receive commands from multiple sources, including a Ground Control Station, or other MAVLink applications.
 
 SDK applications, which are running in environments where it is possible, can explicitly monitor for changes in flight mode 
-(outside application control) and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a29494b6f0ed34be913e3f5c4bbfdf4cd)). 
+(outside application control) and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1adede4202304e53466b4df41367a75878)). 
 
 
 ## API Limitations/Behaviour
@@ -64,7 +64,7 @@ Developers need to use a channel and a message update rate that allows their des
 `Action` methods (and any other "vehicle instructions") return when the vehicle has confirmed that the message was received and will be acted on (or not). 
 The methods do not wait for the commanded action to complete.
 
-So, for example, the [Action::land()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a25490d09fd2905b96de2c2c6e52e5f7b) method returns as soon as the vehicle confirms it will land, but will actually land at some later point. 
+So, for example, the [Action::land()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1af6429e1bdb2875deebfe98ed53da3d41) method returns as soon as the vehicle confirms it will land, but will actually land at some later point. 
 
 The implication is that developers will need to separately monitor the completion of the requested actions, if this is important to the application.
 

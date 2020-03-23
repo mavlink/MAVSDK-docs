@@ -1,6 +1,6 @@
 # Follow Me
 
-The [Follow Me](../api_reference/classmavsdk_1_1_follow_me.md) class is used to engage the PX4 [Follow Me Mode](https://docs.px4.io/en/flight_modes/follow_me.html) (multicopter only). 
+The [Follow Me](../api_reference/classmavsdk_1_1_follow_me.md) class is used to engage the PX4 [Follow Me Mode](https://docs.px4.io/master/en/flight_modes/follow_me.html) (multicopter only). 
 In this mode a copter will automatically yaw to face and follow a user at a specified position and distance.
 
 The API is used to supply the position(s) for the [target](../api_reference/structmavsdk_1_1_follow_me_1_1_target_location.md) and the relative [follow position](../api_reference/structmavsdk_1_1_follow_me_1_1_config.md) of the vehicle. 
@@ -74,16 +74,16 @@ if (config_result != FollowMe::Result::SUCCESS) {
 }
 ```
 
-The [get_config()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a054aebafe0839a1028f277285b769fe5) method is provided to get the current configuration:
+The [get_config()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a5a39cc685ea4288363ef38ebbd628062) method is provided to get the current configuration:
 ```cpp
 auto curr_config = follow_me->get_config();
 ```
 
 ## Following a Target
 
-To start and stop following a target, call [start()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a694749d43d527f85584df25a49b05ccf) and [stop()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a6394507b0fb96bceebe6efd17f0529ce), respectively - `start()` puts the vehicle into [Follow-Me mode](https://docs.px4.io/en/flight_modes/follow_me.html) and `stop()` puts it into [Hold mode](https://docs.px4.io/en/flight_modes/hold.html).
+To start and stop following a target, call [start()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a54434262fb1351f6ad648879606b6dd7) and [stop()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a157c9a6e4047d317fcb54abc71b390e2), respectively - `start()` puts the vehicle into [Follow-Me mode](https://docs.px4.io/master/en/flight_modes/follow_me.html) and `stop()` puts it into [Hold mode](https://docs.px4.io/master/en/flight_modes/hold.html).
 
-Use [set_target_location()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a1220596b8bb51d2ca52248a92e300ad5) to set the target position(s) for the vehicle to follow (the app typically passes its host's current position, which it would obtain using OS-specific methods). 
+Use [set_target_location()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a8423c855534f821aeb051997c1a576a5) to set the target position(s) for the vehicle to follow (the app typically passes its host's current position, which it would obtain using OS-specific methods). 
 This can be called at any time, but messages will only be sent once following is started. 
 The plugin automatically resends the last set position at the rate required by the autopilot/flight mode (1 Hz). 
 
@@ -111,7 +111,7 @@ if (follow_me_result != FollowMe::Result::SUCCESS) {
 }
 ```
 
-The last location that was set can be retrieved using [get_last_location()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a16da2bf7d0384e2bff4440600b523f8c). 
+The last location that was set can be retrieved using [get_last_location()](../api_reference/classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1ae78d10ea8c6a5a27dbc26c421d8ae48f).
 Before a target position is first set this API will return `Nan`.
 
 
@@ -122,4 +122,4 @@ Additional information/examples for the Follow Me API are linked below:
 
 * [Example:Follow Me Mode](../examples/follow_me.md)
 * Integration tests:
-  * [follow_me.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/follow_me.cpp)
+  * [follow_me.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/follow_me.cpp)

@@ -50,7 +50,7 @@ Each plugin must have the same files/structure, as shown for the "example" plugi
 
 To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins) (e.g. 
 [Action](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/action),
-[Telemetry](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/telemetry), etc.) or the [example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
+[Telemetry](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/telemetry), etc.) or the [example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/external_example/plugins/example/) plugin into the **plugins** directory (either in the MAVSDK tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
 
 Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/plugins/example/CMakeLists.txt) as appropriate:
 * Modify plugin filenames as appropriate
@@ -133,7 +133,7 @@ If any threads, call_every, or timeouts are running, they should be stopped in t
 Tests must be created for all new and updated plugin code. 
 The tests should be exhaustive, and cover all aspects of using the plugin API.
 
-The [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)
+The [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md)
 provides an excellent overview of how tests are written and used.
 
 > **Note** Testing is the same for plugins in SDK and the [SDK Extensions](../guide/sdk_extensions.md).
@@ -196,7 +196,7 @@ TEST(ExampleImpl, NoTest)
 
 The SDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
 
-> **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) 
+> **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md) 
 > and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/integration_tests) 
 > for our existing plugins to better understand how to write your own!
 

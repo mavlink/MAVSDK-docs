@@ -28,7 +28,7 @@ The examples are "largely" built and run in the same way, as described in the fo
 
 ## Trying the Examples {#trying_the_examples}
 
-The easiest way to test the examples is to use a [simulated PX4 vehicle](https://dev.px4.io/en/simulation/) that is running on the same computer.
+The easiest way to test the examples is to use a [simulated PX4 vehicle](https://dev.px4.io/master/en/simulation/) that is running on the same computer.
 First start PX4 in SITL (Simulation), optionally start *QGroundControl* to observe the vehicle, then build and run the example code.
 
 > **Note** The simulator broadcasts to the standard PX4 UDP port for connecting to offboard APIs (14540).
@@ -37,11 +37,11 @@ First start PX4 in SITL (Simulation), optionally start *QGroundControl* to obser
 
 ### Setting up a Simulator
 
-PX4 supports a [number of simulators](https://dev.px4.io/en/simulation/).
-In order to set up the [jMAVSim](https://dev.px4.io/en/simulation/jmavsim.html) or [Gazebo](https://dev.px4.io/en/simulation/gazebo.html) simulator, you can simply follow the standard PX4 toolchain setup instructions for [macOS](https://dev.px4.io/en/setup/dev_env_mac.html) or [Ubuntu Linux](https://dev.px4.io/en/setup/dev_env_linux.html#development-toolchain).
+PX4 supports a [number of simulators](https://dev.px4.io/master/en/simulation/).
+In order to set up the [jMAVSim](https://dev.px4.io/master/en/simulation/jmavsim.html) or [Gazebo](https://dev.px4.io/master/en/simulation/gazebo.html) simulator, you can simply follow the standard PX4 toolchain setup instructions for [macOS](https://dev.px4.io/master/en/setup/dev_env_mac.html) or [Ubuntu Linux](https://dev.px4.io/master/en/setup/dev_env_linux.html).
 
 > **Note** JMAVSim can only be used to simulate multicopters.
-  Gazebo additionally supports a number of [other vehicles](https://dev.px4.io/en/simulation/gazebo.html#html#running-the-simulation) (e.g. VTOL, Rovers, fixed-wing etc.).
+  Gazebo additionally supports a number of [other vehicles](https://dev.px4.io/master/en/simulation/gazebo.html#html#running-the-simulation) (e.g. VTOL, Rovers, fixed-wing etc.).
 
 After running a standard installation, a simulation can be started from the PX4 **/Firmware** directory using the command:
 * Multicopter (jMAVSim): `make px4_sitl jmavsim`
@@ -95,7 +95,7 @@ make
 
 #### Windows
 
-First [Build and install the SDK C++ Library](../contributing/build.md#windows).
+First [Build and install the SDK C++ Library](../contributing/build.md#build_cpp_windows).
 Make sure that you [install the library and headers locally](../contributing/build.md#sdk_local_install) in the standard location:
 
 ```sh

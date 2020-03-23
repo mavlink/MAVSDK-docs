@@ -151,7 +151,7 @@ mission_items.push_back(
 
 `Mission` allows you to import a mission from a *QGroundControl* plan (the imported mission can then be uploaded to a vehicle).
 
-> **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#sync) (**Plan View > Sync Tool**, and then select **Save to File**).
+> **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#file) (**Plan View > Sync Tool**, and then select **Save to File**).
 
 The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a7c73e97e5c1395a7451bb659d03e5f57) method. 
 The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
@@ -219,7 +219,7 @@ The code fragment below shows how this is done, using promises to wait on the re
 }
 ```
 
-To pause a mission use [Mission::pause_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a65f729cf954586507ecd8dc07a510dd1). 
+To pause a mission use [Mission::pause_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a39a0434bb2e731ccca7c0f2d579b0ee8). 
 The code is almost exactly the same as for starting a mission:
 
 ```cpp
@@ -258,9 +258,9 @@ mission->subscribe_progress( [](int current, int total) {
 > **Note** The mission is complete when `current == total`.
 
 The following synchronous methods are also available for checking mission progress:
-* [mission_finished()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1abf3463efaa18147a1c179e7449503829) - Checks if mission has been finished.
-* [current_mission_item()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a1faa448b32cd0028923b22de0cc78e9c) - Returns the current mission item index.
-* [total_mission_items()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a9d2195ec1af301c51002f8cb99aa22e9) - Gets the total number of items.
+* [mission_finished()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a5861a4c6325ca1eeb1cc1d37004a7f61) - Checks if mission has been finished.
+* [current_mission_item()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a25afa022a4206bd1055a692937f9b916) - Returns the current mission item index.
+* [total_mission_items()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a97c07cbcf5e9c54d5776cd86e4228311) - Gets the total number of items.
 
 > **Note** The mission is (also) complete when `current_mission_item()` == `total_mission_items()`.
 
@@ -277,7 +277,7 @@ If required you can instead use the appropriate commands in the [Action](../guid
 
 ## Downloading Missions
 
-Use [Mission::download_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a1bd15f508fe7da39b587a8e4d5e59ae2) to download a mission from the vehicle. 
+Use [Mission::download_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a23173385eef570b9802402fc047104c1) to download a mission from the vehicle.
 The mission is downloaded as a vector of [MissionItem](../api_reference/classmavsdk_1_1_mission_item.md) objects, that you can then view or manipulate as required.
 
 > **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands). 
@@ -323,12 +323,12 @@ The code fragment below shows how to download a mission:
 
 ## Further Information
 
-* [Mission Flight Mode](https://docs.px4.io/en/flight_modes/mission.html) (PX4 User Guide)
+* [Mission Flight Mode](https://docs.px4.io/master/en/flight_modes/mission.html) (PX4 User Guide)
 * [Example:Fly Mission](../examples/fly_mission.md)
 * [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md)
 * Integration tests:
-  * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission.cpp)
-  * [mission_change_speed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
-  * [mission_survey.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)
+  * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission.cpp)
+  * [mission_change_speed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_change_speed.cpp)
+  * [mission_survey.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_survey.cpp)
 * Unit Tests:
   * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/mission_import_qgc_test.cpp)

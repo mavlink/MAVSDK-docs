@@ -389,7 +389,7 @@ void mavsdk::Action::return_to_launch_async(const result_callback_t callback)
 
 Send command to return to the launch (takeoff) position and land.
 
-This switches the drone into [RTL mode](https://docs.px4.io/en/flight_modes/rtl.html) which generally means it will rise up to a certain altitude to clear any obstacles before heading back to the launch (takeoff) position and land there.
+This switches the drone into [RTL mode](https://docs.px4.io/master/en/flight_modes/rtl.html) which generally means it will rise up to a certain altitude to clear any obstacles before heading back to the launch (takeoff) position and land there.
 
 **Parameters**
 

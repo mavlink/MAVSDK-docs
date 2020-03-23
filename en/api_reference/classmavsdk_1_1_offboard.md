@@ -169,7 +169,7 @@ Offboard::Result mavsdk::Offboard::stop()
 
 Stop offboard control (synchronous).
 
-The vehicle will be put into Hold mode: [https://docs.px4.io/en/flight_modes/hold.html](https://docs.px4.io/en/flight_modes/hold.html)
+The vehicle will be put into Hold mode: [https://docs.px4.io/master/en/flight_modes/hold.html](https://docs.px4.io/master/en/flight_modes/hold.html)
 
 **Returns**
 
@@ -197,7 +197,7 @@ void mavsdk::Offboard::stop_async(result_callback_t callback)
 
 Stop offboard control (asynchronous).
 
-The vehicle will be put into Hold mode: [https://docs.px4.io/en/flight_modes/hold.html](https://docs.px4.io/en/flight_modes/hold.html)
+The vehicle will be put into Hold mode: [https://docs.px4.io/master/en/flight_modes/hold.html](https://docs.px4.io/master/en/flight_modes/hold.html)
 
 **Parameters**
 

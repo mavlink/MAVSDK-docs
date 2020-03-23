@@ -9,7 +9,7 @@
 
 **See Also:**
 - [get_config()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a5a39cc685ea4288363ef38ebbd628062), [set_config()](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a1d7c0e5598769365aeaec8026578a977)
-- [Parameter Reference](https://docs.px4.io/en/advanced_config/parameter_reference.html#follow-target) (PX4 User Guide)
+- [Parameter Reference](https://docs.px4.io/master/en/advanced_config/parameter_reference.html#follow-target) (PX4 User Guide)
 
 
 ## Public Types

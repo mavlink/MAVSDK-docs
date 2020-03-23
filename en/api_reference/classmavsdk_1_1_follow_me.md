@@ -11,7 +11,7 @@ The API is used to supply both the position(s) for the target and the relative f
 
 
 **See Also:**
-- [Follow Me Mode](https://docs.px4.io/en/flight_modes/follow_me.html) (PX4 User Guide)
+- [Follow Me Mode](https://docs.px4.io/master/en/flight_modes/follow_me.html) (PX4 User Guide)
 
 
 ## Data Structures

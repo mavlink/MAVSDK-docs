@@ -1,9 +1,7 @@
 <img src="../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/>
 # MAVSDK ({{ book.github_branch }})
 
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![travis-ci build status](https://travis-ci.org/mavlink/MAVSDK.svg?branch=develop)](https://travis-ci.org/mavlink/MAVSDK)
-[![Build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/Dronecode/dronecore/branch/develop)
-[![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=develop)](https://coveralls.io/github/mavlink/MAVSDK?branch=develop)
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![travis-ci build status](https://travis-ci.org/mavlink/MAVSDK.svg?branch=develop)](https://travis-ci.org/mavlink/MAVSDK) [![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=develop)](https://coveralls.io/github/mavlink/MAVSDK?branch=develop)
 
 The *MAVSDK* is a [MAVLink](https://mavlink.io/en/) Library with APIs for [C++](cpp/README.md), [iOS](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), Python and Android.
 
@@ -56,9 +54,10 @@ If you have specific questions that are not answered by the documentation, these
 Use Github for bug reports/enhancement requests:
 
 * [C++ API](https://github.com/mavlink/MAVSDK/issues)
-* [C++ Documentation](https://github.com/dronecore/sdk_docs/issues)
-* [Swift API and Docs](https://github.com/mavlink/MAVSDK-Swift/issues)
-<!-- Add info about where Python etc API issues are reported). -->
+* [C++ Documentation](https://github.com/mavlink/MAVSDK-docs/issues)
+* [Swift API and docs](https://github.com/mavlink/MAVSDK-Swift/issues)
+* [Python API and docs](https://github.com/mavlink/MAVSDK-Python/issues)
+<!-- Add info about where other API issues are reported). -->
 
 
 ## Library Features
