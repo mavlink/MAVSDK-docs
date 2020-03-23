@@ -36,9 +36,9 @@ void | [start_mission_async](#classmavsdk_1_1_mission_1af0a6404b7af085759bc6dad5
 void | [pause_mission_async](#classmavsdk_1_1_mission_1a39a0434bb2e731ccca7c0f2d579b0ee8) ([result_callback_t](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a2dfe79d7f58c5b76ab6b245f9d516dbc) callback) | Pauses the mission (asynchronous).
 void | [clear_mission_async](#classmavsdk_1_1_mission_1a73ca076ed2c70baa36dff033f9dd73a6) ([result_callback_t](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a2dfe79d7f58c5b76ab6b245f9d516dbc) callback) | Clears the mission saved on the vehicle (asynchronous).
 void | [set_current_mission_item_async](#classmavsdk_1_1_mission_1aca6c73c22175c7d5afe6ade0476b4ad3) (int current, [result_callback_t](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a2dfe79d7f58c5b76ab6b245f9d516dbc) callback) | Sets the mission item index to go to (asynchronous).
-bool | [mission_finished](#classmavsdk_1_1_mission_1af9ea77b0e4a83f674b37abc2aa692d07) () const | Checks if mission has been finished (synchronous).
-int | [current_mission_item](#classmavsdk_1_1_mission_1abaeecc2d4227c56f070ad36f9831bb90) () const | Returns the current mission item index (synchronous).
-int | [total_mission_items](#classmavsdk_1_1_mission_1a37cdb45b27b2c002f957067833c90b23) () const | Returns the total number of mission items (synchronous).
+bool | [mission_finished](#classmavsdk_1_1_mission_1a5861a4c6325ca1eeb1cc1d37004a7f61) () const | Checks if mission has been finished (synchronous).
+int | [current_mission_item](#classmavsdk_1_1_mission_1a25afa022a4206bd1055a692937f9b916) () const | Returns the current mission item index (synchronous).
+int | [total_mission_items](#classmavsdk_1_1_mission_1a97c07cbcf5e9c54d5776cd86e4228311) () const | Returns the total number of mission items (synchronous).
 void | [subscribe_progress](#classmavsdk_1_1_mission_1aa882278b493a2390ca0b3cf7027b3a01) ([progress_callback_t](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a6cb9b3e10db0ed921cec79b3f91cbecc) callback) | Subscribes to mission progress (asynchronous).
 const [Mission](classmavsdk_1_1_mission.md) & | [operator=](#classmavsdk_1_1_mission_1a30d49ea769f358cb4e4fe3056728838c) (const [Mission](classmavsdk_1_1_mission.md) &)=delete | Equality operator (object is not copyable).
 
@@ -305,12 +305,15 @@ By setting the current index to 0, the mission is restarted from the beginning. 
 
 Note that this is not necessarily true for general missions using MAVLink if loop counters are used.
 
+
+Also not that the mission items need to be uploaded or downloaded before calling this method. The exception is current == 0 to reset to the beginning
+
 **Parameters**
 
 * int **current** - Index for mission index to go to next (0 based).
 * [result_callback_t](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a2dfe79d7f58c5b76ab6b245f9d516dbc) **callback** - Callback to receive result of this request.
 
-### mission_finished() {#classmavsdk_1_1_mission_1af9ea77b0e4a83f674b37abc2aa692d07}
+### mission_finished() {#classmavsdk_1_1_mission_1a5861a4c6325ca1eeb1cc1d37004a7f61}
 ```cpp
 bool mavsdk::Mission::mission_finished() const
 ```
@@ -323,7 +326,7 @@ Checks if mission has been finished (synchronous).
 
 &emsp;bool - true if mission is finished and the last mission item has been reached.
 
-### current_mission_item() {#classmavsdk_1_1_mission_1abaeecc2d4227c56f070ad36f9831bb90}
+### current_mission_item() {#classmavsdk_1_1_mission_1a25afa022a4206bd1055a692937f9b916}
 ```cpp
 int mavsdk::Mission::current_mission_item() const
 ```
@@ -337,7 +340,7 @@ If the mission is finished, the current mission item will be the total number of
 
 &emsp;int - current mission item index (0 based).
 
-### total_mission_items() {#classmavsdk_1_1_mission_1a37cdb45b27b2c002f957067833c90b23}
+### total_mission_items() {#classmavsdk_1_1_mission_1a97c07cbcf5e9c54d5776cd86e4228311}
 ```cpp
 int mavsdk::Mission::total_mission_items() const
 ```

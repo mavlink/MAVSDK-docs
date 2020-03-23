@@ -4,15 +4,11 @@
 ----
 
 
-[Mission](classmavsdk_1_1_mission.md) item identical to MAVLink MISSION_ITEM_INT. 
+[Mission](classmavsdk_1_1_mission.md) item mostly identical to MAVLink MISSION_ITEM_INT. 
 
 
 ## Data Fields
 
-
-uint8_t [target_system](#structmavsdk_1_1_mission_raw_1_1_mavlink_mission_item_int_1ac9afb40f51ad42223af1b47c8e37714e)  - [System](classmavsdk_1_1_system.md) ID.
-
-uint8_t [target_component](#structmavsdk_1_1_mission_raw_1_1_mavlink_mission_item_int_1a460b9c0d349fb9fcdb1271b73da85c8b)  - Component ID.
 
 uint16_t [seq](#structmavsdk_1_1_mission_raw_1_1_mavlink_mission_item_int_1a8eea1e2d0a79d1ae8f52823de7fc8ced)  - Sequence.
 
@@ -42,26 +38,6 @@ uint8_t [mission_type](#structmavsdk_1_1_mission_raw_1_1_mavlink_mission_item_in
 
 
 ## Field Documentation
-
-
-### target_system {#structmavsdk_1_1_mission_raw_1_1_mavlink_mission_item_int_1ac9afb40f51ad42223af1b47c8e37714e}
-
-```cpp
-uint8_t mavsdk::MissionRaw::MavlinkMissionItemInt::target_system
-```
-
-
-[System](classmavsdk_1_1_system.md) ID.
-
-
-### target_component {#structmavsdk_1_1_mission_raw_1_1_mavlink_mission_item_int_1a460b9c0d349fb9fcdb1271b73da85c8b}
-
-```cpp
-uint8_t mavsdk::MissionRaw::MavlinkMissionItemInt::target_component
-```
-
-
-Component ID.
 
 
 ### seq {#structmavsdk_1_1_mission_raw_1_1_mavlink_mission_item_int_1a8eea1e2d0a79d1ae8f52823de7fc8ced}

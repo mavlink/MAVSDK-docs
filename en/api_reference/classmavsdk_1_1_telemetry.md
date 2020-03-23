@@ -69,26 +69,26 @@ enum [Result](#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | R
 std::function< void([Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75))> [result_callback_t](#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) | Callback type for telemetry requests.
 std::function< void([PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md))> [position_velocity_ned_callback_t](#classmavsdk_1_1_telemetry_1adc89dbb35eb82768c59656519a69d6ba) | Callback type for kinematic (position and velocity) updates.
 std::function< void([Position](structmavsdk_1_1_telemetry_1_1_position.md))> [position_callback_t](#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) | Callback type for position updates.
-std::function< void(bool [in_air](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ae74e3d8a3b582d061f1341f38dc7b7b4))> [in_air_callback_t](#classmavsdk_1_1_telemetry_1a5c89acce93f9c8b4379ed0dd002ee68c) | Callback type for in-air updates.
-std::function< void([StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) [status_text](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a3116e96e4aff0b13dfaf18d061ef6f97))> [status_text_callback_t](#classmavsdk_1_1_telemetry_1ab6bfd92d95e534b04ed98f09bf3a1e7a) | Callback for mavlink status text updates.
-std::function< void(bool [armed](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a6bef561265a4f705b0b6fddb3e25bd74))> [armed_callback_t](#classmavsdk_1_1_telemetry_1a795e5848a43b29f5009d91e6c87b37d0) | Callback type for armed updates (asynchronous).
+std::function< void(bool [in_air](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a909738ff2fbe104c6eb4524cc9bf2dd5))> [in_air_callback_t](#classmavsdk_1_1_telemetry_1a5c89acce93f9c8b4379ed0dd002ee68c) | Callback type for in-air updates.
+std::function< void([StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) [status_text](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a2f31c0668ed1ac1bfdfa4b2e9a2023a9))> [status_text_callback_t](#classmavsdk_1_1_telemetry_1ab6bfd92d95e534b04ed98f09bf3a1e7a) | Callback for mavlink status text updates.
+std::function< void(bool [armed](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876))> [armed_callback_t](#classmavsdk_1_1_telemetry_1a795e5848a43b29f5009d91e6c87b37d0) | Callback type for armed updates (asynchronous).
 std::function< void([Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) quaternion)> [attitude_quaternion_callback_t](#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) | Callback type for attitude updates in quaternion.
 std::function< void([EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) euler_angle)> [attitude_euler_angle_callback_t](#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) | Callback type for attitude updates in Euler angles.
 std::function< void([AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) angular_velocity_body)> [attitude_angular_velocity_body_callback_t](#classmavsdk_1_1_telemetry_1a8253671d4203e542095c365617b98678) | Callback type for angular velocity updates in quaternion.
-std::function< void([FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) [fixedwing_metrics](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad759be5db9d392605b7cabda89ea97b6))> [fixedwing_metrics_callback_t](#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378) | Callback type for fixedwing_metrics updates.
-std::function< void([GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) [ground_truth](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a09f26112a60122b64019c69d70a89c41))> [ground_truth_callback_t](#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7) | Callback type for ground truth updates.
-std::function< void([GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) [ground_speed_ned](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aeef28c6d6a75e6dad1a2490d319e0d1a))> [ground_speed_ned_callback_t](#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23) | Callback type for ground speed (NED) updates.
-std::function< void([IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) [imu_reading_ned](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a6b32f761edeaa4c25624da2c8c9b3dd3))> [imu_reading_ned_callback_t](#classmavsdk_1_1_telemetry_1a40fd7ddb9eca5e36a7a4e8084dcbf75a) | Callback type for IMU (NED) updates.
-std::function< void([GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) [gps_info](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a7339764257e950702596dd7eca0afdb5))> [gps_info_callback_t](#classmavsdk_1_1_telemetry_1af34942b21fde18d723b300ebe6c40421) | Callback type for GPS information updates.
-std::function< void([Battery](structmavsdk_1_1_telemetry_1_1_battery.md) [battery](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af331bb66ee53a6133a28ae6dcfbf32ab))> [battery_callback_t](#classmavsdk_1_1_telemetry_1ab7582939b706b1eea718c94433a1e5de) | Callback type for battery status updates.
-std::function< void([FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) [flight_mode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aae86fcb399b0368209fcbd35ecdd5fad))> [flight_mode_callback_t](#classmavsdk_1_1_telemetry_1ad8cfe203cf88b457ed3593eb82d3ff77) | Callback type for flight mode updates.
-std::function< void([Health](structmavsdk_1_1_telemetry_1_1_health.md) [health](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a355ae0459a88c70e1d1ef77b3861c40b))> [health_callback_t](#classmavsdk_1_1_telemetry_1abadf7c5be3e650809402115c1810a8d7) | Callback type for health status updates.
-std::function< void(bool [health_all_ok](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a119a5c70a65ed4fdf2b70bae1192940b))> [health_all_ok_callback_t](#classmavsdk_1_1_telemetry_1a8fe09456f509c93e2110fb45996bd927) | Callback type for health status updates.
-std::function< void([LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) [landed_state](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab199f54637d8583b13438914c3ddfb9a))> [landed_state_callback_t](#classmavsdk_1_1_telemetry_1aaf77ff66f00bd82c911a7a76d15de41c) | Callback type for landed state updates.
-std::function< void([RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) [rc_status](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a030c42760545f555ff98198fd1f8044b))> [rc_status_callback_t](#classmavsdk_1_1_telemetry_1ade4c432133b83aa9612528117a2cd6d6) | Callback type for RC status updates.
+std::function< void([FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) [fixedwing_metrics](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a2ab8d2a8d017d46e77d49c4f899c7cbf))> [fixedwing_metrics_callback_t](#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378) | Callback type for fixedwing_metrics updates.
+std::function< void([GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) [ground_truth](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1b5f387edc39e33b86954f2048133f71))> [ground_truth_callback_t](#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7) | Callback type for ground truth updates.
+std::function< void([GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) [ground_speed_ned](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1afd68d9d29f14023ffdcb7d86a4b47f04))> [ground_speed_ned_callback_t](#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23) | Callback type for ground speed (NED) updates.
+std::function< void([IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) [imu_reading_ned](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8a3742f325e3ae877cae9ff05bbe6f1c))> [imu_reading_ned_callback_t](#classmavsdk_1_1_telemetry_1a40fd7ddb9eca5e36a7a4e8084dcbf75a) | Callback type for IMU (NED) updates.
+std::function< void([GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) [gps_info](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a76a4e21380d03dd2112fdc0e9c3c44b7))> [gps_info_callback_t](#classmavsdk_1_1_telemetry_1af34942b21fde18d723b300ebe6c40421) | Callback type for GPS information updates.
+std::function< void([Battery](structmavsdk_1_1_telemetry_1_1_battery.md) [battery](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1afb3bad3c7a36c14ae97492df3f6bbd54))> [battery_callback_t](#classmavsdk_1_1_telemetry_1ab7582939b706b1eea718c94433a1e5de) | Callback type for battery status updates.
+std::function< void([FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) [flight_mode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd))> [flight_mode_callback_t](#classmavsdk_1_1_telemetry_1ad8cfe203cf88b457ed3593eb82d3ff77) | Callback type for flight mode updates.
+std::function< void([Health](structmavsdk_1_1_telemetry_1_1_health.md) [health](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aae4824c9eeb72603b197c864b5cc5df5))> [health_callback_t](#classmavsdk_1_1_telemetry_1abadf7c5be3e650809402115c1810a8d7) | Callback type for health status updates.
+std::function< void(bool [health_all_ok](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06))> [health_all_ok_callback_t](#classmavsdk_1_1_telemetry_1a8fe09456f509c93e2110fb45996bd927) | Callback type for health status updates.
+std::function< void([LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) [landed_state](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af7d7c385852db38d6320516508ce7465))> [landed_state_callback_t](#classmavsdk_1_1_telemetry_1aaf77ff66f00bd82c911a7a76d15de41c) | Callback type for landed state updates.
+std::function< void([RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) [rc_status](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa8301c58483148b9e211d2f27f9c3140))> [rc_status_callback_t](#classmavsdk_1_1_telemetry_1ade4c432133b83aa9612528117a2cd6d6) | Callback type for RC status updates.
 std::function< void(uint64_t time_us)> [unix_epoch_time_callback_t](#classmavsdk_1_1_telemetry_1a1738efef61d7b3be00f91a8ccc46bcf0) | Callback type for Unix Epoch Time updates.
-std::function< void([ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) [actuator_control_target](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a5b70793e4aada7613443ebe668f9f1bf))> [actuator_control_target_callback_t](#classmavsdk_1_1_telemetry_1a0e756d50d05d3d42314e160026c8ca5b) | Callback type for actuator control target updates (asynchronous).
-std::function< void([ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) [actuator_output_status](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa4c259b8a3c332847fe52e0a6b3cac74))> [actuator_output_status_callback_t](#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1) | Callback type for actuator output status target updates (asynchronous).
+std::function< void([ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) [actuator_control_target](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af4ffa70ff58c46b50be93a0fbf960f95))> [actuator_control_target_callback_t](#classmavsdk_1_1_telemetry_1a0e756d50d05d3d42314e160026c8ca5b) | Callback type for actuator control target updates (asynchronous).
+std::function< void([ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) [actuator_output_status](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a68fa1619dfad0a7cfcc2725025669252))> [actuator_output_status_callback_t](#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1) | Callback type for actuator output status target updates (asynchronous).
 std::function< void([Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) odometry)> [odometry_callback_t](#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2) | Callback type for odometry updates (asynchronous).
 
 ## Public Member Functions
@@ -132,30 +132,30 @@ void | [set_rate_actuator_control_target_async](#classmavsdk_1_1_telemetry_1a5b0
 void | [set_rate_actuator_output_status_async](#classmavsdk_1_1_telemetry_1ad02073ccb7735a51992a2499b605ebe4) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of actuator control target updates (asynchronous).
 void | [set_rate_odometry_async](#classmavsdk_1_1_telemetry_1ab0a70e00299c959a875d0a9ae89391fa) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of odometry updates (asynchronous).
 void | [set_unix_epoch_time_async](#classmavsdk_1_1_telemetry_1aecaac11aac355ed79d47b7fcf786fb2c) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of Unix Epoch Time update (asynchronous).
-[PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) | [position_velocity_ned](#classmavsdk_1_1_telemetry_1aeb1bbc4410ba6b437123c239b93bb83f) () const | Get the current kinematic (position and velocity) in NED frame (synchronous).
-[Position](structmavsdk_1_1_telemetry_1_1_position.md) | [position](#classmavsdk_1_1_telemetry_1a34bd2ed00a6a9fdf9c93e4dd2928e01c) () const | Get the current position (synchronous).
-[Position](structmavsdk_1_1_telemetry_1_1_position.md) | [home_position](#classmavsdk_1_1_telemetry_1a2430d5df2d1d16d3463ca74113ff9620) () const | Get the home position (synchronous).
-[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) | [status_text](#classmavsdk_1_1_telemetry_1a3116e96e4aff0b13dfaf18d061ef6f97) () const | Get status text (synchronous).
-bool | [in_air](#classmavsdk_1_1_telemetry_1ae74e3d8a3b582d061f1341f38dc7b7b4) () const | Get the in-air status (synchronous).
-[LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) | [landed_state](#classmavsdk_1_1_telemetry_1ab199f54637d8583b13438914c3ddfb9a) () const | Get the landed state status (synchronous).
-bool | [armed](#classmavsdk_1_1_telemetry_1a6bef561265a4f705b0b6fddb3e25bd74) () const | Get the arming status (synchronous).
-[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [attitude_quaternion](#classmavsdk_1_1_telemetry_1ad203d4f34eadd5136329bf8e554adbf7) () const | Get the current attitude in quaternions (synchronous).
-[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [attitude_euler_angle](#classmavsdk_1_1_telemetry_1a67f446265cbfe5b873f292a8172015a6) () const | Get the current attitude in Euler angles (synchronous).
-[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) | [attitude_angular_velocity_body](#classmavsdk_1_1_telemetry_1a14ed2272ae43783cb78a58d6ea3174ca) () const | Get the current angular speed in rad/s (synchronous).
-[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) | [fixedwing_metrics](#classmavsdk_1_1_telemetry_1ad759be5db9d392605b7cabda89ea97b6) () const | Get the current fixedwing_metrics (synchronous).
-[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) | [ground_truth](#classmavsdk_1_1_telemetry_1a09f26112a60122b64019c69d70a89c41) () const | Get the current ground truth (synchronous).
-[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [camera_attitude_quaternion](#classmavsdk_1_1_telemetry_1ab02def16e920a453ea15770909797468) () const | Get the camera's attitude in quaternions (synchronous).
-[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [camera_attitude_euler_angle](#classmavsdk_1_1_telemetry_1ad2f98aa43d91f988de0f569a00333370) () const | Get the camera's attitude in Euler angles (synchronous).
-[GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) | [ground_speed_ned](#classmavsdk_1_1_telemetry_1aeef28c6d6a75e6dad1a2490d319e0d1a) () const | Get the current ground speed (NED) (synchronous).
-[IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) | [imu_reading_ned](#classmavsdk_1_1_telemetry_1a6b32f761edeaa4c25624da2c8c9b3dd3) () const | Get the current IMU reading (NED) (synchronous).
-[GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) | [gps_info](#classmavsdk_1_1_telemetry_1a7339764257e950702596dd7eca0afdb5) () const | Get the current GPS information (synchronous).
-[Battery](structmavsdk_1_1_telemetry_1_1_battery.md) | [battery](#classmavsdk_1_1_telemetry_1af331bb66ee53a6133a28ae6dcfbf32ab) () const | Get the current battery status (synchronous).
-[FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) | [flight_mode](#classmavsdk_1_1_telemetry_1aae86fcb399b0368209fcbd35ecdd5fad) () const | Get the current flight mode (synchronous).
-[Health](structmavsdk_1_1_telemetry_1_1_health.md) | [health](#classmavsdk_1_1_telemetry_1a355ae0459a88c70e1d1ef77b3861c40b) () const | Get the current health status (synchronous).
-bool | [health_all_ok](#classmavsdk_1_1_telemetry_1a119a5c70a65ed4fdf2b70bae1192940b) () const | Returns true if the overall health is ok (synchronous).
-[RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) | [rc_status](#classmavsdk_1_1_telemetry_1a030c42760545f555ff98198fd1f8044b) () const | Get the RC status (synchronous).
-[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) | [actuator_control_target](#classmavsdk_1_1_telemetry_1a5b70793e4aada7613443ebe668f9f1bf) () const | Get the actuator control target (synchronous).
-[ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) | [actuator_output_status](#classmavsdk_1_1_telemetry_1aa4c259b8a3c332847fe52e0a6b3cac74) () const | Get the actuator output status (synchronous).
+[PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) | [position_velocity_ned](#classmavsdk_1_1_telemetry_1abb053c00761eb67b07816d9e01427f37) () const | Get the current kinematic (position and velocity) in NED frame (synchronous).
+[Position](structmavsdk_1_1_telemetry_1_1_position.md) | [position](#classmavsdk_1_1_telemetry_1a2299da1bc63313c429f07ab0fdbe5335) () const | Get the current position (synchronous).
+[Position](structmavsdk_1_1_telemetry_1_1_position.md) | [home_position](#classmavsdk_1_1_telemetry_1ad4e079b3067a79da8b3b2f3067dc4178) () const | Get the home position (synchronous).
+[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) | [status_text](#classmavsdk_1_1_telemetry_1a2f31c0668ed1ac1bfdfa4b2e9a2023a9) () const | Get status text (synchronous).
+bool | [in_air](#classmavsdk_1_1_telemetry_1a909738ff2fbe104c6eb4524cc9bf2dd5) () const | Get the in-air status (synchronous).
+[LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) | [landed_state](#classmavsdk_1_1_telemetry_1af7d7c385852db38d6320516508ce7465) () const | Get the landed state status (synchronous).
+bool | [armed](#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876) () const | Get the arming status (synchronous).
+[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [attitude_quaternion](#classmavsdk_1_1_telemetry_1aae76890957b33727be72a39807448c88) () const | Get the current attitude in quaternions (synchronous).
+[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [attitude_euler_angle](#classmavsdk_1_1_telemetry_1af57a6e448b22f1126e34c3031d7f4af9) () const | Get the current attitude in Euler angles (synchronous).
+[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) | [attitude_angular_velocity_body](#classmavsdk_1_1_telemetry_1a8d9e2489b79c2cdbabaef8b6bb8e2952) () const | Get the current angular speed in rad/s (synchronous).
+[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) | [fixedwing_metrics](#classmavsdk_1_1_telemetry_1a2ab8d2a8d017d46e77d49c4f899c7cbf) () const | Get the current fixedwing_metrics (synchronous).
+[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) | [ground_truth](#classmavsdk_1_1_telemetry_1a1b5f387edc39e33b86954f2048133f71) () const | Get the current ground truth (synchronous).
+[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [camera_attitude_quaternion](#classmavsdk_1_1_telemetry_1a3c07447351d3b6195d5e2526e7b128b3) () const | Get the camera's attitude in quaternions (synchronous).
+[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [camera_attitude_euler_angle](#classmavsdk_1_1_telemetry_1a4e17866a65077bb3db474e6437848fce) () const | Get the camera's attitude in Euler angles (synchronous).
+[GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) | [ground_speed_ned](#classmavsdk_1_1_telemetry_1afd68d9d29f14023ffdcb7d86a4b47f04) () const | Get the current ground speed (NED) (synchronous).
+[IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) | [imu_reading_ned](#classmavsdk_1_1_telemetry_1a8a3742f325e3ae877cae9ff05bbe6f1c) () const | Get the current IMU reading (NED) (synchronous).
+[GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) | [gps_info](#classmavsdk_1_1_telemetry_1a76a4e21380d03dd2112fdc0e9c3c44b7) () const | Get the current GPS information (synchronous).
+[Battery](structmavsdk_1_1_telemetry_1_1_battery.md) | [battery](#classmavsdk_1_1_telemetry_1afb3bad3c7a36c14ae97492df3f6bbd54) () const | Get the current battery status (synchronous).
+[FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) | [flight_mode](#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd) () const | Get the current flight mode (synchronous).
+[Health](structmavsdk_1_1_telemetry_1_1_health.md) | [health](#classmavsdk_1_1_telemetry_1aae4824c9eeb72603b197c864b5cc5df5) () const | Get the current health status (synchronous).
+bool | [health_all_ok](#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06) () const | Returns true if the overall health is ok (synchronous).
+[RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) | [rc_status](#classmavsdk_1_1_telemetry_1aa8301c58483148b9e211d2f27f9c3140) () const | Get the RC status (synchronous).
+[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) | [actuator_control_target](#classmavsdk_1_1_telemetry_1af4ffa70ff58c46b50be93a0fbf960f95) () const | Get the actuator control target (synchronous).
+[ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) | [actuator_output_status](#classmavsdk_1_1_telemetry_1a68fa1619dfad0a7cfcc2725025669252) () const | Get the actuator output status (synchronous).
 void | [position_velocity_ned_async](#classmavsdk_1_1_telemetry_1ab966373bd9975304132ac81f0f8dcd97) ([position_velocity_ned_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1adc89dbb35eb82768c59656519a69d6ba) callback) | Subscribe to kinematic (position and velocity) updates (asynchronous).
 void | [position_async](#classmavsdk_1_1_telemetry_1a36c873a346ec80ffa6440191e57e440a) ([position_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) callback) | Subscribe to position updates (asynchronous).
 void | [home_position_async](#classmavsdk_1_1_telemetry_1ad732889dfb7e0b6e8607d04e1a0d379a) ([position_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) callback) | Subscribe to home position updates (asynchronous).
@@ -1175,7 +1175,7 @@ Set rate of Unix Epoch Time update (asynchronous).
 * double **rate_hz** - Rate in Hz.
 * [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
 
-### position_velocity_ned() {#classmavsdk_1_1_telemetry_1aeb1bbc4410ba6b437123c239b93bb83f}
+### position_velocity_ned() {#classmavsdk_1_1_telemetry_1abb053c00761eb67b07816d9e01427f37}
 ```cpp
 PositionVelocityNED mavsdk::Telemetry::position_velocity_ned() const
 ```
@@ -1188,7 +1188,7 @@ Get the current kinematic (position and velocity) in NED frame (synchronous).
 
 &emsp;[PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) - [PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md).
 
-### position() {#classmavsdk_1_1_telemetry_1a34bd2ed00a6a9fdf9c93e4dd2928e01c}
+### position() {#classmavsdk_1_1_telemetry_1a2299da1bc63313c429f07ab0fdbe5335}
 ```cpp
 Position mavsdk::Telemetry::position() const
 ```
@@ -1201,7 +1201,7 @@ Get the current position (synchronous).
 
 &emsp;[Position](structmavsdk_1_1_telemetry_1_1_position.md) - [Position](structmavsdk_1_1_telemetry_1_1_position.md).
 
-### home_position() {#classmavsdk_1_1_telemetry_1a2430d5df2d1d16d3463ca74113ff9620}
+### home_position() {#classmavsdk_1_1_telemetry_1ad4e079b3067a79da8b3b2f3067dc4178}
 ```cpp
 Position mavsdk::Telemetry::home_position() const
 ```
@@ -1214,7 +1214,7 @@ Get the home position (synchronous).
 
 &emsp;[Position](structmavsdk_1_1_telemetry_1_1_position.md) - Home position.
 
-### status_text() {#classmavsdk_1_1_telemetry_1a3116e96e4aff0b13dfaf18d061ef6f97}
+### status_text() {#classmavsdk_1_1_telemetry_1a2f31c0668ed1ac1bfdfa4b2e9a2023a9}
 ```cpp
 StatusText mavsdk::Telemetry::status_text() const
 ```
@@ -1227,7 +1227,7 @@ Get status text (synchronous).
 
 &emsp;[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) - Status text.
 
-### in_air() {#classmavsdk_1_1_telemetry_1ae74e3d8a3b582d061f1341f38dc7b7b4}
+### in_air() {#classmavsdk_1_1_telemetry_1a909738ff2fbe104c6eb4524cc9bf2dd5}
 ```cpp
 bool mavsdk::Telemetry::in_air() const
 ```
@@ -1240,7 +1240,7 @@ Get the in-air status (synchronous).
 
 &emsp;bool - true if in-air (flying) and not on-ground (landed).
 
-### landed_state() {#classmavsdk_1_1_telemetry_1ab199f54637d8583b13438914c3ddfb9a}
+### landed_state() {#classmavsdk_1_1_telemetry_1af7d7c385852db38d6320516508ce7465}
 ```cpp
 LandedState mavsdk::Telemetry::landed_state() const
 ```
@@ -1253,7 +1253,7 @@ Get the landed state status (synchronous).
 
 &emsp;[LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) - Landed state.
 
-### armed() {#classmavsdk_1_1_telemetry_1a6bef561265a4f705b0b6fddb3e25bd74}
+### armed() {#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876}
 ```cpp
 bool mavsdk::Telemetry::armed() const
 ```
@@ -1266,7 +1266,7 @@ Get the arming status (synchronous).
 
 &emsp;bool - true if armed (propellers spinning).
 
-### attitude_quaternion() {#classmavsdk_1_1_telemetry_1ad203d4f34eadd5136329bf8e554adbf7}
+### attitude_quaternion() {#classmavsdk_1_1_telemetry_1aae76890957b33727be72a39807448c88}
 ```cpp
 Quaternion mavsdk::Telemetry::attitude_quaternion() const
 ```
@@ -1279,7 +1279,7 @@ Get the current attitude in quaternions (synchronous).
 
 &emsp;[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) - Attitude as quaternion.
 
-### attitude_euler_angle() {#classmavsdk_1_1_telemetry_1a67f446265cbfe5b873f292a8172015a6}
+### attitude_euler_angle() {#classmavsdk_1_1_telemetry_1af57a6e448b22f1126e34c3031d7f4af9}
 ```cpp
 EulerAngle mavsdk::Telemetry::attitude_euler_angle() const
 ```
@@ -1292,7 +1292,7 @@ Get the current attitude in Euler angles (synchronous).
 
 &emsp;[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) - Attitude as Euler angle.
 
-### attitude_angular_velocity_body() {#classmavsdk_1_1_telemetry_1a14ed2272ae43783cb78a58d6ea3174ca}
+### attitude_angular_velocity_body() {#classmavsdk_1_1_telemetry_1a8d9e2489b79c2cdbabaef8b6bb8e2952}
 ```cpp
 AngularVelocityBody mavsdk::Telemetry::attitude_angular_velocity_body() const
 ```
@@ -1305,7 +1305,7 @@ Get the current angular speed in rad/s (synchronous).
 
 &emsp;[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) - Angular speed.
 
-### fixedwing_metrics() {#classmavsdk_1_1_telemetry_1ad759be5db9d392605b7cabda89ea97b6}
+### fixedwing_metrics() {#classmavsdk_1_1_telemetry_1a2ab8d2a8d017d46e77d49c4f899c7cbf}
 ```cpp
 FixedwingMetrics mavsdk::Telemetry::fixedwing_metrics() const
 ```
@@ -1318,7 +1318,7 @@ Get the current fixedwing_metrics (synchronous).
 
 &emsp;[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) - Fixed wing metrics.
 
-### ground_truth() {#classmavsdk_1_1_telemetry_1a09f26112a60122b64019c69d70a89c41}
+### ground_truth() {#classmavsdk_1_1_telemetry_1a1b5f387edc39e33b86954f2048133f71}
 ```cpp
 GroundTruth mavsdk::Telemetry::ground_truth() const
 ```
@@ -1331,7 +1331,7 @@ Get the current ground truth (synchronous).
 
 &emsp;[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) - Ground truth.
 
-### camera_attitude_quaternion() {#classmavsdk_1_1_telemetry_1ab02def16e920a453ea15770909797468}
+### camera_attitude_quaternion() {#classmavsdk_1_1_telemetry_1a3c07447351d3b6195d5e2526e7b128b3}
 ```cpp
 Quaternion mavsdk::Telemetry::camera_attitude_quaternion() const
 ```
@@ -1345,7 +1345,7 @@ Note that the yaw component of attitude is relative to North (absolute frame).
 
 &emsp;[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) - [Camera](classmavsdk_1_1_camera.md)'s attitude as quaternion.
 
-### camera_attitude_euler_angle() {#classmavsdk_1_1_telemetry_1ad2f98aa43d91f988de0f569a00333370}
+### camera_attitude_euler_angle() {#classmavsdk_1_1_telemetry_1a4e17866a65077bb3db474e6437848fce}
 ```cpp
 EulerAngle mavsdk::Telemetry::camera_attitude_euler_angle() const
 ```
@@ -1359,7 +1359,7 @@ Note that the yaw component of attitude is relative to North (absolute frame).
 
 &emsp;[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) - [Camera](classmavsdk_1_1_camera.md)'s attitude as Euler angle.
 
-### ground_speed_ned() {#classmavsdk_1_1_telemetry_1aeef28c6d6a75e6dad1a2490d319e0d1a}
+### ground_speed_ned() {#classmavsdk_1_1_telemetry_1afd68d9d29f14023ffdcb7d86a4b47f04}
 ```cpp
 GroundSpeedNED mavsdk::Telemetry::ground_speed_ned() const
 ```
@@ -1372,7 +1372,7 @@ Get the current ground speed (NED) (synchronous).
 
 &emsp;[GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) - Ground speed in NED.
 
-### imu_reading_ned() {#classmavsdk_1_1_telemetry_1a6b32f761edeaa4c25624da2c8c9b3dd3}
+### imu_reading_ned() {#classmavsdk_1_1_telemetry_1a8a3742f325e3ae877cae9ff05bbe6f1c}
 ```cpp
 IMUReadingNED mavsdk::Telemetry::imu_reading_ned() const
 ```
@@ -1385,7 +1385,7 @@ Get the current IMU reading (NED) (synchronous).
 
 &emsp;[IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) - IMU reading in NED.
 
-### gps_info() {#classmavsdk_1_1_telemetry_1a7339764257e950702596dd7eca0afdb5}
+### gps_info() {#classmavsdk_1_1_telemetry_1a76a4e21380d03dd2112fdc0e9c3c44b7}
 ```cpp
 GPSInfo mavsdk::Telemetry::gps_info() const
 ```
@@ -1398,7 +1398,7 @@ Get the current GPS information (synchronous).
 
 &emsp;[GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) - GPS information.
 
-### battery() {#classmavsdk_1_1_telemetry_1af331bb66ee53a6133a28ae6dcfbf32ab}
+### battery() {#classmavsdk_1_1_telemetry_1afb3bad3c7a36c14ae97492df3f6bbd54}
 ```cpp
 Battery mavsdk::Telemetry::battery() const
 ```
@@ -1411,7 +1411,7 @@ Get the current battery status (synchronous).
 
 &emsp;[Battery](structmavsdk_1_1_telemetry_1_1_battery.md) - 
 
-### flight_mode() {#classmavsdk_1_1_telemetry_1aae86fcb399b0368209fcbd35ecdd5fad}
+### flight_mode() {#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd}
 ```cpp
 FlightMode mavsdk::Telemetry::flight_mode() const
 ```
@@ -1424,7 +1424,7 @@ Get the current flight mode (synchronous).
 
 &emsp;[FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) - Flight mode.
 
-### health() {#classmavsdk_1_1_telemetry_1a355ae0459a88c70e1d1ef77b3861c40b}
+### health() {#classmavsdk_1_1_telemetry_1aae4824c9eeb72603b197c864b5cc5df5}
 ```cpp
 Health mavsdk::Telemetry::health() const
 ```
@@ -1437,7 +1437,7 @@ Get the current health status (synchronous).
 
 &emsp;[Health](structmavsdk_1_1_telemetry_1_1_health.md) - [Health](structmavsdk_1_1_telemetry_1_1_health.md) status.
 
-### health_all_ok() {#classmavsdk_1_1_telemetry_1a119a5c70a65ed4fdf2b70bae1192940b}
+### health_all_ok() {#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06}
 ```cpp
 bool mavsdk::Telemetry::health_all_ok() const
 ```
@@ -1450,7 +1450,7 @@ Returns true if the overall health is ok (synchronous).
 
 &emsp;bool - True if all health flags are OK.
 
-### rc_status() {#classmavsdk_1_1_telemetry_1a030c42760545f555ff98198fd1f8044b}
+### rc_status() {#classmavsdk_1_1_telemetry_1aa8301c58483148b9e211d2f27f9c3140}
 ```cpp
 RCStatus mavsdk::Telemetry::rc_status() const
 ```
@@ -1463,7 +1463,7 @@ Get the RC status (synchronous).
 
 &emsp;[RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) - RC status.
 
-### actuator_control_target() {#classmavsdk_1_1_telemetry_1a5b70793e4aada7613443ebe668f9f1bf}
+### actuator_control_target() {#classmavsdk_1_1_telemetry_1af4ffa70ff58c46b50be93a0fbf960f95}
 ```cpp
 ActuatorControlTarget mavsdk::Telemetry::actuator_control_target() const
 ```
@@ -1476,7 +1476,7 @@ Get the actuator control target (synchronous).
 
 &emsp;[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) - Actuator control target
 
-### actuator_output_status() {#classmavsdk_1_1_telemetry_1aa4c259b8a3c332847fe52e0a6b3cac74}
+### actuator_output_status() {#classmavsdk_1_1_telemetry_1a68fa1619dfad0a7cfcc2725025669252}
 ```cpp
 ActuatorOutputStatus mavsdk::Telemetry::actuator_output_status() const
 ```

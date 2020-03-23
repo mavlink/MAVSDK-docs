@@ -33,10 +33,10 @@ Type | Name | Description
 &nbsp; | [Info](#classmavsdk_1_1_info_1a01a29a579c8ecb75ea73d48f8f6adf17) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Info](#classmavsdk_1_1_info_1a2681cccfa006f9ea4f4eb9e498a83c04) () | Destructor (internal use only).
 &nbsp; | [Info](#classmavsdk_1_1_info_1a672404baf7e8da437b36b34dff290d2f) (const [Info](classmavsdk_1_1_info.md) &)=delete | Copy Constructor (object is not copyable).
-std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Identification](structmavsdk_1_1_info_1_1_identification.md) > | [get_identification](#classmavsdk_1_1_info_1ab844bf3fa756127e2f8f332cb5552f1e) () const | Gets the identification of the system.
-std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Version](structmavsdk_1_1_info_1_1_version.md) > | [get_version](#classmavsdk_1_1_info_1a307d73a1c0dc6494674a6d5febe550f1) () const | Get system version information.
-std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Product](structmavsdk_1_1_info_1_1_product.md) > | [get_product](#classmavsdk_1_1_info_1a3592e5df164e9a7939aa3733ce867e1b) () const | Get system product information.
-std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > | [get_flight_information](#classmavsdk_1_1_info_1aed5be4d7438da79e24d5bf12ca1fca28) () const | Get system flight information.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Identification](structmavsdk_1_1_info_1_1_identification.md) > | [get_identification](#classmavsdk_1_1_info_1a5b51b6a67aebfb61ba1d287627efad4c) () const | Gets the identification of the system.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Version](structmavsdk_1_1_info_1_1_version.md) > | [get_version](#classmavsdk_1_1_info_1ac0766bb482354bbdae60dfe086311933) () const | Get system version information.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Product](structmavsdk_1_1_info_1_1_product.md) > | [get_product](#classmavsdk_1_1_info_1a4f1fe91a6cae12a9d78294dcaca26d4c) () const | Get system product information.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > | [get_flight_information](#classmavsdk_1_1_info_1a6dbc9fa0b50542c28bdb623dd0a0a395) () const | Get system flight information.
 const [Info](classmavsdk_1_1_info.md) & | [operator=](#classmavsdk_1_1_info_1a586eb91fd65d602bad1d016dca42b435) (const [Info](classmavsdk_1_1_info.md) &)=delete | Equality operator (object is not copyable).
 
 ## Static Public Attributes
@@ -115,7 +115,7 @@ Value | Description
 ## Member Function Documentation
 
 
-### get_identification() {#classmavsdk_1_1_info_1ab844bf3fa756127e2f8f332cb5552f1e}
+### get_identification() {#classmavsdk_1_1_info_1a5b51b6a67aebfb61ba1d287627efad4c}
 ```cpp
 std::pair<Result, Identification> mavsdk::Info::get_identification() const
 ```
@@ -129,7 +129,7 @@ If possible this will be a unique identifier provided by hardware.
 
 &emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Identification](structmavsdk_1_1_info_1_1_identification.md) > - a pair containing the result of the request and if successful, the identification information of the system.
 
-### get_version() {#classmavsdk_1_1_info_1a307d73a1c0dc6494674a6d5febe550f1}
+### get_version() {#classmavsdk_1_1_info_1ac0766bb482354bbdae60dfe086311933}
 ```cpp
 std::pair<Result, Version> mavsdk::Info::get_version() const
 ```
@@ -142,7 +142,7 @@ Get system version information.
 
 &emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Version](structmavsdk_1_1_info_1_1_version.md) > - a pair containing the result of the request and if successful, the version information about the system.
 
-### get_product() {#classmavsdk_1_1_info_1a3592e5df164e9a7939aa3733ce867e1b}
+### get_product() {#classmavsdk_1_1_info_1a4f1fe91a6cae12a9d78294dcaca26d4c}
 ```cpp
 std::pair<Result, Product> mavsdk::Info::get_product() const
 ```
@@ -155,7 +155,7 @@ Get system product information.
 
 &emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Product](structmavsdk_1_1_info_1_1_product.md) > - a pair containing the result of the request and if successful, the product information about the system.
 
-### get_flight_information() {#classmavsdk_1_1_info_1aed5be4d7438da79e24d5bf12ca1fca28}
+### get_flight_information() {#classmavsdk_1_1_info_1a6dbc9fa0b50542c28bdb623dd0a0a395}
 ```cpp
 std::pair<Result, FlightInfo> mavsdk::Info::get_flight_information() const
 ```
