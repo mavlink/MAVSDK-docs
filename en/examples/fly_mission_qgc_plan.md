@@ -9,7 +9,7 @@ The [Fly QGroundControl Plan Mission](https://github.com/mavlink/MAVSDK/tree/{{ 
 
 The example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
-> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). 
+> **Tip** By default the example will load a sample plan from the plugin unit test: [/src/plugins/mission/qgroundcontrol_sample.plan](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/qgroundcontrol_sample.plan). 
   Alternatively you can specify the plan to load when you start the example:
   ```
   ./fly_qgc_mission <path of QGC Mission plan>
@@ -25,7 +25,7 @@ $ ./fly_qgc_mission udp://:14540
 ```
 ```
 Connection URL: udp://:14540
-Importing mission from mission plan: ../../../plugins/mission/qgroundcontrol_sample.plan
+Importing mission from mission plan: ../../../src/plugins/mission/qgroundcontrol_sample.plan
 Waiting to discover system...
 [09:52:04|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
 [09:52:04|Debug] New: System ID: 1 Comp ID: 1 (dronecode_sdk_impl.cpp:292)
@@ -128,7 +128,7 @@ target_link_libraries(fly_qgc_mission
 )
 ```
 
-[fly_qgc_mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/fly_qgc_mission.cpp)
+[fly_qgc_mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/fly_qgc_mission/fly_qgc_mission.cpp)
 
 ```cpp
 /**
@@ -159,7 +159,7 @@ target_link_libraries(fly_qgc_mission
 
 #include <mavsdk/mavsdk.h>
 #include <mavsdk/plugins/action/action.h>
-#include <mavsdk/plugins/mission/mission.h>
+#include <mavsdk/src/plugins/mission/mission.h>
 #include <mavsdk/plugins/telemetry/telemetry.h>
 
 #include <functional>
@@ -200,7 +200,7 @@ int main(int argc, char **argv)
     ConnectionResult connection_result;
 
     // Locate path of QGC Sample plan
-    std::string qgc_plan = "../../../plugins/mission/qgroundcontrol_sample.plan";
+    std::string qgc_plan = "../../../src/plugins/mission/qgroundcontrol_sample.plan";
 
     if (argc != 2 && argc != 3) {
         usage(argv[0]);

@@ -101,7 +101,7 @@ target_link_libraries(transition_vtol_fixed_wing
 )
 ```
 
-[transition_vtol_fixed_wing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
+[transition_vtol_fixed_wing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
 
 ```cpp
 #include <chrono>

@@ -62,7 +62,7 @@ The main steps are:
    ```
 1. Create a shared pointer to an instance of `Mission` instantiated with the `system`: 
    ```
-   #include <mavsdk/plugins/mission/mission.h>
+   #include <mavsdk/src/plugins/mission/mission.h>
    auto mission = std::make_shared<Mission>(system);
    ```
 
@@ -331,4 +331,4 @@ The code fragment below shows how to download a mission:
   * [mission_change_speed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission_change_speed.cpp)
   * [mission_survey.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/integration_tests/mission_survey.cpp)
 * Unit Tests:
-  * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/plugins/mission/mission_import_qgc_test.cpp)
+  * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/mission_import_qgc_test.cpp)

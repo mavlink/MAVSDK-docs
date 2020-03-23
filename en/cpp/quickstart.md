@@ -17,7 +17,7 @@ First install the MAVSDK library on your platform
   sudo dpkg -i mavsdk_0.24.0_ubuntu18.04_amd64.deb
   ```
 
-> **Note** To use other platforms or programming languages see: [Installation](getting_started/installation.md).
+> **Note** To use other platforms or programming languages see: [Installation](../getting_started/installation.md).
 
 You will also to install a build toolchain to compile your code.
 However the required dependencies (e.g. `cmake`, compiler) are installed as part of [setting up the simulator](#simulator) (next step).

@@ -48,11 +48,11 @@ Each plugin must have the same files/structure, as shown for the "example" plugi
 
 ## Create a Plugin
 
-To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins) (e.g. 
-[Action](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins/action),
-[Telemetry](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/plugins/telemetry), etc.) or the [example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
+To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins) (e.g. 
+[Action](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/action),
+[Telemetry](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/telemetry), etc.) or the [example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/external_example/plugins/example/) plugin into the **plugins** directory (either in the DroneCore tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
 
-Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/external_example/plugins/example/CMakeLists.txt) as appropriate:
+Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/plugins/example/CMakeLists.txt) as appropriate:
 * Modify plugin filenames as appropriate
 * Add additional libraries using the variable `additional_libs`:
   ```
@@ -161,7 +161,7 @@ append the following lines to its **CMakeLists.txt**:
 
 ```cmake 
 list(APPEND UNIT_TEST_SOURCES
-    ${CMAKE_SOURCE_DIR}/plugins/mission/example_impl_test.cpp
+    ${CMAKE_SOURCE_DIR}/src/plugins/mission/example_impl_test.cpp
 )
 set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)
 ``` 

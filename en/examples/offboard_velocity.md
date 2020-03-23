@@ -94,7 +94,7 @@ target_link_libraries(offboard
 )
 ```
 
-[offboard_velocity.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/example/offboard_velocity/offboard_velocity.cpp)
+[offboard_velocity.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/offboard_velocity/offboard_velocity.cpp)
 
 ```cpp
 /**
