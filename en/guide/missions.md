@@ -62,7 +62,7 @@ The main steps are:
    ```
 1. Create a shared pointer to an instance of `Mission` instantiated with the `system`: 
    ```
-   #include <mavsdk/src/plugins/mission/mission.h>
+   #include <mavsdk/plugins/mission/mission.h>
    auto mission = std::make_shared<Mission>(system);
    ```
 

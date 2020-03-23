@@ -150,7 +150,7 @@ target_link_libraries(fly_mission
 
 #include <mavsdk/mavsdk.h>
 #include <mavsdk/plugins/action/action.h>
-#include <mavsdk/src/plugins/mission/mission.h>
+#include <mavsdk/plugins/mission/mission.h>
 #include <mavsdk/plugins/telemetry/telemetry.h>
 
 #include <functional>
