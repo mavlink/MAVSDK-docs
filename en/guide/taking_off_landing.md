@@ -128,7 +128,7 @@ Once the vehicle is ready, use the following synchronous code to arm:
 std::cout << "Arming..." << std::endl;
 const Action::Result arm_result = action->arm();
 
-if (arm_result != Action::Result::SUCCESS) {
+if (arm_result != Action::Result::Success) {
     std::cout << "Arming failed:" 
       << Action::result_str(arm_result) 
       <<  std::endl;
@@ -136,7 +136,7 @@ if (arm_result != Action::Result::SUCCESS) {
 }
 ```
 
-> **Tip** If the `arm()` method returns `Action::Result::SUCCESS` then the vehicle is armed and can proceed to takeoff. This can be confirmed using [Telemetry::armed()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876).
+> **Tip** If the `arm()` method returns `Action::Result::Success` then the vehicle is armed and can proceed to takeoff. This can be confirmed using [Telemetry::armed()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876).
 
 
 ### Get/Set Takeoff Altitude
@@ -156,7 +156,7 @@ The code below uses the synchronous `takeoff()` method, and fails if the vehicle
 // Command Take off
 std::cout << "Taking off..." << std::endl;
 const Action::Result takeoff_result = action->takeoff();
-if (takeoff_result != Action::Result::SUCCESS) {
+if (takeoff_result != Action::Result::Success) {
     std::cout << "Takeoff failed:" << Action::result_str(
         takeoff_result) << std::endl;
     return 1;
@@ -191,7 +191,7 @@ The code below shows how to use the land action.
 
 ```cpp
 const Action::Result land_result = action->land();
-if (land_result != Action::Result::SUCCESS) {
+if (land_result != Action::Result::Success) {
     //Land failed, so exit (in reality might try a return to land or kill.)
     return 1;
 }
@@ -217,7 +217,7 @@ The code below shows how to use the synchronous method:
 
 ```cpp
 const Action::Result rtl_result = telemetry->return_to_launch();
-if (rtl_result != Action::Result::SUCCESS) {
+if (rtl_result != Action::Result::Success) {
     //RTL failed, so exit (in reality might send kill command.)
     return 1;
 }
@@ -263,7 +263,7 @@ and to print the result of the call (the other synchronous method is used in the
 ```cpp
 const Action::Result fw_result = action->transition_to_fixedwing();
 
-if (fw_result != Action::Result::SUCCESS) {
+if (fw_result != Action::Result::Success) {
     std::cout << "Transition to fixed wing failed: " 
         << Action::result_str(fw_result) << std::endl;
 }
