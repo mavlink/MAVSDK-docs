@@ -87,7 +87,7 @@ cd MAVSDK
 
 Build the takeoff and land example:
 ```sh
-cd example/takeoff_land/
+cd examples/takeoff_land/
 mkdir build && cd build
 cmake ..
 make
