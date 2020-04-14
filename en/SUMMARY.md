@@ -7,6 +7,7 @@
 * [Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python)
 * [C++ (MAVSDK Core)](cpp/README.md)
   * [C++ QuickStart](cpp/quickstart.md)
+  * [C++ API changes](cpp/api_changes.md)
   * [Guide](guide/README.md)
     * [Usage/Paradigms](guide/general_usage.md)
     * [Connecting to Systems (Vehicles)](guide/connections.md)

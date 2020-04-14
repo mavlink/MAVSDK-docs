@@ -25,6 +25,9 @@ Note however that the API is still being evolved and the project does not provid
 This [Guide](../guide/README.md) explains how to write MAVSDK apps using C++.
 A simple complete example can be found in [Takeoff and Land](../examples/takeoff_and_land.md).
 
+## Updating / API changes
+
+Information about how the API changes from one version to the next: [API cchanges](api_changes.md).
 
 ## API Overview
 
@@ -57,7 +60,7 @@ They should only be used where features are missing from the main APIs above.
 
 ## Contributing/Extending
 
-The [Contributing](../contributing/README.md) section contains everything you need to contribute to the C++ API, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development. 
+The [Contributing](../contributing/README.md) section contains everything you need to contribute to the C++ API, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development.
 
-> **Tip** Developers who want to create plugins and contribute to the API will need to [build the library ](../contributing/build.md) (and other programming language wrappers) from source. 
+> **Tip** Developers who want to create plugins and contribute to the API will need to [build the library ](../contributing/build.md) (and other programming language wrappers) from source.
 
