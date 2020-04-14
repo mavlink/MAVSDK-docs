@@ -27,7 +27,7 @@ A simple complete example can be found in [Takeoff and Land](../examples/takeoff
 
 ## Updating / API changes
 
-Information about how the API changes from one version to the next: [API cchanges](api_changes.md).
+Information about API changes between versions: [API changes](api_changes.md).
 
 ## API Overview
 
