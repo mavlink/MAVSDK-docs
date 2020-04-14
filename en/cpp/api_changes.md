@@ -1,23 +1,27 @@
-# API changes
+# API Changes
 
-## General comment
+This page tracks changes between versions.
 
-We would like to keep the API of MAVSDK as stable as possible, however, we don't want to stand still and also improve over time. Therefore, sometimes breaking changes are required.
+It covers both breaking (incompatible) and non-breaking changes.
 
-### SemVer
+## Semantic Versioning
 
-We try to follow the [semver/Semantic Versioning](https://semver.org/) conventions as much as possible.
+MAVSDK follows [semver/Semantic Versioning](https://semver.org/) conventions where as possible.
 
-High level this means that the version number is **major.minor.patch**.
+The version number has the format: **major.minor.patch**.
+Individual parts of the number are iterated when the:
 
-- **major**: Bumping when the API is changed, or functionality is removed.
-- **minor**: Bumping when the API is extended, functionality is added.
-- **patch**: Bumping when the API is not changed, functionality is not changed, but a bug is fixed.
+- **major**: API is changed, or functionality is removed.
+- **minor**: API is extended, functionality is added.
+- **patch**: API is not changed, functionality is not changed, but a bug is fixed.
 
-This means that breaking the API goes with a bump of the major version number (e.g. 1.4.3 to 2.0.0), however, we ignore that until version 1.0.0, so we allow to break the API of 0.y.z.
+This means that breaking changes to the API result in a bump of the major version number (e.g. 1.4.3 to 2.0.0).
+
+> **Note** At time of writing, breaking/incompatible changes *are not* resulting in the major version number being increased! 
+  We plan to release version 1.0.0 in the near future, after which the above strategy will be adopted (i.e. currently breaking changes can occur in both minor and patch releases).
 
 
-## Specific transition notices
+## Specific Transition Notices
 
 ### v0.24.0 to v0.25.0
 
@@ -34,8 +38,9 @@ Enum naming is now `CamelCase` instead of `ALL_UPPERCASE`:
 `Action::RESULT` -> `Action::Result`
 `Telemetry::FLIGHT_MODE` -> `Telemetry::FlightMode`
 
-Printing of enums is easier,
-old:
+Printing of enums is easier:
+
+Old:
 ```
 std::cout << flight_mode_str(flight_mode);
 ```
@@ -57,8 +62,9 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
 
 #### Methods
 
-To get the mission progress, the method is now named in the same way as subscriptions in the telemetry plugin,
-old:
+To get the mission progress, the method is now named in the same way as subscriptions in the telemetry plugin:
+
+Old:
 ```
 subscribe_mission_progress(subscribe_mission_callback_t callback);
 ```
@@ -100,10 +106,11 @@ typedef std::function<void(Result, MissionPlan)> download_mission_callback_t;
 void download_mission_async(const Mission::download_mission_callback_t& callback);
 ```
 
-> **Tip** There are now also sync methods to upload and download a mission `upload_mission` and `download_mission`.
+> **Tip** There are now also sync methods to upload and download a mission: `upload_mission` and `download_mission`.
 
-Some methods now return a `std::pair<Result, bool>` instead of just a `bool` to cover the case where a request fails, e.g.
-old:
+Some methods now return a `std::pair<Result, bool>` instead of just a `bool` to cover the case where a request fails.
+
+Old:
 ```
 bool mission_finished();
 ```
