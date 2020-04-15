@@ -21,11 +21,9 @@ This means that breaking changes to the API result in a bump of the major versio
   We plan to release version 1.0.0 in the near future, after which the above strategy will be adopted (i.e. currently breaking changes can occur in both minor and patch releases).
 
 
-## Specific Transition Notices
+## v0.25.0
 
-### v0.24.0 to v0.25.0
-
-There are several changes in this release because the C++ plugins are now partially auto-generated from the proto files. While this causes some painful changes, it has several advantages:
+There are several changes in this release (from v0.24.0) because the C++ plugins are now partially auto-generated from the proto files. While this causes some painful changes, it has several advantages:
 - Better consistency between C++ and other languages for naming/docs/functionality.
 - Missing features for language wrappers such as Python.
 
