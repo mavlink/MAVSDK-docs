@@ -31,22 +31,22 @@ There are several changes in this release (from v0.24.0) because the C++ plugins
 
 #### Enums
 
-Enum naming is now `CamelCase` instead of `ALL_UPPERCASE`:
+- Enum naming is now `CamelCase` instead of `ALL_UPPERCASE`:
 
-`Action::RESULT` -> `Action::Result`
-`Telemetry::FLIGHT_MODE` -> `Telemetry::FlightMode`
+  `Action::RESULT` -> `Action::Result`
+  
+  `Telemetry::FLIGHT_MODE` -> `Telemetry::FlightMode`
 
-Printing of enums is easier:
-
-Old:
-```
-std::cout << flight_mode_str(flight_mode);
-```
-
-New:
-```
-std::cout << flight_mode;
-```
+- Printing of enums is easier:
+  
+  Old:
+  ```
+  std::cout << flight_mode_str(flight_mode);
+  ```
+  New:
+  ```
+  std::cout << flight_mode;
+  ```
 
 #### Methods
 
@@ -60,60 +60,58 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
 
 #### Methods
 
-To get the mission progress, the method is now named in the same way as subscriptions in the telemetry plugin:
+- To get the mission progress, the method is now named in the same way as subscriptions in the telemetry plugin:
 
-Old:
-```
-subscribe_mission_progress(subscribe_mission_callback_t callback);
-```
+  Old:
+  ```cpp
+  subscribe_mission_progress(subscribe_mission_callback_t callback);
+  ```
+  New:
+  ```cpp
+  mission_progress_async(mission_progress_callback_t callback);
+  ```
 
-New:
-```
-mission_progress_async(mission_progress_callback_t callback);
-```
+- The interface to upload a mission no longer uses a `std::vector` of `std::shared_ptr`s but a `std::vector` of the actual structs.
+  It is further wrapped inside `MissionPlan` in order to support mission settings.
 
-The interface to upload a mission no longer uses a `std::vector` of `std::shared_ptr`s but a `std::vector` of the actual structs.
-It is further wrapped inside `MissionPlan` in order to support mission settings.
+  Old:
+  ```cpp
+  typedef std::function<void(Result)> result_callback_t;
 
-Old:
-```
-typedef std::function<void(Result)> result_callback_t;
+  upload_mission_async(std::vector<std::shared_ptr<MissionItem>> items, result_callback_t callback);
+  ```
+  New:
+  ```cpp
+  struct MissionPlan {
+      std::vector<MissionItem> mission_items;
+  }
 
-upload_mission_async(std::vector<std::shared_ptr<MissionItem>> items, result_callback_t callback);
-```
+  upload_mission_async(Mission::MissionPlan mission_plan, result_callback_t callback);
+  ```
 
-New:
-```
-struct MissionPlan {
-    std::vector<MissionItem> mission_items;
-}
+- Similarly to download a mission:
 
-upload_mission_async(Mission::MissionPlan mission_plan, result_callback_t callback);
-```
+  Old:
+  ```cpp
+  typedef std::function<void(Result, std::vector<MissionItem>)> mission_items_and_result_callback_t;
+  
+  download_mission_async(mission_items_and_result_callback_t, callback)
+  ```
+  New:
+  ```cpp
+  typedef std::function<void(Result, MissionPlan)> download_mission_callback_t;
+  void download_mission_async(const Mission::download_mission_callback_t& callback);
+  ```
 
-Similarly to download a mission:
-```
-typedef std::function<void(Result, std::vector<MissionItem>)> mission_items_and_result_callback_t;
+  > **Tip** There are now also sync methods to upload and download a mission: `upload_mission` and `download_mission`.
 
-download_mission_async(mission_items_and_result_callback_t, callback)
-```
+- Some methods now return a `std::pair<Result, bool>` instead of just a `bool` to cover the case where a request fails.
 
-New:
-```
-typedef std::function<void(Result, MissionPlan)> download_mission_callback_t;
-void download_mission_async(const Mission::download_mission_callback_t& callback);
-```
-
-> **Tip** There are now also sync methods to upload and download a mission: `upload_mission` and `download_mission`.
-
-Some methods now return a `std::pair<Result, bool>` instead of just a `bool` to cover the case where a request fails.
-
-Old:
-```
-bool mission_finished();
-```
-
-New:
-```
-std::pair<Result, bool> is_mission_finished();
-```
+  Old:
+  ```cpp
+  bool mission_finished();
+  ```
+  New:
+  ```cpp
+  std::pair<Result, bool> is_mission_finished();
+  ```
