@@ -93,7 +93,7 @@ To build the MAVSDK C++ Library on Windows:
 1. Then build the MAVSDK in Windows:
    ```sh
    cd /your/path/to/MAVSDK
-   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
+   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=OFF -Bbuild/default -H.
    cmake --build build/default --config Debug
    ```
 
@@ -228,7 +228,7 @@ To build mavsdk_server on Windows:
 1. [Setup the C++ Library on Windows](#build_cpp_windows)
 1. Navigate into the SDK directory and build the project
    ```
-   cmake -G "Visual Studio 16 2019" -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=OFF -DBUILD_BACKEND=ON -Bbuild/default -H.
    cmake --build build/default
    ```
 
