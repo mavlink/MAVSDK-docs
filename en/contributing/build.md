@@ -93,7 +93,7 @@ To build the MAVSDK C++ Library on Windows:
 1. Then build the MAVSDK in Windows:
    ```sh
    cd /your/path/to/MAVSDK
-   cmake -G "Visual Studio 15 2017" -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
+   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
    cmake --build build/default --config Debug
    ```
 
@@ -228,7 +228,7 @@ To build mavsdk_server on Windows:
 1. [Setup the C++ Library on Windows](#build_cpp_windows)
 1. Navigate into the SDK directory and build the project
    ```
-   cmake -G "Visual Studio 15 2017" -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -G "Visual Studio 16 2019" -DBUILD_BACKEND=ON -Bbuild/default -H.
    cmake --build build/default
    ```
 
@@ -262,7 +262,7 @@ For example, use the commands below to build for `armv7`:
 > **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_BACKEND=ON`).
   This is required for contributors who want to *extend* the MAVSDK programming-language-specific libraries like [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html).
   It is not required for developers who just want to *use* C++, *MAVSDK-Swift* or *MAVSDK-Python*.
-  
+
 ## Build API Reference Documentation {#build_api_reference}
 
 The C++ source code is annotated using comments using [Doxygen](http://doxygen.nl/manual/index.html) syntax.
