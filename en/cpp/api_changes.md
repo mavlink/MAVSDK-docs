@@ -17,7 +17,7 @@ Individual parts of the number are iterated when the:
 
 This means that breaking changes to the API result in a bump of the major version number (e.g. 1.4.3 to 2.0.0).
 
-> **Note** At time of writing, breaking/incompatible changes *are not* resulting in the major version number being increased! 
+> **Note** At time of writing, breaking/incompatible changes *are not* resulting in the major version number being increased!
   We plan to release version 1.0.0 in the near future, after which the above strategy will be adopted (i.e. currently breaking changes can occur in both minor and patch releases).
 
 
@@ -34,11 +34,11 @@ There are several changes in this release (from v0.24.0) because the C++ plugins
 - Enum naming is now `CamelCase` instead of `ALL_UPPERCASE`:
 
   `Action::RESULT` -> `Action::Result`
-  
+
   `Telemetry::FLIGHT_MODE` -> `Telemetry::FlightMode`
 
 - Printing of enums is easier:
-  
+
   Old:
   ```
   std::cout << flight_mode_str(flight_mode);
@@ -94,7 +94,7 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
   Old:
   ```cpp
   typedef std::function<void(Result, std::vector<MissionItem>)> mission_items_and_result_callback_t;
-  
+
   download_mission_async(mission_items_and_result_callback_t, callback)
   ```
   New:
@@ -115,3 +115,20 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
   ```cpp
   std::pair<Result, bool> is_mission_finished();
   ```
+
+### Geofence
+
+#### Methods
+
+Old:
+```
+send_geofence_async(...);
+```
+New:
+```
+upload_geofence_async(...);
+```
+Or:
+```
+upload_geofence(...);
+```
