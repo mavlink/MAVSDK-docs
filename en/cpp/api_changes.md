@@ -116,6 +116,10 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
   std::pair<Result, bool> is_mission_finished();
   ```
 
+### Calibration
+
+The results `IN_PROGRESS` and `INSTRUCTION` disappear in favor of `Next`. Now, `Success` means that the function finished successfully, `Next` represents a new element of the stream and all the other results mean that the function finished with an error (described by the result).
+
 ### Geofence
 
 #### Methods
