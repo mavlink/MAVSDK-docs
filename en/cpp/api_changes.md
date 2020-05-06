@@ -27,7 +27,11 @@ There are several changes in this release (from v0.24.0) because the C++ plugins
 - Better consistency between C++ and other languages for naming/docs/functionality.
 - Missing features for language wrappers such as Python.
 
-### General
+> **Note** It's also worth looking at the integration tests and examples between the versions to see how things changed: [GitHub diff view](https://github.com/mavlink/MAVSDK/compare/v0.24.0...v0.25.0).
+
+The notes below try to give an overview over the changes as well as give some background on why they were deemed to be necessary.
+
+### General Changes
 
 #### Enums
 
@@ -36,6 +40,10 @@ There are several changes in this release (from v0.24.0) because the C++ plugins
   `Action::RESULT` -> `Action::Result`
 
   `Telemetry::FLIGHT_MODE` -> `Telemetry::FlightMode`
+
+> **Note** For enums, there is also a [script](https://github.com/mavlink/MAVSDK/blob/v0.25.0/tools/rename-enums-to-camelcase.sh) that you can run to fix them in one batch.
+
+  The reasoning behind this change is to avoid clashse with macros. For instance we had conflicts with `ERROR` or `SOCKET_ERROR` on Windows ([issue](https://github.com/mavlink/MAVSDK/issues/953)).
 
 - Printing of enums is easier:
 
@@ -48,9 +56,43 @@ There are several changes in this release (from v0.24.0) because the C++ plugins
   std::cout << flight_mode;
   ```
 
+  With auto-generation it is quite easy to make sure everything is printable using streams and we can drop the custom `_str` functions.
+
+
+#### Callback types
+
+The typedefs for callback types are no longer suffixed with `_t` and in `CamelCase` instead of `all_lower_case`, and they use the more modern `using` syntax rather than `typedef` e.g.:
+
+Old:
+```
+typedef std::function<void(int)> foo_callback_t;
+```
+
+New:
+```
+using FooCallback = std::function<void(int)>;
+```
+
+This change was decided in order to move with the [modern C++ recommendation](https://google.github.io/styleguide/cppguide.html#Aliases) as much as possible and also allow it to be used with templates.
+
 #### Methods
 
-Methods returning a bool are now mostly prefixed with `is_`. E.g. `is_health_ok` instead of `health_ok`.
+- Methods representing an infinite stream (i.e. that take a callback repeatedly receiving events, until they get unsubscribed) are now prefixed with `subscribe_` instead of being suffixed with `_async`.
+
+  Old:
+  ```
+  telemetry->position_async(...);
+  ```
+
+  New:
+  ```
+  telemetry->subscribe_position(...);
+  ```
+  Finite streams keep the `_async` suffix, e.g. `calibrate_magnetometer_async(...)`.
+
+  The reasoning is that it makes infinite streams clearly distinguishable from finite streams and requests which are async. Also, it allows to potentially add `unsubscribe` in the future.
+
+- Methods returning a bool are now mostly prefixed with `is_`. E.g. `is_health_ok` instead of `health_ok`.
 
 ### Mission
 
@@ -60,16 +102,18 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
 
 #### Methods
 
-- To get the mission progress, the method is now named in the same way as subscriptions in the telemetry plugin:
+- Progress is now Mission Progress:
 
   Old:
   ```cpp
-  subscribe_mission_progress(subscribe_mission_callback_t callback);
+  subscribe_progress(progress_callback_t callback);
   ```
   New:
   ```cpp
-  mission_progress_async(mission_progress_callback_t callback);
+  subscribe_mission_progress(MissionProgressCallback callback);
   ```
+
+  This makes it clear that the progress is for the mission and not the upload/download.
 
 - The interface to upload a mission no longer uses a `std::vector` of `std::shared_ptr`s but a `std::vector` of the actual structs.
   It is further wrapped inside `MissionPlan` in order to support mission settings.
@@ -86,8 +130,14 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
       std::vector<MissionItem> mission_items;
   }
 
-  upload_mission_async(Mission::MissionPlan mission_plan, result_callback_t callback);
+  upload_mission_async(Mission::MissionPlan mission_plan, ResultCallback callback);
   ```
+
+  Copying all items by value instead of using pointers might seem like overhead, however, there are a few arguments against that:
+  - The items were copied anyway inside of the mission plugin in order not to mess with the user's data. This change shows that in the API instead of hiding it.
+  - Reference counting in `std::shared_ptr` is also overhead, especially when done for each and every mission item.
+  - Only profiling will tell if a vector of pointers or a vector of structs is actually more performant. It depends on the number of items, caches,  etc..
+  - Shared ownership of data should be prevented as much as possible, unless really required, and can lead to interesting effects on destruction. Passing by value is often just easier and more intuitive.
 
 - Similarly to download a mission:
 
@@ -99,8 +149,8 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
   ```
   New:
   ```cpp
-  typedef std::function<void(Result, MissionPlan)> download_mission_callback_t;
-  void download_mission_async(const Mission::download_mission_callback_t& callback);
+  using DownloadMissionCallback = std::function<void(Result, MissionPlan)>;
+  void download_mission_async(const Mission::DownloadMissionCallback& callback);
   ```
 
   > **Tip** There are now also sync methods to upload and download a mission: `upload_mission` and `download_mission`.
@@ -116,6 +166,8 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
   std::pair<Result, bool> is_mission_finished();
   ```
 
+  The fields of a pair can be accessed with `.first` and `.second`.
+
 ### Calibration
 
 The results `IN_PROGRESS` and `INSTRUCTION` disappear in favor of `Next`. Now, `Success` means that the function finished successfully, `Next` represents a new element of the stream and all the other results mean that the function finished with an error (described by the result).
@@ -123,6 +175,8 @@ The results `IN_PROGRESS` and `INSTRUCTION` disappear in favor of `Next`. Now, `
 ### Geofence
 
 #### Methods
+
+The naming of the upload method has changed to match the mission and mission_raw plugins:
 
 Old:
 ```
@@ -136,3 +190,18 @@ Or:
 ```
 upload_geofence(...);
 ```
+
+#### Types
+
+Structs are usually no longer nested inside other structs but flatter due to the complexity it would pose for auto-generation:
+
+Old:
+```
+Geofence::Polygon::Point point;
+```
+Now:
+```
+Geofence::Point point;
+```
+
+Also, we no longer pass polygons with `std::shared_ptr<Geofence::Polygon>` but by value `Geofence::Polygon`.
