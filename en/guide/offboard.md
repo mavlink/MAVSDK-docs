@@ -51,7 +51,7 @@ The `offboard` pointer can then used to access the plugin API (as shown in the f
 
 ## Starting/Stopping Offboard Mode
 
-To use offboard mode you must first create a setpoint using either [set_velocity_ned()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39) or [set_velocity_body()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81).
+To use offboard mode you must first create a setpoint using any of the setpoint setter methods (e.g. [set_velocity_ned()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39) or [set_velocity_body()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81)).
 You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts.
 
 After you have created a setpoint call [start()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a3f0b71195ae6cb445237b192e3b8343f) or [start_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606) to switch to offboard mode.
