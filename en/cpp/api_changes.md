@@ -43,7 +43,7 @@ The notes below try to give an overview over the changes as well as give some ba
 
 > **Note** For enums, there is also a [script](https://github.com/mavlink/MAVSDK/blob/v0.25.0/tools/rename-enums-to-camelcase.sh) that you can run to fix them in one batch.
 
-  The reasoning behind this change is to avoid clashse with macros. For instance we had conflicts with `ERROR` or `SOCKET_ERROR` on Windows ([issue](https://github.com/mavlink/MAVSDK/issues/953)).
+  The reasoning behind this change is to avoid clashes with macros. For instance we had conflicts with `ERROR` or `SOCKET_ERROR` on Windows ([issue](https://github.com/mavlink/MAVSDK/issues/953)).
 
 - Printing of enums is easier:
 
