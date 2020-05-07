@@ -103,6 +103,34 @@ This change was decided in order to move with the [modern C++ recommendation](ht
 
 - Methods returning a bool are now mostly prefixed with `is_`. E.g. `is_health_ok` instead of `health_ok`.
 
+
+### Telemetry
+
+#### Types
+
+Some of the types have been renamed for consistency:
+
+```
+AccelerationNED -> AccelerationFrd
+AngularVelocityNED -> AngularVelocityFrd
+IMUReadingNED -> Imu
+MagneticFieldNED -> MagneticFieldFrd
+GroundSpeedNED -> VelocityNed
+SpeedBody -> VelocityBody
+```
+
+The changes were mostly for consistency, or correctness.
+
+#### Methods
+
+In the same way, some of the methods changed:
+
+```
+set_rate_ground_speed -> set_rate_velocity_ned
+ground_speed_async -> subscribe_velocity_ned
+```
+
+
 ### Mission
 
 #### Classes
@@ -214,3 +242,14 @@ Geofence::Point point;
 ```
 
 Also, we no longer pass polygons with `std::shared_ptr<Geofence::Polygon>` but by value `Geofence::Polygon`.
+
+### Offboard
+
+####Types
+
+Matching with the rest, acronyms are not all capitalized anymore, mostly because that's easier to deal with in auto-generation:
+
+```
+PositionNEDYaw -> PositionNedYaw
+VelocityNED -> VelocityNedYaw
+```
