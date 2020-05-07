@@ -58,6 +58,15 @@ The notes below try to give an overview over the changes as well as give some ba
 
   With auto-generation it is quite easy to make sure everything is printable using streams and we can drop the custom `_str` functions.
 
+  To get a `std::string` from `operator<<` you can use:
+  ```
+  #include <sstream>
+
+  std::stringstream ss;
+  ss << flight_mode;
+  std::string str = ss.str();
+  ```
+
 
 #### Callback types
 
