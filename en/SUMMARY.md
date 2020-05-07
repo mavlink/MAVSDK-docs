@@ -118,7 +118,6 @@
       * [struct PositionVelocityNed](structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md)
       * [struct Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)
       * [struct RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md)
-      * [struct SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md)
       * [struct StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md)
     * [class Tune](classmavsdk_1_1_tune.md)
       * [struct TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md)

@@ -52,8 +52,6 @@ struct [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)
 
 struct [RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md)
 
-struct [SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md)
-
 struct [StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md)
 
 struct [VelocityBody](structmavsdk_1_1_telemetry_1_1_velocity_body.md)
@@ -81,7 +79,7 @@ std::function< void([EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md))
 std::function< void([AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md))> [AttitudeAngularVelocityBodyCallback](#classmavsdk_1_1_telemetry_1a35ff8def3048faeab7f732153d51085f) | Callback type for subscribe_attitude_angular_velocity_body.
 std::function< void([Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md))> [CameraAttitudeQuaternionCallback](#classmavsdk_1_1_telemetry_1aa83dafa14e9b5179573a574f6fbdd973) | Callback type for subscribe_camera_attitude_quaternion.
 std::function< void([EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md))> [CameraAttitudeEulerCallback](#classmavsdk_1_1_telemetry_1aa29f9bb0767ba8c384bfe1df69f2fdd9) | Callback type for subscribe_camera_attitude_euler.
-std::function< void([SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md))> [GroundSpeedNedCallback](#classmavsdk_1_1_telemetry_1ab5cb342044fbd6b4b4130969252a9c48) | Callback type for subscribe_ground_speed_ned.
+std::function< void([VelocityNed](structmavsdk_1_1_telemetry_1_1_velocity_ned.md))> [VelocityNedCallback](#classmavsdk_1_1_telemetry_1ab5859d2f6a9c9bd81282166b3de92342) | Callback type for subscribe_velocity_ned.
 std::function< void([GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md))> [GpsInfoCallback](#classmavsdk_1_1_telemetry_1ad8fa90886b2283eace09b4b46708048b) | Callback type for subscribe_gps_info.
 std::function< void([Battery](structmavsdk_1_1_telemetry_1_1_battery.md))> [BatteryCallback](#classmavsdk_1_1_telemetry_1af4b121c576ef2ae567b1d571b12dff9d) | Callback type for subscribe_battery.
 std::function< void([FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe))> [FlightModeCallback](#classmavsdk_1_1_telemetry_1a2d7318d0823771b7a586c40199bdb482) | Callback type for subscribe_flight_mode.
@@ -126,8 +124,8 @@ void | [subscribe_camera_attitude_quaternion](#classmavsdk_1_1_telemetry_1a6845e
 [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [camera_attitude_quaternion](#classmavsdk_1_1_telemetry_1a3c07447351d3b6195d5e2526e7b128b3) () const | Poll for '[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)' (blocking).
 void | [subscribe_camera_attitude_euler](#classmavsdk_1_1_telemetry_1afaa61016a5319ebea73dc5b1e4cde89c) ([CameraAttitudeEulerCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa29f9bb0767ba8c384bfe1df69f2fdd9) callback) | Subscribe to 'camera attitude' updates (Euler).
 [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [camera_attitude_euler](#classmavsdk_1_1_telemetry_1a635643d955f0cd9a805914501f819796) () const | Poll for '[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)' (blocking).
-void | [subscribe_ground_speed_ned](#classmavsdk_1_1_telemetry_1ac480db5041463f346353e05bf6105e59) ([GroundSpeedNedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab5cb342044fbd6b4b4130969252a9c48) callback) | Subscribe to 'ground speed' updates (NED).
-[SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md) | [ground_speed_ned](#classmavsdk_1_1_telemetry_1a6ebb4a10e9e5299cafb36eb2bd02401a) () const | Poll for '[SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md)' (blocking).
+void | [subscribe_velocity_ned](#classmavsdk_1_1_telemetry_1a0bcbf7a51643c8ca4a93dabd0f4364b5) ([VelocityNedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab5859d2f6a9c9bd81282166b3de92342) callback) | Subscribe to 'ground speed' updates (NED).
+[VelocityNed](structmavsdk_1_1_telemetry_1_1_velocity_ned.md) | [velocity_ned](#classmavsdk_1_1_telemetry_1a40a86062c0322d6be7c86d8e15a52f28) () const | Poll for '[VelocityNed](structmavsdk_1_1_telemetry_1_1_velocity_ned.md)' (blocking).
 void | [subscribe_gps_info](#classmavsdk_1_1_telemetry_1aa078035ce00505b726dcac4d47796cee) ([GpsInfoCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad8fa90886b2283eace09b4b46708048b) callback) | Subscribe to 'GPS info' updates.
 [GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md) | [gps_info](#classmavsdk_1_1_telemetry_1a983dabc1aed50745b326072662c419e8) () const | Poll for '[GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md)' (blocking).
 void | [subscribe_battery](#classmavsdk_1_1_telemetry_1a9a8c5288273b4a6f1e43377a70f47a0e) ([BatteryCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af4b121c576ef2ae567b1d571b12dff9d) callback) | Subscribe to 'battery' updates.
@@ -170,8 +168,8 @@ void | [set_rate_attitude_async](#classmavsdk_1_1_telemetry_1a2f979321709760a1ad
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_attitude](#classmavsdk_1_1_telemetry_1a163d3960faadad948294f367eaaf52b0) (double rate_hz)const | Set rate to 'attitude' updates.
 void | [set_rate_camera_attitude_async](#classmavsdk_1_1_telemetry_1a520f15e42f5f1b3987ca2a9cd94a3d9a) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate of camera attitude updates.
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_camera_attitude](#classmavsdk_1_1_telemetry_1a427da223d16ce07a61b07d4e5af1ab04) (double rate_hz)const | Set rate of camera attitude updates.
-void | [set_rate_ground_speed_ned_async](#classmavsdk_1_1_telemetry_1a2a2694329e93c1ceac38b7b5870c3ac3) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'ground speed' updates (NED).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_ground_speed_ned](#classmavsdk_1_1_telemetry_1aa23ea927f69e30625c070cfb8f32542f) (double rate_hz)const | Set rate to 'ground speed' updates (NED).
+void | [set_rate_velocity_ned_async](#classmavsdk_1_1_telemetry_1a9429ffa784fa56adee69c5017abedee4) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'ground speed' updates (NED).
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_velocity_ned](#classmavsdk_1_1_telemetry_1ab5cb79fd53f27f245808a6bb9ed3225d) (double rate_hz)const | Set rate to 'ground speed' updates (NED).
 void | [set_rate_gps_info_async](#classmavsdk_1_1_telemetry_1ae6ada3cd6d4e9835dd4d1d712f1195e4) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'GPS info' updates.
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_gps_info](#classmavsdk_1_1_telemetry_1a14510bcb6fe3c31d91653d32d354613f) (double rate_hz)const | Set rate to 'GPS info' updates.
 void | [set_rate_battery_async](#classmavsdk_1_1_telemetry_1a5615e21f616997dfca1318c96a7e550e) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'battery' updates.
@@ -353,14 +351,14 @@ using mavsdk::Telemetry::CameraAttitudeEulerCallback =  std::function<void(Euler
 Callback type for subscribe_camera_attitude_euler.
 
 
-### typedef GroundSpeedNedCallback {#classmavsdk_1_1_telemetry_1ab5cb342044fbd6b4b4130969252a9c48}
+### typedef VelocityNedCallback {#classmavsdk_1_1_telemetry_1ab5859d2f6a9c9bd81282166b3de92342}
 
 ```cpp
-using mavsdk::Telemetry::GroundSpeedNedCallback =  std::function<void(SpeedNed)>
+using mavsdk::Telemetry::VelocityNedCallback =  std::function<void(VelocityNed)>
 ```
 
 
-Callback type for subscribe_ground_speed_ned.
+Callback type for subscribe_velocity_ned.
 
 
 ### typedef GpsInfoCallback {#classmavsdk_1_1_telemetry_1ad8fa90886b2283eace09b4b46708048b}
@@ -862,9 +860,9 @@ Poll for '[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)' (blocking
 
 &emsp;[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) - One [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) update.
 
-### subscribe_ground_speed_ned() {#classmavsdk_1_1_telemetry_1ac480db5041463f346353e05bf6105e59}
+### subscribe_velocity_ned() {#classmavsdk_1_1_telemetry_1a0bcbf7a51643c8ca4a93dabd0f4364b5}
 ```cpp
-void mavsdk::Telemetry::subscribe_ground_speed_ned(GroundSpeedNedCallback callback)
+void mavsdk::Telemetry::subscribe_velocity_ned(VelocityNedCallback callback)
 ```
 
 
@@ -873,20 +871,20 @@ Subscribe to 'ground speed' updates (NED).
 
 **Parameters**
 
-* [GroundSpeedNedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab5cb342044fbd6b4b4130969252a9c48) **callback** - 
+* [VelocityNedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab5859d2f6a9c9bd81282166b3de92342) **callback** - 
 
-### ground_speed_ned() {#classmavsdk_1_1_telemetry_1a6ebb4a10e9e5299cafb36eb2bd02401a}
+### velocity_ned() {#classmavsdk_1_1_telemetry_1a40a86062c0322d6be7c86d8e15a52f28}
 ```cpp
-SpeedNed mavsdk::Telemetry::ground_speed_ned() const
+VelocityNed mavsdk::Telemetry::velocity_ned() const
 ```
 
 
-Poll for '[SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md)' (blocking).
+Poll for '[VelocityNed](structmavsdk_1_1_telemetry_1_1_velocity_ned.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md) - One [SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md) update.
+&emsp;[VelocityNed](structmavsdk_1_1_telemetry_1_1_velocity_ned.md) - One [VelocityNed](structmavsdk_1_1_telemetry_1_1_velocity_ned.md) update.
 
 ### subscribe_gps_info() {#classmavsdk_1_1_telemetry_1aa078035ce00505b726dcac4d47796cee}
 ```cpp
@@ -1476,30 +1474,30 @@ This function is blocking. See 'set_rate_camera_attitude_async' for the non-bloc
 
 &emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
 
-### set_rate_ground_speed_ned_async() {#classmavsdk_1_1_telemetry_1a2a2694329e93c1ceac38b7b5870c3ac3}
+### set_rate_velocity_ned_async() {#classmavsdk_1_1_telemetry_1a9429ffa784fa56adee69c5017abedee4}
 ```cpp
-void mavsdk::Telemetry::set_rate_ground_speed_ned_async(double rate_hz, const ResultCallback callback)
+void mavsdk::Telemetry::set_rate_velocity_ned_async(double rate_hz, const ResultCallback callback)
 ```
 
 
 Set rate to 'ground speed' updates (NED).
 
-This function is non-blocking. See 'set_rate_ground_speed_ned' for the blocking counterpart.
+This function is non-blocking. See 'set_rate_velocity_ned' for the blocking counterpart.
 
 **Parameters**
 
 * double **rate_hz** - 
 * const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### set_rate_ground_speed_ned() {#classmavsdk_1_1_telemetry_1aa23ea927f69e30625c070cfb8f32542f}
+### set_rate_velocity_ned() {#classmavsdk_1_1_telemetry_1ab5cb79fd53f27f245808a6bb9ed3225d}
 ```cpp
-Result mavsdk::Telemetry::set_rate_ground_speed_ned(double rate_hz) const
+Result mavsdk::Telemetry::set_rate_velocity_ned(double rate_hz) const
 ```
 
 
 Set rate to 'ground speed' updates (NED).
 
-This function is blocking. See 'set_rate_ground_speed_ned_async' for the non-blocking counterpart.
+This function is blocking. See 'set_rate_velocity_ned_async' for the non-blocking counterpart.
 
 **Parameters**
 
