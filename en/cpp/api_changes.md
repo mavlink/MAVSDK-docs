@@ -110,14 +110,12 @@ This change was decided in order to move with the [modern C++ recommendation](ht
 
 Some of the types have been renamed for consistency:
 
-```
-AccelerationNED -> AccelerationFrd
-AngularVelocityNED -> AngularVelocityFrd
-IMUReadingNED -> Imu
-MagneticFieldNED -> MagneticFieldFrd
-GroundSpeedNED -> VelocityNed
-SpeedBody -> VelocityBody
-```
+- `AccelerationNED` -> `AccelerationFrd`
+- `AngularVelocityNED` -> `AngularVelocityFrd`
+- `IMUReadingNED` -> `Imu`
+- `MagneticFieldNED` -> `MagneticFieldFrd`
+- `GroundSpeedNED` -> `VelocityNed`
+- `SpeedBody` -> `VelocityBody`
 
 The changes were mostly for consistency, or correctness.
 
@@ -125,10 +123,8 @@ The changes were mostly for consistency, or correctness.
 
 In the same way, some of the methods changed:
 
-```
-set_rate_ground_speed -> set_rate_velocity_ned
-ground_speed_async -> subscribe_velocity_ned
-```
+- `set_rate_ground_speed` -> `set_rate_velocity_ned`
+- `ground_speed_async` -> `subscribe_velocity_ned`
 
 
 ### Mission
@@ -249,7 +245,5 @@ Also, we no longer pass polygons with `std::shared_ptr<Geofence::Polygon>` but b
 
 Matching with the rest, acronyms are not all capitalized anymore, mostly because that's easier to deal with in auto-generation:
 
-```
-PositionNEDYaw -> PositionNedYaw
-VelocityNED -> VelocityNedYaw
-```
+`PositionNEDYaw` -> `PositionNedYaw`
+`VelocityNED` -> `VelocityNedYaw`
