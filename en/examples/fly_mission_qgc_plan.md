@@ -1,6 +1,6 @@
 # Example: Fly QGroundControl Plan Mission
 
-The [Fly QGroundControl Plan Mission](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/fly_qgc_mission) example shows how to import a *QGroundControl* mission plan, upload it to a vehicle, run the mission, and then command Return mode ("RTL").
+The [Fly QGroundControl Plan Mission](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/fly_qgc_mission) example shows how to import a *QGroundControl* mission plan, upload it to a vehicle, run the mission, and then command Return mode ("RTL").
 
 ![Fly Mission QGC Screenshot - From Plan](../../assets/examples/fly_qgc_mission/fly_qgc_plan_mission_example_qgc.jpg)
 
@@ -9,7 +9,7 @@ The [Fly QGroundControl Plan Mission](https://github.com/Dronecode/DronecodeSDK/
 
 The example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)). 
 
-> **Tip** By default the example will load a sample plan from the plugin unit test: [/plugins/mission/qgroundcontrol_sample.plan](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/plugins/mission/qgroundcontrol_sample.plan). 
+> **Tip** By default the example will load a sample plan from the plugin unit test: [/src/plugins/mission/qgroundcontrol_sample.plan](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/qgroundcontrol_sample.plan). 
   Alternatively you can specify the plan to load when you start the example:
   ```
   ./fly_qgc_mission <path of QGC Mission plan>
@@ -25,7 +25,7 @@ $ ./fly_qgc_mission udp://:14540
 ```
 ```
 Connection URL: udp://:14540
-Importing mission from mission plan: ../../../plugins/mission/qgroundcontrol_sample.plan
+Importing mission from mission plan: ../../../src/plugins/mission/qgroundcontrol_sample.plan
 Waiting to discover system...
 [09:52:04|Info ] New device on: 127.0.0.1:14557 (udp_connection.cpp:208)
 [09:52:04|Debug] New: System ID: 1 Comp ID: 1 (dronecode_sdk_impl.cpp:292)
@@ -98,10 +98,10 @@ The specific code for importing missions is discussed in the guide: [Missions > 
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/fly_qgc_mission).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/fly_qgc_mission).
 
 
-[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/fly_qgc_mission/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -110,36 +110,32 @@ project(fly_qgc_mission)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
-    # Line below required if /usr/local/include is not in your default includes
-    #include_directories(/usr/local/include)
-    # Line below required if /usr/local/lib is not in your default linker path
-    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
-    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
+
+find_package(MAVSDK REQUIRED)
 
 add_executable(fly_qgc_mission
     fly_qgc_mission.cpp
 )
 
 target_link_libraries(fly_qgc_mission
-    dronecode_sdk
-    dronecode_sdk_action
-    dronecode_sdk_mission
-    dronecode_sdk_telemetry
+    MAVSDK::mavsdk_action
+    MAVSDK::mavsdk_mission
+    MAVSDK::mavsdk_telemetry
+    MAVSDK::mavsdk
 )
 ```
 
-[fly_qgc_mission.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/fly_qgc_mission/fly_qgc_mission.cpp)
+[fly_qgc_mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/fly_qgc_mission/fly_qgc_mission.cpp)
 
 ```cpp
 /**
  * @file fly_qgc_mission.cpp
  *
  * @brief Demonstrates how to import mission items from QGroundControl plan,
- * and fly them using the Dronecode SDK.
+ * and fly them using the MAVSDK.
  *
  * Steps to run this example:
  * 1. (a) Create a Mission in QGroundControl and save them to a file (.plan) (OR)
@@ -161,10 +157,11 @@ target_link_libraries(fly_qgc_mission
  * @date 2018-02-04
  */
 
-#include <dronecode_sdk/action.h>
-#include <dronecode_sdk/dronecode_sdk.h>
-#include <dronecode_sdk/mission.h>
-#include <dronecode_sdk/telemetry.h>
+#include <mavsdk/mavsdk.h>
+#include <mavsdk/plugins/action/action.h>
+#include <mavsdk/plugins/mission/mission.h>
+#include <mavsdk/plugins/telemetry/telemetry.h>
+
 #include <functional>
 #include <future>
 #include <iostream>
@@ -174,7 +171,7 @@ target_link_libraries(fly_qgc_mission
 #define TELEMETRY_CONSOLE_TEXT "\033[34m" // Turn text on console blue
 #define NORMAL_CONSOLE_TEXT "\033[0m" // Restore normal console colour
 
-using namespace dronecode_sdk;
+using namespace mavsdk;
 using namespace std::chrono; // for seconds(), milliseconds()
 using namespace std::this_thread; // for sleep_for()
 
@@ -198,12 +195,12 @@ void usage(std::string bin_name)
 
 int main(int argc, char **argv)
 {
-    DronecodeSDK dc;
+    Mavsdk dc;
     std::string connection_url;
     ConnectionResult connection_result;
 
     // Locate path of QGC Sample plan
-    std::string qgc_plan = "../../../plugins/mission/qgroundcontrol_sample.plan";
+    std::string qgc_plan = "../../../src/plugins/mission/qgroundcontrol_sample.plan";
 
     if (argc != 2 && argc != 3) {
         usage(argv[0]);
@@ -314,7 +311,7 @@ int main(int argc, char **argv)
         // Mission complete. Command RTL to go home.
         std::cout << "Commanding RTL..." << std::endl;
         const Action::Result result = action->return_to_launch();
-        if (result != Action::Result::SUCCESS) {
+        if (result != Action::Result::Success) {
             std::cout << "Failed to command RTL (" << Action::result_str(result) << ")"
                       << std::endl;
         } else {
@@ -327,7 +324,7 @@ int main(int argc, char **argv)
 
 inline void handle_action_err_exit(Action::Result result, const std::string &message)
 {
-    if (result != Action::Result::SUCCESS) {
+    if (result != Action::Result::Success) {
         std::cerr << ERROR_CONSOLE_TEXT << message << Action::result_str(result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);

@@ -1,6 +1,6 @@
 # System Information
 
-The [Info](../api_reference/classdronecode__sdk_1_1_info.md) class is used to get system (vehicle) information, including the UUID (MAVLink `SYS_ID` if no UUID is stored in hardware), PX4 firmware version, vendor firmware version, host OS version (e.g. for NuttX) and vendor and product ids/names. 
+The [Info](../api_reference/classmavsdk_1_1_info.md) class is used to get system (vehicle) information, including the UUID (MAVLink `SYS_ID` if no UUID is stored in hardware), PX4 firmware version, vendor firmware version, host OS version (e.g. for NuttX) and vendor and product ids/names. 
 
 > **Note** Not all version information will necessarily be relevant on all vehicles. Where this occurs the 
 hardware may return garbage values (for example, the simulator provides garbage values for the vendor 
@@ -8,14 +8,14 @@ firmware semantic version).
 
 ## Preconditions
 
-The following code assumes that you already have included `dronecode_sdk.h` (`#include <dronecode_sdk/dronecode_sdk.h>`) and that there is a [connection to a system](../guide/connections.md) obtained as shown below:
+The following code assumes that you already have included `mavsdk.h` (`#include <mavsdk/mavsdk.h>`) and that there is a [connection to a system](../guide/connections.md) obtained as shown below:
 ```cpp
 System &system = dc.system(); 
 ```
 
 The code also assumes that you have defined `info`, a shared pointer to an instance of the `Info` class associated with the system (see [Using Plugins](../guide/using_plugins.md)):
 ```cpp
-#include <dronecode_sdk/info.h>
+#include <mavsdk/plugins/info/info.h>
 auto info = std::make_shared<Info>(system);
 ```
 
@@ -28,13 +28,13 @@ The code below shows how to query the UUID, version, and product, information an
 std::cout << " UUID: " << info->uuid() << std::endl;
 
 // Wait until version/firmware information has been populated from the vehicle
-while (!info->is_complete()) {
+while (info->get_identification().first==Info::Result::INFORMATION_NOT_RECEIVED_YET) {
     std::cout << "Waiting for Version information to populate from system." << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 // Get the system Version struct
-const Info::Version &systemVersion =  info->get_version();
+const Info::Version &systemVersion =  info->get_version().second;
 
 // Print out the vehicle version information.
 std::cout << "  flight_sw_major: " << systemVersion.flight_sw_major<< std::endl
@@ -50,7 +50,7 @@ std::cout << "  flight_sw_major: " << systemVersion.flight_sw_major<< std::endl
           << "  os_sw_git_hash: " << systemVersion.os_sw_git_hash<< std::endl;
 
 // Get the system Product struct
-const Info::Product &systemProduct =  info->get_product();
+const Info::Product &systemProduct =  info->get_product().second;
 
 // Print out the vehicle product information.
 std::cout << "  vendor_id: " << systemProduct.vendor_id<< std::endl

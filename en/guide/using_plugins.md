@@ -1,7 +1,7 @@
 # Managing Systems/Vehicles (Using Plugins)
 
 Access to drone information, telemetry and control objects are provided by a number of different *plugins*. 
-For example, the [Action](../api_reference/classdronecode__sdk_1_1_action.md) plugin is used to arm, takeoff and land the vehicle, 
+For example, the [Action](../api_reference/classmavsdk_1_1_action.md) plugin is used to arm, takeoff and land the vehicle, 
 while the [Telemetry](../guide/telemetry.md) plugin can be used to query the vehicle GPS status, flight mode, etc. 
 A separate plugin instance must be created for each system that needs it. 
 
@@ -11,21 +11,21 @@ To use a plugin first link the plugin library into the application. Do this by a
 
 ```cmake
 target_link_libraries(your_executable_name
-    dronecode_sdk
+    mavsdk
     ...
-    dronecode_sdk_action
+    mavsdk_action
    ...
 )
 ```
 
-> **Note** Plugins are named using the convention **dronecode_sdk\__plugin\_name_.so**. 
+> **Note** Plugins are named using the convention **mavsdk\__plugin\_name_.so**. 
   For more information see [Building C++ Apps](../guide/toolchain.md)
 
 
 In the application source code: 
 1. `#include` the header file for the plugin. 
    ```cpp
-   #include <dronecode_sdk/action.h>
+   #include <mavsdk/plugins/action/action.h>
    ```
 1. [Create a connection](../guide/connections.md) to a `System` object (below named: `system`).
 1. Make a shared pointer to the plugin object, specifying the `System` it is to be used with:

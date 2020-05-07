@@ -1,6 +1,6 @@
 # Example: VTOL Transitions
 
-This example shows how you can use the SDK [Action](../api_reference/classdronecode__sdk_1_1_action.md) class to transition between VTOL copter and fixed-wing modes (and back).
+This example shows how you can use the SDK [Action](../api_reference/classmavsdk_1_1_action.md) class to transition between VTOL copter and fixed-wing modes (and back).
 
 ![VTOL Transition QGC Screenshot](../../assets/examples/transition_vtol_fixed_wing/transition_vtol_fixed_wing_example_qgc.png)
 
@@ -10,7 +10,7 @@ This example shows how you can use the SDK [Action](../api_reference/classdronec
 The example must be run against a VTOL aircraft (simulated or otherwise). 
 Otherwise the example is built and run [in the standard way](../examples/README.md#trying_the_examples).
 
-> **Tip** Instructions for running the Gazebo simulator for a standard VTOL can be found here: [PX4 Development Guide > Gazebo Simulation](https://dev.px4.io/en/simulation/gazebo.html#standard-vtol). 
+> **Tip** Instructions for running the Gazebo simulator for a standard VTOL can be found here: [PX4 Development Guide > Gazebo Simulation](https://dev.px4.io/master/en/simulation/gazebo.html#standard-vtol). 
   jMAVSim does not support VTOL simulation.
 
 The example terminal output for a debug build of the SDK should be similar to that shown below (a release build will omit the "Debug" messages):
@@ -72,10 +72,10 @@ The operation of the transition code is discussed in the guide: [Takeoff and Lan
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/transition_vtol_fixed_wing).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/transition_vtol_fixed_wing).
 
 
-[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/transition_vtol_fixed_wing/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -84,28 +84,24 @@ project(transition_vtol_fixed_wing)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
-    # Line below required if /usr/local/include is not in your default includes
-    #include_directories(/usr/local/include)
-    # Line below required if /usr/local/lib is not in your default linker path
-    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
-    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
+
+find_package(MAVSDK REQUIRED)
 
 add_executable(transition_vtol_fixed_wing
     transition_vtol_fixed_wing.cpp
 )
 
 target_link_libraries(transition_vtol_fixed_wing
-    dronecode_sdk
-    dronecode_sdk_action
-    dronecode_sdk_telemetry
+    MAVSDK::mavsdk_action
+    MAVSDK::mavsdk_telemetry
+    MAVSDK::mavsdk
 )
 ```
 
-[transition_vtol_fixed_wing.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
+[transition_vtol_fixed_wing.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/transition_vtol_fixed_wing/transition_vtol_fixed_wing.cpp)
 
 ```cpp
 #include <chrono>
@@ -113,14 +109,14 @@ target_link_libraries(transition_vtol_fixed_wing
 #include <iostream>
 #include <thread>
 #include <cmath>
-#include <dronecode_sdk/dronecode_sdk.h>
-#include <dronecode_sdk/action.h>
-#include <dronecode_sdk/telemetry.h>
+#include <mavsdk/mavsdk.h>
+#include <mavsdk/plugins/action/action.h>
+#include <mavsdk/plugins/telemetry/telemetry.h>
 
 using std::this_thread::sleep_for;
 using std::chrono::seconds;
 using std::chrono::milliseconds;
-using namespace dronecode_sdk;
+using namespace mavsdk;
 
 static constexpr auto ERROR_CONSOLE_TEXT = "\033[31m";
 static constexpr auto TELEMETRY_CONSOLE_TEXT = "\033[34m";
@@ -137,7 +133,7 @@ int main(int argc, char **argv)
 
     const std::string connection_url = argv[1];
 
-    DronecodeSDK dc;
+    Mavsdk dc;
 
     // Add connection specified by CLI argument.
     const ConnectionResult connection_result = dc.add_any_connection(connection_url);
@@ -184,7 +180,7 @@ int main(int argc, char **argv)
     std::cout << "Arming." << std::endl;
     const Action::Result arm_result = action->arm();
 
-    if (arm_result != Action::Result::SUCCESS) {
+    if (arm_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT << "Arming failed: " << Action::result_str(arm_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
@@ -193,7 +189,7 @@ int main(int argc, char **argv)
     // Take off
     std::cout << "Taking off." << std::endl;
     const Action::Result takeoff_result = action->takeoff();
-    if (takeoff_result != Action::Result::SUCCESS) {
+    if (takeoff_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:n" << Action::result_str(takeoff_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
@@ -205,7 +201,7 @@ int main(int argc, char **argv)
     std::cout << "Transition to fixedwing." << std::endl;
     const Action::Result fw_result = action->transition_to_fixedwing();
 
-    if (fw_result != Action::Result::SUCCESS) {
+    if (fw_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT
                   << "Transition to fixed wing failed: " << Action::result_str(fw_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
@@ -219,7 +215,7 @@ int main(int argc, char **argv)
     std::cout << "Sending it to location." << std::endl;
     // We pass latitude and longitude but leave altitude and yaw unset by passing NAN.
     const Action::Result goto_result = action->goto_location(47.3633001, 8.5428515, NAN, NAN);
-    if (goto_result != Action::Result::SUCCESS) {
+    if (goto_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT
                   << "Goto command failed: " << Action::result_str(goto_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
@@ -232,7 +228,7 @@ int main(int argc, char **argv)
     // Let's stop before reaching the goto point and go back to hover.
     std::cout << "Transition back to multicopter..." << std::endl;
     const Action::Result mc_result = action->transition_to_multicopter();
-    if (mc_result != Action::Result::SUCCESS) {
+    if (mc_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT
                   << "Transition to multi copter failed: " << Action::result_str(mc_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
@@ -245,7 +241,7 @@ int main(int argc, char **argv)
     // Now just land here.
     std::cout << "Landing..." << std::endl;
     const Action::Result land_result = action->land();
-    if (land_result != Action::Result::SUCCESS) {
+    if (land_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT << "Land failed: " << Action::result_str(land_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;

@@ -1,12 +1,12 @@
 # Example: Takeoff and Land
 
-This simple example shows the basic use of many *Dronecode SDK* features. 
+This simple example shows the basic use of many MAVSDK features. 
 
 It sets up a UDP connection, waits for a vehicle (system) to appear, arms it, and commands it to takeoff.
 After a short wait the vehicle lands. 
 While flying the vehicle receives telemetry. The example is implemented in C++ (only).
 
-> **Tip** The full source code for the example [can be found here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/takeoff_land).
+> **Tip** The full source code for the example [can be found here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/takeoff_land).
 
 ## Running the Example {#run_example}
 
@@ -57,9 +57,9 @@ Finished...
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/Dronecode/DronecodeSDK/tree/{{ book.github_branch }}/example/takeoff_land).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/takeoff_land).
 
-[CMakeLists.txt](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/takeoff_land/CMakeLists.txt)
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/takeoff_land/CMakeLists.txt)
 
 ```make
 cmake_minimum_required(VERSION 2.8.12)
@@ -68,44 +68,39 @@ project(takeoff_and_land)
 
 if(NOT MSVC)
     add_definitions("-std=c++11 -Wall -Wextra -Werror")
-    # Line below required if /usr/local/include is not in your default includes
-    #include_directories(/usr/local/include)
-    # Line below required if /usr/local/lib is not in your default linker path
-    #link_directories(/usr/local/lib)
 else()
     add_definitions("-std=c++11 -WX -W2")
-    include_directories(${CMAKE_SOURCE_DIR}/../../install/include)
-    link_directories(${CMAKE_SOURCE_DIR}/../../install/lib)
 endif()
+
+find_package(MAVSDK REQUIRED)
 
 add_executable(takeoff_and_land
     takeoff_and_land.cpp
 )
 
 target_link_libraries(takeoff_and_land
-    dronecode_sdk
-    dronecode_sdk_telemetry
-    dronecode_sdk_action
+    MAVSDK::mavsdk_telemetry
+    MAVSDK::mavsdk_action
+    MAVSDK::mavsdk
 )
 ```
 
-[takeoff_and_land.cpp](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/example/takeoff_land/takeoff_and_land.cpp)
+[takeoff_and_land.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/takeoff_land/takeoff_and_land.cpp)
 ```cpp
 //
-// Simple example to demonstrate how to use the Dronecode SDK.
+// Simple example to demonstrate how to use the MAVSDK.
 //
 // Author: Julian Oes <julian@oes.ch>
 
 #include <chrono>
 #include <cstdint>
-#include <dronecode_sdk/system.h>
-#include <dronecode_sdk/action.h>
-#include <dronecode_sdk/dronecode_sdk.h>
-#include <dronecode_sdk/telemetry.h>
+#include <mavsdk/mavsdk.h>
+#include <mavsdk/plugins/action/action.h>
+#include <mavsdk/plugins/telemetry/telemetry.h>
 #include <iostream>
 #include <thread>
 
-using namespace dronecode_sdk;
+using namespace mavsdk;
 using namespace std::this_thread;
 using namespace std::chrono;
 
@@ -131,7 +126,7 @@ void component_discovered(ComponentType component_type)
 
 int main(int argc, char **argv)
 {
-    DronecodeSDK dc;
+    Mavsdk dc;
     std::string connection_url;
     ConnectionResult connection_result;
 
@@ -206,7 +201,7 @@ int main(int argc, char **argv)
     std::cout << "Arming..." << std::endl;
     const Action::Result arm_result = action->arm();
 
-    if (arm_result != Action::Result::SUCCESS) {
+    if (arm_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << Action::result_str(arm_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
@@ -215,7 +210,7 @@ int main(int argc, char **argv)
     // Take off
     std::cout << "Taking off..." << std::endl;
     const Action::Result takeoff_result = action->takeoff();
-    if (takeoff_result != Action::Result::SUCCESS) {
+    if (takeoff_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << Action::result_str(takeoff_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
@@ -226,15 +221,23 @@ int main(int argc, char **argv)
 
     std::cout << "Landing..." << std::endl;
     const Action::Result land_result = action->land();
-    if (land_result != Action::Result::SUCCESS) {
+    if (land_result != Action::Result::Success) {
         std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << Action::result_str(land_result)
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
+    // Check if vehicle is still in air
+    while (telemetry->in_air()) {
+        std::cout << "Vehicle is landing..." << std::endl;
+        sleep_for(seconds(1));
+    }
+    std::cout << "Landed!" << std::endl;
+
     // We are relying on auto-disarming but let's keep watching the telemetry for a bit longer.
-    sleep_for(seconds(5));
+    sleep_for(seconds(3));
     std::cout << "Finished..." << std::endl;
+
     return 0;
 }
 ```

@@ -1,6 +1,6 @@
 # Building C++ Apps
 
-The Dronecode SDK C++ library is written in C++11 and exposes C++11 interfaces such as `std::function`. Therefore, applications using the library need to be C++11 or later as well.
+The MAVSDK core C++ library is written in C++11 and exposes C++11 interfaces such as `std::function`. Therefore, applications using the library need to be C++11 or later as well.
 
 Applications can be built using your preferred build system, compiler and linker toolchain. The only requirement is that the build system must be able to locate the SDK C++ headers and libraries (installed as described [here](../contributing/build.md#install-artifacts)).
 
@@ -16,7 +16,7 @@ Below we explain how to set up a minimal build setup (**CMakeLists.txt**) file f
 
 The sections below show how you can set up the file for when the SDK is [installed system wide](../contributing/build.md#sdk_system_wide_install) (the default) or [locally](../contributing/build.md#sdk_local_install).
 
-> **Warning** SDK system-wide installation is not supported on Windows (see [#155](https://github.com/Dronecode/DronecodeSDK/issues/155)).
+> **Warning** SDK system-wide installation is not supported on Windows (see [#155](https://github.com/mavlink/MAVSDK/issues/155)).
 >  Instead build the app using a [local SDK installation](#sdk_local_install).
 >
 >  Windows gurus, we'd [love your help](../README.md#getting-help) to implement this).
@@ -53,9 +53,9 @@ add_executable(your_executable_name
 
 # Specify your app's executable name and a list of linked libraries
 target_link_libraries(your_executable_name
-    dronecode_sdk          #All apps link against dronecode_sdk library
-    dronecode_sdk_action      # If action plugin used by app ...
-    dronecode_sdk_telemetry   #If telemetry plugin used by app ...
+    mavsdk          #All apps link against mavsdk library
+    mavsdk_action      # If action plugin used by app ...
+    mavsdk_telemetry   #If telemetry plugin used by app ...
     # ... Any other linked libraries
 )
 ```
@@ -74,20 +74,20 @@ because you need to specify where the build should find both headers and library
 
 You have to change the same information as before: *your_project_name*, *your_executable_name* and *your_source_file*.
 
-> **Note** The example file below assumes that the SDK was installed locally into the directory **DronecodeSDK/build/default/install/ and that the application is at the same level as the SDK as described in the tree below:
+> **Note** The example file below assumes that the SDK was installed locally into the directory **MAVSDK/build/default/install/ and that the application is at the same level as the SDK as described in the tree below:
 > ```
 >  .
->  ├── DronecodeSDK
+>  ├── MAVSDK
 >  │   ├── build
 >  │   │   └── default
 >  │   │       └── install
 >  │   │           ├──include
->  │   │           │   └── dronecode_sdk
->  │   │           │       ├── dronecode_sdk.h
+>  │   │           │   └── mavsdk
+>  │   │           │       ├── mavsdk.h
 >  │   │           │       └── ..
 >  │   │           └── lib
->  │   │               ├── libdronecode_sdk.so
->  │   │               ├── libdronecode_sdk_action.so
+>  │   │               ├── libmavsdk.so
+>  │   │               ├── libmavsdk_action.so
 >  │   │               └── ...
 >  │   │
 >  │   └── CMakeLists.txt
@@ -126,9 +126,9 @@ add_executable(your_executable_name
 
 # Specify your app's executable name and a list of linked libraries
 target_link_libraries(your_executable_name
-    dronecode_sdk
-    dronecode_sdk_action
-    dronecode_sdk_telemetry
+    mavsdk
+    mavsdk_action
+    mavsdk_telemetry
     # ... any other linked libraries
 )
 ```

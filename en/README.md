@@ -1,49 +1,51 @@
-<div style="float:right; padding:10px; margin-right:20px;"><a href="https://www.dronecode.org/sdk/"><img src="../assets/site/sdk_logo_full.jpg" title="Dronecode SDK Logo" width="400px"/></a></div>
+<img src="../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/>
+# MAVSDK ({{ book.github_branch }})
 
-# Dronecode SDK
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![travis-ci build status](https://travis-ci.org/mavlink/MAVSDK.svg?branch=develop)](https://travis-ci.org/mavlink/MAVSDK) [![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=develop)](https://coveralls.io/github/mavlink/MAVSDK?branch=develop)
 
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-Dronecode%20SDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![jenkins build status](http://ci.px4.io:8080/buildStatus/icon?job=Dronecode/DronecodeSDK/develop)](http://ci.px4.io:8080/blue/organizations/jenkins/Dronecode%2FDronecodeSDK/branches/)
-[![travis-ci build status](https://travis-ci.org/Dronecode/DronecodeSDK.svg?branch=develop)](https://travis-ci.org/Dronecode/DronecodeSDK)
-[![appveyor build status](https://ci.appveyor.com/api/projects/status/1ntjvooywpxmoir8/branch/develop?svg=true)](https://ci.appveyor.com/project/julianoes/dronecore/branch/develop)
-[![Coverage Status](https://coveralls.io/repos/github/Dronecode/DronecodeSDK/badge.svg?branch=develop)](https://coveralls.io/github/Dronecode/DronecodeSDK?branch=develop)
+The *MAVSDK* is a [MAVLink](https://mavlink.io/en/) Library with APIs for [C++](cpp/README.md), [iOS](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), Python and Android.
 
-The *Dronecode SDK* is a [MAVLink](https://mavlink.io/en/) Library for the [PX4 flight stack](http://px4.io), with APIs for [C++](cpp/README.md) and [iOS](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) (Python and Android are coming soon).
-
-> **Tip** The SDK is the best way to integrate with PX4 over MAVLink! 
-  It is supported by [Dronecode](https://www.dronecode.org/), ensuring that it is robust, well tested, and maintained. 
+> **Tip** The SDK is the best way to integrate with a flight stack over MAVLink!
+  It is supported by [Dronecode](https://www.dronecode.org/), ensuring that it is robust, well tested, and maintained.
 
 The library provides a simple API for managing one or more vehicles, providing programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
 
 The library can run on a vehicle-based companion computer or on a ground-based GCS or mobile device (these devices have significantly more processing power that an ordinary flight controller, enabling tasks like computer vision, obstacle avoidance, and route planning).
 
-Developers can extend the core C++ SDK using plugins in order to add any other required MAVLink API (for example, to integrate PX4 with custom cameras, gimbals, or other hardware over MAVLink).
+Developers can extend the core C++ SDK using plugins in order to add any other required MAVLink API (for example, to integrate a flight controller with custom cameras, gimbals, or other hardware over MAVLink).
 
 Cross-platform wrappers for the core library are actively being developed.
 These (primarily) use [gRPC](https://grpc.io/) and [Reactive Extensions](http://reactivex.io/).
 
 ## Project Status
 
-The Dronecode SDK is in beta development. 
-- The core C++ API has been created and is (largely) stable.
-- iOS development is supported using the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) library.
-- Other cross-platform wrappers are actively being developed, and should be released soon.
+The MAVSDK is a robust and well-tested library that is already being used in production environments.
+
+> **Note** Future compatibility is not guaranteed (the API is not "stable").
+
+The current status is:
+- C++ core library (2016). Used in production.
+- MAVSDK-Swift (2018): Used in production.
+- MAVSDK-Python (2019): Used in production.
+- MAVSDK-Java (2019): Beta.
+- MAVSDK-JavaScript (2019): Proof of concept.
+- MAVSDK-CSharp (2019). Proof of concept.
+- MAVSDK-Rust (2019): Proof of concept.
+- Other cross-platform wrappers are actively being developed.
 
 
 ## Getting Started
 
-* iOS developers should read the [Dronecode-SDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
-
-  > **Tip** The Dronecode-SDK-Swift is in alpha development. 
-    We plan to make our first official (beta) release in the coming weeks.
-
+* Python 3 developers install and use [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) from PyPi (`pip3 install mavsdk`). 
+  There is no further setup, so you can then immediately run the [examples](https://github.com/mavlink/MAVSDK-Python/tree/master/examples) in the normal way. 
+  The drone API is essentially the same as for the [C++ API](api_reference/README.md).
+* iOS developers should start from the [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
 * C++ Developers should start at the [C++ Library](cpp/README.md).
-
-* Developers who want to contribute to the API will need to build the C++ library (and other programming language wrappers) from source. For more information see the [contributing section](#contributing) below.
  
 
 ## Getting Help
 
-This guide contains information and examples showing how to use the SDK. 
+This guide contains information and examples showing how to use the SDK.
 If you have specific questions that are not answered by the documentation, these can be raised on:
 
 * [Discuss board](https://discuss.px4.io/c/mavsdk)
@@ -51,10 +53,11 @@ If you have specific questions that are not answered by the documentation, these
 
 Use Github for bug reports/enhancement requests:
 
-* [C++ API](https://github.com/Dronecode/DronecodeSDK/issues)
-* [C++ Documentation](https://github.com/dronecore/sdk_docs/issues)
-* [Swift API and Docs](https://github.com/Dronecode/DronecodeSDK-Swift/issues)
-<!-- Add info about where Python etc API issues are reported). -->
+* [C++ API](https://github.com/mavlink/MAVSDK/issues)
+* [C++ Documentation](https://github.com/mavlink/MAVSDK-docs/issues)
+* [Swift API and docs](https://github.com/mavlink/MAVSDK-Swift/issues)
+* [Python API and docs](https://github.com/mavlink/MAVSDK-Python/issues)
+<!-- Add info about where other API issues are reported). -->
 
 
 ## Library Features
@@ -90,12 +93,12 @@ The [Contributing](contributing/README.md) (C++) section contains everything you
 
 ## License
 
-* The *Dronecode SDK* is licensed under the permissive [BSD 3-clause](https://github.com/Dronecode/DronecodeSDK/blob/{{ book.github_branch }}/LICENSE.md).
+* The *MAVSDK* is licensed under the permissive [BSD 3-clause](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/LICENSE.md).
 * This documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
 ## Governance
 
-The DronecodeSDK project is hosted under the governance of the [Dronecode Foundation](https://www.dronecode.org/).
+The MAVSDK project is hosted under the governance of the [Dronecode Foundation](https://www.dronecode.org/).
 
 <a href="https://www.dronecode.org/" style="padding:20px" ><img src="../assets/site/logo_dronecode.png" alt="Dronecode Logo" width="110px"/></a>
 <a href="https://www.linuxfoundation.org/projects" style="padding:20px;"><img src="../assets/site/logo_linux_foundation.png" alt="Linux Foundation Logo" width="80px" /></a>

@@ -20,7 +20,7 @@ The architecture supports serial, TCP, and UDP connections.
 
 ### Why is libCURL a dependency?
 
-*libCURL* will be required to download the camera definition file which is referenced in [CAMERA_INFORMATION](http://mavlink.org/messages/common#CAMERA_INFORMATION). 
+*libCURL* will be required to download the camera definition file which is referenced in [CAMERA_INFORMATION](https://mavlink.io/en/messages/common.html#CAMERA_INFORMATION). 
 It might also come in handy whenever any other REST resources are required.
 
 ### How are plugins added?

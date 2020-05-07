@@ -1,50 +1,49 @@
 # Testing
 
-The SDK has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md) (`gtest`).
+The SDK has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/primer.md) (`gtest`).
 The unit tests are run every time new code is committed to the SDK codelines, and must pass before the code can be merged.
 
 This topic shows how to run the existing tests.
 
-> **Tip** For information on *writing* tests see: [Writing Plugins > Test Code](../contributing/plugins.md#testing).
-
+> **Tip** For information on _writing_ tests see: [Writing Plugins &gt; Test Code](../contributing/plugins.md#testing).
 
 ## Running Unit Tests
 
 To run all unit tests:
 
 ```
-make run_unit_tests
+./build/default/src/unit_tests_runner
 ```
-
 
 ## Running Integration Tests
 
 Tests can be run against the simulator (either manually starting PX4 SITL or letting the tests start it automatically) or against a real vehicle.
 
-> **Tip** To run SITL you will need to install the *Gazebo* simulator.
-This is included as part of the standard PX4 installation for [macOS](https://dev.px4.io/en/setup/dev_env_mac.html)
-and [Linux](https://dev.px4.io/en/setup/dev_env_linux.html#development-toolchain). It does not run on Windows.
+> **Tip** To run SITL you will need to install the _Gazebo_ simulator.
+> This is included as part of the standard PX4 installation for [macOS](https://dev.px4.io/master/en/setup/dev_env_mac.html)
+> and [Linux](https://dev.px4.io/master/en/setup/dev_env_linux.html).
+> It does not run on Windows.
 
 ### Autostart PX4 SITL
 
-Make sure that the [PX4 Gazebo simulation](https://dev.px4.io/en/simulation/gazebo.html) is built and works:
+Make sure that the [PX4 Gazebo simulation](https://dev.px4.io/master/en/simulation/gazebo.html) is built and works:
 
 ```
-cd wherever/Firmware/
+cd path/to/Firmware/
 make px4_sitl gazebo
 ```
 
 Then press **Ctrl+C** to stop the simulation and run the integration tests:
 
 ```
-cd wherever/DronecodeSDK/
-AUTOSTART_SITL=1 make run_integration_tests
+cd path/to/MAVSDK/
+AUTOSTART_SITL=1 ./build/debug/src/integration_tests/integration_tests_runner
 ```
 
-To run the tests without the 3D viewer (*gzclient*), use:
+To run the tests without the 3D viewer (_gzclient_), use:
 
 ```
-AUTOSTART_SITL=1 HEADLESS=1 make run_integration_tests
+AUTOSTART_SITL=1 HEADLESS=1 ./build/debug/src/integration_tests/integration_tests_runner
 ```
 
 ### Run PX4 SITL Manually
@@ -52,39 +51,36 @@ AUTOSTART_SITL=1 HEADLESS=1 make run_integration_tests
 Build and run the PX4 simulation manually:
 
 ```
-cd wherever/Firmware/
+cd path/to/Firmware/
 make px4_sitl gazebo
 ```
 
 Then run the tests as shown:
-```
-make run_integration_tests
-```
-
-### Run With a Real Vehicle
-
-> **Warning** Some of the tests might not be suited for real vehicles, especially the takeoff and kill test!
-
-Make sure you are connected to a vehicle and check the connection using e.g.:
 
 ```
-make && build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
+cd path/to/MAVSDK/
+./build/debug/src/integration_tests/integration_tests_runner
 ```
 
+> **Tip** The tests are designed to run in simulation, and may not be safe if run on a real vehicle.
 
-## Gtest Tricks
+### Gtest Tricks
 
 To list all integration tests:
+
 ```
-make && build/default/integration_tests/integration_tests_runner --gtest_list_tests
+./build/default/src/integration_tests/integration_tests_runner --gtest_list_tests
 ```
 
 To run a single integration test:
+
 ```
-make && build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
+./build/default/src/integration_tests/integration_tests_runner --gtest_filter="SitlTest.TelemetryAsync"
 ```
 
 To run all telemetry tests:
+
 ```
-make && build/default/integration_tests/integration_tests_runner --gtest_filter="SitlTest.Telemetry*"
+./build/default/src/integration_tests/integration_tests_runner --gtest_filter="SitlTest.Telemetry*"
 ```
+
