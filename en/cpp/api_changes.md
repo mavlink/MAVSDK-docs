@@ -25,7 +25,7 @@ This means that breaking changes to the API result in a bump of the major versio
 
 There are several changes in this release (from v0.24.0) because the C++ plugins are now partially auto-generated from the proto files. While this causes some painful changes, it has several advantages:
 - Better consistency between C++ and other languages for naming/docs/functionality.
-- Missing features for language wrappers such as Python.
+- Automatically propagate features to language wrappers such as Python.
 
 > **Note** It's also worth looking at the integration tests and examples between the versions to see how things changed: [GitHub diff view](https://github.com/mavlink/MAVSDK/compare/v0.24.0...v0.25.0).
 
