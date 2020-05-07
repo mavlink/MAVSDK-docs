@@ -16,13 +16,13 @@ For more info see: [https://en.wikipedia.org/wiki/Quaternion](https://en.wikiped
 ## Data Fields
 
 
-float [w](#structmavsdk_1_1_telemetry_1_1_quaternion_1a0294a4f526fcdfbe0436dea3cdb10b53)  - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 0 also denoted as a.
+float [w](#structmavsdk_1_1_telemetry_1_1_quaternion_1a0294a4f526fcdfbe0436dea3cdb10b53) {float(NAN)} - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 0, also denoted as a.
 
-float [x](#structmavsdk_1_1_telemetry_1_1_quaternion_1a66d67f70947be2578297fa2438c44900)  - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 1 also denoted as b.
+float [x](#structmavsdk_1_1_telemetry_1_1_quaternion_1a66d67f70947be2578297fa2438c44900) {float(NAN)} - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 1, also denoted as b.
 
-float [y](#structmavsdk_1_1_telemetry_1_1_quaternion_1a774a00985baa458cf0da144b72c51dad)  - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 2 also denoted as c.
+float [y](#structmavsdk_1_1_telemetry_1_1_quaternion_1a774a00985baa458cf0da144b72c51dad) {float(NAN)} - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 2, also denoted as c.
 
-float [z](#structmavsdk_1_1_telemetry_1_1_quaternion_1a3888a29be1425239efc637edf7a265c4)  - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 3 also denoted as d.
+float [z](#structmavsdk_1_1_telemetry_1_1_quaternion_1a3888a29be1425239efc637edf7a265c4) {float(NAN)} - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 3, also denoted as d.
 
 
 ## Field Documentation
@@ -31,39 +31,39 @@ float [z](#structmavsdk_1_1_telemetry_1_1_quaternion_1a3888a29be1425239efc637edf
 ### w {#structmavsdk_1_1_telemetry_1_1_quaternion_1a0294a4f526fcdfbe0436dea3cdb10b53}
 
 ```cpp
-float mavsdk::Telemetry::Quaternion::w
+float mavsdk::Telemetry::Quaternion::w {float(NAN)}
 ```
 
 
-[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 0 also denoted as a.
+[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 0, also denoted as a.
 
 
 ### x {#structmavsdk_1_1_telemetry_1_1_quaternion_1a66d67f70947be2578297fa2438c44900}
 
 ```cpp
-float mavsdk::Telemetry::Quaternion::x
+float mavsdk::Telemetry::Quaternion::x {float(NAN)}
 ```
 
 
-[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 1 also denoted as b.
+[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 1, also denoted as b.
 
 
 ### y {#structmavsdk_1_1_telemetry_1_1_quaternion_1a774a00985baa458cf0da144b72c51dad}
 
 ```cpp
-float mavsdk::Telemetry::Quaternion::y
+float mavsdk::Telemetry::Quaternion::y {float(NAN)}
 ```
 
 
-[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 2 also denoted as c.
+[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 2, also denoted as c.
 
 
 ### z {#structmavsdk_1_1_telemetry_1_1_quaternion_1a3888a29be1425239efc637edf7a265c4}
 
 ```cpp
-float mavsdk::Telemetry::Quaternion::z
+float mavsdk::Telemetry::Quaternion::z {float(NAN)}
 ```
 
 
-[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 3 also denoted as d.
+[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 3, also denoted as d.
 

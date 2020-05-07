@@ -4,96 +4,96 @@
 ----
 
 
-Various health flags. 
+[Health](structmavsdk_1_1_telemetry_1_1_health.md) type. 
 
 
 ## Data Fields
 
 
-bool [gyrometer_calibration_ok](#structmavsdk_1_1_telemetry_1_1_health_1ae127e9293a03dda55eb818605972fe9e)  - true if the gyrometer is calibrated.
+bool [is_gyrometer_calibration_ok](#structmavsdk_1_1_telemetry_1_1_health_1a4ce524d8a5ca42e50cf615ddade4bac4) {false} - True if the gyrometer is calibrated.
 
-bool [accelerometer_calibration_ok](#structmavsdk_1_1_telemetry_1_1_health_1ac7587e489120abca44883e4a70563b70)  - true if the accelerometer is calibrated.
+bool [is_accelerometer_calibration_ok](#structmavsdk_1_1_telemetry_1_1_health_1a910417712b6960d371e79acdb5a19e35) { false} - True if the accelerometer is calibrated.
 
-bool [magnetometer_calibration_ok](#structmavsdk_1_1_telemetry_1_1_health_1ae22b08235a8a35fc52c68ebd5a6a0206)  - true if the magnetometer is calibrated.
+bool [is_magnetometer_calibration_ok](#structmavsdk_1_1_telemetry_1_1_health_1ac99ff7621f22a5148adfbb03004fccc8) { false} - True if the magnetometer is calibrated.
 
-bool [level_calibration_ok](#structmavsdk_1_1_telemetry_1_1_health_1a69cfc793b9006bcaec9fa7f02f8a8316)  - true if the vehicle has a valid level calibration.
+bool [is_level_calibration_ok](#structmavsdk_1_1_telemetry_1_1_health_1a946ddc4aeee66c432fbec80f66ca6c3e) { false} - True if the vehicle has a valid level calibration.
 
-bool [local_position_ok](#structmavsdk_1_1_telemetry_1_1_health_1a2525623198a4412ae152982d88be776e)  - true if the local position estimate is good enough to fly in a position control mode.
+bool [is_local_position_ok](#structmavsdk_1_1_telemetry_1_1_health_1a86da005d0191a856b649d679e03b78b4) {false} - True if the local position estimate is good enough to fly in 'position control' mode.
 
-bool [global_position_ok](#structmavsdk_1_1_telemetry_1_1_health_1a7e8c446ef334647863e78e9f0da02e1f)  - true if the global position estimate is good enough to fly in a position controlled mode.
+bool [is_global_position_ok](#structmavsdk_1_1_telemetry_1_1_health_1ae85eb066716de1eef1a1bd3f6b375c6c) {false} - True if the global position estimate is good enough to fly in 'position control' mode.
 
-bool [home_position_ok](#structmavsdk_1_1_telemetry_1_1_health_1a0e21a3d67cd82a26654d6b76e6eab056)  - true if the home position has been initialized properly.
+bool [is_home_position_ok](#structmavsdk_1_1_telemetry_1_1_health_1ad67d5e7ef46fd34246011d31f95049fa) { false} - True if the home position has been initialized properly.
 
 
 ## Field Documentation
 
 
-### gyrometer_calibration_ok {#structmavsdk_1_1_telemetry_1_1_health_1ae127e9293a03dda55eb818605972fe9e}
+### is_gyrometer_calibration_ok {#structmavsdk_1_1_telemetry_1_1_health_1a4ce524d8a5ca42e50cf615ddade4bac4}
 
 ```cpp
-bool mavsdk::Telemetry::Health::gyrometer_calibration_ok
+bool mavsdk::Telemetry::Health::is_gyrometer_calibration_ok {false}
 ```
 
 
-true if the gyrometer is calibrated.
+True if the gyrometer is calibrated.
 
 
-### accelerometer_calibration_ok {#structmavsdk_1_1_telemetry_1_1_health_1ac7587e489120abca44883e4a70563b70}
+### is_accelerometer_calibration_ok {#structmavsdk_1_1_telemetry_1_1_health_1a910417712b6960d371e79acdb5a19e35}
 
 ```cpp
-bool mavsdk::Telemetry::Health::accelerometer_calibration_ok
+bool mavsdk::Telemetry::Health::is_accelerometer_calibration_ok { false}
 ```
 
 
-true if the accelerometer is calibrated.
+True if the accelerometer is calibrated.
 
 
-### magnetometer_calibration_ok {#structmavsdk_1_1_telemetry_1_1_health_1ae22b08235a8a35fc52c68ebd5a6a0206}
+### is_magnetometer_calibration_ok {#structmavsdk_1_1_telemetry_1_1_health_1ac99ff7621f22a5148adfbb03004fccc8}
 
 ```cpp
-bool mavsdk::Telemetry::Health::magnetometer_calibration_ok
+bool mavsdk::Telemetry::Health::is_magnetometer_calibration_ok { false}
 ```
 
 
-true if the magnetometer is calibrated.
+True if the magnetometer is calibrated.
 
 
-### level_calibration_ok {#structmavsdk_1_1_telemetry_1_1_health_1a69cfc793b9006bcaec9fa7f02f8a8316}
+### is_level_calibration_ok {#structmavsdk_1_1_telemetry_1_1_health_1a946ddc4aeee66c432fbec80f66ca6c3e}
 
 ```cpp
-bool mavsdk::Telemetry::Health::level_calibration_ok
+bool mavsdk::Telemetry::Health::is_level_calibration_ok { false}
 ```
 
 
-true if the vehicle has a valid level calibration.
+True if the vehicle has a valid level calibration.
 
 
-### local_position_ok {#structmavsdk_1_1_telemetry_1_1_health_1a2525623198a4412ae152982d88be776e}
+### is_local_position_ok {#structmavsdk_1_1_telemetry_1_1_health_1a86da005d0191a856b649d679e03b78b4}
 
 ```cpp
-bool mavsdk::Telemetry::Health::local_position_ok
+bool mavsdk::Telemetry::Health::is_local_position_ok {false}
 ```
 
 
-true if the local position estimate is good enough to fly in a position control mode.
+True if the local position estimate is good enough to fly in 'position control' mode.
 
 
-### global_position_ok {#structmavsdk_1_1_telemetry_1_1_health_1a7e8c446ef334647863e78e9f0da02e1f}
+### is_global_position_ok {#structmavsdk_1_1_telemetry_1_1_health_1ae85eb066716de1eef1a1bd3f6b375c6c}
 
 ```cpp
-bool mavsdk::Telemetry::Health::global_position_ok
+bool mavsdk::Telemetry::Health::is_global_position_ok {false}
 ```
 
 
-true if the global position estimate is good enough to fly in a position controlled mode.
+True if the global position estimate is good enough to fly in 'position control' mode.
 
 
-### home_position_ok {#structmavsdk_1_1_telemetry_1_1_health_1a0e21a3d67cd82a26654d6b76e6eab056}
+### is_home_position_ok {#structmavsdk_1_1_telemetry_1_1_health_1ad67d5e7ef46fd34246011d31f95049fa}
 
 ```cpp
-bool mavsdk::Telemetry::Health::home_position_ok
+bool mavsdk::Telemetry::Health::is_home_position_ok { false}
 ```
 
 
-true if the home position has been initialized properly.
+True if the home position has been initialized properly.
 

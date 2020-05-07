@@ -4,7 +4,10 @@
 ----
 
 
-Type for actuator control command. controls members should be normed to -1..+1 where 0 is neutral position. Throttle for single rotation direction motors is 0..1, negative range for reverse direction. 
+Type for actuator control. 
+
+
+Control members should be normed to -1..+1 where 0 is neutral position. Throttle for single rotation direction motors is 0..1, negative range for reverse direction.
 
 
 One group support eight controls.
@@ -16,26 +19,21 @@ Up to 16 actuator controls can be set. To ignore an output group, set all it con
 In PX4 v1.9.0 Only first four Control Groups are supported ([https://github.com/PX4/Firmware/blob/v1.9.0/src/modules/mavlink/mavlink_receiver.cpp#L980](https://github.com/PX4/Firmware/blob/v1.9.0/src/modules/mavlink/mavlink_receiver.cpp#L980)). 
 
 
-## Data Structures
-
-
-struct [Group](structmavsdk_1_1_offboard_1_1_actuator_control_1_1_group.md)
-
 ## Data Fields
 
 
-[Group](structmavsdk_1_1_offboard_1_1_actuator_control_1_1_group.md) [groups](#structmavsdk_1_1_offboard_1_1_actuator_control_1a23940d74636766a3ab0fa7a292f40e21)  - Control Groups. In order not to send a group, set all its values to NaN.
+std::vector< [ActuatorControlGroup](structmavsdk_1_1_offboard_1_1_actuator_control_group.md) > [groups](#structmavsdk_1_1_offboard_1_1_actuator_control_1a42ea86eb6b2150a552fb7e662e4a0226) {} - Control groups.
 
 
 ## Field Documentation
 
 
-### groups {#structmavsdk_1_1_offboard_1_1_actuator_control_1a23940d74636766a3ab0fa7a292f40e21}
+### groups {#structmavsdk_1_1_offboard_1_1_actuator_control_1a42ea86eb6b2150a552fb7e662e4a0226}
 
 ```cpp
-Group mavsdk::Offboard::ActuatorControl::groups[2]
+std::vector<ActuatorControlGroup> mavsdk::Offboard::ActuatorControl::groups {}
 ```
 
 
-Control Groups. In order not to send a group, set all its values to NaN.
+Control groups.
 

@@ -4,7 +4,7 @@
 ----
 
 
-[Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) information with an external interface type. 
+[Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) message type. 
 
 
 ## Public Types
@@ -12,7 +12,7 @@
 
 Type | Description
 --- | ---
-enum [MavFrame](#structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59) | Mavlink frame id [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) subset.
+enum [MavFrame](#structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59) | Mavlink frame id.
 
 ## Data Fields
 
@@ -27,15 +27,13 @@ uint64_t [time_usec](#structmavsdk_1_1_telemetry_1_1_odometry_1aa58eb5c15f53acf3
 
 [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) [q](#structmavsdk_1_1_telemetry_1_1_odometry_1a32f49ead9d8964da05af2b92fd6e2127) {} - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) components, w, x, y, z (1 0 0 0 is the null-rotation).
 
-[SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md) [velocity_body](#structmavsdk_1_1_telemetry_1_1_odometry_1a6135a0b5fec73ef3932412e3cc19ed37) {} - Linear speed (m/s).
+[VelocityBody](structmavsdk_1_1_telemetry_1_1_velocity_body.md) [velocity_body](#structmavsdk_1_1_telemetry_1_1_odometry_1aed1ca26d563e40c6fca6b2a6807c882e) {} - Linear velocity (m/s).
 
-[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) [angular_velocity_body](#structmavsdk_1_1_telemetry_1_1_odometry_1a023deb0e97bc06d5ea19c5dfc42e230a) {} - Angular body speed (rad/s).
+[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) [angular_velocity_body](#structmavsdk_1_1_telemetry_1_1_odometry_1a023deb0e97bc06d5ea19c5dfc42e230a) {} - Angular velocity (rad/s).
 
-std::array< float, 21 > [pose_covariance](#structmavsdk_1_1_telemetry_1_1_odometry_1a8f84d053274d7126919a0ec5321c312e) {} - Row-major representation of a 6x6 pose cross-covariance matrix upper right triangle. NaN if unknown.
+[Covariance](structmavsdk_1_1_telemetry_1_1_covariance.md) [pose_covariance](#structmavsdk_1_1_telemetry_1_1_odometry_1a2f3082632fa756680141224749d662ab) {} - Pose cross-covariance matrix.
 
-std::array< float, 21 > [velocity_covariance](#structmavsdk_1_1_telemetry_1_1_odometry_1a8e804bf156d462a6dbee741f842d8c90) {} - Row-major representation of a 6x6 velocity cross-covariance matrix upper right triangle. NaN if unknown.
-
-uint8_t [reset_counter](#structmavsdk_1_1_telemetry_1_1_odometry_1abd2bf01d1162ff0942010c8331fa08f9) {} - Estimate reset counter.
+[Covariance](structmavsdk_1_1_telemetry_1_1_covariance.md) [velocity_covariance](#structmavsdk_1_1_telemetry_1_1_odometry_1a32471f75a46451d56e393ba9fcd9c118) {} - Velocity cross-covariance matrix.
 
 
 ## Member Enumeration Documentation
@@ -44,15 +42,15 @@ uint8_t [reset_counter](#structmavsdk_1_1_telemetry_1_1_odometry_1abd2bf01d1162f
 ### enum MavFrame {#structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59}
 
 
-Mavlink frame id [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) subset.
+Mavlink frame id.
 
 
 Value | Description
 --- | ---
-<span id="structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59ab3f7791472924b0d1530bb9112409c01"></span> `UNDEF` | Stub. 
-<span id="structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59a820d86957feaf94bf2881975208fe64c"></span> `BODY_NED` | Setpoint in body NED frame. This makes sense if all position control is externalized - e.g. useful to command 2 m/s^2 acceleration to the right. 
-<span id="structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59ab03e20895c23a1b01a358b5e07dd0974"></span> `VISION_NED` | [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) local coordinate frame of data given by a vision estimation system, Z-down (x: north, y: east, z: down). 
-<span id="structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59a5e60852e210299ef44c6638ffefc6ee4"></span> `ESTIM_NED` | [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) local coordinate frame of data given by an estimator running onboard the vehicle, Z-down (x: north, y: east, z: down). 
+<span id="structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59a6bf5613f65a74a7f8388b26adefaef2b"></span> `Undef` | Frame is undefined.. 
+<span id="structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59a91ac262e6e7347fc5f308053580ba3da"></span> `BodyNed` | Setpoint in body NED frame. This makes sense if all position control is externalized - e.g. useful to command 2 m/s^2 acceleration to the right.. 
+<span id="structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59ad394115f3c073008cf8096b81fa37fc9"></span> `VisionNed` | [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) local coordinate frame of data given by a vision estimation system, Z-down (x: north, y: east, z: down).. 
+<span id="structmavsdk_1_1_telemetry_1_1_odometry_1ae14a60c5ce30809d8de3aafc73e6fa59a605883e5a1cf6c8184abc3de6f16630b"></span> `EstimNed` | [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) local coordinate frame of data given by an estimator running onboard the vehicle, Z-down (x: north, y: east, z: down).. 
 
 ## Field Documentation
 
@@ -107,14 +105,14 @@ Quaternion mavsdk::Telemetry::Odometry::q {}
 [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) components, w, x, y, z (1 0 0 0 is the null-rotation).
 
 
-### velocity_body {#structmavsdk_1_1_telemetry_1_1_odometry_1a6135a0b5fec73ef3932412e3cc19ed37}
+### velocity_body {#structmavsdk_1_1_telemetry_1_1_odometry_1aed1ca26d563e40c6fca6b2a6807c882e}
 
 ```cpp
-SpeedBody mavsdk::Telemetry::Odometry::velocity_body {}
+VelocityBody mavsdk::Telemetry::Odometry::velocity_body {}
 ```
 
 
-Linear speed (m/s).
+Linear velocity (m/s).
 
 
 ### angular_velocity_body {#structmavsdk_1_1_telemetry_1_1_odometry_1a023deb0e97bc06d5ea19c5dfc42e230a}
@@ -124,35 +122,25 @@ AngularVelocityBody mavsdk::Telemetry::Odometry::angular_velocity_body {}
 ```
 
 
-Angular body speed (rad/s).
+Angular velocity (rad/s).
 
 
-### pose_covariance {#structmavsdk_1_1_telemetry_1_1_odometry_1a8f84d053274d7126919a0ec5321c312e}
+### pose_covariance {#structmavsdk_1_1_telemetry_1_1_odometry_1a2f3082632fa756680141224749d662ab}
 
 ```cpp
-std::array<float, 21> mavsdk::Telemetry::Odometry::pose_covariance {}
+Covariance mavsdk::Telemetry::Odometry::pose_covariance {}
 ```
 
 
-Row-major representation of a 6x6 pose cross-covariance matrix upper right triangle. NaN if unknown.
+Pose cross-covariance matrix.
 
 
-### velocity_covariance {#structmavsdk_1_1_telemetry_1_1_odometry_1a8e804bf156d462a6dbee741f842d8c90}
+### velocity_covariance {#structmavsdk_1_1_telemetry_1_1_odometry_1a32471f75a46451d56e393ba9fcd9c118}
 
 ```cpp
-std::array<float, 21> mavsdk::Telemetry::Odometry::velocity_covariance {}
+Covariance mavsdk::Telemetry::Odometry::velocity_covariance {}
 ```
 
 
-Row-major representation of a 6x6 velocity cross-covariance matrix upper right triangle. NaN if unknown.
-
-
-### reset_counter {#structmavsdk_1_1_telemetry_1_1_odometry_1abd2bf01d1162ff0942010c8331fa08f9}
-
-```cpp
-uint8_t mavsdk::Telemetry::Odometry::reset_counter {}
-```
-
-
-Estimate reset counter.
+Velocity cross-covariance matrix.
 

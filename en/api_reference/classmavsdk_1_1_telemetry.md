@@ -4,13 +4,13 @@
 ----
 
 
-This class allows users to get vehicle telemetry and state information (e.g. battery, GPS, RC connection, flight mode etc.) and set telemetry update rates. 
+Allow users to get vehicle telemetry and state information (e.g. battery, GPS, RC connection, flight mode etc.) and set telemetry update rates. 
 
 
 ## Data Structures
 
 
-struct [AccelerationNED](structmavsdk_1_1_telemetry_1_1_acceleration_n_e_d.md)
+struct [AccelerationFrd](structmavsdk_1_1_telemetry_1_1_acceleration_frd.md)
 
 struct [ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md)
 
@@ -18,25 +18,25 @@ struct [ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_sta
 
 struct [AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md)
 
-struct [AngularVelocityNED](structmavsdk_1_1_telemetry_1_1_angular_velocity_n_e_d.md)
+struct [AngularVelocityFrd](structmavsdk_1_1_telemetry_1_1_angular_velocity_frd.md)
 
 struct [Battery](structmavsdk_1_1_telemetry_1_1_battery.md)
+
+struct [Covariance](structmavsdk_1_1_telemetry_1_1_covariance.md)
 
 struct [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)
 
 struct [FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md)
 
-struct [GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md)
-
-struct [GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md)
+struct [GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md)
 
 struct [GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md)
 
 struct [Health](structmavsdk_1_1_telemetry_1_1_health.md)
 
-struct [IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md)
+struct [Imu](structmavsdk_1_1_telemetry_1_1_imu.md)
 
-struct [MagneticFieldNED](structmavsdk_1_1_telemetry_1_1_magnetic_field_n_e_d.md)
+struct [MagneticFieldFrd](structmavsdk_1_1_telemetry_1_1_magnetic_field_frd.md)
 
 struct [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md)
 
@@ -44,52 +44,59 @@ struct [Position](structmavsdk_1_1_telemetry_1_1_position.md)
 
 struct [PositionBody](structmavsdk_1_1_telemetry_1_1_position_body.md)
 
-struct [PositionNED](structmavsdk_1_1_telemetry_1_1_position_n_e_d.md)
+struct [PositionNed](structmavsdk_1_1_telemetry_1_1_position_ned.md)
 
-struct [PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md)
+struct [PositionVelocityNed](structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md)
 
 struct [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)
 
-struct [RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md)
+struct [RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md)
 
-struct [SpeedBody](structmavsdk_1_1_telemetry_1_1_speed_body.md)
+struct [SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md)
 
 struct [StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md)
 
-struct [VelocityNED](structmavsdk_1_1_telemetry_1_1_velocity_n_e_d.md)
+struct [VelocityBody](structmavsdk_1_1_telemetry_1_1_velocity_body.md)
+
+struct [VelocityNed](structmavsdk_1_1_telemetry_1_1_velocity_ned.md)
 
 ## Public Types
 
 
 Type | Description
 --- | ---
+enum [FixType](#classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639de) | GPS fix type.
 enum [FlightMode](#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) | Flight modes.
-enum [LandedState](#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) | LandedState. Enumeration of landed detector states.
-enum [Result](#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | Results enum for telemetry requests.
-std::function< void([Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75))> [result_callback_t](#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) | Callback type for telemetry requests.
-std::function< void([PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md))> [position_velocity_ned_callback_t](#classmavsdk_1_1_telemetry_1adc89dbb35eb82768c59656519a69d6ba) | Callback type for kinematic (position and velocity) updates.
-std::function< void([Position](structmavsdk_1_1_telemetry_1_1_position.md))> [position_callback_t](#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) | Callback type for position updates.
-std::function< void(bool [in_air](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a909738ff2fbe104c6eb4524cc9bf2dd5))> [in_air_callback_t](#classmavsdk_1_1_telemetry_1a5c89acce93f9c8b4379ed0dd002ee68c) | Callback type for in-air updates.
-std::function< void([StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) [status_text](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a2f31c0668ed1ac1bfdfa4b2e9a2023a9))> [status_text_callback_t](#classmavsdk_1_1_telemetry_1ab6bfd92d95e534b04ed98f09bf3a1e7a) | Callback for mavlink status text updates.
-std::function< void(bool [armed](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876))> [armed_callback_t](#classmavsdk_1_1_telemetry_1a795e5848a43b29f5009d91e6c87b37d0) | Callback type for armed updates (asynchronous).
-std::function< void([Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) quaternion)> [attitude_quaternion_callback_t](#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) | Callback type for attitude updates in quaternion.
-std::function< void([EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) euler_angle)> [attitude_euler_angle_callback_t](#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) | Callback type for attitude updates in Euler angles.
-std::function< void([AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) angular_velocity_body)> [attitude_angular_velocity_body_callback_t](#classmavsdk_1_1_telemetry_1a8253671d4203e542095c365617b98678) | Callback type for angular velocity updates in quaternion.
-std::function< void([FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) [fixedwing_metrics](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a2ab8d2a8d017d46e77d49c4f899c7cbf))> [fixedwing_metrics_callback_t](#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378) | Callback type for fixedwing_metrics updates.
-std::function< void([GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) [ground_truth](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1b5f387edc39e33b86954f2048133f71))> [ground_truth_callback_t](#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7) | Callback type for ground truth updates.
-std::function< void([GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) [ground_speed_ned](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1afd68d9d29f14023ffdcb7d86a4b47f04))> [ground_speed_ned_callback_t](#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23) | Callback type for ground speed (NED) updates.
-std::function< void([IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) [imu_reading_ned](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8a3742f325e3ae877cae9ff05bbe6f1c))> [imu_reading_ned_callback_t](#classmavsdk_1_1_telemetry_1a40fd7ddb9eca5e36a7a4e8084dcbf75a) | Callback type for IMU (NED) updates.
-std::function< void([GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) [gps_info](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a76a4e21380d03dd2112fdc0e9c3c44b7))> [gps_info_callback_t](#classmavsdk_1_1_telemetry_1af34942b21fde18d723b300ebe6c40421) | Callback type for GPS information updates.
-std::function< void([Battery](structmavsdk_1_1_telemetry_1_1_battery.md) [battery](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1afb3bad3c7a36c14ae97492df3f6bbd54))> [battery_callback_t](#classmavsdk_1_1_telemetry_1ab7582939b706b1eea718c94433a1e5de) | Callback type for battery status updates.
-std::function< void([FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) [flight_mode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd))> [flight_mode_callback_t](#classmavsdk_1_1_telemetry_1ad8cfe203cf88b457ed3593eb82d3ff77) | Callback type for flight mode updates.
-std::function< void([Health](structmavsdk_1_1_telemetry_1_1_health.md) [health](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aae4824c9eeb72603b197c864b5cc5df5))> [health_callback_t](#classmavsdk_1_1_telemetry_1abadf7c5be3e650809402115c1810a8d7) | Callback type for health status updates.
-std::function< void(bool [health_all_ok](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06))> [health_all_ok_callback_t](#classmavsdk_1_1_telemetry_1a8fe09456f509c93e2110fb45996bd927) | Callback type for health status updates.
-std::function< void([LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) [landed_state](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af7d7c385852db38d6320516508ce7465))> [landed_state_callback_t](#classmavsdk_1_1_telemetry_1aaf77ff66f00bd82c911a7a76d15de41c) | Callback type for landed state updates.
-std::function< void([RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) [rc_status](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa8301c58483148b9e211d2f27f9c3140))> [rc_status_callback_t](#classmavsdk_1_1_telemetry_1ade4c432133b83aa9612528117a2cd6d6) | Callback type for RC status updates.
-std::function< void(uint64_t time_us)> [unix_epoch_time_callback_t](#classmavsdk_1_1_telemetry_1a1738efef61d7b3be00f91a8ccc46bcf0) | Callback type for Unix Epoch Time updates.
-std::function< void([ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) [actuator_control_target](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af4ffa70ff58c46b50be93a0fbf960f95))> [actuator_control_target_callback_t](#classmavsdk_1_1_telemetry_1a0e756d50d05d3d42314e160026c8ca5b) | Callback type for actuator control target updates (asynchronous).
-std::function< void([ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) [actuator_output_status](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a68fa1619dfad0a7cfcc2725025669252))> [actuator_output_status_callback_t](#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1) | Callback type for actuator output status target updates (asynchronous).
-std::function< void([Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) odometry)> [odometry_callback_t](#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2) | Callback type for odometry updates (asynchronous).
+enum [StatusTextType](#classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8) | Status types.
+enum [LandedState](#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) | Landed State enumeration.
+enum [Result](#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | Possible results returned for telemetry requests.
+std::function< void([Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75))> [ResultCallback](#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) | Callback type for asynchronous [Telemetry](classmavsdk_1_1_telemetry.md) calls.
+std::function< void([Position](structmavsdk_1_1_telemetry_1_1_position.md))> [PositionCallback](#classmavsdk_1_1_telemetry_1a978b371d636226e198995462afa63552) | Callback type for subscribe_position.
+std::function< void([Position](structmavsdk_1_1_telemetry_1_1_position.md))> [HomeCallback](#classmavsdk_1_1_telemetry_1aaac029969c37a001d43e2788a6abf634) | Callback type for subscribe_home.
+std::function< void(bool)> [InAirCallback](#classmavsdk_1_1_telemetry_1af96cca452305dd8f51b42d4663f15a26) | Callback type for subscribe_in_air.
+std::function< void([LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046))> [LandedStateCallback](#classmavsdk_1_1_telemetry_1a0cd8ef17abdd7c3d6a9ee761ccc6ae5e) | Callback type for subscribe_landed_state.
+std::function< void(bool)> [ArmedCallback](#classmavsdk_1_1_telemetry_1a9d23a4092d94e50694390e9f41b8c419) | Callback type for subscribe_armed.
+std::function< void([Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md))> [AttitudeQuaternionCallback](#classmavsdk_1_1_telemetry_1ad16e61245511a99e930d6fdcbd761a30) | Callback type for subscribe_attitude_quaternion.
+std::function< void([EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md))> [AttitudeEulerCallback](#classmavsdk_1_1_telemetry_1a321c7607922369926fbd5f2821986cba) | Callback type for subscribe_attitude_euler.
+std::function< void([AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md))> [AttitudeAngularVelocityBodyCallback](#classmavsdk_1_1_telemetry_1a35ff8def3048faeab7f732153d51085f) | Callback type for subscribe_attitude_angular_velocity_body.
+std::function< void([Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md))> [CameraAttitudeQuaternionCallback](#classmavsdk_1_1_telemetry_1aa83dafa14e9b5179573a574f6fbdd973) | Callback type for subscribe_camera_attitude_quaternion.
+std::function< void([EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md))> [CameraAttitudeEulerCallback](#classmavsdk_1_1_telemetry_1aa29f9bb0767ba8c384bfe1df69f2fdd9) | Callback type for subscribe_camera_attitude_euler.
+std::function< void([SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md))> [GroundSpeedNedCallback](#classmavsdk_1_1_telemetry_1ab5cb342044fbd6b4b4130969252a9c48) | Callback type for subscribe_ground_speed_ned.
+std::function< void([GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md))> [GpsInfoCallback](#classmavsdk_1_1_telemetry_1ad8fa90886b2283eace09b4b46708048b) | Callback type for subscribe_gps_info.
+std::function< void([Battery](structmavsdk_1_1_telemetry_1_1_battery.md))> [BatteryCallback](#classmavsdk_1_1_telemetry_1af4b121c576ef2ae567b1d571b12dff9d) | Callback type for subscribe_battery.
+std::function< void([FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe))> [FlightModeCallback](#classmavsdk_1_1_telemetry_1a2d7318d0823771b7a586c40199bdb482) | Callback type for subscribe_flight_mode.
+std::function< void([Health](structmavsdk_1_1_telemetry_1_1_health.md))> [HealthCallback](#classmavsdk_1_1_telemetry_1a7a120dd053091c644e0e2e47fdcbeb75) | Callback type for subscribe_health.
+std::function< void([RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md))> [RcStatusCallback](#classmavsdk_1_1_telemetry_1aafcd706b805898301b574ffa2b909b85) | Callback type for subscribe_rc_status.
+std::function< void([StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md))> [StatusTextCallback](#classmavsdk_1_1_telemetry_1a46e51ff90fe779990ed09a593c1c7898) | Callback type for subscribe_status_text.
+std::function< void([ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md))> [ActuatorControlTargetCallback](#classmavsdk_1_1_telemetry_1ada6af3de1b60b93a709345c3a8ede551) | Callback type for subscribe_actuator_control_target.
+std::function< void([ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md))> [ActuatorOutputStatusCallback](#classmavsdk_1_1_telemetry_1a2b1e800ce1ba6fb776351416340ac8b9) | Callback type for subscribe_actuator_output_status.
+std::function< void([Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md))> [OdometryCallback](#classmavsdk_1_1_telemetry_1a8cd23f7364f8f5cb22869155da67c65d) | Callback type for subscribe_odometry.
+std::function< void([PositionVelocityNed](structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md))> [PositionVelocityNedCallback](#classmavsdk_1_1_telemetry_1a5a38deb284622ff6926703e1e5c96a74) | Callback type for subscribe_position_velocity_ned.
+std::function< void([GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md))> [GroundTruthCallback](#classmavsdk_1_1_telemetry_1a222aae53852a2c535f6d69ed57221f13) | Callback type for subscribe_ground_truth.
+std::function< void([FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md))> [FixedwingMetricsCallback](#classmavsdk_1_1_telemetry_1a5b42dbef0ef6d8c1768d503d0437f1e3) | Callback type for subscribe_fixedwing_metrics.
+std::function< void([Imu](structmavsdk_1_1_telemetry_1_1_imu.md))> [ImuCallback](#classmavsdk_1_1_telemetry_1a4fbc2ad274fd5a8af077004d2d7bd984) | Callback type for subscribe_imu.
+std::function< void(bool)> [HealthAllOkCallback](#classmavsdk_1_1_telemetry_1a71cdcadfaa988dc14029e0b9fdbe742d) | Callback type for subscribe_health_all_ok.
+std::function< void(uint64_t)> [UnixEpochTimeCallback](#classmavsdk_1_1_telemetry_1a321c7d809ae8f56bb8a361d5e5ce6391) | Callback type for subscribe_unix_epoch_time.
 
 ## Public Member Functions
 
@@ -99,99 +106,95 @@ Type | Name | Description
 &nbsp; | [Telemetry](#classmavsdk_1_1_telemetry_1a6c8c8ed8759fc8c6e9fd4e7644c63cbe) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Telemetry](#classmavsdk_1_1_telemetry_1a1db31974e0ea6ea9a530d68783566ab1) () | Destructor (internal use only).
 &nbsp; | [Telemetry](#classmavsdk_1_1_telemetry_1ad2bbcfbf06add4067bdc42bf239b6ecb) (const [Telemetry](classmavsdk_1_1_telemetry.md) &)=delete | Copy constructor (object is not copyable).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_position_velocity_ned](#classmavsdk_1_1_telemetry_1a7cb04951523d210ccd1d68911d58f23e) (double rate_hz) | Set rate of kinematic (position and velocity) updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_position](#classmavsdk_1_1_telemetry_1a7bb2f0ad795108ea857cbd6b9f802ee2) (double rate_hz) | Set rate of position updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_home_position](#classmavsdk_1_1_telemetry_1a3ea9fc72cfdd86136f59701c57c46f9b) (double rate_hz) | Set rate of home position updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_in_air](#classmavsdk_1_1_telemetry_1ab2a3a7172e83982525353d6a5c6cb929) (double rate_hz) | Set rate of in-air status updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_attitude](#classmavsdk_1_1_telemetry_1a948a58cb3756134dee7fd60191911493) (double rate_hz) | Set rate of attitude updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_camera_attitude](#classmavsdk_1_1_telemetry_1a60caa6177503040d9926eb75249c12af) (double rate_hz) | Set rate of camera attitude updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_ground_speed_ned](#classmavsdk_1_1_telemetry_1a229bfcf87a09f98ede59522817f8911c) (double rate_hz) | Set rate of ground speed (NED) updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_imu_reading_ned](#classmavsdk_1_1_telemetry_1a33dc024551cb3720e2d376cb0c3de16e) (double rate_hz) | Set rate of IMU reading (NED) updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_fixedwing_metrics](#classmavsdk_1_1_telemetry_1a432cc35ec708d7b8564a3e2136d4c81c) (double rate_hz) | Set rate of VFR HUD updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_ground_truth](#classmavsdk_1_1_telemetry_1a4363efd93942c48242939a079c1fd5b1) (double rate_hz) | Set rate of ground truth updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_gps_info](#classmavsdk_1_1_telemetry_1aaf3270f4688f586c65daa29f712df04b) (double rate_hz) | Set rate of GPS information updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_battery](#classmavsdk_1_1_telemetry_1a58135427b4f862bc41db8888cc328d08) (double rate_hz) | Set rate of battery status updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_rc_status](#classmavsdk_1_1_telemetry_1a5ab00a099c7a7052433e652ed19466fd) (double rate_hz) | Set rate of RC status updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_actuator_control_target](#classmavsdk_1_1_telemetry_1ac20043a9f4159be71f34b418c440e321) (double rate_hz) | Set rate of actuator controls updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_actuator_output_status](#classmavsdk_1_1_telemetry_1a33daa659d9d1a1a0654a120c4e24bc1f) (double rate_hz) | Set rate of actuator output status updates (synchronous).
-[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_odometry](#classmavsdk_1_1_telemetry_1ab6d03cdb74a38aba42f0370d455b85d8) (double rate_hz) | Set rate of odometry updates (synchronous).
-void | [set_rate_position_velocity_ned_async](#classmavsdk_1_1_telemetry_1a618da18fabb0c13f07f1eb0c3e1e3395) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of kinematic (position and velocity) updates (asynchronous).
-void | [set_rate_position_async](#classmavsdk_1_1_telemetry_1aa8d3e034d11fccb1533d1a782618f4a4) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of position updates (asynchronous).
-void | [set_rate_home_position_async](#classmavsdk_1_1_telemetry_1a3b9a4de97101c11420b29f6ff010b164) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of home position updates (asynchronous).
-void | [set_rate_in_air_async](#classmavsdk_1_1_telemetry_1aa11598e99766e395309d3899211191aa) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of in-air status updates (asynchronous).
-void | [set_rate_attitude_async](#classmavsdk_1_1_telemetry_1ae16699eb5a558b663b5666b6788c483f) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of attitude updates (asynchronous).
-void | [set_rate_camera_attitude_async](#classmavsdk_1_1_telemetry_1a7f73b3bb2119a426b01af4370a90c9b9) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of camera attitude updates (asynchronous).
-void | [set_rate_ground_speed_ned_async](#classmavsdk_1_1_telemetry_1a813e26ab74c7200e09e8ad8c8ecb597a) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of ground speed (NED) updates (asynchronous).
-void | [set_rate_imu_reading_ned_async](#classmavsdk_1_1_telemetry_1a1ae11919b444e79bdafaa493dab39936) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of IMU reading (NED) updates (asynchronous).
-void | [set_rate_fixedwing_metrics_async](#classmavsdk_1_1_telemetry_1a8423249356038a0131bbd3efd4971808) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of VFR HUD updates (asynchronous).
-void | [set_rate_ground_truth_async](#classmavsdk_1_1_telemetry_1ad100d69c9ed882e2e4924c4bda4151f1) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of ground truth updates (asynchronous).
-void | [set_rate_gps_info_async](#classmavsdk_1_1_telemetry_1a09d9232f3fc83de09e1b97fbde9edd27) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of GPS information updates (asynchronous).
-void | [set_rate_battery_async](#classmavsdk_1_1_telemetry_1aa0c57683779b276c196543d1b11b4794) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of battery status updates (asynchronous).
-void | [set_rate_rc_status_async](#classmavsdk_1_1_telemetry_1ab293eac4daab1b8628e3adce311312ec) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of RC status updates (asynchronous).
-void | [set_rate_actuator_control_target_async](#classmavsdk_1_1_telemetry_1a5b05b2c7375376d4f02f17f9dbb318d2) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of actuator control target updates (asynchronous).
-void | [set_rate_actuator_output_status_async](#classmavsdk_1_1_telemetry_1ad02073ccb7735a51992a2499b605ebe4) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of actuator control target updates (asynchronous).
-void | [set_rate_odometry_async](#classmavsdk_1_1_telemetry_1ab0a70e00299c959a875d0a9ae89391fa) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of odometry updates (asynchronous).
-void | [set_unix_epoch_time_async](#classmavsdk_1_1_telemetry_1aecaac11aac355ed79d47b7fcf786fb2c) (double rate_hz, [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) callback) | Set rate of Unix Epoch Time update (asynchronous).
-[PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) | [position_velocity_ned](#classmavsdk_1_1_telemetry_1abb053c00761eb67b07816d9e01427f37) () const | Get the current kinematic (position and velocity) in NED frame (synchronous).
-[Position](structmavsdk_1_1_telemetry_1_1_position.md) | [position](#classmavsdk_1_1_telemetry_1a2299da1bc63313c429f07ab0fdbe5335) () const | Get the current position (synchronous).
-[Position](structmavsdk_1_1_telemetry_1_1_position.md) | [home_position](#classmavsdk_1_1_telemetry_1ad4e079b3067a79da8b3b2f3067dc4178) () const | Get the home position (synchronous).
-[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) | [status_text](#classmavsdk_1_1_telemetry_1a2f31c0668ed1ac1bfdfa4b2e9a2023a9) () const | Get status text (synchronous).
-bool | [in_air](#classmavsdk_1_1_telemetry_1a909738ff2fbe104c6eb4524cc9bf2dd5) () const | Get the in-air status (synchronous).
-[LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) | [landed_state](#classmavsdk_1_1_telemetry_1af7d7c385852db38d6320516508ce7465) () const | Get the landed state status (synchronous).
-bool | [armed](#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876) () const | Get the arming status (synchronous).
-[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [attitude_quaternion](#classmavsdk_1_1_telemetry_1aae76890957b33727be72a39807448c88) () const | Get the current attitude in quaternions (synchronous).
-[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [attitude_euler_angle](#classmavsdk_1_1_telemetry_1af57a6e448b22f1126e34c3031d7f4af9) () const | Get the current attitude in Euler angles (synchronous).
-[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) | [attitude_angular_velocity_body](#classmavsdk_1_1_telemetry_1a8d9e2489b79c2cdbabaef8b6bb8e2952) () const | Get the current angular speed in rad/s (synchronous).
-[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) | [fixedwing_metrics](#classmavsdk_1_1_telemetry_1a2ab8d2a8d017d46e77d49c4f899c7cbf) () const | Get the current fixedwing_metrics (synchronous).
-[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) | [ground_truth](#classmavsdk_1_1_telemetry_1a1b5f387edc39e33b86954f2048133f71) () const | Get the current ground truth (synchronous).
-[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [camera_attitude_quaternion](#classmavsdk_1_1_telemetry_1a3c07447351d3b6195d5e2526e7b128b3) () const | Get the camera's attitude in quaternions (synchronous).
-[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [camera_attitude_euler_angle](#classmavsdk_1_1_telemetry_1a4e17866a65077bb3db474e6437848fce) () const | Get the camera's attitude in Euler angles (synchronous).
-[GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) | [ground_speed_ned](#classmavsdk_1_1_telemetry_1afd68d9d29f14023ffdcb7d86a4b47f04) () const | Get the current ground speed (NED) (synchronous).
-[IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) | [imu_reading_ned](#classmavsdk_1_1_telemetry_1a8a3742f325e3ae877cae9ff05bbe6f1c) () const | Get the current IMU reading (NED) (synchronous).
-[GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) | [gps_info](#classmavsdk_1_1_telemetry_1a76a4e21380d03dd2112fdc0e9c3c44b7) () const | Get the current GPS information (synchronous).
-[Battery](structmavsdk_1_1_telemetry_1_1_battery.md) | [battery](#classmavsdk_1_1_telemetry_1afb3bad3c7a36c14ae97492df3f6bbd54) () const | Get the current battery status (synchronous).
-[FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) | [flight_mode](#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd) () const | Get the current flight mode (synchronous).
-[Health](structmavsdk_1_1_telemetry_1_1_health.md) | [health](#classmavsdk_1_1_telemetry_1aae4824c9eeb72603b197c864b5cc5df5) () const | Get the current health status (synchronous).
-bool | [health_all_ok](#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06) () const | Returns true if the overall health is ok (synchronous).
-[RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) | [rc_status](#classmavsdk_1_1_telemetry_1aa8301c58483148b9e211d2f27f9c3140) () const | Get the RC status (synchronous).
-[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) | [actuator_control_target](#classmavsdk_1_1_telemetry_1af4ffa70ff58c46b50be93a0fbf960f95) () const | Get the actuator control target (synchronous).
-[ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) | [actuator_output_status](#classmavsdk_1_1_telemetry_1a68fa1619dfad0a7cfcc2725025669252) () const | Get the actuator output status (synchronous).
-void | [position_velocity_ned_async](#classmavsdk_1_1_telemetry_1ab966373bd9975304132ac81f0f8dcd97) ([position_velocity_ned_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1adc89dbb35eb82768c59656519a69d6ba) callback) | Subscribe to kinematic (position and velocity) updates (asynchronous).
-void | [position_async](#classmavsdk_1_1_telemetry_1a36c873a346ec80ffa6440191e57e440a) ([position_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) callback) | Subscribe to position updates (asynchronous).
-void | [home_position_async](#classmavsdk_1_1_telemetry_1ad732889dfb7e0b6e8607d04e1a0d379a) ([position_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) callback) | Subscribe to home position updates (asynchronous).
-void | [in_air_async](#classmavsdk_1_1_telemetry_1ab7872779d80172a8c3ec1f381995613c) ([in_air_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a5c89acce93f9c8b4379ed0dd002ee68c) callback) | Subscribe to in-air updates (asynchronous).
-void | [status_text_async](#classmavsdk_1_1_telemetry_1a3dafc5195525739b84f6ae9774484450) ([status_text_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab6bfd92d95e534b04ed98f09bf3a1e7a) callback) | Subscribe to status text updates (asynchronous).
-void | [armed_async](#classmavsdk_1_1_telemetry_1ae73fc84556a85ecc07de33f5b1f8f8cc) ([armed_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a795e5848a43b29f5009d91e6c87b37d0) callback) | Subscribe to armed updates (asynchronous).
-void | [attitude_quaternion_async](#classmavsdk_1_1_telemetry_1a73c1f4f96fd2ac08e8a6eae6bba00098) ([attitude_quaternion_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) callback) | Subscribe to attitude updates in quaternion (asynchronous).
-void | [attitude_euler_angle_async](#classmavsdk_1_1_telemetry_1ab7dba6f0da6bd624ae3ce7f2da5d50cd) ([attitude_euler_angle_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) callback) | Subscribe to attitude updates in Euler angles (asynchronous).
-void | [attitude_angular_velocity_body_async](#classmavsdk_1_1_telemetry_1a72d404d0a3b121fdcb9a3c3a22e2137c) ([attitude_angular_velocity_body_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8253671d4203e542095c365617b98678) callback) | Subscribe to attitude updates in angular velocity (asynchronous).
-void | [fixedwing_metrics_async](#classmavsdk_1_1_telemetry_1a82be69c764633d6c573b2dce1b40787e) ([fixedwing_metrics_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378) callback) | Subscribe to vfr hud updates in (asynchronous).
-void | [ground_truth_async](#classmavsdk_1_1_telemetry_1a4597194316986337ea6cd5fc33eabec4) ([ground_truth_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7) callback) | Subscribe to ground_truth updates in (asynchronous).
-void | [camera_attitude_quaternion_async](#classmavsdk_1_1_telemetry_1ae39f1c1769189fbd7e21fb216da7cfd2) ([attitude_quaternion_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) callback) | Subscribe to camera attitude updates in quaternion (asynchronous).
-void | [camera_attitude_euler_angle_async](#classmavsdk_1_1_telemetry_1adb78b9cb7d918970a19222e1a8101706) ([attitude_euler_angle_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) callback) | Subscribe to camera attitude updates in Euler angles (asynchronous).
-void | [ground_speed_ned_async](#classmavsdk_1_1_telemetry_1a3eb3256f1a4708a6cf19ac28bc6e3568) ([ground_speed_ned_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23) callback) | Subscribe to ground speed (NED) updates (asynchronous).
-void | [imu_reading_ned_async](#classmavsdk_1_1_telemetry_1a5a54e410c406d7fc737451af46da36dc) ([imu_reading_ned_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a40fd7ddb9eca5e36a7a4e8084dcbf75a) callback) | Subscribe to IMU reading (NED) updates (asynchronous).
-void | [gps_info_async](#classmavsdk_1_1_telemetry_1a2ba72a9a7b24c9d16fa39482077ccfac) ([gps_info_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af34942b21fde18d723b300ebe6c40421) callback) | Subscribe to GPS information updates (asynchronous).
-void | [battery_async](#classmavsdk_1_1_telemetry_1aabb419112c981a837cee2f498b96c2c5) ([battery_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab7582939b706b1eea718c94433a1e5de) callback) | Subscribe to battery status updates (asynchronous).
-void | [flight_mode_async](#classmavsdk_1_1_telemetry_1adede4202304e53466b4df41367a75878) ([flight_mode_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad8cfe203cf88b457ed3593eb82d3ff77) callback) | Subscribe to flight mode updates (asynchronous).
-void | [health_async](#classmavsdk_1_1_telemetry_1aceb2a5a458cafd2171720424652c8e39) ([health_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1abadf7c5be3e650809402115c1810a8d7) callback) | Subscribe to health status updates (asynchronous).
-void | [health_all_ok_async](#classmavsdk_1_1_telemetry_1ae1a2f05a126a88b19e78078ef5f552f4) ([health_all_ok_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8fe09456f509c93e2110fb45996bd927) callback) | Subscribe to overall health status updates (asynchronous).
-void | [landed_state_async](#classmavsdk_1_1_telemetry_1ac4a2cdf42f9597728d825f984f690f87) ([landed_state_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aaf77ff66f00bd82c911a7a76d15de41c) callback) | Subscribe to Landed state updates (asynchronous).
-void | [actuator_control_target_async](#classmavsdk_1_1_telemetry_1af9dcac19a2cdb6aee0815007c3b62eec) ([actuator_control_target_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0e756d50d05d3d42314e160026c8ca5b) callback) | Subscribe to actuator control target updates (asynchronous).
-void | [actuator_output_status_async](#classmavsdk_1_1_telemetry_1a97d11107e19675a9f5971423167cd307) ([actuator_output_status_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1) callback) | Subscribe to actuator output status target updates (asynchronous).
-void | [odometry_async](#classmavsdk_1_1_telemetry_1a12779f43e06fa2f69bf2a96f3b74cd7a) ([odometry_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2) callback) | Subscribe to odometry updates (asynchronous).
-void | [rc_status_async](#classmavsdk_1_1_telemetry_1a5c1cba91eb65f738470c51da4d74aecc) ([rc_status_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ade4c432133b83aa9612528117a2cd6d6) callback) | Subscribe to RC status updates (asynchronous).
-void | [unix_epoch_time_async](#classmavsdk_1_1_telemetry_1a31931da80d4ef9352b32e93e13d762b3) ([unix_epoch_time_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1738efef61d7b3be00f91a8ccc46bcf0) callback) | Subscribe to Unix Epoch Time updates (asynchronous).
+void | [subscribe_position](#classmavsdk_1_1_telemetry_1a61bda57b3ca47000ea7e4758b2a33134) ([PositionCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a978b371d636226e198995462afa63552) callback) | Subscribe to 'position' updates.
+[Position](structmavsdk_1_1_telemetry_1_1_position.md) | [position](#classmavsdk_1_1_telemetry_1a2299da1bc63313c429f07ab0fdbe5335) () const | Poll for '[Position](structmavsdk_1_1_telemetry_1_1_position.md)' (blocking).
+void | [subscribe_home](#classmavsdk_1_1_telemetry_1a67585989a12de2f099dbc4eb4c41686a) ([HomeCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aaac029969c37a001d43e2788a6abf634) callback) | Subscribe to 'home position' updates.
+[Position](structmavsdk_1_1_telemetry_1_1_position.md) | [home](#classmavsdk_1_1_telemetry_1ad5c239b93aa1923edd1b97494a3fbfe7) () const | Poll for '[Position](structmavsdk_1_1_telemetry_1_1_position.md)' (blocking).
+void | [subscribe_in_air](#classmavsdk_1_1_telemetry_1a5ba005827b1ef988ba3f6e81f7469d40) ([InAirCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af96cca452305dd8f51b42d4663f15a26) callback) | Subscribe to in-air updates.
+bool | [in_air](#classmavsdk_1_1_telemetry_1a909738ff2fbe104c6eb4524cc9bf2dd5) () const | Poll for 'bool' (blocking).
+void | [subscribe_landed_state](#classmavsdk_1_1_telemetry_1a8eb2d40764b3940e9054c301a6ef5f50) ([LandedStateCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0cd8ef17abdd7c3d6a9ee761ccc6ae5e) callback) | Subscribe to landed state updates.
+[LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) | [landed_state](#classmavsdk_1_1_telemetry_1af7d7c385852db38d6320516508ce7465) () const | Poll for 'LandedState' (blocking).
+void | [subscribe_armed](#classmavsdk_1_1_telemetry_1a6bada4a3538eb1142fca024bc89ec2d3) ([ArmedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a9d23a4092d94e50694390e9f41b8c419) callback) | Subscribe to armed updates.
+bool | [armed](#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876) () const | Poll for 'bool' (blocking).
+void | [subscribe_attitude_quaternion](#classmavsdk_1_1_telemetry_1afa6c079d48bc0c0a3287ac095ec290b9) ([AttitudeQuaternionCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad16e61245511a99e930d6fdcbd761a30) callback) | Subscribe to 'attitude' updates (quaternion).
+[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [attitude_quaternion](#classmavsdk_1_1_telemetry_1aae76890957b33727be72a39807448c88) () const | Poll for '[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)' (blocking).
+void | [subscribe_attitude_euler](#classmavsdk_1_1_telemetry_1ae380f3c65fb5f4d3961101b71ebbd1aa) ([AttitudeEulerCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a321c7607922369926fbd5f2821986cba) callback) | Subscribe to 'attitude' updates (Euler).
+[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [attitude_euler](#classmavsdk_1_1_telemetry_1a03035bb72324e843372eb69cf7899ce5) () const | Poll for '[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)' (blocking).
+void | [subscribe_attitude_angular_velocity_body](#classmavsdk_1_1_telemetry_1a84be21f00d23911ee77cbd7dc6512420) ([AttitudeAngularVelocityBodyCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a35ff8def3048faeab7f732153d51085f) callback) | Subscribe to 'attitude' updates (angular velocity)
+[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) | [attitude_angular_velocity_body](#classmavsdk_1_1_telemetry_1a8d9e2489b79c2cdbabaef8b6bb8e2952) () const | Poll for '[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md)' (blocking).
+void | [subscribe_camera_attitude_quaternion](#classmavsdk_1_1_telemetry_1a6845e2752b535e0ee539f276cfca45d9) ([CameraAttitudeQuaternionCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa83dafa14e9b5179573a574f6fbdd973) callback) | Subscribe to 'camera attitude' updates (quaternion).
+[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) | [camera_attitude_quaternion](#classmavsdk_1_1_telemetry_1a3c07447351d3b6195d5e2526e7b128b3) () const | Poll for '[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)' (blocking).
+void | [subscribe_camera_attitude_euler](#classmavsdk_1_1_telemetry_1afaa61016a5319ebea73dc5b1e4cde89c) ([CameraAttitudeEulerCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa29f9bb0767ba8c384bfe1df69f2fdd9) callback) | Subscribe to 'camera attitude' updates (Euler).
+[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) | [camera_attitude_euler](#classmavsdk_1_1_telemetry_1a635643d955f0cd9a805914501f819796) () const | Poll for '[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)' (blocking).
+void | [subscribe_ground_speed_ned](#classmavsdk_1_1_telemetry_1ac480db5041463f346353e05bf6105e59) ([GroundSpeedNedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab5cb342044fbd6b4b4130969252a9c48) callback) | Subscribe to 'ground speed' updates (NED).
+[SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md) | [ground_speed_ned](#classmavsdk_1_1_telemetry_1a6ebb4a10e9e5299cafb36eb2bd02401a) () const | Poll for '[SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md)' (blocking).
+void | [subscribe_gps_info](#classmavsdk_1_1_telemetry_1aa078035ce00505b726dcac4d47796cee) ([GpsInfoCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad8fa90886b2283eace09b4b46708048b) callback) | Subscribe to 'GPS info' updates.
+[GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md) | [gps_info](#classmavsdk_1_1_telemetry_1a983dabc1aed50745b326072662c419e8) () const | Poll for '[GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md)' (blocking).
+void | [subscribe_battery](#classmavsdk_1_1_telemetry_1a9a8c5288273b4a6f1e43377a70f47a0e) ([BatteryCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af4b121c576ef2ae567b1d571b12dff9d) callback) | Subscribe to 'battery' updates.
+[Battery](structmavsdk_1_1_telemetry_1_1_battery.md) | [battery](#classmavsdk_1_1_telemetry_1afb3bad3c7a36c14ae97492df3f6bbd54) () const | Poll for '[Battery](structmavsdk_1_1_telemetry_1_1_battery.md)' (blocking).
+void | [subscribe_flight_mode](#classmavsdk_1_1_telemetry_1a53db5fb36bf10fbc7ac004a3be9100a4) ([FlightModeCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a2d7318d0823771b7a586c40199bdb482) callback) | Subscribe to 'flight mode' updates.
+[FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) | [flight_mode](#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd) () const | Poll for 'FlightMode' (blocking).
+void | [subscribe_health](#classmavsdk_1_1_telemetry_1a0c489b33a635adf0610731a42ce5615b) ([HealthCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a7a120dd053091c644e0e2e47fdcbeb75) callback) | Subscribe to 'health' updates.
+[Health](structmavsdk_1_1_telemetry_1_1_health.md) | [health](#classmavsdk_1_1_telemetry_1aae4824c9eeb72603b197c864b5cc5df5) () const | Poll for '[Health](structmavsdk_1_1_telemetry_1_1_health.md)' (blocking).
+void | [subscribe_rc_status](#classmavsdk_1_1_telemetry_1ae5f894c16564674f7fdaba36ff12dd08) ([RcStatusCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aafcd706b805898301b574ffa2b909b85) callback) | Subscribe to 'RC status' updates.
+[RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md) | [rc_status](#classmavsdk_1_1_telemetry_1a59cd497c69f1d32be29a940a2d34a474) () const | Poll for '[RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md)' (blocking).
+void | [subscribe_status_text](#classmavsdk_1_1_telemetry_1a80106e59b9df76a47a2068b4fb4ecb69) ([StatusTextCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a46e51ff90fe779990ed09a593c1c7898) callback) | Subscribe to 'status text' updates.
+[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) | [status_text](#classmavsdk_1_1_telemetry_1a2f31c0668ed1ac1bfdfa4b2e9a2023a9) () const | Poll for '[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md)' (blocking).
+void | [subscribe_actuator_control_target](#classmavsdk_1_1_telemetry_1a697c3618245a9886f917431aee59bd2c) ([ActuatorControlTargetCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ada6af3de1b60b93a709345c3a8ede551) callback) | Subscribe to 'actuator control target' updates.
+[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) | [actuator_control_target](#classmavsdk_1_1_telemetry_1af4ffa70ff58c46b50be93a0fbf960f95) () const | Poll for '[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md)' (blocking).
+void | [subscribe_actuator_output_status](#classmavsdk_1_1_telemetry_1ab5bc6fdb24935f4834cd490d7a085594) ([ActuatorOutputStatusCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a2b1e800ce1ba6fb776351416340ac8b9) callback) | Subscribe to 'actuator output status' updates.
+[ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) | [actuator_output_status](#classmavsdk_1_1_telemetry_1a68fa1619dfad0a7cfcc2725025669252) () const | Poll for '[ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md)' (blocking).
+void | [subscribe_odometry](#classmavsdk_1_1_telemetry_1a1ff5094feae71f009b7cdbab90734b09) ([OdometryCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8cd23f7364f8f5cb22869155da67c65d) callback) | Subscribe to 'odometry' updates.
+[Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) | [odometry](#classmavsdk_1_1_telemetry_1a715b6e8ba1206059706f08844a0b96d2) () const | Poll for '[Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md)' (blocking).
+void | [subscribe_position_velocity_ned](#classmavsdk_1_1_telemetry_1a8e09afe19fe9f2c05a5d647ceb2c8310) ([PositionVelocityNedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a5a38deb284622ff6926703e1e5c96a74) callback) | Subscribe to 'position velocity' updates.
+[PositionVelocityNed](structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md) | [position_velocity_ned](#classmavsdk_1_1_telemetry_1af9b06944ca73ad09caadacd9f4fae950) () const | Poll for '[PositionVelocityNed](structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md)' (blocking).
+void | [subscribe_ground_truth](#classmavsdk_1_1_telemetry_1adcc18e7d8801ccdef2cf137a84d53460) ([GroundTruthCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a222aae53852a2c535f6d69ed57221f13) callback) | Subscribe to 'ground truth' updates.
+[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) | [ground_truth](#classmavsdk_1_1_telemetry_1a1b5f387edc39e33b86954f2048133f71) () const | Poll for '[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md)' (blocking).
+void | [subscribe_fixedwing_metrics](#classmavsdk_1_1_telemetry_1a1b32f7cc867f8f21fdcedda49434a22b) ([FixedwingMetricsCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a5b42dbef0ef6d8c1768d503d0437f1e3) callback) | Subscribe to 'fixedwing metrics' updates.
+[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) | [fixedwing_metrics](#classmavsdk_1_1_telemetry_1a2ab8d2a8d017d46e77d49c4f899c7cbf) () const | Poll for '[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md)' (blocking).
+void | [subscribe_imu](#classmavsdk_1_1_telemetry_1a35ce2552e8b709e6194481c0fd070a8d) ([ImuCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a4fbc2ad274fd5a8af077004d2d7bd984) callback) | Subscribe to 'IMU' updates.
+[Imu](structmavsdk_1_1_telemetry_1_1_imu.md) | [imu](#classmavsdk_1_1_telemetry_1a1a4e43b7bdcd988442955d2a5465b977) () const | Poll for '[Imu](structmavsdk_1_1_telemetry_1_1_imu.md)' (blocking).
+void | [subscribe_health_all_ok](#classmavsdk_1_1_telemetry_1a0f94ea6d707ff314e412367d6681bd8f) ([HealthAllOkCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a71cdcadfaa988dc14029e0b9fdbe742d) callback) | Subscribe to 'HealthAllOk' updates.
+bool | [health_all_ok](#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06) () const | Poll for 'bool' (blocking).
+void | [subscribe_unix_epoch_time](#classmavsdk_1_1_telemetry_1ad7f04211822f862b580308e3786cdc77) ([UnixEpochTimeCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a321c7d809ae8f56bb8a361d5e5ce6391) callback) | Subscribe to 'unix epoch time' updates.
+uint64_t | [unix_epoch_time](#classmavsdk_1_1_telemetry_1ab5ea5f6bb35b5670e34d5697d8c880f4) () const | Poll for 'uint64_t' (blocking).
+void | [set_rate_position_async](#classmavsdk_1_1_telemetry_1ad7e5b576edb9398c8f5f2f14626b984a) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'position' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_position](#classmavsdk_1_1_telemetry_1a665439f3d5f8c58b3ef3dd427cf4782b) (double rate_hz)const | Set rate to 'position' updates.
+void | [set_rate_home_async](#classmavsdk_1_1_telemetry_1a098f4c4f50fc3ac2c153ef152208fbbe) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'home position' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_home](#classmavsdk_1_1_telemetry_1af90e28ad8a8f05401176c98e427eecfc) (double rate_hz)const | Set rate to 'home position' updates.
+void | [set_rate_in_air_async](#classmavsdk_1_1_telemetry_1a9ea77b7ef64acd1e25b05e593e638c70) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to in-air updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_in_air](#classmavsdk_1_1_telemetry_1a8f179e8397b395e61a48529ceeba2b14) (double rate_hz)const | Set rate to in-air updates.
+void | [set_rate_landed_state_async](#classmavsdk_1_1_telemetry_1a180fff93b120a67c16ad5993f0b38847) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to landed state updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_landed_state](#classmavsdk_1_1_telemetry_1a53a3428c602c1f91cfcffdba188a4e51) (double rate_hz)const | Set rate to landed state updates.
+void | [set_rate_attitude_async](#classmavsdk_1_1_telemetry_1a2f979321709760a1ad4a8dd09755cd61) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'attitude' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_attitude](#classmavsdk_1_1_telemetry_1a163d3960faadad948294f367eaaf52b0) (double rate_hz)const | Set rate to 'attitude' updates.
+void | [set_rate_camera_attitude_async](#classmavsdk_1_1_telemetry_1a520f15e42f5f1b3987ca2a9cd94a3d9a) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate of camera attitude updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_camera_attitude](#classmavsdk_1_1_telemetry_1a427da223d16ce07a61b07d4e5af1ab04) (double rate_hz)const | Set rate of camera attitude updates.
+void | [set_rate_ground_speed_ned_async](#classmavsdk_1_1_telemetry_1a2a2694329e93c1ceac38b7b5870c3ac3) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'ground speed' updates (NED).
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_ground_speed_ned](#classmavsdk_1_1_telemetry_1aa23ea927f69e30625c070cfb8f32542f) (double rate_hz)const | Set rate to 'ground speed' updates (NED).
+void | [set_rate_gps_info_async](#classmavsdk_1_1_telemetry_1ae6ada3cd6d4e9835dd4d1d712f1195e4) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'GPS info' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_gps_info](#classmavsdk_1_1_telemetry_1a14510bcb6fe3c31d91653d32d354613f) (double rate_hz)const | Set rate to 'GPS info' updates.
+void | [set_rate_battery_async](#classmavsdk_1_1_telemetry_1a5615e21f616997dfca1318c96a7e550e) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'battery' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_battery](#classmavsdk_1_1_telemetry_1ae781d2e950a535a465f2bc1575e9f893) (double rate_hz)const | Set rate to 'battery' updates.
+void | [set_rate_rc_status_async](#classmavsdk_1_1_telemetry_1a8cf84eaca875626bc53ed03e98d6eb7e) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'RC status' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_rc_status](#classmavsdk_1_1_telemetry_1acbfc54792f79c5fd2a9855278981f8ca) (double rate_hz)const | Set rate to 'RC status' updates.
+void | [set_rate_actuator_control_target_async](#classmavsdk_1_1_telemetry_1aa44e3a76c482f273a2f1bc1a09bec27c) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'actuator control target' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_actuator_control_target](#classmavsdk_1_1_telemetry_1aa43efb510038f1bb95241953ae09c998) (double rate_hz)const | Set rate to 'actuator control target' updates.
+void | [set_rate_actuator_output_status_async](#classmavsdk_1_1_telemetry_1a2ad19c1101962ed7cfeec89b7fae0f9c) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'actuator output status' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_actuator_output_status](#classmavsdk_1_1_telemetry_1a48b3e3a288ba6a8d38914c4827124006) (double rate_hz)const | Set rate to 'actuator output status' updates.
+void | [set_rate_odometry_async](#classmavsdk_1_1_telemetry_1a23e507e1d53c6603479701f5e2af49ce) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'odometry' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_odometry](#classmavsdk_1_1_telemetry_1a4368bf825cec3bc9369d57546a45391e) (double rate_hz)const | Set rate to 'odometry' updates.
+void | [set_rate_position_velocity_ned_async](#classmavsdk_1_1_telemetry_1a9a4c3b6affa497dd22e464f515ca278c) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'position velocity' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_position_velocity_ned](#classmavsdk_1_1_telemetry_1a64fe3457589cd208a9f7bd5dea763da1) (double rate_hz)const | Set rate to 'position velocity' updates.
+void | [set_rate_ground_truth_async](#classmavsdk_1_1_telemetry_1a16b28ebdc6d211a5b182bd8d0abb4d2e) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'ground truth' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_ground_truth](#classmavsdk_1_1_telemetry_1a23b2962e5b7681ece3fcbc72220d6b48) (double rate_hz)const | Set rate to 'ground truth' updates.
+void | [set_rate_fixedwing_metrics_async](#classmavsdk_1_1_telemetry_1a1484ccdcf4ba20a151e380e7bd7b9869) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'fixedwing metrics' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_fixedwing_metrics](#classmavsdk_1_1_telemetry_1ab345a5925d132c27e0a5e1ab65a1e2c1) (double rate_hz)const | Set rate to 'fixedwing metrics' updates.
+void | [set_rate_imu_async](#classmavsdk_1_1_telemetry_1a7dca435daa0de2db2d2e9d588c6bed99) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'IMU' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_imu](#classmavsdk_1_1_telemetry_1a4e0d1dc2350e06f68f472d85dc69d175) (double rate_hz)const | Set rate to 'IMU' updates.
+void | [set_rate_unix_epoch_time_async](#classmavsdk_1_1_telemetry_1a74b18cd8a5faed4d46b244db0a6e3c50) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'unix epoch time' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_unix_epoch_time](#classmavsdk_1_1_telemetry_1a340ac34547672ee07131bca34cbbb820) (double rate_hz)const | Set rate to 'unix epoch time' updates.
 const [Telemetry](classmavsdk_1_1_telemetry.md) & | [operator=](#classmavsdk_1_1_telemetry_1a703ac978c925be8806921925cf16aca9) (const [Telemetry](classmavsdk_1_1_telemetry.md) &)=delete | Equality operator (object is not copyable).
-
-## Static Public Member Functions
-
-
-Type | Name | Description
----: | --- | ---
-std::string | [flight_mode_str](#classmavsdk_1_1_telemetry_1a25933c37dd05e5c3b7b4e9d52507cca7) ([FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) flight_mode) | Get a human readable English string for a flight mode.
-std::string | [landed_state_str](#classmavsdk_1_1_telemetry_1a9972e59dc788cc9a45725ad7b733362f) ([LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) landed_state) | Get a human readable English string for a landed state.
-const char * | [result_str](#classmavsdk_1_1_telemetry_1a20bff42d7bb42c002ef7217cf98990e8) ([Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) result) | Get human-readable English string for [Telemetry::Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75).
 
 
 ## Constructor & Destructor Documentation
@@ -240,332 +243,294 @@ Copy constructor (object is not copyable).
 ## Member Typdef Documentation
 
 
-### typedef result_callback_t {#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7}
+### typedef ResultCallback {#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b}
 
 ```cpp
-typedef std::function<void(Result)> mavsdk::Telemetry::result_callback_t
+using mavsdk::Telemetry::ResultCallback =  std::function<void(Result)>
 ```
 
 
-Callback type for telemetry requests.
+Callback type for asynchronous [Telemetry](classmavsdk_1_1_telemetry.md) calls.
 
 
-### typedef position_velocity_ned_callback_t {#classmavsdk_1_1_telemetry_1adc89dbb35eb82768c59656519a69d6ba}
+### typedef PositionCallback {#classmavsdk_1_1_telemetry_1a978b371d636226e198995462afa63552}
 
 ```cpp
-typedef std::function<void(PositionVelocityNED)> mavsdk::Telemetry::position_velocity_ned_callback_t
+using mavsdk::Telemetry::PositionCallback =  std::function<void(Position)>
 ```
 
 
-Callback type for kinematic (position and velocity) updates.
+Callback type for subscribe_position.
 
 
-### typedef position_callback_t {#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f}
+### typedef HomeCallback {#classmavsdk_1_1_telemetry_1aaac029969c37a001d43e2788a6abf634}
 
 ```cpp
-typedef std::function<void(Position)> mavsdk::Telemetry::position_callback_t
+using mavsdk::Telemetry::HomeCallback =  std::function<void(Position)>
 ```
 
 
-Callback type for position updates.
+Callback type for subscribe_home.
 
 
-### typedef in_air_callback_t {#classmavsdk_1_1_telemetry_1a5c89acce93f9c8b4379ed0dd002ee68c}
+### typedef InAirCallback {#classmavsdk_1_1_telemetry_1af96cca452305dd8f51b42d4663f15a26}
 
 ```cpp
-typedef std::function<void(bool in_air)> mavsdk::Telemetry::in_air_callback_t
+using mavsdk::Telemetry::InAirCallback =  std::function<void(bool)>
 ```
 
 
-Callback type for in-air updates.
+Callback type for subscribe_in_air.
 
 
-**Parameters**
-
-* **in_air** - true if in-air (flying) and not on-ground (landed).
-
-### typedef status_text_callback_t {#classmavsdk_1_1_telemetry_1ab6bfd92d95e534b04ed98f09bf3a1e7a}
+### typedef LandedStateCallback {#classmavsdk_1_1_telemetry_1a0cd8ef17abdd7c3d6a9ee761ccc6ae5e}
 
 ```cpp
-typedef std::function<void(StatusText status_text)> mavsdk::Telemetry::status_text_callback_t
+using mavsdk::Telemetry::LandedStateCallback =  std::function<void(LandedState)>
 ```
 
 
-Callback for mavlink status text updates.
+Callback type for subscribe_landed_state.
 
 
-**Parameters**
-
-* **status** - text with message type and text.
-
-### typedef armed_callback_t {#classmavsdk_1_1_telemetry_1a795e5848a43b29f5009d91e6c87b37d0}
+### typedef ArmedCallback {#classmavsdk_1_1_telemetry_1a9d23a4092d94e50694390e9f41b8c419}
 
 ```cpp
-typedef std::function<void(bool armed)> mavsdk::Telemetry::armed_callback_t
+using mavsdk::Telemetry::ArmedCallback =  std::function<void(bool)>
 ```
 
 
-Callback type for armed updates (asynchronous).
+Callback type for subscribe_armed.
 
 
-**Parameters**
-
-* **armed** - true if armed (motors spinning).
-
-### typedef attitude_quaternion_callback_t {#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c}
+### typedef AttitudeQuaternionCallback {#classmavsdk_1_1_telemetry_1ad16e61245511a99e930d6fdcbd761a30}
 
 ```cpp
-typedef std::function<void(Quaternion quaternion)> mavsdk::Telemetry::attitude_quaternion_callback_t
+using mavsdk::Telemetry::AttitudeQuaternionCallback =  std::function<void(Quaternion)>
 ```
 
 
-Callback type for attitude updates in quaternion.
+Callback type for subscribe_attitude_quaternion.
 
 
-**Parameters**
-
-* **quaternion** - Attitude quaternion.
-
-### typedef attitude_euler_angle_callback_t {#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c}
+### typedef AttitudeEulerCallback {#classmavsdk_1_1_telemetry_1a321c7607922369926fbd5f2821986cba}
 
 ```cpp
-typedef std::function<void(EulerAngle euler_angle)> mavsdk::Telemetry::attitude_euler_angle_callback_t
+using mavsdk::Telemetry::AttitudeEulerCallback =  std::function<void(EulerAngle)>
 ```
 
 
-Callback type for attitude updates in Euler angles.
+Callback type for subscribe_attitude_euler.
 
 
-**Parameters**
-
-* **euler_angle** - Attitude Euler angle.
-
-### typedef attitude_angular_velocity_body_callback_t {#classmavsdk_1_1_telemetry_1a8253671d4203e542095c365617b98678}
+### typedef AttitudeAngularVelocityBodyCallback {#classmavsdk_1_1_telemetry_1a35ff8def3048faeab7f732153d51085f}
 
 ```cpp
-typedef std::function<void(AngularVelocityBody angular_velocity_body)> mavsdk::Telemetry::attitude_angular_velocity_body_callback_t
+using mavsdk::Telemetry::AttitudeAngularVelocityBodyCallback =  std::function<void(AngularVelocityBody)>
 ```
 
 
-Callback type for angular velocity updates in quaternion.
+Callback type for subscribe_attitude_angular_velocity_body.
 
 
-**Parameters**
-
-* **angular_velocity_body** - Angular velocity.
-
-### typedef fixedwing_metrics_callback_t {#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378}
+### typedef CameraAttitudeQuaternionCallback {#classmavsdk_1_1_telemetry_1aa83dafa14e9b5179573a574f6fbdd973}
 
 ```cpp
-typedef std::function<void(FixedwingMetrics fixedwing_metrics)> mavsdk::Telemetry::fixedwing_metrics_callback_t
+using mavsdk::Telemetry::CameraAttitudeQuaternionCallback =  std::function<void(Quaternion)>
 ```
 
 
-Callback type for fixedwing_metrics updates.
+Callback type for subscribe_camera_attitude_quaternion.
 
 
-**Parameters**
-
-* **fixedwing_metrics** - Fixed wing metrics.
-
-### typedef ground_truth_callback_t {#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7}
+### typedef CameraAttitudeEulerCallback {#classmavsdk_1_1_telemetry_1aa29f9bb0767ba8c384bfe1df69f2fdd9}
 
 ```cpp
-typedef std::function<void(GroundTruth ground_truth)> mavsdk::Telemetry::ground_truth_callback_t
+using mavsdk::Telemetry::CameraAttitudeEulerCallback =  std::function<void(EulerAngle)>
 ```
 
 
-Callback type for ground truth updates.
+Callback type for subscribe_camera_attitude_euler.
 
 
-**Parameters**
-
-* **ground_truth** - Ground truth.
-
-### typedef ground_speed_ned_callback_t {#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23}
+### typedef GroundSpeedNedCallback {#classmavsdk_1_1_telemetry_1ab5cb342044fbd6b4b4130969252a9c48}
 
 ```cpp
-typedef std::function<void(GroundSpeedNED ground_speed_ned)> mavsdk::Telemetry::ground_speed_ned_callback_t
+using mavsdk::Telemetry::GroundSpeedNedCallback =  std::function<void(SpeedNed)>
 ```
 
 
-Callback type for ground speed (NED) updates.
+Callback type for subscribe_ground_speed_ned.
 
 
-**Parameters**
-
-* **ground_speed_ned** - Ground speed (NED).
-
-### typedef imu_reading_ned_callback_t {#classmavsdk_1_1_telemetry_1a40fd7ddb9eca5e36a7a4e8084dcbf75a}
+### typedef GpsInfoCallback {#classmavsdk_1_1_telemetry_1ad8fa90886b2283eace09b4b46708048b}
 
 ```cpp
-typedef std::function<void(IMUReadingNED imu_reading_ned)> mavsdk::Telemetry::imu_reading_ned_callback_t
+using mavsdk::Telemetry::GpsInfoCallback =  std::function<void(GpsInfo)>
 ```
 
 
-Callback type for IMU (NED) updates.
+Callback type for subscribe_gps_info.
 
 
-**Parameters**
-
-* **imu_reading_ned** - IMU reading (NED).
-
-### typedef gps_info_callback_t {#classmavsdk_1_1_telemetry_1af34942b21fde18d723b300ebe6c40421}
+### typedef BatteryCallback {#classmavsdk_1_1_telemetry_1af4b121c576ef2ae567b1d571b12dff9d}
 
 ```cpp
-typedef std::function<void(GPSInfo gps_info)> mavsdk::Telemetry::gps_info_callback_t
+using mavsdk::Telemetry::BatteryCallback =  std::function<void(Battery)>
 ```
 
 
-Callback type for GPS information updates.
+Callback type for subscribe_battery.
 
 
-**Parameters**
-
-* **gps_info** - GPS information.
-
-### typedef battery_callback_t {#classmavsdk_1_1_telemetry_1ab7582939b706b1eea718c94433a1e5de}
+### typedef FlightModeCallback {#classmavsdk_1_1_telemetry_1a2d7318d0823771b7a586c40199bdb482}
 
 ```cpp
-typedef std::function<void(Battery battery)> mavsdk::Telemetry::battery_callback_t
+using mavsdk::Telemetry::FlightModeCallback =  std::function<void(FlightMode)>
 ```
 
 
-Callback type for battery status updates.
+Callback type for subscribe_flight_mode.
 
 
-**Parameters**
-
-* **battery** - [Battery](structmavsdk_1_1_telemetry_1_1_battery.md) status.
-
-### typedef flight_mode_callback_t {#classmavsdk_1_1_telemetry_1ad8cfe203cf88b457ed3593eb82d3ff77}
+### typedef HealthCallback {#classmavsdk_1_1_telemetry_1a7a120dd053091c644e0e2e47fdcbeb75}
 
 ```cpp
-typedef std::function<void(FlightMode flight_mode)> mavsdk::Telemetry::flight_mode_callback_t
+using mavsdk::Telemetry::HealthCallback =  std::function<void(Health)>
 ```
 
 
-Callback type for flight mode updates.
+Callback type for subscribe_health.
 
 
-**Parameters**
-
-* **flight_mode** - Flight mode.
-
-### typedef health_callback_t {#classmavsdk_1_1_telemetry_1abadf7c5be3e650809402115c1810a8d7}
+### typedef RcStatusCallback {#classmavsdk_1_1_telemetry_1aafcd706b805898301b574ffa2b909b85}
 
 ```cpp
-typedef std::function<void(Health health)> mavsdk::Telemetry::health_callback_t
+using mavsdk::Telemetry::RcStatusCallback =  std::function<void(RcStatus)>
 ```
 
 
-Callback type for health status updates.
+Callback type for subscribe_rc_status.
 
 
-**Parameters**
-
-* **health** - health flags.
-
-### typedef health_all_ok_callback_t {#classmavsdk_1_1_telemetry_1a8fe09456f509c93e2110fb45996bd927}
+### typedef StatusTextCallback {#classmavsdk_1_1_telemetry_1a46e51ff90fe779990ed09a593c1c7898}
 
 ```cpp
-typedef std::function<void(bool health_all_ok)> mavsdk::Telemetry::health_all_ok_callback_t
+using mavsdk::Telemetry::StatusTextCallback =  std::function<void(StatusText)>
 ```
 
 
-Callback type for health status updates.
+Callback type for subscribe_status_text.
 
 
-**Parameters**
-
-* **health_all_ok** - If all health flags are ok.
-
-### typedef landed_state_callback_t {#classmavsdk_1_1_telemetry_1aaf77ff66f00bd82c911a7a76d15de41c}
+### typedef ActuatorControlTargetCallback {#classmavsdk_1_1_telemetry_1ada6af3de1b60b93a709345c3a8ede551}
 
 ```cpp
-typedef std::function<void(LandedState landed_state)> mavsdk::Telemetry::landed_state_callback_t
+using mavsdk::Telemetry::ActuatorControlTargetCallback =  std::function<void(ActuatorControlTarget)>
 ```
 
 
-Callback type for landed state updates.
+Callback type for subscribe_actuator_control_target.
 
 
-**Parameters**
-
-* **LandedState** - enumeration.
-
-### typedef rc_status_callback_t {#classmavsdk_1_1_telemetry_1ade4c432133b83aa9612528117a2cd6d6}
+### typedef ActuatorOutputStatusCallback {#classmavsdk_1_1_telemetry_1a2b1e800ce1ba6fb776351416340ac8b9}
 
 ```cpp
-typedef std::function<void(RCStatus rc_status)> mavsdk::Telemetry::rc_status_callback_t
+using mavsdk::Telemetry::ActuatorOutputStatusCallback =  std::function<void(ActuatorOutputStatus)>
 ```
 
 
-Callback type for RC status updates.
+Callback type for subscribe_actuator_output_status.
 
 
-**Parameters**
-
-* **rc_status** - RC status.
-
-### typedef unix_epoch_time_callback_t {#classmavsdk_1_1_telemetry_1a1738efef61d7b3be00f91a8ccc46bcf0}
+### typedef OdometryCallback {#classmavsdk_1_1_telemetry_1a8cd23f7364f8f5cb22869155da67c65d}
 
 ```cpp
-typedef std::function<void(uint64_t time_us)> mavsdk::Telemetry::unix_epoch_time_callback_t
+using mavsdk::Telemetry::OdometryCallback =  std::function<void(Odometry)>
 ```
 
 
-Callback type for Unix Epoch Time updates.
+Callback type for subscribe_odometry.
 
 
-**Parameters**
-
-* **uint64_t** - Epoch time [us].
-
-### typedef actuator_control_target_callback_t {#classmavsdk_1_1_telemetry_1a0e756d50d05d3d42314e160026c8ca5b}
+### typedef PositionVelocityNedCallback {#classmavsdk_1_1_telemetry_1a5a38deb284622ff6926703e1e5c96a74}
 
 ```cpp
-typedef std::function<void(ActuatorControlTarget actuator_control_target)> mavsdk::Telemetry::actuator_control_target_callback_t
+using mavsdk::Telemetry::PositionVelocityNedCallback =  std::function<void(PositionVelocityNed)>
 ```
 
 
-Callback type for actuator control target updates (asynchronous).
+Callback type for subscribe_position_velocity_ned.
 
 
-**Parameters**
-
-* **actuator_control_target** - Actuator control target.
-
-### typedef actuator_output_status_callback_t {#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1}
+### typedef GroundTruthCallback {#classmavsdk_1_1_telemetry_1a222aae53852a2c535f6d69ed57221f13}
 
 ```cpp
-typedef std::function<void(ActuatorOutputStatus actuator_output_status)> mavsdk::Telemetry::actuator_output_status_callback_t
+using mavsdk::Telemetry::GroundTruthCallback =  std::function<void(GroundTruth)>
 ```
 
 
-Callback type for actuator output status target updates (asynchronous).
+Callback type for subscribe_ground_truth.
 
 
-**Parameters**
-
-* **callback** - Function to call with updates.
-
-### typedef odometry_callback_t {#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2}
+### typedef FixedwingMetricsCallback {#classmavsdk_1_1_telemetry_1a5b42dbef0ef6d8c1768d503d0437f1e3}
 
 ```cpp
-typedef std::function<void(Odometry odometry)> mavsdk::Telemetry::odometry_callback_t
+using mavsdk::Telemetry::FixedwingMetricsCallback =  std::function<void(FixedwingMetrics)>
 ```
 
 
-Callback type for odometry updates (asynchronous).
+Callback type for subscribe_fixedwing_metrics.
 
 
-**Parameters**
+### typedef ImuCallback {#classmavsdk_1_1_telemetry_1a4fbc2ad274fd5a8af077004d2d7bd984}
 
-* **callback** - Function to call with updates.
+```cpp
+using mavsdk::Telemetry::ImuCallback =  std::function<void(Imu)>
+```
+
+
+Callback type for subscribe_imu.
+
+
+### typedef HealthAllOkCallback {#classmavsdk_1_1_telemetry_1a71cdcadfaa988dc14029e0b9fdbe742d}
+
+```cpp
+using mavsdk::Telemetry::HealthAllOkCallback =  std::function<void(bool)>
+```
+
+
+Callback type for subscribe_health_all_ok.
+
+
+### typedef UnixEpochTimeCallback {#classmavsdk_1_1_telemetry_1a321c7d809ae8f56bb8a361d5e5ce6391}
+
+```cpp
+using mavsdk::Telemetry::UnixEpochTimeCallback =  std::function<void(uint64_t)>
+```
+
+
+Callback type for subscribe_unix_epoch_time.
+
 
 ## Member Enumeration Documentation
 
+
+### enum FixType {#classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639de}
+
+
+GPS fix type.
+
+
+Value | Description
+--- | ---
+<span id="classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639deaeb42b0f27d1fc2ca9bd645212a14c874"></span> `NoGps` | No GPS connected. 
+<span id="classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639dea7458f6cf09e53df9495d3ee0d11868c4"></span> `NoFix` | No position information, GPS is connected. 
+<span id="classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639dead6800eded02a7eaceb638929dbd9ea55"></span> `Fix2D` | 2D position. 
+<span id="classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639dead791aa90d108c9b0c76ec28cd4dfbb0f"></span> `Fix3D` | 3D position. 
+<span id="classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639dea8372860807abaec59412bd6376f51b5f"></span> `FixDgps` | DGPS/SBAS aided 3D position. 
+<span id="classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639dea1eacb557d24c49af2ec6832c5fc32413"></span> `RtkFloat` | RTK float, 3D position. 
+<span id="classmavsdk_1_1_telemetry_1a548213e1b26615d7b6d1b0b3934639dea9effa0afed44833d540fec2c57e67426"></span> `RtkFixed` | RTK Fixed, 3D position. 
 
 ### enum FlightMode {#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe}
 
@@ -576,617 +541,79 @@ For more information about flight modes, check out [https://docs.px4.io/master/e
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Mode not known. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea2baa69eafc7204f3bd8648eba580c489"></span> `READY` | Armed and ready to take off. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea8fabc74a4ed0781d663336cbf8c9c53d"></span> `TAKEOFF` | Taking off. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea0c6d9dfb485b43c6fba87439f9f73ac4"></span> `HOLD` | Hold mode (hovering in place (or circling for fixed-wing vehicles). 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feaa46075d70b9612df685b11436d195196"></span> `MISSION` | [Mission](classmavsdk_1_1_mission.md) mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea0d4a147a2cf60f0761f239bf3ee2745e"></span> `RETURN_TO_LAUNCH` | Returning to launch position (then landing). 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea479a809c0b6eaaefd3b1df16f976df06"></span> `LAND` | Landing. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea6687898e86a83f245901f96d313930b1"></span> `OFFBOARD` | [Offboard](classmavsdk_1_1_offboard.md) mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feac4099cf323b2f571c3d4917db6b1a20d"></span> `FOLLOW_ME` | [FollowMe](classmavsdk_1_1_follow_me.md) mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feaa60a6a471c0681e5a49c4f5d00f6bc5a"></span> `MANUAL` | Manual mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fead5e23b5225efc25c190be41834cacbd2"></span> `ALTCTL` | Altitude mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feaf97e5cf4e6989bd5601994704d76548d"></span> `POSCTL` | [Position](structmavsdk_1_1_telemetry_1_1_position.md) mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feac3f676dd6770bc216184ca9a9922d218"></span> `ACRO` | Acro mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea409f918b099f0b3588c14af1e76a44e1"></span> `STABILIZED` | Stabilize mode. 
-<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feae9f2c5d95e79dc39219e37558c79a82e"></span> `RATTITUDE` | Rattitude mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Mode not known. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feae7d31fc0602fb2ede144d18cdffd816b"></span> `Ready` | Armed and ready to take off. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea56373a80447c41b9a29e500e62d6884e"></span> `Takeoff` | Taking off. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feabcd8db575b47c838e5d551e3973db4ac"></span> `Hold` | Holding (hovering in place (or circling for fixed-wing vehicles). 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea70d529695c253d17e992cb9265abc57f"></span> `Mission` | In mission. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea146115c3278581584dcbaac1a77a2588"></span> `ReturnToLaunch` | Returning to launch position (then landing). 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea512ef7c688a2c8572d5e16f44e17e869"></span> `Land` | Landing. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feabb085f1e0d3843dda2a4c70437ad1410"></span> `Offboard` | In 'offboard' mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea08bb3de7dafcf47f05b8c5a9dc0983c0"></span> `FollowMe` | In 'follow-me' mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feae1ba155a9f2e8c3be94020eef32a0301"></span> `Manual` | In 'Manual' mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feaa7a697581399b9be37a545416d4cd2d9"></span> `Altctl` | In 'Altitude Control' mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea46780e4f8c113481c868da4dd16fcd41"></span> `Posctl` | In '[Position](structmavsdk_1_1_telemetry_1_1_position.md) Control' mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feae10e0f017fee32a9bb2fa9fae53afd70"></span> `Acro` | In 'Acro' mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4feafda22026db89cdc5e88b262ad9424b41"></span> `Stabilized` | In 'Stabilize' mode. 
+<span id="classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fea1e0c225e976316373c8c08ddc7a154fa"></span> `Rattitude` | In 'Rattitude' mode. 
+
+### enum StatusTextType {#classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8}
+
+
+Status types.
+
+
+Value | Description
+--- | ---
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a4059b0251f66a18cb56f544728796875"></span> `Info` | Information or other. 
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a0eaadb4fcb48a0a0ed7bc9868be9fbaa"></span> `Warning` | Warning. 
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a278d01e5af56273bae1bb99a98b370cd"></span> `Critical` | Critical. 
 
 ### enum LandedState {#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046}
 
 
-LandedState. Enumeration of landed detector states.
+Landed State enumeration.
 
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` |  
-<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046a1f318f91e5ed96e34964105b41b19d1a"></span> `ON_GROUND` |  
-<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046af4a2ffa032f8450f09b7534c447a37b5"></span> `IN_AIR` |  
-<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046a9973294f9987420260891cd1dbfc2848"></span> `TAKING_OFF` |  
-<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046a7ab0a1cfd85cc3da16cd3e3ad7448524"></span> `LANDING` |  
+<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Landed state is unknown. 
+<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046a2b9beed57034f5727573d7ded76cf777"></span> `OnGround` | The vehicle is on the ground. 
+<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046aee4e669a07b061d70b9b79dfed9cb5e7"></span> `InAir` | The vehicle is in the air. 
+<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046a85916c5f3400cfa25d988f05b6736a94"></span> `TakingOff` | The vehicle is taking off. 
+<span id="classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046a41bd61e268fedccfb0d91dd571dd28b2"></span> `Landing` | The vehicle is landing. 
 
 ### enum Result {#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75}
 
 
-Results enum for telemetry requests.
+Possible results returned for telemetry requests.
 
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
-<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75afeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system connected. 
-<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
-<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a802706a9238e2928077f97736854bad4"></span> `BUSY` | [System](classmavsdk_1_1_system.md) busy. 
-<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command denied. 
-<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Request timeout. 
-<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
+<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
+<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Success: the telemetry command was accepted by the vehicle. 
+<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
+<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a094a6f6b0868122a9dd008cb91c083e4"></span> `ConnectionError` | Connection error. 
+<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75ad8a942ef2b04672adfafef0ad817a407"></span> `Busy` | Vehicle is busy. 
+<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a3398e12855176d55f43d53e04f472c8a"></span> `CommandDenied` | Command refused by vehicle. 
+<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75ac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Request timed out. 
 
 ## Member Function Documentation
 
 
-### set_rate_position_velocity_ned() {#classmavsdk_1_1_telemetry_1a7cb04951523d210ccd1d68911d58f23e}
+### subscribe_position() {#classmavsdk_1_1_telemetry_1a61bda57b3ca47000ea7e4758b2a33134}
 ```cpp
-Result mavsdk::Telemetry::set_rate_position_velocity_ned(double rate_hz)
+void mavsdk::Telemetry::subscribe_position(PositionCallback callback)
 ```
 
 
-Set rate of kinematic (position and velocity) updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-**See Also:**
-- [PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md)
-
-
-### set_rate_position() {#classmavsdk_1_1_telemetry_1a7bb2f0ad795108ea857cbd6b9f802ee2}
-```cpp
-Result mavsdk::Telemetry::set_rate_position(double rate_hz)
-```
-
-
-Set rate of position updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_home_position() {#classmavsdk_1_1_telemetry_1a3ea9fc72cfdd86136f59701c57c46f9b}
-```cpp
-Result mavsdk::Telemetry::set_rate_home_position(double rate_hz)
-```
-
-
-Set rate of home position updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_in_air() {#classmavsdk_1_1_telemetry_1ab2a3a7172e83982525353d6a5c6cb929}
-```cpp
-Result mavsdk::Telemetry::set_rate_in_air(double rate_hz)
-```
-
-
-Set rate of in-air status updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_attitude() {#classmavsdk_1_1_telemetry_1a948a58cb3756134dee7fd60191911493}
-```cpp
-Result mavsdk::Telemetry::set_rate_attitude(double rate_hz)
-```
-
-
-Set rate of attitude updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_camera_attitude() {#classmavsdk_1_1_telemetry_1a60caa6177503040d9926eb75249c12af}
-```cpp
-Result mavsdk::Telemetry::set_rate_camera_attitude(double rate_hz)
-```
-
-
-Set rate of camera attitude updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_ground_speed_ned() {#classmavsdk_1_1_telemetry_1a229bfcf87a09f98ede59522817f8911c}
-```cpp
-Result mavsdk::Telemetry::set_rate_ground_speed_ned(double rate_hz)
-```
-
-
-Set rate of ground speed (NED) updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_imu_reading_ned() {#classmavsdk_1_1_telemetry_1a33dc024551cb3720e2d376cb0c3de16e}
-```cpp
-Result mavsdk::Telemetry::set_rate_imu_reading_ned(double rate_hz)
-```
-
-
-Set rate of IMU reading (NED) updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_fixedwing_metrics() {#classmavsdk_1_1_telemetry_1a432cc35ec708d7b8564a3e2136d4c81c}
-```cpp
-Result mavsdk::Telemetry::set_rate_fixedwing_metrics(double rate_hz)
-```
-
-
-Set rate of VFR HUD updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_ground_truth() {#classmavsdk_1_1_telemetry_1a4363efd93942c48242939a079c1fd5b1}
-```cpp
-Result mavsdk::Telemetry::set_rate_ground_truth(double rate_hz)
-```
-
-
-Set rate of ground truth updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_gps_info() {#classmavsdk_1_1_telemetry_1aaf3270f4688f586c65daa29f712df04b}
-```cpp
-Result mavsdk::Telemetry::set_rate_gps_info(double rate_hz)
-```
-
-
-Set rate of GPS information updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_battery() {#classmavsdk_1_1_telemetry_1a58135427b4f862bc41db8888cc328d08}
-```cpp
-Result mavsdk::Telemetry::set_rate_battery(double rate_hz)
-```
-
-
-Set rate of battery status updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_rc_status() {#classmavsdk_1_1_telemetry_1a5ab00a099c7a7052433e652ed19466fd}
-```cpp
-Result mavsdk::Telemetry::set_rate_rc_status(double rate_hz)
-```
-
-
-Set rate of RC status updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_actuator_control_target() {#classmavsdk_1_1_telemetry_1ac20043a9f4159be71f34b418c440e321}
-```cpp
-Result mavsdk::Telemetry::set_rate_actuator_control_target(double rate_hz)
-```
-
-
-Set rate of actuator controls updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_actuator_output_status() {#classmavsdk_1_1_telemetry_1a33daa659d9d1a1a0654a120c4e24bc1f}
-```cpp
-Result mavsdk::Telemetry::set_rate_actuator_output_status(double rate_hz)
-```
-
-
-Set rate of actuator output status updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_odometry() {#classmavsdk_1_1_telemetry_1ab6d03cdb74a38aba42f0370d455b85d8}
-```cpp
-Result mavsdk::Telemetry::set_rate_odometry(double rate_hz)
-```
-
-
-Set rate of odometry updates (synchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
-
-### set_rate_position_velocity_ned_async() {#classmavsdk_1_1_telemetry_1a618da18fabb0c13f07f1eb0c3e1e3395}
-```cpp
-void mavsdk::Telemetry::set_rate_position_velocity_ned_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of kinematic (position and velocity) updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-**See Also:**
-- [PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md)
-
-
-### set_rate_position_async() {#classmavsdk_1_1_telemetry_1aa8d3e034d11fccb1533d1a782618f4a4}
-```cpp
-void mavsdk::Telemetry::set_rate_position_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of position updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_home_position_async() {#classmavsdk_1_1_telemetry_1a3b9a4de97101c11420b29f6ff010b164}
-```cpp
-void mavsdk::Telemetry::set_rate_home_position_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of home position updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_in_air_async() {#classmavsdk_1_1_telemetry_1aa11598e99766e395309d3899211191aa}
-```cpp
-void mavsdk::Telemetry::set_rate_in_air_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of in-air status updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_attitude_async() {#classmavsdk_1_1_telemetry_1ae16699eb5a558b663b5666b6788c483f}
-```cpp
-void mavsdk::Telemetry::set_rate_attitude_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of attitude updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_camera_attitude_async() {#classmavsdk_1_1_telemetry_1a7f73b3bb2119a426b01af4370a90c9b9}
-```cpp
-void mavsdk::Telemetry::set_rate_camera_attitude_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of camera attitude updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_ground_speed_ned_async() {#classmavsdk_1_1_telemetry_1a813e26ab74c7200e09e8ad8c8ecb597a}
-```cpp
-void mavsdk::Telemetry::set_rate_ground_speed_ned_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of ground speed (NED) updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_imu_reading_ned_async() {#classmavsdk_1_1_telemetry_1a1ae11919b444e79bdafaa493dab39936}
-```cpp
-void mavsdk::Telemetry::set_rate_imu_reading_ned_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of IMU reading (NED) updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_fixedwing_metrics_async() {#classmavsdk_1_1_telemetry_1a8423249356038a0131bbd3efd4971808}
-```cpp
-void mavsdk::Telemetry::set_rate_fixedwing_metrics_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of VFR HUD updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_ground_truth_async() {#classmavsdk_1_1_telemetry_1ad100d69c9ed882e2e4924c4bda4151f1}
-```cpp
-void mavsdk::Telemetry::set_rate_ground_truth_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of ground truth updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_gps_info_async() {#classmavsdk_1_1_telemetry_1a09d9232f3fc83de09e1b97fbde9edd27}
-```cpp
-void mavsdk::Telemetry::set_rate_gps_info_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of GPS information updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_battery_async() {#classmavsdk_1_1_telemetry_1aa0c57683779b276c196543d1b11b4794}
-```cpp
-void mavsdk::Telemetry::set_rate_battery_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of battery status updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_rc_status_async() {#classmavsdk_1_1_telemetry_1ab293eac4daab1b8628e3adce311312ec}
-```cpp
-void mavsdk::Telemetry::set_rate_rc_status_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of RC status updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_actuator_control_target_async() {#classmavsdk_1_1_telemetry_1a5b05b2c7375376d4f02f17f9dbb318d2}
-```cpp
-void mavsdk::Telemetry::set_rate_actuator_control_target_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of actuator control target updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_actuator_output_status_async() {#classmavsdk_1_1_telemetry_1ad02073ccb7735a51992a2499b605ebe4}
-```cpp
-void mavsdk::Telemetry::set_rate_actuator_output_status_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of actuator control target updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_rate_odometry_async() {#classmavsdk_1_1_telemetry_1ab0a70e00299c959a875d0a9ae89391fa}
-```cpp
-void mavsdk::Telemetry::set_rate_odometry_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of odometry updates (asynchronous).
-
-> **Note** To stop sending it completely, use a rate_hz of -1, for default rate use 0.
-
-**Parameters**
-
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### set_unix_epoch_time_async() {#classmavsdk_1_1_telemetry_1aecaac11aac355ed79d47b7fcf786fb2c}
-```cpp
-void mavsdk::Telemetry::set_unix_epoch_time_async(double rate_hz, result_callback_t callback)
-```
-
-
-Set rate of Unix Epoch Time update (asynchronous).
+Subscribe to 'position' updates.
 
 
 **Parameters**
 
-* double **rate_hz** - Rate in Hz.
-* [result_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1e9e3db79bb18a5e144c3aad4dfe57e7) **callback** - Callback to receive request result.
-
-### position_velocity_ned() {#classmavsdk_1_1_telemetry_1abb053c00761eb67b07816d9e01427f37}
-```cpp
-PositionVelocityNED mavsdk::Telemetry::position_velocity_ned() const
-```
-
-
-Get the current kinematic (position and velocity) in NED frame (synchronous).
-
-
-**Returns**
-
-&emsp;[PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md) - [PositionVelocityNED](structmavsdk_1_1_telemetry_1_1_position_velocity_n_e_d.md).
+* [PositionCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a978b371d636226e198995462afa63552) **callback** - 
 
 ### position() {#classmavsdk_1_1_telemetry_1a2299da1bc63313c429f07ab0fdbe5335}
 ```cpp
@@ -1194,38 +621,51 @@ Position mavsdk::Telemetry::position() const
 ```
 
 
-Get the current position (synchronous).
+Poll for '[Position](structmavsdk_1_1_telemetry_1_1_position.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[Position](structmavsdk_1_1_telemetry_1_1_position.md) - [Position](structmavsdk_1_1_telemetry_1_1_position.md).
+&emsp;[Position](structmavsdk_1_1_telemetry_1_1_position.md) - One [Position](structmavsdk_1_1_telemetry_1_1_position.md) update.
 
-### home_position() {#classmavsdk_1_1_telemetry_1ad4e079b3067a79da8b3b2f3067dc4178}
+### subscribe_home() {#classmavsdk_1_1_telemetry_1a67585989a12de2f099dbc4eb4c41686a}
 ```cpp
-Position mavsdk::Telemetry::home_position() const
+void mavsdk::Telemetry::subscribe_home(HomeCallback callback)
 ```
 
 
-Get the home position (synchronous).
+Subscribe to 'home position' updates.
 
 
-**Returns**
+**Parameters**
 
-&emsp;[Position](structmavsdk_1_1_telemetry_1_1_position.md) - Home position.
+* [HomeCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aaac029969c37a001d43e2788a6abf634) **callback** - 
 
-### status_text() {#classmavsdk_1_1_telemetry_1a2f31c0668ed1ac1bfdfa4b2e9a2023a9}
+### home() {#classmavsdk_1_1_telemetry_1ad5c239b93aa1923edd1b97494a3fbfe7}
 ```cpp
-StatusText mavsdk::Telemetry::status_text() const
+Position mavsdk::Telemetry::home() const
 ```
 
 
-Get status text (synchronous).
+Poll for '[Position](structmavsdk_1_1_telemetry_1_1_position.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) - Status text.
+&emsp;[Position](structmavsdk_1_1_telemetry_1_1_position.md) - One [Position](structmavsdk_1_1_telemetry_1_1_position.md) update.
+
+### subscribe_in_air() {#classmavsdk_1_1_telemetry_1a5ba005827b1ef988ba3f6e81f7469d40}
+```cpp
+void mavsdk::Telemetry::subscribe_in_air(InAirCallback callback)
+```
+
+
+Subscribe to in-air updates.
+
+
+**Parameters**
+
+* [InAirCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af96cca452305dd8f51b42d4663f15a26) **callback** - 
 
 ### in_air() {#classmavsdk_1_1_telemetry_1a909738ff2fbe104c6eb4524cc9bf2dd5}
 ```cpp
@@ -1233,12 +673,25 @@ bool mavsdk::Telemetry::in_air() const
 ```
 
 
-Get the in-air status (synchronous).
+Poll for 'bool' (blocking).
 
 
 **Returns**
 
-&emsp;bool - true if in-air (flying) and not on-ground (landed).
+&emsp;bool - One bool update.
+
+### subscribe_landed_state() {#classmavsdk_1_1_telemetry_1a8eb2d40764b3940e9054c301a6ef5f50}
+```cpp
+void mavsdk::Telemetry::subscribe_landed_state(LandedStateCallback callback)
+```
+
+
+Subscribe to landed state updates.
+
+
+**Parameters**
+
+* [LandedStateCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0cd8ef17abdd7c3d6a9ee761ccc6ae5e) **callback** - 
 
 ### landed_state() {#classmavsdk_1_1_telemetry_1af7d7c385852db38d6320516508ce7465}
 ```cpp
@@ -1246,12 +699,25 @@ LandedState mavsdk::Telemetry::landed_state() const
 ```
 
 
-Get the landed state status (synchronous).
+Poll for 'LandedState' (blocking).
 
 
 **Returns**
 
-&emsp;[LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) - Landed state.
+&emsp;[LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) - One LandedState update.
+
+### subscribe_armed() {#classmavsdk_1_1_telemetry_1a6bada4a3538eb1142fca024bc89ec2d3}
+```cpp
+void mavsdk::Telemetry::subscribe_armed(ArmedCallback callback)
+```
+
+
+Subscribe to armed updates.
+
+
+**Parameters**
+
+* [ArmedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a9d23a4092d94e50694390e9f41b8c419) **callback** - 
 
 ### armed() {#classmavsdk_1_1_telemetry_1a6620142adc47f069262e5bf69dbb3876}
 ```cpp
@@ -1259,12 +725,25 @@ bool mavsdk::Telemetry::armed() const
 ```
 
 
-Get the arming status (synchronous).
+Poll for 'bool' (blocking).
 
 
 **Returns**
 
-&emsp;bool - true if armed (propellers spinning).
+&emsp;bool - One bool update.
+
+### subscribe_attitude_quaternion() {#classmavsdk_1_1_telemetry_1afa6c079d48bc0c0a3287ac095ec290b9}
+```cpp
+void mavsdk::Telemetry::subscribe_attitude_quaternion(AttitudeQuaternionCallback callback)
+```
+
+
+Subscribe to 'attitude' updates (quaternion).
+
+
+**Parameters**
+
+* [AttitudeQuaternionCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad16e61245511a99e930d6fdcbd761a30) **callback** - 
 
 ### attitude_quaternion() {#classmavsdk_1_1_telemetry_1aae76890957b33727be72a39807448c88}
 ```cpp
@@ -1272,25 +751,51 @@ Quaternion mavsdk::Telemetry::attitude_quaternion() const
 ```
 
 
-Get the current attitude in quaternions (synchronous).
+Poll for '[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) - Attitude as quaternion.
+&emsp;[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) - One [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) update.
 
-### attitude_euler_angle() {#classmavsdk_1_1_telemetry_1af57a6e448b22f1126e34c3031d7f4af9}
+### subscribe_attitude_euler() {#classmavsdk_1_1_telemetry_1ae380f3c65fb5f4d3961101b71ebbd1aa}
 ```cpp
-EulerAngle mavsdk::Telemetry::attitude_euler_angle() const
+void mavsdk::Telemetry::subscribe_attitude_euler(AttitudeEulerCallback callback)
 ```
 
 
-Get the current attitude in Euler angles (synchronous).
+Subscribe to 'attitude' updates (Euler).
+
+
+**Parameters**
+
+* [AttitudeEulerCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a321c7607922369926fbd5f2821986cba) **callback** - 
+
+### attitude_euler() {#classmavsdk_1_1_telemetry_1a03035bb72324e843372eb69cf7899ce5}
+```cpp
+EulerAngle mavsdk::Telemetry::attitude_euler() const
+```
+
+
+Poll for '[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) - Attitude as Euler angle.
+&emsp;[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) - One [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) update.
+
+### subscribe_attitude_angular_velocity_body() {#classmavsdk_1_1_telemetry_1a84be21f00d23911ee77cbd7dc6512420}
+```cpp
+void mavsdk::Telemetry::subscribe_attitude_angular_velocity_body(AttitudeAngularVelocityBodyCallback callback)
+```
+
+
+Subscribe to 'attitude' updates (angular velocity)
+
+
+**Parameters**
+
+* [AttitudeAngularVelocityBodyCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a35ff8def3048faeab7f732153d51085f) **callback** - 
 
 ### attitude_angular_velocity_body() {#classmavsdk_1_1_telemetry_1a8d9e2489b79c2cdbabaef8b6bb8e2952}
 ```cpp
@@ -1298,38 +803,25 @@ AngularVelocityBody mavsdk::Telemetry::attitude_angular_velocity_body() const
 ```
 
 
-Get the current angular speed in rad/s (synchronous).
+Poll for '[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) - Angular speed.
+&emsp;[AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) - One [AngularVelocityBody](structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md) update.
 
-### fixedwing_metrics() {#classmavsdk_1_1_telemetry_1a2ab8d2a8d017d46e77d49c4f899c7cbf}
+### subscribe_camera_attitude_quaternion() {#classmavsdk_1_1_telemetry_1a6845e2752b535e0ee539f276cfca45d9}
 ```cpp
-FixedwingMetrics mavsdk::Telemetry::fixedwing_metrics() const
+void mavsdk::Telemetry::subscribe_camera_attitude_quaternion(CameraAttitudeQuaternionCallback callback)
 ```
 
 
-Get the current fixedwing_metrics (synchronous).
+Subscribe to 'camera attitude' updates (quaternion).
 
 
-**Returns**
+**Parameters**
 
-&emsp;[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) - Fixed wing metrics.
-
-### ground_truth() {#classmavsdk_1_1_telemetry_1a1b5f387edc39e33b86954f2048133f71}
-```cpp
-GroundTruth mavsdk::Telemetry::ground_truth() const
-```
-
-
-Get the current ground truth (synchronous).
-
-
-**Returns**
-
-&emsp;[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) - Ground truth.
+* [CameraAttitudeQuaternionCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa83dafa14e9b5179573a574f6fbdd973) **callback** - 
 
 ### camera_attitude_quaternion() {#classmavsdk_1_1_telemetry_1a3c07447351d3b6195d5e2526e7b128b3}
 ```cpp
@@ -1337,66 +829,103 @@ Quaternion mavsdk::Telemetry::camera_attitude_quaternion() const
 ```
 
 
-Get the camera's attitude in quaternions (synchronous).
+Poll for '[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md)' (blocking).
 
-Note that the yaw component of attitude is relative to North (absolute frame).
 
 **Returns**
 
-&emsp;[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) - [Camera](classmavsdk_1_1_camera.md)'s attitude as quaternion.
+&emsp;[Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) - One [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) update.
 
-### camera_attitude_euler_angle() {#classmavsdk_1_1_telemetry_1a4e17866a65077bb3db474e6437848fce}
+### subscribe_camera_attitude_euler() {#classmavsdk_1_1_telemetry_1afaa61016a5319ebea73dc5b1e4cde89c}
 ```cpp
-EulerAngle mavsdk::Telemetry::camera_attitude_euler_angle() const
+void mavsdk::Telemetry::subscribe_camera_attitude_euler(CameraAttitudeEulerCallback callback)
 ```
 
 
-Get the camera's attitude in Euler angles (synchronous).
+Subscribe to 'camera attitude' updates (Euler).
 
-Note that the yaw component of attitude is relative to North (absolute frame).
 
-**Returns**
+**Parameters**
 
-&emsp;[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) - [Camera](classmavsdk_1_1_camera.md)'s attitude as Euler angle.
+* [CameraAttitudeEulerCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa29f9bb0767ba8c384bfe1df69f2fdd9) **callback** - 
 
-### ground_speed_ned() {#classmavsdk_1_1_telemetry_1afd68d9d29f14023ffdcb7d86a4b47f04}
+### camera_attitude_euler() {#classmavsdk_1_1_telemetry_1a635643d955f0cd9a805914501f819796}
 ```cpp
-GroundSpeedNED mavsdk::Telemetry::ground_speed_ned() const
+EulerAngle mavsdk::Telemetry::camera_attitude_euler() const
 ```
 
 
-Get the current ground speed (NED) (synchronous).
+Poll for '[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[GroundSpeedNED](structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) - Ground speed in NED.
+&emsp;[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) - One [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) update.
 
-### imu_reading_ned() {#classmavsdk_1_1_telemetry_1a8a3742f325e3ae877cae9ff05bbe6f1c}
+### subscribe_ground_speed_ned() {#classmavsdk_1_1_telemetry_1ac480db5041463f346353e05bf6105e59}
 ```cpp
-IMUReadingNED mavsdk::Telemetry::imu_reading_ned() const
+void mavsdk::Telemetry::subscribe_ground_speed_ned(GroundSpeedNedCallback callback)
 ```
 
 
-Get the current IMU reading (NED) (synchronous).
+Subscribe to 'ground speed' updates (NED).
 
 
-**Returns**
+**Parameters**
 
-&emsp;[IMUReadingNED](structmavsdk_1_1_telemetry_1_1_i_m_u_reading_n_e_d.md) - IMU reading in NED.
+* [GroundSpeedNedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab5cb342044fbd6b4b4130969252a9c48) **callback** - 
 
-### gps_info() {#classmavsdk_1_1_telemetry_1a76a4e21380d03dd2112fdc0e9c3c44b7}
+### ground_speed_ned() {#classmavsdk_1_1_telemetry_1a6ebb4a10e9e5299cafb36eb2bd02401a}
 ```cpp
-GPSInfo mavsdk::Telemetry::gps_info() const
+SpeedNed mavsdk::Telemetry::ground_speed_ned() const
 ```
 
 
-Get the current GPS information (synchronous).
+Poll for '[SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[GPSInfo](structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) - GPS information.
+&emsp;[SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md) - One [SpeedNed](structmavsdk_1_1_telemetry_1_1_speed_ned.md) update.
+
+### subscribe_gps_info() {#classmavsdk_1_1_telemetry_1aa078035ce00505b726dcac4d47796cee}
+```cpp
+void mavsdk::Telemetry::subscribe_gps_info(GpsInfoCallback callback)
+```
+
+
+Subscribe to 'GPS info' updates.
+
+
+**Parameters**
+
+* [GpsInfoCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad8fa90886b2283eace09b4b46708048b) **callback** - 
+
+### gps_info() {#classmavsdk_1_1_telemetry_1a983dabc1aed50745b326072662c419e8}
+```cpp
+GpsInfo mavsdk::Telemetry::gps_info() const
+```
+
+
+Poll for '[GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md)' (blocking).
+
+
+**Returns**
+
+&emsp;[GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md) - One [GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md) update.
+
+### subscribe_battery() {#classmavsdk_1_1_telemetry_1a9a8c5288273b4a6f1e43377a70f47a0e}
+```cpp
+void mavsdk::Telemetry::subscribe_battery(BatteryCallback callback)
+```
+
+
+Subscribe to 'battery' updates.
+
+
+**Parameters**
+
+* [BatteryCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af4b121c576ef2ae567b1d571b12dff9d) **callback** - 
 
 ### battery() {#classmavsdk_1_1_telemetry_1afb3bad3c7a36c14ae97492df3f6bbd54}
 ```cpp
@@ -1404,12 +933,25 @@ Battery mavsdk::Telemetry::battery() const
 ```
 
 
-Get the current battery status (synchronous).
+Poll for '[Battery](structmavsdk_1_1_telemetry_1_1_battery.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[Battery](structmavsdk_1_1_telemetry_1_1_battery.md) - 
+&emsp;[Battery](structmavsdk_1_1_telemetry_1_1_battery.md) - One [Battery](structmavsdk_1_1_telemetry_1_1_battery.md) update.
+
+### subscribe_flight_mode() {#classmavsdk_1_1_telemetry_1a53db5fb36bf10fbc7ac004a3be9100a4}
+```cpp
+void mavsdk::Telemetry::subscribe_flight_mode(FlightModeCallback callback)
+```
+
+
+Subscribe to 'flight mode' updates.
+
+
+**Parameters**
+
+* [FlightModeCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a2d7318d0823771b7a586c40199bdb482) **callback** - 
 
 ### flight_mode() {#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd}
 ```cpp
@@ -1417,12 +959,25 @@ FlightMode mavsdk::Telemetry::flight_mode() const
 ```
 
 
-Get the current flight mode (synchronous).
+Poll for 'FlightMode' (blocking).
 
 
 **Returns**
 
-&emsp;[FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) - Flight mode.
+&emsp;[FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) - One FlightMode update.
+
+### subscribe_health() {#classmavsdk_1_1_telemetry_1a0c489b33a635adf0610731a42ce5615b}
+```cpp
+void mavsdk::Telemetry::subscribe_health(HealthCallback callback)
+```
+
+
+Subscribe to 'health' updates.
+
+
+**Parameters**
+
+* [HealthCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a7a120dd053091c644e0e2e47fdcbeb75) **callback** - 
 
 ### health() {#classmavsdk_1_1_telemetry_1aae4824c9eeb72603b197c864b5cc5df5}
 ```cpp
@@ -1430,38 +985,77 @@ Health mavsdk::Telemetry::health() const
 ```
 
 
-Get the current health status (synchronous).
+Poll for '[Health](structmavsdk_1_1_telemetry_1_1_health.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[Health](structmavsdk_1_1_telemetry_1_1_health.md) - [Health](structmavsdk_1_1_telemetry_1_1_health.md) status.
+&emsp;[Health](structmavsdk_1_1_telemetry_1_1_health.md) - One [Health](structmavsdk_1_1_telemetry_1_1_health.md) update.
 
-### health_all_ok() {#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06}
+### subscribe_rc_status() {#classmavsdk_1_1_telemetry_1ae5f894c16564674f7fdaba36ff12dd08}
 ```cpp
-bool mavsdk::Telemetry::health_all_ok() const
+void mavsdk::Telemetry::subscribe_rc_status(RcStatusCallback callback)
 ```
 
 
-Returns true if the overall health is ok (synchronous).
+Subscribe to 'RC status' updates.
 
 
-**Returns**
+**Parameters**
 
-&emsp;bool - True if all health flags are OK.
+* [RcStatusCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aafcd706b805898301b574ffa2b909b85) **callback** - 
 
-### rc_status() {#classmavsdk_1_1_telemetry_1aa8301c58483148b9e211d2f27f9c3140}
+### rc_status() {#classmavsdk_1_1_telemetry_1a59cd497c69f1d32be29a940a2d34a474}
 ```cpp
-RCStatus mavsdk::Telemetry::rc_status() const
+RcStatus mavsdk::Telemetry::rc_status() const
 ```
 
 
-Get the RC status (synchronous).
+Poll for '[RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[RCStatus](structmavsdk_1_1_telemetry_1_1_r_c_status.md) - RC status.
+&emsp;[RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md) - One [RcStatus](structmavsdk_1_1_telemetry_1_1_rc_status.md) update.
+
+### subscribe_status_text() {#classmavsdk_1_1_telemetry_1a80106e59b9df76a47a2068b4fb4ecb69}
+```cpp
+void mavsdk::Telemetry::subscribe_status_text(StatusTextCallback callback)
+```
+
+
+Subscribe to 'status text' updates.
+
+
+**Parameters**
+
+* [StatusTextCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a46e51ff90fe779990ed09a593c1c7898) **callback** - 
+
+### status_text() {#classmavsdk_1_1_telemetry_1a2f31c0668ed1ac1bfdfa4b2e9a2023a9}
+```cpp
+StatusText mavsdk::Telemetry::status_text() const
+```
+
+
+Poll for '[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md)' (blocking).
+
+
+**Returns**
+
+&emsp;[StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) - One [StatusText](structmavsdk_1_1_telemetry_1_1_status_text.md) update.
+
+### subscribe_actuator_control_target() {#classmavsdk_1_1_telemetry_1a697c3618245a9886f917431aee59bd2c}
+```cpp
+void mavsdk::Telemetry::subscribe_actuator_control_target(ActuatorControlTargetCallback callback)
+```
+
+
+Subscribe to 'actuator control target' updates.
+
+
+**Parameters**
+
+* [ActuatorControlTargetCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ada6af3de1b60b93a709345c3a8ede551) **callback** - 
 
 ### actuator_control_target() {#classmavsdk_1_1_telemetry_1af4ffa70ff58c46b50be93a0fbf960f95}
 ```cpp
@@ -1469,12 +1063,25 @@ ActuatorControlTarget mavsdk::Telemetry::actuator_control_target() const
 ```
 
 
-Get the actuator control target (synchronous).
+Poll for '[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) - Actuator control target
+&emsp;[ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) - One [ActuatorControlTarget](structmavsdk_1_1_telemetry_1_1_actuator_control_target.md) update.
+
+### subscribe_actuator_output_status() {#classmavsdk_1_1_telemetry_1ab5bc6fdb24935f4834cd490d7a085594}
+```cpp
+void mavsdk::Telemetry::subscribe_actuator_output_status(ActuatorOutputStatusCallback callback)
+```
+
+
+Subscribe to 'actuator output status' updates.
+
+
+**Parameters**
+
+* [ActuatorOutputStatusCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a2b1e800ce1ba6fb776351416340ac8b9) **callback** - 
 
 ### actuator_output_status() {#classmavsdk_1_1_telemetry_1a68fa1619dfad0a7cfcc2725025669252}
 ```cpp
@@ -1482,354 +1089,788 @@ ActuatorOutputStatus mavsdk::Telemetry::actuator_output_status() const
 ```
 
 
-Get the actuator output status (synchronous).
+Poll for '[ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md)' (blocking).
 
 
 **Returns**
 
-&emsp;[ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) - Actuator output status
+&emsp;[ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) - One [ActuatorOutputStatus](structmavsdk_1_1_telemetry_1_1_actuator_output_status.md) update.
 
-### position_velocity_ned_async() {#classmavsdk_1_1_telemetry_1ab966373bd9975304132ac81f0f8dcd97}
+### subscribe_odometry() {#classmavsdk_1_1_telemetry_1a1ff5094feae71f009b7cdbab90734b09}
 ```cpp
-void mavsdk::Telemetry::position_velocity_ned_async(position_velocity_ned_callback_t callback)
+void mavsdk::Telemetry::subscribe_odometry(OdometryCallback callback)
 ```
 
 
-Subscribe to kinematic (position and velocity) updates (asynchronous).
+Subscribe to 'odometry' updates.
 
 
 **Parameters**
 
-* [position_velocity_ned_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1adc89dbb35eb82768c59656519a69d6ba) **callback** - Function to call with updates.
+* [OdometryCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8cd23f7364f8f5cb22869155da67c65d) **callback** - 
 
-### position_async() {#classmavsdk_1_1_telemetry_1a36c873a346ec80ffa6440191e57e440a}
+### odometry() {#classmavsdk_1_1_telemetry_1a715b6e8ba1206059706f08844a0b96d2}
 ```cpp
-void mavsdk::Telemetry::position_async(position_callback_t callback)
+Odometry mavsdk::Telemetry::odometry() const
 ```
 
 
-Subscribe to position updates (asynchronous).
+Poll for '[Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md)' (blocking).
+
+
+**Returns**
+
+&emsp;[Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) - One [Odometry](structmavsdk_1_1_telemetry_1_1_odometry.md) update.
+
+### subscribe_position_velocity_ned() {#classmavsdk_1_1_telemetry_1a8e09afe19fe9f2c05a5d647ceb2c8310}
+```cpp
+void mavsdk::Telemetry::subscribe_position_velocity_ned(PositionVelocityNedCallback callback)
+```
+
+
+Subscribe to 'position velocity' updates.
 
 
 **Parameters**
 
-* [position_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) **callback** - Function to call with updates.
+* [PositionVelocityNedCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a5a38deb284622ff6926703e1e5c96a74) **callback** - 
 
-### home_position_async() {#classmavsdk_1_1_telemetry_1ad732889dfb7e0b6e8607d04e1a0d379a}
+### position_velocity_ned() {#classmavsdk_1_1_telemetry_1af9b06944ca73ad09caadacd9f4fae950}
 ```cpp
-void mavsdk::Telemetry::home_position_async(position_callback_t callback)
+PositionVelocityNed mavsdk::Telemetry::position_velocity_ned() const
 ```
 
 
-Subscribe to home position updates (asynchronous).
+Poll for '[PositionVelocityNed](structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md)' (blocking).
+
+
+**Returns**
+
+&emsp;[PositionVelocityNed](structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md) - One [PositionVelocityNed](structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md) update.
+
+### subscribe_ground_truth() {#classmavsdk_1_1_telemetry_1adcc18e7d8801ccdef2cf137a84d53460}
+```cpp
+void mavsdk::Telemetry::subscribe_ground_truth(GroundTruthCallback callback)
+```
+
+
+Subscribe to 'ground truth' updates.
 
 
 **Parameters**
 
-* [position_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) **callback** - Function to call with updates.
+* [GroundTruthCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a222aae53852a2c535f6d69ed57221f13) **callback** - 
 
-### in_air_async() {#classmavsdk_1_1_telemetry_1ab7872779d80172a8c3ec1f381995613c}
+### ground_truth() {#classmavsdk_1_1_telemetry_1a1b5f387edc39e33b86954f2048133f71}
 ```cpp
-void mavsdk::Telemetry::in_air_async(in_air_callback_t callback)
+GroundTruth mavsdk::Telemetry::ground_truth() const
 ```
 
 
-Subscribe to in-air updates (asynchronous).
+Poll for '[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md)' (blocking).
+
+
+**Returns**
+
+&emsp;[GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) - One [GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md) update.
+
+### subscribe_fixedwing_metrics() {#classmavsdk_1_1_telemetry_1a1b32f7cc867f8f21fdcedda49434a22b}
+```cpp
+void mavsdk::Telemetry::subscribe_fixedwing_metrics(FixedwingMetricsCallback callback)
+```
+
+
+Subscribe to 'fixedwing metrics' updates.
 
 
 **Parameters**
 
-* [in_air_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a5c89acce93f9c8b4379ed0dd002ee68c) **callback** - Function to call with updates.
+* [FixedwingMetricsCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a5b42dbef0ef6d8c1768d503d0437f1e3) **callback** - 
 
-### status_text_async() {#classmavsdk_1_1_telemetry_1a3dafc5195525739b84f6ae9774484450}
+### fixedwing_metrics() {#classmavsdk_1_1_telemetry_1a2ab8d2a8d017d46e77d49c4f899c7cbf}
 ```cpp
-void mavsdk::Telemetry::status_text_async(status_text_callback_t callback)
+FixedwingMetrics mavsdk::Telemetry::fixedwing_metrics() const
 ```
 
 
-Subscribe to status text updates (asynchronous).
+Poll for '[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md)' (blocking).
+
+
+**Returns**
+
+&emsp;[FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) - One [FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md) update.
+
+### subscribe_imu() {#classmavsdk_1_1_telemetry_1a35ce2552e8b709e6194481c0fd070a8d}
+```cpp
+void mavsdk::Telemetry::subscribe_imu(ImuCallback callback)
+```
+
+
+Subscribe to 'IMU' updates.
 
 
 **Parameters**
 
-* [status_text_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab6bfd92d95e534b04ed98f09bf3a1e7a) **callback** - Function to call with updates.
+* [ImuCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a4fbc2ad274fd5a8af077004d2d7bd984) **callback** - 
 
-### armed_async() {#classmavsdk_1_1_telemetry_1ae73fc84556a85ecc07de33f5b1f8f8cc}
+### imu() {#classmavsdk_1_1_telemetry_1a1a4e43b7bdcd988442955d2a5465b977}
 ```cpp
-void mavsdk::Telemetry::armed_async(armed_callback_t callback)
+Imu mavsdk::Telemetry::imu() const
 ```
 
 
-Subscribe to armed updates (asynchronous).
+Poll for '[Imu](structmavsdk_1_1_telemetry_1_1_imu.md)' (blocking).
 
-Note that armed updates are limited to 1Hz.
 
-**Parameters**
+**Returns**
 
-* [armed_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a795e5848a43b29f5009d91e6c87b37d0) **callback** - Function to call with updates.
+&emsp;[Imu](structmavsdk_1_1_telemetry_1_1_imu.md) - One [Imu](structmavsdk_1_1_telemetry_1_1_imu.md) update.
 
-### attitude_quaternion_async() {#classmavsdk_1_1_telemetry_1a73c1f4f96fd2ac08e8a6eae6bba00098}
+### subscribe_health_all_ok() {#classmavsdk_1_1_telemetry_1a0f94ea6d707ff314e412367d6681bd8f}
 ```cpp
-void mavsdk::Telemetry::attitude_quaternion_async(attitude_quaternion_callback_t callback)
+void mavsdk::Telemetry::subscribe_health_all_ok(HealthAllOkCallback callback)
 ```
 
 
-Subscribe to attitude updates in quaternion (asynchronous).
-
-
-**Parameters**
-
-* [attitude_quaternion_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) **callback** - Function to call with updates.
-
-### attitude_euler_angle_async() {#classmavsdk_1_1_telemetry_1ab7dba6f0da6bd624ae3ce7f2da5d50cd}
-```cpp
-void mavsdk::Telemetry::attitude_euler_angle_async(attitude_euler_angle_callback_t callback)
-```
-
-
-Subscribe to attitude updates in Euler angles (asynchronous).
+Subscribe to 'HealthAllOk' updates.
 
 
 **Parameters**
 
-* [attitude_euler_angle_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) **callback** - Function to call with updates.
+* [HealthAllOkCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a71cdcadfaa988dc14029e0b9fdbe742d) **callback** - 
 
-### attitude_angular_velocity_body_async() {#classmavsdk_1_1_telemetry_1a72d404d0a3b121fdcb9a3c3a22e2137c}
+### health_all_ok() {#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06}
 ```cpp
-void mavsdk::Telemetry::attitude_angular_velocity_body_async(attitude_angular_velocity_body_callback_t callback)
+bool mavsdk::Telemetry::health_all_ok() const
 ```
 
 
-Subscribe to attitude updates in angular velocity (asynchronous).
+Poll for 'bool' (blocking).
+
+
+**Returns**
+
+&emsp;bool - One bool update.
+
+### subscribe_unix_epoch_time() {#classmavsdk_1_1_telemetry_1ad7f04211822f862b580308e3786cdc77}
+```cpp
+void mavsdk::Telemetry::subscribe_unix_epoch_time(UnixEpochTimeCallback callback)
+```
+
+
+Subscribe to 'unix epoch time' updates.
 
 
 **Parameters**
 
-* [attitude_angular_velocity_body_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8253671d4203e542095c365617b98678) **callback** - Function to call with updates.
+* [UnixEpochTimeCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a321c7d809ae8f56bb8a361d5e5ce6391) **callback** - 
 
-### fixedwing_metrics_async() {#classmavsdk_1_1_telemetry_1a82be69c764633d6c573b2dce1b40787e}
+### unix_epoch_time() {#classmavsdk_1_1_telemetry_1ab5ea5f6bb35b5670e34d5697d8c880f4}
 ```cpp
-void mavsdk::Telemetry::fixedwing_metrics_async(fixedwing_metrics_callback_t callback)
+uint64_t mavsdk::Telemetry::unix_epoch_time() const
 ```
 
 
-Subscribe to vfr hud updates in (asynchronous).
+Poll for 'uint64_t' (blocking).
 
 
-**Parameters**
+**Returns**
 
-* [fixedwing_metrics_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a96e36cb6d22293e73ce7800d93f7a378) **callback** - Function to call with updates.
+&emsp;uint64_t - One uint64_t update.
 
-### ground_truth_async() {#classmavsdk_1_1_telemetry_1a4597194316986337ea6cd5fc33eabec4}
+### set_rate_position_async() {#classmavsdk_1_1_telemetry_1ad7e5b576edb9398c8f5f2f14626b984a}
 ```cpp
-void mavsdk::Telemetry::ground_truth_async(ground_truth_callback_t callback)
+void mavsdk::Telemetry::set_rate_position_async(double rate_hz, const ResultCallback callback)
 ```
 
 
-Subscribe to ground_truth updates in (asynchronous).
+Set rate to 'position' updates.
 
+This function is non-blocking. See 'set_rate_position' for the blocking counterpart.
 
 **Parameters**
 
-* [ground_truth_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a31929ee327439e4ca87fbdd11207e8a7) **callback** - Function to call with updates.
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### camera_attitude_quaternion_async() {#classmavsdk_1_1_telemetry_1ae39f1c1769189fbd7e21fb216da7cfd2}
+### set_rate_position() {#classmavsdk_1_1_telemetry_1a665439f3d5f8c58b3ef3dd427cf4782b}
 ```cpp
-void mavsdk::Telemetry::camera_attitude_quaternion_async(attitude_quaternion_callback_t callback)
+Result mavsdk::Telemetry::set_rate_position(double rate_hz) const
 ```
 
 
-Subscribe to camera attitude updates in quaternion (asynchronous).
+Set rate to 'position' updates.
 
+This function is blocking. See 'set_rate_position_async' for the non-blocking counterpart.
 
 **Parameters**
 
-* [attitude_quaternion_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8f1fb6e5bfb5c5bdd0c6469f0870775c) **callback** - Function to call with updates.
+* double **rate_hz** - 
 
-### camera_attitude_euler_angle_async() {#classmavsdk_1_1_telemetry_1adb78b9cb7d918970a19222e1a8101706}
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_home_async() {#classmavsdk_1_1_telemetry_1a098f4c4f50fc3ac2c153ef152208fbbe}
 ```cpp
-void mavsdk::Telemetry::camera_attitude_euler_angle_async(attitude_euler_angle_callback_t callback)
+void mavsdk::Telemetry::set_rate_home_async(double rate_hz, const ResultCallback callback)
 ```
 
 
-Subscribe to camera attitude updates in Euler angles (asynchronous).
+Set rate to 'home position' updates.
 
+This function is non-blocking. See 'set_rate_home' for the blocking counterpart.
 
 **Parameters**
 
-* [attitude_euler_angle_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab2076cee92c4714482d83a2be7526b9c) **callback** - Function to call with updates.
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### ground_speed_ned_async() {#classmavsdk_1_1_telemetry_1a3eb3256f1a4708a6cf19ac28bc6e3568}
+### set_rate_home() {#classmavsdk_1_1_telemetry_1af90e28ad8a8f05401176c98e427eecfc}
 ```cpp
-void mavsdk::Telemetry::ground_speed_ned_async(ground_speed_ned_callback_t callback)
+Result mavsdk::Telemetry::set_rate_home(double rate_hz) const
 ```
 
 
-Subscribe to ground speed (NED) updates (asynchronous).
+Set rate to 'home position' updates.
 
+This function is blocking. See 'set_rate_home_async' for the non-blocking counterpart.
 
 **Parameters**
 
-* [ground_speed_ned_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0b58b0ef625a1eaf864d3a4890cb2a23) **callback** - Function to call with updates.
+* double **rate_hz** - 
 
-### imu_reading_ned_async() {#classmavsdk_1_1_telemetry_1a5a54e410c406d7fc737451af46da36dc}
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_in_air_async() {#classmavsdk_1_1_telemetry_1a9ea77b7ef64acd1e25b05e593e638c70}
 ```cpp
-void mavsdk::Telemetry::imu_reading_ned_async(imu_reading_ned_callback_t callback)
+void mavsdk::Telemetry::set_rate_in_air_async(double rate_hz, const ResultCallback callback)
 ```
 
 
-Subscribe to IMU reading (NED) updates (asynchronous).
+Set rate to in-air updates.
 
+This function is non-blocking. See 'set_rate_in_air' for the blocking counterpart.
 
 **Parameters**
 
-* [imu_reading_ned_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a40fd7ddb9eca5e36a7a4e8084dcbf75a) **callback** - function to call with updates.
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### gps_info_async() {#classmavsdk_1_1_telemetry_1a2ba72a9a7b24c9d16fa39482077ccfac}
+### set_rate_in_air() {#classmavsdk_1_1_telemetry_1a8f179e8397b395e61a48529ceeba2b14}
 ```cpp
-void mavsdk::Telemetry::gps_info_async(gps_info_callback_t callback)
+Result mavsdk::Telemetry::set_rate_in_air(double rate_hz) const
 ```
 
 
-Subscribe to GPS information updates (asynchronous).
+Set rate to in-air updates.
 
+This function is blocking. See 'set_rate_in_air_async' for the non-blocking counterpart.
 
 **Parameters**
 
-* [gps_info_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1af34942b21fde18d723b300ebe6c40421) **callback** - Function to call with updates.
+* double **rate_hz** - 
 
-### battery_async() {#classmavsdk_1_1_telemetry_1aabb419112c981a837cee2f498b96c2c5}
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_landed_state_async() {#classmavsdk_1_1_telemetry_1a180fff93b120a67c16ad5993f0b38847}
 ```cpp
-void mavsdk::Telemetry::battery_async(battery_callback_t callback)
+void mavsdk::Telemetry::set_rate_landed_state_async(double rate_hz, const ResultCallback callback)
 ```
 
 
-Subscribe to battery status updates (asynchronous).
+Set rate to landed state updates.
 
+This function is non-blocking. See 'set_rate_landed_state' for the blocking counterpart.
 
 **Parameters**
 
-* [battery_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ab7582939b706b1eea718c94433a1e5de) **callback** - Function to call with updates.
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### flight_mode_async() {#classmavsdk_1_1_telemetry_1adede4202304e53466b4df41367a75878}
+### set_rate_landed_state() {#classmavsdk_1_1_telemetry_1a53a3428c602c1f91cfcffdba188a4e51}
 ```cpp
-void mavsdk::Telemetry::flight_mode_async(flight_mode_callback_t callback)
+Result mavsdk::Telemetry::set_rate_landed_state(double rate_hz) const
 ```
 
 
-Subscribe to flight mode updates (asynchronous).
+Set rate to landed state updates.
 
-Note that flight mode updates are limited to 1Hz.
+This function is blocking. See 'set_rate_landed_state_async' for the non-blocking counterpart.
 
 **Parameters**
 
-* [flight_mode_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad8cfe203cf88b457ed3593eb82d3ff77) **callback** - Function to call with updates.
+* double **rate_hz** - 
 
-### health_async() {#classmavsdk_1_1_telemetry_1aceb2a5a458cafd2171720424652c8e39}
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_attitude_async() {#classmavsdk_1_1_telemetry_1a2f979321709760a1ad4a8dd09755cd61}
 ```cpp
-void mavsdk::Telemetry::health_async(health_callback_t callback)
+void mavsdk::Telemetry::set_rate_attitude_async(double rate_hz, const ResultCallback callback)
 ```
 
 
-Subscribe to health status updates (asynchronous).
+Set rate to 'attitude' updates.
 
-Note that health status updates are limited to 1Hz.
+This function is non-blocking. See 'set_rate_attitude' for the blocking counterpart.
 
 **Parameters**
 
-* [health_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1abadf7c5be3e650809402115c1810a8d7) **callback** - Function to call with updates.
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### health_all_ok_async() {#classmavsdk_1_1_telemetry_1ae1a2f05a126a88b19e78078ef5f552f4}
+### set_rate_attitude() {#classmavsdk_1_1_telemetry_1a163d3960faadad948294f367eaaf52b0}
 ```cpp
-void mavsdk::Telemetry::health_all_ok_async(health_all_ok_callback_t callback)
+Result mavsdk::Telemetry::set_rate_attitude(double rate_hz) const
 ```
 
 
-Subscribe to overall health status updates (asynchronous).
+Set rate to 'attitude' updates.
 
-Note that overall health status updates are limited to 1Hz.
+This function is blocking. See 'set_rate_attitude_async' for the non-blocking counterpart.
 
 **Parameters**
 
-* [health_all_ok_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8fe09456f509c93e2110fb45996bd927) **callback** - Function to call with updates.
+* double **rate_hz** - 
 
-### landed_state_async() {#classmavsdk_1_1_telemetry_1ac4a2cdf42f9597728d825f984f690f87}
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_camera_attitude_async() {#classmavsdk_1_1_telemetry_1a520f15e42f5f1b3987ca2a9cd94a3d9a}
 ```cpp
-void mavsdk::Telemetry::landed_state_async(landed_state_callback_t callback)
+void mavsdk::Telemetry::set_rate_camera_attitude_async(double rate_hz, const ResultCallback callback)
 ```
 
 
-Subscribe to Landed state updates (asynchronous).
+Set rate of camera attitude updates.
 
+This function is non-blocking. See 'set_rate_camera_attitude' for the blocking counterpart.
 
 **Parameters**
 
-* [landed_state_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aaf77ff66f00bd82c911a7a76d15de41c) **callback** - Function to call with updates.
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### actuator_control_target_async() {#classmavsdk_1_1_telemetry_1af9dcac19a2cdb6aee0815007c3b62eec}
+### set_rate_camera_attitude() {#classmavsdk_1_1_telemetry_1a427da223d16ce07a61b07d4e5af1ab04}
 ```cpp
-void mavsdk::Telemetry::actuator_control_target_async(actuator_control_target_callback_t callback)
+Result mavsdk::Telemetry::set_rate_camera_attitude(double rate_hz) const
 ```
 
 
-Subscribe to actuator control target updates (asynchronous).
+Set rate of camera attitude updates.
 
+This function is blocking. See 'set_rate_camera_attitude_async' for the non-blocking counterpart.
 
 **Parameters**
 
-* [actuator_control_target_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0e756d50d05d3d42314e160026c8ca5b) **callback** - Function to call with updates.
+* double **rate_hz** - 
 
-### actuator_output_status_async() {#classmavsdk_1_1_telemetry_1a97d11107e19675a9f5971423167cd307}
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_ground_speed_ned_async() {#classmavsdk_1_1_telemetry_1a2a2694329e93c1ceac38b7b5870c3ac3}
 ```cpp
-void mavsdk::Telemetry::actuator_output_status_async(actuator_output_status_callback_t callback)
+void mavsdk::Telemetry::set_rate_ground_speed_ned_async(double rate_hz, const ResultCallback callback)
 ```
 
 
-Subscribe to actuator output status target updates (asynchronous).
+Set rate to 'ground speed' updates (NED).
 
+This function is non-blocking. See 'set_rate_ground_speed_ned' for the blocking counterpart.
 
 **Parameters**
 
-* [actuator_output_status_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad2184de6bc6e38db7dc22e25171993c1) **callback** - Function to call with updates.
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### odometry_async() {#classmavsdk_1_1_telemetry_1a12779f43e06fa2f69bf2a96f3b74cd7a}
+### set_rate_ground_speed_ned() {#classmavsdk_1_1_telemetry_1aa23ea927f69e30625c070cfb8f32542f}
 ```cpp
-void mavsdk::Telemetry::odometry_async(odometry_callback_t callback)
+Result mavsdk::Telemetry::set_rate_ground_speed_ned(double rate_hz) const
 ```
 
 
-Subscribe to odometry updates (asynchronous).
+Set rate to 'ground speed' updates (NED).
 
+This function is blocking. See 'set_rate_ground_speed_ned_async' for the non-blocking counterpart.
 
 **Parameters**
 
-* [odometry_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ae27175b28a60019489b431279ece1ff2) **callback** - Function to call with updates.
+* double **rate_hz** - 
 
-### rc_status_async() {#classmavsdk_1_1_telemetry_1a5c1cba91eb65f738470c51da4d74aecc}
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_gps_info_async() {#classmavsdk_1_1_telemetry_1ae6ada3cd6d4e9835dd4d1d712f1195e4}
 ```cpp
-void mavsdk::Telemetry::rc_status_async(rc_status_callback_t callback)
+void mavsdk::Telemetry::set_rate_gps_info_async(double rate_hz, const ResultCallback callback)
 ```
 
 
-Subscribe to RC status updates (asynchronous).
+Set rate to 'GPS info' updates.
 
+This function is non-blocking. See 'set_rate_gps_info' for the blocking counterpart.
 
 **Parameters**
 
-* [rc_status_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ade4c432133b83aa9612528117a2cd6d6) **callback** - Function to call with updates.
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
 
-### unix_epoch_time_async() {#classmavsdk_1_1_telemetry_1a31931da80d4ef9352b32e93e13d762b3}
+### set_rate_gps_info() {#classmavsdk_1_1_telemetry_1a14510bcb6fe3c31d91653d32d354613f}
 ```cpp
-void mavsdk::Telemetry::unix_epoch_time_async(unix_epoch_time_callback_t callback)
+Result mavsdk::Telemetry::set_rate_gps_info(double rate_hz) const
 ```
 
 
-Subscribe to Unix Epoch Time updates (asynchronous).
+Set rate to 'GPS info' updates.
 
+This function is blocking. See 'set_rate_gps_info_async' for the non-blocking counterpart.
 
 **Parameters**
 
-* [unix_epoch_time_callback_t](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a1738efef61d7b3be00f91a8ccc46bcf0) **callback** - Function to call with updates.
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_battery_async() {#classmavsdk_1_1_telemetry_1a5615e21f616997dfca1318c96a7e550e}
+```cpp
+void mavsdk::Telemetry::set_rate_battery_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'battery' updates.
+
+This function is non-blocking. See 'set_rate_battery' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_battery() {#classmavsdk_1_1_telemetry_1ae781d2e950a535a465f2bc1575e9f893}
+```cpp
+Result mavsdk::Telemetry::set_rate_battery(double rate_hz) const
+```
+
+
+Set rate to 'battery' updates.
+
+This function is blocking. See 'set_rate_battery_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_rc_status_async() {#classmavsdk_1_1_telemetry_1a8cf84eaca875626bc53ed03e98d6eb7e}
+```cpp
+void mavsdk::Telemetry::set_rate_rc_status_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'RC status' updates.
+
+This function is non-blocking. See 'set_rate_rc_status' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_rc_status() {#classmavsdk_1_1_telemetry_1acbfc54792f79c5fd2a9855278981f8ca}
+```cpp
+Result mavsdk::Telemetry::set_rate_rc_status(double rate_hz) const
+```
+
+
+Set rate to 'RC status' updates.
+
+This function is blocking. See 'set_rate_rc_status_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_actuator_control_target_async() {#classmavsdk_1_1_telemetry_1aa44e3a76c482f273a2f1bc1a09bec27c}
+```cpp
+void mavsdk::Telemetry::set_rate_actuator_control_target_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'actuator control target' updates.
+
+This function is non-blocking. See 'set_rate_actuator_control_target' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_actuator_control_target() {#classmavsdk_1_1_telemetry_1aa43efb510038f1bb95241953ae09c998}
+```cpp
+Result mavsdk::Telemetry::set_rate_actuator_control_target(double rate_hz) const
+```
+
+
+Set rate to 'actuator control target' updates.
+
+This function is blocking. See 'set_rate_actuator_control_target_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_actuator_output_status_async() {#classmavsdk_1_1_telemetry_1a2ad19c1101962ed7cfeec89b7fae0f9c}
+```cpp
+void mavsdk::Telemetry::set_rate_actuator_output_status_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'actuator output status' updates.
+
+This function is non-blocking. See 'set_rate_actuator_output_status' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_actuator_output_status() {#classmavsdk_1_1_telemetry_1a48b3e3a288ba6a8d38914c4827124006}
+```cpp
+Result mavsdk::Telemetry::set_rate_actuator_output_status(double rate_hz) const
+```
+
+
+Set rate to 'actuator output status' updates.
+
+This function is blocking. See 'set_rate_actuator_output_status_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_odometry_async() {#classmavsdk_1_1_telemetry_1a23e507e1d53c6603479701f5e2af49ce}
+```cpp
+void mavsdk::Telemetry::set_rate_odometry_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'odometry' updates.
+
+This function is non-blocking. See 'set_rate_odometry' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_odometry() {#classmavsdk_1_1_telemetry_1a4368bf825cec3bc9369d57546a45391e}
+```cpp
+Result mavsdk::Telemetry::set_rate_odometry(double rate_hz) const
+```
+
+
+Set rate to 'odometry' updates.
+
+This function is blocking. See 'set_rate_odometry_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_position_velocity_ned_async() {#classmavsdk_1_1_telemetry_1a9a4c3b6affa497dd22e464f515ca278c}
+```cpp
+void mavsdk::Telemetry::set_rate_position_velocity_ned_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'position velocity' updates.
+
+This function is non-blocking. See 'set_rate_position_velocity_ned' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_position_velocity_ned() {#classmavsdk_1_1_telemetry_1a64fe3457589cd208a9f7bd5dea763da1}
+```cpp
+Result mavsdk::Telemetry::set_rate_position_velocity_ned(double rate_hz) const
+```
+
+
+Set rate to 'position velocity' updates.
+
+This function is blocking. See 'set_rate_position_velocity_ned_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_ground_truth_async() {#classmavsdk_1_1_telemetry_1a16b28ebdc6d211a5b182bd8d0abb4d2e}
+```cpp
+void mavsdk::Telemetry::set_rate_ground_truth_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'ground truth' updates.
+
+This function is non-blocking. See 'set_rate_ground_truth' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_ground_truth() {#classmavsdk_1_1_telemetry_1a23b2962e5b7681ece3fcbc72220d6b48}
+```cpp
+Result mavsdk::Telemetry::set_rate_ground_truth(double rate_hz) const
+```
+
+
+Set rate to 'ground truth' updates.
+
+This function is blocking. See 'set_rate_ground_truth_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_fixedwing_metrics_async() {#classmavsdk_1_1_telemetry_1a1484ccdcf4ba20a151e380e7bd7b9869}
+```cpp
+void mavsdk::Telemetry::set_rate_fixedwing_metrics_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'fixedwing metrics' updates.
+
+This function is non-blocking. See 'set_rate_fixedwing_metrics' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_fixedwing_metrics() {#classmavsdk_1_1_telemetry_1ab345a5925d132c27e0a5e1ab65a1e2c1}
+```cpp
+Result mavsdk::Telemetry::set_rate_fixedwing_metrics(double rate_hz) const
+```
+
+
+Set rate to 'fixedwing metrics' updates.
+
+This function is blocking. See 'set_rate_fixedwing_metrics_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_imu_async() {#classmavsdk_1_1_telemetry_1a7dca435daa0de2db2d2e9d588c6bed99}
+```cpp
+void mavsdk::Telemetry::set_rate_imu_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'IMU' updates.
+
+This function is non-blocking. See 'set_rate_imu' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_imu() {#classmavsdk_1_1_telemetry_1a4e0d1dc2350e06f68f472d85dc69d175}
+```cpp
+Result mavsdk::Telemetry::set_rate_imu(double rate_hz) const
+```
+
+
+Set rate to 'IMU' updates.
+
+This function is blocking. See 'set_rate_imu_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_unix_epoch_time_async() {#classmavsdk_1_1_telemetry_1a74b18cd8a5faed4d46b244db0a6e3c50}
+```cpp
+void mavsdk::Telemetry::set_rate_unix_epoch_time_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'unix epoch time' updates.
+
+This function is non-blocking. See 'set_rate_unix_epoch_time' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_unix_epoch_time() {#classmavsdk_1_1_telemetry_1a340ac34547672ee07131bca34cbbb820}
+```cpp
+Result mavsdk::Telemetry::set_rate_unix_epoch_time(double rate_hz) const
+```
+
+
+Set rate to 'unix epoch time' updates.
+
+This function is blocking. See 'set_rate_unix_epoch_time_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
 
 ### operator=() {#classmavsdk_1_1_telemetry_1a703ac978c925be8806921925cf16aca9}
 ```cpp
@@ -1847,54 +1888,3 @@ Equality operator (object is not copyable).
 **Returns**
 
 &emsp;const [Telemetry](classmavsdk_1_1_telemetry.md) & - 
-
-### flight_mode_str() {#classmavsdk_1_1_telemetry_1a25933c37dd05e5c3b7b4e9d52507cca7}
-```cpp
-static std::string mavsdk::Telemetry::flight_mode_str(FlightMode flight_mode)
-```
-
-
-Get a human readable English string for a flight mode.
-
-
-**Parameters**
-
-* [FlightMode](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a8317d953a82a23654db6f14509acb4fe) **flight_mode** - 
-
-**Returns**
-
-&emsp;std::string - 
-
-### landed_state_str() {#classmavsdk_1_1_telemetry_1a9972e59dc788cc9a45725ad7b733362f}
-```cpp
-static std::string mavsdk::Telemetry::landed_state_str(LandedState landed_state)
-```
-
-
-Get a human readable English string for a landed state.
-
-
-**Parameters**
-
-* [LandedState](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046) **landed_state** - 
-
-**Returns**
-
-&emsp;std::string - 
-
-### result_str() {#classmavsdk_1_1_telemetry_1a20bff42d7bb42c002ef7217cf98990e8}
-```cpp
-static const char* mavsdk::Telemetry::result_str(Result result)
-```
-
-
-Get human-readable English string for [Telemetry::Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75).
-
-
-**Parameters**
-
-* [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) **result** - The enum value for which string is needed.
-
-**Returns**
-
-&emsp;const char * - Human readable string for the [Telemetry::Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75).

@@ -13,12 +13,16 @@ It is used to discover vehicles and manage active connections.
 An instance of this class must be created (first) in order to use the library. The instance must be destroyed after use in order to break connections and release all resources. 
 
 
+## Data Structures
+
+
+struct [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md)
+
 ## Public Types
 
 
 Type | Description
 --- | ---
-enum [Configuration](#classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413c) | Possible configurations.
 std::function< void(uint64_t uuid)> [event_callback_t](#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) | Callback type for discover and timeout notifications.
 
 ## Public Member Functions
@@ -36,7 +40,7 @@ std::string | [version](#classmavsdk_1_1_mavsdk_1a8fdb97695762d06fd2bccfc6309943
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a868d224223d2f4e8de7d5e00863b6ceb) (int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific port number on localhost.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a950038afdd201f89e97a3e60e227869a) (const std::string & remote_ip, int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific IP address and port number.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_serial_connection](#classmavsdk_1_1_mavsdk_1a8f27dd954d74b0afdfa4348ce49a10a1) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a870d15142914f1db564c12f385d5489b)) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
-void | [set_configuration](#classmavsdk_1_1_mavsdk_1acaeea86253493dc15b6540d2100a1b86) ([Configuration](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413c) configuration) | Set `Configuration` of SDK.
+void | [set_configuration](#classmavsdk_1_1_mavsdk_1acaeea86253493dc15b6540d2100a1b86) ([Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) configuration) | Set [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) of SDK.
 std::vector< uint64_t > | [system_uuids](#classmavsdk_1_1_mavsdk_1a80bd9c663d0e03c24f029fd77e914c3c) () const | Get vector of system UUIDs.
 [System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a2f3e89f37fffbbf1ee2c2089086ed33c) () const | Get the first discovered system.
 [System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a827200142a79685dd87fe200474780b8) (uint64_t uuid)const | Get the system with the specified UUID.
@@ -102,21 +106,6 @@ Callback type for discover and timeout notifications.
 
 * **uuid** - UUID of system (or MAVLink system ID for systems that don't have a UUID).
 
-## Member Enumeration Documentation
-
-
-### enum Configuration {#classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413c}
-
-
-Possible configurations.
-
-
-Value | Description
---- | ---
-<span id="classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413ca6ca1d2b081cc474f42cb95e3d04e6e68"></span> `Autopilot` | SDK is used as an autopilot. 
-<span id="classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413caf64f82089eddc6133add8c55c65d6687"></span> `GroundStation` | SDK is used as a ground station. 
-<span id="classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413ca8f2f82e1a7aa48819e9530d5c4977477"></span> `CompanionComputer` | SDK is used on a companion computer onboard the system (e.g. drone). 
-
 ## Member Function Documentation
 
 
@@ -144,9 +133,12 @@ Adds Connection via URL.
 
 Supports connection: Serial, TCP or UDP. Connection URL format should be:
 <ul>
-<li><p>UDP - udp://[Bind_host][:Bind_port]</p></li>
-<li><p>TCP - tcp://[Remote_host][:Remote_port]</p></li>
-<li><p>Serial - serial://Dev_Node[:Baudrate]</p></li>
+<li><p>UDP - udp://[Bind_host][:Bind_port]</p>
+</li>
+<li><p>TCP - tcp://[Remote_host][:Remote_port]</p>
+</li>
+<li><p>Serial - serial://Dev_Node[:Baudrate]</p>
+</li>
 </ul>
 
 **Parameters**
@@ -271,13 +263,13 @@ void mavsdk::Mavsdk::set_configuration(Configuration configuration)
 ```
 
 
-Set `Configuration` of SDK.
+Set [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) of SDK.
 
-The default configuration is [Configuration::GroundStation](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413caf64f82089eddc6133add8c55c65d6687) The configuration is used in order to set the MAVLink system ID, the component ID, as well as the MAV_TYPE accordingly.
+The default configuration is `Configuration::GroundStation` The configuration is used in order to set the MAVLink system ID, the component ID, as well as the MAV_TYPE accordingly.
 
 **Parameters**
 
-* [Configuration](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ad93b5e6dbb9e7577b6260bc740ac413c) **configuration** - Configuration chosen.
+* [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) **configuration** - [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) chosen.
 
 ### system_uuids() {#classmavsdk_1_1_mavsdk_1a80bd9c663d0e03c24f029fd77e914c3c}
 ```cpp

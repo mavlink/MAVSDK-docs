@@ -4,16 +4,16 @@
 ----
 
 
-This class is used to control a drone with velocity commands. 
+<ul>
+<li><p>Control a drone with position, velocity, attitude or motor commands. </p>
+</li>
+</ul>
 
 
-The module is called offboard because the velocity commands can be sent from external sources as opposed to onboard control right inside the autopilot "board".
+The module is called offboard because the commands can be sent from external sources as opposed to onboard control right inside the autopilot "board".
 
 
-Client code must specify a setpoint before starting offboard mode. [Mavsdk](classmavsdk_1_1_mavsdk.md) automatically resends setpoints at 20Hz (PX4 [Offboard](classmavsdk_1_1_offboard.md) mode requires that setpoints are minimally resent at 2Hz). If more precise control is required, clients can call the setpoint methods at whatever rate is required.
-
-
-**Attention:** this is work in progress, use with caution! 
+Client code must specify a setpoint before starting offboard mode. [Mavsdk](classmavsdk_1_1_mavsdk.md) automatically sends setpoints at 20Hz (PX4 [Offboard](classmavsdk_1_1_offboard.md) mode requires that setpoints are minimally sent at 2Hz). 
 
 
 ## Data Structures
@@ -21,23 +21,25 @@ Client code must specify a setpoint before starting offboard mode. [Mavsdk](clas
 
 struct [ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md)
 
+struct [ActuatorControlGroup](structmavsdk_1_1_offboard_1_1_actuator_control_group.md)
+
 struct [Attitude](structmavsdk_1_1_offboard_1_1_attitude.md)
 
 struct [AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md)
 
-struct [PositionNEDYaw](structmavsdk_1_1_offboard_1_1_position_n_e_d_yaw.md)
+struct [PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md)
 
 struct [VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md)
 
-struct [VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md)
+struct [VelocityNedYaw](structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md)
 
 ## Public Types
 
 
 Type | Description
 --- | ---
-enum [Result](#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | Results for offboard requests.
-std::function< void([Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9))> [result_callback_t](#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) | Callback type for offboard requests.
+enum [Result](#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | Possible results returned for offboard requests.
+std::function< void([Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9))> [ResultCallback](#classmavsdk_1_1_offboard_1a16d95f55251e9f992261d46da89ef8b9) | Callback type for asynchronous [Offboard](classmavsdk_1_1_offboard.md) calls.
 
 ## Public Member Functions
 
@@ -47,25 +49,18 @@ Type | Name | Description
 &nbsp; | [Offboard](#classmavsdk_1_1_offboard_1aedb8ed185acabd2caa3b536f51b68dcb) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Offboard](#classmavsdk_1_1_offboard_1a999a6df78e148fee89fa4ae4f6f2e0e4) () | Destructor (internal use only).
 &nbsp; | [Offboard](#classmavsdk_1_1_offboard_1abf3926e90b315d9e5ba05b51eb6c6631) (const [Offboard](classmavsdk_1_1_offboard.md) &)=delete | Copy constructor (object is not copyable).
-[Offboard::Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [start](#classmavsdk_1_1_offboard_1a3f0b71195ae6cb445237b192e3b8343f) () | Start offboard control (synchronous).
-[Offboard::Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [stop](#classmavsdk_1_1_offboard_1a9a54e588bcfd5b0ffca27833ad4f6b10) () | Stop offboard control (synchronous).
-void | [start_async](#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606) ([result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) callback) | Start offboard control (asynchronous).
-void | [stop_async](#classmavsdk_1_1_offboard_1a243e63e27d3e6d4b927e6d9a3fe2e8e9) ([result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) callback) | Stop offboard control (asynchronous).
+void | [start_async](#classmavsdk_1_1_offboard_1a0c880ad3f663142e194dd6f187cfc934) (const [ResultCallback](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a16d95f55251e9f992261d46da89ef8b9) callback) | Start offboard control.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [start](#classmavsdk_1_1_offboard_1ab71d0dd2a81f76e3a0330b0304daa30b) () const | Start offboard control.
+void | [stop_async](#classmavsdk_1_1_offboard_1a86c163d7fa1217b4e82a03daf52065c3) (const [ResultCallback](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a16d95f55251e9f992261d46da89ef8b9) callback) | Stop offboard control.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [stop](#classmavsdk_1_1_offboard_1a626810cbfa02b36019dde2d2fd4c3da9) () const | Stop offboard control.
 bool | [is_active](#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5) () const | Check if offboard control is active.
-void | [set_position_ned](#classmavsdk_1_1_offboard_1a0bcbc79ba1277f0e7ad110f86b902cc7) ([PositionNEDYaw](structmavsdk_1_1_offboard_1_1_position_n_e_d_yaw.md) position_ned_yaw) | Set the position in NED coordinates and yaw.
-void | [set_velocity_ned](#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39) ([VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) velocity_ned_yaw) | Set the velocity in NED coordinates and yaw.
-void | [set_velocity_body](#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81) ([VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed) | Set the velocity body coordinates and yaw angular rate.
-void | [set_attitude](#classmavsdk_1_1_offboard_1a49f92abcd755b71f92b79454c8b6c82f) ([Attitude](structmavsdk_1_1_offboard_1_1_attitude.md) attitude) | Set the attitude in terms of roll, pitch and yaw in degrees with thrust in percentage.
-void | [set_attitude_rate](#classmavsdk_1_1_offboard_1a862d78aa5c57ad77b249b69d028630c0) ([AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) attitude_rate) | Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust in percentage.
-void | [set_actuator_control](#classmavsdk_1_1_offboard_1af4b95e2ea3397e42e8ea8f8bd7d175cc) (const [ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) actuator_control) | Set direct actuator control values to groups #0 and #1. First 8 controls will go to control group 0, the following 8 controls to control group 1 (if actuator_control.num_controls more than 8).
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_attitude](#classmavsdk_1_1_offboard_1af6f0d3991bb6b62f39d862c46fcffb34) ([Attitude](structmavsdk_1_1_offboard_1_1_attitude.md) attitude)const | Set the attitude in terms of roll, pitch and yaw in degrees with thrust.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_actuator_control](#classmavsdk_1_1_offboard_1a619ee02a1f73041a5cae6a5c72169b96) ([ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) actuator_control)const | Set direct actuator control values to groups #0 and #1.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_attitude_rate](#classmavsdk_1_1_offboard_1a034a98a0e7a5a7a0fac507adabf6ecf8) ([AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) attitude_rate)const | Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_position_ned](#classmavsdk_1_1_offboard_1ade7dcec93ebee17de60687a75184b8b6) ([PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md) position_ned_yaw)const | Set the position in NED coordinates and yaw.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_velocity_body](#classmavsdk_1_1_offboard_1abe7364f0a48dda4df34c5c67d177cfb4) ([VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed)const | Set the velocity in body coordinates and yaw angular rate.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_velocity_ned](#classmavsdk_1_1_offboard_1a4edbc6e4528ff955d4e46e7c4e711732) ([VelocityNedYaw](structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md) velocity_ned_yaw)const | Set the velocity in NED coordinates and yaw.
 const [Offboard](classmavsdk_1_1_offboard.md) & | [operator=](#classmavsdk_1_1_offboard_1acb01657624668251c0a022bc3f8135cd) (const [Offboard](classmavsdk_1_1_offboard.md) &)=delete | Equality operator (object is not copyable).
-
-## Static Public Member Functions
-
-
-Type | Name | Description
----: | --- | ---
-const char * | [result_str](#classmavsdk_1_1_offboard_1a3402d7e3dc8b4ff15598dfd67af0644b) ([Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) result) | Get human-readable English string for [Offboard::Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9).
 
 
 ## Constructor & Destructor Documentation
@@ -114,14 +109,14 @@ Copy constructor (object is not copyable).
 ## Member Typdef Documentation
 
 
-### typedef result_callback_t {#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a}
+### typedef ResultCallback {#classmavsdk_1_1_offboard_1a16d95f55251e9f992261d46da89ef8b9}
 
 ```cpp
-typedef std::function<void(Result)> mavsdk::Offboard::result_callback_t
+using mavsdk::Offboard::ResultCallback =  std::function<void(Result)>
 ```
 
 
-Callback type for offboard requests.
+Callback type for asynchronous [Offboard](classmavsdk_1_1_offboard.md) calls.
 
 
 ## Member Enumeration Documentation
@@ -130,78 +125,84 @@ Callback type for offboard requests.
 ### enum Result {#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9}
 
 
-Results for offboard requests.
+Possible results returned for offboard requests.
 
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
-<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
-<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9afeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system connected. 
-<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
-<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a802706a9238e2928077f97736854bad4"></span> `BUSY` | Vehicle busy. 
-<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a6fa4dbf368cea972db8d9156799d5dbe"></span> `COMMAND_DENIED` | Command denied. 
-<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a070a0fb40f6c308ab544b227660aadff"></span> `TIMEOUT` | Request timeout. 
-<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9abe5140e11d47ef100aaf22a20c6f46b2"></span> `NO_SETPOINT_SET` |  Can't start without setpoint set.
+<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
+<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
+<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system is connected. 
+<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a094a6f6b0868122a9dd008cb91c083e4"></span> `ConnectionError` | Connection error. 
+<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9ad8a942ef2b04672adfafef0ad817a407"></span> `Busy` | Vehicle is busy. 
+<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9a3398e12855176d55f43d53e04f472c8a"></span> `CommandDenied` | Command denied. 
+<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9ac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Request timed out. 
+<span id="classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9abe52cc8668acd0977040ce92d399c0bb"></span> `NoSetpointSet` | Cannot start without setpoint set. 
 
 ## Member Function Documentation
 
 
-### start() {#classmavsdk_1_1_offboard_1a3f0b71195ae6cb445237b192e3b8343f}
+### start_async() {#classmavsdk_1_1_offboard_1a0c880ad3f663142e194dd6f187cfc934}
 ```cpp
-Offboard::Result mavsdk::Offboard::start()
+void mavsdk::Offboard::start_async(const ResultCallback callback)
 ```
 
 
-Start offboard control (synchronous).
+Start offboard control.
 
-**Attention:** this is work in progress, use with caution!
-
-**Returns**
-
-&emsp;[Offboard::Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
-
-### stop() {#classmavsdk_1_1_offboard_1a9a54e588bcfd5b0ffca27833ad4f6b10}
-```cpp
-Offboard::Result mavsdk::Offboard::stop()
-```
-
-
-Stop offboard control (synchronous).
-
-The vehicle will be put into Hold mode: [https://docs.px4.io/master/en/flight_modes/hold.html](https://docs.px4.io/master/en/flight_modes/hold.html)
-
-**Returns**
-
-&emsp;[Offboard::Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
-
-### start_async() {#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606}
-```cpp
-void mavsdk::Offboard::start_async(result_callback_t callback)
-```
-
-
-Start offboard control (asynchronous).
-
-**Attention:** This is work in progress, use with caution!
+This function is non-blocking. See 'start' for the blocking counterpart.
 
 **Parameters**
 
-* [result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) **callback** - Callback to receive request result.
+* const [ResultCallback](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a16d95f55251e9f992261d46da89ef8b9) **callback** - 
 
-### stop_async() {#classmavsdk_1_1_offboard_1a243e63e27d3e6d4b927e6d9a3fe2e8e9}
+### start() {#classmavsdk_1_1_offboard_1ab71d0dd2a81f76e3a0330b0304daa30b}
 ```cpp
-void mavsdk::Offboard::stop_async(result_callback_t callback)
+Result mavsdk::Offboard::start() const
 ```
 
 
-Stop offboard control (asynchronous).
+Start offboard control.
 
-The vehicle will be put into Hold mode: [https://docs.px4.io/master/en/flight_modes/hold.html](https://docs.px4.io/master/en/flight_modes/hold.html)
+This function is blocking. See 'start_async' for the non-blocking counterpart.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
+
+### stop_async() {#classmavsdk_1_1_offboard_1a86c163d7fa1217b4e82a03daf52065c3}
+```cpp
+void mavsdk::Offboard::stop_async(const ResultCallback callback)
+```
+
+
+Stop offboard control.
+
+The vehicle will be put into Hold mode: [https://docs.px4.io/en/flight_modes/hold.html](https://docs.px4.io/en/flight_modes/hold.html)
+
+
+This function is non-blocking. See 'stop' for the blocking counterpart.
 
 **Parameters**
 
-* [result_callback_t](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a740ace65ac87d920f44fb024e198c15a) **callback** - Callback to receive request result.
+* const [ResultCallback](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a16d95f55251e9f992261d46da89ef8b9) **callback** - 
+
+### stop() {#classmavsdk_1_1_offboard_1a626810cbfa02b36019dde2d2fd4c3da9}
+```cpp
+Result mavsdk::Offboard::stop() const
+```
+
+
+Stop offboard control.
+
+The vehicle will be put into Hold mode: [https://docs.px4.io/en/flight_modes/hold.html](https://docs.px4.io/en/flight_modes/hold.html)
+
+
+This function is blocking. See 'stop_async' for the non-blocking counterpart.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
 
 ### is_active() {#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5}
 ```cpp
@@ -211,89 +212,125 @@ bool mavsdk::Offboard::is_active() const
 
 Check if offboard control is active.
 
-`true` means that the vehicle is in offboard mode and we are actively sending setpoints.
+True means that the vehicle is in offboard mode and we are actively sending setpoints.
+
+
+This function is blocking.
 
 **Returns**
 
-&emsp;bool - `true` if active
+&emsp;bool - Result of request.
 
-### set_position_ned() {#classmavsdk_1_1_offboard_1a0bcbc79ba1277f0e7ad110f86b902cc7}
+### set_attitude() {#classmavsdk_1_1_offboard_1af6f0d3991bb6b62f39d862c46fcffb34}
 ```cpp
-void mavsdk::Offboard::set_position_ned(PositionNEDYaw position_ned_yaw)
+Result mavsdk::Offboard::set_attitude(Attitude attitude) const
+```
+
+
+Set the attitude in terms of roll, pitch and yaw in degrees with thrust.
+
+This function is blocking.
+
+**Parameters**
+
+* [Attitude](structmavsdk_1_1_offboard_1_1_attitude.md) **attitude** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
+
+### set_actuator_control() {#classmavsdk_1_1_offboard_1a619ee02a1f73041a5cae6a5c72169b96}
+```cpp
+Result mavsdk::Offboard::set_actuator_control(ActuatorControl actuator_control) const
+```
+
+
+Set direct actuator control values to groups #0 and #1.
+
+First 8 controls will go to control group 0, the following 8 controls to control group 1 (if actuator_control.num_controls more than 8).
+
+
+This function is blocking.
+
+**Parameters**
+
+* [ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) **actuator_control** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
+
+### set_attitude_rate() {#classmavsdk_1_1_offboard_1a034a98a0e7a5a7a0fac507adabf6ecf8}
+```cpp
+Result mavsdk::Offboard::set_attitude_rate(AttitudeRate attitude_rate) const
+```
+
+
+Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust.
+
+This function is blocking.
+
+**Parameters**
+
+* [AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) **attitude_rate** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
+
+### set_position_ned() {#classmavsdk_1_1_offboard_1ade7dcec93ebee17de60687a75184b8b6}
+```cpp
+Result mavsdk::Offboard::set_position_ned(PositionNedYaw position_ned_yaw) const
 ```
 
 
 Set the position in NED coordinates and yaw.
 
+This function is blocking.
 
 **Parameters**
 
-* [PositionNEDYaw](structmavsdk_1_1_offboard_1_1_position_n_e_d_yaw.md) **position_ned_yaw** - Position and yaw `struct`.
+* [PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md) **position_ned_yaw** - 
 
-### set_velocity_ned() {#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39}
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
+
+### set_velocity_body() {#classmavsdk_1_1_offboard_1abe7364f0a48dda4df34c5c67d177cfb4}
 ```cpp
-void mavsdk::Offboard::set_velocity_ned(VelocityNEDYaw velocity_ned_yaw)
+Result mavsdk::Offboard::set_velocity_body(VelocityBodyYawspeed velocity_body_yawspeed) const
+```
+
+
+Set the velocity in body coordinates and yaw angular rate.
+
+This function is blocking.
+
+**Parameters**
+
+* [VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) **velocity_body_yawspeed** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
+
+### set_velocity_ned() {#classmavsdk_1_1_offboard_1a4edbc6e4528ff955d4e46e7c4e711732}
+```cpp
+Result mavsdk::Offboard::set_velocity_ned(VelocityNedYaw velocity_ned_yaw) const
 ```
 
 
 Set the velocity in NED coordinates and yaw.
 
+This function is blocking.
 
 **Parameters**
 
-* [VelocityNEDYaw](structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) **velocity_ned_yaw** - Velocity and yaw `struct`.
+* [VelocityNedYaw](structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md) **velocity_ned_yaw** - 
 
-### set_velocity_body() {#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81}
-```cpp
-void mavsdk::Offboard::set_velocity_body(VelocityBodyYawspeed velocity_body_yawspeed)
-```
+**Returns**
 
-
-Set the velocity body coordinates and yaw angular rate.
-
-
-**Parameters**
-
-* [VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) **velocity_body_yawspeed** - Velocity and yaw angular rate `struct`.
-
-### set_attitude() {#classmavsdk_1_1_offboard_1a49f92abcd755b71f92b79454c8b6c82f}
-```cpp
-void mavsdk::Offboard::set_attitude(Attitude attitude)
-```
-
-
-Set the attitude in terms of roll, pitch and yaw in degrees with thrust in percentage.
-
-
-**Parameters**
-
-* [Attitude](structmavsdk_1_1_offboard_1_1_attitude.md) **attitude** - roll, pitch and yaw in degrees along with thrust in percentage.
-
-### set_attitude_rate() {#classmavsdk_1_1_offboard_1a862d78aa5c57ad77b249b69d028630c0}
-```cpp
-void mavsdk::Offboard::set_attitude_rate(AttitudeRate attitude_rate)
-```
-
-
-Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust in percentage.
-
-
-**Parameters**
-
-* [AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) **attitude_rate** - roll, pitch and yaw angular rate along with thrust in percentage.
-
-### set_actuator_control() {#classmavsdk_1_1_offboard_1af4b95e2ea3397e42e8ea8f8bd7d175cc}
-```cpp
-void mavsdk::Offboard::set_actuator_control(const ActuatorControl actuator_control)
-```
-
-
-Set direct actuator control values to groups #0 and #1. First 8 controls will go to control group 0, the following 8 controls to control group 1 (if actuator_control.num_controls more than 8).
-
-
-**Parameters**
-
-* const [ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) **actuator_control** - actuators control values
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
 
 ### operator=() {#classmavsdk_1_1_offboard_1acb01657624668251c0a022bc3f8135cd}
 ```cpp
@@ -311,20 +348,3 @@ Equality operator (object is not copyable).
 **Returns**
 
 &emsp;const [Offboard](classmavsdk_1_1_offboard.md) & - 
-
-### result_str() {#classmavsdk_1_1_offboard_1a3402d7e3dc8b4ff15598dfd67af0644b}
-```cpp
-static const char* mavsdk::Offboard::result_str(Result result)
-```
-
-
-Get human-readable English string for [Offboard::Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9).
-
-
-**Parameters**
-
-* [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) **result** - The enum value for which a string is required.
-
-**Returns**
-
-&emsp;const char * - Human-readable string for enum value.

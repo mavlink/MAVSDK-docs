@@ -4,7 +4,7 @@
 ----
 
 
-The [LogFiles](classmavsdk_1_1_log_files.md) class allows to download log files from the vehicle after a flight is completed. 
+Allow to download log files from the vehicle after a flight is complete. For log streaming during flight check the logging plugin. 
 
 
 ## Data Structures
@@ -12,14 +12,17 @@ The [LogFiles](classmavsdk_1_1_log_files.md) class allows to download log files 
 
 struct [Entry](structmavsdk_1_1_log_files_1_1_entry.md)
 
+struct [ProgressData](structmavsdk_1_1_log_files_1_1_progress_data.md)
+
 ## Public Types
 
 
 Type | Description
 --- | ---
-enum [Result](#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) | Results for log file requests.
-std::function< void([Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [Entry](structmavsdk_1_1_log_files_1_1_entry.md) >)> [get_entries_callback_t](#classmavsdk_1_1_log_files_1a2bccfb05283a6bd34288e3a614ed8fd4) | Callback type for logging requests.
-std::function< void([Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) result, float progress)> [download_log_file_callback_t](#classmavsdk_1_1_log_files_1ab0e38d46309bf99ba3d35acb93b0b096) | Callback type for logging requests.
+enum [Result](#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) | Possible results returned for calibration commands.
+std::function< void([Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd))> [ResultCallback](#classmavsdk_1_1_log_files_1a64cd003ea9110b4a11eb08753a360a59) | Callback type for asynchronous [LogFiles](classmavsdk_1_1_log_files.md) calls.
+std::function< void([Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [Entry](structmavsdk_1_1_log_files_1_1_entry.md) >)> [GetEntriesCallback](#classmavsdk_1_1_log_files_1a0bb101777daba9e87cb33baf55389403) | Callback type for get_entries_async.
+std::function< void([LogFiles::Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), [ProgressData](structmavsdk_1_1_log_files_1_1_progress_data.md))> [DownloadLogFileCallback](#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3) | Callback type for download_log_file_async.
 
 ## Public Member Functions
 
@@ -29,18 +32,10 @@ Type | Name | Description
 &nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1a4a487863501b7ef30db5179bebc45a3a) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~LogFiles](#classmavsdk_1_1_log_files_1a051ae59e72ddb9be39f128592604ded6) () | Destructor (internal use only).
 &nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1aa7edd3ce17708f6be95a1c9d4acf1757) (const [LogFiles](classmavsdk_1_1_log_files.md) &)=delete | Copy constructor (object is not copyable).
-std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [Entry](structmavsdk_1_1_log_files_1_1_entry.md) > > | [get_entries](#classmavsdk_1_1_log_files_1a5d97060616682275a0e559f50db4334f) () | Get list of log files (synchronous).
-void | [get_entries_async](#classmavsdk_1_1_log_files_1a26572d7b1e01f9c698283744ac78d004) ([get_entries_callback_t](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a2bccfb05283a6bd34288e3a614ed8fd4) callback) | Get list of log files (asynchronous).
-[Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) | [download_log_file](#classmavsdk_1_1_log_files_1a488856ade4330866251091b26642bf00) (unsigned id, const std::string & file_path) | Download log file (synchronous).
-void | [download_log_file_async](#classmavsdk_1_1_log_files_1a06924885b20e46ce581f86e369b83c0d) (unsigned id, const std::string & file_path, [download_log_file_callback_t](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1ab0e38d46309bf99ba3d35acb93b0b096) callback) | Download log file (asynchronous).
+void | [get_entries_async](#classmavsdk_1_1_log_files_1a6a922097850fb43fbb9d3348fe0b3bb7) (const [GetEntriesCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0bb101777daba9e87cb33baf55389403) callback) | Get List of log files.
+std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [LogFiles::Entry](structmavsdk_1_1_log_files_1_1_entry.md) > > | [get_entries](#classmavsdk_1_1_log_files_1ab06a17009589c57aa90ac31a24aa9064) () const | Get List of log files.
+void | [download_log_file_async](#classmavsdk_1_1_log_files_1a2db94afd60d6211cfbdb17c1092476d5) (uint32_t id, std::string path, [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3) callback) | Download log file.
 const [LogFiles](classmavsdk_1_1_log_files.md) & | [operator=](#classmavsdk_1_1_log_files_1a2ba9f188f7644a647f5dcdadb034e300) (const [LogFiles](classmavsdk_1_1_log_files.md) &)=delete | Equality operator (object is not copyable).
-
-## Static Public Member Functions
-
-
-Type | Name | Description
----: | --- | ---
-const char * | [result_str](#classmavsdk_1_1_log_files_1a29525caeb008a8171739e994515ef53d) ([Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) result) | Returns human-readable English string for [LogFiles::Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd).
 
 
 ## Constructor & Destructor Documentation
@@ -89,24 +84,34 @@ Copy constructor (object is not copyable).
 ## Member Typdef Documentation
 
 
-### typedef get_entries_callback_t {#classmavsdk_1_1_log_files_1a2bccfb05283a6bd34288e3a614ed8fd4}
+### typedef ResultCallback {#classmavsdk_1_1_log_files_1a64cd003ea9110b4a11eb08753a360a59}
 
 ```cpp
-typedef std::function<void(Result, std::vector<Entry>)> mavsdk::LogFiles::get_entries_callback_t
+using mavsdk::LogFiles::ResultCallback =  std::function<void(Result)>
 ```
 
 
-Callback type for logging requests.
+Callback type for asynchronous [LogFiles](classmavsdk_1_1_log_files.md) calls.
 
 
-### typedef download_log_file_callback_t {#classmavsdk_1_1_log_files_1ab0e38d46309bf99ba3d35acb93b0b096}
+### typedef GetEntriesCallback {#classmavsdk_1_1_log_files_1a0bb101777daba9e87cb33baf55389403}
 
 ```cpp
-typedef std::function<void(Result result, float progress)> mavsdk::LogFiles::download_log_file_callback_t
+using mavsdk::LogFiles::GetEntriesCallback =  std::function<void(Result, std::vector<Entry>)>
 ```
 
 
-Callback type for logging requests.
+Callback type for get_entries_async.
+
+
+### typedef DownloadLogFileCallback {#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3}
+
+```cpp
+using mavsdk::LogFiles::DownloadLogFileCallback =  std::function<void(LogFiles::Result, ProgressData)>
+```
+
+
+Callback type for download_log_file_async.
 
 
 ## Member Enumeration Documentation
@@ -115,79 +120,64 @@ Callback type for logging requests.
 ### enum Result {#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd}
 
 
-Results for log file requests.
+Possible results returned for calibration commands.
 
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cdad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
-<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cdac2a27e3817de51257fae9f1251409316"></span> `NO_LOGFILES` | No logfiles found. 
-<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda032a7a92e5df105629ad882f7d12532f"></span> `TOO_MANY_RETRIES` | Too many retries. 
-<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cdaee88634543eb5c2b123bab1abd32c497"></span> `PROGRESS` | Progress update. 
-<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda46b5f8c58b679b4243cbdb5749642c86"></span> `Progress` | Progress update. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda63fe239cf100e5ce5032703da6ca8310"></span> `NoLogfiles` | No log files found. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cdac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | A timeout happened. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda253ca7dd096ee0956cccee4d376cab8b"></span> `InvalidArgument` | Invalid argument. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda17fd85d9b010cda721a6aa7db5af2b28"></span> `FileOpenFailed` | File open failed. 
 
 ## Member Function Documentation
 
 
-### get_entries() {#classmavsdk_1_1_log_files_1a5d97060616682275a0e559f50db4334f}
+### get_entries_async() {#classmavsdk_1_1_log_files_1a6a922097850fb43fbb9d3348fe0b3bb7}
 ```cpp
-std::pair<Result, std::vector<Entry> > mavsdk::LogFiles::get_entries()
+void mavsdk::LogFiles::get_entries_async(const GetEntriesCallback callback)
 ```
 
 
-Get list of log files (synchronous).
+Get List of log files.
 
+This function is non-blocking. See 'get_entries' for the blocking counterpart.
+
+**Parameters**
+
+* const [GetEntriesCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0bb101777daba9e87cb33baf55389403) **callback** - 
+
+### get_entries() {#classmavsdk_1_1_log_files_1ab06a17009589c57aa90ac31a24aa9064}
+```cpp
+std::pair<Result, std::vector<LogFiles::Entry> > mavsdk::LogFiles::get_entries() const
+```
+
+
+Get List of log files.
+
+This function is blocking. See 'get_entries_async' for the non-blocking counterpart.
 
 **Returns**
 
-&emsp;std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [Entry](structmavsdk_1_1_log_files_1_1_entry.md) > > - Pair of result and list of entries.
+&emsp;std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [LogFiles::Entry](structmavsdk_1_1_log_files_1_1_entry.md) > > - Result of request.
 
-### get_entries_async() {#classmavsdk_1_1_log_files_1a26572d7b1e01f9c698283744ac78d004}
+### download_log_file_async() {#classmavsdk_1_1_log_files_1a2db94afd60d6211cfbdb17c1092476d5}
 ```cpp
-void mavsdk::LogFiles::get_entries_async(get_entries_callback_t callback)
+void mavsdk::LogFiles::download_log_file_async(uint32_t id, std::string path, DownloadLogFileCallback callback)
 ```
 
 
-Get list of log files (asynchronous).
+Download log file.
 
 
 **Parameters**
 
-* [get_entries_callback_t](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a2bccfb05283a6bd34288e3a614ed8fd4) **callback** - Callback to get result from.
-
-### download_log_file() {#classmavsdk_1_1_log_files_1a488856ade4330866251091b26642bf00}
-```cpp
-Result mavsdk::LogFiles::download_log_file(unsigned id, const std::string &file_path)
-```
-
-
-Download log file (synchronous).
-
-> **Note** The synchronous method does only report progress through console logs.
-
-**Parameters**
-
-* unsigned **id** - [Entry](structmavsdk_1_1_log_files_1_1_entry.md) id of log file to download.
-* const std::string& **file_path** - File path where to download file to.
-
-**Returns**
-
-&emsp;[Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) - Result of request
-
-### download_log_file_async() {#classmavsdk_1_1_log_files_1a06924885b20e46ce581f86e369b83c0d}
-```cpp
-void mavsdk::LogFiles::download_log_file_async(unsigned id, const std::string &file_path, download_log_file_callback_t callback)
-```
-
-
-Download log file (asynchronous).
-
-
-**Parameters**
-
-* unsigned **id** - [Entry](structmavsdk_1_1_log_files_1_1_entry.md) id of log file to download.
-* const std::string& **file_path** - File path where to download file to.
-* [download_log_file_callback_t](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1ab0e38d46309bf99ba3d35acb93b0b096) **callback** - Callback to get result and progress.
+* uint32_t **id** - 
+* std::string **path** - 
+* [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3) **callback** - 
 
 ### operator=() {#classmavsdk_1_1_log_files_1a2ba9f188f7644a647f5dcdadb034e300}
 ```cpp
@@ -205,20 +195,3 @@ Equality operator (object is not copyable).
 **Returns**
 
 &emsp;const [LogFiles](classmavsdk_1_1_log_files.md) & - 
-
-### result_str() {#classmavsdk_1_1_log_files_1a29525caeb008a8171739e994515ef53d}
-```cpp
-static const char* mavsdk::LogFiles::result_str(Result result)
-```
-
-
-Returns human-readable English string for [LogFiles::Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd).
-
-
-**Parameters**
-
-* [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) **result** - Enum for which string is required.
-
-**Returns**
-
-&emsp;const char * - result Human-readable string for [LogFiles::Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd).
