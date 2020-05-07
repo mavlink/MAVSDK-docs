@@ -4,24 +4,24 @@
 ----
 
 
-Type containing identification. 
+[System](classmavsdk_1_1_system.md) identification. 
 
 
 ## Data Fields
 
 
-uint8_t [hardware_uid](#structmavsdk_1_1_info_1_1_identification_1ac5db4c3496a4b2a118ad703547a542be)  - UID of hardware. This refers to uid2 of MAVLink. If the system does not support uid2 yet, this will be all zero.
+std::string [hardware_uid](#structmavsdk_1_1_info_1_1_identification_1a68be9823aae193b5473191d287b5e385) {} - UID of the hardware. This refers to uid2 of MAVLink. If the system does not support uid2 yet, this is all zeros.
 
 
 ## Field Documentation
 
 
-### hardware_uid {#structmavsdk_1_1_info_1_1_identification_1ac5db4c3496a4b2a118ad703547a542be}
+### hardware_uid {#structmavsdk_1_1_info_1_1_identification_1a68be9823aae193b5473191d287b5e385}
 
 ```cpp
-uint8_t mavsdk::Info::Identification::hardware_uid[18]
+std::string mavsdk::Info::Identification::hardware_uid {}
 ```
 
 
-UID of hardware. This refers to uid2 of MAVLink. If the system does not support uid2 yet, this will be all zero.
+UID of the hardware. This refers to uid2 of MAVLink. If the system does not support uid2 yet, this is all zeros.
 

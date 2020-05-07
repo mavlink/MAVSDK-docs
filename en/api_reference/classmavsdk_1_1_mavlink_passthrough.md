@@ -28,7 +28,6 @@ Type | Name | Description
 &nbsp; | [MavlinkPassthrough](#classmavsdk_1_1_mavlink_passthrough_1ad17fc20d2b7c5c6996e0841aaabccb56) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~MavlinkPassthrough](#classmavsdk_1_1_mavlink_passthrough_1a890faef9ad80c3e79e0b785fd07106c8) () | Destructor (internal use only).
 &nbsp; | [MavlinkPassthrough](#classmavsdk_1_1_mavlink_passthrough_1ae4b30f9c2c5e938ab965729e27f50ce5) (const [MavlinkPassthrough](classmavsdk_1_1_mavlink_passthrough.md) &)=delete | Copy Constructor (object is not copyable).
-std::string | [result_str](#classmavsdk_1_1_mavlink_passthrough_1ad9f3ba62746ee389638e29b2f75c6020) ([Result](classmavsdk_1_1_mavlink_passthrough.md#classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793) result) | Returns a human-readable English string for [MavlinkPassthrough::Result](classmavsdk_1_1_mavlink_passthrough.md#classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793).
 [Result](classmavsdk_1_1_mavlink_passthrough.md#classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793) | [send_message](#classmavsdk_1_1_mavlink_passthrough_1ac66d092318fa6d80c5bffea449f4bbaa) (mavlink_message_t & message) | Send message.
 void | [subscribe_message_async](#classmavsdk_1_1_mavlink_passthrough_1a6dfb4fedba830dff881deb2e375da571) (uint16_t message_id, std::function< void(const mavlink_message_t &)> callback) | Subscribe to messages using message ID.
 uint8_t | [get_our_sysid](#classmavsdk_1_1_mavlink_passthrough_1a985b269c1b78ec3e4e9d9468e46e19be) () const | Get our own system ID.
@@ -94,29 +93,12 @@ Possible results returned for requests.
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
-<span id="classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Success. 
-<span id="classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
+<span id="classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown error. 
+<span id="classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793a505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Success. 
+<span id="classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793a094a6f6b0868122a9dd008cb91c083e4"></span> `ConnectionError` | Connection error. 
 
 ## Member Function Documentation
 
-
-### result_str() {#classmavsdk_1_1_mavlink_passthrough_1ad9f3ba62746ee389638e29b2f75c6020}
-```cpp
-std::string mavsdk::MavlinkPassthrough::result_str(Result result)
-```
-
-
-Returns a human-readable English string for [MavlinkPassthrough::Result](classmavsdk_1_1_mavlink_passthrough.md#classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793).
-
-
-**Parameters**
-
-* [Result](classmavsdk_1_1_mavlink_passthrough.md#classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793) **result** - The enum value for which a human readable string is required.
-
-**Returns**
-
-&emsp;std::string - Human readable string for the [MavlinkPassthrough::Result](classmavsdk_1_1_mavlink_passthrough.md#classmavsdk_1_1_mavlink_passthrough_1a265eacaeea064a31de3fe16d1e357793).
 
 ### send_message() {#classmavsdk_1_1_mavlink_passthrough_1ac66d092318fa6d80c5bffea449f4bbaa}
 ```cpp

@@ -4,15 +4,15 @@
 ----
 
 
-The raw values of the actuator outputs type. 
+Actuator output status type. 
 
 
 ## Data Fields
 
 
-uint32_t [active](#structmavsdk_1_1_telemetry_1_1_actuator_output_status_1a6325f5b35293353c43cccf1ceaa5a712)  - Active outputs.
+uint32_t [active](#structmavsdk_1_1_telemetry_1_1_actuator_output_status_1a6325f5b35293353c43cccf1ceaa5a712) {0} - Active outputs.
 
-float [actuator](#structmavsdk_1_1_telemetry_1_1_actuator_output_status_1a25cbc13041544894ddab6320eae769df)  - Servo / motor output array values.
+std::vector< float > [actuator](#structmavsdk_1_1_telemetry_1_1_actuator_output_status_1a6fca8f50d2fb9f59fd7b384bf8a9b294) {} - Servo/motor output values.
 
 
 ## Field Documentation
@@ -21,19 +21,19 @@ float [actuator](#structmavsdk_1_1_telemetry_1_1_actuator_output_status_1a25cbc1
 ### active {#structmavsdk_1_1_telemetry_1_1_actuator_output_status_1a6325f5b35293353c43cccf1ceaa5a712}
 
 ```cpp
-uint32_t mavsdk::Telemetry::ActuatorOutputStatus::active
+uint32_t mavsdk::Telemetry::ActuatorOutputStatus::active {0}
 ```
 
 
 Active outputs.
 
 
-### actuator {#structmavsdk_1_1_telemetry_1_1_actuator_output_status_1a25cbc13041544894ddab6320eae769df}
+### actuator {#structmavsdk_1_1_telemetry_1_1_actuator_output_status_1a6fca8f50d2fb9f59fd7b384bf8a9b294}
 
 ```cpp
-float mavsdk::Telemetry::ActuatorOutputStatus::actuator[32]
+std::vector<float> mavsdk::Telemetry::ActuatorOutputStatus::actuator {}
 ```
 
 
-Servo / motor output array values.
+Servo/motor output values.
 

@@ -4,7 +4,7 @@
 ----
 
 
-The [Info](classmavsdk_1_1_info.md) class provides basic infomation about the hardware and/or software of a system. 
+Provide information about the hardware and/or software of a system. 
 
 
 ## Data Structures
@@ -23,7 +23,8 @@ struct [Version](structmavsdk_1_1_info_1_1_version.md)
 
 Type | Description
 --- | ---
-enum [Result](#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a) | Possible results returned for requests.
+enum [Result](#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a) | Possible results returned for info requests.
+std::function< void([Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a))> [ResultCallback](#classmavsdk_1_1_info_1a649bf4a0936dea3168d40eb9b9dcdd57) | Callback type for asynchronous [Info](classmavsdk_1_1_info.md) calls.
 
 ## Public Member Functions
 
@@ -32,25 +33,12 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Info](#classmavsdk_1_1_info_1a01a29a579c8ecb75ea73d48f8f6adf17) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Info](#classmavsdk_1_1_info_1a2681cccfa006f9ea4f4eb9e498a83c04) () | Destructor (internal use only).
-&nbsp; | [Info](#classmavsdk_1_1_info_1a672404baf7e8da437b36b34dff290d2f) (const [Info](classmavsdk_1_1_info.md) &)=delete | Copy Constructor (object is not copyable).
-std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Identification](structmavsdk_1_1_info_1_1_identification.md) > | [get_identification](#classmavsdk_1_1_info_1a5b51b6a67aebfb61ba1d287627efad4c) () const | Gets the identification of the system.
-std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Version](structmavsdk_1_1_info_1_1_version.md) > | [get_version](#classmavsdk_1_1_info_1ac0766bb482354bbdae60dfe086311933) () const | Get system version information.
-std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Product](structmavsdk_1_1_info_1_1_product.md) > | [get_product](#classmavsdk_1_1_info_1a4f1fe91a6cae12a9d78294dcaca26d4c) () const | Get system product information.
-std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > | [get_flight_information](#classmavsdk_1_1_info_1a6dbc9fa0b50542c28bdb623dd0a0a395) () const | Get system flight information.
+&nbsp; | [Info](#classmavsdk_1_1_info_1a672404baf7e8da437b36b34dff290d2f) (const [Info](classmavsdk_1_1_info.md) &)=delete | Copy constructor (object is not copyable).
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > | [get_flight_information](#classmavsdk_1_1_info_1a915e0833d8c3c61fed9b9ad687caef77) () const | Get flight information of the system.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Identification](structmavsdk_1_1_info_1_1_identification.md) > | [get_identification](#classmavsdk_1_1_info_1a812ed66265b7427bc781faec3f0fa89e) () const | Get the identification of the system.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Product](structmavsdk_1_1_info_1_1_product.md) > | [get_product](#classmavsdk_1_1_info_1ae60d71a6dcd7546d1bdc06a9c26e629f) () const | Get product information of the system.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Version](structmavsdk_1_1_info_1_1_version.md) > | [get_version](#classmavsdk_1_1_info_1a2403b975a73b2b52a455b96cdc899af3) () const | Get the version information of the system.
 const [Info](classmavsdk_1_1_info.md) & | [operator=](#classmavsdk_1_1_info_1a586eb91fd65d602bad1d016dca42b435) (const [Info](classmavsdk_1_1_info.md) &)=delete | Equality operator (object is not copyable).
-
-## Static Public Attributes
-
-
-static const unsigned [GIT_HASH_STR_LEN](#classmavsdk_1_1_info_1af6cfc083dd14c211b50aff06ffe30718) = 17 - Length of git hash strings.
-
-
-## Static Public Member Functions
-
-
-Type | Name | Description
----: | --- | ---
-std::string | [result_str](#classmavsdk_1_1_info_1a65a75472cee84487769c740b83f8ffc3) ([Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a) result) | Returns a human-readable English string for an Result.
 
 
 ## Constructor & Destructor Documentation
@@ -89,12 +77,25 @@ mavsdk::Info::Info(const Info &)=delete
 ```
 
 
-Copy Constructor (object is not copyable).
+Copy constructor (object is not copyable).
 
 
 **Parameters**
 
 * const [Info](classmavsdk_1_1_info.md)&  - 
+
+## Member Typdef Documentation
+
+
+### typedef ResultCallback {#classmavsdk_1_1_info_1a649bf4a0936dea3168d40eb9b9dcdd57}
+
+```cpp
+using mavsdk::Info::ResultCallback =  std::function<void(Result)>
+```
+
+
+Callback type for asynchronous [Info](classmavsdk_1_1_info.md) calls.
+
 
 ## Member Enumeration Documentation
 
@@ -102,71 +103,73 @@ Copy Constructor (object is not copyable).
 ### enum Result {#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a}
 
 
-Possible results returned for requests.
+Possible results returned for info requests.
 
-> **Note** [Mavsdk](classmavsdk_1_1_mavsdk.md) does not throw exceptions. Instead a result of this type will be returned.
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aa696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unspecified error. 
-<span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | The request was successful. 
-<span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aaf5b6f062a23d25fc902f8c5173aaf877"></span> `INFORMATION_NOT_RECEIVED_YET` | The information has not been received yet. 
+<span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aa88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
+<span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aa505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
+<span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aa56c1e4870d2594d9fd4d91ffaf1e3e70"></span> `InformationNotReceivedYet` | Information has not been received yet. 
 
 ## Member Function Documentation
 
 
-### get_identification() {#classmavsdk_1_1_info_1a5b51b6a67aebfb61ba1d287627efad4c}
+### get_flight_information() {#classmavsdk_1_1_info_1a915e0833d8c3c61fed9b9ad687caef77}
 ```cpp
-std::pair<Result, Identification> mavsdk::Info::get_identification() const
+std::pair<Result, Info::FlightInfo> mavsdk::Info::get_flight_information() const
 ```
 
 
-Gets the identification of the system.
+Get flight information of the system.
 
-If possible this will be a unique identifier provided by hardware.
+This function is blocking.
 
 **Returns**
 
-&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Identification](structmavsdk_1_1_info_1_1_identification.md) > - a pair containing the result of the request and if successful, the identification information of the system.
+&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > - Result of request.
 
-### get_version() {#classmavsdk_1_1_info_1ac0766bb482354bbdae60dfe086311933}
+### get_identification() {#classmavsdk_1_1_info_1a812ed66265b7427bc781faec3f0fa89e}
 ```cpp
-std::pair<Result, Version> mavsdk::Info::get_version() const
+std::pair<Result, Info::Identification> mavsdk::Info::get_identification() const
 ```
 
 
-Get system version information.
+Get the identification of the system.
 
+This function is blocking.
 
 **Returns**
 
-&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Version](structmavsdk_1_1_info_1_1_version.md) > - a pair containing the result of the request and if successful, the version information about the system.
+&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Identification](structmavsdk_1_1_info_1_1_identification.md) > - Result of request.
 
-### get_product() {#classmavsdk_1_1_info_1a4f1fe91a6cae12a9d78294dcaca26d4c}
+### get_product() {#classmavsdk_1_1_info_1ae60d71a6dcd7546d1bdc06a9c26e629f}
 ```cpp
-std::pair<Result, Product> mavsdk::Info::get_product() const
+std::pair<Result, Info::Product> mavsdk::Info::get_product() const
 ```
 
 
-Get system product information.
+Get product information of the system.
 
+This function is blocking.
 
 **Returns**
 
-&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Product](structmavsdk_1_1_info_1_1_product.md) > - a pair containing the result of the request and if successful, the product information about the system.
+&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Product](structmavsdk_1_1_info_1_1_product.md) > - Result of request.
 
-### get_flight_information() {#classmavsdk_1_1_info_1a6dbc9fa0b50542c28bdb623dd0a0a395}
+### get_version() {#classmavsdk_1_1_info_1a2403b975a73b2b52a455b96cdc899af3}
 ```cpp
-std::pair<Result, FlightInfo> mavsdk::Info::get_flight_information() const
+std::pair<Result, Info::Version> mavsdk::Info::get_version() const
 ```
 
 
-Get system flight information.
+Get the version information of the system.
 
+This function is blocking.
 
 **Returns**
 
-&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > - a pair containing the result of the request and if successful, the flight information about the system.
+&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Version](structmavsdk_1_1_info_1_1_version.md) > - Result of request.
 
 ### operator=() {#classmavsdk_1_1_info_1a586eb91fd65d602bad1d016dca42b435}
 ```cpp
@@ -184,34 +187,3 @@ Equality operator (object is not copyable).
 **Returns**
 
 &emsp;const [Info](classmavsdk_1_1_info.md) & - 
-
-### result_str() {#classmavsdk_1_1_info_1a65a75472cee84487769c740b83f8ffc3}
-```cpp
-static std::string mavsdk::Info::result_str(Result result)
-```
-
-
-Returns a human-readable English string for an Result.
-
-
-**Parameters**
-
-* [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a) **result** - The enum value for which a human readable string is required.
-
-**Returns**
-
-&emsp;std::string - Human readable string for the Result.
-
-## Field Documentation
-
-
-### GIT_HASH_STR_LEN {#classmavsdk_1_1_info_1af6cfc083dd14c211b50aff06ffe30718}
-
-```cpp
-const unsigned mavsdk::Info::GIT_HASH_STR_LEN = 17
-```
-
-
-Length of git hash strings.
-
-Length is 16 chars + null termination.

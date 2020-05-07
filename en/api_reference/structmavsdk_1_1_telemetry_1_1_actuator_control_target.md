@@ -4,45 +4,36 @@
 ----
 
 
-The vehicle actuator's rate control type. 
-
-
-An actuator's control group is e.g. attitude, for the core flight controls, or gimbal for payload. For more information about PX4 groups, check out [https://dev.px4.io/v1.9.0/en/concept/mixing.html#control-pipeline](https://dev.px4.io/v1.9.0/en/concept/mixing.html#control-pipeline)
-
-
-Actuator controls normed to -1..+1 where 0 is neutral position. Throttle for single rotation direction motors is 0..1, negative range for reverse direction.
-
-
-For more information about controls, check out [https://mavlink.io/en/messages/common.html#SET_ACTUATOR_CONTROL_TARGET](https://mavlink.io/en/messages/common.html#SET_ACTUATOR_CONTROL_TARGET) 
+Actuator control target type. 
 
 
 ## Data Fields
 
 
-uint8_t [group](#structmavsdk_1_1_telemetry_1_1_actuator_control_target_1a66e4a0e793c4e78ef180041416c5ce51)  - Actuator group.
+int32_t [group](#structmavsdk_1_1_telemetry_1_1_actuator_control_target_1a31c7cfc07e6b4de2ee87439230db6e47) {0} - An actuator control group is e.g. 'attitude' for the core flight controls, or 'gimbal' for a payload.
 
-float [controls](#structmavsdk_1_1_telemetry_1_1_actuator_control_target_1a08724e9fdcf464a8cb9465b7bcb43d4e)  - Actuator controls.
+std::vector< float > [controls](#structmavsdk_1_1_telemetry_1_1_actuator_control_target_1ae12790f5d28dfb2b979618c155136c5f) {} - Controls normed from -1 to 1, where 0 is neutral position.
 
 
 ## Field Documentation
 
 
-### group {#structmavsdk_1_1_telemetry_1_1_actuator_control_target_1a66e4a0e793c4e78ef180041416c5ce51}
+### group {#structmavsdk_1_1_telemetry_1_1_actuator_control_target_1a31c7cfc07e6b4de2ee87439230db6e47}
 
 ```cpp
-uint8_t mavsdk::Telemetry::ActuatorControlTarget::group
+int32_t mavsdk::Telemetry::ActuatorControlTarget::group {0}
 ```
 
 
-Actuator group.
+An actuator control group is e.g. 'attitude' for the core flight controls, or 'gimbal' for a payload.
 
 
-### controls {#structmavsdk_1_1_telemetry_1_1_actuator_control_target_1a08724e9fdcf464a8cb9465b7bcb43d4e}
+### controls {#structmavsdk_1_1_telemetry_1_1_actuator_control_target_1ae12790f5d28dfb2b979618c155136c5f}
 
 ```cpp
-float mavsdk::Telemetry::ActuatorControlTarget::controls[8]
+std::vector<float> mavsdk::Telemetry::ActuatorControlTarget::controls {}
 ```
 
 
-Actuator controls.
+Controls normed from -1 to 1, where 0 is neutral position.
 

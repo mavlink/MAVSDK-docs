@@ -4,21 +4,20 @@
 ----
 
 
-This class allow users to communicate with vehicle's system shell. 
+<ul>
+<li><p>Allow to communicate with the vehicle's system shell. </p>
+</li>
+</ul>
 
-
-## Data Structures
-
-
-struct [ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md)
 
 ## Public Types
 
 
 Type | Description
 --- | ---
-enum [Result](#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) | [Shell](classmavsdk_1_1_shell.md) Result Code enum.
-std::function< void([Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) result, [ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md) response)> [result_callback_t](#classmavsdk_1_1_shell_1a22aa50b455d6a3f81b4a29a9d339a8fa) | Callback type for shell requests.
+enum [Result](#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) | Possible results returned for shell requests.
+std::function< void([Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8))> [ResultCallback](#classmavsdk_1_1_shell_1a4937843446c999606349ad438f8d682d) | Callback type for asynchronous [Shell](classmavsdk_1_1_shell.md) calls.
+std::function< void(std::string)> [ReceiveCallback](#classmavsdk_1_1_shell_1adfa64ede96967ae1ab5a5ecd83032dbb) | Callback type for subscribe_receive.
 
 ## Public Member Functions
 
@@ -28,16 +27,9 @@ Type | Name | Description
 &nbsp; | [Shell](#classmavsdk_1_1_shell_1a31a80044ee4822e8b9ac1c515b0eea90) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Shell](#classmavsdk_1_1_shell_1a26b0e0d6a00d89c3d22c0f8a580c54c4) () | Destructor (internal use only).
 &nbsp; | [Shell](#classmavsdk_1_1_shell_1a7fdf25f0db49675a24c6ce61be9f82b5) (const [Shell](classmavsdk_1_1_shell.md) &)=delete | Copy constructor (object is not copyable).
-[Shell::Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) | [shell_command](#classmavsdk_1_1_shell_1a71647880750275ae20f9e9ff35759bff) ([ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md) shell_message) | Send the shell message.
-[Shell::Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) | [shell_command_response_async](#classmavsdk_1_1_shell_1aa619d754d68953adb87afa5af864151e) ([result_callback_t](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a22aa50b455d6a3f81b4a29a9d339a8fa) callback) | Set [Shell](classmavsdk_1_1_shell.md) message Response callback (asynchronous).
+[Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) | [send](#classmavsdk_1_1_shell_1a7b39022ce3be914eec82b53a76d19bc7) (std::string command)const | Send a command line.
+void | [subscribe_receive](#classmavsdk_1_1_shell_1aa7e47ad1ce0f35e82701bd1811598ee1) ([ReceiveCallback](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1adfa64ede96967ae1ab5a5ecd83032dbb) callback) | Receive feedback from a sent command line.
 const [Shell](classmavsdk_1_1_shell.md) & | [operator=](#classmavsdk_1_1_shell_1a492f8b2e36ef2468522bfd0f51f4b9b8) (const [Shell](classmavsdk_1_1_shell.md) &)=delete | Equality operator (object is not copyable).
-
-## Static Public Member Functions
-
-
-Type | Name | Description
----: | --- | ---
-const char * | [result_code_str](#classmavsdk_1_1_shell_1a906fe10a4f5a9443e84fc9486221b3ff) ([Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) result) | Get human-readable English string for Shell::Result::ResultCode.
 
 
 ## Constructor & Destructor Documentation
@@ -86,14 +78,24 @@ Copy constructor (object is not copyable).
 ## Member Typdef Documentation
 
 
-### typedef result_callback_t {#classmavsdk_1_1_shell_1a22aa50b455d6a3f81b4a29a9d339a8fa}
+### typedef ResultCallback {#classmavsdk_1_1_shell_1a4937843446c999606349ad438f8d682d}
 
 ```cpp
-typedef std::function<void(Result result, ShellMessage response)> mavsdk::Shell::result_callback_t
+using mavsdk::Shell::ResultCallback =  std::function<void(Result)>
 ```
 
 
-Callback type for shell requests.
+Callback type for asynchronous [Shell](classmavsdk_1_1_shell.md) calls.
+
+
+### typedef ReceiveCallback {#classmavsdk_1_1_shell_1adfa64ede96967ae1ab5a5ecd83032dbb}
+
+```cpp
+using mavsdk::Shell::ReceiveCallback =  std::function<void(std::string)>
+```
+
+
+Callback type for subscribe_receive.
 
 
 ## Member Enumeration Documentation
@@ -102,58 +104,52 @@ Callback type for shell requests.
 ### enum Result {#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8}
 
 
-[Shell](classmavsdk_1_1_shell.md) Result Code enum.
+Possible results returned for shell requests.
 
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` | Unknown error. 
-<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8ad0749aaba8b833466dfcbb0428e4f89c"></span> `SUCCESS` | Request succeeded. 
-<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8afeae72a3a2feec3c92c2a79a30d31186"></span> `NO_SYSTEM` | No system connected. 
-<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8ac77f1f09dab2c0c9980fca7cfae02518"></span> `CONNECTION_ERROR` | Connection error. 
-<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8a8e399aedb37789c2596e6c36b6c63547"></span> `NO_RESPONSE` | Response does not received. 
-<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8a802706a9238e2928077f97736854bad4"></span> `BUSY` | [Shell](classmavsdk_1_1_shell.md) busy (transfer in progress) 
+<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
+<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8a505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
+<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system is connected. 
+<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8a094a6f6b0868122a9dd008cb91c083e4"></span> `ConnectionError` | Connection error. 
+<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8a0e976dcd18516429d344402e6f5524d3"></span> `NoResponse` | Response was not received. 
+<span id="classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8ad8a942ef2b04672adfafef0ad817a407"></span> `Busy` | [Shell](classmavsdk_1_1_shell.md) busy (transfer in progress). 
 
 ## Member Function Documentation
 
 
-### shell_command() {#classmavsdk_1_1_shell_1a71647880750275ae20f9e9ff35759bff}
+### send() {#classmavsdk_1_1_shell_1a7b39022ce3be914eec82b53a76d19bc7}
 ```cpp
-Shell::Result mavsdk::Shell::shell_command(ShellMessage shell_message)
+Result mavsdk::Shell::send(std::string command) const
 ```
 
 
-Send the shell message.
+Send a command line.
 
-If shell_message.data string have not trailing newline - it will be added.
-
-
-If response data looks like not completed try to increase timeout value in request.
+This function is blocking.
 
 **Parameters**
 
-* [ShellMessage](structmavsdk_1_1_shell_1_1_shell_message.md) **shell_message** - [Shell](classmavsdk_1_1_shell.md) `struct`.
+* std::string **command** - 
 
 **Returns**
 
-&emsp;[Shell::Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) - 
+&emsp;[Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) - Result of request.
 
-### shell_command_response_async() {#classmavsdk_1_1_shell_1aa619d754d68953adb87afa5af864151e}
+### subscribe_receive() {#classmavsdk_1_1_shell_1aa7e47ad1ce0f35e82701bd1811598ee1}
 ```cpp
-Shell::Result mavsdk::Shell::shell_command_response_async(result_callback_t callback)
+void mavsdk::Shell::subscribe_receive(ReceiveCallback callback)
 ```
 
 
-Set [Shell](classmavsdk_1_1_shell.md) message Response callback (asynchronous).
+Receive feedback from a sent command line.
 
+This subscription needs to be made before a command line is sent, otherwise, no response will be sent.
 
 **Parameters**
 
-* [result_callback_t](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a22aa50b455d6a3f81b4a29a9d339a8fa) **callback** - Function to call with responses.
-
-**Returns**
-
-&emsp;[Shell::Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) - 
+* [ReceiveCallback](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1adfa64ede96967ae1ab5a5ecd83032dbb) **callback** - 
 
 ### operator=() {#classmavsdk_1_1_shell_1a492f8b2e36ef2468522bfd0f51f4b9b8}
 ```cpp
@@ -171,20 +167,3 @@ Equality operator (object is not copyable).
 **Returns**
 
 &emsp;const [Shell](classmavsdk_1_1_shell.md) & - 
-
-### result_code_str() {#classmavsdk_1_1_shell_1a906fe10a4f5a9443e84fc9486221b3ff}
-```cpp
-static const char* mavsdk::Shell::result_code_str(Result result)
-```
-
-
-Get human-readable English string for Shell::Result::ResultCode.
-
-
-**Parameters**
-
-* [Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) **result** - The enum value for which string is needed.
-
-**Returns**
-
-&emsp;const char * - Human readable string for the Shell::Result::ResultCode.

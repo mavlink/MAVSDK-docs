@@ -10,9 +10,9 @@
 ## Data Fields
 
 
-float [voltage_v](#structmavsdk_1_1_telemetry_1_1_battery_1aefd1d5569ff2a69bf507b422cbe75742)  - Voltage in volts.
+float [voltage_v](#structmavsdk_1_1_telemetry_1_1_battery_1aefd1d5569ff2a69bf507b422cbe75742) {float(NAN)} - Voltage in volts.
 
-float [remaining_percent](#structmavsdk_1_1_telemetry_1_1_battery_1aec821550739844e0fa3fe18f91e6fda7)  - Estimated battery percentage remaining (range: 0.0 to 1.0).
+float [remaining_percent](#structmavsdk_1_1_telemetry_1_1_battery_1aec821550739844e0fa3fe18f91e6fda7) { float(NAN)} - Estimated battery remaining (range: 0.0 to 1.0)
 
 
 ## Field Documentation
@@ -21,7 +21,7 @@ float [remaining_percent](#structmavsdk_1_1_telemetry_1_1_battery_1aec8215507398
 ### voltage_v {#structmavsdk_1_1_telemetry_1_1_battery_1aefd1d5569ff2a69bf507b422cbe75742}
 
 ```cpp
-float mavsdk::Telemetry::Battery::voltage_v
+float mavsdk::Telemetry::Battery::voltage_v {float(NAN)}
 ```
 
 
@@ -31,9 +31,9 @@ Voltage in volts.
 ### remaining_percent {#structmavsdk_1_1_telemetry_1_1_battery_1aec821550739844e0fa3fe18f91e6fda7}
 
 ```cpp
-float mavsdk::Telemetry::Battery::remaining_percent
+float mavsdk::Telemetry::Battery::remaining_percent { float(NAN)}
 ```
 
 
-Estimated battery percentage remaining (range: 0.0 to 1.0).
+Estimated battery remaining (range: 0.0 to 1.0)
 

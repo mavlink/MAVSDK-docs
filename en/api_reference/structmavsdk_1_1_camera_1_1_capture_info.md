@@ -7,101 +7,93 @@
 [Information](structmavsdk_1_1_camera_1_1_information.md) about a picture just captured. 
 
 
-## Data Structures
-
-
-struct [EulerAngle](structmavsdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md)
-
-struct [Position](structmavsdk_1_1_camera_1_1_capture_info_1_1_position.md)
-
-struct [Quaternion](structmavsdk_1_1_camera_1_1_capture_info_1_1_quaternion.md)
-
 ## Data Fields
 
 
-struct [mavsdk::Camera::CaptureInfo::Position](structmavsdk_1_1_camera_1_1_capture_info_1_1_position.md) [position](#structmavsdk_1_1_camera_1_1_capture_info_1a3c28426c7f0eb1e2c58315ba9132fab3)  - [Position](structmavsdk_1_1_camera_1_1_capture_info_1_1_position.md) of drone/camera when image was captured.
+[Position](structmavsdk_1_1_camera_1_1_position.md) [position](#structmavsdk_1_1_camera_1_1_capture_info_1a570779eaff94d3cf3c1a160938096d0f) {} - Location where the picture was taken.
 
-struct [mavsdk::Camera::CaptureInfo::Quaternion](structmavsdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) [attitude_quaternion](#structmavsdk_1_1_camera_1_1_capture_info_1abd17031cfe9f3b15d2e1515a2a7a79fb)  - [Quaternion](structmavsdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) of camera orientation.
+[Quaternion](structmavsdk_1_1_camera_1_1_quaternion.md) [attitude_quaternion](#structmavsdk_1_1_camera_1_1_capture_info_1add20201828d0e0a82a6ee6366022abc4) {} - Attitude of the camera when the picture was taken (quaternion)
 
-struct [mavsdk::Camera::CaptureInfo::EulerAngle](structmavsdk_1_1_camera_1_1_capture_info_1_1_euler_angle.md) [attitude_euler_angle](#structmavsdk_1_1_camera_1_1_capture_info_1a0257fe9e0d710ad2c11792e8831c449e)  - Euler Angle of camera orientation.
+[EulerAngle](structmavsdk_1_1_camera_1_1_euler_angle.md) [attitude_euler_angle](#structmavsdk_1_1_camera_1_1_capture_info_1a6265295864a8f4e7081a34edb070a531) {} - Attitude of the camera when the picture was taken (euler angle)
 
-uint64_t [time_utc_us](#structmavsdk_1_1_camera_1_1_capture_info_1ad0e92389ab305025ce3cebe0e35d0b51)  - Timestamp in UTC (since UNIX epoch) in microseconds.
+uint64_t [time_utc_us](#structmavsdk_1_1_camera_1_1_capture_info_1ad0e92389ab305025ce3cebe0e35d0b51) {} - Timestamp in UTC (since UNIX epoch) in microseconds.
 
-bool [success](#structmavsdk_1_1_camera_1_1_capture_info_1a4b9f88c11dff71f87f6ffde36dcc41ee)  - True if capture was successful.
+bool [is_success](#structmavsdk_1_1_camera_1_1_capture_info_1a654b17853337aaa3e46b9e70394642d0) {} - True if the capture was successful.
 
-int [index](#structmavsdk_1_1_camera_1_1_capture_info_1ab061b474df1efc98e641798453c6be56)  - Zero-based index of this image since armed.
+int32_t [index](#structmavsdk_1_1_camera_1_1_capture_info_1ad8d31a8640a824a6e8c449a49bdd4f82) {} - Zero-based index of this image since vehicle was armed.
 
-std::string [file_url](#structmavsdk_1_1_camera_1_1_capture_info_1a6fa362c6a13fe4fafe40d8cb5043407f)  -
+std::string [file_url](#structmavsdk_1_1_camera_1_1_capture_info_1a6fa362c6a13fe4fafe40d8cb5043407f) {} - Download URL of this image.
 
 
 ## Field Documentation
 
 
-### position {#structmavsdk_1_1_camera_1_1_capture_info_1a3c28426c7f0eb1e2c58315ba9132fab3}
+### position {#structmavsdk_1_1_camera_1_1_capture_info_1a570779eaff94d3cf3c1a160938096d0f}
 
 ```cpp
-struct mavsdk::Camera::CaptureInfo::Position  mavsdk::Camera::CaptureInfo::position
+Position mavsdk::Camera::CaptureInfo::position {}
 ```
 
 
-[Position](structmavsdk_1_1_camera_1_1_capture_info_1_1_position.md) of drone/camera when image was captured.
+Location where the picture was taken.
 
 
-### attitude_quaternion {#structmavsdk_1_1_camera_1_1_capture_info_1abd17031cfe9f3b15d2e1515a2a7a79fb}
+### attitude_quaternion {#structmavsdk_1_1_camera_1_1_capture_info_1add20201828d0e0a82a6ee6366022abc4}
 
 ```cpp
-struct mavsdk::Camera::CaptureInfo::Quaternion  mavsdk::Camera::CaptureInfo::attitude_quaternion
+Quaternion mavsdk::Camera::CaptureInfo::attitude_quaternion {}
 ```
 
 
-[Quaternion](structmavsdk_1_1_camera_1_1_capture_info_1_1_quaternion.md) of camera orientation.
+Attitude of the camera when the picture was taken (quaternion)
 
 
-### attitude_euler_angle {#structmavsdk_1_1_camera_1_1_capture_info_1a0257fe9e0d710ad2c11792e8831c449e}
+### attitude_euler_angle {#structmavsdk_1_1_camera_1_1_capture_info_1a6265295864a8f4e7081a34edb070a531}
 
 ```cpp
-struct mavsdk::Camera::CaptureInfo::EulerAngle  mavsdk::Camera::CaptureInfo::attitude_euler_angle
+EulerAngle mavsdk::Camera::CaptureInfo::attitude_euler_angle {}
 ```
 
 
-Euler Angle of camera orientation.
+Attitude of the camera when the picture was taken (euler angle)
 
 
 ### time_utc_us {#structmavsdk_1_1_camera_1_1_capture_info_1ad0e92389ab305025ce3cebe0e35d0b51}
 
 ```cpp
-uint64_t mavsdk::Camera::CaptureInfo::time_utc_us
+uint64_t mavsdk::Camera::CaptureInfo::time_utc_us {}
 ```
 
 
 Timestamp in UTC (since UNIX epoch) in microseconds.
 
 
-### success {#structmavsdk_1_1_camera_1_1_capture_info_1a4b9f88c11dff71f87f6ffde36dcc41ee}
+### is_success {#structmavsdk_1_1_camera_1_1_capture_info_1a654b17853337aaa3e46b9e70394642d0}
 
 ```cpp
-bool mavsdk::Camera::CaptureInfo::success
+bool mavsdk::Camera::CaptureInfo::is_success {}
 ```
 
 
-True if capture was successful.
+True if the capture was successful.
 
 
-### index {#structmavsdk_1_1_camera_1_1_capture_info_1ab061b474df1efc98e641798453c6be56}
+### index {#structmavsdk_1_1_camera_1_1_capture_info_1ad8d31a8640a824a6e8c449a49bdd4f82}
 
 ```cpp
-int mavsdk::Camera::CaptureInfo::index
+int32_t mavsdk::Camera::CaptureInfo::index {}
 ```
 
 
-Zero-based index of this image since armed.
+Zero-based index of this image since vehicle was armed.
 
 
 ### file_url {#structmavsdk_1_1_camera_1_1_capture_info_1a6fa362c6a13fe4fafe40d8cb5043407f}
 
 ```cpp
-std::string mavsdk::Camera::CaptureInfo::file_url
+std::string mavsdk::Camera::CaptureInfo::file_url {}
 ```
 
 
-Download URL for captured image.
+Download URL of this image.
+

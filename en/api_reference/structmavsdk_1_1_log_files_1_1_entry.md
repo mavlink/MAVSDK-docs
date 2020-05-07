@@ -4,33 +4,30 @@
 ----
 
 
-Log file type. 
-
-
-Describes a log file entry that could be downloaded. 
+Log file entry type. 
 
 
 ## Data Fields
 
 
-unsigned [id](#structmavsdk_1_1_log_files_1_1_entry_1a8a26ec40c20470b00d7601c42e8fee99) {} - ID of the logfile, to specify a file to be downloaded.
+uint32_t [id](#structmavsdk_1_1_log_files_1_1_entry_1af70d624d97e7a94f3c0018c660c0d467) {} - ID of the log file, to specify a file to be download.
 
-std::string [date](#structmavsdk_1_1_log_files_1_1_entry_1a5727aa32b382e3ce4be745a36efdd4bb) {} - Date of log file in UTC in ISO 8601 format "yyyy-mm-ddThh::mm::ssZ".
+std::string [date](#structmavsdk_1_1_log_files_1_1_entry_1a5727aa32b382e3ce4be745a36efdd4bb) {} - Date of the log file in UTC in ISO 8601 format "yyyy-mm-ddThh:mm:ssZ".
 
-unsigned [size_bytes](#structmavsdk_1_1_log_files_1_1_entry_1a5c529bc3b0d90ddc9f50f7786570706d) {} -
+uint32_t [size_bytes](#structmavsdk_1_1_log_files_1_1_entry_1a3dab9428227b8674c0b55f7f7f9b98b4) {} - Size of file in bytes.
 
 
 ## Field Documentation
 
 
-### id {#structmavsdk_1_1_log_files_1_1_entry_1a8a26ec40c20470b00d7601c42e8fee99}
+### id {#structmavsdk_1_1_log_files_1_1_entry_1af70d624d97e7a94f3c0018c660c0d467}
 
 ```cpp
-unsigned mavsdk::LogFiles::Entry::id {}
+uint32_t mavsdk::LogFiles::Entry::id {}
 ```
 
 
-ID of the logfile, to specify a file to be downloaded.
+ID of the log file, to specify a file to be download.
 
 
 ### date {#structmavsdk_1_1_log_files_1_1_entry_1a5727aa32b382e3ce4be745a36efdd4bb}
@@ -40,14 +37,15 @@ std::string mavsdk::LogFiles::Entry::date {}
 ```
 
 
-Date of log file in UTC in ISO 8601 format "yyyy-mm-ddThh::mm::ssZ".
+Date of the log file in UTC in ISO 8601 format "yyyy-mm-ddThh:mm:ssZ".
 
 
-### size_bytes {#structmavsdk_1_1_log_files_1_1_entry_1a5c529bc3b0d90ddc9f50f7786570706d}
+### size_bytes {#structmavsdk_1_1_log_files_1_1_entry_1a3dab9428227b8674c0b55f7f7f9b98b4}
 
 ```cpp
-unsigned mavsdk::LogFiles::Entry::size_bytes {}
+uint32_t mavsdk::LogFiles::Entry::size_bytes {}
 ```
 
 
 Size of file in bytes.
+
