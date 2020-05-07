@@ -111,7 +111,7 @@ The separate class `MissionItem` is now just a POD struct inside `Mission`, so `
 
 #### Methods
 
-- Progress is now Mission Progress:
+- `Progress` is now `MissionProgress`:
 
   Old:
   ```cpp
