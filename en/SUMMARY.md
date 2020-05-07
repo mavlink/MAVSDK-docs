@@ -130,6 +130,7 @@
     * [Coding Style](contributing/code_style.md)
     * [Plugin/Test Logging](contributing/dev_logging.md)
     * [Documentation](contributing/documentation.md)
+    * [Release process](contributing/release.md)
 * [Releases](releases/README.md)
 
 ## Dronecode Shortcuts
