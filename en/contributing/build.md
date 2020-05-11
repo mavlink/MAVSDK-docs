@@ -52,12 +52,12 @@ To build the MAVSDK C++ Library on Linux (or macOS after installing the [precond
    ```
 1. Build the (debug) C++ library by calling:
    ```sh
-   cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
+   cmake -DCMAKE_BUILD_TYPE=Debug -DBUILD_SHARED_LIBS=ON -Bbuild/default -S.
    cmake --build build/default
    ```
    > **Tip** You can build *release* binaries by setting `CMAKE_BUILD_TYPE=Release` as shown below:
      ```sh
-     cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -Bbuild/default -H.
+     cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -Bbuild/default -S.
      cmake --build build/default
      ```
 1. "Install" the MAVSDK [as described below](#install-artifacts).
@@ -93,7 +93,7 @@ To build the MAVSDK C++ Library on Windows:
 1. Then build the MAVSDK in Windows:
    ```sh
    cd /your/path/to/MAVSDK
-   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=OFF -Bbuild/default -H.
+   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=OFF -Bbuild/default -S.
    cmake --build build/default --config Debug
    ```
 
@@ -147,7 +147,7 @@ On Linux/macOS use the `CMAKE_INSTALL_PREFIX` variable to specify a path relativ
 For example, to install into the **MAVSDK/install/** folder you would call:
 
 ```sh
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -S.
 cmake --build build/default --target install
 ```
 
@@ -165,14 +165,14 @@ Build for Android using the dockcross cross compiler, as described in the [cross
 To build for real iOS devices on macOS:
 
 ```sh
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=OS -Bbuild/ios -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=OS -Bbuild/ios -S.
 cmake --build build/ios
 ```
 
 Build for the iOS simulator on macOS:
 
 ```sh
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -S.
 ```
 
 > **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_BACKEND=ON`).
@@ -185,7 +185,7 @@ These are declared inside a parallel directory that is included into the SDK at 
 
 The commands to build the SDK with an extension library are:
 ```sh
-cmake -DEXTERNAL_DIR=relative_path_to_external_directory -Dbuild/default -H.
+cmake -DEXTERNAL_DIR=relative_path_to_external_directory -Dbuild/default -S.
 cmake --build build/default
 ```
 See [SDK Extensions](../guide/sdk_extensions.md) for more information.
@@ -207,7 +207,7 @@ To build mavsdk_server on Ubuntu:
 1. Navigate into the SDK directory and build the project
    ```
    cd MAVSDK
-   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -Bbuild/default -S.
    cmake --build build/default
    ```
 
@@ -218,7 +218,7 @@ To build mavsdk_server on macOS:
 1. Navigate into the SDK directory and build the project
    ```
    cd MAVSDK
-   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -Bbuild/default -S.
    cmake --build build/default
    ```
 
@@ -228,7 +228,7 @@ To build mavsdk_server on Windows:
 1. [Setup the C++ Library on Windows](#build_cpp_windows)
 1. Navigate into the SDK directory and build the project
    ```
-   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=OFF -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=OFF -DBUILD_BACKEND=ON -Bbuild/default -S.
    cmake --build build/default
    ```
 
