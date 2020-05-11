@@ -77,7 +77,7 @@ std::vector<std::shared_ptr<MissionItem>> mission_items;
 ```
 
 You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. 
-The example below shows how to create and add a `MissionItem` that sets the target position (using [set_position()](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md#classmavsdk_1_1_mission_item_1abe17a24cf27fa0b6d632f39f8d7d15f3)).
+The example below shows how to create and add a `MissionItem` that sets the target position.
 ```cpp
 // Create MissionItem and set its position
 std::shared_ptr<MissionItem> new_item(new MissionItem());
@@ -318,6 +318,7 @@ The code fragment below shows how to download a mission:
 ```
 
 
+
 ## Further Information
 
 * [Mission Flight Mode](https://docs.px4.io/master/en/flight_modes/mission.html) (PX4 User Guide)
@@ -325,7 +326,10 @@ The code fragment below shows how to download a mission:
 * [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md)
 * Integration tests:
   * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission.cpp)
+  * [mission_cancellation.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_cancellation.cpp)
   * [mission_change_speed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_change_speed.cpp)
-  * [mission_survey.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_survey.cpp)
+  * [mission_raw_mission_changed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_raw_mission_changed.cpp)  
+  * [mission_rtl.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_rtl.cpp)
+  * [mission_transfer_lossy.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_transfer_lossy.cpp)  
 * Unit Tests:
   * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/mission_import_qgc_test.cpp)

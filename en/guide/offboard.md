@@ -62,9 +62,8 @@ offboard->set_velocity_body({0.0f, 0.0f, 0.0f, 0.0f});
 
 // Start offboard mode.
 Offboard::Result offboard_result = offboard->start();
-if (result != Offboard::Result::SUCCESS) {
-        std::cerr << "Offboard::start() failed: "
-        << Offboard::result_str(offboard_result) << std::endl;
+if (result != Offboard::Result::Success) {
+        std::cerr << "Offboard::start() failed: " << offboard_result << std::endl;
     }
 ```
 
@@ -73,16 +72,15 @@ Above we use the synchronous API, and then use [Offboard::result_str()](../api_r
 
 You can change the setpoints as needed (new setpoints replace any old setpoints).
 
-To stop offboard mode call [Offboard::stop()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a9a54e588bcfd5b0ffca27833ad4f6b10) or [stop_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606).
+To stop offboard mode call [Offboard::stop()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a626810cbfa02b36019dde2d2fd4c3da9) or [stop_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a86c163d7fa1217b4e82a03daf52065c3).
 The SDK will then clear the current setpoint and put the vehicle into [Hold flight mode](https://docs.px4.io/master/en/flight_modes/hold.html).
 The synchronous API is used as shown below:
 
 ```cpp
 //Stop offboard mode
 offboard_result = offboard->stop();
-if (result != Offboard::Result::SUCCESS) {
-        std::cerr << "Offboard::stop() failed: "
-        << Offboard::result_str(offboard_result) << std::endl;
+if (result != Offboard::Result::Success) {
+        std::cerr << "Offboard::stop() failed: " << offboard_result << std::endl;
     }
 ```
 

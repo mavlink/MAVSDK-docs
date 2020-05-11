@@ -133,7 +133,7 @@ These methods are non-blocking; they take a callback function argument and retur
 The callback will be invoked with a populated `struct` of the associated type as soon as an update message arrives from the vehicle. 
 The rate at which this occurs can be set through the API [as discussed above](#update-rate). 
 
-For example, the [Telemetry::subscribe_position()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a61bda57b3ca47000ea7e4758b2a33134) has the following prototype, where `callback` is called with a populated [PositionCallback](../api_reference/structmavsdk_1_1_telemetry_1_1_position.md#classmavsdk_1_1_telemetry_1a978b371d636226e198995462afa63552) function:
+For example, the [Telemetry::subscribe_position()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a61bda57b3ca47000ea7e4758b2a33134) has the following prototype, where `callback` is called with a populated [PositionCallback](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a978b371d636226e198995462afa63552) function:
 ```cpp
 void mavsdk::Telemetry::subscribe_position(PositionCallback callback)
 ```
