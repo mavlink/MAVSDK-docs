@@ -4,12 +4,12 @@ The Mission API (plugin) allows you to create, upload, download, import from *QG
 Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
 Missions are *managed* though the [Mission](../api_reference/classmavsdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc. 
-The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/classmavsdk_1_1_mission_item.md) objects.
+The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects.
 
 
 ## Supported Mission Commands {#supported_mission_commands}
 
-The [MissionItem](../api_reference/classmavsdk_1_1_mission_item.md) class abstracts a small but useful subset of the mission commands supported by PX4 (and the MAVLink specification):
+The [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) class abstracts a small but useful subset of the mission commands supported by PX4 (and the MAVLink specification):
 
 The supported set is:
 * [MAV_CMD_NAV_WAYPOINT](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_WAYPOINT)
@@ -71,13 +71,13 @@ The `mission` pointer can then used to access the plugin API (as shown in the fo
 
 ## Defining a Mission
 
-A mission must be defined as a vector of [MissionItem](../api_reference/classmavsdk_1_1_mission_item.md) objects as shown below:
+A mission must be defined as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects as shown below:
 ```cpp
 std::vector<std::shared_ptr<MissionItem>> mission_items;
 ```
 
 You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. 
-The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/classmavsdk_1_1_mission_item.md#classmavsdk_1_1_mission_item_1abe17a24cf27fa0b6d632f39f8d7d15f3)).
+The example below shows how to create and add a `MissionItem`, that just sets the target position (using [set_position()](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md#classmavsdk_1_1_mission_item_1abe17a24cf27fa0b6d632f39f8d7d15f3)).
 ```cpp
 // Create MissionItem and set its position
 std::shared_ptr<MissionItem> new_item(new MissionItem());
@@ -278,7 +278,7 @@ If required you can instead use the appropriate commands in the [Action](../guid
 ## Downloading Missions
 
 Use [Mission::download_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a23173385eef570b9802402fc047104c1) to download a mission from the vehicle.
-The mission is downloaded as a vector of [MissionItem](../api_reference/classmavsdk_1_1_mission_item.md) objects, that you can then view or manipulate as required.
+The mission is downloaded as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects, that you can then view or manipulate as required.
 
 > **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands). 
 > Missions created using *QGroundControl* are not guaranteed to successfully download! 

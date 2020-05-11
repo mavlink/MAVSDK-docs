@@ -10,13 +10,31 @@ All the methods of a particular type (synchronous, asynchronous, and set_rate me
 
 The `Telemetry` API provides methods to return the following types of information:
 
-* [Position](../api_reference/structmavsdk_1_1_telemetry_1_1_position.md) - latitude and longitude in degrees, and altitude relative to sea level and to the takeoff altitude.
+* [AccelerationFrd](../api_reference/structmavsdk_1_1_telemetry_1_1_acceleration_frd.md)
+* [ActuatorControlTarget](../api_reference/structmavsdk_1_1_telemetry_1_1_actuator_control_target.md)
+* [ActuatorOutputStatus](../api_reference/structmavsdk_1_1_telemetry_1_1_actuator_output_status.md)
+* [AngularVelocityBody](../api_reference/structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md)
+* [AngularVelocityNed](../api_reference/structmavsdk_1_1_telemetry_1_1_angular_velocity_frd.md)
 * [Battery](../api_reference/structmavsdk_1_1_telemetry_1_1_battery.md) - voltage and percentage power remaining.
-* [GroundSpeedNED](../api_reference/structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) - velocity components in NED coordinates.
-* Vehicle attitude/orientation - as a [Quaternion](../api_reference/structmavsdk_1_1_telemetry_1_1_quaternion.md) or [EulerAngle](../api_reference/structmavsdk_1_1_telemetry_1_1_euler_angle.md)
-* [GPSInfo](../api_reference/structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) - type of fix, if any, and number of satellites.
+* [Covariance](../api_reference/structmavsdk_1_1_telemetry_1_1_covariance.md)
+* [EulerAngle](../api_reference/structmavsdk_1_1_telemetry_1_1_euler_angle.md) - vehicle attitude/orientation as Euler Angle
+* [FixedwingMetrics](../api_reference/structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md)
+* [GpsInfo](../api_reference/structmavsdk_1_1_telemetry_1_1_gps_info.md) - type of fix, if any, and number of satellites.
+* [GroundTruth](../api_reference/structmavsdk_1_1_telemetry_1_1_ground_truth.md)
 * [Health](../api_reference/structmavsdk_1_1_telemetry_1_1_health.md) - calibration status of various sensors and confirmation that position estimates are good enough for position control.
-* [RCStatus](../api_reference/structmavsdk_1_1_telemetry_1_1_r_c_status.md) - connection status, signal strength, and whether RC has ever been connected.
+* [Imu](../api_reference/structmavsdk_1_1_telemetry_1_1_imu.md)
+* [MagneticFieldFrd](../api_reference/structmavsdk_1_1_telemetry_1_1_magnetic_field_frd.md)
+* [Odometry](../api_reference/structmavsdk_1_1_telemetry_1_1_odometry.md)
+* [Position](../api_reference/structmavsdk_1_1_telemetry_1_1_position.md) - latitude and longitude in degrees, and altitude relative to sea level and to the takeoff altitude.
+* [PositionBody](../api_reference/structmavsdk_1_1_telemetry_1_1_position_body.md)
+* [PositionNed](../api_reference/structmavsdk_1_1_telemetry_1_1_position_ned.md)
+* [VelocityNed](../api_reference/structmavsdk_1_1_telemetry_1_1_velocity_ned.md)
+* [VelocityBody](../api_reference/structmavsdk_1_1_telemetry_1_1_velocity_body.md)
+* [PositionVelocityNed](../api_reference/structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md)
+* [Quaternion](../api_reference/structmavsdk_1_1_telemetry_1_1_quaternion.md) - vehicle attitude/orientation as a quaternion
+* [RcStatus](../api_reference/structmavsdk_1_1_telemetry_1_1_rc_status.md) - connection status, signal strength, and whether RC has ever been connected.
+* [StatusText](../api_reference/structmavsdk_1_1_telemetry_1_1_status_text.md)
+
 
 In addition there are a number of methods that return vehicle "state":
 * Current flight mode ([flight_mode()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd)).

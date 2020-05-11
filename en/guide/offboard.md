@@ -104,7 +104,7 @@ The following sections provide some common usage examples.
 
 The `set_velocity_ned()` can be used to move towards any particular compass direction - e.g. North, West, South-East, etc.
 
-Calling `set_velocity_ned()` using an initialiser list type declaration for the [VelocityNEDYaw](../api_reference/structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) argument,
+Calling `set_velocity_ned()` using an initialiser list type declaration for the [VelocityNEDYaw](../api_reference/structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md) argument,
 the first three values are the velocity components in North, East, and Down directions (in metres/second).
 
 Examples:

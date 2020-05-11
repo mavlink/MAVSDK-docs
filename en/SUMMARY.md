@@ -62,7 +62,7 @@
       * [struct Version](api_reference/structmavsdk_1_1_info_1_1_version.md)
     * [class LogFiles](api_reference/classmavsdk_1_1_log_files.md)
       * [struct Entry](api_reference/structmavsdk_1_1_log_files_1_1_entry.md)
-      * [struct ProgressData](api_reference/structmavsdk_1_1_geofence_1_1_point.md)
+      * [struct ProgressData](api_reference/structmavsdk_1_1_log_files_1_1_progress_data.md)  
     * [class Ftp](api_reference/classmavsdk_1_1_ftp.md)
     * [class MavlinkPassthrough](api_reference/classmavsdk_1_1_mavlink_passthrough.md)
     * [class Mavsdk](api_reference/classmavsdk_1_1_mavsdk.md)
