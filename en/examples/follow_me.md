@@ -180,9 +180,9 @@ using namespace std::this_thread; // for sleep_for()
 #define TELEMETRY_CONSOLE_TEXT "\033[34m" // Turn text on console blue
 #define NORMAL_CONSOLE_TEXT "\033[0m" // Restore normal console colour
 
-inline void action_error_exit(Action::Result result, const std::string &message);
-inline void follow_me_error_exit(FollowMe::Result result, const std::string &message);
-inline void connection_error_exit(ConnectionResult result, const std::string &message);
+inline void action_error_exit(Action::Result result, const std::string& message);
+inline void follow_me_error_exit(FollowMe::Result result, const std::string& message);
+inline void connection_error_exit(ConnectionResult result, const std::string& message);
 
 void usage(std::string bin_name)
 {
@@ -194,7 +194,7 @@ void usage(std::string bin_name)
               << "For example, to connect to the simulator use URL: udp://:14540" << std::endl;
 }
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     Mavsdk dc;
     std::string connection_url;
@@ -208,9 +208,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    if (connection_result != ConnectionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT
-                  << "Connection failed: " << connection_result_str(connection_result)
+    if (connection_result != ConnectionResult::Success) {
+        std::cout << ERROR_CONSOLE_TEXT << "Connection failed: " << connection_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -222,7 +221,7 @@ int main(int argc, char **argv)
     }
 
     // System got discovered.
-    System &system = dc.system();
+    System& system = dc.system();
     auto action = std::make_shared<Action>(system);
     auto follow_me = std::make_shared<FollowMe>(system);
     auto telemetry = std::make_shared<Telemetry>(system);
@@ -239,10 +238,10 @@ int main(int argc, char **argv)
     std::cout << "Armed" << std::endl;
 
     // Subscribe to receive updates on flight mode. You can find out whether FollowMe is active.
-    telemetry->flight_mode_async(std::bind(
+    telemetry->subscribe_flight_mode(std::bind(
         [&](Telemetry::FlightMode flight_mode) {
             const FollowMe::TargetLocation last_location = follow_me->get_last_location();
-            std::cout << "[FlightMode: " << Telemetry::flight_mode_str(flight_mode)
+            std::cout << "[FlightMode: " << flight_mode
                       << "] Vehicle is at: " << last_location.latitude_deg << ", "
                       << last_location.longitude_deg << " degrees." << std::endl;
         },
@@ -258,7 +257,7 @@ int main(int argc, char **argv)
     // right".
     FollowMe::Config config;
     config.min_height_m = 10.0;
-    config.follow_direction = FollowMe::Config::FollowDirection::BEHIND;
+    config.follow_direction = FollowMe::Config::FollowDirection::Behind;
     FollowMe::Result follow_me_result = follow_me->set_config(config);
 
     // Start Follow Me
@@ -269,7 +268,10 @@ int main(int argc, char **argv)
     // Register for platform-specific Location provider. We're using FakeLocationProvider for the
     // example.
     location_provider.request_location_updates([&follow_me](double lat, double lon) {
-        follow_me->set_target_location({lat, lon, 0.0, 0.f, 0.f, 0.f});
+        FollowMe::TargetLocation target_location{};
+        target_location.latitude_deg = lat;
+        target_location.longitude_deg = lon;
+        follow_me->set_target_location(target_location);
     });
 
     while (location_provider.is_running()) {
@@ -281,7 +283,7 @@ int main(int argc, char **argv)
     follow_me_error_exit(follow_me_result, "Failed to stop FollowMe mode");
 
     // Stop flight mode updates.
-    telemetry->flight_mode_async(nullptr);
+    telemetry->subscribe_flight_mode(nullptr);
 
     // Land
     const Action::Result land_result = action->land();
@@ -295,29 +297,26 @@ int main(int argc, char **argv)
 }
 
 // Handles Action's result
-inline void action_error_exit(Action::Result result, const std::string &message)
+inline void action_error_exit(Action::Result result, const std::string& message)
 {
     if (result != Action::Result::Success) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << Action::result_str(result)
-                  << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cerr << ERROR_CONSOLE_TEXT << message << result << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
 // Handles FollowMe's result
-inline void follow_me_error_exit(FollowMe::Result result, const std::string &message)
+inline void follow_me_error_exit(FollowMe::Result result, const std::string& message)
 {
-    if (result != FollowMe::Result::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << FollowMe::result_str(result)
-                  << NORMAL_CONSOLE_TEXT << std::endl;
+    if (result != FollowMe::Result::Success) {
+        std::cerr << ERROR_CONSOLE_TEXT << message << result << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
 // Handles connection result
-inline void connection_error_exit(ConnectionResult result, const std::string &message)
+inline void connection_error_exit(ConnectionResult result, const std::string& message)
 {
-    if (result != ConnectionResult::SUCCESS) {
-        std::cerr << ERROR_CONSOLE_TEXT << message << connection_result_str(result)
-                  << NORMAL_CONSOLE_TEXT << std::endl;
+    if (result != ConnectionResult::Success) {
+        std::cerr << ERROR_CONSOLE_TEXT << message << result << NORMAL_CONSOLE_TEXT << std::endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -352,7 +351,7 @@ private:
     void stop();
     void compute_locations();
 
-    std::thread *thread_{nullptr};
+    std::thread* thread_{nullptr};
     std::atomic<bool> should_exit_{false};
 
     location_callback_t location_callback_ = nullptr;
@@ -369,7 +368,6 @@ private:
 [fake_location_provider.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/follow_me/fake_location_provider.cpp)
 
 ```cpp
-
 #include "fake_location_provider.h"
 #include <chrono> // for seonds()
 #include <thread> // for sleep_for()
