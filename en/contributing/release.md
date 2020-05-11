@@ -19,6 +19,11 @@ These are the instructions on how to get a release out the door.
    git tag vX.Y.Z
    git push origin master vX.Y.Z
    ```
+1. The new `master` branch needs to be merged into `develop` so that we have the release tag in the history.
+   ```
+   git switch develop
+   git merge master
+   ```
 1. - Generate changelog using `tools/generate_changelog.py --token TOKEN_FROM_GITHUB --verbose --tag vX.Y.Z`.
    - If it finds old/wrong PRs, wait a bit or create the release from the tag in the [GitHub UI](https://github.com/mavlink/MAVSDK/releases).
    - Once it finds the correct PRs it will check all of them for labels. Make sure all merged PRs have sensible labels (e.g. `enhancement`, `bug`, or `feature`).
