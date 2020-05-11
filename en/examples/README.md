@@ -13,6 +13,7 @@ Example | Description
 [Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) | Fly a mission imported from a *QGroundControl* mission plan.
 [Follow Me Mode](../examples/follow_me.md) | Demonstrates how to put vehicle in [Follow Me Mode](../guide/follow_me.md) and set the current target position and relative position of the drone.
 [GeoFence Inclusion](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/geofence_inclusion) | Demonstrates how to define and upload a simple polygonal inclusion GeoFence.
+[MAVShell](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/mavshell) | Creates and starts an interactive shell session.
 [MAVLink FTP Client](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/ftp_client) | Demonstrates how to create/use a [MAVLink FTP client](https://mavlink.io/en/services/ftp.html).
 [MAVLink FTP Server](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/ftp_server) | Demonstrates how to start/set up a [MAVLink FTP server](https://mavlink.io/en/services/ftp.html).
 [Multiple Drones](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/multiple_drones) | Example to connect multiple vehicles and make them take off and land in parallel.

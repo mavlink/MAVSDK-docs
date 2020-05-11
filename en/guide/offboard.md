@@ -68,7 +68,7 @@ if (result != Offboard::Result::Success) {
 ```
 
 The methods return/complete with a [Result](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) indicating whether the command was successful.
-Above we use the synchronous API, and then use [Offboard::result_str()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a3402d7e3dc8b4ff15598dfd67af0644b) to get a human readable string for the returned enum.
+Above we use the synchronous API, and then print a human readable string for the returned enum.
 
 You can change the setpoints as needed (new setpoints replace any old setpoints).
 
