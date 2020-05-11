@@ -51,10 +51,10 @@ The `offboard` pointer can then used to access the plugin API (as shown in the f
 
 ## Starting/Stopping Offboard Mode
 
-To use offboard mode you must first create a setpoint using any of the setpoint setter methods (e.g. [set_velocity_ned()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39) or [set_velocity_body()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81)).
+To use offboard mode you must first create a setpoint using any of the setpoint setter methods (e.g. [set_velocity_ned()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a4edbc6e4528ff955d4e46e7c4e711732) or [set_velocity_body()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1abe7364f0a48dda4df34c5c67d177cfb4)).
 You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts.
 
-After you have created a setpoint call [start()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a3f0b71195ae6cb445237b192e3b8343f) or [start_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606) to switch to offboard mode.
+After you have created a setpoint call [start()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1ab71d0dd2a81f76e3a0330b0304daa30b) or [start_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a0c880ad3f663142e194dd6f187cfc934) to switch to offboard mode.
 
 ```cpp
 // Create a setpoint before starting offboard mode (in this case a null setpoint)
@@ -217,7 +217,7 @@ The vehicle may change out of offboard mode outside the control of your applicat
 In this case, the SDK will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5) will change from `true` to `false`.
 
 Calls to change the setpoint do not return an error!
-Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1adede4202304e53466b4df41367a75878)).
+Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::subscribe_flight_mode()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a53db5fb36bf10fbc7ac004a3be9100a4)).
 
 
 ## Further Information

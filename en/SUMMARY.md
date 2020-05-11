@@ -122,7 +122,7 @@
       * [struct StatusText](api_reference/structmavsdk_1_1_telemetry_1_1_status_text.md)
     * [class Tune](api_reference/classmavsdk_1_1_tune.md)
       * [struct TuneDescription](api_reference/structmavsdk_1_1_tune_1_1_tune_description.md)
-    * [namespace mavsdk (api_reference/globals)](api_reference/namespacemavsdk.md)
+    * [namespace mavsdk (globals)](api_reference/namespacemavsdk.md)
   * [Contributing](contributing/README.md)
     * [Building Source](contributing/build.md)
     * [Testing](contributing/test.md)

@@ -30,10 +30,10 @@ ASSERT_EQ(connection_result,ConnectionResult::SUCCESS)
 
 > **Note** The connection string used above (`udp://0.0.0.0:14540`) is to the [standard PX4 broadcast UDP port](https://dev.px4.io/master/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
 
-The SDK also provides the [connection_result_str()](../api_reference/namespacemavsdk.md#namespacemavsdk_1a59e8a165c1edafab6ab0c04df2c83679) method, which you can use to create a human-readable string for the [ConnectionResult](../api_reference/namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992).
+The SDK also provides an operator so that you can just print out a human readable string for a [ConnectionResult](../api_reference/namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992).
 The code fragment below shows how you might print the string for the preceding code fragment to the console:
 ```cpp
-std::cout << "Connection string: " << connection_result_str(connection_result) << std::endl;
+std::cout << "Connection string: " << connection_result << std::endl;
 ```
 
 
