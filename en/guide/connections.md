@@ -25,7 +25,7 @@ The code snippet below shows how to set up monitoring with `add_any_connection()
 Mavsdk dc;
 std::string connection_url="udp://0.0.0.0:14540";
 ConnectionResult connection_result = dc.add_any_connection(connection_url);
-ASSERT_EQ(connection_result,ConnectionResult::SUCCESS)
+ASSERT_EQ(connection_result,ConnectionResult::Success)
 ```
 
 > **Note** The connection string used above (`udp://0.0.0.0:14540`) is to the [standard PX4 broadcast UDP port](https://dev.px4.io/master/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
