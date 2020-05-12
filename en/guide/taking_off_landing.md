@@ -52,7 +52,7 @@ The `action` pointer can then used to access the plugin API (as shown in the fol
 
 ## Taking Off
 
-The recommended way to take off using the SDK (and PX4) is to use either of the [takeoff()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a0121d39baf922b1d88283230207ab5d0) or [takeoff_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a05325bd5c29aa533b95c344e25aa47dd) methods. If a takeoff command is accepted the vehicle will change to the [Takeoff mode](https://docs.px4.io/master/en/flight_modes/takeoff.html), fly to the takeoff altitude, and then hover (in takeoff mode) until another instruction is received.
+The recommended way to take off using the SDK (and PX4) is to use either of the [takeoff()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a0121d39baf922b1d88283230207ab5d0) or [takeoff_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ab658d938970326db41709d83e02b41e6) methods. If a takeoff command is accepted the vehicle will change to the [Takeoff mode](https://docs.px4.io/master/en/flight_modes/takeoff.html), fly to the takeoff altitude, and then hover (in takeoff mode) until another instruction is received.
 
 > **Note** PX4/SDK also provides other ways to take off:
 > - A copter or VTOL will take off automatically if a mission is started (fixed-wing will not). 
@@ -74,7 +74,7 @@ while (telemetry->health_all_ok() != true) {
 ```
 
 The code fragment below performs the same task, but additionally exits the app if calibration is required reports what conditions are still required before the vehicle is "healthy":
-
+<!-- update for subscribe_health_all_ok -->
 ```cpp
 // Exit if calibration is required
 Telemetry::Health check_health = telemetry->health();
@@ -117,7 +117,7 @@ while (telemetry->health_all_ok() != true) {
 }
 ```
 
-> **Note** Vehicle health can also be checked using [Telemetry:health_all_ok_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ae1a2f05a126a88b19e78078ef5f552f4). 
+> **Note** Vehicle health can also be checked using [Telemetry:subscribe_health_all_ok()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a0f94ea6d707ff314e412367d6681bd8f). 
 
 
 ### Arming
@@ -182,7 +182,7 @@ while (current_position<target_alt) {
 
 ## Landing
 
-The best way to land the vehicle at the current location is to use the [land()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1af6429e1bdb2875deebfe98ed53da3d41) or [land_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a386b5425dea3449bfd6e20e58a06ab99) methods.
+The best way to land the vehicle at the current location is to use the [land()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1af6429e1bdb2875deebfe98ed53da3d41) or [land_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a89d146a766d49f1c706c66a3e2b9252d) methods.
 If the command is accepted the vehicle will change to the [Land mode](https://docs.px4.io/master/en/flight_modes/land.html) and land at the current point.
 
 > **Note** The SDK does not at time of writing recommend other approaches for landing: land mission items are not supported and manually landing the vehicle using the offboard is not as safe. 
@@ -211,7 +211,7 @@ std::cout << "Disarmed, exiting." << std::endl;
 ## Return/RTL
 
 [Return mode](https://docs.px4.io/master/en/flight_modes/return.html) (also known as "Return to Launch", "Return to Land", "Return to Home") flies the vehicle back to the home position and may also land the vehicle (depending on vehicle configuration). 
-This mode is invoked from `Action` using the [return_to_launch()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1afd7c225df0495b0947f00e7d2dd64877) or [return_to_launch_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a3b3d5dc86e0d177280b89ec021b94803) methods. 
+This mode is invoked from `Action` using the [return_to_launch()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1afd7c225df0495b0947f00e7d2dd64877) or [return_to_launch_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1afd7c225df0495b0947f00e7d2dd64877) methods. 
 
 The code below shows how to use the synchronous method:
 
@@ -230,8 +230,8 @@ Depending on the vehicle it may land or hover around the return point. For vehic
 Use the disarm or kill methods to stop the drone motors (the difference is that disarming will only succeed if the drone considers itself landed, while kill will disarm a vehicle even in flight).
 
 The methods are listed below. These are used in the same way as other similar `Action` APIs:
-- [disarm()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a44c61110965bcdd3dfb90a08d3c6b6b9), [disarm_async](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a56b39e81fec142ac0ce7abe6b6313a80)
-- [kill()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1af40fc1ddf588b3796134a9303ebc3667), [kill_async](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a1a6d69c174df758b6f06a45e429265db)
+- [disarm()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a44c61110965bcdd3dfb90a08d3c6b6b9), [disarm_async](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a3107f7f5a2f4a478024667f187f8f2aa)
+- [kill()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1af40fc1ddf588b3796134a9303ebc3667), [kill_async](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a78c1f15c3b190ba94793045621819e69)
 
 
 > **Tip** PX4 will automatically disarm the vehicle after landing. The disarm methods explicitly invoke the same functionality.
@@ -252,7 +252,7 @@ You can get/set the normal horizontal velocity used in *Return mode*, *Hold mode
 
 `Action` provides methods to transition between VTOL fixed wing and multicopter modes, with both synchronous and asynchronous versions:
 * [transition_to_fixedwing()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a8d5cf999a48ea3859ec75db27cf4fbda), [transition_to_multicopter()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1aac94bfb8613a8e9869e3620b3dc9bb8e)
-* [transition_to_fixedwing_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ace04a08fdcdd171bc27a86f5f33daeef), [transition_to_multicopter_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1afc5b0e0502685c0a894cbb8445828e8c)
+* [transition_to_fixedwing_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1aa56181441cd64e092a8fb91a38c7c9fd), [transition_to_multicopter_async()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a8c109076641b5c9aa6dd78ea8b913529)
 
 The associated action will only be executed for VTOL vehicles (on other vehicle types the command will fail with a `Result` of `VTOL_TRANSITION_SUPPORT_UNKNOWN` or `NO_VTOL_TRANSITION_SUPPORT`). 
 The command will succeed if called when the vehicle is already in the mode.

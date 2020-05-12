@@ -37,11 +37,13 @@ API consumers use [Mavsdk](/api_reference/classmavsdk_1_1_mavsdk.md) to discover
 The most important classes are:
 
 - [Mavsdk](/api_reference/classmavsdk_1_1_mavsdk.md): Discover and connect to vehicles ([System](/api_reference/classmavsdk_1_1_system.md)).
-- [System](/api_reference/classmavsdk_1_1_system.md): Represents a connected vehicle (e.g. a copter or VTOL drone). It provides access to vehicle information and control through the classes listed below.
+- [System](/api_reference/classmavsdk_1_1_system.md): Represents a connected vehicle (e.g. a copter or VTOL drone).
+  It provides access to vehicle information and control through the classes listed below.
 - [Info](/api_reference/classmavsdk_1_1_info.md): Basic version information about the hardware and/or software of a system.
-- [Telemetry](/api_reference/classmavsdk_1_1_telemetry.md): Get vehicle telemetry and state information ([Battery](/api_reference/structmavsdk_1_1_telemetry_1_1_battery.md), [EulerAngle](/api_reference/structmavsdk_1_1_telemetry_1_1_euler_angle.md), [GPSInfo](/api_reference/structmavsdk_1_1_telemetry_1_1_g_p_s_info.md), [GroundSpeedNED](/api_reference/structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md), [Health](/api_reference/structmavsdk_1_1_telemetry_1_1_health.md), [Position](/api_reference/structmavsdk_1_1_telemetry_1_1_position.md), [Quaternion](/api_reference/structmavsdk_1_1_telemetry_1_1_quaternion.md), [RCStatus](/api_reference/structmavsdk_1_1_telemetry_1_1_r_c_status.md)) and set telemetry update rates.
+- [Telemetry](/api_reference/classmavsdk_1_1_telemetry.md): Get vehicle telemetry and state information and set telemetry update rates.
 - [Action](/api_reference/classmavsdk_1_1_action.md): Simple drone actions including arming, taking off, and landing.
-- [Mission](/api_reference/classmavsdk_1_1_mission.md): Waypoint mission creation and upload/download. Missions are created from [MissionItem](/api_reference/classmavsdk_1_1_mission_item.md) objects.
+- [Mission](/api_reference/classmavsdk_1_1_mission.md): Waypoint mission creation and upload/download.
+  Missions are created from [MissionItem](/api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects.
 - [Offboard](/api_reference/classmavsdk_1_1_offboard.md): Control a drone with velocity commands.
 - [Geofence](/api_reference/classmavsdk_1_1_geofence.md): Specify a geofence.
 - [Gimbal](/api_reference/classmavsdk_1_1_gimbal.md): Control a gimbal.

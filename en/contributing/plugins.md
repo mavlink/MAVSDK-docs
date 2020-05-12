@@ -218,8 +218,6 @@ add_executable(integration_tests_runner
     async_connect.cpp
     telemetry_simple.cpp
     ...
-    mission_change_speed.cpp
-    mission_survey.cpp
     gimbal.cpp
     transition_multicopter_fixedwing.cpp
     follow_me.cpp

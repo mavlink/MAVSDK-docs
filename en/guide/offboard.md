@@ -51,10 +51,10 @@ The `offboard` pointer can then used to access the plugin API (as shown in the f
 
 ## Starting/Stopping Offboard Mode
 
-To use offboard mode you must first create a setpoint using any of the setpoint setter methods (e.g. [set_velocity_ned()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a689fec126f8da55dadfc13e67bf9bb39) or [set_velocity_body()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1aab32b36b4396cecbac9c745507b2fb81)).
+To use offboard mode you must first create a setpoint using any of the setpoint setter methods (e.g. [set_velocity_ned()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a4edbc6e4528ff955d4e46e7c4e711732) or [set_velocity_body()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1abe7364f0a48dda4df34c5c67d177cfb4)).
 You can use any setpoint you like - the vehicle will start acting on the current setpoint as soon as the mode starts.
 
-After you have created a setpoint call [start()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a3f0b71195ae6cb445237b192e3b8343f) or [start_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606) to switch to offboard mode.
+After you have created a setpoint call [start()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1ab71d0dd2a81f76e3a0330b0304daa30b) or [start_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a0c880ad3f663142e194dd6f187cfc934) to switch to offboard mode.
 
 ```cpp
 // Create a setpoint before starting offboard mode (in this case a null setpoint)
@@ -62,27 +62,25 @@ offboard->set_velocity_body({0.0f, 0.0f, 0.0f, 0.0f});
 
 // Start offboard mode.
 Offboard::Result offboard_result = offboard->start();
-if (result != Offboard::Result::SUCCESS) {
-        std::cerr << "Offboard::start() failed: "
-        << Offboard::result_str(offboard_result) << std::endl;
+if (result != Offboard::Result::Success) {
+        std::cerr << "Offboard::start() failed: " << offboard_result << std::endl;
     }
 ```
 
 The methods return/complete with a [Result](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) indicating whether the command was successful.
-Above we use the synchronous API, and then use [Offboard::result_str()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a3402d7e3dc8b4ff15598dfd67af0644b) to get a human readable string for the returned enum.
+Above we use the synchronous API, and then print a human readable string for the returned enum.
 
 You can change the setpoints as needed (new setpoints replace any old setpoints).
 
-To stop offboard mode call [Offboard::stop()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a9a54e588bcfd5b0ffca27833ad4f6b10) or [stop_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a8d52d710dbfcd77a33d8657ea55ab606).
+To stop offboard mode call [Offboard::stop()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a626810cbfa02b36019dde2d2fd4c3da9) or [stop_async()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a86c163d7fa1217b4e82a03daf52065c3).
 The SDK will then clear the current setpoint and put the vehicle into [Hold flight mode](https://docs.px4.io/master/en/flight_modes/hold.html).
 The synchronous API is used as shown below:
 
 ```cpp
 //Stop offboard mode
 offboard_result = offboard->stop();
-if (result != Offboard::Result::SUCCESS) {
-        std::cerr << "Offboard::stop() failed: "
-        << Offboard::result_str(offboard_result) << std::endl;
+if (result != Offboard::Result::Success) {
+        std::cerr << "Offboard::stop() failed: " << offboard_result << std::endl;
     }
 ```
 
@@ -104,7 +102,7 @@ The following sections provide some common usage examples.
 
 The `set_velocity_ned()` can be used to move towards any particular compass direction - e.g. North, West, South-East, etc.
 
-Calling `set_velocity_ned()` using an initialiser list type declaration for the [VelocityNEDYaw](../api_reference/structmavsdk_1_1_offboard_1_1_velocity_n_e_d_yaw.md) argument,
+Calling `set_velocity_ned()` using an initialiser list type declaration for the [VelocityNEDYaw](../api_reference/structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md) argument,
 the first three values are the velocity components in North, East, and Down directions (in metres/second).
 
 Examples:
@@ -217,7 +215,7 @@ The vehicle may change out of offboard mode outside the control of your applicat
 In this case, the SDK will automatically stop sending setpoints and [Offboard::is_active()](../api_reference/classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5) will change from `true` to `false`.
 
 Calls to change the setpoint do not return an error!
-Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::flight_mode_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1adede4202304e53466b4df41367a75878)).
+Depending on the particular use case, offboard code may need to explicitly monitor for flight mode and change behaviour appropriately (e.g. using [Telemetry::subscribe_flight_mode()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a53db5fb36bf10fbc7ac004a3be9100a4)).
 
 
 ## Further Information

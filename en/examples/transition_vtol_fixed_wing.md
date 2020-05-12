@@ -122,9 +122,9 @@ static constexpr auto ERROR_CONSOLE_TEXT = "\033[31m";
 static constexpr auto TELEMETRY_CONSOLE_TEXT = "\033[34m";
 static constexpr auto NORMAL_CONSOLE_TEXT = "\033[0m";
 
-void usage(const std::string &bin_name);
+void usage(const std::string& bin_name);
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     if (argc != 2) {
         usage(argv[0]);
@@ -137,9 +137,8 @@ int main(int argc, char **argv)
 
     // Add connection specified by CLI argument.
     const ConnectionResult connection_result = dc.add_any_connection(connection_url);
-    if (connection_result != ConnectionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT
-                  << "Connection failed: " << connection_result_str(connection_result)
+    if (connection_result != ConnectionResult::Success) {
+        std::cout << ERROR_CONSOLE_TEXT << "Connection failed: " << connection_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -151,21 +150,20 @@ int main(int argc, char **argv)
     }
 
     // Get system and plugins.
-    System &system = dc.system();
+    System& system = dc.system();
     auto telemetry = std::make_shared<Telemetry>(system);
     auto action = std::make_shared<Action>(system);
 
     // We want to listen to the altitude of the drone at 1 Hz.
     const Telemetry::Result set_rate_result = telemetry->set_rate_position(1.0);
-    if (set_rate_result != Telemetry::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT
-                  << "Setting rate failed: " << Telemetry::result_str(set_rate_result)
+    if (set_rate_result != Telemetry::Result::Success) {
+        std::cout << ERROR_CONSOLE_TEXT << "Setting rate failed: " << set_rate_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
     // Set up callback to monitor altitude.
-    telemetry->position_async([](Telemetry::Position position) {
+    telemetry->subscribe_position([](Telemetry::Position position) {
         std::cout << TELEMETRY_CONSOLE_TEXT << "Altitude: " << position.relative_altitude_m << " m"
                   << NORMAL_CONSOLE_TEXT << std::endl;
     });
@@ -181,8 +179,8 @@ int main(int argc, char **argv)
     const Action::Result arm_result = action->arm();
 
     if (arm_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT << "Arming failed: " << Action::result_str(arm_result)
-                  << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cout << ERROR_CONSOLE_TEXT << "Arming failed: " << arm_result << NORMAL_CONSOLE_TEXT
+                  << std::endl;
         return 1;
     }
 
@@ -190,7 +188,7 @@ int main(int argc, char **argv)
     std::cout << "Taking off." << std::endl;
     const Action::Result takeoff_result = action->takeoff();
     if (takeoff_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:n" << Action::result_str(takeoff_result)
+        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:n" << takeoff_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -202,8 +200,7 @@ int main(int argc, char **argv)
     const Action::Result fw_result = action->transition_to_fixedwing();
 
     if (fw_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT
-                  << "Transition to fixed wing failed: " << Action::result_str(fw_result)
+        std::cout << ERROR_CONSOLE_TEXT << "Transition to fixed wing failed: " << fw_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -216,8 +213,7 @@ int main(int argc, char **argv)
     // We pass latitude and longitude but leave altitude and yaw unset by passing NAN.
     const Action::Result goto_result = action->goto_location(47.3633001, 8.5428515, NAN, NAN);
     if (goto_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT
-                  << "Goto command failed: " << Action::result_str(goto_result)
+        std::cout << ERROR_CONSOLE_TEXT << "Goto command failed: " << goto_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -229,8 +225,7 @@ int main(int argc, char **argv)
     std::cout << "Transition back to multicopter..." << std::endl;
     const Action::Result mc_result = action->transition_to_multicopter();
     if (mc_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT
-                  << "Transition to multi copter failed: " << Action::result_str(mc_result)
+        std::cout << ERROR_CONSOLE_TEXT << "Transition to multi copter failed: " << mc_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -242,8 +237,8 @@ int main(int argc, char **argv)
     std::cout << "Landing..." << std::endl;
     const Action::Result land_result = action->land();
     if (land_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT << "Land failed: " << Action::result_str(land_result)
-                  << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cout << ERROR_CONSOLE_TEXT << "Land failed: " << land_result << NORMAL_CONSOLE_TEXT
+                  << std::endl;
         return 1;
     }
 
@@ -258,7 +253,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void usage(const std::string &bin_name)
+void usage(const std::string& bin_name)
 {
     std::cout << NORMAL_CONSOLE_TEXT << "Usage : " << bin_name << " <connection_url>" << std::endl
               << "Connection URL format should be :" << std::endl

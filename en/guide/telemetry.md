@@ -10,13 +10,31 @@ All the methods of a particular type (synchronous, asynchronous, and set_rate me
 
 The `Telemetry` API provides methods to return the following types of information:
 
-* [Position](../api_reference/structmavsdk_1_1_telemetry_1_1_position.md) - latitude and longitude in degrees, and altitude relative to sea level and to the takeoff altitude.
+* [AccelerationFrd](../api_reference/structmavsdk_1_1_telemetry_1_1_acceleration_frd.md)
+* [ActuatorControlTarget](../api_reference/structmavsdk_1_1_telemetry_1_1_actuator_control_target.md)
+* [ActuatorOutputStatus](../api_reference/structmavsdk_1_1_telemetry_1_1_actuator_output_status.md)
+* [AngularVelocityBody](../api_reference/structmavsdk_1_1_telemetry_1_1_angular_velocity_body.md)
+* [AngularVelocityNed](../api_reference/structmavsdk_1_1_telemetry_1_1_angular_velocity_frd.md)
 * [Battery](../api_reference/structmavsdk_1_1_telemetry_1_1_battery.md) - voltage and percentage power remaining.
-* [GroundSpeedNED](../api_reference/structmavsdk_1_1_telemetry_1_1_ground_speed_n_e_d.md) - velocity components in NED coordinates.
-* Vehicle attitude/orientation - as a [Quaternion](../api_reference/structmavsdk_1_1_telemetry_1_1_quaternion.md) or [EulerAngle](../api_reference/structmavsdk_1_1_telemetry_1_1_euler_angle.md)
-* [GPSInfo](../api_reference/structmavsdk_1_1_telemetry_1_1_g_p_s_info.md) - type of fix, if any, and number of satellites.
+* [Covariance](../api_reference/structmavsdk_1_1_telemetry_1_1_covariance.md)
+* [EulerAngle](../api_reference/structmavsdk_1_1_telemetry_1_1_euler_angle.md) - vehicle attitude/orientation as Euler Angle
+* [FixedwingMetrics](../api_reference/structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md)
+* [GpsInfo](../api_reference/structmavsdk_1_1_telemetry_1_1_gps_info.md) - type of fix, if any, and number of satellites.
+* [GroundTruth](../api_reference/structmavsdk_1_1_telemetry_1_1_ground_truth.md)
 * [Health](../api_reference/structmavsdk_1_1_telemetry_1_1_health.md) - calibration status of various sensors and confirmation that position estimates are good enough for position control.
-* [RCStatus](../api_reference/structmavsdk_1_1_telemetry_1_1_r_c_status.md) - connection status, signal strength, and whether RC has ever been connected.
+* [Imu](../api_reference/structmavsdk_1_1_telemetry_1_1_imu.md)
+* [MagneticFieldFrd](../api_reference/structmavsdk_1_1_telemetry_1_1_magnetic_field_frd.md)
+* [Odometry](../api_reference/structmavsdk_1_1_telemetry_1_1_odometry.md)
+* [Position](../api_reference/structmavsdk_1_1_telemetry_1_1_position.md) - latitude and longitude in degrees, and altitude relative to sea level and to the takeoff altitude.
+* [PositionBody](../api_reference/structmavsdk_1_1_telemetry_1_1_position_body.md)
+* [PositionNed](../api_reference/structmavsdk_1_1_telemetry_1_1_position_ned.md)
+* [VelocityNed](../api_reference/structmavsdk_1_1_telemetry_1_1_velocity_ned.md)
+* [VelocityBody](../api_reference/structmavsdk_1_1_telemetry_1_1_velocity_body.md)
+* [PositionVelocityNed](../api_reference/structmavsdk_1_1_telemetry_1_1_position_velocity_ned.md)
+* [Quaternion](../api_reference/structmavsdk_1_1_telemetry_1_1_quaternion.md) - vehicle attitude/orientation as a quaternion
+* [RcStatus](../api_reference/structmavsdk_1_1_telemetry_1_1_rc_status.md) - connection status, signal strength, and whether RC has ever been connected.
+* [StatusText](../api_reference/structmavsdk_1_1_telemetry_1_1_status_text.md)
+
 
 In addition there are a number of methods that return vehicle "state":
 * Current flight mode ([flight_mode()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a4972a3968e379d565e7700f2f51158dd)).
@@ -76,7 +94,7 @@ You can set the rate for *each* type of telemetry, and both synchronous or async
 The rate-setting methods are all used in the same way, so we just show one example for both the asynchronous and synchronous methods below.
 In both cases we set the rate for position updates.
 
-To set the position update rate synchronously (in this case using [set_rate_position()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a7bb2f0ad795108ea857cbd6b9f802ee2)):
+To set the position update rate synchronously (in this case using [set_rate_position()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a665439f3d5f8c58b3ef3dd427cf4782b)):
 ```cpp
 // Set position update rate to 1 Hz.
 const Telemetry::Result set_rate_result = telemetry->set_rate_position(1.0);
@@ -86,7 +104,7 @@ if (set_rate_result != Telemetry::Result::SUCCESS) {
 }
 ```
 
-To set the position update rate asynchronously with [set_rate_position_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aa8d3e034d11fccb1533d1a782618f4a4) (here we use a *promise* to block until we have a result):
+To set the position update rate asynchronously with [set_rate_position_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1ad7e5b576edb9398c8f5f2f14626b984a) (here we use a *promise* to block until we have a result):
 ```cpp
 {
     std::cout << "Setting rate updates..." << std::endl;
@@ -111,22 +129,23 @@ To set the position update rate asynchronously with [set_rate_position_async()](
 ## Getting Regular Updates
 
 The best way to get telemetry updates is to use the asynchronous methods. 
-These methods are non-blocking - they take a callback function argument and return immediately. 
+These methods are non-blocking; they take a callback function argument and return immediately. 
 The callback will be invoked with a populated `struct` of the associated type as soon as an update message arrives from the vehicle. 
 The rate at which this occurs can be set through the API [as discussed above](#update-rate). 
 
-For example, the [Telemetry::position_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a36c873a346ec80ffa6440191e57e440a) has the following prototype, where [position_callback_t](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aadcd5ce9f12b7de8f44b32aff9bc766f) is called with a populated [Position](../api_reference/structmavsdk_1_1_telemetry_1_1_position.md):
+For example, the [Telemetry::subscribe_position()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a61bda57b3ca47000ea7e4758b2a33134) has the following prototype, where `callback` is called with a populated [PositionCallback](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a978b371d636226e198995462afa63552) function:
 ```cpp
-void mavsdk::Telemetry::position_async(position_callback_t callback)
+void mavsdk::Telemetry::subscribe_position(PositionCallback callback)
 ```
 
 The code fragment below shows this method being use with a lambda function for the callback, which simply prints out the current position and altitude).
 ```cpp
-telemetry->position_async([](Telemetry::Position position) {
+telemetry->subscribe_position([](Telemetry::Position position) {
     std::cout << "Altitude: " << position.relative_altitude_m << " m" << std::endl
               << "Latitude: " << position.latitude_deg << std::endl
               << "Longitude: " << position.longitude_deg << std::endl;
 });
+
 ```
 
 
@@ -135,20 +154,25 @@ telemetry->position_async([](Telemetry::Position position) {
 The asynchronous callbacks are updated every time new information is provided by the vehicle. 
 For some types of telemetry you may only wish to report only when the value changes.
 
-The example below shows how to use [flight_mode_async()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1adede4202304e53466b4df41367a75878) to report only when the current flight mode changes. 
+The example below shows how to use [subscribe_flight_mode()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a53db5fb36bf10fbc7ac004a3be9100a4) to report only when the current flight mode changes. 
 The example uses a lambda function callback that captures a variable for the last mode. 
 This variable is compared to the current flight mode to determine whether the value has changed and needs to be reported.
 
 ```cpp
 // Set up callback to monitor flight mode 'changes' 
-Telemetry::FlightMode oldFlightMode=Telemetry::FlightMode::UNKNOWN;
-telemetry->flight_mode_async([&oldFlightMode](Telemetry::FlightMode flightMode) {
+Telemetry::FlightMode oldFlightMode=Telemetry::FlightMode::Unknown;
+telemetry->subscribe_flight_mode([&oldFlightMode](Telemetry::FlightMode flightMode) {
     if (oldFlightMode != flightMode) {
         //Flight mode changed. Print!
-        std::cout << "FlightMode: " << Telemetry::flight_mode_str(flightMode) << std::endl;
+        std::cout << "FlightMode: " << flightMode << std::endl;
         oldFlightMode=flightMode; //Save updated mode.
     }
 });
+```
+
+You can stop flight mode updates altogether with:
+```cpp
+telemetry->subscribe_flight_mode(nullptr);
 ```
 
 This same approach can be used to report only messages that meet some condition.
