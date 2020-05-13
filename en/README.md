@@ -27,7 +27,7 @@ The current status is:
 - C++ core library (2016). Used in production.
 - MAVSDK-Swift (2018): Used in production.
 - MAVSDK-Python (2019): Used in production.
-- MAVSDK-Java (2019): Beta.
+- MAVSDK-Java (2019): Used in production.
 - MAVSDK-JavaScript (2019): Proof of concept.
 - MAVSDK-CSharp (2019). Proof of concept.
 - MAVSDK-Rust (2019): Proof of concept.
