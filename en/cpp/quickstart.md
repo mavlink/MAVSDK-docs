@@ -19,7 +19,7 @@ First install the MAVSDK library on your platform
 
 > **Note** To use other platforms or programming languages see: [Installation](../getting_started/installation.md).
 
-You will also to install a build toolchain to compile your code.
+You will also need to install a build toolchain to compile your code.
 However the required dependencies (e.g. `cmake`, compiler) are installed as part of [setting up the simulator](#simulator) (next step).
 
 
