@@ -8,7 +8,6 @@ These are the instructions on how to get a release out the door.
 
 1. Check if all open pull requests are merged that need to go in.
 1. Check that CI on `develop` passed.
-1. Run link checker and fix any breaks.
 1. Merge `develop` into `master`:
    ```
    git switch develop
