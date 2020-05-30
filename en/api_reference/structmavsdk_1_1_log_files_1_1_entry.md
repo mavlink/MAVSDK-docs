@@ -10,7 +10,7 @@ Log file entry type.
 ## Data Fields
 
 
-uint32_t [id](#structmavsdk_1_1_log_files_1_1_entry_1af70d624d97e7a94f3c0018c660c0d467) {} - ID of the log file, to specify a file to be download.
+uint32_t [id](#structmavsdk_1_1_log_files_1_1_entry_1af70d624d97e7a94f3c0018c660c0d467) {} - ID of the log file, to specify a file to be downloaded.
 
 std::string [date](#structmavsdk_1_1_log_files_1_1_entry_1a5727aa32b382e3ce4be745a36efdd4bb) {} - Date of the log file in UTC in ISO 8601 format "yyyy-mm-ddThh:mm:ssZ".
 
@@ -27,7 +27,7 @@ uint32_t mavsdk::LogFiles::Entry::id {}
 ```
 
 
-ID of the log file, to specify a file to be download.
+ID of the log file, to specify a file to be downloaded.
 
 
 ### date {#structmavsdk_1_1_log_files_1_1_entry_1a5727aa32b382e3ce4be745a36efdd4bb}

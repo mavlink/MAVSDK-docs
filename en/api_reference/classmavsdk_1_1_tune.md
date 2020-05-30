@@ -30,6 +30,7 @@ Type | Name | Description
 &nbsp; | [~Tune](#classmavsdk_1_1_tune_1a3b6b1ce61b620ad8e4d82227257151c7) () | Destructor (internal use only).
 &nbsp; | [Tune](#classmavsdk_1_1_tune_1acea13c8927ff72394235c282289bcebc) (const [Tune](classmavsdk_1_1_tune.md) &)=delete | Copy constructor (object is not copyable).
 void | [play_tune_async](#classmavsdk_1_1_tune_1afb2070f894b20884bcf27b20e5fe84e0) ([TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) description, const [ResultCallback](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aa283f6824bee43d341fec56d7ff70985) callback) | Send a tune to be played by the system.
+[Result](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909d) | [play_tune](#classmavsdk_1_1_tune_1a66e25fea76d76a11712f0d6de9ea1bb6) ([TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) description)const | Send a tune to be played by the system.
 const [Tune](classmavsdk_1_1_tune.md) & | [operator=](#classmavsdk_1_1_tune_1ae4a076da0417c6858df6fb59fa5110b5) (const [Tune](classmavsdk_1_1_tune.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -146,12 +147,30 @@ void mavsdk::Tune::play_tune_async(TuneDescription description, const ResultCall
 
 Send a tune to be played by the system.
 
-This function is non-blocking.
+This function is non-blocking. See 'play_tune' for the blocking counterpart.
 
 **Parameters**
 
 * [TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) **description** - 
 * const [ResultCallback](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aa283f6824bee43d341fec56d7ff70985) **callback** - 
+
+### play_tune() {#classmavsdk_1_1_tune_1a66e25fea76d76a11712f0d6de9ea1bb6}
+```cpp
+Result mavsdk::Tune::play_tune(TuneDescription description) const
+```
+
+
+Send a tune to be played by the system.
+
+This function is blocking. See 'play_tune_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* [TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) **description** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909d) - Result of request.
 
 ### operator=() {#classmavsdk_1_1_tune_1ae4a076da0417c6858df6fb59fa5110b5}
 ```cpp
