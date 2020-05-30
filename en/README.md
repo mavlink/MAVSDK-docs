@@ -36,12 +36,13 @@ The current status is:
 
 ## Getting Started
 
-* Python 3 developers install and use [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) from PyPi (`pip3 install mavsdk`). 
-  There is no further setup, so you can then immediately run the [examples](https://github.com/mavlink/MAVSDK-Python/tree/master/examples) in the normal way. 
+* Python 3 developers install and use [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#mavsdk-python) from PyPi (`pip3 install mavsdk`).
+  There is no further setup, so you can then immediately run the [examples](https://github.com/mavlink/MAVSDK-Python/tree/master/examples) in the normal way.
   The drone API is essentially the same as for the [C++ API](api_reference/README.md).
 * iOS developers should start from the [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) reference.
+* Python developers should check out the [Python reference docs](http://mavsdk-python-docs.s3-website.eu-central-1.amazonaws.com/).
 * C++ Developers should start at the [C++ Library](cpp/README.md).
- 
+
 
 ## Getting Help
 
@@ -65,7 +66,7 @@ Use Github for bug reports/enhancement requests:
 The core library is written in C++, with auto-generated bindings for other supported programming languages.
 
 The library is:
-- Straightforward and easy to use. It has an API that supports both synchronous (blocking) and asynchronous calls (using callbacks). 
+- Straightforward and easy to use. It has an API that supports both synchronous (blocking) and asynchronous calls (using callbacks).
 - Fast, robust, and lightweight. Built to handle onboard usage with high rate messaging.
 - Cross-platform (Linux, macOS, Windows, iOS, Android).
 - Extensible, using compile-time plugins.
@@ -81,14 +82,14 @@ The main features provided by the core API are (in all programing languages):
 * Send commands to directly control vehicle movement.
 * Send commands to start sensor calibration.
 
-See the [FAQ](getting_started/faq.md) for answers to common questions about the library. 
+See the [FAQ](getting_started/faq.md) for answers to common questions about the library.
 
 
 ## Contributing
 
-We welcome contributions! If you want to help or have suggestions/bug reports [please get in touch with the development team](#getting-help). 
+We welcome contributions! If you want to help or have suggestions/bug reports [please get in touch with the development team](#getting-help).
 
-The [Contributing](contributing/README.md) (C++) section contains everything you need to contribute, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development. 
+The [Contributing](contributing/README.md) (C++) section contains everything you need to contribute, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development.
 
 
 ## License
