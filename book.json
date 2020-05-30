@@ -1,6 +1,6 @@
-{   
+{
     "gitbook": ">= 3.2.2",
-    "title": "MAVSDK Guide", 
+    "title": "MAVSDK Guide",
     "variables": {
         "logo": "./assets/site/sdk_logo_full.png",
         "github_branch": "develop"
@@ -42,7 +42,7 @@
                     "icon": "fa fa-bug",
                     "position" : "left",
                     "url": "https://github.com/mavlink/MAVSDK-docs/issues/new?title=Doc+Bug:+{{title}}&body=DESCRIBE+PROBLEM+WITH+DOCS+HERE%0A%0ABug+Page:+[{{title}}]({{url}})"
-                    
+
                 },
                 {
                     "label": "GitHub",
@@ -59,14 +59,18 @@
         },
         "theme-api": {
             "split": false
-        },      
-        
+        },
+
         "versions": {
             "gitbookConfigURL": "https://raw.githubusercontent.com/mavlink/MAVSDK-docs/develop/book.json",
             "options": [
                 {
                     "value": "https://mavsdk.mavlink.io/develop/en/",
                     "text": "develop"
+                },
+                {
+                    "value": "https://mavsdk.mavlink.io/v0.27.0/en/",
+                    "text": "v0.27.0"
                 },
                 {
                     "value": "https://mavsdk.mavlink.io/v0.25.0/en/",
@@ -88,12 +92,12 @@
                     "value": "https://mavsdk.mavlink.io/v0.18.0/en/",
                     "text": "v0.18.0"
                 }
-                
+
             ]
         }
-        
-    } 
-    
-    
+
+    }
+
+
 }
 
