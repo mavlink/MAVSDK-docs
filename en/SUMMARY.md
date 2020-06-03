@@ -20,7 +20,6 @@
     * [Follow Me](guide/follow_me.md)
     * [VTOL Support](guide/vtol.md)
     * [Building C++ Apps](guide/toolchain.md)
-    * [SDK Extensions](guide/sdk_extensions.md)
   * [Examples](examples/README.md)
     * [Takeoff and Land](examples/takeoff_and_land.md)
     * [Fly Mission](examples/fly_mission.md)

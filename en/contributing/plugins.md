@@ -5,9 +5,6 @@ The MAVSDK is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book
 Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. 
 The [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
 
-> **Note** Plugins can also be defined in [SDK Extensions](../guide/sdk_extensions.md). 
-> These are defined and tested in exactly the same way as "standard" SDK plugins. 
-
 ## Plugin Architecture
 
 Plugins should be written so that they are independent of each other (they will still need to be dependent on the core source). 
@@ -16,7 +13,7 @@ This allows plugins to be removed/replaced as needed at the cost of some duplica
 The code for each plugin (and its unit test if one has been defined) is stored in a sub-folder of the **plugins** directory. 
 Integration tests for all plugins in the library are stored in **integration_tests**.
 
-A simplified view of the folder structure is shown below (showing relevant directories for both the SDK and [SDK Extensions](../guide/sdk_extensions.md)): 
+A simplified view of the folder structure is shown below:
 
 ```
 ├── MAVSDK
@@ -26,12 +23,6 @@ A simplified view of the folder structure is shown below (showing relevant direc
 │       ├── action
 │       ├── ...
 │       └── telemetry
-├── SDK_Extensions
-│   ├── integration_tests
-│   └── plugins
-│       ├── camera
-│       ├── another_plugin
-│       └── etc.
 ```
 
 Each plugin must have the same files/structure, as shown for the "example" plugin below.
@@ -84,8 +75,6 @@ For example, to prevent callback being created before the `System` is instantiat
 Plugin authors should provide an implementation of the following `PluginImplBase` pure virtual methods:
 * [init()](#init)/[deinit()](#deinit): These are called when a system is created and just before it is destroyed. These should be used for setting up and cleaning everything that depends on having the `System` instantiated. This includes calls that set up callbacks.
 * [enable()](#enable)/[disable()](#disable): These are called when a vehicle is discovered or has timed out. They should be used for managing resources needed to access a connected system/vehicle (e.g. getting a parameter or changing a setting).
-
-The [external example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/external_example) provides a minimal implementation.
 
 Additional detail is provided for methods below.
 
