@@ -1,16 +1,16 @@
 # Writing Plugins
 
-The MAVSDK is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins). 
+The MAVSDK is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins).
 
-Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time. 
+Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time.
 The [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
 
 ## Plugin Architecture
 
-Plugins should be written so that they are independent of each other (they will still need to be dependent on the core source). 
+Plugins should be written so that they are independent of each other (they will still need to be dependent on the core source).
 This allows plugins to be removed/replaced as needed at the cost of some duplicated functionality across the plugin modules.
 
-The code for each plugin (and its unit test if one has been defined) is stored in a sub-folder of the **plugins** directory. 
+The code for each plugin (and its unit test if one has been defined) is stored in a sub-folder of the **plugins** directory.
 Integration tests for all plugins in the library are stored in **integration_tests**.
 
 A simplified view of the folder structure is shown below:
@@ -28,48 +28,121 @@ A simplified view of the folder structure is shown below:
 Each plugin must have the same files/structure, as shown for the "example" plugin below.
 ```
 └── plugins
-    └── example 
+    └── example
         ├── CMakeLists.txt
         ├── example.cpp
         ├── example.h
         ├── example_impl.cpp
         ├── example_impl.h
-        └── example_impl_test.cpp  ##optional
+        └── example_foo_test.cpp  ##optional
+```
+
+## Auto-generation
+
+In order to support various language wrappers around MAVSDK without having to write the same things multiple times, once for every language, we opted to use auto-generation as much as possible. The APIs are defined as [proto definitions](https://github.com/mavlink/MAVSDK-Proto).
+
+From that, several parts are auto-generated, such as:
+  - Language wrappers based on gRPC client (formerly called frontend)
+  - gRPC mavsdk_server in C++ (formerly called backend)
+  - Plugin C++ headers defining the API.
+
+Looking at the plugin structure again, this means that some of the files are auto-generated:
+
+```
+└── plugins
+    └── example
+        ├── CMakeLists.txt       # auto-generated
+        ├── example.cpp          # auto-generated
+        ├── example.h            # auto-generated
+        ├── example_impl.cpp     # hand-written (can initally be generated)
+        ├── example_impl.h       # hand-written (can initally be generated)
+        └── example_foo_test.cpp  # optional
 ```
 
 ## Create a Plugin
 
-To create a new C++ plugin, duplicate either a [standard plugin](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins) (e.g. 
-[Action](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/action),
-[Telemetry](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins/telemetry), etc.) or the [example](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/external_example/plugins/example/) plugin into the **plugins** directory (either in the MAVSDK tree or a [SDK Extension](../guide/sdk_extensions.md) folder).
+To create a new plugin **do not copy an existing one**, instead follow the steps below:
 
-Modify the plugin as needed and update its [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/plugins/example/CMakeLists.txt) as appropriate:
-* Modify plugin filenames as appropriate
-* Add additional libraries using the variable `additional_libs`:
-  ```
-  set(additional_libs "library_name" PARENT_SCOPE)
-  ```
-* Add required includes with `additional_includes`:
-  ```
-  set(additional_includes "include_dir" PARENT_SCOPE)
-  ```
-* You can also add tests with `unittest_source_files`, as [discussed below](#adding_unit_tests).
+### Think about public API
+
+Before writing the API, take a step back and think what a user of it needs and expect, rather than what MAVLink already provides.
+
+Generally, MAVSDK APIs ought to be:
+- Simple and easy to use.
+- Reduced to the essentials, so no functionality that is not actually implemented/supported should be exposed.
+- Clearly named and if possible without too much drone jargon and acronyms.
+- Abstracted from the MAVLink implementation and therefore to provide specific functionality instead of just forwarding direct MAVLink.
+
+This advice is important if you are planning to contribute the new plugin back and would like it to get accepted and merged. We are convinced it is also applicable for internal development but - of course - that's up to you.
+
+### About proto structure
+
+There are a couple of different API types supported for MAVSDK plugins:
+
+TODO:
+- Requests:
+- Setter:
+- Subscriptions:
+
+> **Note** that methods can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
+> The choice depends on the functionality that is being implemented and how it would generally be used. There are no hard rules, it's something that makes sense to be discussed one by one in a pull request.
+
+### Add API to proto
+
+The first step should be to define the user API in the [proto repository](https://github.com/mavlink/MAVSDK-Proto). This repository is part of the MAVSDK as a submodule in the `proto/` directory.
+
+You usually want to work from master in the `proto/` directory, and then create a feature branch with your additions:
+
+```
+cd proto
+git switch master
+git pull
+git switch -c my-new-plugin
+cd ../
+```
+
+Now you can add a folder with your proto file (or copy an existing one and rename it) and draft the API.
+
+Once the API is defined, it makes sense to commit the changes, push them and make a pull request to [MAVSDK-Proto](https://github.com/mavlink/MAVSDK-Proto) to get feedback from the MAVSDK maintainers.
 
 
-## Plugin Code
+### Generate .h and .cpp files
+
+Once the proto file has been created, you can generate all files required for the new plugin.
+
+1. Run the configure step to prepare the tools required:
+   ```
+   cmake -DBUILD_BACKEND=ON -Bbuild/default -H.
+   ```
+1. Run the auto-generation:
+   ```
+   tools/generate_from_protos.sh
+   ```
+1. Fix style after auto-generation:
+   ```
+   tools/fix_style.sh .
+   ```
+
+> **Note** the files `my_new_plugin.h` and `my_new_plugin.cpp` are generated and overwritten everytime the script is run. However, the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` are only generated once. To re-generate them, delete them and run the script again. This is done that way to prevent the script from overwriting your local changes.
+
+### Actually implement MAVLink messages
+
+You can now add the actual "business logic" which is usually sending and receiving MAVLink messages, waiting for timeouts, etc.. All implementation goes into the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` or additional files for separete classes required.
+
+You can also add unit tests with `unittest_source_files`, as [discussed below](#adding_unit_tests).
 
 The [standard plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins) can be reviewed for guidance on
 how to write plugin code, including how to send and process MAVLink messages.
 
+## Plugin Code
 
 ### Plugin Base Class
 
 All plugins should derive their implementation from `PluginImplBase` (**core/plugin_impl_base.h**) and override virtual methods as needed.
 
-
 ### Plugin Enable/Disable
 
-The SDK provides virtual methods that a plugin should implement to allow the core to better manage resources. 
+The SDK provides virtual methods that a plugin should implement to allow the core to better manage resources.
 For example, to prevent callback being created before the `System` is instantiated, or messages being sent when a vehicle is not connected.
 
 Plugin authors should provide an implementation of the following `PluginImplBase` pure virtual methods:
@@ -84,7 +157,7 @@ Additional detail is provided for methods below.
 virtual void init() = 0
 ```
 
-The `init()` method is called when a plugin is instantiated. 
+The `init()` method is called when a plugin is instantiated.
 This happens when a `System` is constructed (this does not mean that the system actually exists and is connected - it might just be an empty dummy system).
 
 Plugins should do initialization steps with other parts of the SDK at this state, e.g. set up callbacks with `_parent` (`DeviceImpl`).
@@ -101,8 +174,8 @@ Plugins should cleanup anything that was set up during `init()`.
 ```cpp
 virtual void enable() = 0
 ```
-The `enable()` method is called when a system is discovered (connected). 
-Plugins should do all initialization/configuration steps that require a system to be connected. 
+The `enable()` method is called when a system is discovered (connected).
+Plugins should do all initialization/configuration steps that require a system to be connected.
 For example, setting/getting parameters.
 
 If any threads, call_every or timeouts are needed, they can be started in this method.
@@ -111,7 +184,7 @@ If any threads, call_every or timeouts are needed, they can be started in this m
 ```cpp
 virtual void disable() = 0
 ```
-The `disable()` method is called when a system has timed out. 
+The `disable()` method is called when a system has timed out.
 The method is also called before `deinit()` is called to stop any systems with active plugins from communicating (in order to prevent warnings and errors because communication to the system no longer works).
 
 If any threads, call_every, or timeouts are running, they should be stopped in this method.
@@ -119,59 +192,55 @@ If any threads, call_every, or timeouts are running, they should be stopped in t
 
 ## Test Code {#testing}
 
-Tests must be created for all new and updated plugin code. 
+Tests must be created for all new and updated plugin code.
 The tests should be exhaustive, and cover all aspects of using the plugin API.
 
 The [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md)
 provides an excellent overview of how tests are written and used.
 
-> **Note** Testing is the same for plugins in SDK and the [SDK Extensions](../guide/sdk_extensions.md).
-
 
 ### Writing Unit Tests
 
-Most of the existing plugins do not have unit tests, 
-because we do not yet have the ability to [mock MAVLink communications](https://github.com/mavlink/MAVSDK/issues/148) (needed to test most plugins). 
+Most of the existing plugins do not have unit tests,
+because we do not yet have the ability to [mock MAVLink communications](https://github.com/mavlink/MAVSDK/issues/148) (needed to test most plugins).
 Unit tests are therefore considered optional!
 
 > **Tip** Comprehensive integration tests should be written instead, with the simulator providing appropriate MAVLink messages.
 
 #### Adding Unit Tests {#adding_unit_tests}
 
-Unit test files are stored in the same directory as their associated source code. 
-Often they test the implementation (rather than the public API), 
-and hence are named with the suffix **_impl_test.cpp**.
+Unit test files are stored in the same directory as their associated source code.
 
-In order to include a test in the SDK unit test program (`unit_tests_runner`), 
+In order to include a test in the SDK unit test program (`unit_tests_runner`),
 it must be added to the `UNIT_TEST_SOURCES` variable in the plugin **CMakeLists.txt** file.
 
-For example, to add the **example_impl_test.cpp** unit test you would 
+For example, to add the **example_foo_test.cpp** unit test you would
 append the following lines to its **CMakeLists.txt**:
 
-```cmake 
+```cmake
 list(APPEND UNIT_TEST_SOURCES
-    ${CMAKE_SOURCE_DIR}/src/plugins/mission/example_impl_test.cpp
+    ${CMAKE_SOURCE_DIR}/src/plugins/mission/example_foo_test.cpp
 )
 set(UNIT_TEST_SOURCES ${UNIT_TEST_SOURCES} PARENT_SCOPE)
-``` 
+```
 
 
 #### Unit Test Code
 
 Unit tests typically include the file to be tested, **mavsdk.h**, and **gtest.h**.
-There are no standard shared test unit resources so test functions are declared using `TEST`. 
+There are no standard shared test unit resources so test functions are declared using `TEST`.
 All tests in a file should share the same test-case name (the first argument to `TEST`).
 
-The skeleton [example plugin unit test](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/plugins/example/example_impl_test.cpp) is shown below: 
+The skeleton [example plugin unit test](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/plugins/example/example_impl_test.cpp) is shown below:
 ```cpp
-#include "example_impl.h"
+#include "example.h"
 #include "mavsdk.h"
 #include "global_include.h"
 #include <gtest/gtest.h>
 
 namespace mavsdk {
 
-TEST(ExampleImpl, NoTest)
+TEST(Example, NoTest)
 {
     ASSERT_TRUE(true);
 }
@@ -183,10 +252,10 @@ TEST(ExampleImpl, NoTest)
 
 ### Writing Integration Tests {#integration_tests}
 
-The SDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
+MAVSDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
 
-> **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md) 
-> and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests) 
+> **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md)
+> and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests)
 > for our existing plugins to better understand how to write your own!
 
 
@@ -194,9 +263,9 @@ The SDK provides the `integration_tests_runner` application for running the inte
 
 In order to run an integration test it needs to be added to the `integration_tests_runner` program.
 
-Integration tests for core functionality and plugins delivered by the project 
+Integration tests for core functionality and plugins delivered by the project
 are stored in [MAVSDK/src/integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests).
-The files are added to the test program in that folder's 
+The files are added to the test program in that folder's
 [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/CMakeLists.txt) file:
 
 ```cmake
@@ -213,68 +282,23 @@ add_executable(integration_tests_runner
 )
 ```
 
-Integration tests for [SDK Extensions](../guide/sdk_extensions.md) are handled in the exactly the same way: 
-```
-external_example       ## The (example) SDK/external plugin directory.
-├── integration_tests
-│   ├── CMakeLists.txt
-│   └── hello_world.cpp
-```
-
-Example extension **CMakeLists.txt** file:
-```cmake
-add_executable(external_example_integration_tests_runner
-    ${CMAKE_SOURCE_DIR}/core/unittests_main.cpp
-    hello_world.cpp
-)
-```
- 
 
 #### Integration Test Files/Code
 
-The main SDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/integration_test_helper.h).
+The main MAVSDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/integration_test_helper.h).
 This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
-> **Note** All tests must be declared using `TEST_F` and have a first argument `SitlTest` as shown. 
+> **Note** All tests running against SITL can be declared using `TEST_F` and have a first argument `SitlTest` as shown.
   This is required in order to use the shared class to set up and tear down the simulator between tests.
 
-The example integration test [hello_world.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/integration_tests/hello_world.cpp) demonstrates this below. 
-
-```cpp
-#include <iostream>
-#include <unistd.h>
-#include "mavsdk.h"
-#include "plugins/example/example.h"
-#include "integration_test_helper.h"
-
-using namespace dronecode_sdk;
-
-TEST_F(SitlTest, ExampleHello)
-{
-    Mavsdk dc;
-
-    ConnectionResult ret = dc.add_udp_connection();
-    ASSERT_EQ(ret, ConnectionResult::SUCCESS);
-
-    // Wait for system to connect via heartbeat.
-    std::this_thread::sleep_for(std::chrono::seconds(2));
-    ASSERT_TRUE(dc.is_connected());
-
-    System &system = dc.system();
-    auto example = std::make_shared<Example>(system);
-
-    // Apparently it can say hello.
-    example->say_hello();
-}
-```
-
+For reference inspect the [existing integration tests](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests).
 
 ## Example Code
 
-> **Note** It is quicker and easier to write and modify [integration tests](#integration_tests) than examples. 
+> **Note** It is quicker and easier to write and modify [integration tests](#integration_tests) than examples.
 > Do not write example code until the plugin has been accepted!
 
-A simple example should be written that demonstrates basic usage of its API by 3rd parties. 
+A simple example should be written that demonstrates basic usage of its API by 3rd parties.
 The example need not cover all functionality, but should demonstrate enough that developers can see how it is used and how the example might be extended.
 
 Where possible examples should demonstrate realistic use cases such that the code can usefully be copied and reused by external developers.
@@ -284,17 +308,17 @@ Where possible examples should demonstrate realistic use cases such that the cod
 
 ### In-Source Comments
 
-The public API must be fully documented using [Doxygen](http://doxygen.nl/manual/docblocks.html) markup.
-All items should minimally have a brief description (preceded by the `@brief` tag).
+The public API must be fully documented using the proto files.
 
 > **Tip** The in-source comments will be compiled to markdown and included in the [API Reference](../api_reference/README.md).
 > The process is outlined in [Documentation > API Reference](../contributing/documentation.md#api-reference).
 
-Internal/implementation classes need not be documented, but should be written so that their use can be inferred.
+Internal/implementation classes need not be documented, but should be written using expressive naming of variables and functions to help the reader.
+Anything unexpected or special however warrants an explanation as a comment.
 
-### Example Code Documentation 
+### Example Code Documentation
 
-The plugin example should be documented in markdown following the same pattern as the existing [examples](../examples/README.md). 
+The plugin example should be documented in markdown following the same pattern as the existing [examples](../examples/README.md).
 
 Generally this involves explaining what the example does and displaying the source.
 The explanation of how the code works is usually deferred to [guide documentation](#guide).
