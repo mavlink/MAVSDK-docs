@@ -79,16 +79,73 @@ We are convinced it is also applicable for internal development but - of course 
 
 ### About proto structure
 
-There are a couple of different API types supported for MAVSDK plugins:
+There are a couple of different API types supported for MAVSDK plugins.
 
-TODO:
-- Requests:
-- Setter:
-- Subscriptions:
+#### Requests:
 
-> **Note** that methods can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
+A request is a simple one time call with a response. An example would be the takeoff command of the action plugin:
+
+```
+service ActionService {
+    rpc Takeoff(TakeoffRequest) returns(TakeoffResponse) {}
+    // all other services
+}
+
+message TakeoffRequest {}
+message TakeoffResponse {
+    ActionResult action_result = 1;
+}
+```
+
+In this case the request has no argument and no return value except the result but this can vary, e.g. for getters and setters:
+```
+service ActionService {
+    rpc GetReturnToLaunchAltitude(GetReturnToLaunchAltitudeRequest) returns(GetReturnToLaunchAltitudeResponse) {}
+    rpc SetReturnToLaunchAltitude(SetReturnToLaunchAltitudeRequest) returns(SetReturnToLaunchAltitudeResponse) {}
+    // all other services
+}
+
+message GetReturnToLaunchAltitudeRequest {}
+message GetReturnToLaunchAltitudeResponse {
+    ActionResult action_result = 1;
+    float relative_altitude_m = 2;
+}
+
+message SetReturnToLaunchAltitudeRequest {
+    float relative_altitude_m = 1;
+}
+message SetReturnToLaunchAltitudeResponse {
+    ActionResult action_result = 1;
+}
+```
+
+> **Note** that requests can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
   The choice depends on the functionality that is being implemented and how it would generally be used.
   There are no hard rules, it's something that makes sense to be discussed one by one in a pull request.
+  The default implementation is `BOTH`.
+
+#### Subscriptions:
+
+A subscription is triggered once and will then continuously send responses as a stream. An example would be a the position information of the telemetry plugin:
+
+```
+service TelemetryService {
+    rpc SubscribePosition(SubscribePositionRequest) returns(stream PositionResponse) {}
+    // all other services
+}
+
+
+message SubscribePositionRequest {}
+message PositionResponse {
+    Position position = 1;
+}
+```
+
+> **Note** that subscriptions also can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
+  The sync implementation of a subscription is just a getter for the last received value.
+
+> **Note** that subscriptions can be defined finite using `option (mavsdk.options.is_finite) = true;`.
+  This means that the stream of messages will end at some point instead of continuing indefinitely. An example would be progress updates about a calibration which eventually finishes.
 
 ### Add API to proto
 
