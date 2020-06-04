@@ -39,12 +39,13 @@ Each plugin must have the same files/structure, as shown for the "example" plugi
 
 ## Auto-generation
 
-In order to support various language wrappers around MAVSDK without having to write the same things multiple times, once for every language, we opted to use auto-generation as much as possible. The APIs are defined as [proto definitions](https://github.com/mavlink/MAVSDK-Proto).
+In order to support various language wrappers around MAVSDK without having to write the same things multiple times, once for every language, we opted to use auto-generation as much as possible.
+The APIs are defined as [proto definitions](https://github.com/mavlink/MAVSDK-Proto).
 
 From that, several parts are auto-generated, such as:
-  - Language wrappers based on gRPC client (formerly called frontend)
-  - gRPC mavsdk_server in C++ (formerly called backend)
-  - Plugin C++ headers defining the API.
+- Language wrappers based on gRPC client (formerly called frontend)
+- gRPC mavsdk_server in C++ (formerly called backend)
+- Plugin C++ headers defining the API.
 
 Looking at the plugin structure again, this means that some of the files are auto-generated:
 
@@ -69,11 +70,12 @@ Before writing the API, take a step back and think what a user of it needs and e
 
 Generally, MAVSDK APIs ought to be:
 - Simple and easy to use.
-- Reduced to the essentials, so no functionality that is not actually implemented/supported should be exposed.
+- Reduced to the essentials; no functionality that is not actually implemented/supported should be exposed.
 - Clearly named and if possible without too much drone jargon and acronyms.
 - Abstracted from the MAVLink implementation and therefore to provide specific functionality instead of just forwarding direct MAVLink.
 
-This advice is important if you are planning to contribute the new plugin back and would like it to get accepted and merged. We are convinced it is also applicable for internal development but - of course - that's up to you.
+This advice is important if you are planning to contribute the new plugin back and would like it to get accepted and merged.
+We are convinced it is also applicable for internal development but - of course - that's up to you.
 
 ### About proto structure
 
@@ -85,11 +87,13 @@ TODO:
 - Subscriptions:
 
 > **Note** that methods can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
-> The choice depends on the functionality that is being implemented and how it would generally be used. There are no hard rules, it's something that makes sense to be discussed one by one in a pull request.
+  The choice depends on the functionality that is being implemented and how it would generally be used.
+  There are no hard rules, it's something that makes sense to be discussed one by one in a pull request.
 
 ### Add API to proto
 
-The first step should be to define the user API in the [proto repository](https://github.com/mavlink/MAVSDK-Proto). This repository is part of the MAVSDK as a submodule in the `proto/` directory.
+The first step should be to define the user API in the [proto repository](https://github.com/mavlink/MAVSDK-Proto).
+This repository is part of the MAVSDK as a submodule in the `proto/` directory.
 
 You usually want to work from master in the `proto/` directory, and then create a feature branch with your additions:
 
@@ -123,11 +127,15 @@ Once the proto file has been created, you can generate all files required for th
    tools/fix_style.sh .
    ```
 
-> **Note** the files `my_new_plugin.h` and `my_new_plugin.cpp` are generated and overwritten everytime the script is run. However, the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` are only generated once. To re-generate them, delete them and run the script again. This is done that way to prevent the script from overwriting your local changes.
+> **Note** the files `my_new_plugin.h` and `my_new_plugin.cpp` are generated and overwritten everytime the script is run.
+  However, the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` are only generated once.
+  To re-generate them, delete them and run the script again.
+  This approach is used to prevent the script from overwriting your local changes.
 
 ### Actually implement MAVLink messages
 
-You can now add the actual "business logic" which is usually sending and receiving MAVLink messages, waiting for timeouts, etc.. All implementation goes into the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` or additional files for separete classes required.
+You can now add the actual "business logic" which is usually sending and receiving MAVLink messages, waiting for timeouts, etc.
+All implementation goes into the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` or additional files for separete classes required.
 
 You can also add unit tests with `unittest_source_files`, as [discussed below](#adding_unit_tests).
 
