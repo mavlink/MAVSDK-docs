@@ -48,6 +48,34 @@ While ground vehicles may work, they are not supported and are untested.
 Similarly, other autopilots may well work, but, they are not explicitly supported and are untested.
 
 
+### Connection Strings {#connection_string}
+
+MAVSDK monitors a specified port for vehicles (for the C++ API see [Connecting to Systems (Vehicles)](../guide/connections.md)).
+All programming language libraries reference this port using a *connection string* with the following format:
+
+Connection | URL Format
+--- | ---
+UDP | `udp://[Bind_host][:Bind_port]`
+TCP | `tcp://[Server_host][:Server_port]`
+Serial | `serial://[Dev_Node][:Baudrate]`
+
+Concrete examples are for different platforms are:
+
+Connection type |  String | Example
+--- | --- | ---
+Windows connected to the vehicle via USB (includes USB-connected Telemetry radios).  | `serial:///COMn`,  where `n` = the COM port | `serial:///COM1`
+Linux (e.g Raspberry Pi) connected to the vehicle via Serial port | `serial:///dev/ttyACMn`,  where `n` = the port | `serial:///dev/ttyACM0`
+Linux connected to the vehicle via USB | `serial:///dev/ttyUSBn`,  where `n` = the port | `serial:///dev/ttyUSB0`
+macOS connected to the vehicle via Serial port | `serial:///dev/tty.usbserial-n`,  where `n` = the USB device id | `serial:///dev/tty.usbserial-DA00AG57`
+macOS connected to the vehicle via USB | `serial:///dev/tty.usbmodem-n`,  where `n` = the USB device id | `serial:///dev/tty.usbmodem--DA00AG57`
+SITL connected to the vehicle via UDP | `udp://:14540`
+
+
+### Connection Status
+
+A system is considered to be disconnected (timed-out) if its heartbeat message is not detected within 3 seconds.
+
+
 ### Telemetry/Information
 
 The SDK gets and stores vehicle state/telemetry information from received MAVLink messages. 
@@ -81,6 +109,4 @@ The API allows you to download/import missions.
 Note however that this will fail if the mission contains a command that is not supported by the API.
 
 
-### Connection Status
 
-A system is considered to be disconnected (timed-out) if its heartbeat message is not detected within 3 seconds.
