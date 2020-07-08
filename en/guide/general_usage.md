@@ -63,7 +63,7 @@ Concrete examples are for different platforms are:
 
 Connection type |  String | Example
 --- | --- | ---
-Windows connected to the vehicle via USB (includes USB-connected Telemetry radios).  | `serial:///COMn`,  where `n` = the COM port | `serial:///COM1`
+Windows connected to the vehicle via USB (includes USB-connected Telemetry radios).  | `serial:///COMn`,  where `n` = the COM port. Note: `///` will change to `//` in a future release (incorrect on Windows). | `serial:///COM1`
 Linux (e.g Raspberry Pi) connected to the vehicle via Serial port | `serial:///dev/ttyACMn`,  where `n` = the port | `serial:///dev/ttyACM0`
 Linux connected to the vehicle via USB | `serial:///dev/ttyUSBn`,  where `n` = the port | `serial:///dev/ttyUSB0`
 macOS connected to the vehicle via Serial port | `serial:///dev/tty.usbserial-n`,  where `n` = the USB device id | `serial:///dev/tty.usbserial-DA00AG57`
