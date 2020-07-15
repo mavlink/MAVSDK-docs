@@ -27,6 +27,12 @@ MAVSDK APIs do not raise exceptions! Instead, methods that can fail return succe
 The various classes also all provide operators for getting human readable strings from their associated result enum.
 You can see how these are used in the example code.
 
+## Callbacks
+
+Some of the APIs use callbacks, e.g. subscriptions to a stream like [Telemetry::subscribe_position(PositionCallback callback)](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a61bda57b3ca47000ea7e4758b2a33134) or async functions like [Action::takeoff_async(ResultCallback callback)](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ab658d938970326db41709d83e02b41e6).
+
+All callbacks back to the user are called from one thread. This means that a user can't do anything which takes longer inside a callback, otherwise the subsequent callbacks are stalled. For more information on how to deal with this or debug it, check [Troubleshooting](../cpp/troubleshooting.md#user_callbacks).
+
 
 ## Shared Vehicle Control
 
