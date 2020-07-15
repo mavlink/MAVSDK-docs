@@ -47,15 +47,15 @@ Note that this does not point to the blocking code, but only to the place where 
 The rule is to spend as little time and CPU in the callbacks as possible.
 For instance, inside the callbacks you should not wait on other events or sleep.
 
-If you really want to do something that takes longer inside a callback, the workaround is to just spawn that activity on another thread using `std::async`, e.g.:
+If you really want to do something that takes longer inside a callback, the workaround is to just spawn that activity on another thread, e.g. using `std::thread`:
 
 ```
 void my_callback(Telemetry::Position position)
 {
-    std::async(std::launch::deferred, [position]() {
+    std::thread([position]() {
         std::this_thread_sleep_for(std::chrono::seconds(3));
         my_delayed_action(position);
-    }
+    }).detach();
 }
 ```
 
