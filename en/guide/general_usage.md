@@ -31,15 +31,16 @@ You can see how these are used in the example code.
 
 Some of the APIs use callbacks, e.g. subscriptions to a stream like [Telemetry::subscribe_position(PositionCallback callback)](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a61bda57b3ca47000ea7e4758b2a33134) or async functions like [Action::takeoff_async(ResultCallback callback)](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ab658d938970326db41709d83e02b41e6).
 
-All callbacks back to the user are called from one thread. This means that a user can't do anything which takes longer inside a callback, otherwise the subsequent callbacks are stalled. For more information on how to deal with this or debug it, check [Troubleshooting](../cpp/troubleshooting.md#user_callbacks).
+All user callbacks are called from one thread.
+Users must not do anything inside a callback that takes a long time to complete, as this will stall subsequent callbacks.
+For more information on how to work with and debug callbacks see [Troubleshooting](../cpp/troubleshooting.md#user_callbacks).
 
 
 ## Shared Vehicle Control
 
 A vehicle can receive commands from multiple sources, including a Ground Control Station, or other MAVLink applications.
 
-SDK applications, which are running in environments where it is possible, can explicitly monitor for changes in flight mode
-(outside application control) and change behaviour appropriately (e.g. using [Telemetry::subscribe_flight_mode()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a53db5fb36bf10fbc7ac004a3be9100a4)).
+SDK applications, which are running in environments where it is possible, can explicitly monitor for changes in flight mode (outside application control) and change behaviour appropriately (e.g. using [Telemetry::subscribe_flight_mode()](../api_reference/classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a53db5fb36bf10fbc7ac004a3be9100a4)).
 
 
 ## API Limitations/Behaviour
@@ -113,6 +114,4 @@ For example, at time of writing the API does not allow you to specify commands t
 
 The API allows you to download/import missions.
 Note however that this will fail if the mission contains a command that is not supported by the API.
-
-
 
