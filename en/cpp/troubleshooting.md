@@ -23,7 +23,7 @@ See: https://mavsdk.mavlink.io/develop/en/cpp/troubleshooting.html#user_callback
 
 ### How to debug this?
 
-To figure out which callback is blocking the queue, you can set the environment variable `MAVSDK_CALLBACK_DEBUGGING` to `1` which will print more debug information and abort the program as soon as it happens.
+To determine which callback is blocking the queue, you can set the environment variable `MAVSDK_CALLBACK_DEBUGGING` to `1`, which will print more debug information and abort the program as soon as the problem occurs.
 
 ```
 MAVSDK_CALLBACK_DEBUGGING=1 ./my_executable_using_mavsdk
@@ -40,11 +40,12 @@ You should then see something like this hinting at which callback might be respo
 [2]    1261673 abort (core dumped)  MAVSDK_CALLBACK_DEBUGGING=1  ..."
 ```
 
-Note that this does not point to your code that is blocking but only to the place where your blocking callback was called from.
+Note that this does not point to the blocking code, but only to the place where your blocking callback was called.
 
 ### How to avoid this?
 
-The rule is to spend as little time and CPU in the callbacks as possible. For instance, inside the callbacks you should be no waiting on other events, or sleeping.
+The rule is to spend as little time and CPU in the callbacks as possible.
+For instance, inside the callbacks you should not wait on other events or sleep.
 
 If you really want to do something that takes longer inside a callback, the workaround is to just spawn that activity on another thread using `std::async`, e.g.:
 
@@ -60,8 +61,18 @@ void my_callback(Telemetry::Position position)
 
 ### Why did this use to work?
 
-Before introducing the callback queue, we used a thread pool of 3 threads to call user callbacks. The thread pool was written to avoid everything from stalling if a user blocked in one of the callbacks. It generally worked ok, as long as the user would not block in more than 3 callbacks at any given time, however, it had also some disadvantages, namely:
+Before introducing the callback queue, we used a thread pool of 3 threads to call user callbacks.
+The thread pool was written to avoid everything from stalling if a user blocked in one of the callbacks.
+It generally worked provided the user did not block in more than 3 callbacks at any given time.
 
-- Due to the thread pool multiple threads could call a function at any given time. This means that one callback can be called from at least two threads at the same time which is quite likely if the callback is called at a high rate. This can create race conditions on the user side unless a mutex is used to prevent this. However, it's not very intuitive that a mutex is needed for that and it mutex in general should be avoided, if possible, for performance reasons. Such race conditions also showed up as CI test failures, see: https://github.com/mavlink/MAVSDK/issues/1010, https://github.com/mavlink/MAVSDK/issues/1045.
-- For developers the old behaviour with a thread pool did not make it very obivous. Basically, without code inspection, it was difficult to know if blocking in a callback is safe or not. When trying with one blocking callback, it would work, however, this can create a false sense of security as with 3 blocking callbacks it would suddenly lock up.
+However, it had also some disadvantages:
+
+- Due to the thread pool multiple threads could call a function at any given time.
+  This means that one callback can be called from at least two threads at the same time which is quite likely if the callback is called at a high rate.
+  This can create race conditions on the user side unless a mutex is used to prevent this.
+  However, it's not very intuitive that a mutex is needed for that, and mutexes in general should be avoided, if possible, for performance reasons.
+  Such race conditions also showed up as CI test failures, see: [MAVSDK#1010](https://github.com/mavlink/MAVSDK/issues/1010), [MAVSDK#1045](https://github.com/mavlink/MAVSDK/issues/1045).
+- For developers the old thread pool behaviour was unclear and unpredictable.
+  Basically, without code inspection, it was difficult to know if blocking in a callback is safe or not.
+  When trying with one blocking callback, it would work, however, this can create a false sense of security as with 3 blocking callbacks it would suddenly lock up.
 - Previously, when this happened, it was difficult to debug because it would either lead to a crash on destruction, or lock up at which point the backtrace of all threads need to be looked at using gdb.
