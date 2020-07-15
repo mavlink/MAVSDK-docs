@@ -66,3 +66,6 @@ The [Contributing](../contributing/README.md) section contains everything you ne
 
 > **Tip** Developers who want to create plugins and contribute to the API will need to [build the library ](../contributing/build.md) (and other programming language wrappers) from source.
 
+## Troubleshooting
+
+If something doesn't work as expected, make sure to check [Troubleshooting](troubleshooting.md).
