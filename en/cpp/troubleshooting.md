@@ -1,6 +1,6 @@
 # Troubleshooting
 
-## User callbacks #{user_callbacks}
+## User callbacks {#user_callbacks}
 
 All callbacks back to the user of the library are called from one thread. The callbacks are stored in a queue. If the user does not return quickly enough from the callback, it can happen that the user callback queue fills up.
 
