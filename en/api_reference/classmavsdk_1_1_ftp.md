@@ -36,14 +36,20 @@ void | [reset_async](#classmavsdk_1_1_ftp_1aab8895023bb3db8750622a5a38adcf07) (c
 void | [download_async](#classmavsdk_1_1_ftp_1afd01f6380b2a5d4b433abaf7aa734fc0) (std::string remote_file_path, std::string local_dir, [DownloadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1aa1f79399f168f386610b5a8f3e7c75d4) callback) | Downloads a file to local directory.
 void | [upload_async](#classmavsdk_1_1_ftp_1a14489e59f195709915d01ad093790b09) (std::string local_file_path, std::string remote_dir, [UploadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a8b8d4d8e6f9efe96e6c5feb38fae9ff4) callback) | Uploads local file to remote directory.
 void | [list_directory_async](#classmavsdk_1_1_ftp_1abf5d83104a7293413b62e7a8ba1a0f2c) (std::string remote_dir, const [ListDirectoryCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a87a77c4e013a8665017504a550d876b7) callback) | Lists items from a remote directory.
+std::pair< [Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), std::vector< std::string > > | [list_directory](#classmavsdk_1_1_ftp_1a2301aba586be9dd4569d984a58967ccc) (std::string remote_dir)const | Lists items from a remote directory.
 void | [create_directory_async](#classmavsdk_1_1_ftp_1aa53fdd5c005bd4da3e0cb29d448689d3) (std::string remote_dir, const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) callback) | Creates a remote directory.
+[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [create_directory](#classmavsdk_1_1_ftp_1ac6edf64fe63d5934b892c95778e1c548) (std::string remote_dir)const | Creates a remote directory.
 void | [remove_directory_async](#classmavsdk_1_1_ftp_1a25823c7298dc2d081532dd094d013b8a) (std::string remote_dir, const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) callback) | Removes a remote directory.
+[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [remove_directory](#classmavsdk_1_1_ftp_1a585e0877f7c129b15aed66771a31a446) (std::string remote_dir)const | Removes a remote directory.
 void | [remove_file_async](#classmavsdk_1_1_ftp_1a3ecda69288fb860a8da1f8fad25af31c) (std::string remote_file_path, const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) callback) | Removes a remote file.
+[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [remove_file](#classmavsdk_1_1_ftp_1a2700a813ec54b115cb9a349ba486d6bd) (std::string remote_file_path)const | Removes a remote file.
 void | [rename_async](#classmavsdk_1_1_ftp_1afea8b15ad7b5748b0b5f68fd7103514a) (std::string remote_from_path, std::string remote_to_path, const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) callback) | Renames a remote file or remote directory.
+[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [rename](#classmavsdk_1_1_ftp_1ac7411b38ea31f84f4f679b6b85313032) (std::string remote_from_path, std::string remote_to_path)const | Renames a remote file or remote directory.
 void | [are_files_identical_async](#classmavsdk_1_1_ftp_1abddebf1a103b2853116e68f5f870e4a7) (std::string local_file_path, std::string remote_file_path, const [AreFilesIdenticalCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1abe24e99f7141a234206f8952d2f61318) callback) | Compares a local file to a remote file using a CRC32 checksum.
+std::pair< [Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), bool > | [are_files_identical](#classmavsdk_1_1_ftp_1a1ace427243aedef4b0988a055fc414bf) (std::string local_file_path, std::string remote_file_path)const | Compares a local file to a remote file using a CRC32 checksum.
 [Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [set_root_directory](#classmavsdk_1_1_ftp_1a77dab408f90158a7cd0ade86d16108eb) (std::string root_dir)const | Set root directory for MAVLink FTP server.
-[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [set_target_component_id](#classmavsdk_1_1_ftp_1af8016be51a1916f4991ff1e528c372dc) (uint32_t component_id)const | Set target component ID. By default it is the autopilot.
-uint32_t | [get_our_component_id](#classmavsdk_1_1_ftp_1a29af1a480135d19c3bce237e340e8df5) () const | Get our own component ID.
+[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [set_target_compid](#classmavsdk_1_1_ftp_1ad93744cd25a89beffe0d72a090748229) (uint32_t compid)const | Set target component ID. By default it is the autopilot.
+uint32_t | [get_our_compid](#classmavsdk_1_1_ftp_1ab352a0a42ec85f741d207a936ceee359) () const | Get our own component ID.
 const [Ftp](classmavsdk_1_1_ftp.md) & | [operator=](#classmavsdk_1_1_ftp_1a01dc5f41d1e684a667d31c213728b376) (const [Ftp](classmavsdk_1_1_ftp.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -222,12 +228,30 @@ void mavsdk::Ftp::list_directory_async(std::string remote_dir, const ListDirecto
 
 Lists items from a remote directory.
 
-This function is non-blocking.
+This function is non-blocking. See 'list_directory' for the blocking counterpart.
 
 **Parameters**
 
 * std::string **remote_dir** - 
 * const [ListDirectoryCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a87a77c4e013a8665017504a550d876b7) **callback** - 
+
+### list_directory() {#classmavsdk_1_1_ftp_1a2301aba586be9dd4569d984a58967ccc}
+```cpp
+std::pair<Result, std::vector<std::string> > mavsdk::Ftp::list_directory(std::string remote_dir) const
+```
+
+
+Lists items from a remote directory.
+
+This function is blocking. See 'list_directory_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* std::string **remote_dir** - 
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), std::vector< std::string > > - Result of request.
 
 ### create_directory_async() {#classmavsdk_1_1_ftp_1aa53fdd5c005bd4da3e0cb29d448689d3}
 ```cpp
@@ -237,12 +261,30 @@ void mavsdk::Ftp::create_directory_async(std::string remote_dir, const ResultCal
 
 Creates a remote directory.
 
-This function is non-blocking.
+This function is non-blocking. See 'create_directory' for the blocking counterpart.
 
 **Parameters**
 
 * std::string **remote_dir** - 
 * const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) **callback** - 
+
+### create_directory() {#classmavsdk_1_1_ftp_1ac6edf64fe63d5934b892c95778e1c548}
+```cpp
+Result mavsdk::Ftp::create_directory(std::string remote_dir) const
+```
+
+
+Creates a remote directory.
+
+This function is blocking. See 'create_directory_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* std::string **remote_dir** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) - Result of request.
 
 ### remove_directory_async() {#classmavsdk_1_1_ftp_1a25823c7298dc2d081532dd094d013b8a}
 ```cpp
@@ -252,12 +294,30 @@ void mavsdk::Ftp::remove_directory_async(std::string remote_dir, const ResultCal
 
 Removes a remote directory.
 
-This function is non-blocking.
+This function is non-blocking. See 'remove_directory' for the blocking counterpart.
 
 **Parameters**
 
 * std::string **remote_dir** - 
 * const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) **callback** - 
+
+### remove_directory() {#classmavsdk_1_1_ftp_1a585e0877f7c129b15aed66771a31a446}
+```cpp
+Result mavsdk::Ftp::remove_directory(std::string remote_dir) const
+```
+
+
+Removes a remote directory.
+
+This function is blocking. See 'remove_directory_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* std::string **remote_dir** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) - Result of request.
 
 ### remove_file_async() {#classmavsdk_1_1_ftp_1a3ecda69288fb860a8da1f8fad25af31c}
 ```cpp
@@ -267,12 +327,30 @@ void mavsdk::Ftp::remove_file_async(std::string remote_file_path, const ResultCa
 
 Removes a remote file.
 
-This function is non-blocking.
+This function is non-blocking. See 'remove_file' for the blocking counterpart.
 
 **Parameters**
 
 * std::string **remote_file_path** - 
 * const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) **callback** - 
+
+### remove_file() {#classmavsdk_1_1_ftp_1a2700a813ec54b115cb9a349ba486d6bd}
+```cpp
+Result mavsdk::Ftp::remove_file(std::string remote_file_path) const
+```
+
+
+Removes a remote file.
+
+This function is blocking. See 'remove_file_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* std::string **remote_file_path** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) - Result of request.
 
 ### rename_async() {#classmavsdk_1_1_ftp_1afea8b15ad7b5748b0b5f68fd7103514a}
 ```cpp
@@ -282,13 +360,32 @@ void mavsdk::Ftp::rename_async(std::string remote_from_path, std::string remote_
 
 Renames a remote file or remote directory.
 
-This function is non-blocking.
+This function is non-blocking. See 'rename' for the blocking counterpart.
 
 **Parameters**
 
 * std::string **remote_from_path** - 
 * std::string **remote_to_path** - 
 * const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) **callback** - 
+
+### rename() {#classmavsdk_1_1_ftp_1ac7411b38ea31f84f4f679b6b85313032}
+```cpp
+Result mavsdk::Ftp::rename(std::string remote_from_path, std::string remote_to_path) const
+```
+
+
+Renames a remote file or remote directory.
+
+This function is blocking. See 'rename_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* std::string **remote_from_path** - 
+* std::string **remote_to_path** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) - Result of request.
 
 ### are_files_identical_async() {#classmavsdk_1_1_ftp_1abddebf1a103b2853116e68f5f870e4a7}
 ```cpp
@@ -298,13 +395,32 @@ void mavsdk::Ftp::are_files_identical_async(std::string local_file_path, std::st
 
 Compares a local file to a remote file using a CRC32 checksum.
 
-This function is non-blocking.
+This function is non-blocking. See 'are_files_identical' for the blocking counterpart.
 
 **Parameters**
 
 * std::string **local_file_path** - 
 * std::string **remote_file_path** - 
 * const [AreFilesIdenticalCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1abe24e99f7141a234206f8952d2f61318) **callback** - 
+
+### are_files_identical() {#classmavsdk_1_1_ftp_1a1ace427243aedef4b0988a055fc414bf}
+```cpp
+std::pair<Result, bool> mavsdk::Ftp::are_files_identical(std::string local_file_path, std::string remote_file_path) const
+```
+
+
+Compares a local file to a remote file using a CRC32 checksum.
+
+This function is blocking. See 'are_files_identical_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* std::string **local_file_path** - 
+* std::string **remote_file_path** - 
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), bool > - Result of request.
 
 ### set_root_directory() {#classmavsdk_1_1_ftp_1a77dab408f90158a7cd0ade86d16108eb}
 ```cpp
@@ -324,9 +440,9 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) - Result of request.
 
-### set_target_component_id() {#classmavsdk_1_1_ftp_1af8016be51a1916f4991ff1e528c372dc}
+### set_target_compid() {#classmavsdk_1_1_ftp_1ad93744cd25a89beffe0d72a090748229}
 ```cpp
-Result mavsdk::Ftp::set_target_component_id(uint32_t component_id) const
+Result mavsdk::Ftp::set_target_compid(uint32_t compid) const
 ```
 
 
@@ -336,15 +452,15 @@ This function is blocking.
 
 **Parameters**
 
-* uint32_t **component_id** - 
+* uint32_t **compid** - 
 
 **Returns**
 
 &emsp;[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) - Result of request.
 
-### get_our_component_id() {#classmavsdk_1_1_ftp_1a29af1a480135d19c3bce237e340e8df5}
+### get_our_compid() {#classmavsdk_1_1_ftp_1ab352a0a42ec85f741d207a936ceee359}
 ```cpp
-uint32_t mavsdk::Ftp::get_our_component_id() const
+uint32_t mavsdk::Ftp::get_our_compid() const
 ```
 
 

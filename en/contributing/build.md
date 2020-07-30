@@ -1,7 +1,7 @@
 # Building SDK from Source
 
 This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the MAVSDK C++ library from source for all our target platforms.
-It also shows how to build the SDK with extensions and build the API Reference documentation.
+It also shows how to generate the API Reference documentation.
 
 
 ## Build the C++ Library {#build_sdk_cpp}
@@ -177,18 +177,6 @@ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCM
 
 > **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_BACKEND=ON`).
   This is required for contributors who want to *extend* the MAVSDK programming-language-specific libraries like [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), but is not required for developers who just want to *use* C++, *MAVSDK-Swift* or *MAVSDK-Python*.
-
-## Build SDK Extensions {#sdk_extensions}
-
-The MAVSDK can be extended with plugins and integration tests that are defined "out of tree".
-These are declared inside a parallel directory that is included into the SDK at compile time (by specifying `EXTERNAL_DIR` in the `make` command).
-
-The commands to build the SDK with an extension library are:
-```sh
-cmake -DEXTERNAL_DIR=relative_path_to_external_directory -Dbuild/default -H.
-cmake --build build/default
-```
-See [SDK Extensions](../guide/sdk_extensions.md) for more information.
 
 ## Building mavsdk_server {#build_mavsdk_server}
 

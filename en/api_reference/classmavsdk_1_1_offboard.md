@@ -5,8 +5,7 @@
 
 
 <ul>
-<li><p>Control a drone with position, velocity, attitude or motor commands. </p>
-</li>
+<li><p>Control a drone with position, velocity, attitude or motor commands. </p></li>
 </ul>
 
 

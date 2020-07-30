@@ -29,7 +29,8 @@ Type | Name | Description
 &nbsp; | [Tune](#classmavsdk_1_1_tune_1a1f60ea360006940e2bbae055733cc40a) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Tune](#classmavsdk_1_1_tune_1a3b6b1ce61b620ad8e4d82227257151c7) () | Destructor (internal use only).
 &nbsp; | [Tune](#classmavsdk_1_1_tune_1acea13c8927ff72394235c282289bcebc) (const [Tune](classmavsdk_1_1_tune.md) &)=delete | Copy constructor (object is not copyable).
-void | [play_tune_async](#classmavsdk_1_1_tune_1afb2070f894b20884bcf27b20e5fe84e0) ([TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) description, const [ResultCallback](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aa283f6824bee43d341fec56d7ff70985) callback) | Send a tune to be played by the system.
+void | [play_tune_async](#classmavsdk_1_1_tune_1a6a88b2cfe944a4c1e4ab6945b06620d5) ([TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) tune_description, const [ResultCallback](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aa283f6824bee43d341fec56d7ff70985) callback) | Send a tune to be played by the system.
+[Result](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909d) | [play_tune](#classmavsdk_1_1_tune_1a94df5e7c5d8f5ca49fd9844557060695) ([TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) tune_description)const | Send a tune to be played by the system.
 const [Tune](classmavsdk_1_1_tune.md) & | [operator=](#classmavsdk_1_1_tune_1ae4a076da0417c6858df6fb59fa5110b5) (const [Tune](classmavsdk_1_1_tune.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -130,6 +131,7 @@ Possible results returned for tune requests.
 
 Value | Description
 --- | ---
+<span id="classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909da88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
 <span id="classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909da505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
 <span id="classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909dab94ce655e90ee954ba1c4c5d0e13659e"></span> `InvalidTempo` | Invalid tempo (range: 32 - 255). 
 <span id="classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909da088c77b60655734bff629e03e1968495"></span> `TuneTooLong` | Invalid tune: encoded string must be at most 247 chars. 
@@ -138,20 +140,48 @@ Value | Description
 ## Member Function Documentation
 
 
-### play_tune_async() {#classmavsdk_1_1_tune_1afb2070f894b20884bcf27b20e5fe84e0}
+### play_tune_async() {#classmavsdk_1_1_tune_1a6a88b2cfe944a4c1e4ab6945b06620d5}
 ```cpp
-void mavsdk::Tune::play_tune_async(TuneDescription description, const ResultCallback callback)
+void mavsdk::Tune::play_tune_async(TuneDescription tune_description, const ResultCallback callback)
 ```
 
 
 Send a tune to be played by the system.
 
-This function is non-blocking.
+This function is non-blocking. See 'play_tune' for the blocking counterpart.
 
 **Parameters**
 
-* [TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) **description** - 
+* [TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) **tune_description** - 
 * const [ResultCallback](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aa283f6824bee43d341fec56d7ff70985) **callback** - 
+
+<<<<<<< HEAD
+### play_tune() {#classmavsdk_1_1_tune_1a66e25fea76d76a11712f0d6de9ea1bb6}
+```cpp
+Result mavsdk::Tune::play_tune(TuneDescription description) const
+=======
+### play_tune() {#classmavsdk_1_1_tune_1a94df5e7c5d8f5ca49fd9844557060695}
+```cpp
+Result mavsdk::Tune::play_tune(TuneDescription tune_description) const
+>>>>>>> 5aad1d3... Update apiref to v0.29: Failure, ManualControl
+```
+
+
+Send a tune to be played by the system.
+
+This function is blocking. See 'play_tune_async' for the non-blocking counterpart.
+
+**Parameters**
+
+<<<<<<< HEAD
+* [TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) **description** - 
+=======
+* [TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md) **tune_description** - 
+>>>>>>> 5aad1d3... Update apiref to v0.29: Failure, ManualControl
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_tune.md#classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909d) - Result of request.
 
 ### operator=() {#classmavsdk_1_1_tune_1ae4a076da0417c6858df6fb59fa5110b5}
 ```cpp

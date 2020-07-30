@@ -124,7 +124,7 @@ void component_discovered(ComponentType component_type)
               << unsigned(component_type) << std::endl;
 }
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     Mavsdk dc;
     std::string connection_url;
@@ -139,9 +139,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    if (connection_result != ConnectionResult::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT
-                  << "Connection failed: " << connection_result_str(connection_result)
+    if (connection_result != ConnectionResult::Success) {
+        std::cout << ERROR_CONSOLE_TEXT << "Connection failed: " << connection_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -149,7 +148,7 @@ int main(int argc, char **argv)
     // We don't need to specify the UUID if it's only one system anyway.
     // If there were multiple, we could specify it with:
     // dc.system(uint64_t uuid);
-    System &system = dc.system();
+    System& system = dc.system();
 
     std::cout << "Waiting to discover system..." << std::endl;
     dc.register_on_discover([&discovered_system](uint64_t uuid) {
@@ -176,15 +175,14 @@ int main(int argc, char **argv)
 
     // We want to listen to the altitude of the drone at 1 Hz.
     const Telemetry::Result set_rate_result = telemetry->set_rate_position(1.0);
-    if (set_rate_result != Telemetry::Result::SUCCESS) {
-        std::cout << ERROR_CONSOLE_TEXT
-                  << "Setting rate failed:" << Telemetry::result_str(set_rate_result)
+    if (set_rate_result != Telemetry::Result::Success) {
+        std::cout << ERROR_CONSOLE_TEXT << "Setting rate failed:" << set_rate_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
 
     // Set up callback to monitor altitude while the vehicle is in flight
-    telemetry->position_async([](Telemetry::Position position) {
+    telemetry->subscribe_position([](Telemetry::Position position) {
         std::cout << TELEMETRY_CONSOLE_TEXT // set to blue
                   << "Altitude: " << position.relative_altitude_m << " m"
                   << NORMAL_CONSOLE_TEXT // set to default color again
@@ -202,8 +200,8 @@ int main(int argc, char **argv)
     const Action::Result arm_result = action->arm();
 
     if (arm_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << Action::result_str(arm_result)
-                  << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cout << ERROR_CONSOLE_TEXT << "Arming failed:" << arm_result << NORMAL_CONSOLE_TEXT
+                  << std::endl;
         return 1;
     }
 
@@ -211,7 +209,7 @@ int main(int argc, char **argv)
     std::cout << "Taking off..." << std::endl;
     const Action::Result takeoff_result = action->takeoff();
     if (takeoff_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << Action::result_str(takeoff_result)
+        std::cout << ERROR_CONSOLE_TEXT << "Takeoff failed:" << takeoff_result
                   << NORMAL_CONSOLE_TEXT << std::endl;
         return 1;
     }
@@ -222,8 +220,8 @@ int main(int argc, char **argv)
     std::cout << "Landing..." << std::endl;
     const Action::Result land_result = action->land();
     if (land_result != Action::Result::Success) {
-        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << Action::result_str(land_result)
-                  << NORMAL_CONSOLE_TEXT << std::endl;
+        std::cout << ERROR_CONSOLE_TEXT << "Land failed:" << land_result << NORMAL_CONSOLE_TEXT
+                  << std::endl;
         return 1;
     }
 

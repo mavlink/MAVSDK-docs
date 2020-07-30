@@ -127,7 +127,7 @@ Value | Description
 --- | ---
 <span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
 <span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
-<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda46b5f8c58b679b4243cbdb5749642c86"></span> `Progress` | Progress update. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda10ac3d04253ef7e1ddc73e6091c0cd55"></span> `Next` | Progress update. 
 <span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda63fe239cf100e5ce5032703da6ca8310"></span> `NoLogfiles` | No log files found. 
 <span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cdac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | A timeout happened. 
 <span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda253ca7dd096ee0956cccee4d376cab8b"></span> `InvalidArgument` | Invalid argument. 
