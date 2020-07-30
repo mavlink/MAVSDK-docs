@@ -39,7 +39,7 @@ std::string | [version](#classmavsdk_1_1_mavsdk_1a8fdb97695762d06fd2bccfc6309943
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [setup_udp_remote](#classmavsdk_1_1_mavsdk_1a438b86fab92fa85cd8bc5dff90991eed) (const std::string & remote_ip, int remote_port) | Sets up instance to send heartbeats to the specified remote interface and port number.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a868d224223d2f4e8de7d5e00863b6ceb) (int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific port number on localhost.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a950038afdd201f89e97a3e60e227869a) (const std::string & remote_ip, int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific IP address and port number.
-[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_serial_connection](#classmavsdk_1_1_mavsdk_1a8f27dd954d74b0afdfa4348ce49a10a1) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a870d15142914f1db564c12f385d5489b)) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
+[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_serial_connection](#classmavsdk_1_1_mavsdk_1a8bb8d79c35c44eb3b57fe658c060b093) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a870d15142914f1db564c12f385d5489b), bool flow_control=false) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
 void | [set_configuration](#classmavsdk_1_1_mavsdk_1acaeea86253493dc15b6540d2100a1b86) ([Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) configuration) | Set [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) of SDK.
 std::vector< uint64_t > | [system_uuids](#classmavsdk_1_1_mavsdk_1a80bd9c663d0e03c24f029fd77e914c3c) () const | Get vector of system UUIDs.
 [System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a2f3e89f37fffbbf1ee2c2089086ed33c) () const | Get the first discovered system.
@@ -133,12 +133,9 @@ Adds Connection via URL.
 
 Supports connection: Serial, TCP or UDP. Connection URL format should be:
 <ul>
-<li><p>UDP - udp://[Bind_host][:Bind_port]</p>
-</li>
-<li><p>TCP - tcp://[Remote_host][:Remote_port]</p>
-</li>
-<li><p>Serial - serial://Dev_Node[:Baudrate]</p>
-</li>
+<li><p>UDP - udp://[Bind_host][:Bind_port]</p></li>
+<li><p>TCP - tcp://[Remote_host][:Remote_port]</p></li>
+<li><p>Serial - serial://Dev_Node[:Baudrate]</p></li>
 </ul>
 
 **Parameters**
@@ -239,9 +236,9 @@ Adds a TCP connection with a specific IP address and port number.
 
 &emsp;[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) - The result of adding the connection.
 
-### add_serial_connection() {#classmavsdk_1_1_mavsdk_1a8f27dd954d74b0afdfa4348ce49a10a1}
+### add_serial_connection() {#classmavsdk_1_1_mavsdk_1a8bb8d79c35c44eb3b57fe658c060b093}
 ```cpp
-ConnectionResult mavsdk::Mavsdk::add_serial_connection(const std::string &dev_path, int baudrate=DEFAULT_SERIAL_BAUDRATE)
+ConnectionResult mavsdk::Mavsdk::add_serial_connection(const std::string &dev_path, int baudrate=DEFAULT_SERIAL_BAUDRATE, bool flow_control=false)
 ```
 
 
@@ -252,6 +249,7 @@ Adds a serial connection with a specific port (COM or UART dev node) and baudrat
 
 * const std::string& **dev_path** - COM or UART dev node name/path (e.g. "/dev/ttyS0", or "COM3" on Windows).
 * int **baudrate** - Baudrate of the serial port (defaults to 57600).
+* bool **flow_control** - enable/disable flow control
 
 **Returns**
 

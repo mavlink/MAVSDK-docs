@@ -38,6 +38,7 @@ std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed392719
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Identification](structmavsdk_1_1_info_1_1_identification.md) > | [get_identification](#classmavsdk_1_1_info_1a812ed66265b7427bc781faec3f0fa89e) () const | Get the identification of the system.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Product](structmavsdk_1_1_info_1_1_product.md) > | [get_product](#classmavsdk_1_1_info_1ae60d71a6dcd7546d1bdc06a9c26e629f) () const | Get product information of the system.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Version](structmavsdk_1_1_info_1_1_version.md) > | [get_version](#classmavsdk_1_1_info_1a2403b975a73b2b52a455b96cdc899af3) () const | Get the version information of the system.
+std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), double > | [get_speed_factor](#classmavsdk_1_1_info_1a3b372b3f6e4b167cb272ae68d3d172c6) () const | Get the speed factor of a simulation (with lockstep a simulation can run faster or slower than realtime).
 const [Info](classmavsdk_1_1_info.md) & | [operator=](#classmavsdk_1_1_info_1a586eb91fd65d602bad1d016dca42b435) (const [Info](classmavsdk_1_1_info.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -170,6 +171,20 @@ This function is blocking.
 **Returns**
 
 &emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Version](structmavsdk_1_1_info_1_1_version.md) > - Result of request.
+
+### get_speed_factor() {#classmavsdk_1_1_info_1a3b372b3f6e4b167cb272ae68d3d172c6}
+```cpp
+std::pair<Result, double> mavsdk::Info::get_speed_factor() const
+```
+
+
+Get the speed factor of a simulation (with lockstep a simulation can run faster or slower than realtime).
+
+This function is blocking.
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), double > - Result of request.
 
 ### operator=() {#classmavsdk_1_1_info_1a586eb91fd65d602bad1d016dca42b435}
 ```cpp

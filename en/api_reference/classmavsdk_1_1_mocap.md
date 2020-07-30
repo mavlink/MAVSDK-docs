@@ -5,8 +5,7 @@
 
 
 <ul>
-<li><p>Allows interfacing a vehicle with a motion capture system in order to allow navigation without global positioning sources available (e.g. indoors, or when flying under a bridge. etc.). </p>
-</li>
+<li><p>Allows interfacing a vehicle with a motion capture system in order to allow navigation without global positioning sources available (e.g. indoors, or when flying under a bridge. etc.). </p></li>
 </ul>
 
 
