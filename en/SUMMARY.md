@@ -131,7 +131,6 @@
     * [Documentation](contributing/documentation.md)
     * [Release process](contributing/release.md)
   * [Troubleshooting](cpp/troubleshooting.md)
-* [Releases](releases/README.md)
 
 ## Dronecode Shortcuts
 
