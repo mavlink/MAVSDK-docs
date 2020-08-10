@@ -1,6 +1,6 @@
 # Writing Plugins
 
-The MAVSDK is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins).
+MAVSDK-C++ is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins).
 
 Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time.
 The [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
