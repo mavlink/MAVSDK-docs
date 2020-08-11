@@ -5,8 +5,7 @@
 
 
 <ul>
-<li><p>Allow to communicate with the vehicle's system shell. </p>
-</li>
+<li><p>Allow to communicate with the vehicle's system shell. </p></li>
 </ul>
 
 

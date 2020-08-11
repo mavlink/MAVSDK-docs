@@ -48,8 +48,8 @@ void | [rename_async](#classmavsdk_1_1_ftp_1afea8b15ad7b5748b0b5f68fd7103514a) (
 void | [are_files_identical_async](#classmavsdk_1_1_ftp_1abddebf1a103b2853116e68f5f870e4a7) (std::string local_file_path, std::string remote_file_path, const [AreFilesIdenticalCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1abe24e99f7141a234206f8952d2f61318) callback) | Compares a local file to a remote file using a CRC32 checksum.
 std::pair< [Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), bool > | [are_files_identical](#classmavsdk_1_1_ftp_1a1ace427243aedef4b0988a055fc414bf) (std::string local_file_path, std::string remote_file_path)const | Compares a local file to a remote file using a CRC32 checksum.
 [Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [set_root_directory](#classmavsdk_1_1_ftp_1a77dab408f90158a7cd0ade86d16108eb) (std::string root_dir)const | Set root directory for MAVLink FTP server.
-[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [set_target_component_id](#classmavsdk_1_1_ftp_1af8016be51a1916f4991ff1e528c372dc) (uint32_t component_id)const | Set target component ID. By default it is the autopilot.
-uint32_t | [get_our_component_id](#classmavsdk_1_1_ftp_1a29af1a480135d19c3bce237e340e8df5) () const | Get our own component ID.
+[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | [set_target_compid](#classmavsdk_1_1_ftp_1ad93744cd25a89beffe0d72a090748229) (uint32_t compid)const | Set target component ID. By default it is the autopilot.
+uint32_t | [get_our_compid](#classmavsdk_1_1_ftp_1ab352a0a42ec85f741d207a936ceee359) () const | Get our own component ID.
 const [Ftp](classmavsdk_1_1_ftp.md) & | [operator=](#classmavsdk_1_1_ftp_1a01dc5f41d1e684a667d31c213728b376) (const [Ftp](classmavsdk_1_1_ftp.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -440,9 +440,9 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) - Result of request.
 
-### set_target_component_id() {#classmavsdk_1_1_ftp_1af8016be51a1916f4991ff1e528c372dc}
+### set_target_compid() {#classmavsdk_1_1_ftp_1ad93744cd25a89beffe0d72a090748229}
 ```cpp
-Result mavsdk::Ftp::set_target_component_id(uint32_t component_id) const
+Result mavsdk::Ftp::set_target_compid(uint32_t compid) const
 ```
 
 
@@ -452,15 +452,15 @@ This function is blocking.
 
 **Parameters**
 
-* uint32_t **component_id** - 
+* uint32_t **compid** - 
 
 **Returns**
 
 &emsp;[Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) - Result of request.
 
-### get_our_component_id() {#classmavsdk_1_1_ftp_1a29af1a480135d19c3bce237e340e8df5}
+### get_our_compid() {#classmavsdk_1_1_ftp_1ab352a0a42ec85f741d207a936ceee359}
 ```cpp
-uint32_t mavsdk::Ftp::get_our_component_id() const
+uint32_t mavsdk::Ftp::get_our_compid() const
 ```
 
 

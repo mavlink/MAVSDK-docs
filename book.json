@@ -22,7 +22,7 @@
     "pluginsConfig": {
 
         "page-footer-ex":{
-            "copyright":"© Dronecode 2017-2019. License:   <a href='https://creativecommons.org/licenses/by/4.0/'>CC BY 4.0</a>",
+            "copyright":"© Dronecode 2017-2020. License: <a href='https://creativecommons.org/licenses/by/4.0/'>CC BY 4.0</a>",
             "update_label":"Updated: ",
             "update_format":"YYYY-MM-DD HH:mm:ss"
         },
@@ -67,6 +67,10 @@
                 {
                     "value": "https://mavsdk.mavlink.io/develop/en/",
                     "text": "develop"
+                },
+                {
+                    "value": "https://mavsdk.mavlink.io/v0.29.0/en/",
+                    "text": "v0.29.0"
                 },
                 {
                     "value": "https://mavsdk.mavlink.io/v0.27.0/en/",

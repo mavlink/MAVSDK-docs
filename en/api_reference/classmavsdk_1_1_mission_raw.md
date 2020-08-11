@@ -50,8 +50,7 @@ void | [set_current_mission_item_async](#classmavsdk_1_1_mission_raw_1a5540d6ca6
 void | [subscribe_mission_progress](#classmavsdk_1_1_mission_raw_1ac0428c520645cdf10430c6c0554a104e) ([MissionProgressCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a9dd594878925da494b4add6acc3184fc) callback) | Subscribe to mission progress updates.
 [MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md) | [mission_progress](#classmavsdk_1_1_mission_raw_1a3200dea1094926a4dd54f079f21b94e1) () const | Poll for '[MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md)' (blocking).
 void | [subscribe_mission_changed](#classmavsdk_1_1_mission_raw_1a18019bf4f46b6f3719df55512575f500) ([MissionChangedCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6) callback) | <ul>
-<li><p>Subscribes to mission changed. </p>
-</li>
+<li><p>Subscribes to mission changed. </p></li>
 </ul>
 const [MissionRaw](classmavsdk_1_1_mission_raw.md) & | [operator=](#classmavsdk_1_1_mission_raw_1a0cfdf21bad5478c91cf18207b6a21ad3) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) &)=delete | Equality operator (object is not copyable).
 
@@ -430,8 +429,7 @@ void mavsdk::MissionRaw::subscribe_mission_changed(MissionChangedCallback callba
 
 
 <ul>
-<li><p>Subscribes to mission changed. </p>
-</li>
+<li><p>Subscribes to mission changed. </p></li>
 </ul>
 
 This notification can be used to be informed if a ground station has been uploaded or changed by a ground station or companion computer.
