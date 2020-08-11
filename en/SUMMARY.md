@@ -6,6 +6,7 @@
 * [iOS/Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html)
 * [Python](python/README.md)
   * [Python QuickStart](python/quickstart.md)
+  * [API documentation](http://mavsdk-python-docs.s3-website.eu-central-1.amazonaws.com/)
 * [C++ (MAVSDK Core)](cpp/README.md)
   * [C++ QuickStart](cpp/quickstart.md)
   * [C++ API changes](cpp/api_changes.md)
