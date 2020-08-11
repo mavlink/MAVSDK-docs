@@ -12,7 +12,7 @@ The library provides a simple API for managing one or more vehicles, providing p
 
 The library can run on a vehicle-based companion computer or on a ground-based GCS or mobile device (these devices have significantly more processing power that an ordinary flight controller, enabling tasks like computer vision, obstacle avoidance, and route planning).
 
-Developers can extend MAVSDK using plugins in order to add any other required MAVLink API (for example, to integrate a flight controller with custom cameras, gimbals, or other hardware over MAVLink).
+Developers can extend MAVSDK using C++ plugins in order to add any other required MAVLink API (for example, to integrate a flight controller with custom cameras, gimbals, or other hardware over MAVLink).
 
 Language bindings are actively being developed on top of MAVSDK-C++.
 
