@@ -3,7 +3,7 @@
 
 [![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![travis-ci build status](https://travis-ci.org/mavlink/MAVSDK.svg?branch=develop)](https://travis-ci.org/mavlink/MAVSDK) [![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=develop)](https://coveralls.io/github/mavlink/MAVSDK?branch=develop)
 
-The *MAVSDK* is a [MAVLink](https://mavlink.io/en/) Library with APIs for [C++](cpp/README.md), [iOS](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), Python and Android.
+*MAVSDK* is a [MAVLink](https://mavlink.io/en/) Library with APIs for [C++](cpp/README.md), [iOS](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), Python and Android.
 
 > **Tip** The SDK is the best way to integrate with a flight stack over MAVLink!
   It is supported by [Dronecode](https://www.dronecode.org/), ensuring that it is robust, well tested, and maintained.
@@ -12,22 +12,22 @@ The library provides a simple API for managing one or more vehicles, providing p
 
 The library can run on a vehicle-based companion computer or on a ground-based GCS or mobile device (these devices have significantly more processing power that an ordinary flight controller, enabling tasks like computer vision, obstacle avoidance, and route planning).
 
-Developers can extend the core C++ SDK using plugins in order to add any other required MAVLink API (for example, to integrate a flight controller with custom cameras, gimbals, or other hardware over MAVLink).
+Developers can extend MAVSDK using C++ plugins in order to add any other required MAVLink API (for example, to integrate a flight controller with custom cameras, gimbals, or other hardware over MAVLink).
 
-Cross-platform wrappers for the core library are actively being developed.
-These (primarily) use [gRPC](https://grpc.io/) and [Reactive Extensions](http://reactivex.io/).
+Language bindings are actively being developed on top of MAVSDK-C++.
 
 ## Project Status
 
-The MAVSDK is a robust and well-tested library that is already being used in production environments.
+MAVSDK is a robust and well-tested library that is already being used in production environments.
 
 > **Note** Future compatibility is not guaranteed (the API is not "stable").
 
 The current status is:
-- C++ core library (2016). Used in production.
+- MAVSDK-C++ (2016). Used in production.
 - MAVSDK-Swift (2018): Used in production.
 - MAVSDK-Python (2019): Used in production.
 - MAVSDK-Java (2019): Used in production.
+- MAVSDK-Go (2020): Feature complete.
 - MAVSDK-JavaScript (2019): Proof of concept.
 - MAVSDK-CSharp (2019). Proof of concept.
 - MAVSDK-Rust (2019): Proof of concept.
@@ -63,7 +63,7 @@ Use Github for bug reports/enhancement requests:
 
 ## Library Features
 
-The core library is written in C++, with auto-generated bindings for other supported programming languages.
+The core library (MAVSDK-C++) is written in C++, with auto-generated bindings for other supported programming languages.
 
 The library is:
 - Straightforward and easy to use. It has an API that supports both synchronous (blocking) and asynchronous calls (using callbacks).
@@ -71,7 +71,7 @@ The library is:
 - Cross-platform (Linux, macOS, Windows, iOS, Android).
 - Extensible, using compile-time plugins.
 
-The main features provided by the core API are (in all programing languages):
+The main features provided by the API are (in all programing languages):
 
 * Connect to and manage up to 255 vehicles via a TCP, UDP or serial connection.
 * Get information about vehicles (vendor, software versions, product versions etc.)
