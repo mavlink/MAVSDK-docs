@@ -6,7 +6,7 @@ These all share the same "core" MAVLink implementation (written in C++), but alm
 This approach means that we don't have to maintain a separate MAVLink implementation or API for each language.
 New features are implemented (just once) in C++, and are then automatically available in Python, Mava, etc.
 
-This topic provides an overview of the architecture and mechanisms.
+This page provides an overview of the architecture and explains how to add a feature using the autogeneration.
 
 ## Overview
 
