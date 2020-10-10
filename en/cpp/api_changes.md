@@ -21,6 +21,77 @@ This means that breaking changes to the API result in a bump of the major versio
   We plan to release version 1.0.0 in the near future, after which the above strategy will be adopted (i.e. currently breaking changes can occur in both minor and patch releases).
 
 
+## v0.33.0
+
+There are some changes in how systems are discovered, connected and accessed with this release. The previous APIs are still available but marked deprecated and they will be removed in the future. The deprecations are also implemented as compiler warnings.
+
+### Discovery of systems
+
+The 64bit (8 bytes) uuid is deprecated because it needed to be extended to 18 bytes. For more info, see this [MAVLink pull request](https://github.com/mavlink/mavlink/pull/786). Therefore, the discovery no longer contains the uuid. If the uid is required it can be found in the [Info plugin](../api_reference/classmavsdk_1_1_info.md#classmavsdk_1_1_info_1a812ed66265b7427bc781faec3f0fa89e).
+
+**Previous way of discovering systems:**
+```
+std::promise<void> discover_promise;
+auto discover_future = discover_promise.get_future();
+
+mavsdk.register_on_discover([&discover_promise](uint64_t uuid) {
+    std::cout << "Discovered system with UUID: " << uuid << std::endl;
+    discover_promise.set_value();
+});
+
+discover_future.wait();
+```
+
+**New way of discovering a system:**
+```
+std::promise<void> discover_promise;
+auto discover_future = discover_promise.get_future();
+
+mavsdk.subscribe_on_change([&mavsdk, &discover_promise]() {
+    const auto system = mavsdk.systems().at(0);
+
+    if (system->is_connected()) {
+        discover_promise.set_value();
+    }
+});
+
+discover_future.wait();
+```
+
+### Accessing systems
+
+We aim to make the API of MAVSDK as easy and safe to use as possible. However, as we'll see below, this still comes with trade-offs.
+
+When designing the API we decided to expose the MAVSDK user a reference to a system `System&` which means the system will always be instantiated and there won't be any segfaults trying to access a system that is null.
+This mostly worked fine, however, had some drawbacks:
+- Without an actual system discovered the `System&` is basically a null reference that won't really work. This is not really obvious unless you check its system and component IDs for 0. This is not very intuitive and also means additional checks inside the plugins are required.
+- The ownership model is not very clear as `Mavsdk` owns the `System` but then each plugin only seems to require the `System`. Internally, the plugins still require `Mavsdk` to be alive and working but that's not apparent through the API.
+- If there are multiple sytems they need to be accessed using the `uuid`. This seems like a crutch because essentially we would just like to have a `std::vector` of systems but of course that's not posible with references.
+
+As the API for the uid was about the change anyway (see above) it seemed time to redesign the API to access systems with these considerations in mind.
+
+The basic change is to move away from the reference `System&` to a shared pointer `std::shared_ptr<System>`.
+
+This brings the following advantages:
+- No more confusing null reference systems.
+- Clearer ownership model as a `System` is now shared between `Mavsdk` and the plugins.
+- Nice getter `std::vector<std::shared_ptr<System>> systems()` allowing easier access to all systems.
+
+**Previous way to get a system:**
+```
+System& system = mavsdk.system();
+```
+
+**New way to get a system:**
+```
+std::shared_ptr<System> system = mavsdk.systems().at(0);
+```
+Or just:
+```
+auto system = mavsdk.systems();
+```
+
+
 ## v0.25.0
 
 There are several changes in this release (from v0.24.0) because the C++ plugins are now partially auto-generated from the proto files. While this causes some painful changes, it has several advantages:
