@@ -36,6 +36,8 @@ If the uid is required it can be found in the [Info plugin](../api_reference/cla
 
 **Previous way of discovering systems:**
 ```cpp
+Mavsdk mavsdk;
+
 std::promise<void> discover_promise;
 auto discover_future = discover_promise.get_future();
 
@@ -49,19 +51,40 @@ discover_future.wait();
 
 **New way of discovering a system:**
 ```cpp
-std::promise<void> discover_promise;
-auto discover_future = discover_promise.get_future();
+Mavsdk mavsdk;
 
-mavsdk.subscribe_on_change([&mavsdk, &discover_promise]() {
-    const auto system = mavsdk.systems().at(0);
-
-    if (system->is_connected()) {
-        discover_promise.set_value();
-    }
+auto new_system_promise = std::promise<std::shared_ptr<System>>{};
+auto new_system_future = new_system_promise.get_future();
+mavsdk.subscribe_on_new_system([&mavsdk, &new_system_promise]() {
+    new_system_promise.set_value(mavsdk.systems().at(0));
+    mavsdk.subscribe_on_new_system(nullptr);
 });
 
-discover_future.wait();
+auto system = new_system_future.get();
 ```
+
+To be notified about a system timing out later, or being discovered again, you can now use:
+```cpp
+system->subscribe_is_connected([](bool is_connected) {
+    if (is_connected) {
+        std::cout << "System has been discovered" << std::endl;
+    } else {
+        std::cout << "System has timed out" << std::endl;
+    }
+});
+```
+
+If you prefer to use sync APIs / polling, you can use this to wait for a vehicle and connect:
+```cpp
+Mavsdk mavsdk;
+
+while (mavsdk.systems().size() == 0) {
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+}
+
+auto system = mavsdk.systems().at(0);
+```
+
 
 ### Accessing systems
 
@@ -88,19 +111,21 @@ This brings the following advantages:
 - Nice getter `std::vector<std::shared_ptr<System>> systems()` allowing easier access to all systems.
 
 **Previous way to get a system:**
-```
+```cpp
 System& system = mavsdk.system();
 ```
 
 **New way to get a system:**
-```
+```cpp
 std::shared_ptr<System> system = mavsdk.systems().at(0);
 ```
+
 Or just:
-```
-auto system = mavsdk.systems();
+```cpp
+auto system = mavsdk.systems().at(0);
 ```
 
+> **Note** The `std::vector<std::shared_ptr>` returned by `systems()` might be empty if no system has been discovered yet, and the above call will abort.
 
 ## v0.25.0
 
