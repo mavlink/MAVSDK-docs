@@ -21,8 +21,9 @@ std::function< void([Result](classmavsdk_1_1_manual_control.md#classmavsdk_1_1_m
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [ManualControl](#classmavsdk_1_1_manual_control_1af89d947dd2c843cc41f2ea183ad17b03) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [ManualControl](#classmavsdk_1_1_manual_control_1acf87299c9d9b632dbbc0975244c537e9) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~ManualControl](#classmavsdk_1_1_manual_control_1a793e4be2447ef44cfd5a41b1c06e9350) () | Destructor (internal use only).
-&nbsp; | [ManualControl](#classmavsdk_1_1_manual_control_1a46f7e393be52fbe674a8ea9a687aaf11) (const [ManualControl](classmavsdk_1_1_manual_control.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [ManualControl](#classmavsdk_1_1_manual_control_1a8253b8063d4cd4832d84acd2afa26775) (const [ManualControl](classmavsdk_1_1_manual_control.md) & other) | Copy constructor.
 void | [start_position_control_async](#classmavsdk_1_1_manual_control_1a2a3352c11c56dd14d55537b3a6413792) (const [ResultCallback](classmavsdk_1_1_manual_control.md#classmavsdk_1_1_manual_control_1a08b010bafdf770d3e4ea6060f56a0f3b) callback) | Start position control using e.g. joystick input.
 [Result](classmavsdk_1_1_manual_control.md#classmavsdk_1_1_manual_control_1a6c7dbd25e051b6e1369a65fd05a22799) | [start_position_control](#classmavsdk_1_1_manual_control_1a570c7e78fc9c5083d9a2f9570c32caaa) () const | Start position control using e.g. joystick input.
 void | [start_altitude_control_async](#classmavsdk_1_1_manual_control_1abf7659d98949c01b634e421a9c2df079) (const [ResultCallback](classmavsdk_1_1_manual_control.md#classmavsdk_1_1_manual_control_1a08b010bafdf770d3e4ea6060f56a0f3b) callback) | Start altitude control.
@@ -45,12 +46,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto manual_control = std::make_shared<ManualControl>(system);
+auto manual_control = ManualControl(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### ManualControl() {#classmavsdk_1_1_manual_control_1acf87299c9d9b632dbbc0975244c537e9}
+```cpp
+mavsdk::ManualControl::ManualControl(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto manual_control = ManualControl(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~ManualControl() {#classmavsdk_1_1_manual_control_1a793e4be2447ef44cfd5a41b1c06e9350}
 ```cpp
@@ -61,18 +80,18 @@ mavsdk::ManualControl::~ManualControl()
 Destructor (internal use only).
 
 
-### ManualControl() {#classmavsdk_1_1_manual_control_1a46f7e393be52fbe674a8ea9a687aaf11}
+### ManualControl() {#classmavsdk_1_1_manual_control_1a8253b8063d4cd4832d84acd2afa26775}
 ```cpp
-mavsdk::ManualControl::ManualControl(const ManualControl &)=delete
+mavsdk::ManualControl::ManualControl(const ManualControl &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [ManualControl](classmavsdk_1_1_manual_control.md)&  - 
+* const [ManualControl](classmavsdk_1_1_manual_control.md)& **other** - 
 
 ## Member Typdef Documentation
 

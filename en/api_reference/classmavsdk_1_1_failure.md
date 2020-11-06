@@ -23,8 +23,9 @@ std::function< void([Result](classmavsdk_1_1_failure.md#classmavsdk_1_1_failure_
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Failure](#classmavsdk_1_1_failure_1a7fd948954e053597be4223a5507e7f77) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Failure](#classmavsdk_1_1_failure_1abb4693ce8ebfac246d489bbab438be04) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Failure](#classmavsdk_1_1_failure_1a1c39229a02725130ed8295f5b6d422fd) () | Destructor (internal use only).
-&nbsp; | [Failure](#classmavsdk_1_1_failure_1a731be3c2ba43b060a181ce86f2f130b8) (const [Failure](classmavsdk_1_1_failure.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Failure](#classmavsdk_1_1_failure_1ae12162366b96624fa85d345a7166749c) (const [Failure](classmavsdk_1_1_failure.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_failure.md#classmavsdk_1_1_failure_1a6dcdd665b49a7ddf48c76b41475022f1) | [inject](#classmavsdk_1_1_failure_1ae937d22216ecae38f4c763f503cbbd88) ([FailureUnit](classmavsdk_1_1_failure.md#classmavsdk_1_1_failure_1a471f93c1fbff2124ebdea7fb681e23f1) failure_unit, [FailureType](classmavsdk_1_1_failure.md#classmavsdk_1_1_failure_1ade0813be29826ae35e6692f506e8ab72) failure_type, int32_t instance)const | Injects a failure.
 const [Failure](classmavsdk_1_1_failure.md) & | [operator=](#classmavsdk_1_1_failure_1a255209f9df74ffde1f63b707f17bdb72) (const [Failure](classmavsdk_1_1_failure.md) &)=delete | Equality operator (object is not copyable).
 
@@ -43,12 +44,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto failure = std::make_shared<Failure>(system);
+auto failure = Failure(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Failure() {#classmavsdk_1_1_failure_1abb4693ce8ebfac246d489bbab438be04}
+```cpp
+mavsdk::Failure::Failure(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto failure = Failure(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Failure() {#classmavsdk_1_1_failure_1a1c39229a02725130ed8295f5b6d422fd}
 ```cpp
@@ -59,18 +78,18 @@ mavsdk::Failure::~Failure()
 Destructor (internal use only).
 
 
-### Failure() {#classmavsdk_1_1_failure_1a731be3c2ba43b060a181ce86f2f130b8}
+### Failure() {#classmavsdk_1_1_failure_1ae12162366b96624fa85d345a7166749c}
 ```cpp
-mavsdk::Failure::Failure(const Failure &)=delete
+mavsdk::Failure::Failure(const Failure &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Failure](classmavsdk_1_1_failure.md)&  - 
+* const [Failure](classmavsdk_1_1_failure.md)& **other** - 
 
 ## Member Typdef Documentation
 

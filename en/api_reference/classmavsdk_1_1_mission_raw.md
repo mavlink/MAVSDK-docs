@@ -31,8 +31,9 @@ std::function< void(bool)> [MissionChangedCallback](#classmavsdk_1_1_mission_raw
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [MissionRaw](#classmavsdk_1_1_mission_raw_1ad03476f12988a12808a8c4385c7a7344) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [MissionRaw](#classmavsdk_1_1_mission_raw_1aec90f3e32d7366f3e27f025bb62c1e78) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~MissionRaw](#classmavsdk_1_1_mission_raw_1a366afae5d3c7c2345e3ecec26ff9e307) () | Destructor (internal use only).
-&nbsp; | [MissionRaw](#classmavsdk_1_1_mission_raw_1a6a98ba999d8fa548b45f031f372fdfe9) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [MissionRaw](#classmavsdk_1_1_mission_raw_1a91216322f0b6139d5ba83127f2ef1f12) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) & other) | Copy constructor.
 void | [upload_mission_async](#classmavsdk_1_1_mission_raw_1a77cc5df3362b7ab4cbc94e5bc9707609) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items, const [ResultCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) callback) | Upload a list of raw mission items to the system.
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [upload_mission](#classmavsdk_1_1_mission_raw_1ad4f5c2ccfb2249f6e11c9533c263926a) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items)const | Upload a list of raw mission items to the system.
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [cancel_mission_upload](#classmavsdk_1_1_mission_raw_1aa353e3fa6e836305248be131dbe19273) () const | Cancel an ongoing mission upload.
@@ -50,7 +51,8 @@ void | [set_current_mission_item_async](#classmavsdk_1_1_mission_raw_1a5540d6ca6
 void | [subscribe_mission_progress](#classmavsdk_1_1_mission_raw_1ac0428c520645cdf10430c6c0554a104e) ([MissionProgressCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a9dd594878925da494b4add6acc3184fc) callback) | Subscribe to mission progress updates.
 [MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md) | [mission_progress](#classmavsdk_1_1_mission_raw_1a3200dea1094926a4dd54f079f21b94e1) () const | Poll for '[MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md)' (blocking).
 void | [subscribe_mission_changed](#classmavsdk_1_1_mission_raw_1a18019bf4f46b6f3719df55512575f500) ([MissionChangedCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6) callback) | <ul>
-<li><p>Subscribes to mission changed. </p></li>
+<li><p>Subscribes to mission changed. </p>
+</li>
 </ul>
 const [MissionRaw](classmavsdk_1_1_mission_raw.md) & | [operator=](#classmavsdk_1_1_mission_raw_1a0cfdf21bad5478c91cf18207b6a21ad3) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) &)=delete | Equality operator (object is not copyable).
 
@@ -69,12 +71,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto mission_raw = std::make_shared<MissionRaw>(system);
+auto mission_raw = MissionRaw(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### MissionRaw() {#classmavsdk_1_1_mission_raw_1aec90f3e32d7366f3e27f025bb62c1e78}
+```cpp
+mavsdk::MissionRaw::MissionRaw(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto mission_raw = MissionRaw(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~MissionRaw() {#classmavsdk_1_1_mission_raw_1a366afae5d3c7c2345e3ecec26ff9e307}
 ```cpp
@@ -85,18 +105,18 @@ mavsdk::MissionRaw::~MissionRaw()
 Destructor (internal use only).
 
 
-### MissionRaw() {#classmavsdk_1_1_mission_raw_1a6a98ba999d8fa548b45f031f372fdfe9}
+### MissionRaw() {#classmavsdk_1_1_mission_raw_1a91216322f0b6139d5ba83127f2ef1f12}
 ```cpp
-mavsdk::MissionRaw::MissionRaw(const MissionRaw &)=delete
+mavsdk::MissionRaw::MissionRaw(const MissionRaw &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [MissionRaw](classmavsdk_1_1_mission_raw.md)&  - 
+* const [MissionRaw](classmavsdk_1_1_mission_raw.md)& **other** - 
 
 ## Member Typdef Documentation
 
@@ -429,7 +449,8 @@ void mavsdk::MissionRaw::subscribe_mission_changed(MissionChangedCallback callba
 
 
 <ul>
-<li><p>Subscribes to mission changed. </p></li>
+<li><p>Subscribes to mission changed. </p>
+</li>
 </ul>
 
 This notification can be used to be informed if a ground station has been uploaded or changed by a ground station or companion computer.

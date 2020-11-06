@@ -5,7 +5,8 @@
 
 
 <ul>
-<li><p>Allows interfacing a vehicle with a motion capture system in order to allow navigation without global positioning sources available (e.g. indoors, or when flying under a bridge. etc.). </p></li>
+<li><p>Allows interfacing a vehicle with a motion capture system in order to allow navigation without global positioning sources available (e.g. indoors, or when flying under a bridge. etc.). </p>
+</li>
 </ul>
 
 
@@ -44,8 +45,9 @@ std::function< void([Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3a
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Mocap](#classmavsdk_1_1_mocap_1a993147a5f0ae4c8a4ddf8be4258690cc) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Mocap](#classmavsdk_1_1_mocap_1a981aaa6a7e313376b88557013649de65) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Mocap](#classmavsdk_1_1_mocap_1a0c065d15483fd1b121ac4d7046f7ea17) () | Destructor (internal use only).
-&nbsp; | [Mocap](#classmavsdk_1_1_mocap_1a92d664be23f96b000e74f7c51d55a297) (const [Mocap](classmavsdk_1_1_mocap.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Mocap](#classmavsdk_1_1_mocap_1a0c2242e86da34ecd94c0a40dcec4858f) (const [Mocap](classmavsdk_1_1_mocap.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) | [set_vision_position_estimate](#classmavsdk_1_1_mocap_1a22d007409839e28a45d7b10f10e22fd6) ([VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) vision_position_estimate)const | Send Global position/attitude estimate from a vision source.
 [Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) | [set_attitude_position_mocap](#classmavsdk_1_1_mocap_1a5f9a63d8bbed750056e139640b38cd7f) ([AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) attitude_position_mocap)const | Send motion capture attitude and position.
 [Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) | [set_odometry](#classmavsdk_1_1_mocap_1a149fa242e0b01bc0aee9204118b00f59) ([Odometry](structmavsdk_1_1_mocap_1_1_odometry.md) odometry)const | Send odometry information with an external interface.
@@ -66,12 +68,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto mocap = std::make_shared<Mocap>(system);
+auto mocap = Mocap(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Mocap() {#classmavsdk_1_1_mocap_1a981aaa6a7e313376b88557013649de65}
+```cpp
+mavsdk::Mocap::Mocap(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto mocap = Mocap(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Mocap() {#classmavsdk_1_1_mocap_1a0c065d15483fd1b121ac4d7046f7ea17}
 ```cpp
@@ -82,18 +102,18 @@ mavsdk::Mocap::~Mocap()
 Destructor (internal use only).
 
 
-### Mocap() {#classmavsdk_1_1_mocap_1a92d664be23f96b000e74f7c51d55a297}
+### Mocap() {#classmavsdk_1_1_mocap_1a0c2242e86da34ecd94c0a40dcec4858f}
 ```cpp
-mavsdk::Mocap::Mocap(const Mocap &)=delete
+mavsdk::Mocap::Mocap(const Mocap &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Mocap](classmavsdk_1_1_mocap.md)&  - 
+* const [Mocap](classmavsdk_1_1_mocap.md)& **other** - 
 
 ## Member Typdef Documentation
 

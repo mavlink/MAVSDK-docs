@@ -33,8 +33,9 @@ std::function< void([Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Mission](#classmavsdk_1_1_mission_1ab02ae9aada51b483e45d88948fe62c29) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Mission](#classmavsdk_1_1_mission_1a5222f05ac0c65c7455f19e136b8fcb22) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Mission](#classmavsdk_1_1_mission_1a0a0e9ee6ff15fc2231277d929add95ef) () | Destructor (internal use only).
-&nbsp; | [Mission](#classmavsdk_1_1_mission_1a395b1f9530c6c7a1c60638dbe5ec07c7) (const [Mission](classmavsdk_1_1_mission.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Mission](#classmavsdk_1_1_mission_1ab4a4a26254fdff0e3f3872f32479fe1c) (const [Mission](classmavsdk_1_1_mission.md) & other) | Copy constructor.
 void | [upload_mission_async](#classmavsdk_1_1_mission_1a250fc4758d47ec12e025c327dc0eb482) ([MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) mission_plan, const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) callback) | Upload a list of mission items to the system.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [upload_mission](#classmavsdk_1_1_mission_1a38274b1c1509375a182c44711ee9f7b1) ([MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) mission_plan)const | Upload a list of mission items to the system.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [cancel_mission_upload](#classmavsdk_1_1_mission_1ab82609426bef51202b2107d33412378c) () const | Cancel an ongoing mission upload.
@@ -73,12 +74,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto mission = std::make_shared<Mission>(system);
+auto mission = Mission(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Mission() {#classmavsdk_1_1_mission_1a5222f05ac0c65c7455f19e136b8fcb22}
+```cpp
+mavsdk::Mission::Mission(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto mission = Mission(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Mission() {#classmavsdk_1_1_mission_1a0a0e9ee6ff15fc2231277d929add95ef}
 ```cpp
@@ -89,18 +108,18 @@ mavsdk::Mission::~Mission()
 Destructor (internal use only).
 
 
-### Mission() {#classmavsdk_1_1_mission_1a395b1f9530c6c7a1c60638dbe5ec07c7}
+### Mission() {#classmavsdk_1_1_mission_1ab4a4a26254fdff0e3f3872f32479fe1c}
 ```cpp
-mavsdk::Mission::Mission(const Mission &)=delete
+mavsdk::Mission::Mission(const Mission &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Mission](classmavsdk_1_1_mission.md)&  - 
+* const [Mission](classmavsdk_1_1_mission.md)& **other** - 
 
 ## Member Typdef Documentation
 

@@ -23,7 +23,8 @@ struct [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md)
 
 Type | Description
 --- | ---
-std::function< void(uint64_t uuid)> [event_callback_t](#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) | Callback type for discover and timeout notifications.
+std::function< void()> [NewSystemCallback](#classmavsdk_1_1_mavsdk_1a7a283c6a75e852a56be4c5862f8a3fab) | Callback type discover and timeout notifications.
+std::function< void(uint64_t uuid)> [event_callback_t](#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) | Callback type for discover and timeout notifications (deprecated).
 
 ## Public Member Functions
 
@@ -40,14 +41,16 @@ std::string | [version](#classmavsdk_1_1_mavsdk_1a8fdb97695762d06fd2bccfc6309943
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a868d224223d2f4e8de7d5e00863b6ceb) (int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific port number on localhost.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a950038afdd201f89e97a3e60e227869a) (const std::string & remote_ip, int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific IP address and port number.
 [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_serial_connection](#classmavsdk_1_1_mavsdk_1a8bb8d79c35c44eb3b57fe658c060b093) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a870d15142914f1db564c12f385d5489b), bool flow_control=false) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
+std::vector< std::shared_ptr< [System](classmavsdk_1_1_system.md) > > | [systems](#classmavsdk_1_1_mavsdk_1a0d0bc4cdab14d96877b52baec5113fa8) () const | Get a vector of systems which have been discovered or set-up.
 void | [set_configuration](#classmavsdk_1_1_mavsdk_1acaeea86253493dc15b6540d2100a1b86) ([Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) configuration) | Set [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) of SDK.
-std::vector< uint64_t > | [system_uuids](#classmavsdk_1_1_mavsdk_1a80bd9c663d0e03c24f029fd77e914c3c) () const | Get vector of system UUIDs.
-[System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a2f3e89f37fffbbf1ee2c2089086ed33c) () const | Get the first discovered system.
-[System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a827200142a79685dd87fe200474780b8) (uint64_t uuid)const | Get the system with the specified UUID.
-bool | [is_connected](#classmavsdk_1_1_mavsdk_1aced99aea3a52c1245b1d80ff1f22cbd2) () const | Returns `true` if exactly one system is currently connected.
-bool | [is_connected](#classmavsdk_1_1_mavsdk_1a131d125416ede819e33dbf6ffc29a3ce) (uint64_t uuid)const | Returns `true` if a system is currently connected.
-void | [register_on_discover](#classmavsdk_1_1_mavsdk_1aa8d55ab10da8f1b868003b44e99c2ecc) ([event_callback_t](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) callback) | Register callback for system discovery.
-void | [register_on_timeout](#classmavsdk_1_1_mavsdk_1a4baa7d2dd487e9cff12f5dda11ba3262) ([event_callback_t](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) callback) | Register callback for system timeout.
+DEPRECATED std::vector< uint64_t > | [system_uuids](#classmavsdk_1_1_mavsdk_1a21e860cb6d24a0c94e8381a8552563fd) () const | Get vector of system UUIDs (deprecated).
+DEPRECATED [System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a94227abeef7ccb938126ca94b1d034e9) () const | Get the first discovered system.
+DEPRECATED [System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1aa21bb28b338c89d670b839491568ff31) (uint64_t uuid)const | Get the system with the specified UUID (deprecated).
+void | [subscribe_on_new_system](#classmavsdk_1_1_mavsdk_1a332ae41c7de84d5cfab11fb3e2e65522) ([NewSystemCallback](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a7a283c6a75e852a56be4c5862f8a3fab) callback) | Get notification about a change in systems.
+DEPRECATED bool | [is_connected](#classmavsdk_1_1_mavsdk_1af45d884188908b13c4bef938555b2634) () const | Returns `true` if exactly one system is currently connected.
+DEPRECATED bool | [is_connected](#classmavsdk_1_1_mavsdk_1adcc7d75add77b8d7beb750cc49f54c89) (uint64_t uuid)const | Returns `true` if a system is currently connected (deprecated).
+DEPRECATED void | [register_on_discover](#classmavsdk_1_1_mavsdk_1ac724800e74359b0ff26fade5f101d8a6) ([event_callback_t](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) callback) | Register callback for system discovery.
+DEPRECATED void | [register_on_timeout](#classmavsdk_1_1_mavsdk_1a2008e8a34d1098a5473cc0335eacd0ac) ([event_callback_t](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) callback) | Register callback for system timeout.
 
 ## Static Public Attributes
 
@@ -92,6 +95,16 @@ Disconnects all connected vehicles and releases all resources.
 ## Member Typdef Documentation
 
 
+### typedef NewSystemCallback {#classmavsdk_1_1_mavsdk_1a7a283c6a75e852a56be4c5862f8a3fab}
+
+```cpp
+using mavsdk::Mavsdk::NewSystemCallback =  std::function<void()>
+```
+
+
+Callback type discover and timeout notifications.
+
+
 ### typedef event_callback_t {#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818}
 
 ```cpp
@@ -99,8 +112,9 @@ typedef std::function<void(uint64_t uuid)> mavsdk::Mavsdk::event_callback_t
 ```
 
 
-Callback type for discover and timeout notifications.
+Callback type for discover and timeout notifications (deprecated).
 
+> **Note** This typedef is deprecated because the UUID is replaced by uid with 18 bytes.
 
 **Parameters**
 
@@ -133,9 +147,12 @@ Adds Connection via URL.
 
 Supports connection: Serial, TCP or UDP. Connection URL format should be:
 <ul>
-<li><p>UDP - udp://[Bind_host][:Bind_port]</p></li>
-<li><p>TCP - tcp://[Remote_host][:Remote_port]</p></li>
-<li><p>Serial - serial://Dev_Node[:Baudrate]</p></li>
+<li><p>UDP - udp://[Bind_host][:Bind_port]</p>
+</li>
+<li><p>TCP - tcp://[Remote_host][:Remote_port]</p>
+</li>
+<li><p>Serial - serial://Dev_Node[:Baudrate]</p>
+</li>
 </ul>
 
 **Parameters**
@@ -255,6 +272,19 @@ Adds a serial connection with a specific port (COM or UART dev node) and baudrat
 
 &emsp;[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) - The result of adding the connection.
 
+### systems() {#classmavsdk_1_1_mavsdk_1a0d0bc4cdab14d96877b52baec5113fa8}
+```cpp
+std::vector<std::shared_ptr<System> > mavsdk::Mavsdk::systems() const
+```
+
+
+Get a vector of systems which have been discovered or set-up.
+
+
+**Returns**
+
+&emsp;std::vector< std::shared_ptr< [System](classmavsdk_1_1_system.md) > > - The vector of systems which are available.
+
 ### set_configuration() {#classmavsdk_1_1_mavsdk_1acaeea86253493dc15b6540d2100a1b86}
 ```cpp
 void mavsdk::Mavsdk::set_configuration(Configuration configuration)
@@ -269,23 +299,26 @@ The default configuration is `Configuration::GroundStation` The configuration is
 
 * [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) **configuration** - [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) chosen.
 
-### system_uuids() {#classmavsdk_1_1_mavsdk_1a80bd9c663d0e03c24f029fd77e914c3c}
+### system_uuids() {#classmavsdk_1_1_mavsdk_1a21e860cb6d24a0c94e8381a8552563fd}
 ```cpp
-std::vector<uint64_t> mavsdk::Mavsdk::system_uuids() const
+DEPRECATED std::vector<uint64_t> mavsdk::Mavsdk::system_uuids() const
 ```
 
 
-Get vector of system UUIDs.
+Get vector of system UUIDs (deprecated).
 
 This returns a vector of the UUIDs of all systems that have been discovered. If a system doesn't have a UUID then [Mavsdk](classmavsdk_1_1_mavsdk.md) will instead use its MAVLink system ID (range: 0..255).
 
+
+> **Note** This method will be deprecated because the UUID will be replaced by a uid with 18 bytes.
+
 **Returns**
 
-&emsp;std::vector< uint64_t > - A vector containing the UUIDs.
+&emsp;DEPRECATED std::vector< uint64_t > - A vector containing the UUIDs.
 
-### system() {#classmavsdk_1_1_mavsdk_1a2f3e89f37fffbbf1ee2c2089086ed33c}
+### system() {#classmavsdk_1_1_mavsdk_1a94227abeef7ccb938126ca94b1d034e9}
 ```cpp
-System& mavsdk::Mavsdk::system() const
+DEPRECATED System& mavsdk::Mavsdk::system() const
 ```
 
 
@@ -293,19 +326,25 @@ Get the first discovered system.
 
 This returns the first discovered system or a null system if no system has yet been found.
 
+
+> **Note** This method will be deprecated because it will be replaced by a vector of system pointers.
+
 **Returns**
 
-&emsp;[System](classmavsdk_1_1_system.md) & - A reference to a system.
+&emsp;DEPRECATED [System](classmavsdk_1_1_system.md) & - A reference to a system.
 
-### system() {#classmavsdk_1_1_mavsdk_1a827200142a79685dd87fe200474780b8}
+### system() {#classmavsdk_1_1_mavsdk_1aa21bb28b338c89d670b839491568ff31}
 ```cpp
-System& mavsdk::Mavsdk::system(uint64_t uuid) const
+DEPRECATED System& mavsdk::Mavsdk::system(uint64_t uuid) const
 ```
 
 
-Get the system with the specified UUID.
+Get the system with the specified UUID (deprecated).
 
 This returns a system for a given UUID if such a system has been discovered and a null system otherwise.
+
+
+> **Note** This method will be deprecated because the UUID will be replaced by a uid with 18 bytes.
 
 **Parameters**
 
@@ -313,11 +352,28 @@ This returns a system for a given UUID if such a system has been discovered and 
 
 **Returns**
 
-&emsp;[System](classmavsdk_1_1_system.md) & - A reference to the specified system.
+&emsp;DEPRECATED [System](classmavsdk_1_1_system.md) & - A reference to the specified system.
 
-### is_connected() {#classmavsdk_1_1_mavsdk_1aced99aea3a52c1245b1d80ff1f22cbd2}
+### subscribe_on_new_system() {#classmavsdk_1_1_mavsdk_1a332ae41c7de84d5cfab11fb3e2e65522}
 ```cpp
-bool mavsdk::Mavsdk::is_connected() const
+void mavsdk::Mavsdk::subscribe_on_new_system(NewSystemCallback callback)
+```
+
+
+Get notification about a change in systems.
+
+This gets called whenever a system is added.
+
+
+> **Note** Only one subscriber is possible at any time. On a second subscription, the previous one is overwritten. To unsubscribe, pass nullptr;
+
+**Parameters**
+
+* [NewSystemCallback](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a7a283c6a75e852a56be4c5862f8a3fab) **callback** - Callback to subscribe.
+
+### is_connected() {#classmavsdk_1_1_mavsdk_1af45d884188908b13c4bef938555b2634}
+```cpp
+DEPRECATED bool mavsdk::Mavsdk::is_connected() const
 ```
 
 
@@ -328,19 +384,25 @@ Connected means we are receiving heartbeats from this system. It means the same 
 
 If multiple systems have connected, this will return `false`.
 
+
+> **Note** This method will be deprecated because is_connected will be a method of the system, not of mavsdk.
+
 **Returns**
 
-&emsp;bool - `true` if exactly one system is connected.
+&emsp;DEPRECATED bool - `true` if exactly one system is connected.
 
-### is_connected() {#classmavsdk_1_1_mavsdk_1a131d125416ede819e33dbf6ffc29a3ce}
+### is_connected() {#classmavsdk_1_1_mavsdk_1adcc7d75add77b8d7beb750cc49f54c89}
 ```cpp
-bool mavsdk::Mavsdk::is_connected(uint64_t uuid) const
+DEPRECATED bool mavsdk::Mavsdk::is_connected(uint64_t uuid) const
 ```
 
 
-Returns `true` if a system is currently connected.
+Returns `true` if a system is currently connected (deprecated).
 
 Connected means we are receiving heartbeats from this system. It means the same as "discovered" and "not timed out".
+
+
+> **Note** This method will be deprecated because the UUID will be replaced by uid with 18 bytes.
 
 **Parameters**
 
@@ -348,11 +410,11 @@ Connected means we are receiving heartbeats from this system. It means the same 
 
 **Returns**
 
-&emsp;bool - `true` if system is connected.
+&emsp;DEPRECATED bool - `true` if system is connected.
 
-### register_on_discover() {#classmavsdk_1_1_mavsdk_1aa8d55ab10da8f1b868003b44e99c2ecc}
+### register_on_discover() {#classmavsdk_1_1_mavsdk_1ac724800e74359b0ff26fade5f101d8a6}
 ```cpp
-void mavsdk::Mavsdk::register_on_discover(event_callback_t callback)
+DEPRECATED void mavsdk::Mavsdk::register_on_discover(event_callback_t callback)
 ```
 
 
@@ -366,13 +428,20 @@ If systems have been discovered before this callback is registered, they will be
 
 > **Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
+
+> **Note** This method will be deprecated because event_callback_t is deprecated and it will be replaced by [subscribe_on_new_system()](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a332ae41c7de84d5cfab11fb3e2e65522).
+
 **Parameters**
 
 * [event_callback_t](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) **callback** - Callback to register.
 
-### register_on_timeout() {#classmavsdk_1_1_mavsdk_1a4baa7d2dd487e9cff12f5dda11ba3262}
+**Returns**
+
+&emsp;DEPRECATED void - 
+
+### register_on_timeout() {#classmavsdk_1_1_mavsdk_1a2008e8a34d1098a5473cc0335eacd0ac}
 ```cpp
-void mavsdk::Mavsdk::register_on_timeout(event_callback_t callback)
+DEPRECATED void mavsdk::Mavsdk::register_on_timeout(event_callback_t callback)
 ```
 
 
@@ -383,9 +452,16 @@ This sets a callback that will be notified if no heartbeat of the system has bee
 
 > **Note** Only one callback can be registered at a time. If this function is called several times, previous callbacks will be overwritten.
 
+
+> **Note** This method will be deprecated because event_callback_t is deprecated and it will be replaced by [subscribe_on_new_system()](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a332ae41c7de84d5cfab11fb3e2e65522).
+
 **Parameters**
 
 * [event_callback_t](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a827a58394300cac929670ab592de8818) **callback** - Callback to register.
+
+**Returns**
+
+&emsp;DEPRECATED void - 
 
 ## Field Documentation
 

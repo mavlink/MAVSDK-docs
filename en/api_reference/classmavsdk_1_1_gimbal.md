@@ -22,8 +22,9 @@ std::function< void([Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1aa33f4df704c7f09698884083c379f787) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1aa3cb6e1e37a2f275ab5cc8ed4dd71d93) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Gimbal](#classmavsdk_1_1_gimbal_1ae5047b7edcfc7086c8e80c758bdf98ee) () | Destructor (internal use only).
-&nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1a1d1a20bd30dafe3adc7b326f3eeb3c68) (const [Gimbal](classmavsdk_1_1_gimbal.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1ae69df278ca37deaee22fb13053fd4f2d) (const [Gimbal](classmavsdk_1_1_gimbal.md) & other) | Copy constructor.
 void | [set_pitch_and_yaw_async](#classmavsdk_1_1_gimbal_1a325a49cc256359013cbc917b3576f292) (float pitch_deg, float yaw_deg, const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Set gimbal pitch and yaw angles.
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_pitch_and_yaw](#classmavsdk_1_1_gimbal_1ad65ba3258833fe78f2939b9b72dc3b88) (float pitch_deg, float yaw_deg)const | Set gimbal pitch and yaw angles.
 void | [set_mode_async](#classmavsdk_1_1_gimbal_1ad69853994c134b0e88d0f94744254066) ([GimbalMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) gimbal_mode, const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Set gimbal mode.
@@ -47,12 +48,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto gimbal = std::make_shared<Gimbal>(system);
+auto gimbal = Gimbal(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Gimbal() {#classmavsdk_1_1_gimbal_1aa3cb6e1e37a2f275ab5cc8ed4dd71d93}
+```cpp
+mavsdk::Gimbal::Gimbal(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto gimbal = Gimbal(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Gimbal() {#classmavsdk_1_1_gimbal_1ae5047b7edcfc7086c8e80c758bdf98ee}
 ```cpp
@@ -63,18 +82,18 @@ mavsdk::Gimbal::~Gimbal()
 Destructor (internal use only).
 
 
-### Gimbal() {#classmavsdk_1_1_gimbal_1a1d1a20bd30dafe3adc7b326f3eeb3c68}
+### Gimbal() {#classmavsdk_1_1_gimbal_1ae69df278ca37deaee22fb13053fd4f2d}
 ```cpp
-mavsdk::Gimbal::Gimbal(const Gimbal &)=delete
+mavsdk::Gimbal::Gimbal(const Gimbal &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Gimbal](classmavsdk_1_1_gimbal.md)&  - 
+* const [Gimbal](classmavsdk_1_1_gimbal.md)& **other** - 
 
 ## Member Typdef Documentation
 

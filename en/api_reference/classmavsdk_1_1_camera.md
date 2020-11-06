@@ -58,8 +58,9 @@ std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Camera](#classmavsdk_1_1_camera_1a186a2853440c879b99ed7e4a726969e9) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Camera](#classmavsdk_1_1_camera_1aecd55dc849bbb967a6b9dcfd36cc075e) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Camera](#classmavsdk_1_1_camera_1abd845e6fb2adc386dba7c8860a67f761) () | Destructor (internal use only).
-&nbsp; | [Camera](#classmavsdk_1_1_camera_1a3af73f81cf8cd051fe9d7af6f2df6945) (const [Camera](classmavsdk_1_1_camera.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Camera](#classmavsdk_1_1_camera_1a1b83c38c360d70b56222a94999d862fd) (const [Camera](classmavsdk_1_1_camera.md) & other) | Copy constructor.
 void | [take_photo_async](#classmavsdk_1_1_camera_1a343217bf38cc71cd258c7e81626dccb5) (const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Take one photo.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [take_photo](#classmavsdk_1_1_camera_1a44b86cfda6262652a1796661e595003c) () const | Take one photo.
 void | [start_photo_interval_async](#classmavsdk_1_1_camera_1ae583f83e163e2b33a8dc4a6fcfebbac6) (float interval_s, const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Start photo timelapse with a given interval.
@@ -109,12 +110,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto camera = std::make_shared<Camera>(system);
+auto camera = Camera(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Camera() {#classmavsdk_1_1_camera_1aecd55dc849bbb967a6b9dcfd36cc075e}
+```cpp
+mavsdk::Camera::Camera(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto camera = Camera(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Camera() {#classmavsdk_1_1_camera_1abd845e6fb2adc386dba7c8860a67f761}
 ```cpp
@@ -125,18 +144,18 @@ mavsdk::Camera::~Camera()
 Destructor (internal use only).
 
 
-### Camera() {#classmavsdk_1_1_camera_1a3af73f81cf8cd051fe9d7af6f2df6945}
+### Camera() {#classmavsdk_1_1_camera_1a1b83c38c360d70b56222a94999d862fd}
 ```cpp
-mavsdk::Camera::Camera(const Camera &)=delete
+mavsdk::Camera::Camera(const Camera &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Camera](classmavsdk_1_1_camera.md)&  - 
+* const [Camera](classmavsdk_1_1_camera.md)& **other** - 
 
 ## Member Typdef Documentation
 

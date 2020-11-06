@@ -5,7 +5,8 @@
 
 
 <ul>
-<li><p>Control a drone with position, velocity, attitude or motor commands. </p></li>
+<li><p>Control a drone with position, velocity, attitude or motor commands. </p>
+</li>
 </ul>
 
 
@@ -46,8 +47,9 @@ std::function< void([Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboar
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Offboard](#classmavsdk_1_1_offboard_1aedb8ed185acabd2caa3b536f51b68dcb) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Offboard](#classmavsdk_1_1_offboard_1a9e11ce3a850ceb9a6c047288b5bc3b84) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Offboard](#classmavsdk_1_1_offboard_1a999a6df78e148fee89fa4ae4f6f2e0e4) () | Destructor (internal use only).
-&nbsp; | [Offboard](#classmavsdk_1_1_offboard_1abf3926e90b315d9e5ba05b51eb6c6631) (const [Offboard](classmavsdk_1_1_offboard.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Offboard](#classmavsdk_1_1_offboard_1ab3674a3889b978e7a52626d5de6a6fa0) (const [Offboard](classmavsdk_1_1_offboard.md) & other) | Copy constructor.
 void | [start_async](#classmavsdk_1_1_offboard_1a0c880ad3f663142e194dd6f187cfc934) (const [ResultCallback](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a16d95f55251e9f992261d46da89ef8b9) callback) | Start offboard control.
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [start](#classmavsdk_1_1_offboard_1ab71d0dd2a81f76e3a0330b0304daa30b) () const | Start offboard control.
 void | [stop_async](#classmavsdk_1_1_offboard_1a86c163d7fa1217b4e82a03daf52065c3) (const [ResultCallback](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a16d95f55251e9f992261d46da89ef8b9) callback) | Stop offboard control.
@@ -57,8 +59,8 @@ bool | [is_active](#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5)
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_actuator_control](#classmavsdk_1_1_offboard_1a619ee02a1f73041a5cae6a5c72169b96) ([ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) actuator_control)const | Set direct actuator control values to groups #0 and #1.
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_attitude_rate](#classmavsdk_1_1_offboard_1a034a98a0e7a5a7a0fac507adabf6ecf8) ([AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) attitude_rate)const | Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust.
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_position_ned](#classmavsdk_1_1_offboard_1ade7dcec93ebee17de60687a75184b8b6) ([PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md) position_ned_yaw)const | Set the position in NED coordinates and yaw.
-[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_velocity_body](#classmavsdk_1_1_offboard_1abe7364f0a48dda4df34c5c67d177cfb4) ([VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed)const | Set the velocity in body coordinates and yaw angular rate.
-[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_velocity_ned](#classmavsdk_1_1_offboard_1a4edbc6e4528ff955d4e46e7c4e711732) ([VelocityNedYaw](structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md) velocity_ned_yaw)const | Set the velocity in NED coordinates and yaw.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_velocity_body](#classmavsdk_1_1_offboard_1abe7364f0a48dda4df34c5c67d177cfb4) ([VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed)const | Set the velocity in body coordinates and yaw angular rate. Not available for fixed-wing aircraft.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_velocity_ned](#classmavsdk_1_1_offboard_1a4edbc6e4528ff955d4e46e7c4e711732) ([VelocityNedYaw](structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md) velocity_ned_yaw)const | Set the velocity in NED coordinates and yaw. Not available for fixed-wing aircraft.
 const [Offboard](classmavsdk_1_1_offboard.md) & | [operator=](#classmavsdk_1_1_offboard_1acb01657624668251c0a022bc3f8135cd) (const [Offboard](classmavsdk_1_1_offboard.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -76,12 +78,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto offboard = std::make_shared<Offboard>(system);
+auto offboard = Offboard(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Offboard() {#classmavsdk_1_1_offboard_1a9e11ce3a850ceb9a6c047288b5bc3b84}
+```cpp
+mavsdk::Offboard::Offboard(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto offboard = Offboard(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Offboard() {#classmavsdk_1_1_offboard_1a999a6df78e148fee89fa4ae4f6f2e0e4}
 ```cpp
@@ -92,18 +112,18 @@ mavsdk::Offboard::~Offboard()
 Destructor (internal use only).
 
 
-### Offboard() {#classmavsdk_1_1_offboard_1abf3926e90b315d9e5ba05b51eb6c6631}
+### Offboard() {#classmavsdk_1_1_offboard_1ab3674a3889b978e7a52626d5de6a6fa0}
 ```cpp
-mavsdk::Offboard::Offboard(const Offboard &)=delete
+mavsdk::Offboard::Offboard(const Offboard &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Offboard](classmavsdk_1_1_offboard.md)&  - 
+* const [Offboard](classmavsdk_1_1_offboard.md)& **other** - 
 
 ## Member Typdef Documentation
 
@@ -301,7 +321,7 @@ Result mavsdk::Offboard::set_velocity_body(VelocityBodyYawspeed velocity_body_ya
 ```
 
 
-Set the velocity in body coordinates and yaw angular rate.
+Set the velocity in body coordinates and yaw angular rate. Not available for fixed-wing aircraft.
 
 This function is blocking.
 
@@ -319,7 +339,7 @@ Result mavsdk::Offboard::set_velocity_ned(VelocityNedYaw velocity_ned_yaw) const
 ```
 
 
-Set the velocity in NED coordinates and yaw.
+Set the velocity in NED coordinates and yaw. Not available for fixed-wing aircraft.
 
 This function is blocking.
 
