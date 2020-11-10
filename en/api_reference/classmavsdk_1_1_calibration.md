@@ -31,8 +31,9 @@ std::function< void([Calibration::Result](classmavsdk_1_1_calibration.md#classma
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Calibration](#classmavsdk_1_1_calibration_1ac86c794a9ca1043e21b501218346f2b1) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Calibration](#classmavsdk_1_1_calibration_1a22b833023e256511495918cf9e78cb87) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Calibration](#classmavsdk_1_1_calibration_1a9bfe7b366c142b90b4f35cb3b2dfda2e) () | Destructor (internal use only).
-&nbsp; | [Calibration](#classmavsdk_1_1_calibration_1a8665891ac02e50c2017793af665c5f4f) (const [Calibration](classmavsdk_1_1_calibration.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Calibration](#classmavsdk_1_1_calibration_1a90c300742cbb2e29594c294b2ca6ef0e) (const [Calibration](classmavsdk_1_1_calibration.md) & other) | Copy constructor.
 void | [calibrate_gyro_async](#classmavsdk_1_1_calibration_1abf9e20bb07dbbaa0c7481f6296a0d35c) ([CalibrateGyroCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a299f3806f729afc6ed084fa768c74d8a) callback) | Perform gyro calibration.
 void | [calibrate_accelerometer_async](#classmavsdk_1_1_calibration_1a135a5e5cd76b2a181345a9e90cfd7c77) ([CalibrateAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1ab154239054db49d3f790e89dd4eef4a2) callback) | Perform accelerometer calibration.
 void | [calibrate_magnetometer_async](#classmavsdk_1_1_calibration_1a430fd1aafa1718969400bfcad0bf155a) ([CalibrateMagnetometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a27ac7e84b676d0a74c570586af162bbb) callback) | Perform magnetometer calibration.
@@ -56,12 +57,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto calibration = std::make_shared<Calibration>(system);
+auto calibration = Calibration(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Calibration() {#classmavsdk_1_1_calibration_1a22b833023e256511495918cf9e78cb87}
+```cpp
+mavsdk::Calibration::Calibration(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto calibration = Calibration(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Calibration() {#classmavsdk_1_1_calibration_1a9bfe7b366c142b90b4f35cb3b2dfda2e}
 ```cpp
@@ -72,18 +91,18 @@ mavsdk::Calibration::~Calibration()
 Destructor (internal use only).
 
 
-### Calibration() {#classmavsdk_1_1_calibration_1a8665891ac02e50c2017793af665c5f4f}
+### Calibration() {#classmavsdk_1_1_calibration_1a90c300742cbb2e29594c294b2ca6ef0e}
 ```cpp
-mavsdk::Calibration::Calibration(const Calibration &)=delete
+mavsdk::Calibration::Calibration(const Calibration &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Calibration](classmavsdk_1_1_calibration.md)&  - 
+* const [Calibration](classmavsdk_1_1_calibration.md)& **other** - 
 
 ## Member Typdef Documentation
 

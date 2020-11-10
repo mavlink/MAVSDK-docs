@@ -5,7 +5,8 @@
 
 
 <ul>
-<li><p>Allow to communicate with the vehicle's system shell. </p></li>
+<li><p>Allow to communicate with the vehicle's system shell. </p>
+</li>
 </ul>
 
 
@@ -24,8 +25,9 @@ std::function< void(std::string)> [ReceiveCallback](#classmavsdk_1_1_shell_1adfa
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Shell](#classmavsdk_1_1_shell_1a31a80044ee4822e8b9ac1c515b0eea90) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Shell](#classmavsdk_1_1_shell_1ae6c98c4c854ff0803260fe49bad20a31) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Shell](#classmavsdk_1_1_shell_1a26b0e0d6a00d89c3d22c0f8a580c54c4) () | Destructor (internal use only).
-&nbsp; | [Shell](#classmavsdk_1_1_shell_1a7fdf25f0db49675a24c6ce61be9f82b5) (const [Shell](classmavsdk_1_1_shell.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Shell](#classmavsdk_1_1_shell_1aa9d95d880297fca1a5cba341633e660e) (const [Shell](classmavsdk_1_1_shell.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) | [send](#classmavsdk_1_1_shell_1a7b39022ce3be914eec82b53a76d19bc7) (std::string command)const | Send a command line.
 void | [subscribe_receive](#classmavsdk_1_1_shell_1aa7e47ad1ce0f35e82701bd1811598ee1) ([ReceiveCallback](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1adfa64ede96967ae1ab5a5ecd83032dbb) callback) | Receive feedback from a sent command line.
 const [Shell](classmavsdk_1_1_shell.md) & | [operator=](#classmavsdk_1_1_shell_1a492f8b2e36ef2468522bfd0f51f4b9b8) (const [Shell](classmavsdk_1_1_shell.md) &)=delete | Equality operator (object is not copyable).
@@ -45,12 +47,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto shell = std::make_shared<Shell>(system);
+auto shell = Shell(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Shell() {#classmavsdk_1_1_shell_1ae6c98c4c854ff0803260fe49bad20a31}
+```cpp
+mavsdk::Shell::Shell(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto shell = Shell(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Shell() {#classmavsdk_1_1_shell_1a26b0e0d6a00d89c3d22c0f8a580c54c4}
 ```cpp
@@ -61,18 +81,18 @@ mavsdk::Shell::~Shell()
 Destructor (internal use only).
 
 
-### Shell() {#classmavsdk_1_1_shell_1a7fdf25f0db49675a24c6ce61be9f82b5}
+### Shell() {#classmavsdk_1_1_shell_1aa9d95d880297fca1a5cba341633e660e}
 ```cpp
-mavsdk::Shell::Shell(const Shell &)=delete
+mavsdk::Shell::Shell(const Shell &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Shell](classmavsdk_1_1_shell.md)&  - 
+* const [Shell](classmavsdk_1_1_shell.md)& **other** - 
 
 ## Member Typdef Documentation
 

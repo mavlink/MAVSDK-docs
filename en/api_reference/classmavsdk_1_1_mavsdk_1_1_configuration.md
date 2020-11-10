@@ -4,7 +4,7 @@
 ----
 
 
-Stores the configured system id and component id of the MAVSDK instance. 
+Possible configurations. 
 
 
 ## Public Types
@@ -21,10 +21,14 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1ac419444ca1bd9d9898c2706bd0fb058e) (uint8_t system_id, uint8_t component_id) | Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) via manually configured system and component ID.
 &nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1afe37b405647f2cdcd7d3e0f6661676e1) ([UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) usage_type) | Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) using a usage type. In this mode, the system and component ID will be automatically chosen.
-&nbsp; | [~Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a9f322234ee657ca72ccbce702dd9ac3b) () |
+&nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a1a65e2e31f06bec1f6692a933c95b03c) ()=delete |
+&nbsp; | [~Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a31cad2329ee14898752638d9c3759da9) ()=default |
 uint8_t | [get_system_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1a0497bdda816b674b1418ab07889ca781) () const | Get the system id of this configuration.
+void | [set_system_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1a28f495bce2cf89ca3c52bdfa938b1761) (uint8_t system_id) | Set the system id of this configuration.
 uint8_t | [get_component_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1adfcae3d5b6f047ad24d9c24983375e97) () const | Get the component id of this configuration.
+void | [set_component_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1aa590fbafa8ca104e1a004ca537f5798e) (uint8_t component_id) | Set the component id of this configuration.
 [UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) | [get_usage_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a7f2e657d2d86870ca07e1d0520f6c117) () const | Usage type of this configuration, used for automatic ID set.
+void | [set_usage_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a7664dce33264446e4d2e8410d5e140c6) ([UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) usage_type) | Set the usage type of this configuration.
 
 
 ## Constructor & Destructor Documentation
@@ -57,9 +61,15 @@ Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) using a 
 
 * [UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) **usage_type** - the usage type, used for automatically choosing ids.
 
-### ~Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a9f322234ee657ca72ccbce702dd9ac3b}
+### Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a1a65e2e31f06bec1f6692a933c95b03c}
 ```cpp
-mavsdk::Mavsdk::Configuration::~Configuration()
+mavsdk::Mavsdk::Configuration::Configuration()=delete
+```
+
+
+### ~Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a31cad2329ee14898752638d9c3759da9}
+```cpp
+mavsdk::Mavsdk::Configuration::~Configuration()=default
 ```
 
 
@@ -95,6 +105,19 @@ Get the system id of this configuration.
 
 &emsp;uint8_t - `uint8_t` the system id stored in this configuration, from 1-255
 
+### set_system_id() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a28f495bce2cf89ca3c52bdfa938b1761}
+```cpp
+void mavsdk::Mavsdk::Configuration::set_system_id(uint8_t system_id)
+```
+
+
+Set the system id of this configuration.
+
+
+**Parameters**
+
+* uint8_t **system_id** - 
+
 ### get_component_id() {#classmavsdk_1_1_mavsdk_1_1_configuration_1adfcae3d5b6f047ad24d9c24983375e97}
 ```cpp
 uint8_t mavsdk::Mavsdk::Configuration::get_component_id() const
@@ -108,6 +131,19 @@ Get the component id of this configuration.
 
 &emsp;uint8_t - `uint8_t` the component id stored in this configuration,from 1-255
 
+### set_component_id() {#classmavsdk_1_1_mavsdk_1_1_configuration_1aa590fbafa8ca104e1a004ca537f5798e}
+```cpp
+void mavsdk::Mavsdk::Configuration::set_component_id(uint8_t component_id)
+```
+
+
+Set the component id of this configuration.
+
+
+**Parameters**
+
+* uint8_t **component_id** - 
+
 ### get_usage_type() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a7f2e657d2d86870ca07e1d0520f6c117}
 ```cpp
 UsageType mavsdk::Mavsdk::Configuration::get_usage_type() const
@@ -120,3 +156,16 @@ Usage type of this configuration, used for automatic ID set.
 **Returns**
 
 &emsp;[UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) - 
+
+### set_usage_type() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a7664dce33264446e4d2e8410d5e140c6}
+```cpp
+void mavsdk::Mavsdk::Configuration::set_usage_type(UsageType usage_type)
+```
+
+
+Set the usage type of this configuration.
+
+
+**Parameters**
+
+* [UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) **usage_type** - 

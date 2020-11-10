@@ -32,8 +32,9 @@ std::function< void([Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab179
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Info](#classmavsdk_1_1_info_1a01a29a579c8ecb75ea73d48f8f6adf17) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Info](#classmavsdk_1_1_info_1ae67e006f16f1e1aa12efe94120ef83ec) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Info](#classmavsdk_1_1_info_1a2681cccfa006f9ea4f4eb9e498a83c04) () | Destructor (internal use only).
-&nbsp; | [Info](#classmavsdk_1_1_info_1a672404baf7e8da437b36b34dff290d2f) (const [Info](classmavsdk_1_1_info.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Info](#classmavsdk_1_1_info_1a0f6e0851757046c540fe7ce920eb3fa2) (const [Info](classmavsdk_1_1_info.md) & other) | Copy constructor.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > | [get_flight_information](#classmavsdk_1_1_info_1a915e0833d8c3c61fed9b9ad687caef77) () const | Get flight information of the system.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Identification](structmavsdk_1_1_info_1_1_identification.md) > | [get_identification](#classmavsdk_1_1_info_1a812ed66265b7427bc781faec3f0fa89e) () const | Get the identification of the system.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Product](structmavsdk_1_1_info_1_1_product.md) > | [get_product](#classmavsdk_1_1_info_1ae60d71a6dcd7546d1bdc06a9c26e629f) () const | Get product information of the system.
@@ -56,12 +57,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto info = std::make_shared<Info>(system);
+auto info = Info(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Info() {#classmavsdk_1_1_info_1ae67e006f16f1e1aa12efe94120ef83ec}
+```cpp
+mavsdk::Info::Info(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto info = Info(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Info() {#classmavsdk_1_1_info_1a2681cccfa006f9ea4f4eb9e498a83c04}
 ```cpp
@@ -72,18 +91,18 @@ mavsdk::Info::~Info()
 Destructor (internal use only).
 
 
-### Info() {#classmavsdk_1_1_info_1a672404baf7e8da437b36b34dff290d2f}
+### Info() {#classmavsdk_1_1_info_1a0f6e0851757046c540fe7ce920eb3fa2}
 ```cpp
-mavsdk::Info::Info(const Info &)=delete
+mavsdk::Info::Info(const Info &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Info](classmavsdk_1_1_info.md)&  - 
+* const [Info](classmavsdk_1_1_info.md)& **other** - 
 
 ## Member Typdef Documentation
 

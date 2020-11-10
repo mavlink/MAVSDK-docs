@@ -28,8 +28,9 @@ std::function< void([Result](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofenc
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Geofence](#classmavsdk_1_1_geofence_1a115762872a12894270e758af250549f0) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Geofence](#classmavsdk_1_1_geofence_1a7e921625517d772df4125b22841b78da) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Geofence](#classmavsdk_1_1_geofence_1a96569ad53b521b74cc9891163bda035c) () | Destructor (internal use only).
-&nbsp; | [Geofence](#classmavsdk_1_1_geofence_1afe9ee72e7a271f4109bcfe3d16762e35) (const [Geofence](classmavsdk_1_1_geofence.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Geofence](#classmavsdk_1_1_geofence_1a60e1f1a3123050c73980cba61b4b4009) (const [Geofence](classmavsdk_1_1_geofence.md) & other) | Copy constructor.
 void | [upload_geofence_async](#classmavsdk_1_1_geofence_1a530a5b38690393c3b8ea99d52a650aca) (std::vector< [Polygon](structmavsdk_1_1_geofence_1_1_polygon.md) > polygons, const [ResultCallback](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofence_1af9662e645781e4e64ed8b7c65d3d9309) callback) | Upload a geofence.
 [Result](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642) | [upload_geofence](#classmavsdk_1_1_geofence_1ad9ffe5312847d828f44bce6d1a4662ca) (std::vector< [Polygon](structmavsdk_1_1_geofence_1_1_polygon.md) > polygons)const | Upload a geofence.
 const [Geofence](classmavsdk_1_1_geofence.md) & | [operator=](#classmavsdk_1_1_geofence_1a2e8a69dddfa9b4937df117060fa2e0d7) (const [Geofence](classmavsdk_1_1_geofence.md) &)=delete | Equality operator (object is not copyable).
@@ -49,12 +50,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto geofence = std::make_shared<Geofence>(system);
+auto geofence = Geofence(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Geofence() {#classmavsdk_1_1_geofence_1a7e921625517d772df4125b22841b78da}
+```cpp
+mavsdk::Geofence::Geofence(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto geofence = Geofence(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Geofence() {#classmavsdk_1_1_geofence_1a96569ad53b521b74cc9891163bda035c}
 ```cpp
@@ -65,18 +84,18 @@ mavsdk::Geofence::~Geofence()
 Destructor (internal use only).
 
 
-### Geofence() {#classmavsdk_1_1_geofence_1afe9ee72e7a271f4109bcfe3d16762e35}
+### Geofence() {#classmavsdk_1_1_geofence_1a60e1f1a3123050c73980cba61b4b4009}
 ```cpp
-mavsdk::Geofence::Geofence(const Geofence &)=delete
+mavsdk::Geofence::Geofence(const Geofence &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Geofence](classmavsdk_1_1_geofence.md)&  - 
+* const [Geofence](classmavsdk_1_1_geofence.md)& **other** - 
 
 ## Member Typdef Documentation
 

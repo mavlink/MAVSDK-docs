@@ -87,10 +87,10 @@ Component Types.
 
 Value | Description
 --- | ---
-<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a7b0b07ec8293a25730d05980f5bf1946"></span> `UNKNOWN` |  
-<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a092366b39e29ed2f2a5429b0bf82023f"></span> `AUTOPILOT` |  
-<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a2950492ed394e5c5bdf9b0eed9f5737b"></span> `CAMERA` |  
-<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a9683a40d8c6ef6e539a71a3c12f7aee3"></span> `GIMBAL` |  
+<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` |  
+<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a8797273a75c761c3b925c165511d653c"></span> `AUTOPILOT` |  
+<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12addf0d6b21537d984fea6544f58101fa8"></span> `CAMERA` |  
+<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a0bad549bc68e5c4adb2ed793b8dcf8e3"></span> `GIMBAL` |  
 
 ## Function Documentation
 

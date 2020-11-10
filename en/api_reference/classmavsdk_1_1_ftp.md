@@ -30,8 +30,9 @@ std::function< void([Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f4
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Ftp](#classmavsdk_1_1_ftp_1ad0b5909e631746c1dd5e2151c727e67f) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Ftp](#classmavsdk_1_1_ftp_1a88cabb7b13f63e8285e7701292dac302) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Ftp](#classmavsdk_1_1_ftp_1a10f8eff234be8dcaca8f40482e744ee6) () | Destructor (internal use only).
-&nbsp; | [Ftp](#classmavsdk_1_1_ftp_1a22af5baed783408c9599af6303b3e862) (const [Ftp](classmavsdk_1_1_ftp.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Ftp](#classmavsdk_1_1_ftp_1a7b7486356a7b04fb231c430e090c673e) (const [Ftp](classmavsdk_1_1_ftp.md) & other) | Copy constructor.
 void | [reset_async](#classmavsdk_1_1_ftp_1aab8895023bb3db8750622a5a38adcf07) (const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) callback) | Resets FTP server in case there are stale open sessions.
 void | [download_async](#classmavsdk_1_1_ftp_1afd01f6380b2a5d4b433abaf7aa734fc0) (std::string remote_file_path, std::string local_dir, [DownloadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1aa1f79399f168f386610b5a8f3e7c75d4) callback) | Downloads a file to local directory.
 void | [upload_async](#classmavsdk_1_1_ftp_1a14489e59f195709915d01ad093790b09) (std::string local_file_path, std::string remote_dir, [UploadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a8b8d4d8e6f9efe96e6c5feb38fae9ff4) callback) | Uploads local file to remote directory.
@@ -67,12 +68,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto ftp = std::make_shared<Ftp>(system);
+auto ftp = Ftp(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Ftp() {#classmavsdk_1_1_ftp_1a88cabb7b13f63e8285e7701292dac302}
+```cpp
+mavsdk::Ftp::Ftp(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto ftp = Ftp(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Ftp() {#classmavsdk_1_1_ftp_1a10f8eff234be8dcaca8f40482e744ee6}
 ```cpp
@@ -83,18 +102,18 @@ mavsdk::Ftp::~Ftp()
 Destructor (internal use only).
 
 
-### Ftp() {#classmavsdk_1_1_ftp_1a22af5baed783408c9599af6303b3e862}
+### Ftp() {#classmavsdk_1_1_ftp_1a7b7486356a7b04fb231c430e090c673e}
 ```cpp
-mavsdk::Ftp::Ftp(const Ftp &)=delete
+mavsdk::Ftp::Ftp(const Ftp &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Ftp](classmavsdk_1_1_ftp.md)&  - 
+* const [Ftp](classmavsdk_1_1_ftp.md)& **other** - 
 
 ## Member Typdef Documentation
 

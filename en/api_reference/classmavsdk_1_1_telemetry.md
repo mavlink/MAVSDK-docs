@@ -24,6 +24,8 @@ struct [Battery](structmavsdk_1_1_telemetry_1_1_battery.md)
 
 struct [Covariance](structmavsdk_1_1_telemetry_1_1_covariance.md)
 
+struct [DistanceSensor](structmavsdk_1_1_telemetry_1_1_distance_sensor.md)
+
 struct [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)
 
 struct [FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md)
@@ -95,6 +97,7 @@ std::function< void([FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_
 std::function< void([Imu](structmavsdk_1_1_telemetry_1_1_imu.md))> [ImuCallback](#classmavsdk_1_1_telemetry_1a4fbc2ad274fd5a8af077004d2d7bd984) | Callback type for subscribe_imu.
 std::function< void(bool)> [HealthAllOkCallback](#classmavsdk_1_1_telemetry_1a71cdcadfaa988dc14029e0b9fdbe742d) | Callback type for subscribe_health_all_ok.
 std::function< void(uint64_t)> [UnixEpochTimeCallback](#classmavsdk_1_1_telemetry_1a321c7d809ae8f56bb8a361d5e5ce6391) | Callback type for subscribe_unix_epoch_time.
+std::function< void([DistanceSensor](structmavsdk_1_1_telemetry_1_1_distance_sensor.md))> [DistanceSensorCallback](#classmavsdk_1_1_telemetry_1aacfdb5e2cce7f3f77c68b36f020ed1f2) | Callback type for subscribe_distance_sensor.
 
 ## Public Member Functions
 
@@ -102,8 +105,9 @@ std::function< void(uint64_t)> [UnixEpochTimeCallback](#classmavsdk_1_1_telemetr
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Telemetry](#classmavsdk_1_1_telemetry_1a6c8c8ed8759fc8c6e9fd4e7644c63cbe) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Telemetry](#classmavsdk_1_1_telemetry_1af78f18fbb117c82d5ffe21e015535067) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Telemetry](#classmavsdk_1_1_telemetry_1a1db31974e0ea6ea9a530d68783566ab1) () | Destructor (internal use only).
-&nbsp; | [Telemetry](#classmavsdk_1_1_telemetry_1ad2bbcfbf06add4067bdc42bf239b6ecb) (const [Telemetry](classmavsdk_1_1_telemetry.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Telemetry](#classmavsdk_1_1_telemetry_1ad734f199b82a9928c63230676c9789e9) (const [Telemetry](classmavsdk_1_1_telemetry.md) & other) | Copy constructor.
 void | [subscribe_position](#classmavsdk_1_1_telemetry_1a61bda57b3ca47000ea7e4758b2a33134) ([PositionCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a978b371d636226e198995462afa63552) callback) | Subscribe to 'position' updates.
 [Position](structmavsdk_1_1_telemetry_1_1_position.md) | [position](#classmavsdk_1_1_telemetry_1a2299da1bc63313c429f07ab0fdbe5335) () const | Poll for '[Position](structmavsdk_1_1_telemetry_1_1_position.md)' (blocking).
 void | [subscribe_home](#classmavsdk_1_1_telemetry_1a67585989a12de2f099dbc4eb4c41686a) ([HomeCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aaac029969c37a001d43e2788a6abf634) callback) | Subscribe to 'home position' updates.
@@ -156,6 +160,8 @@ void | [subscribe_health_all_ok](#classmavsdk_1_1_telemetry_1a0f94ea6d707ff314e4
 bool | [health_all_ok](#classmavsdk_1_1_telemetry_1ad6d833741b5576f07204d268c5cd4d06) () const | Poll for 'bool' (blocking).
 void | [subscribe_unix_epoch_time](#classmavsdk_1_1_telemetry_1ad7f04211822f862b580308e3786cdc77) ([UnixEpochTimeCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a321c7d809ae8f56bb8a361d5e5ce6391) callback) | Subscribe to 'unix epoch time' updates.
 uint64_t | [unix_epoch_time](#classmavsdk_1_1_telemetry_1ab5ea5f6bb35b5670e34d5697d8c880f4) () const | Poll for 'uint64_t' (blocking).
+void | [subscribe_distance_sensor](#classmavsdk_1_1_telemetry_1a74654313a3f588f252012ee6412e9342) ([DistanceSensorCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aacfdb5e2cce7f3f77c68b36f020ed1f2) callback) | Subscribe to 'Distance Sensor' updates.
+[DistanceSensor](structmavsdk_1_1_telemetry_1_1_distance_sensor.md) | [distance_sensor](#classmavsdk_1_1_telemetry_1aa01828c0ffcb4727b884ffeae8fef59a) () const | Poll for '[DistanceSensor](structmavsdk_1_1_telemetry_1_1_distance_sensor.md)' (blocking).
 void | [set_rate_position_async](#classmavsdk_1_1_telemetry_1ad7e5b576edb9398c8f5f2f14626b984a) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'position' updates.
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_position](#classmavsdk_1_1_telemetry_1a665439f3d5f8c58b3ef3dd427cf4782b) (double rate_hz)const | Set rate to 'position' updates.
 void | [set_rate_home_async](#classmavsdk_1_1_telemetry_1a098f4c4f50fc3ac2c153ef152208fbbe) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'home position' updates.
@@ -192,6 +198,8 @@ void | [set_rate_imu_async](#classmavsdk_1_1_telemetry_1a7dca435daa0de2db2d2e9d5
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_imu](#classmavsdk_1_1_telemetry_1a4e0d1dc2350e06f68f472d85dc69d175) (double rate_hz)const | Set rate to 'IMU' updates.
 void | [set_rate_unix_epoch_time_async](#classmavsdk_1_1_telemetry_1a74b18cd8a5faed4d46b244db0a6e3c50) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'unix epoch time' updates.
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_unix_epoch_time](#classmavsdk_1_1_telemetry_1a340ac34547672ee07131bca34cbbb820) (double rate_hz)const | Set rate to 'unix epoch time' updates.
+void | [set_rate_distance_sensor_async](#classmavsdk_1_1_telemetry_1a0371c470866b539b3aa1e254c974aa43) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'Distance Sensor' updates.
+[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_distance_sensor](#classmavsdk_1_1_telemetry_1a7f536359536478691d7db980ffe49e49) (double rate_hz)const | Set rate to 'Distance Sensor' updates.
 const [Telemetry](classmavsdk_1_1_telemetry.md) & | [operator=](#classmavsdk_1_1_telemetry_1a703ac978c925be8806921925cf16aca9) (const [Telemetry](classmavsdk_1_1_telemetry.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -209,12 +217,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto telemetry = std::make_shared<Telemetry>(system);
+auto telemetry = Telemetry(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Telemetry() {#classmavsdk_1_1_telemetry_1af78f18fbb117c82d5ffe21e015535067}
+```cpp
+mavsdk::Telemetry::Telemetry(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto telemetry = Telemetry(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Telemetry() {#classmavsdk_1_1_telemetry_1a1db31974e0ea6ea9a530d68783566ab1}
 ```cpp
@@ -225,18 +251,18 @@ mavsdk::Telemetry::~Telemetry()
 Destructor (internal use only).
 
 
-### Telemetry() {#classmavsdk_1_1_telemetry_1ad2bbcfbf06add4067bdc42bf239b6ecb}
+### Telemetry() {#classmavsdk_1_1_telemetry_1ad734f199b82a9928c63230676c9789e9}
 ```cpp
-mavsdk::Telemetry::Telemetry(const Telemetry &)=delete
+mavsdk::Telemetry::Telemetry(const Telemetry &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Telemetry](classmavsdk_1_1_telemetry.md)&  - 
+* const [Telemetry](classmavsdk_1_1_telemetry.md)& **other** - 
 
 ## Member Typdef Documentation
 
@@ -511,6 +537,16 @@ using mavsdk::Telemetry::UnixEpochTimeCallback =  std::function<void(uint64_t)>
 Callback type for subscribe_unix_epoch_time.
 
 
+### typedef DistanceSensorCallback {#classmavsdk_1_1_telemetry_1aacfdb5e2cce7f3f77c68b36f020ed1f2}
+
+```cpp
+using mavsdk::Telemetry::DistanceSensorCallback =  std::function<void(DistanceSensor)>
+```
+
+
+Callback type for subscribe_distance_sensor.
+
+
 ## Member Enumeration Documentation
 
 
@@ -563,9 +599,14 @@ Status types.
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a4059b0251f66a18cb56f544728796875"></span> `Info` | Information or other. 
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8aa603905470e2a5b8c13e96b579ef0dba"></span> `Debug` | Debug. 
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a4059b0251f66a18cb56f544728796875"></span> `Info` | Information. 
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a24efa7ee4511563b16144f39706d594f"></span> `Notice` | Notice. 
 <span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a0eaadb4fcb48a0a0ed7bc9868be9fbaa"></span> `Warning` | Warning. 
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a902b0d55fddef6f8d651fe1035b7d4bd"></span> `Error` | Error. 
 <span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8a278d01e5af56273bae1bb99a98b370cd"></span> `Critical` | Critical. 
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8ab92071d61c88498171928745ca53078b"></span> `Alert` | Alert. 
+<span id="classmavsdk_1_1_telemetry_1ada3ebb336abad223a98bc2a625e0e7d8aa3fa706f20bc0b7858b7ae6932261940"></span> `Emergency` | Emergency. 
 
 ### enum LandedState {#classmavsdk_1_1_telemetry_1ac6639935bc3b35b1da553cde41e8f046}
 
@@ -1276,6 +1317,32 @@ Poll for 'uint64_t' (blocking).
 
 &emsp;uint64_t - One uint64_t update.
 
+### subscribe_distance_sensor() {#classmavsdk_1_1_telemetry_1a74654313a3f588f252012ee6412e9342}
+```cpp
+void mavsdk::Telemetry::subscribe_distance_sensor(DistanceSensorCallback callback)
+```
+
+
+Subscribe to 'Distance Sensor' updates.
+
+
+**Parameters**
+
+* [DistanceSensorCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1aacfdb5e2cce7f3f77c68b36f020ed1f2) **callback** - 
+
+### distance_sensor() {#classmavsdk_1_1_telemetry_1aa01828c0ffcb4727b884ffeae8fef59a}
+```cpp
+DistanceSensor mavsdk::Telemetry::distance_sensor() const
+```
+
+
+Poll for '[DistanceSensor](structmavsdk_1_1_telemetry_1_1_distance_sensor.md)' (blocking).
+
+
+**Returns**
+
+&emsp;[DistanceSensor](structmavsdk_1_1_telemetry_1_1_distance_sensor.md) - One [DistanceSensor](structmavsdk_1_1_telemetry_1_1_distance_sensor.md) update.
+
 ### set_rate_position_async() {#classmavsdk_1_1_telemetry_1ad7e5b576edb9398c8f5f2f14626b984a}
 ```cpp
 void mavsdk::Telemetry::set_rate_position_async(double rate_hz, const ResultCallback callback)
@@ -1861,6 +1928,39 @@ Result mavsdk::Telemetry::set_rate_unix_epoch_time(double rate_hz) const
 Set rate to 'unix epoch time' updates.
 
 This function is blocking. See 'set_rate_unix_epoch_time_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### set_rate_distance_sensor_async() {#classmavsdk_1_1_telemetry_1a0371c470866b539b3aa1e254c974aa43}
+```cpp
+void mavsdk::Telemetry::set_rate_distance_sensor_async(double rate_hz, const ResultCallback callback)
+```
+
+
+Set rate to 'Distance Sensor' updates.
+
+This function is non-blocking. See 'set_rate_distance_sensor' for the blocking counterpart.
+
+**Parameters**
+
+* double **rate_hz** - 
+* const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) **callback** - 
+
+### set_rate_distance_sensor() {#classmavsdk_1_1_telemetry_1a7f536359536478691d7db980ffe49e49}
+```cpp
+Result mavsdk::Telemetry::set_rate_distance_sensor(double rate_hz) const
+```
+
+
+Set rate to 'Distance Sensor' updates.
+
+This function is blocking. See 'set_rate_distance_sensor_async' for the non-blocking counterpart.
 
 **Parameters**
 

@@ -24,8 +24,9 @@ std::function< void([Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Action](#classmavsdk_1_1_action_1a5e2a4d65f85d821be691a837453e56ee) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [Action](#classmavsdk_1_1_action_1a4359d18e02bca100175cd00fab814550) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Action](#classmavsdk_1_1_action_1a20428abedfcd9fe413e16d2398ff99b4) () | Destructor (internal use only).
-&nbsp; | [Action](#classmavsdk_1_1_action_1a890855f6b3350166a9b0d191e322526b) (const [Action](classmavsdk_1_1_action.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [Action](#classmavsdk_1_1_action_1a99fc1d6fc90af15a93bb270b0279a095) (const [Action](classmavsdk_1_1_action.md) & other) | Copy constructor.
 void | [arm_async](#classmavsdk_1_1_action_1a570a3799ca5dbbf8aab30ce465687796) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to arm the drone.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [arm](#classmavsdk_1_1_action_1a3ee123973982842f46a9f8b6cb952566) () const | Send command to arm the drone.
 void | [disarm_async](#classmavsdk_1_1_action_1a3107f7f5a2f4a478024667f187f8f2aa) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to disarm the drone.
@@ -38,6 +39,8 @@ void | [reboot_async](#classmavsdk_1_1_action_1a32cfcc71a00afc28f43d2a22c319618c
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [reboot](#classmavsdk_1_1_action_1a7f1e1911ca234e5572b3162a45d83c5d) () const | Send command to reboot the drone components.
 void | [shutdown_async](#classmavsdk_1_1_action_1a1658a5499c61c46340428bb819453615) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to shut down the drone components.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [shutdown](#classmavsdk_1_1_action_1a44522a60732d3968831f0cf6097c5360) () const | Send command to shut down the drone components.
+void | [terminate_async](#classmavsdk_1_1_action_1a47536c4a4bc8367ccd30a92eb09781c5) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to terminate the drone.
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [terminate](#classmavsdk_1_1_action_1a4183edd722a8a60d281c882a90723b99) () const | Send command to terminate the drone.
 void | [kill_async](#classmavsdk_1_1_action_1a78c1f15c3b190ba94793045621819e69) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to kill the drone.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [kill](#classmavsdk_1_1_action_1af40fc1ddf588b3796134a9303ebc3667) () const | Send command to kill the drone.
 void | [return_to_launch_async](#classmavsdk_1_1_action_1abe5bd426de588b246644ee3ddb12517d) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to return to the launch (takeoff) position and land.
@@ -77,12 +80,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto action = std::make_shared<Action>(system);
+auto action = Action(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### Action() {#classmavsdk_1_1_action_1a4359d18e02bca100175cd00fab814550}
+```cpp
+mavsdk::Action::Action(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto action = Action(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~Action() {#classmavsdk_1_1_action_1a20428abedfcd9fe413e16d2398ff99b4}
 ```cpp
@@ -93,18 +114,18 @@ mavsdk::Action::~Action()
 Destructor (internal use only).
 
 
-### Action() {#classmavsdk_1_1_action_1a890855f6b3350166a9b0d191e322526b}
+### Action() {#classmavsdk_1_1_action_1a99fc1d6fc90af15a93bb270b0279a095}
 ```cpp
-mavsdk::Action::Action(const Action &)=delete
+mavsdk::Action::Action(const Action &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [Action](classmavsdk_1_1_action.md)&  - 
+* const [Action](classmavsdk_1_1_action.md)& **other** - 
 
 ## Member Typdef Documentation
 
@@ -381,6 +402,40 @@ This will shut down the autopilot, onboard computer, camera and gimbal. This com
 
 
 This function is blocking. See 'shutdown_async' for the non-blocking counterpart.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
+
+### terminate_async() {#classmavsdk_1_1_action_1a47536c4a4bc8367ccd30a92eb09781c5}
+```cpp
+void mavsdk::Action::terminate_async(const ResultCallback callback)
+```
+
+
+Send command to terminate the drone.
+
+This will run the terminate routine as configured on the drone (e.g. disarm and open the parachute).
+
+
+This function is non-blocking. See 'terminate' for the blocking counterpart.
+
+**Parameters**
+
+* const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) **callback** - 
+
+### terminate() {#classmavsdk_1_1_action_1a4183edd722a8a60d281c882a90723b99}
+```cpp
+Result mavsdk::Action::terminate() const
+```
+
+
+Send command to terminate the drone.
+
+This will run the terminate routine as configured on the drone (e.g. disarm and open the parachute).
+
+
+This function is blocking. See 'terminate_async' for the non-blocking counterpart.
 
 **Returns**
 

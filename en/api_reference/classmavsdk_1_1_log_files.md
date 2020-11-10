@@ -30,8 +30,9 @@ std::function< void([LogFiles::Result](classmavsdk_1_1_log_files.md#classmavsdk_
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1a4a487863501b7ef30db5179bebc45a3a) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+&nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1ad42b07d8ef2f70f63ded5e5e3825f837) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~LogFiles](#classmavsdk_1_1_log_files_1a051ae59e72ddb9be39f128592604ded6) () | Destructor (internal use only).
-&nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1aa7edd3ce17708f6be95a1c9d4acf1757) (const [LogFiles](classmavsdk_1_1_log_files.md) &)=delete | Copy constructor (object is not copyable).
+&nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1ae09021cd080dc45f63019ea76968801f) (const [LogFiles](classmavsdk_1_1_log_files.md) & other) | Copy constructor.
 void | [get_entries_async](#classmavsdk_1_1_log_files_1a6a922097850fb43fbb9d3348fe0b3bb7) (const [GetEntriesCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0bb101777daba9e87cb33baf55389403) callback) | Get List of log files.
 std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [LogFiles::Entry](structmavsdk_1_1_log_files_1_1_entry.md) > > | [get_entries](#classmavsdk_1_1_log_files_1ab06a17009589c57aa90ac31a24aa9064) () const | Get List of log files.
 void | [download_log_file_async](#classmavsdk_1_1_log_files_1a2db94afd60d6211cfbdb17c1092476d5) (uint32_t id, std::string path, [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3) callback) | Download log file.
@@ -52,12 +53,30 @@ Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.m
 The plugin is typically created as shown below: 
 
 ```cpp
-auto log_files = std::make_shared<LogFiles>(system);
+auto log_files = LogFiles(system);
 ```
 
 **Parameters**
 
 * [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+
+### LogFiles() {#classmavsdk_1_1_log_files_1ad42b07d8ef2f70f63ded5e5e3825f837}
+```cpp
+mavsdk::LogFiles::LogFiles(std::shared_ptr< System > system)
+```
+
+
+Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+
+The plugin is typically created as shown below: 
+
+```cpp
+auto log_files = LogFiles(system);
+```
+
+**Parameters**
+
+* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
 ### ~LogFiles() {#classmavsdk_1_1_log_files_1a051ae59e72ddb9be39f128592604ded6}
 ```cpp
@@ -68,18 +87,18 @@ mavsdk::LogFiles::~LogFiles()
 Destructor (internal use only).
 
 
-### LogFiles() {#classmavsdk_1_1_log_files_1aa7edd3ce17708f6be95a1c9d4acf1757}
+### LogFiles() {#classmavsdk_1_1_log_files_1ae09021cd080dc45f63019ea76968801f}
 ```cpp
-mavsdk::LogFiles::LogFiles(const LogFiles &)=delete
+mavsdk::LogFiles::LogFiles(const LogFiles &other)
 ```
 
 
-Copy constructor (object is not copyable).
+Copy constructor.
 
 
 **Parameters**
 
-* const [LogFiles](classmavsdk_1_1_log_files.md)&  - 
+* const [LogFiles](classmavsdk_1_1_log_files.md)& **other** - 
 
 ## Member Typdef Documentation
 
