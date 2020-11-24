@@ -62,7 +62,7 @@ apt-get install clang-format-9
 
 The following general guidelines should be used for all code:
 
-* C++11 is encouraged to allow developers to use C++11 features and the standard library.
+* C++17 is encouraged to allow developers to use C++17 features and the standard library.
   Examples:
 
   * [`std::function`](http://en.cppreference.com/w/cpp/utility/functional/function) and [lambda expressions](http://en.cppreference.com/w/cpp/language/lambda)
