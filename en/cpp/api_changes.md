@@ -42,7 +42,7 @@ std::promise<void> discover_promise;
 auto discover_future = discover_promise.get_future();
 
 mavsdk.register_on_discover([&discover_promise](uint64_t uuid) {
-    std::cout << "Discovered system with UUID: " << uuid << std::endl;
+    std::cout << "Discovered system with UUID: " << uuid << '\n';
     discover_promise.set_value();
 });
 
@@ -67,9 +67,9 @@ To be notified about a system timing out later, or being discovered again, you c
 ```cpp
 system->subscribe_is_connected([](bool is_connected) {
     if (is_connected) {
-        std::cout << "System has been discovered" << std::endl;
+        std::cout << "System has been discovered" << '\n';
     } else {
-        std::cout << "System has timed out" << std::endl;
+        std::cout << "System has timed out" << '\n';
     }
 });
 ```
