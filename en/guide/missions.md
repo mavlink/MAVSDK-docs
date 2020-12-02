@@ -1,9 +1,9 @@
 # Missions
 
-The Mission API (plugin) allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions. 
+The Mission API (plugin) allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions.
 Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
-Missions are *managed* though the [Mission](../api_reference/classmavsdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc. 
+Missions are *managed* though the [Mission](../api_reference/classmavsdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc.
 The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects.
 
 
@@ -25,7 +25,7 @@ Additionally, the following commands are supported only for mission import/downl
 * [MAV_CMD_NAV_LAND](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_LAND)
 * [MAV_CMD_NAV_TAKEOFF](https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_TAKEOFF)
 
-> **Tip** The Mission API does not (at time of writing) provide explicit functionality to "repeat", takeoff, return to land etc. 
+> **Tip** The Mission API does not (at time of writing) provide explicit functionality to "repeat", takeoff, return to land etc.
 > The SDK provides some omitted functionality through the [Action](../guide/taking_off_landing.md) API.
 
 
@@ -36,37 +36,39 @@ Additionally, the following commands are supported only for mission import/downl
 
 The main steps are:
 
-1. Link the plugin library into your application. 
+1. Link the plugin library into your application.
    Do this by adding `mavsdk_mission` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
+   find_package(MAVSDK REQUIRED)
+
    target_link_libraries(your_application_name
-     mavsdk
+     MAVSDK::mavsdk
      ...
-     mavsdk_mission
+     MAVSDK::mavsdk_mission
      ...
    )
    ```
-1. [Create a connection](../guide/connections.md) to a `system`. 
+1. [Create a connection](../guide/connections.md) to a `system`.
    For example (basic code without error checking):
    ```
    #include <mavsdk/mavsdk.h>
-   Mavsdk dc;
-   ConnectionResult conn_result = dc.add_udp_connection();
+   Mavsdk mavsdk;
+   ConnectionResult conn_result = mavsdk.add_udp_connection();
    // Wait for the system to connect via heartbeat
-   while (!dc.is_connected()) {
+   while (mavsdk.system().size() == 0) {
       sleep_for(seconds(1));
    }
    // System got discovered.
-   System &system = dc.system();
+   System system = mavsdk.systems()[0];
    ```
-1. Create a shared pointer to an instance of `Mission` instantiated with the `system`: 
+1. Create an instance of `Mission` with the `system`:
    ```
    #include <mavsdk/plugins/mission/mission.h>
-   auto mission = std::make_shared<Mission>(system);
+   auto mission = Mission{system};
    ```
 
-The `mission` pointer can then used to access the plugin API (as shown in the following sections).
+The `mission` object can then used to access the plugin API (as shown in the following sections).
 
 
 ## Defining a Mission
@@ -76,7 +78,7 @@ A mission must be defined as a vector of [MissionItem](../api_reference/structma
 std::vector<std::shared_ptr<MissionItem>> mission_items;
 ```
 
-You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector. 
+You can create as many `MissionItem` objects as you like and use `std_vector::push_back()` to add them to the back of the mission item vector.
 The example below shows how to create and add a `MissionItem` that sets the target position.
 ```cpp
 // Create MissionItem and set its position
@@ -103,23 +105,23 @@ new_item2->gimbal_yaw_deg = 60.0f;
 new_item2->camera_action = MissionItem::CameraAction::TakePhoto;
 new_item2->loiter_time_s = 1.0f;
 new_item2->camera_photo_interval_s =  1.0f;
-	
+
 //Add new_item2 to the vector
 mission_items.push_back(new_item2);
 ```
 
-> **Note** The autopilot has sensible default values for the attributes. 
+> **Note** The autopilot has sensible default values for the attributes.
   If you do set a value (e.g. the desired speed) then it will be the default for the remainder of the mission.
 
 <span></span>
-> **Note** There are also getter methods for querying the current value of `MissionItem` attributes. 
+> **Note** There are also getter methods for querying the current value of `MissionItem` attributes.
   The default values of most fields are `NaN` (which means they are ignored/not sent).
 
 The mission (`mission_items`) can then be uploaded as shown in the section [Uploading a Mission](#uploading_mission) below.
 
 ### Convenience Function
 
-The [Fly Mission](../examples/fly_mission.md) uses a convenience function to create `MissionItem` objects. 
+The [Fly Mission](../examples/fly_mission.md) uses a convenience function to create `MissionItem` objects.
 Using this approach you have to specify every attribute for every mission item, whether or not the value is actually used.
 
 The definition and use of this function is shown below:
@@ -169,89 +171,71 @@ The mission (`mission_items`) can then be uploaded as shown in the section [Uplo
 
 Use [Mission::upload_mission()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a38274b1c1509375a182c44711ee9f7b1) to upload the mission defined in the previous section.
 
-The example below shows how this is done, using promises to wait on the result.
+The example below shows how this is done.
 
 ```cpp
 // ... declare and populate the mission vector: mission_items
 
 {
-    std::cout << "Uploading mission..." << std::endl;
-    // We only have the upload_mission function asynchronous for now, so we wrap it using
-    // std::future.
-    auto prom = std::make_shared<std::promise<Mission::Result>>();
-    auto future_result = prom->get_future();
+    std::cout << "Uploading mission..." << '\n';
     Mission::MissionPlan mission_plan{};
     mission_plan.mission_items = mission_items;
-    mission->upload_mission_async(
-        mission_plan, [prom](Mission::Result result) { prom->set_value(result); });
+    const Mission::Result result = mission.upload_mission(
+        mission_plan);
 
-    const Mission::Result result = future_result.get();
     if (result != Mission::Result::Success) {
-        std::cout << "Mission upload failed (" << result << "), exiting." << std::endl;
+        std::cout << "Mission upload failed (" << result << "), exiting." << '\n';
         return 1;
     }
-    std::cout << "Mission uploaded." << std::endl;
+    std::cout << "Mission uploaded." << '\n';
 }
 ```
 
-## Starting/Pausing Missions 
+## Starting/Pausing Missions
 
-Start or resume a paused mission using [Mission::start_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a31ca2fc6b9fe4802dbc3fbebad0bb5d7).
+Start or resume a paused mission using [Mission::start_mission](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a927fecc7734810d01cc218153780e6e3).
 The vehicle must already have a mission (the mission need not have been uploaded using the SDK).
 
-The code fragment below shows how this is done, using promises to wait on the result.
+The code fragment below shows how this is done.
 
 ```cpp
 {
-    auto prom = std::make_shared<std::promise<Mission::Result>>();
-    auto future_result = prom->get_future();
-    mission->start_mission_async(
-    [prom](Mission::Result result) {
-        prom->set_value(result);
-    });
+    const Mission::Result result = mission.start_mission();
 
-    const Mission::Result result = future_result.get(); //Wait on result
-    if (result != Mission::Result::SUCCESS) {
-        std::cout << "Mission start failed (" << Mission::result_str(result) << "), exiting." << std::endl;
+    if (result != Mission::Result::Success) {
+        std::cout << "Mission start failed (" << result << "), exiting." << '\n';
         return 1;
     }
-    std::cout << "Started mission." << std::endl;
+    std::cout << "Started mission." << '\n';
 }
 ```
 
-To pause a mission use [Mission::pause_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a4c5679369e215ef21901fc7ffe1ce32b). 
+To pause a mission use [Mission::pause_mission()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab569500d992d6d859c1c35052db07315).
 The code is almost exactly the same as for starting a mission:
 
 ```cpp
 {
-    auto prom = std::make_shared<std::promise<Mission::Result>>();
-    auto future_result = prom->get_future();
+    std::cout << "Pausing mission..." << '\n';
 
-    std::cout << "Pausing mission..." << std::endl;
-    mission->pause_mission_async(
-    [prom](Mission::Result result) {
-        prom->set_value(result);
-    });
-
-    const Mission::Result result = future_result.get();
-    if (result != Mission::Result::SUCCESS) {
-        std::cout << "Failed to pause mission (" << Mission::result_str(result) << ")" << std::endl;
+    const Mission::Result result = mission.pause_mission();
+    if (result != Mission::Result::Success) {
+        std::cout << "Failed to pause mission (" << result << ")" << '\n';
     } else {
-        std::cout << "Mission paused." << std::endl;
+        std::cout << "Mission paused." << '\n';
     }
 }
 ```
 
 ## Monitoring Progress
 
-Asynchronously monitor progress using [Mission::subscribe_mission_progress()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a6dd32b92e593c1a692fe59e5bfb670fb), 
+Asynchronously monitor progress using [Mission::subscribe_mission_progress()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a6dd32b92e593c1a692fe59e5bfb670fb),
 which receives a regular callback with the current `MissionItem` number and the total number of items.
 
-The code fragment just takes a lambda function that reports the current status. 
+The code fragment just takes a lambda function that reports the current status.
 
 ```cpp
-mission->subscribe_mission_progress( [](Mission::MissionProgress mission_progress)) {
-       std::cout << "Mission status update: " << mission_progress.current << " / " << mission_progress.total << std::endl;
+mission.subscribe_mission_progress( [](Mission::MissionProgress mission_progress)) {
+       std::cout << "Mission status update: " << mission_progress.current << " / " << mission_progress.total << '\n';
     });
 ```
 
@@ -264,10 +248,10 @@ The following synchronous methods is also available for checking mission progres
 
 ## Taking Off, Landing, Returning
 
-If using a copter or VTOL vehicle then PX4 will automatically takeoff when it is armed and a mission is started (even without a takeoff mission item). 
+If using a copter or VTOL vehicle then PX4 will automatically takeoff when it is armed and a mission is started (even without a takeoff mission item).
 For Fixed Wing vehicles the vehicle must be launched before starting a mission.
 
-At time of writing the Mission API does not provide takeoff, land or "return to launch" `MissionItems`. 
+At time of writing the Mission API does not provide takeoff, land or "return to launch" `MissionItems`.
 If required you can instead use the appropriate commands in the [Action](../guide/taking_off_landing.md) class.
 
 <!-- Update if we get new mission items -->
@@ -277,43 +261,24 @@ If required you can instead use the appropriate commands in the [Action](../guid
 Use [Mission::download_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a04e7e7074273b4591a820894c5c4ad43) to download a mission from the vehicle.
 The mission is downloaded as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects, that you can then view or manipulate as required.
 
-> **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands). 
-> Missions created using *QGroundControl* are not guaranteed to successfully download! 
+> **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands).
+> Missions created using *QGroundControl* are not guaranteed to successfully download!
 
 The code fragment below shows how to download a mission:
 
 ```cpp
 {
-    std::cout << "Downloading mission." << std::endl;
+    std::cout << "Downloading mission." << '\n';
+    std::pair<Result, Mission::MissionPlan> result = mission.download_mission();
 
-    // Wrap download_mission_async() function using std::future.
-    struct PromiseResult {
-        Mission::Result mission_result;
-        std::vector<std::shared_ptr<MissionItem>> mission_items;
-    };
-
-    auto prom = std::make_shared<std::promise<PromiseResult>>();
-    auto future = prom->get_future();
-
-    mission->download_mission_async(
-        [prom](Mission::Result result, std::vector<std::shared_ptr<MissionItem>> mission_items_downloaded) {
-            PromiseResult promise_result {};
-            promise_result.mission_result = result;
-            promise_result.mission_items = mission_items_downloaded;
-            prom->set_value(promise_result);
-    });
-
-    PromiseResult promise_result = future.get();
-
-    if (promise_result.mission_result != Mission::Result::SUCCESS) {
-        std::cout << "Mission download failed (" << Mission::result_str(promise_result.mission_result) 
-            << "), exiting." << std::endl;
+    if (result.first != Mission::Result::Success) {
+        std::cout << "Mission download failed (" << result.first << "), exiting." << '\n';
         return 1;
     }
 
-    std::cout << "Mission downloaded (MissionItems: " 
-        << promise_result.mission_items.size() 
-        << ")" << std::endl;
+    std::cout << "Mission downloaded (MissionItems: "
+        << result.second.mission_items.size()
+        << ")" << '\n';
 }
 ```
 
@@ -328,8 +293,8 @@ The code fragment below shows how to download a mission:
   * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission.cpp)
   * [mission_cancellation.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_cancellation.cpp)
   * [mission_change_speed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_change_speed.cpp)
-  * [mission_raw_mission_changed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_raw_mission_changed.cpp)  
+  * [mission_raw_mission_changed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_raw_mission_changed.cpp)
   * [mission_rtl.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_rtl.cpp)
-  * [mission_transfer_lossy.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_transfer_lossy.cpp)  
+  * [mission_transfer_lossy.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_transfer_lossy.cpp)
 * Unit Tests:
   * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/mission_import_qgc_test.cpp)

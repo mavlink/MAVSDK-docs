@@ -24,7 +24,7 @@ MAVSDK APIs do not raise exceptions! Instead, methods that can fail return succe
 > **Tip** The error code usually reflects acknowledgment from the vehicle that it will perform the requested action (or not).
   The operation itself may not yet have completed (e.g. taking off).
 
-The various classes also all provide operators for getting human readable strings from their associated result enum.
+The various classes also all provide stream operators for getting human readable strings from their associated result enum.
 You can see how these are used in the example code.
 
 ## Callbacks

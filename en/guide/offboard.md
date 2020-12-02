@@ -1,6 +1,6 @@
 # Offboard Control
 
-The [Offboard](../api_reference/classmavsdk_1_1_offboard.md) SDK plugin provides a simple API for controlling the vehicle using velocity and yaw setpoints.
+The [Offboard](../api_reference/classmavsdk_1_1_offboard.md) MAVSDK plugin provides a simple API for controlling the vehicle using velocity and yaw setpoints.
 It is useful for tasks requiring direct control from a companion computer; for example to implement collision avoidance.
 
 > **Note** The API uses the PX4 [Offboard flight mode](https://docs.px4.io/master/en/flight_modes/offboard.html).
@@ -8,7 +8,7 @@ It is useful for tasks requiring direct control from a companion computer; for e
 
 Client code must specify a setpoint before starting *Offboard mode*.
 The Offboard plugin automatically resends setpoints at 20Hz (PX4 requires that setpoints are minimally resent at 2Hz).
-If more precise control is required, clients can call the setpoint methods at whatever rate is required.
+If more precise control is required, clients can call the setpoint methods at whatever rate is required or whenever an updated setpoint is available.
 
 
 ## Create the Plugin
@@ -22,29 +22,31 @@ The main steps are:
    Do this by adding `mavsdk_offboard` to the `target_link_libraries` section of the app's *cmake* build definition file
 
    ```cmake
+   find_package(MAVSDK REQUIRED)
+
    target_link_libraries(your_application_name
-     mavsdk
+     MAVSDK::mavsdk
      ...
-     mavsdk_offboard
+     MAVSDK::mavsdk_offboard
      ...
    )
    ```
 1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
    #include <mavsdk/mavsdk.h>
-   Mavsdk dc;
-   ConnectionResult conn_result = dc.add_udp_connection();
+   Mavsdk mavsdk;
+   ConnectionResult conn_result = mavsdk.add_udp_connection();
    // Wait for the system to connect via heartbeat
-   while (!dc.is_connected()) {
+   while (mavsdk.system().size() == 0) {
       sleep_for(seconds(1));
    }
    // System got discovered.
-   System &system = dc.system();
+   System system = mavsdk.systems()[0];
    ```
 1. Create a shared pointer to an instance of `Offboard` instantiated with the `system`:
    ```
    #include <mavsdk/plugins/offboard/offboard.h>
-   auto offboard = std::make_shared<Offboard>(system);
+   auto offboard = Offboard{system};
    ```
 
 The `offboard` pointer can then used to access the plugin API (as shown in the following sections).
@@ -58,12 +60,12 @@ After you have created a setpoint call [start()](../api_reference/classmavsdk_1_
 
 ```cpp
 // Create a setpoint before starting offboard mode (in this case a null setpoint)
-offboard->set_velocity_body({0.0f, 0.0f, 0.0f, 0.0f});
+offboard.set_velocity_body({0.0f, 0.0f, 0.0f, 0.0f});
 
 // Start offboard mode.
-Offboard::Result offboard_result = offboard->start();
+Offboard::Result offboard_result = offboard.start();
 if (result != Offboard::Result::Success) {
-        std::cerr << "Offboard::start() failed: " << offboard_result << std::endl;
+        std::cerr << "Offboard::start() failed: " << offboard_result << '\n';
     }
 ```
 
@@ -78,9 +80,9 @@ The synchronous API is used as shown below:
 
 ```cpp
 //Stop offboard mode
-offboard_result = offboard->stop();
+offboard_result = offboard.stop();
 if (result != Offboard::Result::Success) {
-        std::cerr << "Offboard::stop() failed: " << offboard_result << std::endl;
+        std::cerr << "Offboard::stop() failed: " << offboard_result << '\n';
     }
 ```
 
@@ -109,11 +111,11 @@ Examples:
 
 * Head North at 3 m/s:
   ```cpp
-  offboard->set_velocity_ned({3.0f, 0.0f, 0.0f, 0.0f});
+  offboard.set_velocity_ned({3.0f, 0.0f, 0.0f, 0.0f});
   ```
 * Head North-West with 5 m/s on each velocity component (notice that a negative value is required on the `east_m_s` value to move West):
   ```cpp
-  offboard->set_velocity_ned({5.0f, -5.0f, 0.0f, 0.0f});
+  offboard.set_velocity_ned({5.0f, -5.0f, 0.0f, 0.0f});
   ```
 
 
@@ -126,11 +128,11 @@ Examples:
 
 * Go *up* at 2 m/s (note, negative value to go up!):
   ```cpp
-  offboard->set_velocity_ned({0.0f, 0.0f, -2.0f, 0.0f});
+  offboard.set_velocity_ned({0.0f, 0.0f, -2.0f, 0.0f});
   ```
 * Go down at 3 m/s:
   ```cpp
-  offboard->set_velocity_body({0.0f, 0.0f, 3.0f, 0.0f});
+  offboard.set_velocity_body({0.0f, 0.0f, 3.0f, 0.0f});
   ```
 
 
@@ -145,11 +147,11 @@ the final (fourth) value is the yaw direction.
 Examples:
 * Turn to face West:
   ```cpp
-  offboard->set_velocity_ned({0.0f, 0.0f, 0.0f, 270.0f});
+  offboard.set_velocity_ned({0.0f, 0.0f, 0.0f, 270.0f});
   ```
 * Turn to face North:
   ```cpp
-  offboard->set_velocity_ned({0.0f, 0.0f, 0.0f, 0.0f});
+  offboard.set_velocity_ned({0.0f, 0.0f, 0.0f, 0.0f});
   ```
 
 It is not possible to control the rate or direction that the vehicle will use to turn towards the setpoint direction (it will turn in whatever direction reaches the setpoint fastest).
@@ -166,11 +168,11 @@ Examples:
 
 * Turn clock-wise at 60 degrees per second:
   ```cpp
-  offboard->set_velocity_body({0.0f, 0.0f, 0.0f, 60.0f});
+  offboard.set_velocity_body({0.0f, 0.0f, 0.0f, 60.0f});
   ```
 * Turn anti clock-wise at 5 degrees per second:
   ```cpp
-  offboard->set_velocity_body({0.0f, 0.0f, 0.0f, -5.0f});
+  offboard.set_velocity_body({0.0f, 0.0f, 0.0f, -5.0f});
   ```
 
 ### Fly Forwards
@@ -179,7 +181,7 @@ Use `set_velocity_body()` to set the velocity components relative to the body fr
 To fly forwards, simply set the first parameter (`Offboard::VelocityBodyYawspeed::forward_m_s`) when the vehicle is not rotating.
 
 ```cpp
-offboard->set_velocity_body({5.0f, 0.0f, 0.0f, 0.0f});
+offboard.set_velocity_body({5.0f, 0.0f, 0.0f, 0.0f});
 ```
 
 ### Fly a Circle
@@ -188,13 +190,13 @@ To fly a circle, use `set_velocity_body()` with both forward and rotational comp
 This will force the vehicle to travel in a curved path.
 
 ```cpp
-offboard->set_velocity_body({5.0f, 0.0f, 0.0f, 30.0f});
+offboard.set_velocity_body({5.0f, 0.0f, 0.0f, 30.0f});
 ```
 
 You can force the vehicle to fly sideways by using the (`Offboard::VelocityBodyYawspeed::right_m_s` value), and in the other direction by using a negative rotation value:
 ```cpp
 // Fly a circle sideways
-offboard->set_velocity_body({0.0f, -5.0f, 0.0f, -30.0f});
+offboard.set_velocity_body({0.0f, -5.0f, 0.0f, -30.0f});
 ```
 
 
