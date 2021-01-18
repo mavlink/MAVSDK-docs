@@ -38,8 +38,6 @@ Use `pip3` to install [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python#m
 ```bash
 pip3 install mavsdk
 ```
-> **Note** MAVSDK-Python is currently only available for Windows, macOS, and Linux x86_64.
-  It is not yet suppported for Linux ARM platfroms like RPi (see [MAVSDK-Python#117](https://github.com/mavlink/MAVSDK-Python/issues/117)).
 
   
 ## Swift (iOS) {#ios}
