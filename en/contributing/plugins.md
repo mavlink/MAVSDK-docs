@@ -173,7 +173,11 @@ Once the proto file has been created, you can generate all files required for th
 
 1. Run the configure step to prepare the tools required:
    ```
-   cmake -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
+   ```
+1. Install `protoc_gen_mavsdk` which is required for the auto-generation:
+   ```
+   pip3 install --user protoc_gen_mavsdk  # Or however you install pip packages
    ```
 1. Run the auto-generation:
    ```

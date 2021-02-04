@@ -165,17 +165,17 @@ Build for Android using the dockcross cross compiler, as described in the [cross
 To build for real iOS devices on macOS:
 
 ```sh
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=OS -Bbuild/ios -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=OS -Bbuild/ios -H.
 cmake --build build/ios
 ```
 
 Build for the iOS simulator on macOS:
 
 ```sh
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -H.
 ```
 
-> **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_BACKEND=ON`).
+> **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_MAVSDK_SERVER=ON`).
   This is required for contributors who want to *extend* the MAVSDK programming-language-specific libraries like [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), but is not required for developers who just want to *use* C++, *MAVSDK-Swift* or *MAVSDK-Python*.
 
 ## Building mavsdk_server {#build_mavsdk_server}
@@ -183,7 +183,7 @@ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -DCM
 The MAVSDK programming-language-specific libraries (e.g. [Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html), [Python](https://github.com/mavlink/MAVSDK-Python)) share a common backend (called "mavsdk_server").
 This may optionally be built as part of the C++ library.
 
-The cmake configuration step additionally depends on the `-DBUILD_BACKEND=ON` option.
+The cmake configuration step additionally depends on the `-DBUILD_MAVSDK_SERVER=ON` option.
 Otherwise the build is exactly the same as usual.
 
 > **Tip** When building mavsdk_server, we usually like to link all the dependencies statically, and therefore we set `-DBUILD_SHARED_LIBS=OFF` (or don't specify it, because the default is `OFF`).
@@ -195,7 +195,7 @@ To build mavsdk_server on Ubuntu:
 1. Navigate into the SDK directory and build the project
    ```
    cd MAVSDK
-   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
    cmake --build build/default
    ```
 
@@ -206,7 +206,7 @@ To build mavsdk_server on macOS:
 1. Navigate into the SDK directory and build the project
    ```
    cd MAVSDK
-   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
    cmake --build build/default
    ```
 
@@ -216,7 +216,7 @@ To build mavsdk_server on Windows:
 1. [Setup the C++ Library on Windows](#build_cpp_windows)
 1. Navigate into the SDK directory and build the project
    ```
-   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=OFF -DBUILD_BACKEND=ON -Bbuild/default -H.
+   cmake -G "Visual Studio 16 2019" -DBUILD_SHARED_LIBS=OFF -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
    cmake --build build/default
    ```
 
@@ -234,7 +234,7 @@ For example, use the commands below to build for `armv7`:
    cd MAVSDK
    docker run --rm dockcross/linux-armv7 > ./dockcross-linux-armv7
    chmod +x ./dockcross-linux-armv7
-   ./dockcross-linux-armv7 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_BACKEND=ON -DBUILD_SHARED_LIBS=OFF -Bbuild/linux-armv7 -S.
+   ./dockcross-linux-armv7 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -Bbuild/linux-armv7 -S.
    ./dockcross-linux-armv7 cmake --build build/linux-armv7 -j 8
    ```
 3. If all goes well, `mavsdk_server` is built. You can check the file with:
@@ -247,7 +247,7 @@ For example, use the commands below to build for `armv7`:
    cp build/linux-armv7/src/backend/src/mavsdk_server somewhere/else
    ```
 
-> **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_BACKEND=ON`).
+> **Note** The commands above build the [mavsdk_server](#build_mavsdk_server) (`-DBUILD_MAVSDK_SERVER=ON`).
   This is required for contributors who want to *extend* the MAVSDK programming-language-specific libraries like [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html).
   It is not required for developers who just want to *use* C++, *MAVSDK-Swift* or *MAVSDK-Python*.
 
