@@ -13,11 +13,11 @@ This section show how to install the MAVSDK C++ (core) library on various platfo
   ```
 - **Ubuntu:** Download the **.deb** file for your system from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) and install it using `dpkg`:
   ```
-  sudo dpkg -i mavsdk_0.24.0_ubuntu18.04_amd64.deb
+  sudo dpkg -i mavsdk_0.36.0_ubuntu18.04_amd64.deb
   ```
 - **Fedora:** Download the **.rpm** file for your system from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) and install it using `rpm`:
   ```
-  sudo rpm -U mavsdk-0.24.0-1.fc30-x86_64.rpm
+  sudo rpm -U mavsdk-0.36.0-1.fc30-x86_64.rpm
   ```
 - **Arch Linux:** Use `yay` to install the library from [AUR](https://aur.archlinux.org/packages/mavsdk/):
   ```yay
@@ -43,7 +43,6 @@ pip3 install mavsdk
 ## Swift (iOS) {#ios}
 
 [MAVSDK-Swift on GitHub](https://github.com/mavlink/MAVSDK-Swift) as well as the [reference docs](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html) should contain everything needed for iOS development of MAVSDK apps.
-
 
 
 ## Next Steps
