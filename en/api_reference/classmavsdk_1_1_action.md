@@ -12,6 +12,7 @@ Enable simple actions such as arming, taking off, and landing.
 
 Type | Description
 --- | ---
+enum [OrbitYawBehavior](#classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92) | Yaw behaviour during orbit flight.
 enum [Result](#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | Possible results returned for action requests.
 std::function< void([Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51))> [ResultCallback](#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) | Callback type for asynchronous [Action](classmavsdk_1_1_action.md) calls.
 std::function< void([Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float)> [GetTakeoffAltitudeCallback](#classmavsdk_1_1_action_1ad1ae6edb8ea375a3472ef14313b591e2) | Callback type for get_takeoff_altitude_async.
@@ -47,6 +48,8 @@ void | [return_to_launch_async](#classmavsdk_1_1_action_1abe5bd426de588b246644ee
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [return_to_launch](#classmavsdk_1_1_action_1afd7c225df0495b0947f00e7d2dd64877) () const | Send command to return to the launch (takeoff) position and land.
 void | [goto_location_async](#classmavsdk_1_1_action_1a6fd615e5571d6e7e3c53a79d2160ffc5) (double latitude_deg, double longitude_deg, float absolute_altitude_m, float yaw_deg, const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to move the vehicle to a specific global position.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [goto_location](#classmavsdk_1_1_action_1afb3546fa994357e491816f2032716818) (double latitude_deg, double longitude_deg, float absolute_altitude_m, float yaw_deg)const | Send command to move the vehicle to a specific global position.
+void | [do_orbit_async](#classmavsdk_1_1_action_1aac9a2ac57a6e8f734b25c2e6dc0729ba) (float radius_m, float velocity_ms, [OrbitYawBehavior](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92) yaw_behavior, double latitude_deg, double longitude_deg, double absolute_altitude_m, const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command do orbit to the drone.
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [do_orbit](#classmavsdk_1_1_action_1ac7447a86016bee3576643563079288b9) (float radius_m, float velocity_ms, [OrbitYawBehavior](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92) yaw_behavior, double latitude_deg, double longitude_deg, double absolute_altitude_m)const | Send command do orbit to the drone.
 void | [transition_to_fixedwing_async](#classmavsdk_1_1_action_1aa56181441cd64e092a8fb91a38c7c9fd) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to transition the drone to fixedwing.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [transition_to_fixedwing](#classmavsdk_1_1_action_1a8d5cf999a48ea3859ec75db27cf4fbda) () const | Send command to transition the drone to fixedwing.
 void | [transition_to_multicopter_async](#classmavsdk_1_1_action_1a8c109076641b5c9aa6dd78ea8b913529) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to transition the drone to multicopter.
@@ -172,6 +175,20 @@ Callback type for get_return_to_launch_altitude_async.
 
 ## Member Enumeration Documentation
 
+
+### enum OrbitYawBehavior {#classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92}
+
+
+Yaw behaviour during orbit flight.
+
+
+Value | Description
+--- | ---
+<span id="classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92a79d1fbff30d2eff041b71752c0bd3f49"></span> `HoldFrontToCircleCenter` | Vehicle front points to the center (default). 
+<span id="classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92afe072bbce18b07f94697b52cbe918cf5"></span> `HoldInitialHeading` | Vehicle front holds heading when message received. 
+<span id="classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92a3cbc75230c11ca34e25123273980f413"></span> `Uncontrolled` | Yaw uncontrolled. 
+<span id="classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92a03aac6c04bac9cc0876336d842763dd0"></span> `HoldFrontTangentToCircle` | Vehicle front follows flight path (tangential to circle). 
+<span id="classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92ac48baeef91367bc4132d164d920ff697"></span> `RcControlled` | Yaw controlled by RC input. 
 
 ### enum Result {#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51}
 
@@ -555,6 +572,55 @@ This function is blocking. See 'goto_location_async' for the non-blocking counte
 * double **longitude_deg** - 
 * float **absolute_altitude_m** - 
 * float **yaw_deg** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
+
+### do_orbit_async() {#classmavsdk_1_1_action_1aac9a2ac57a6e8f734b25c2e6dc0729ba}
+```cpp
+void mavsdk::Action::do_orbit_async(float radius_m, float velocity_ms, OrbitYawBehavior yaw_behavior, double latitude_deg, double longitude_deg, double absolute_altitude_m, const ResultCallback callback)
+```
+
+
+Send command do orbit to the drone.
+
+This will run the orbit routine with the given parameters.
+
+
+This function is non-blocking. See 'do_orbit' for the blocking counterpart.
+
+**Parameters**
+
+* float **radius_m** - 
+* float **velocity_ms** - 
+* [OrbitYawBehavior](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92) **yaw_behavior** - 
+* double **latitude_deg** - 
+* double **longitude_deg** - 
+* double **absolute_altitude_m** - 
+* const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) **callback** - 
+
+### do_orbit() {#classmavsdk_1_1_action_1ac7447a86016bee3576643563079288b9}
+```cpp
+Result mavsdk::Action::do_orbit(float radius_m, float velocity_ms, OrbitYawBehavior yaw_behavior, double latitude_deg, double longitude_deg, double absolute_altitude_m) const
+```
+
+
+Send command do orbit to the drone.
+
+This will run the orbit routine with the given parameters.
+
+
+This function is blocking. See 'do_orbit_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* float **radius_m** - 
+* float **velocity_ms** - 
+* [OrbitYawBehavior](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92) **yaw_behavior** - 
+* double **latitude_deg** - 
+* double **longitude_deg** - 
+* double **absolute_altitude_m** - 
 
 **Returns**
 

@@ -125,6 +125,7 @@ Value | Description
 <span id="classmavsdk_1_1_manual_control_1a6c7dbd25e051b6e1369a65fd05a22799a3398e12855176d55f43d53e04f472c8a"></span> `CommandDenied` | Command refused by vehicle. 
 <span id="classmavsdk_1_1_manual_control_1a6c7dbd25e051b6e1369a65fd05a22799ac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Request timed out. 
 <span id="classmavsdk_1_1_manual_control_1a6c7dbd25e051b6e1369a65fd05a22799a2add56a53420744e7e68e6a5e03e41bc"></span> `InputOutOfRange` | Input out of range. 
+<span id="classmavsdk_1_1_manual_control_1a6c7dbd25e051b6e1369a65fd05a22799a1368182b3469b603a554715a4dd81e50"></span> `InputNotSet` | No Input set. 
 
 ## Member Function Documentation
 

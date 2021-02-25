@@ -30,6 +30,8 @@ struct [EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md)
 
 struct [FixedwingMetrics](structmavsdk_1_1_telemetry_1_1_fixedwing_metrics.md)
 
+struct [GpsGlobalOrigin](structmavsdk_1_1_telemetry_1_1_gps_global_origin.md)
+
 struct [GpsInfo](structmavsdk_1_1_telemetry_1_1_gps_info.md)
 
 struct [GroundTruth](structmavsdk_1_1_telemetry_1_1_ground_truth.md)
@@ -98,6 +100,7 @@ std::function< void([Imu](structmavsdk_1_1_telemetry_1_1_imu.md))> [ImuCallback]
 std::function< void(bool)> [HealthAllOkCallback](#classmavsdk_1_1_telemetry_1a71cdcadfaa988dc14029e0b9fdbe742d) | Callback type for subscribe_health_all_ok.
 std::function< void(uint64_t)> [UnixEpochTimeCallback](#classmavsdk_1_1_telemetry_1a321c7d809ae8f56bb8a361d5e5ce6391) | Callback type for subscribe_unix_epoch_time.
 std::function< void([DistanceSensor](structmavsdk_1_1_telemetry_1_1_distance_sensor.md))> [DistanceSensorCallback](#classmavsdk_1_1_telemetry_1aacfdb5e2cce7f3f77c68b36f020ed1f2) | Callback type for subscribe_distance_sensor.
+std::function< void([Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75), [GpsGlobalOrigin](structmavsdk_1_1_telemetry_1_1_gps_global_origin.md))> [GetGpsGlobalOriginCallback](#classmavsdk_1_1_telemetry_1a350ee89a7e30a691e130e29ace8917ef) | Callback type for get_gps_global_origin_async.
 
 ## Public Member Functions
 
@@ -200,6 +203,8 @@ void | [set_rate_unix_epoch_time_async](#classmavsdk_1_1_telemetry_1a74b18cd8a5f
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_unix_epoch_time](#classmavsdk_1_1_telemetry_1a340ac34547672ee07131bca34cbbb820) (double rate_hz)const | Set rate to 'unix epoch time' updates.
 void | [set_rate_distance_sensor_async](#classmavsdk_1_1_telemetry_1a0371c470866b539b3aa1e254c974aa43) (double rate_hz, const [ResultCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a166e81c6573532978e5940eafdfcec0b) callback) | Set rate to 'Distance Sensor' updates.
 [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) | [set_rate_distance_sensor](#classmavsdk_1_1_telemetry_1a7f536359536478691d7db980ffe49e49) (double rate_hz)const | Set rate to 'Distance Sensor' updates.
+void | [get_gps_global_origin_async](#classmavsdk_1_1_telemetry_1a60cca43e2f87e3fd3a9e170ff2b64e0a) (const [GetGpsGlobalOriginCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a350ee89a7e30a691e130e29ace8917ef) callback) | Get the GPS location of where the estimator has been initialized.
+std::pair< [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75), [Telemetry::GpsGlobalOrigin](structmavsdk_1_1_telemetry_1_1_gps_global_origin.md) > | [get_gps_global_origin](#classmavsdk_1_1_telemetry_1a77747e7cea5a4d644bd6bec9441c7bfb) () const | Get the GPS location of where the estimator has been initialized.
 const [Telemetry](classmavsdk_1_1_telemetry.md) & | [operator=](#classmavsdk_1_1_telemetry_1a703ac978c925be8806921925cf16aca9) (const [Telemetry](classmavsdk_1_1_telemetry.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -545,6 +550,16 @@ using mavsdk::Telemetry::DistanceSensorCallback =  std::function<void(DistanceSe
 
 
 Callback type for subscribe_distance_sensor.
+
+
+### typedef GetGpsGlobalOriginCallback {#classmavsdk_1_1_telemetry_1a350ee89a7e30a691e130e29ace8917ef}
+
+```cpp
+using mavsdk::Telemetry::GetGpsGlobalOriginCallback =  std::function<void(Result, GpsGlobalOrigin)>
+```
+
+
+Callback type for get_gps_global_origin_async.
 
 
 ## Member Enumeration Documentation
@@ -1969,6 +1984,34 @@ This function is blocking. See 'set_rate_distance_sensor_async' for the non-bloc
 **Returns**
 
 &emsp;[Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75) - Result of request.
+
+### get_gps_global_origin_async() {#classmavsdk_1_1_telemetry_1a60cca43e2f87e3fd3a9e170ff2b64e0a}
+```cpp
+void mavsdk::Telemetry::get_gps_global_origin_async(const GetGpsGlobalOriginCallback callback)
+```
+
+
+Get the GPS location of where the estimator has been initialized.
+
+This function is non-blocking. See 'get_gps_global_origin' for the blocking counterpart.
+
+**Parameters**
+
+* const [GetGpsGlobalOriginCallback](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a350ee89a7e30a691e130e29ace8917ef) **callback** - 
+
+### get_gps_global_origin() {#classmavsdk_1_1_telemetry_1a77747e7cea5a4d644bd6bec9441c7bfb}
+```cpp
+std::pair<Result, Telemetry::GpsGlobalOrigin> mavsdk::Telemetry::get_gps_global_origin() const
+```
+
+
+Get the GPS location of where the estimator has been initialized.
+
+This function is blocking. See 'get_gps_global_origin_async' for the non-blocking counterpart.
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_telemetry.md#classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75), [Telemetry::GpsGlobalOrigin](structmavsdk_1_1_telemetry_1_1_gps_global_origin.md) > - Result of request.
 
 ### operator=() {#classmavsdk_1_1_telemetry_1a703ac978c925be8806921925cf16aca9}
 ```cpp

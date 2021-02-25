@@ -22,6 +22,8 @@ float [pitch_deg](#structmavsdk_1_1_telemetry_1_1_euler_angle_1ad1d95bc36e1993eb
 
 float [yaw_deg](#structmavsdk_1_1_telemetry_1_1_euler_angle_1a1607da7e9063a1dd3f3a9a0624bc53fc) { float(NAN)} - Yaw angle in degrees, positive is clock-wise seen from above.
 
+uint64_t [timestamp_us](#structmavsdk_1_1_telemetry_1_1_euler_angle_1a97a20080f84000960ad23f15cc9035e4) {} - Timestamp in microseconds.
+
 
 ## Field Documentation
 
@@ -54,4 +56,14 @@ float mavsdk::Telemetry::EulerAngle::yaw_deg { float(NAN)}
 
 
 Yaw angle in degrees, positive is clock-wise seen from above.
+
+
+### timestamp_us {#structmavsdk_1_1_telemetry_1_1_euler_angle_1a97a20080f84000960ad23f15cc9035e4}
+
+```cpp
+uint64_t mavsdk::Telemetry::EulerAngle::timestamp_us {}
+```
+
+
+Timestamp in microseconds.
 

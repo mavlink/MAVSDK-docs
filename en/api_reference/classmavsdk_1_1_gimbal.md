@@ -7,14 +7,21 @@
 Provide control over a gimbal. 
 
 
+## Data Structures
+
+
+struct [ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md)
+
 ## Public Types
 
 
 Type | Description
 --- | ---
 enum [GimbalMode](#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) | [Gimbal](classmavsdk_1_1_gimbal.md) mode type.
+enum [ControlMode](#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3) | Control mode.
 enum [Result](#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | Possible results returned for gimbal commands.
 std::function< void([Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac))> [ResultCallback](#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) | Callback type for asynchronous [Gimbal](classmavsdk_1_1_gimbal.md) calls.
+std::function< void([ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md))> [ControlCallback](#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62) | Callback type for subscribe_control.
 
 ## Public Member Functions
 
@@ -27,10 +34,18 @@ Type | Name | Description
 &nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1ae69df278ca37deaee22fb13053fd4f2d) (const [Gimbal](classmavsdk_1_1_gimbal.md) & other) | Copy constructor.
 void | [set_pitch_and_yaw_async](#classmavsdk_1_1_gimbal_1a325a49cc256359013cbc917b3576f292) (float pitch_deg, float yaw_deg, const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Set gimbal pitch and yaw angles.
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_pitch_and_yaw](#classmavsdk_1_1_gimbal_1ad65ba3258833fe78f2939b9b72dc3b88) (float pitch_deg, float yaw_deg)const | Set gimbal pitch and yaw angles.
+void | [set_pitch_rate_and_yaw_rate_async](#classmavsdk_1_1_gimbal_1a161b3f85cd9fa30439774ef47a10c51d) (float pitch_rate_deg_s, float yaw_rate_deg_s, const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Set gimbal angular rates around pitch and yaw axes.
+[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_pitch_rate_and_yaw_rate](#classmavsdk_1_1_gimbal_1a2ad12582d192d8594d7da315e2729129) (float pitch_rate_deg_s, float yaw_rate_deg_s)const | Set gimbal angular rates around pitch and yaw axes.
 void | [set_mode_async](#classmavsdk_1_1_gimbal_1ad69853994c134b0e88d0f94744254066) ([GimbalMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) gimbal_mode, const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Set gimbal mode.
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_mode](#classmavsdk_1_1_gimbal_1a037285883ceba14e0df9c7f8c19f4423) ([GimbalMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dca) gimbal_mode)const | Set gimbal mode.
 void | [set_roi_location_async](#classmavsdk_1_1_gimbal_1ab3c42a7042231e48dfab881030fe30c0) (double latitude_deg, double longitude_deg, float altitude_m, const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Set gimbal region of interest (ROI).
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_roi_location](#classmavsdk_1_1_gimbal_1a035ddc270efce19a9be54b98add57919) (double latitude_deg, double longitude_deg, float altitude_m)const | Set gimbal region of interest (ROI).
+void | [take_control_async](#classmavsdk_1_1_gimbal_1a331139df593e8ccef0f8ca7652f2d2bc) ([ControlMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3) control_mode, const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Take control.
+[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [take_control](#classmavsdk_1_1_gimbal_1a7dabe20d1bceb7031440fefba59cd707) ([ControlMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3) control_mode)const | Take control.
+void | [release_control_async](#classmavsdk_1_1_gimbal_1aa58402c4e2d9506dbe9839ef8cbfb920) (const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Release control.
+[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [release_control](#classmavsdk_1_1_gimbal_1ab994d4130b2956e2d33613ffb2127335) () const | Release control.
+void | [subscribe_control](#classmavsdk_1_1_gimbal_1a411ee29d7b8513758973ad8aeb4222ab) ([ControlCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62) callback) | Subscribe to control status updates.
+[ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md) | [control](#classmavsdk_1_1_gimbal_1aae172788140e37d6125b224f5e79829e) () const | Poll for '[ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md)' (blocking).
 const [Gimbal](classmavsdk_1_1_gimbal.md) & | [operator=](#classmavsdk_1_1_gimbal_1ac9a6e1936f58ce8f957be7c6bcc0d134) (const [Gimbal](classmavsdk_1_1_gimbal.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -108,6 +123,16 @@ using mavsdk::Gimbal::ResultCallback =  std::function<void(Result)>
 Callback type for asynchronous [Gimbal](classmavsdk_1_1_gimbal.md) calls.
 
 
+### typedef ControlCallback {#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62}
+
+```cpp
+using mavsdk::Gimbal::ControlCallback =  std::function<void(ControlStatus)>
+```
+
+
+Callback type for subscribe_control.
+
+
 ## Member Enumeration Documentation
 
 
@@ -121,6 +146,18 @@ Value | Description
 --- | ---
 <span id="classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dcaae370d3502f507d9c9ea57d6fd3c4ed7b"></span> `YawFollow` | Yaw follow will point the gimbal to the vehicle heading. 
 <span id="classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dcaaf0a46b0b7151dca1ab120e02b6e6663e"></span> `YawLock` | Yaw lock will fix the gimbal poiting to an absolute direction. 
+
+### enum ControlMode {#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3}
+
+
+Control mode.
+
+
+Value | Description
+--- | ---
+<span id="classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3a6adf97f83acf6453d4a6a4b1070f3754"></span> `None` | Indicates that the component does not have control over the gimbal. 
+<span id="classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3a074de7e7c226d5c60f8af14c20725352"></span> `Primary` | To take primary control over the gimbal. 
+<span id="classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3a0c7d6cf19426e01dcfa32434828ed266"></span> `Secondary` | To take secondary control over the gimbal. 
 
 ### enum Result {#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac}
 
@@ -175,6 +212,47 @@ This function is blocking. See 'set_pitch_and_yaw_async' for the non-blocking co
 
 * float **pitch_deg** - 
 * float **yaw_deg** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) - Result of request.
+
+### set_pitch_rate_and_yaw_rate_async() {#classmavsdk_1_1_gimbal_1a161b3f85cd9fa30439774ef47a10c51d}
+```cpp
+void mavsdk::Gimbal::set_pitch_rate_and_yaw_rate_async(float pitch_rate_deg_s, float yaw_rate_deg_s, const ResultCallback callback)
+```
+
+
+Set gimbal angular rates around pitch and yaw axes.
+
+This sets the desired angular rates around pitch and yaw axes of a gimbal. Will return when the command is accepted, however, it might take the gimbal longer to actually reach the angular rate.
+
+
+This function is non-blocking. See 'set_pitch_rate_and_yaw_rate' for the blocking counterpart.
+
+**Parameters**
+
+* float **pitch_rate_deg_s** - 
+* float **yaw_rate_deg_s** - 
+* const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) **callback** - 
+
+### set_pitch_rate_and_yaw_rate() {#classmavsdk_1_1_gimbal_1a2ad12582d192d8594d7da315e2729129}
+```cpp
+Result mavsdk::Gimbal::set_pitch_rate_and_yaw_rate(float pitch_rate_deg_s, float yaw_rate_deg_s) const
+```
+
+
+Set gimbal angular rates around pitch and yaw axes.
+
+This sets the desired angular rates around pitch and yaw axes of a gimbal. Will return when the command is accepted, however, it might take the gimbal longer to actually reach the angular rate.
+
+
+This function is blocking. See 'set_pitch_rate_and_yaw_rate_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* float **pitch_rate_deg_s** - 
+* float **yaw_rate_deg_s** - 
 
 **Returns**
 
@@ -261,6 +339,112 @@ This function is blocking. See 'set_roi_location_async' for the non-blocking cou
 **Returns**
 
 &emsp;[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) - Result of request.
+
+### take_control_async() {#classmavsdk_1_1_gimbal_1a331139df593e8ccef0f8ca7652f2d2bc}
+```cpp
+void mavsdk::Gimbal::take_control_async(ControlMode control_mode, const ResultCallback callback)
+```
+
+
+Take control.
+
+There can be only two components in control of a gimbal at any given time. One with "primary" control, and one with "secondary" control. The way the secondary control is implemented is not specified and hence depends on the vehicle.
+
+
+Components are expected to be cooperative, which means that they can override each other and should therefore do it carefully.
+
+
+This function is non-blocking. See 'take_control' for the blocking counterpart.
+
+**Parameters**
+
+* [ControlMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3) **control_mode** - 
+* const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) **callback** - 
+
+### take_control() {#classmavsdk_1_1_gimbal_1a7dabe20d1bceb7031440fefba59cd707}
+```cpp
+Result mavsdk::Gimbal::take_control(ControlMode control_mode) const
+```
+
+
+Take control.
+
+There can be only two components in control of a gimbal at any given time. One with "primary" control, and one with "secondary" control. The way the secondary control is implemented is not specified and hence depends on the vehicle.
+
+
+Components are expected to be cooperative, which means that they can override each other and should therefore do it carefully.
+
+
+This function is blocking. See 'take_control_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* [ControlMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3) **control_mode** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) - Result of request.
+
+### release_control_async() {#classmavsdk_1_1_gimbal_1aa58402c4e2d9506dbe9839ef8cbfb920}
+```cpp
+void mavsdk::Gimbal::release_control_async(const ResultCallback callback)
+```
+
+
+Release control.
+
+Release control, such that other components can control the gimbal.
+
+
+This function is non-blocking. See 'release_control' for the blocking counterpart.
+
+**Parameters**
+
+* const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) **callback** - 
+
+### release_control() {#classmavsdk_1_1_gimbal_1ab994d4130b2956e2d33613ffb2127335}
+```cpp
+Result mavsdk::Gimbal::release_control() const
+```
+
+
+Release control.
+
+Release control, such that other components can control the gimbal.
+
+
+This function is blocking. See 'release_control_async' for the non-blocking counterpart.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) - Result of request.
+
+### subscribe_control() {#classmavsdk_1_1_gimbal_1a411ee29d7b8513758973ad8aeb4222ab}
+```cpp
+void mavsdk::Gimbal::subscribe_control(ControlCallback callback)
+```
+
+
+Subscribe to control status updates.
+
+This allows a component to know if it has primary, secondary or no control over the gimbal. Also, it gives the system and component ids of the other components in control (if any).
+
+**Parameters**
+
+* [ControlCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62) **callback** - 
+
+### control() {#classmavsdk_1_1_gimbal_1aae172788140e37d6125b224f5e79829e}
+```cpp
+ControlStatus mavsdk::Gimbal::control() const
+```
+
+
+Poll for '[ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md)' (blocking).
+
+
+**Returns**
+
+&emsp;[ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md) - One [ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md) update.
 
 ### operator=() {#classmavsdk_1_1_gimbal_1ac9a6e1936f58ce8f957be7c6bcc0d134}
 ```cpp

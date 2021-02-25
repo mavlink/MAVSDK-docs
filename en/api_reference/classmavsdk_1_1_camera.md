@@ -41,8 +41,10 @@ struct [VideoStreamSettings](structmavsdk_1_1_camera_1_1_video_stream_settings.m
 Type | Description
 --- | ---
 enum [Mode](#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) | [Camera](classmavsdk_1_1_camera.md) mode type.
+enum [PhotosRange](#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) | Photos range type.
 enum [Result](#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | Possible results returned for camera commands.
 std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf))> [ResultCallback](#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) | Callback type for asynchronous [Camera](classmavsdk_1_1_camera.md) calls.
+std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), std::vector< [CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) >)> [ListPhotosCallback](#classmavsdk_1_1_camera_1a23240233586f7673c3a1b48f07623fe4) | Callback type for list_photos_async.
 std::function< void([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65))> [ModeCallback](#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931) | Callback type for subscribe_mode.
 std::function< void([Information](structmavsdk_1_1_camera_1_1_information.md))> [InformationCallback](#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65) | Callback type for subscribe_information.
 std::function< void([VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md))> [VideoStreamInfoCallback](#classmavsdk_1_1_camera_1acd9baf073b816e46c22dbd6b599ece66) | Callback type for subscribe_video_stream_info.
@@ -75,6 +77,8 @@ void | [stop_video_async](#classmavsdk_1_1_camera_1a77d1b1a201164023c5eef3c91cdd
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [stop_video_streaming](#classmavsdk_1_1_camera_1a9f6ec4e37cdd287f0cbeed40a2602416) () const | Stop current video streaming.
 void | [set_mode_async](#classmavsdk_1_1_camera_1a76d98d04885d38d0438da7c8696ef6ab) ([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode, const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Set camera mode.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [set_mode](#classmavsdk_1_1_camera_1a249755db2eaa8fd3d202ac01ca52448d) ([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode)const | Set camera mode.
+void | [list_photos_async](#classmavsdk_1_1_camera_1aec1edfe505476d437d45ec2f0deec924) ([PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) photos_range, const [ListPhotosCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a23240233586f7673c3a1b48f07623fe4) callback) | List photos available on the camera.
+std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), std::vector< [Camera::CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) > > | [list_photos](#classmavsdk_1_1_camera_1a49dc17b74047049c386d88cd365de868) ([PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) photos_range)const | List photos available on the camera.
 void | [subscribe_mode](#classmavsdk_1_1_camera_1a002b03af2331606752aba43da0216503) ([ModeCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931) callback) | Subscribe to camera mode updates.
 [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) | [mode](#classmavsdk_1_1_camera_1a222bce91e70d1ca53bcf5d885bacd418) () const | Poll for 'Mode' (blocking).
 void | [subscribe_information](#classmavsdk_1_1_camera_1a64a8d8ac28784b0d304d5a7b1519657a) ([InformationCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65) callback) | Subscribe to camera information updates.
@@ -168,6 +172,16 @@ using mavsdk::Camera::ResultCallback =  std::function<void(Result)>
 
 
 Callback type for asynchronous [Camera](classmavsdk_1_1_camera.md) calls.
+
+
+### typedef ListPhotosCallback {#classmavsdk_1_1_camera_1a23240233586f7673c3a1b48f07623fe4}
+
+```cpp
+using mavsdk::Camera::ListPhotosCallback =  std::function<void(Result, std::vector<CaptureInfo>)>
+```
+
+
+Callback type for list_photos_async.
 
 
 ### typedef ModeCallback {#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931}
@@ -264,6 +278,17 @@ Value | Description
 <span id="classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown. 
 <span id="classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65ac03d53b70feba4ea842510abecd6c45e"></span> `Photo` | Photo mode. 
 <span id="classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65a34e2d1989a1dbf75cd631596133ee5ee"></span> `Video` | Video mode. 
+
+### enum PhotosRange {#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22}
+
+
+Photos range type.
+
+
+Value | Description
+--- | ---
+<span id="classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22ab1c94ca2fbc3e78fc30069c8d0f01680"></span> `All` | All the photos present on the camera. 
+<span id="classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22a1d4c76f33a690094071f239ada313ceb"></span> `SinceConnection` | Photos taken since MAVSDK got connected. 
 
 ### enum Result {#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf}
 
@@ -490,6 +515,39 @@ This function is blocking. See 'set_mode_async' for the non-blocking counterpart
 **Returns**
 
 &emsp;[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) - Result of request.
+
+### list_photos_async() {#classmavsdk_1_1_camera_1aec1edfe505476d437d45ec2f0deec924}
+```cpp
+void mavsdk::Camera::list_photos_async(PhotosRange photos_range, const ListPhotosCallback callback)
+```
+
+
+List photos available on the camera.
+
+This function is non-blocking. See 'list_photos' for the blocking counterpart.
+
+**Parameters**
+
+* [PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) **photos_range** - 
+* const [ListPhotosCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a23240233586f7673c3a1b48f07623fe4) **callback** - 
+
+### list_photos() {#classmavsdk_1_1_camera_1a49dc17b74047049c386d88cd365de868}
+```cpp
+std::pair<Result, std::vector<Camera::CaptureInfo> > mavsdk::Camera::list_photos(PhotosRange photos_range) const
+```
+
+
+List photos available on the camera.
+
+This function is blocking. See 'list_photos_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* [PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) **photos_range** - 
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), std::vector< [Camera::CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) > > - Result of request.
 
 ### subscribe_mode() {#classmavsdk_1_1_camera_1a002b03af2331606752aba43da0216503}
 ```cpp

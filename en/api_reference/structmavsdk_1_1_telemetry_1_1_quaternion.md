@@ -24,6 +24,8 @@ float [y](#structmavsdk_1_1_telemetry_1_1_quaternion_1a774a00985baa458cf0da144b7
 
 float [z](#structmavsdk_1_1_telemetry_1_1_quaternion_1a3888a29be1425239efc637edf7a265c4) {float(NAN)} - [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 3, also denoted as d.
 
+uint64_t [timestamp_us](#structmavsdk_1_1_telemetry_1_1_quaternion_1a611fa203ff433802868dd42f834e08e4) {} - Timestamp in microseconds.
+
 
 ## Field Documentation
 
@@ -66,4 +68,14 @@ float mavsdk::Telemetry::Quaternion::z {float(NAN)}
 
 
 [Quaternion](structmavsdk_1_1_telemetry_1_1_quaternion.md) entry 3, also denoted as d.
+
+
+### timestamp_us {#structmavsdk_1_1_telemetry_1_1_quaternion_1a611fa203ff433802868dd42f834e08e4}
+
+```cpp
+uint64_t mavsdk::Telemetry::Quaternion::timestamp_us {}
+```
+
+
+Timestamp in microseconds.
 

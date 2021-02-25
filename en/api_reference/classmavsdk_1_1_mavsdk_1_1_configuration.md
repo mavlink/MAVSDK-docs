@@ -19,7 +19,7 @@ enum [UsageType](#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e8
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1ac419444ca1bd9d9898c2706bd0fb058e) (uint8_t system_id, uint8_t component_id) | Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) via manually configured system and component ID.
+&nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a10477130d041107e76efd1f94e65b503) (uint8_t system_id, uint8_t component_id, bool always_send_heartbeats) | Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) via manually configured system and component ID.
 &nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1afe37b405647f2cdcd7d3e0f6661676e1) ([UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) usage_type) | Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) using a usage type. In this mode, the system and component ID will be automatically chosen.
 &nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a1a65e2e31f06bec1f6692a933c95b03c) ()=delete |
 &nbsp; | [~Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a31cad2329ee14898752638d9c3759da9) ()=default |
@@ -27,6 +27,8 @@ uint8_t | [get_system_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1a0497bdda81
 void | [set_system_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1a28f495bce2cf89ca3c52bdfa938b1761) (uint8_t system_id) | Set the system id of this configuration.
 uint8_t | [get_component_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1adfcae3d5b6f047ad24d9c24983375e97) () const | Get the component id of this configuration.
 void | [set_component_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1aa590fbafa8ca104e1a004ca537f5798e) (uint8_t component_id) | Set the component id of this configuration.
+bool | [get_always_send_heartbeats](#classmavsdk_1_1_mavsdk_1_1_configuration_1a0aa9008fe5a7498f374dbd2adad5f137) () const | Get whether to send heartbeats by default.
+void | [set_always_send_heartbeats](#classmavsdk_1_1_mavsdk_1_1_configuration_1a0ad68b52763e205012b34faa5120a792) (bool always_send_heartbeats) | Set whether to send heartbeats by default.
 [UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) | [get_usage_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a7f2e657d2d86870ca07e1d0520f6c117) () const | Usage type of this configuration, used for automatic ID set.
 void | [set_usage_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a7664dce33264446e4d2e8410d5e140c6) ([UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) usage_type) | Set the usage type of this configuration.
 
@@ -34,9 +36,9 @@ void | [set_usage_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a7664dce33264
 ## Constructor & Destructor Documentation
 
 
-### Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1ac419444ca1bd9d9898c2706bd0fb058e}
+### Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a10477130d041107e76efd1f94e65b503}
 ```cpp
-mavsdk::Mavsdk::Configuration::Configuration(uint8_t system_id, uint8_t component_id)
+mavsdk::Mavsdk::Configuration::Configuration(uint8_t system_id, uint8_t component_id, bool always_send_heartbeats)
 ```
 
 
@@ -47,6 +49,7 @@ Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) via manu
 
 * uint8_t **system_id** - the system id to store in this configuration
 * uint8_t **component_id** - the component id to store in this configuration
+* bool **always_send_heartbeats** - send heartbeats by default even without a system connected
 
 ### Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1afe37b405647f2cdcd7d3e0f6661676e1}
 ```cpp
@@ -143,6 +146,32 @@ Set the component id of this configuration.
 **Parameters**
 
 * uint8_t **component_id** - 
+
+### get_always_send_heartbeats() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a0aa9008fe5a7498f374dbd2adad5f137}
+```cpp
+bool mavsdk::Mavsdk::Configuration::get_always_send_heartbeats() const
+```
+
+
+Get whether to send heartbeats by default.
+
+
+**Returns**
+
+&emsp;bool - whether to always send heartbeats
+
+### set_always_send_heartbeats() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a0ad68b52763e205012b34faa5120a792}
+```cpp
+void mavsdk::Mavsdk::Configuration::set_always_send_heartbeats(bool always_send_heartbeats)
+```
+
+
+Set whether to send heartbeats by default.
+
+
+**Parameters**
+
+* bool **always_send_heartbeats** - 
 
 ### get_usage_type() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a7f2e657d2d86870ca07e1d0520f6c117}
 ```cpp
