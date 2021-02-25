@@ -69,6 +69,10 @@
                     "text": "develop"
                 },
                 {
+                    "value": "https://mavsdk.mavlink.io/v0.37.0/en/",
+                    "text": "v0.37.0"
+                },
+                {
                     "value": "https://mavsdk.mavlink.io/v0.36.0/en/",
                     "text": "v0.36.0"
                 },
