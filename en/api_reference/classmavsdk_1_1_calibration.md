@@ -39,7 +39,7 @@ void | [calibrate_accelerometer_async](#classmavsdk_1_1_calibration_1a135a5e5cd7
 void | [calibrate_magnetometer_async](#classmavsdk_1_1_calibration_1a430fd1aafa1718969400bfcad0bf155a) ([CalibrateMagnetometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a27ac7e84b676d0a74c570586af162bbb) callback) | Perform magnetometer calibration.
 void | [calibrate_level_horizon_async](#classmavsdk_1_1_calibration_1a3ae22637db83e8b2a790429affd1965b) ([CalibrateLevelHorizonCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a2534503e1ab0b87fc0cb6778392820e3) callback) | Perform board level horizon calibration.
 void | [calibrate_gimbal_accelerometer_async](#classmavsdk_1_1_calibration_1a11cfa1951cd34dca2ac605f15a0e2b35) ([CalibrateGimbalAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a3f79f5152573aaf6ce6d3fd1683af6c4) callback) | Perform gimbal accelerometer calibration.
-void | [cancel](#classmavsdk_1_1_calibration_1affb9d951b770d6684e9b5594c1fb6bef) () const | Cancel ongoing calibration process.
+[Result](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a6e1ce7a3a07eb098edc06821d23a8ec1) | [cancel](#classmavsdk_1_1_calibration_1ae26f45164d36576d56a186ee69e32ffb) () const | Cancel ongoing calibration process.
 const [Calibration](classmavsdk_1_1_calibration.md) & | [operator=](#classmavsdk_1_1_calibration_1ada12d974bb516745ea67f94c72abf59b) (const [Calibration](classmavsdk_1_1_calibration.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -258,15 +258,19 @@ Perform gimbal accelerometer calibration.
 
 * [CalibrateGimbalAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a3f79f5152573aaf6ce6d3fd1683af6c4) **callback** - 
 
-### cancel() {#classmavsdk_1_1_calibration_1affb9d951b770d6684e9b5594c1fb6bef}
+### cancel() {#classmavsdk_1_1_calibration_1ae26f45164d36576d56a186ee69e32ffb}
 ```cpp
-void mavsdk::Calibration::cancel() const
+Result mavsdk::Calibration::cancel() const
 ```
 
 
 Cancel ongoing calibration process.
 
 This function is blocking.
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a6e1ce7a3a07eb098edc06821d23a8ec1) - Result of request.
 
 ### operator=() {#classmavsdk_1_1_calibration_1ada12d974bb516745ea67f94c72abf59b}
 ```cpp
