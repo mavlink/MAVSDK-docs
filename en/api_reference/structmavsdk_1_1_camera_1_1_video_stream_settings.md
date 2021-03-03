@@ -22,6 +22,8 @@ uint32_t [rotation_deg](#structmavsdk_1_1_camera_1_1_video_stream_settings_1ac96
 
 std::string [uri](#structmavsdk_1_1_camera_1_1_video_stream_settings_1add3b459a45527b64b21eaf64757d7bf2) {} - Video stream URI.
 
+float [horizontal_fov_deg](#structmavsdk_1_1_camera_1_1_video_stream_settings_1a8375b4e6ff5a44ff0af61b8997de2897) {} - Horizontal fov in degrees.
+
 
 ## Field Documentation
 
@@ -84,4 +86,14 @@ std::string mavsdk::Camera::VideoStreamSettings::uri {}
 
 
 Video stream URI.
+
+
+### horizontal_fov_deg {#structmavsdk_1_1_camera_1_1_video_stream_settings_1a8375b4e6ff5a44ff0af61b8997de2897}
+
+```cpp
+float mavsdk::Camera::VideoStreamSettings::horizontal_fov_deg {}
+```
+
+
+Horizontal fov in degrees.
 
