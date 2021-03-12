@@ -142,7 +142,7 @@
 * [Autogeneration](autogen/README.md)
 * [Releases](releases/README.md)
 
-## Dronecode Shortcuts
+## Helpful Shortcuts
 
 * [PX4 Developer Guide](https://dev.px4.io/master/en/)
 * [PX4 User Guide](https://docs.px4.io/master/en/)
