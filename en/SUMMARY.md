@@ -2,12 +2,9 @@
 
 * [Introduction](README.md)
   * [FAQ](getting_started/faq.md)
-* [Installation](getting_started/installation.md)
-* [iOS/Swift](swift/README.md)
-* [Python](python/README.md)
 * [C++](cpp/README.md)
-  * [C++ QuickStart](cpp/quickstart.md)
-  * [C++ API changes](cpp/api_changes.md)
+  * [QuickStart](cpp/quickstart.md)
+  * [API changes](cpp/api_changes.md)
   * [Guide](guide/README.md)
     * [Usage/Paradigms](guide/general_usage.md)
     * [Connecting to Systems (Vehicles)](guide/connections.md)
@@ -139,6 +136,8 @@
     * [Documentation](contributing/documentation.md)
     * [Release process](contributing/release.md)
   * [Troubleshooting](cpp/troubleshooting.md)
+* [iOS/Swift](swift/README.md)
+* [Python](python/README.md)
 * [Autogeneration](autogen/README.md)
 * [Releases](releases/README.md)
 
