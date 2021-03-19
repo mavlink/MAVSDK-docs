@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-  * [FAQ](getting_started/faq.md)
+* [FAQ](faq.md)
 * [C++](cpp/README.md)
   * [QuickStart](cpp/quickstart.md)
   * [API changes](cpp/api_changes.md)
