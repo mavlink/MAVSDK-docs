@@ -140,12 +140,3 @@
 * [Python](python/README.md)
 * [Autogeneration](autogen/README.md)
 * [Releases](releases/README.md)
-
-## Helpful Shortcuts
-
-* [PX4 Developer Guide](https://dev.px4.io/master/en/)
-* [PX4 User Guide](https://docs.px4.io/master/en/)
-* [QGroundControl User Guide](https://docs.qgroundcontrol.com/en/)
-* [QGroundControl Developer Guide](https://dev.qgroundcontrol.com/en/)
-* [MAVLink Guide](https://mavlink.io/en/)
-* [Dronecode Camera Manager](https://camera-manager.dronecode.org/en/)
