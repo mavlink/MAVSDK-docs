@@ -139,4 +139,3 @@
 * [iOS/Swift](swift/README.md)
 * [Python](python/README.md)
 * [Autogeneration](autogen/README.md)
-* [Releases](releases/README.md)
