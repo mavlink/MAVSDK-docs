@@ -7,7 +7,7 @@ MAVSDK is essentially a C++ library (or rather multiple library files) that you 
 
 First install the MAVSDK library on your platform.
 
-The latest release can be installed from a prebuilt binary. If you need the latest develop state or want to debug the library itself, you need to [build it from source](../contributing/build.md).
+The latest release can be installed from a prebuilt binary. If you need the latest state or want to debug the library itself, you need to [build it from source](../contributing/build.md).
 
 ### Linux
 

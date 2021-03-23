@@ -1,8 +1,8 @@
 <img src="../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/>
 # MAVSDK ({{ book.github_branch }})
 
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![GitHub Actions Status](https://github.com/mavlink/MAVSDK/workflows/Build%20and%20Test/badge.svg?branch=develop)](https://github.com/mavlink/MAVSDK/actions?query=branch%3Adevelop)
-[![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=develop)](https://coveralls.io/github/mavlink/MAVSDK?branch=develop)
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![GitHub Actions Status](https://github.com/mavlink/MAVSDK/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/mavlink/MAVSDK/actions?query=branch%3Amain)
+[![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=main)](https://coveralls.io/github/mavlink/MAVSDK?branch=main)
 
 *MAVSDK* is a collection of libraries for various programming languages to interface with [MAVLink](https://mavlink.io/en/) systems such as drones, cameras or ground systems.
 
