@@ -3,7 +3,7 @@
 MAVSDK is essentially a C++ library (or rather multiple library files) that you can include and link in your C++ application.
 
 
-## Installation
+## Installation {#installation}
 
 First install the MAVSDK library on your platform.
 
@@ -35,8 +35,7 @@ brew install mavsdk
 
 ### Windows
 
-There are currently no-prebuilt libraries for Windows. Check [build instructions](../contributing/build.md) to build from source.
-
+For Windows you can download the **mavsdk-windows-x64-release.zip** file from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) containing the headers and library and extract it locally (see [information how to use a locally installed library](guides/toolchain.md#sdk_local_install)).
 
 ## Setting up a Simulator {#simulator}
 

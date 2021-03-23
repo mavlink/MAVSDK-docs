@@ -23,16 +23,15 @@ The code snippet below shows how to set up monitoring with `add_any_connection()
 
 ```cpp
 Mavsdk mavsdk;
-std::string connection_url="udp://:14540";
-ConnectionResult connection_result = mavsdk.add_any_connection(connection_url);
+ConnectionResult connection_result = mavsdk.add_any_connection("udp://:14540");
 ASSERT_EQ(connection_result, ConnectionResult::Success)
 ```
 
-> **Note** The connection string used above (`udp://:14540`) is to the [standard PX4 broadcast UDP port](https://dev.px4.io/master/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
+> **Note** The connection string used above (`udp://:14540`) is to the [standard PX4 UDP port](https://dev.px4.io/master/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
 
 The code fragment below shows how you might print the string for the preceding code fragment to the console:
 ```cpp
-std::cout << "Connection string: " << connection_result << '\n';
+std::cout << "Connection result: " << connection_result << '\n';
 ```
 
 
@@ -56,15 +55,14 @@ mavsdk.register_on_new_system([]() {
 You can iterate all systems that have been detected by `Mavsdk` (since it was started, over all communication ports) using the [systems()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a0d0bc4cdab14d96877b52baec5113fa8) method.
 This returns a vector of shared pointers to systems.
 
-The following code fragment shows how to iterate through the systems and checking their MAVLink system ID and hardware uid (uid2), and whether they are connected:
+The following code fragment shows how to iterate through the systems and checking their MAVLink system ID, whether they are connected, and what components they have:
 
 ```cpp
 //Iterate through detected systems
 for (auto system : mavsdk.systems()) {
-    auto info = mavsdk::Info{system};
-    std::cout << "Found system with system ID: " << static_cast<int>(system->get_system_id())
-              << ", and hardware uid: " << info.hardware_uid()
-              << ", connected: " << (system->is_connected() ? "yes" : "no") << '\n';
+    std::cout << "Found system with MAVLink system ID: " << static_cast<int>(system->get_system_id())
+              << ", connected: " << (system->is_connected() ? "yes" : "no")
+              << ", has autopilot: " << (system->has_autopilot() ? "yes" : "no") << '\n';
 }
 ```
 
@@ -72,16 +70,16 @@ for (auto system : mavsdk.systems()) {
 
 To access a certain system, pick the one from the vector that you require, or use the first one if only one system is assumed:
 
-E
+
 ```cpp
    Mavsdk mavsdk;
-   ConnectionResult conn_result = mavsdk.add_udp_connection();
+   mavsdk.add_udp_connection();
    // Wait for the system to connect via heartbeat
    while (mavsdk.system().size() == 0) {
-      sleep_for(seconds(1));
+       std::this_thread::sleep_for(std::chrono::seconds(1));
    }
    // System got discovered.
-   System system = mavsdk.systems()[0];
+   std::shared_ptr<System> system = mavsdk.systems()[0];
 ```
 
 The `System` is used by the MAVSDK plugin classes to query and control the vehicle.

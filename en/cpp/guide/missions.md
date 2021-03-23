@@ -1,11 +1,13 @@
 # Missions
 
-The Mission API (plugin) allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions.
+The Mission API (plugin) allows you to create, upload, download, run, pause, restart, jump to item in, and track missions.
 Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
 Missions are *managed* though the [Mission](../api_reference/classmavsdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc.
 The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects.
 
+> **Tip** The [Mission plugin](../api_reference/classmavsdk_1_1_mission.md) described here only supports a small subset of the full functionality of MAVLink missions. If you require the full mission item spec as MAVLink provides it, you might be better off using the [MissionRaw plugin](../api_reference/classmavsdk_1_1_mission_raw.html).
+> Furthermore MissionRaw allows importing mission from QGroundControl.
 
 ## Supported Mission Commands {#supported_mission_commands}
 
@@ -258,11 +260,12 @@ If required you can instead use the appropriate commands in the [Action](../guid
 
 ## Downloading Missions
 
-Use [Mission::download_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a04e7e7074273b4591a820894c5c4ad43) to download a mission from the vehicle.
+Use [Mission::download_mission()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a23e9f7da32f42bcce7ef16ea8044fe53) to download a mission from the vehicle.
 The mission is downloaded as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects, that you can then view or manipulate as required.
 
 > **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands).
 > Missions created using *QGroundControl* are not guaranteed to successfully download!
+> Again, for that case [MissionRaw](../api_reference/classmavsdk_1_1_mission_raw.md) might be a better fit.
 
 The code fragment below shows how to download a mission:
 
@@ -281,7 +284,6 @@ The code fragment below shows how to download a mission:
         << ")" << '\n';
 }
 ```
-
 
 
 ## Further Information

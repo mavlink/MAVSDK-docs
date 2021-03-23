@@ -1,28 +1,20 @@
-# MAVSDK Core C++ Library <div style="float:right; padding:10px; margin-right:20px;"><img src="../../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="180px"/></div>
-[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![travis-ci build status](https://travis-ci.org/mavlink/MAVSDK.svg?branch=develop)](https://travis-ci.org/mavlink/MAVSDK) [![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=develop)](https://coveralls.io/github/mavlink/MAVSDK?branch=develop)
+# MAVSDK C++ Library <div style="float:right; padding:10px; margin-right:20px;"><img src="../../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="180px"/></div>
+[![Slack](https://px4-slack.herokuapp.com/badge.svg)](http://slack.px4.io)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![GitHub Actions Status](https://github.com/mavlink/MAVSDK/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/mavlink/MAVSDK/actions?query=branch%3Amain) [![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=main)](https://coveralls.io/github/mavlink/MAVSDK?branch=main)
 
-The *MAVSDK Core* provides a simple C++ API for managing one or more vehicles via MAVLink.
+The MAVSDK C++ library provides a simple C++ API for managing one or more vehicles via MAVLink.
 It enables programmatic access to vehicle information and telemetry, and control over missions, movement and other operations.
-The C++ library is very performant, and can be used to enable tasks like computer vision, obstacle avoidance, and route planning.
-
-Developers can extend the SDK, using plugins to add any other required MAVLink API (for example, to integrate a flight stack with custom cameras, gimbals, or other hardware over MAVLink).
-
-The core library is used to provide the underlying implementation of the other MAVSDK libraries - e.g. [MAVSDK-Swift](http://mavsdk-sdk-swift-docs.s3.eu-central-1.amazonaws.com/main/index.html).
+The C++ library is designed to be performant, and can be used to enable tasks like computer vision, obstacle avoidance, and route planning.
 
 
 ## Project Status
 
-The MAVSDK C++ core is a robust and well-tested library that is already in use in production environments.
+The MAVSDK C++ library is a robust and well-tested library that is in use in production environments.
 Note however that the API is still being evolved and the project does not provide future compatibility guarantees.
-
 
 ## Getting Started
 
-*Ubuntu* and *Fedora* users can install the SDK from _*.deb_ or _*.rpm_ packages in the [Github release](https://github.com/mavlink/MAVSDK/releases) page.
+Check out the [QuickStart guide](quickstart.md) to get started.
 
-> **Note** Windows and macOS users will need to [build the library from source](../contributing/build.md) in order to use it.
-
-This [Guide](../guide/README.md) explains how to write MAVSDK apps using C++.
 A simple complete example can be found in [Takeoff and Land](../examples/takeoff_and_land.md).
 
 ## Updating / API changes
@@ -62,9 +54,7 @@ They should only be used where features are missing from the main APIs above.
 
 ## Contributing/Extending
 
-The [Contributing](../contributing/README.md) section contains everything you need to contribute to the C++ API, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development.
-
-> **Tip** Developers who want to create plugins and contribute to the API will need to [build the library ](../contributing/build.md) (and other programming language wrappers) from source.
+The [Contributing](../contributing/README.md) section contains everything you need to contribute to project, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development.
 
 ## Troubleshooting
 
