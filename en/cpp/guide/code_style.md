@@ -1,6 +1,6 @@
 # C++ Coding Style
 
-This topic contains the SDK C++ formatting and coding guidelines.
+This topic contains the C++ formatting and coding guidelines for MAVSDK.
 
 > **Note** These guidelines are not written in stone!
 >   [Start a discussion](../README.md#getting-help) if you have suggestions for improvement \(the project will consider anything other than "matters of personal taste"\).
@@ -17,7 +17,7 @@ To automatically fix the formatting, run the command:
 ./tools/fix_style.sh .
 ```
 
-If you don't have clang-format version **9.0** or later installed, you can use a docker image or install it as explained below:
+If you don't have clang-format installed or in the correct version, you can use a docker image or install it as explained below:
 
 ### Use clang-format in docker
 
@@ -27,42 +27,11 @@ You can just use the pre-built docker image:
 tools/run-docker.sh tools/fix_style.sh .
 ```
 
-### Install clang-format
-
-You need to have at least clang-format  installed.
-
-### macOS
-
-Install clang-format using brew:
-
-```
-brew install clang-format
-```
-
-### Ubuntu 18.04
-
-Install clang-format-9:
-
-```
-sudo apt-get install clang-format-9
-```
-
-### Ubuntu 16.04
-
-You need to add the llvm repository to install clang-format-9:
-
-```
-wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-9 main"
-apt-get update
-apt-get install clang-format-9
-```
-
 ## General Guidelines
 
 The following general guidelines should be used for all code:
 
-* C++17 is encouraged to allow developers to use C++17 features and the standard library.
+* C++17 is encouraged to allow developers to use C++17 features and the C++ STL:
   Examples:
 
   * [`std::function`](http://en.cppreference.com/w/cpp/utility/functional/function) and [lambda expressions](http://en.cppreference.com/w/cpp/language/lambda)
@@ -79,6 +48,4 @@ The following general guidelines should be used for all code:
 * Variable and method names should be `snake_case` and class/struct/enum names `CamelCase`. Private variables should start with an underscore, e.g.: `_variable_name`.
 * Try to exit functions early instead of nesting ifs \([read why](https://softwareengineering.stackexchange.com/questions/18454/should-i-return-from-a-function-early-or-use-an-if-statement)\).
 * We don't use exceptions but use error codes. There are pros and cons for exceptions but given that the public API should be as simple as possible, it makes sense to refrain from exceptions altogether.
-
-
-
+* The use of `std::bind` is discouraged. The aim is to move towards just using lambdas for that purpose instead.
