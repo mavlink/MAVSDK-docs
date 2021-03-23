@@ -141,3 +141,4 @@
     * [Release process](contributing/release.md)
 * [iOS/Swift](swift/README.md)
 * [Python](python/README.md)
+  * [QuickStart](python/quickstart.md)
