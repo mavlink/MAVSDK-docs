@@ -156,7 +156,7 @@ You usually want to work from master in the `proto/` directory, and then create 
 
 ```
 cd proto
-git switch master
+git switch main
 git pull
 git switch -c my-new-plugin
 cd ../

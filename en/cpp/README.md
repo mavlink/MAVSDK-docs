@@ -7,7 +7,7 @@ The C++ library is very performant, and can be used to enable tasks like compute
 
 Developers can extend the SDK, using plugins to add any other required MAVLink API (for example, to integrate a flight stack with custom cameras, gimbals, or other hardware over MAVLink).
 
-The core library is used to provide the underlying implementation of the other MAVSDK libraries - e.g. [MAVSDK-Swift](http://dronecode-sdk-swift.s3.eu-central-1.amazonaws.com/docs/master/index.html).
+The core library is used to provide the underlying implementation of the other MAVSDK libraries - e.g. [MAVSDK-Swift](http://mavsdk-sdk-swift-docs.s3.eu-central-1.amazonaws.com/main/index.html).
 
 
 ## Project Status
