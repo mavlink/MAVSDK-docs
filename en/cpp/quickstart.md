@@ -3,39 +3,31 @@
 MAVSDK is essentially a C++ library (or rather multiple library files) that you can include and link in your C++ application.
 
 
-## Installation {#installation}
-
-First install the MAVSDK library on your platform.
-
-The latest release can be installed from a prebuilt binary. If you need the latest state or want to debug the library itself, you need to [build it from source](../contributing/build.md).
+## Install MAVSDK library
 
 ### Linux
 
-- **Ubuntu:** Download the **.deb** file for your system from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) and install it using `dpkg`:
-  ```
-  sudo dpkg -i mavsdk_0.37.0_ubuntu20.04_amd64.deb
-  ```
+**Ubuntu**
 
-- **Fedora:** Download the **.rpm** file for your system from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) and install it using `rpm`:
-   ```
-   sudo rpm -U mavsdk-0.37.0-1.fc33-x86_64.rpm
-   ```
+The prebuilt C++ library can be downloaded as a **.deb** from [releases](https://github.com/mavlink/MAVSDK/releases), e.g.:
 
-- **Arch Linux:** mavsdk is available from the [AUR](https://aur.archlinux.org/) and can be installed e.g. using [yay](https://aur.archlinux.org/packages/yay/):
-   ```
-   yay -S mavsdk
-   ```
+```
+wget https://github.com/mavlink/MAVSDK/releases/download/v0.37.0/mavsdk_0.37.0_ubuntu20.04_amd64.deb
+sudo dpkg -i mavsdk_0.37.0_ubuntu20.04_amd64.deb
+```
 
 ### macOS
 
-**MacOS:** Install [Homebrew](https://brew.sh/) and use it to install the library:
+Install [Homebrew](https://brew.sh/) and use it to install the library:
 ```
 brew install mavsdk
 ```
 
 ### Windows
 
-For Windows you can download the **mavsdk-windows-x64-release.zip** file from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) containing the headers and library and extract it locally (see [information how to use a locally installed library](guides/toolchain.md#sdk_local_install)).
+For Windows you can download the **mavsdk-windows-x64-release.zip** file from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) containing the headers and library and extract it locally (see [information how to use a locally installed library](guide/toolchain.md#sdk_local_install)).
+
+For more detailed instructions or other platforms check out the [installation notes](guide/installation.md).
 
 ## Setting up a Simulator {#simulator}
 
@@ -88,7 +80,7 @@ build/takeoff_and_land udp://:14540
 ```
 
 The MAVSDK application should connect to PX4, and you will be able to observe the example running in the SDK terminal, SITL terminal, and/or *QGroundControl*.
-The expected behaviour is shown here: [Example: Takeoff and Land](../examples/takeoff_and_land.md).
+The expected behaviour is shown here: [Example: Takeoff and Land](examples/takeoff_and_land.md).
 
 > **Note** The first argument above is the connection string (`udp://:14540`).
   This is the standard PX4 UDP port for connecting to offboard APIs.
@@ -97,6 +89,6 @@ The expected behaviour is shown here: [Example: Takeoff and Land](../examples/ta
 ## Next Steps
 
 Once MAVSDK is installed we recommend you:
-- Try the [other examples](../examples/README.md)
-- See the [Guide](../guide/README.md) for information about how to write MAVSDK apps using C++.
+- Try the [other examples](examples/README.md)
+- See the [Guide](guide/README.md) for information about how to write MAVSDK apps using C++.
 - Browse the [API reference](api_reference/README.md) to get an overview of the functionality.

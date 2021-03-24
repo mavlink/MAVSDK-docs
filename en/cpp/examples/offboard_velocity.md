@@ -2,7 +2,7 @@
 
 This example shows how to how to control a vehicle in *Offboard mode* using velocity commands (in both the NED and body frames).
 
-![Offboard Mode - Velocity Control QGC Screenshot](../../assets/examples/offboard_mode/qgc_offboard_velocity.png)
+![Offboard Mode - Velocity Control QGC Screenshot](../../../assets/examples/offboard_mode/qgc_offboard_velocity.png)
 
 
 ## Running the Example {#run_example}

@@ -6,7 +6,7 @@ Missions can have multiple "mission items", each which may specify a position, a
 Missions are *managed* though the [Mission](../api_reference/classmavsdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc.
 The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects.
 
-> **Tip** The [Mission plugin](../api_reference/classmavsdk_1_1_mission.md) described here only supports a small subset of the full functionality of MAVLink missions. If you require the full mission item spec as MAVLink provides it, you might be better off using the [MissionRaw plugin](../api_reference/classmavsdk_1_1_mission_raw.html).
+> **Tip** The [Mission plugin](../api_reference/classmavsdk_1_1_mission.md) described here only supports a small subset of the full functionality of MAVLink missions. If you require the full mission item spec as MAVLink provides it, you might be better off using the [MissionRaw plugin](../api_reference/classmavsdk_1_1_mission_raw.md).
 > Furthermore MissionRaw allows importing mission from QGroundControl.
 
 ## Supported Mission Commands {#supported_mission_commands}
@@ -148,27 +148,6 @@ mission_items.push_back(
                       MissionItem::CameraAction::NONE));
 ```
 
-## Import a Mission from a QGC Plan {#import_qgc_plan}
-
-`Mission` allows you to import a mission from a *QGroundControl* plan (the imported mission can then be uploaded to a vehicle).
-
-> **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#file) (**Plan View > Sync Tool**, and then select **Save to File**).
-
-The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a575a720f5814dd0380220abaf7a955f5) method.
-The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
-
-The code fragment below shows how to import mission items from a plan:
-```cpp
-std::string qgc_plan = "file_path_to_some_qgroundcontrol.plan"
-Mission::mission_items_t mission_items;
-Mission::Result import_res = Mission::import_qgroundcontrol_mission(mission_items, qgc_plan);
-```
-
-> **Tip** [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) provides a working example with error checking.
-
-The mission (`mission_items`) can then be uploaded as shown in the section [Uploading a Mission](#uploading_mission) below.
-
-
 ## Uploading a Mission {#uploading_mission}
 
 Use [Mission::upload_mission()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a38274b1c1509375a182c44711ee9f7b1) to upload the mission defined in the previous section.
@@ -290,7 +269,6 @@ The code fragment below shows how to download a mission:
 
 * [Mission Flight Mode](https://docs.px4.io/master/en/flight_modes/mission.html) (PX4 User Guide)
 * [Example:Fly Mission](../examples/fly_mission.md)
-* [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md)
 * Integration tests:
   * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission.cpp)
   * [mission_cancellation.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_cancellation.cpp)
@@ -298,5 +276,3 @@ The code fragment below shows how to download a mission:
   * [mission_raw_mission_changed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_raw_mission_changed.cpp)
   * [mission_rtl.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_rtl.cpp)
   * [mission_transfer_lossy.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_transfer_lossy.cpp)
-* Unit Tests:
-  * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/mission_import_qgc_test.cpp)

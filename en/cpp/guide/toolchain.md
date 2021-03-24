@@ -2,7 +2,7 @@
 
 The MAVSDK core C++ library is written in C++17 and exposes C++11 interfaces such as `std::function`. Therefore, applications using the library need to be C++11 or later as well.
 
-Applications can be built using your preferred build system, compiler and linker toolchain. The only requirement is that the build system must be able to locate the MAVSDK C++ headers and libraries (installed as described [here](../quickstart.md#installation)).
+Applications can be built using your preferred build system, compiler and linker toolchain. The only requirement is that the build system must be able to locate the MAVSDK C++ headers and libraries (installed as described [here](installation.md)).
 
 MAVSDK itself uses the [cmake](https://cmake.org/) build system, and we recommend that you do too.
 *CMake* is an open-source, cross-platform toolchain that allows you to build your examples on macOS, Linux and Windows using the same build file definition.
@@ -14,7 +14,7 @@ Below we explain how to set up a minimal build setup (**CMakeLists.txt**) file f
 
 *Cmake* uses a definition file named **CMakeLists.txt** to define the project. This specifies the name of the project, compiler flags for different platforms and targets, where to find dependencies (libraries and header files), source files to build, and the name of the generated binary. **CMakeLists.txt** is typically stored in the root directory of your app project.
 
-The sections below show how you can set up the file for when the SDK is [installed system wide](quickstart.md#installation) (the default) or [locally](../contributing/build.md#sdk_local_install).
+The sections below show how you can set up the file for when the SDK is [installed system wide](installation.md) (the default) or [locally](build.md#sdk_local_install).
 
 > **Warning** On Windows use the [local installation](#sdk_local_install).
 
@@ -78,7 +78,7 @@ To build the example we would do:
 
 For Windows we need to install the library and header files locally by extracting **mavsdk-windows-x64-release.zip** file from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases).
 
-On macOS/Linux, you can also use locally installed library artefacts by [building from source](guides/building.md) if that is required (e.g. during development order not to conflict with system-wide installe library).
+On macOS/Linux, you can also use locally installed library artefacts by [building from source](build.md) if that is required (e.g. during development order not to conflict with system-wide installe library).
 
 For the case where the library is installed in some local directory, you need to specify this path using the `CMAKE_PREFIX_PATH`.
 

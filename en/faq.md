@@ -20,7 +20,7 @@ No. MAVSDK only supports [MAVLink 2.0](https://mavlink.io/en/guide/mavlink_2.htm
 
 ### What sorts of vehicles are supported?
 
-The MAVSDK API is designed for interacting with *aircraft*. It has primarily been tested for use with multicopters, but also has basic support for fixed wing and [VTOL](../guide/vtol.md).
+The MAVSDK API is designed for interacting with *aircraft*. It has primarily been tested for use with multicopters, but also has basic support for fixed wing and [VTOL](cpp/guide/vtol.md).
 
 The API *may* "work" with ground-based or other types of vehicles, but some methods will not make sense.
 This use-case is mostly unsupported and untested.
@@ -52,7 +52,7 @@ It might also come in handy whenever any other REST resources are required.
 
 ### How are plugins added?
 
-Check out [contributing/plugins](../contributing/plugins.md).
+Check out [contributing/plugins](contributing/plugins.md).
 
 ### Can a plugin depend on another one?
 

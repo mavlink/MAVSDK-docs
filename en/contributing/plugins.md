@@ -264,7 +264,7 @@ If any threads, call_every, or timeouts are running, they should be stopped in t
 Tests must be created for all new and updated plugin code.
 The tests should be exhaustive, and cover all aspects of using the plugin API.
 
-The [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md)
+The [Google Test Primer](https://google.github.io/googletest/primer.html)
 provides an excellent overview of how tests are written and used.
 
 
@@ -300,30 +300,12 @@ Unit tests typically include the file to be tested, **mavsdk.h**, and **gtest.h*
 There are no standard shared test unit resources so test functions are declared using `TEST`.
 All tests in a file should share the same test-case name (the first argument to `TEST`).
 
-The skeleton [example plugin unit test](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/external_example/plugins/example/example_impl_test.cpp) is shown below:
-```cpp
-#include "example.h"
-#include "mavsdk.h"
-#include "global_include.h"
-#include <gtest/gtest.h>
-
-namespace mavsdk {
-
-TEST(Example, NoTest)
-{
-    ASSERT_TRUE(true);
-}
-
-} // namespace mavsdk
-```
-
-
 
 ### Writing Integration Tests {#integration_tests}
 
 MAVSDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
 
-> **Tip** Check out the [Google Test Primer](https://github.com/google/googletest/blob/master/googletest/docs/primer.md)
+> **Tip** Check out the [Google Test Primer](https://google.github.io/googletest/primer.html)
 > and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests)
 > for our existing plugins to better understand how to write your own!
 
@@ -355,7 +337,7 @@ add_executable(integration_tests_runner
 #### Integration Test Files/Code
 
 The main MAVSDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/integration_test_helper.h).
-This provides access to the [Plugin/Test Logger](../contributing/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
+This provides access to the [Plugin/Test Logger](../cpp/guide/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
 > **Note** All tests running against SITL can be declared using `TEST_F` and have a first argument `SitlTest` as shown.
   This is required in order to use the shared class to set up and tear down the simulator between tests.
@@ -379,7 +361,7 @@ Where possible examples should demonstrate realistic use cases such that the cod
 
 The public API must be fully documented using the proto files.
 
-> **Tip** The in-source comments will be compiled to markdown and included in the [API Reference](../api_reference/README.md).
+> **Tip** The in-source comments will be compiled to markdown and included in the [API Reference](../cpp/api_reference/README.md).
 > The process is outlined in [Documentation > API Reference](../contributing/documentation.md#api-reference).
 
 Internal/implementation classes need not be documented, but should be written using expressive naming of variables and functions to help the reader.
@@ -387,7 +369,7 @@ Anything unexpected or special however warrants an explanation as a comment.
 
 ### Example Code Documentation
 
-The plugin example should be documented in markdown following the same pattern as the existing [examples](../examples/README.md).
+The plugin example should be documented in markdown following the same pattern as the existing [examples](../cpp/examples/README.md).
 
 Generally this involves explaining what the example does and displaying the source.
 The explanation of how the code works is usually deferred to [guide documentation](#guide).
@@ -395,7 +377,7 @@ The explanation of how the code works is usually deferred to [guide documentatio
 
 ### Guide Documentation {#guide}
 
-Ideally, [guide](../guide/README.md) documentation should be created. This should be based on example code.
+Ideally, [guide](../cpp/guide/README.md) documentation should be created. This should be based on example code.
 
 The purpose of the guide is to:
 * Show how different parts of the API can be used together

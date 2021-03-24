@@ -34,7 +34,7 @@ These are the instructions on how to get a release out the door.
 
 ## MAVSDK-docs part
 
-1. [Generate the docs](build.md#build_api_reference) and update the reference docs.
+1. [Generate the docs](../cpp/guide/build_docs.md) and update the reference docs.
 1. Check or update the examples in the docs.
 1. Create a branch off `main` for the release
    - Create the branch

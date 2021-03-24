@@ -33,7 +33,7 @@ Some of the APIs use callbacks, e.g. subscriptions to a stream like [Telemetry::
 
 All user callbacks are called from one thread.
 Users must not do anything inside a callback that takes a long time to complete, as this will stall subsequent callbacks.
-For more information on how to work with and debug callbacks see [Troubleshooting](../cpp/troubleshooting.md#user_callbacks).
+For more information on how to work with and debug callbacks see [Troubleshooting](../troubleshooting.md#user_callbacks).
 
 
 ## Shared Vehicle Control

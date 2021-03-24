@@ -1,6 +1,6 @@
 # Building MAVSDK Library from Source
 
-This section explains how to [build](#build_sdk_cpp) and [install](#install-artifacts) the MAVSDK C++ library from source for all our target platforms.
+This section explains how to build and install the MAVSDK C++ library from source for all our target platforms.
 
 Note that there are separate instructions to [build the mavsdk_server](build_mavsdk_server.md).
 

@@ -4,10 +4,10 @@
 ----
 
 
-This class represents a system, made up of one or more components (e.g. autopilot, cameras, servos, gimbals, etc). 
+This class represents a system, made up of one or more components (e.g. autopilot, cameras, servos, gimbals, etc).
 
 
-[System](classmavsdk_1_1_system.md) objects are used to interact with UAVs (including their components) and standalone cameras. They are not created directly by application code, but are returned by the [Mavsdk](classmavsdk_1_1_mavsdk.md) class. 
+[System](classmavsdk_1_1_system.md) objects are used to interact with UAVs (including their components) and standalone cameras. They are not created directly by application code, but are returned by the [Mavsdk](classmavsdk_1_1_mavsdk.md) class.
 
 
 ## Public Types
@@ -32,7 +32,6 @@ bool | [is_connected](#classmavsdk_1_1_system_1ad07991ae044bc367e27f544db40d065b
 DEPRECATED uint64_t | [get_uuid](#classmavsdk_1_1_system_1a1ac9b6bca2f55d2c050a68542fe00892) () const | Get the UUID of the system.
 uint8_t | [get_system_id](#classmavsdk_1_1_system_1a091d793db29719f4996040886ad951a6) () const | MAVLink [System](classmavsdk_1_1_system.md) ID of connected system.
 void | [subscribe_is_connected](#classmavsdk_1_1_system_1a4e0a0237d54285ac8b7690f6e42c35fd) ([IsConnectedCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1a0e56bb48498100fde0872a3ec376f282) callback) | Subscribe to callback to be called when system connection state changes.
-void | [register_component_discovered_callback](#classmavsdk_1_1_system_1ac662ad874b7652a7dbc2a21fb7ebe767) ([discover_callback_t](namespacemavsdk.md#namespacemavsdk_1a1eb568abdd5aec33c37eb8f22dda2993) callback)const | Register a callback to be called when a component is discovered.
 void | [enable_timesync](#classmavsdk_1_1_system_1a7c7177fb0789aefbfb375f4bb12ce824) () | Enable time synchronization using the TIMESYNC messages.
 const [System](classmavsdk_1_1_system.md) & | [operator=](#classmavsdk_1_1_system_1a21284c27829fda2391ee27f5732f916d) (const [System](classmavsdk_1_1_system.md) &)=delete | Equality operator (object is not copyable).
 
@@ -60,7 +59,7 @@ Copy constructor (object is not copyable).
 
 **Parameters**
 
-* const [System](classmavsdk_1_1_system.md)&  - 
+* const [System](classmavsdk_1_1_system.md)&  -
 
 ## Member Typdef Documentation
 
@@ -190,19 +189,6 @@ Subscribe to callback to be called when system connection state changes.
 
 * [IsConnectedCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1a0e56bb48498100fde0872a3ec376f282) **callback** - Callback which will be called.
 
-### register_component_discovered_callback() {#classmavsdk_1_1_system_1ac662ad874b7652a7dbc2a21fb7ebe767}
-```cpp
-void mavsdk::System::register_component_discovered_callback(discover_callback_t callback) const
-```
-
-
-Register a callback to be called when a component is discovered.
-
-
-**Parameters**
-
-* [discover_callback_t](namespacemavsdk.md#namespacemavsdk_1a1eb568abdd5aec33c37eb8f22dda2993) **callback** - a function of type void(ComponentType) which will be called with the component type of the new component.
-
 ### enable_timesync() {#classmavsdk_1_1_system_1a7c7177fb0789aefbfb375f4bb12ce824}
 ```cpp
 void mavsdk::System::enable_timesync()
@@ -223,8 +209,8 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [System](classmavsdk_1_1_system.md)&  - 
+* const [System](classmavsdk_1_1_system.md)&  -
 
 **Returns**
 
-&emsp;const [System](classmavsdk_1_1_system.md) & - 
+&emsp;const [System](classmavsdk_1_1_system.md) & -

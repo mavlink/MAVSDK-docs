@@ -27,4 +27,4 @@ The main features provided by the API are (in all programing languages):
 * Send commands to directly control vehicle movement.
 * Send commands to start sensor calibration.
 
-See the [FAQ](getting_started/faq.md) for answers to common questions about the library.
+See the [FAQ](../faq.md) for answers to common questions about the library.

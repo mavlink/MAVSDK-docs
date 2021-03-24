@@ -16,6 +16,6 @@ The files are created in `/install/docs/markdown`.
 > **Note** Extracting the API reference does not yet work automatically on Windows.
 
 <span></span>
-> **Note** The *generate_docs.sh* script [builds the library](../contributing/build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**.
+> **Note** The *generate_docs.sh* script [builds the library](build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**.
 > The [generate_markdown_from_doxygen_xml.py](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/tools/generate_markdown_from_doxygen_xml.py) script
 > is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.

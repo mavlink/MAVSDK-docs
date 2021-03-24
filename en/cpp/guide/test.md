@@ -1,11 +1,11 @@
 # Testing
 
-The MAVSDK C++ library has both unit and integration tests, written using the [Google C++ Test Framework](https://github.com/google/googletest/blob/master/googletest/docs/primer.md) (`gtest`).
+The MAVSDK C++ library has both unit and integration tests, written using the [Google C++ Test Framework](https://google.github.io/googletest/primer.html) (`gtest`).
 The unit tests are run every time new code is committed to the library, and must pass before the code can be merged.
 
 This topic shows how to run the existing tests.
 
-> **Tip** For information on _writing_ tests see: [Writing Plugins &gt; Test Code](../contributing/plugins.md#testing).
+> **Tip** For information on _writing_ tests see: [Writing Plugins &gt; Test Code](../../contributing/plugins.md#testing).
 
 ## Running Unit Tests
 
@@ -20,13 +20,13 @@ To run all unit tests:
 Tests can be run against the simulator (either manually starting PX4 SITL or letting the tests start it automatically) or against a real vehicle.
 
 > **Tip** To run SITL you will need to install the _Gazebo_ simulator.
-> This is included as part of the standard PX4 installation for [macOS](https://dev.px4.io/master/en/setup/dev_env_mac.html)
-> and [Linux](https://dev.px4.io/master/en/setup/dev_env_linux.html).
+> This is included as part of the standard PX4 installation for [macOS](https://docs.px4.io/master/en/dev_setup/dev_env_mac.html)
+> and [Linux](https://docs.px4.io/master/en/dev_setup/dev_env_linux_ubuntu.html).
 > It does not run on Windows.
 
 ### Autostart PX4 SITL
 
-Make sure that the [PX4 Gazebo simulation](https://dev.px4.io/master/en/simulation/gazebo.html) is built and works:
+Make sure that the [PX4 Gazebo simulation](https://docs.px4.io/master/en/simulation/gazebo.html) is built and works:
 
 ```
 cd path/to/Firmware/
