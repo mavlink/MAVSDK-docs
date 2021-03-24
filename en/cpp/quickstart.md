@@ -1,6 +1,8 @@
-# QuickStart
+# C++ QuickStart
 
-MAVSDK is essentially a C++ library (or rather multiple library files) that you can include and link in your C++ application.
+This quickstart shows you how to build and run a simple MAVSDK C++ example application against a simulated vehicle, and observe the operation using the console and in a ground station.
+
+> **Note** MAVSDK is essentially a C++ library (or rather multiple library files) that you can include and link in your C++ application.
 
 
 ## Install MAVSDK library
@@ -48,7 +50,7 @@ You can use *QGroundControl* to connect the simulator and observe vehicle moveme
 See [QGroundControl > Download and Install](https://docs.qgroundcontrol.com/en/getting_started/download_and_install.html) for information about setting up *QGroundControl* on your platform.
 
 
-## Building and Try Example {#build_examples}
+## Build and Try Example {#build_examples}
 
 The examples are stored as part of the projects source code.
 Get them using *git* in a terminal:
@@ -62,7 +64,7 @@ The examples can be found in the examples directory:
 cd examples
 ```
 
-To e.g. build the takeoff and land example, you can do:
+To build the takeoff and land example, you can do:
 
 ```sh
 cd takeoff_land/
@@ -83,12 +85,12 @@ The MAVSDK application should connect to PX4, and you will be able to observe th
 The expected behaviour is shown here: [Example: Takeoff and Land](examples/takeoff_and_land.md).
 
 > **Note** The first argument above is the connection string (`udp://:14540`).
-  This is the standard PX4 UDP port for connecting to offboard APIs.
+  This is the standard PX4 UDP port for connecting to offboard APIs (also see [Connecting to Systems](guide/connections.md)).
 
 
 ## Next Steps
 
 Once MAVSDK is installed we recommend you:
 - Try the [other examples](examples/README.md)
-- See the [Guide](guide/README.md) for information about how to write MAVSDK apps using C++.
+- See how to [write your own application](guide/toolchain.md) in C++.
 - Browse the [API reference](api_reference/README.md) to get an overview of the functionality.

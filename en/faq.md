@@ -7,7 +7,7 @@ Additionally, the library needs to be lightweight and fast, so it does not slow 
 
 ### Are multiple vehicles supported?
 
-Yes, the core C++ SDK is designed to support multiple vehicles. A vehicle is referred to a system in this SDK. The language wrappers so far only support one vehicle at a time. (However, nothing stops you from instantiating multiple copies of it to deal with multiple systems.)
+Yes, the core C++ SDK is designed to support multiple vehicles. A vehicle is referred to a system in this SDK. The language wrappers so far only support one vehicle at a time. (However, nothing stops you from instantiating multiple copies of wrappers to deal with multiple systems.)
 
 A system needs to have a specific MAVLink system ID but can consist of multiple components with different component IDs.
 An example would be a drone with a gimbal and a camera talking MAVLink with the same system ID but different component IDs.
@@ -43,7 +43,7 @@ For example, PX4 and ArduPilot implement the parameter protocol differently, and
 
 ### Are serial connections supported?
 
-Yes. Serial, TCP, and UDP connections are supported.
+Yes. Serial, TCP, and UDP connections are supported, see [notes on connection](cpp/guide/connections.md).
 
 ### Why is libCURL a dependency?
 
@@ -63,11 +63,6 @@ If the same code is used in many places, it can always be moved to core and get 
 
 Over time we have sometimes moved functionality from plugins to the core if it was exposed in multiple plugins (e.g. mission upload/download has been moved to the core so it can be used in the Mission plugin as well as the MissionRaw and Geofence plugins.
 
-### What is the difference between unit and integration tests?
-
-The unit tests are only concerned with one class or function.
-The integration tests combine multiple plugins and execute against a real system (e.g. PX4 SITL).
-
 ### Can MAVSDK run on an embedded platform / microcontroller
 
 MAVSDK is generally written a bit higher level, geared towards ARM devices such as a Raspberry Pi, smartphone or faster/better.
@@ -75,3 +70,11 @@ MAVSDK is generally written a bit higher level, geared towards ARM devices such 
 As it doesn't actually use too much compute, it could in theory be run on a microcontroller such as an ARM Cortex M4, however, it would require the POSIX APIs for serial and networking communication as well as the C++ standard library for things like `std::thread` or `std::vector`.
 
 The recommendation for a microcontroller would be to use the pure [C MAVLink headers](https://mavlink.io/en/mavgen_c/).
+
+### Why is MAVLink Passthrough only available in C++
+
+The C++ MAVLink passthrough plugin basically exposes the direct C MAVLink API. Certainly, it would be nice to have access to all MAVLink messages in the language wrappers but there are some technical challenges
+- Essentially, it would mean that all MAVLink APIs would have to be duplicated by the [proto APIs](https://github.com/mavlink/MAVSDK-Proto/tree/main/protos). This would blow up the API and code size considerably.
+- Alternatively, the API could be exposed without types, but some sort of runtime access like `get_message("ATTITUDE").get_field("pitch").as_float()`, however, this means that there is no type safety and runtime overhead for parsing the strings.
+
+From a MAVSDK project point of view, there is also an advantage of not having a passthrough available in language wrappers; it encourages that required features are contributed back to the open-source project, rather than implemented in private using passthrough, and thus benefitting everyone.

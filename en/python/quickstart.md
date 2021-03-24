@@ -1,4 +1,4 @@
-# Getting started with MAVSDK-Python
+# Python Quickstart
 
 ## Prerequisites
 
