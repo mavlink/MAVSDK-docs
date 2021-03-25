@@ -7,12 +7,17 @@ Additionally, the library needs to be lightweight and fast, so it does not slow 
 
 ### Are multiple vehicles supported?
 
-Yes, the core C++ SDK is designed to support multiple vehicles. A vehicle is referred to a system in this SDK. The language wrappers so far only support one vehicle at a time. (However, nothing stops you from instantiating multiple copies of wrappers to deal with multiple systems.)
+Yes.
+- The MAVSDK C++ library allows C++ applications to connect to multiple vehicles at a time.
+- Python, Swift, and other language wrappers an only connect to a _single vehicle at a time_.
+  However you can intantiate multiple copies of wrappers in order to connect to multiple systems.
 
-A system needs to have a specific MAVLink system ID but can consist of multiple components with different component IDs.
-An example would be a drone with a gimbal and a camera talking MAVLink with the same system ID but different component IDs.
+A maximum of 255 vehicles can be connected.
 
-The limit is in theory 255 vehicles for system IDs ranging from 1 to 255.
+> **Note** The maximum number of vehicles is defined by the MAVLink protocol.
+  MAVLink refers to vehicles as "systems", which are comprised of components (for example, a drone with a gimbal and a camera).
+  Each system has a network-unique MAVLink system ID, with a value between 1 and 255 (0 is a "broadcast address").
+  Each component in a system shares its system id, and has a system-unique component ID, again with a value 1 and 255.
 
 ### Is MAVLink 1 supported?
 
@@ -20,7 +25,8 @@ No. MAVSDK only supports [MAVLink 2.0](https://mavlink.io/en/guide/mavlink_2.htm
 
 ### What sorts of vehicles are supported?
 
-The MAVSDK API is designed for interacting with *aircraft*. It has primarily been tested for use with multicopters, but also has basic support for fixed wing and [VTOL](cpp/guide/vtol.md).
+The MAVSDK API is designed for interacting with *aircraft*.
+It has primarily been tested for use with multicopters, but also has basic support for fixed wing and [VTOL](cpp/guide/vtol.md).
 
 The API *may* "work" with ground-based or other types of vehicles, but some methods will not make sense.
 This use-case is mostly unsupported and untested.
@@ -73,8 +79,12 @@ The recommendation for a microcontroller would be to use the pure [C MAVLink hea
 
 ### Why is MAVLink Passthrough only available in C++
 
-The C++ MAVLink passthrough plugin basically exposes the direct C MAVLink API. Certainly, it would be nice to have access to all MAVLink messages in the language wrappers but there are some technical challenges
-- Essentially, it would mean that all MAVLink APIs would have to be duplicated by the [proto APIs](https://github.com/mavlink/MAVSDK-Proto/tree/main/protos). This would blow up the API and code size considerably.
-- Alternatively, the API could be exposed without types, but some sort of runtime access like `get_message("ATTITUDE").get_field("pitch").as_float()`, however, this means that there is no type safety and runtime overhead for parsing the strings.
+The C++ MAVLink passthrough plugin basically exposes the direct C MAVLink API.
+
+While it would be nice to have access to all MAVLink messages in the language wrappers, there are some technical challenges:
+- Essentially, it would mean that all MAVLink APIs would have to be duplicated by the [proto APIs](https://github.com/mavlink/MAVSDK-Proto/tree/main/protos).
+  This would increase the API and code size considerably.
+- Alternatively, the API could be exposed without types, using some sort of runtime access like `get_message("ATTITUDE").get_field("pitch").as_float()`.
+  This would come with the cost of no type safety and runtime overhead for parsing the strings.
 
 From a MAVSDK project point of view, there is also an advantage of not having a passthrough available in language wrappers; it encourages that required features are contributed back to the open-source project, rather than implemented in private using passthrough, and thus benefitting everyone.

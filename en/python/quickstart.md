@@ -1,4 +1,4 @@
-# Python Quickstart
+# Python QuickStart
 
 ## Prerequisites
 
