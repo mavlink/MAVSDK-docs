@@ -1,9 +1,9 @@
-# Getting started with MAVSDK-Python
+# Python QuickStart
 
 ## Prerequisites
 
 * __Python 3.6+:__ run `python --version` or `python3 --version` in a terminal to check the installed version.
-* __A running SITL instance__ ([jMAVSim](https://dev.px4.io/master/en/simulation/jmavsim.html), [gazebo](https://dev.px4.io/master/en/simulation/gazebo.html), …).
+* __A running SITL instance__ ([jMAVSim](https://docs.px4.io/master/en/simulation/jmavsim.html), [gazebo](https://docs.px4.io/master/en/simulation/gazebo.html), …).
   A quick way to run a headless gazebo SITL instance using docker is documented [here](https://github.com/jonasvautherin/px4-gazebo-headless).
 
 ## Install
@@ -16,7 +16,7 @@ pip3 install mavsdk
 
 Make sure that the output of this command confirms that the installation succeeded!
 
-> **Tip** On some systems, you may have to run `pip3 install --user mavsdk` (install in user space), `sudo pip3 install mavsdk` (install on your system), or you may want to run in a Python venv.
+> **Tip** On some systems, you may have to run `pip3 install --user mavsdk`, or you may want to run in a Python venv.
 
 For the quick start below we will also install the lightweight package called “aioconsole”.
 This provides a REPL (interactive shell) called `apython` that we can use for running asyncio code:
@@ -28,7 +28,7 @@ pip3 install aioconsole
 ## Run SITL
 
 It is always good to make sure that SITL works before trying to connect MAVSDK to it.
-One way is to run the following commands in the `psh>` prompt when SITL is running:
+One way is to run the following commands in the `pxh>` prompt when SITL is running:
 
 ```
 commander takeoff
@@ -107,3 +107,9 @@ The following screenshot shows PyCharm auto-completion for `drone.action.`:
 ## Examples
 
 We do have a [number of examples](https://github.com/mavlink/MAVSDK-Python/tree/master/examples) available in the repository, which are certainly a good starting point for learning about MAVSDK-Python.
+
+## Next Steps
+
+Once MAVSDK is installed we recommend you:
+- Try the [other examples](https://github.com/mavlink/MAVSDK-Python/tree/main/examples)
+- Browse the [API reference](http://mavsdk-python-docs.s3-website.eu-central-1.amazonaws.com/) to get an overview of the functionality.

@@ -7,18 +7,18 @@ All callbacks back to the user of the library are called from one thread. The ca
 If a callback takes more than one second, the user sees the warning:
 ```
 [02:56:26|Warn ] Callback took more than 1 second to run.
-See: https://mavsdk.mavlink.io/develop/en/cpp/troubleshooting.html#user_callbacks (system_impl.cpp:327)
+See: https://mavsdk.mavlink.io/main/en/cpp/troubleshooting.html#user_callbacks (system_impl.cpp:327)
 ```
 
 At 10 queued callbacks, the user sees the warning:
 ```
 [02:56:26|Warn ] User callback queue too slow.
-See: https://mavsdk.mavlink.io/develop/en/cpp/troubleshooting.html#user_callbacks (system_impl.cpp:1213)
+See: https://mavsdk.mavlink.io/main/en/cpp/troubleshooting.html#user_callbacks (system_impl.cpp:1213)
 ```
 At 100 queued callbacks, the user sees the error message:
 ```
 [02:56:35|Error] User callback queue overflown
-See: https://mavsdk.mavlink.io/develop/en/cpp/troubleshooting.html#user_callbacks (system_impl.cpp:1218)
+See: https://mavsdk.mavlink.io/main/en/cpp/troubleshooting.html#user_callbacks (system_impl.cpp:1218)
 ```
 
 ### How to debug this?

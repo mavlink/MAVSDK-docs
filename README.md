@@ -16,7 +16,7 @@ Instructions how to setup a Gitbook toolchain and build this documentation can b
 ## License
 
 This documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
-The SDK itself is licensed under the permissive [BSD 3-clause](https://github.com/mavlink/MAVSDK/blob/master/LICENSE.md).
+The SDK itself is licensed under the permissive [BSD 3-clause](https://github.com/mavlink/MAVSDK/blob/main/LICENSE.md).
 
 
 ## Governance

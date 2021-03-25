@@ -1,11 +1,13 @@
 # Missions
 
-The Mission API (plugin) allows you to create, upload, download, import from *QGroundControl*, run, pause, restart, jump to item in, and track missions.
+The Mission API (plugin) allows you to create, upload, download, run, pause, restart, jump to item in, and track missions.
 Missions can have multiple "mission items", each which may specify a position, altitude, fly-through behaviour, camera action, gimbal position, and the speed to use when traveling to the next position.
 
 Missions are *managed* though the [Mission](../api_reference/classmavsdk_1_1_mission.md) class, which communicates with the vehicle to upload mission information and run, pause, track the mission progress etc.
 The mission that is uploaded to the vehicle is defined as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects.
 
+> **Tip** The [Mission plugin](../api_reference/classmavsdk_1_1_mission.md) described here only supports a small subset of the full functionality of MAVLink missions. If you require the full mission item spec as MAVLink provides it, you might be better off using the [MissionRaw plugin](../api_reference/classmavsdk_1_1_mission_raw.md).
+> Furthermore MissionRaw allows importing mission from QGroundControl.
 
 ## Supported Mission Commands {#supported_mission_commands}
 
@@ -146,27 +148,6 @@ mission_items.push_back(
                       MissionItem::CameraAction::NONE));
 ```
 
-## Import a Mission from a QGC Plan {#import_qgc_plan}
-
-`Mission` allows you to import a mission from a *QGroundControl* plan (the imported mission can then be uploaded to a vehicle).
-
-> **Note** To export a mission plan from the *QGroundControl* use the [Sync Tool](https://docs.qgroundcontrol.com/en/PlanView/PlanView.html#file) (**Plan View > Sync Tool**, and then select **Save to File**).
-
-The mission is imported using the static [import_qgroundcontrol_mission](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a575a720f5814dd0380220abaf7a955f5) method.
-The method will fail with an error if the plan file cannot be found, cannot be parsed, or if it contains mission items that are [not supported](#supported_mission_commands).
-
-The code fragment below shows how to import mission items from a plan:
-```cpp
-std::string qgc_plan = "file_path_to_some_qgroundcontrol.plan"
-Mission::mission_items_t mission_items;
-Mission::Result import_res = Mission::import_qgroundcontrol_mission(mission_items, qgc_plan);
-```
-
-> **Tip** [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md) provides a working example with error checking.
-
-The mission (`mission_items`) can then be uploaded as shown in the section [Uploading a Mission](#uploading_mission) below.
-
-
 ## Uploading a Mission {#uploading_mission}
 
 Use [Mission::upload_mission()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a38274b1c1509375a182c44711ee9f7b1) to upload the mission defined in the previous section.
@@ -258,11 +239,12 @@ If required you can instead use the appropriate commands in the [Action](../guid
 
 ## Downloading Missions
 
-Use [Mission::download_mission_async()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a04e7e7074273b4591a820894c5c4ad43) to download a mission from the vehicle.
+Use [Mission::download_mission()](../api_reference/classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a23e9f7da32f42bcce7ef16ea8044fe53) to download a mission from the vehicle.
 The mission is downloaded as a vector of [MissionItem](../api_reference/structmavsdk_1_1_mission_1_1_mission_item.md) objects, that you can then view or manipulate as required.
 
 > **Note** Mission download will fail if the mission contains a command that is outside the [supported set](#supported_mission_commands).
 > Missions created using *QGroundControl* are not guaranteed to successfully download!
+> Again, for that case [MissionRaw](../api_reference/classmavsdk_1_1_mission_raw.md) might be a better fit.
 
 The code fragment below shows how to download a mission:
 
@@ -283,12 +265,10 @@ The code fragment below shows how to download a mission:
 ```
 
 
-
 ## Further Information
 
 * [Mission Flight Mode](https://docs.px4.io/master/en/flight_modes/mission.html) (PX4 User Guide)
 * [Example:Fly Mission](../examples/fly_mission.md)
-* [Example:Fly QGC Plan Mission](../examples/fly_mission_qgc_plan.md)
 * Integration tests:
   * [mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission.cpp)
   * [mission_cancellation.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_cancellation.cpp)
@@ -296,5 +276,3 @@ The code fragment below shows how to download a mission:
   * [mission_raw_mission_changed.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_raw_mission_changed.cpp)
   * [mission_rtl.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_rtl.cpp)
   * [mission_transfer_lossy.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/mission_transfer_lossy.cpp)
-* Unit Tests:
-  * [mission_import_qgc_test.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/plugins/mission/mission_import_qgc_test.cpp)

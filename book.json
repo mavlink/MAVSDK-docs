@@ -3,7 +3,7 @@
     "title": "MAVSDK Guide",
     "variables": {
         "logo": "./assets/site/sdk_logo_full.png",
-        "github_branch": "develop"
+        "github_branch": "main"
     },
     "plugins": [
         "youtube",
@@ -53,7 +53,7 @@
                     "label": "Edit page on github",
                     "icon": "fa fa-pencil-square-o",
                     "position" : "left",
-                    "url": "https://github.com/mavlink/MAVSDK-docs/edit/develop/{{filepath_lang}}"
+                    "url": "https://github.com/mavlink/MAVSDK-docs/edit/main/{{filepath_lang}}"
                 }
             ]
         },
@@ -62,11 +62,11 @@
         },
 
         "versions": {
-            "gitbookConfigURL": "https://raw.githubusercontent.com/mavlink/MAVSDK-docs/develop/book.json",
+            "gitbookConfigURL": "https://raw.githubusercontent.com/mavlink/MAVSDK-docs/main/book.json",
             "options": [
                 {
-                    "value": "https://mavsdk.mavlink.io/develop/en/",
-                    "text": "develop"
+                    "value": "https://mavsdk.mavlink.io/main/en/",
+                    "text": "main"
                 },
                 {
                     "value": "https://mavsdk.mavlink.io/v0.37.0/en/",

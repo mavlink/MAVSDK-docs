@@ -49,7 +49,7 @@ pipeline {
           sh('cp -r _book/* sdk.mavlink.io/${BRANCH_NAME}/')
           sh('cd sdk.mavlink.io; git add ${BRANCH_NAME}; git commit -a -m "gitbook build update `date`"')
           sh('cd sdk.mavlink.io; git push origin master')
-          
+
         }
       }
       post {
@@ -59,8 +59,7 @@ pipeline {
       }
       when {
         anyOf {
-          branch "master"
-          branch "develop"
+          branch "main"
           branch "pr-jenkins"
           branch "v1.*"
           branch "v0.*"

@@ -4,7 +4,7 @@
 ----
 
 
-Enable waypoint missions. 
+Enable waypoint missions.
 
 
 ## Data Structures
@@ -55,8 +55,6 @@ void | [subscribe_mission_progress](#classmavsdk_1_1_mission_1a6dd32b92e593c1a69
 [MissionProgress](structmavsdk_1_1_mission_1_1_mission_progress.md) | [mission_progress](#classmavsdk_1_1_mission_1a5570443e7c1f08cff1759980ff44b40e) () const | Poll for '[MissionProgress](structmavsdk_1_1_mission_1_1_mission_progress.md)' (blocking).
 std::pair< [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), bool > | [get_return_to_launch_after_mission](#classmavsdk_1_1_mission_1a38d17268541ba81d494976caa4a08661) () const | Get whether to trigger Return-to-Launch (RTL) after mission is complete.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [set_return_to_launch_after_mission](#classmavsdk_1_1_mission_1ab4adb09283b3fa64a8829f9a6e34cf37) (bool enable)const | Set whether to trigger Return-to-Launch (RTL) after the mission is complete.
-void | [import_qgroundcontrol_mission_async](#classmavsdk_1_1_mission_1a1559ce5eb560b357b065a3ac995110c3) (std::string qgc_plan_path, const [ImportQgroundcontrolMissionCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab70dc59390b13b1dc29e16ba04f1232a) callback) | Import a QGroundControl (QGC) mission plan.
-std::pair< [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), [Mission::MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) > | [import_qgroundcontrol_mission](#classmavsdk_1_1_mission_1a575a720f5814dd0380220abaf7a955f5) (std::string qgc_plan_path)const | Import a QGroundControl (QGC) mission plan.
 const [Mission](classmavsdk_1_1_mission.md) & | [operator=](#classmavsdk_1_1_mission_1a30d49ea769f358cb4e4fe3056728838c) (const [Mission](classmavsdk_1_1_mission.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -71,7 +69,7 @@ mavsdk::Mission::Mission(System &system)
 
 Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 
-The plugin is typically created as shown below: 
+The plugin is typically created as shown below:
 
 ```cpp
 auto mission = Mission(system);
@@ -89,7 +87,7 @@ mavsdk::Mission::Mission(std::shared_ptr< System > system)
 
 Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 
-The plugin is typically created as shown below: 
+The plugin is typically created as shown below:
 
 ```cpp
 auto mission = Mission(system);
@@ -119,7 +117,7 @@ Copy constructor.
 
 **Parameters**
 
-* const [Mission](classmavsdk_1_1_mission.md)& **other** - 
+* const [Mission](classmavsdk_1_1_mission.md)& **other** -
 
 ## Member Typdef Documentation
 
@@ -175,19 +173,19 @@ Possible results returned for action requests.
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a902b0d55fddef6f8d651fe1035b7d4bd"></span> `Error` | Error. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6aecc3de82f27e8e7f65807c69a114efbe"></span> `TooManyMissionItems` | Too many mission items in the mission. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6ad8a942ef2b04672adfafef0ad817a407"></span> `Busy` | Vehicle is busy. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6ac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Request timed out. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a253ca7dd096ee0956cccee4d376cab8b"></span> `InvalidArgument` | Invalid argument. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6ab4080bdf74febf04d578ff105cce9d3f"></span> `Unsupported` | [Mission](classmavsdk_1_1_mission.md) downloaded from the system is not supported. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a6b0ce476dfc17eed72967386f52ede78"></span> `NoMissionAvailable` | No mission available on the system. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6ac73901782ccb07eeaf03f1a27e323e4f"></span> `FailedToOpenQgcPlan` | Failed to open the QGroundControl plan. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6abd0579c3163a37a4bc4fe181903cc1e9"></span> `FailedToParseQgcPlan` | Failed to parse the QGroundControl plan. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6aefcaef698baace312f79a53019bd9cf4"></span> `UnsupportedMissionCmd` | Unsupported mission command. 
-<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a3465fd31285ebd60597cf59bff9db01a"></span> `TransferCancelled` | [Mission](classmavsdk_1_1_mission.md) transfer (upload or download) has been cancelled. 
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a902b0d55fddef6f8d651fe1035b7d4bd"></span> `Error` | Error.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6aecc3de82f27e8e7f65807c69a114efbe"></span> `TooManyMissionItems` | Too many mission items in the mission.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6ad8a942ef2b04672adfafef0ad817a407"></span> `Busy` | Vehicle is busy.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6ac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Request timed out.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a253ca7dd096ee0956cccee4d376cab8b"></span> `InvalidArgument` | Invalid argument.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6ab4080bdf74febf04d578ff105cce9d3f"></span> `Unsupported` | [Mission](classmavsdk_1_1_mission.md) downloaded from the system is not supported.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a6b0ce476dfc17eed72967386f52ede78"></span> `NoMissionAvailable` | No mission available on the system.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6ac73901782ccb07eeaf03f1a27e323e4f"></span> `FailedToOpenQgcPlan` | Failed to open the QGroundControl plan.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6abd0579c3163a37a4bc4fe181903cc1e9"></span> `FailedToParseQgcPlan` | Failed to parse the QGroundControl plan.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6aefcaef698baace312f79a53019bd9cf4"></span> `UnsupportedMissionCmd` | Unsupported mission command.
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a3465fd31285ebd60597cf59bff9db01a"></span> `TransferCancelled` | [Mission](classmavsdk_1_1_mission.md) transfer (upload or download) has been cancelled.
 
 ## Member Function Documentation
 
@@ -207,8 +205,8 @@ This function is non-blocking. See 'upload_mission' for the blocking counterpart
 
 **Parameters**
 
-* [MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) **mission_plan** - 
-* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** - 
+* [MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) **mission_plan** -
+* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** -
 
 ### upload_mission() {#classmavsdk_1_1_mission_1a38274b1c1509375a182c44711ee9f7b1}
 ```cpp
@@ -225,7 +223,7 @@ This function is blocking. See 'upload_mission_async' for the non-blocking count
 
 **Parameters**
 
-* [MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) **mission_plan** - 
+* [MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) **mission_plan** -
 
 **Returns**
 
@@ -260,7 +258,7 @@ This function is non-blocking. See 'download_mission' for the blocking counterpa
 
 **Parameters**
 
-* const [DownloadMissionCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1af40f70b9b4c91aa280bf75fbfc333b3b) **callback** - 
+* const [DownloadMissionCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1af40f70b9b4c91aa280bf75fbfc333b3b) **callback** -
 
 ### download_mission() {#classmavsdk_1_1_mission_1a23e9f7da32f42bcce7ef16ea8044fe53}
 ```cpp
@@ -308,7 +306,7 @@ This function is non-blocking. See 'start_mission' for the blocking counterpart.
 
 **Parameters**
 
-* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** - 
+* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** -
 
 ### start_mission() {#classmavsdk_1_1_mission_1a927fecc7734810d01cc218153780e6e3}
 ```cpp
@@ -342,7 +340,7 @@ This function is non-blocking. See 'pause_mission' for the blocking counterpart.
 
 **Parameters**
 
-* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** - 
+* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** -
 
 ### pause_mission() {#classmavsdk_1_1_mission_1ab569500d992d6d859c1c35052db07315}
 ```cpp
@@ -373,7 +371,7 @@ This function is non-blocking. See 'clear_mission' for the blocking counterpart.
 
 **Parameters**
 
-* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** - 
+* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** -
 
 ### clear_mission() {#classmavsdk_1_1_mission_1a3c3f5eac6e864873f4bb0390d1ee9306}
 ```cpp
@@ -407,8 +405,8 @@ This function is non-blocking. See 'set_current_mission_item' for the blocking c
 
 **Parameters**
 
-* int32_t **index** - 
-* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** - 
+* int32_t **index** -
+* const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) **callback** -
 
 ### set_current_mission_item() {#classmavsdk_1_1_mission_1a419397edcf63771ddd59a6af231bc8d2}
 ```cpp
@@ -428,7 +426,7 @@ This function is blocking. See 'set_current_mission_item_async' for the non-bloc
 
 **Parameters**
 
-* int32_t **index** - 
+* int32_t **index** -
 
 **Returns**
 
@@ -459,7 +457,7 @@ Subscribe to mission progress updates.
 
 **Parameters**
 
-* [MissionProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a67e8d00b1b20affca59fd4338c34c0e2) **callback** - 
+* [MissionProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a67e8d00b1b20affca59fd4338c34c0e2) **callback** -
 
 ### mission_progress() {#classmavsdk_1_1_mission_1a5570443e7c1f08cff1759980ff44b40e}
 ```cpp
@@ -506,50 +504,12 @@ This function is blocking.
 
 **Parameters**
 
-* bool **enable** - 
+* bool **enable** -
 
 **Returns**
 
 &emsp;[Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) - Result of request.
 
-### import_qgroundcontrol_mission_async() {#classmavsdk_1_1_mission_1a1559ce5eb560b357b065a3ac995110c3}
-```cpp
-void mavsdk::Mission::import_qgroundcontrol_mission_async(std::string qgc_plan_path, const ImportQgroundcontrolMissionCallback callback)
-```
-
-
-Import a QGroundControl (QGC) mission plan.
-
-The method will fail if any of the imported mission items are not supported by the MAVSDK API.
-
-
-This function is non-blocking. See 'import_qgroundcontrol_mission' for the blocking counterpart.
-
-**Parameters**
-
-* std::string **qgc_plan_path** - 
-* const [ImportQgroundcontrolMissionCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab70dc59390b13b1dc29e16ba04f1232a) **callback** - 
-
-### import_qgroundcontrol_mission() {#classmavsdk_1_1_mission_1a575a720f5814dd0380220abaf7a955f5}
-```cpp
-std::pair<Result, Mission::MissionPlan> mavsdk::Mission::import_qgroundcontrol_mission(std::string qgc_plan_path) const
-```
-
-
-Import a QGroundControl (QGC) mission plan.
-
-The method will fail if any of the imported mission items are not supported by the MAVSDK API.
-
-
-This function is blocking. See 'import_qgroundcontrol_mission_async' for the non-blocking counterpart.
-
-**Parameters**
-
-* std::string **qgc_plan_path** - 
-
-**Returns**
-
-&emsp;std::pair< [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), [Mission::MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) > - Result of request.
 
 ### operator=() {#classmavsdk_1_1_mission_1a30d49ea769f358cb4e4fe3056728838c}
 ```cpp
@@ -562,8 +522,8 @@ Equality operator (object is not copyable).
 
 **Parameters**
 
-* const [Mission](classmavsdk_1_1_mission.md)&  - 
+* const [Mission](classmavsdk_1_1_mission.md)&  -
 
 **Returns**
 
-&emsp;const [Mission](classmavsdk_1_1_mission.md) & - 
+&emsp;const [Mission](classmavsdk_1_1_mission.md) & -

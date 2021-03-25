@@ -242,7 +242,7 @@ You can get/set the normal horizontal velocity used in *Return mode*, *Hold mode
 * [set_maximum_speed()](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a5fccee1636215bccf8d77d9dca15134e)
 * [get_maximum_speed](../api_reference/classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a128bf73fe8d0d359f36a3a9a327799ee)
 
-> **Note** These methods get/set the [MPC_XY_CRUISE](https://dev.px4.io/master/en/advanced/parameter_reference.html#MPC_XY_CRUISE) parameter.
+> **Note** These methods get/set the [MPC_XY_CRUISE](https://docs.px4.io/master/en/advanced_config/parameter_reference.html#MPC_XY_CRUISE) parameter.
   They are used in the same way as the other `Action` methods.
 
 

@@ -2,7 +2,7 @@
 
 The [Fly Mission](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/fly_mission) example shows how to create, upload, and run, pause, and restart missions using the SDK.
 
-![Fly Mission QGC Screenshot](../../assets/examples/fly_mission/fly_mission_example_qgc.jpg)
+![Fly Mission QGC Screenshot](../../../assets/examples/fly_mission/fly_mission_example_qgc.jpg)
 
 
 ## Running the Example {#run_example}

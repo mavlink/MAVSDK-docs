@@ -1,6 +1,6 @@
 # Plugin/Test Logging
 
-The MAVSDK provides an API that developers can use for console logging in plugins and integration tests. 
+The MAVSDK provides an API that developers can use for console logging in plugins and integration tests.
 Basic [message logging](#message_logging) can be enabled by building with a specific `#define`.
 
 
@@ -14,7 +14,7 @@ The API methods display a custom message, prepending a timestamp and the type of
 
 The API is defined in [src/core/log.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/core/log.h) (and made available to integration tests via [/src/integration_tests/integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/integration_test_helper.h)).
 
-The API methods are called as shown below for `LogDebug()`, with the left shift operator (`<<`) used to append the message-specific text.
+The API methods are called as shown below for `LogDebug()`, with the insertion operator (`<<`) used to append the message-specific text.
 
 ```cpp
 #include "../path-to/core/log.h"
@@ -36,7 +36,7 @@ Function | Description | Example
 
 Basic logging is defined in source for both incoming (handled/ignored) and sent MAVLink messages.
 
-This functionality is disabled by default, and available only in debug builds. 
+This functionality is disabled by default, and available only in debug build when built from source.
 To enable the logs, set `#define MESSAGE_DEBUGGING 1` in [src/core/system.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/core/system.cpp)
 
 <!-- Added: https://github.com/mavlink/MAVSDK/pull/194 -->

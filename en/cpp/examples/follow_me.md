@@ -3,7 +3,7 @@
 This example demonstrates how to use the [Follow Me](../guide/follow_me.md) plugin.
 It shows how to send the drone both the current position of the target (`FollowMe::TargetLocation`) and the relative position at which it should follow (`FollowMe::Config`).
 
-![Follow Me QGC Screenshot](../../assets/examples/follow_me/follow_me_example_qgc.jpg)
+![Follow Me QGC Screenshot](../../../assets/examples/follow_me/follow_me_example_qgc.jpg)
 
 > **Note** A real application using this API will get the position information from the underlying operating system.
   The example uses a fake position source (`FakeLocationProvider`) to enable it to be run on computers that do not have position information.

@@ -32,7 +32,7 @@ The deprecations are also implemented as compiler warnings.
 The 64bit (8 bytes) uuid is deprecated because it needed to be extended to 18 bytes.
 For more info, see this [MAVLink pull request](https://github.com/mavlink/mavlink/pull/786).
 Therefore, the discovery no longer contains the uuid.
-If the uid is required it can be found in the [Info plugin](../api_reference/classmavsdk_1_1_info.md#classmavsdk_1_1_info_1a812ed66265b7427bc781faec3f0fa89e).
+If the uid is required it can be found in the [Info plugin](api_reference/classmavsdk_1_1_info.md#classmavsdk_1_1_info_1a812ed66265b7427bc781faec3f0fa89e).
 
 **Previous way of discovering systems:**
 ```cpp
