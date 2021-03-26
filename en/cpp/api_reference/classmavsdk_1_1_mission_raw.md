@@ -10,6 +10,8 @@ Enable raw missions as exposed by MAVLink.
 ## Data Structures
 
 
+struct [MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md)
+
 struct [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md)
 
 struct [MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md)
@@ -54,6 +56,7 @@ void | [subscribe_mission_changed](#classmavsdk_1_1_mission_raw_1a18019bf4f46b6f
 <li><p>Subscribes to mission changed. </p>
 </li>
 </ul>
+std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > | [import_qgroundcontrol_mission](#classmavsdk_1_1_mission_raw_1a43345b21cf9dedf594f62ec7ad963ce8) (std::string qgc_plan_path)const | Import a QGroundControl missions in JSON .plan format.
 const [MissionRaw](classmavsdk_1_1_mission_raw.md) & | [operator=](#classmavsdk_1_1_mission_raw_1a0cfdf21bad5478c91cf18207b6a21ad3) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -182,6 +185,8 @@ Value | Description
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafab4080bdf74febf04d578ff105cce9d3f"></span> `Unsupported` | [Mission](classmavsdk_1_1_mission.md) downloaded from the system is not supported. 
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa6b0ce476dfc17eed72967386f52ede78"></span> `NoMissionAvailable` | No mission available on the system. 
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa3465fd31285ebd60597cf59bff9db01a"></span> `TransferCancelled` | [Mission](classmavsdk_1_1_mission.md) transfer (upload or download) has been cancelled. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafac73901782ccb07eeaf03f1a27e323e4f"></span> `FailedToOpenQgcPlan` | Failed to open the QGroundControl plan. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafabd0579c3163a37a4bc4fe181903cc1e9"></span> `FailedToParseQgcPlan` | Failed to parse the QGroundControl plan. 
 
 ## Member Function Documentation
 
@@ -458,6 +463,35 @@ This notification can be used to be informed if a ground station has been upload
 **Parameters**
 
 * [MissionChangedCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6) **callback** - Callback to notify about change.
+
+### import_qgroundcontrol_mission() {#classmavsdk_1_1_mission_raw_1a43345b21cf9dedf594f62ec7ad963ce8}
+```cpp
+std::pair<Result, MissionRaw::MissionImportData> mavsdk::MissionRaw::import_qgroundcontrol_mission(std::string qgc_plan_path) const
+```
+
+
+Import a QGroundControl missions in JSON .plan format.
+
+Supported:
+<ul>
+<li><p>Waypoints</p>
+</li>
+<li><p>Survey Not supported:</p>
+</li>
+<li><p>Structure Scan</p>
+</li>
+</ul>
+
+
+This function is blocking.
+
+**Parameters**
+
+* std::string **qgc_plan_path** - 
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > - Result of request.
 
 ### operator=() {#classmavsdk_1_1_mission_raw_1a0cfdf21bad5478c91cf18207b6a21ad3}
 ```cpp

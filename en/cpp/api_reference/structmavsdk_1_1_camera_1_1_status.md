@@ -48,6 +48,7 @@ Value | Description
 <span id="structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52a534ceac854da4ba59c4dc41b7ab732dc"></span> `NotAvailable` | [Status](structmavsdk_1_1_camera_1_1_status.md) not available. 
 <span id="structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52acbe526fde94ab97f641ac0cb6d4b624b"></span> `Unformatted` | Storage is not formatted (i.e. has no recognized file system). 
 <span id="structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52a550ed376863f4dfb07120a0aa2d249db"></span> `Formatted` | Storage is formatted (i.e. has recognized a file system). 
+<span id="structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52a9ed2d871602556951e39f3cebd08d6cb"></span> `NotSupported` | Storage status is not supported. 
 
 ## Field Documentation
 

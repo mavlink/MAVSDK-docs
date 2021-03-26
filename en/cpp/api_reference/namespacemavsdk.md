@@ -26,6 +26,7 @@ Namespace for all mavsdk types.
 * [mavsdk::Mocap](classmavsdk_1_1_mocap.md)
 * [mavsdk::Offboard](classmavsdk_1_1_offboard.md)
 * [mavsdk::Param](classmavsdk_1_1_param.md)
+* [mavsdk::ServerUtility](classmavsdk_1_1_server_utility.md)
 * [mavsdk::Shell](classmavsdk_1_1_shell.md)
 * [mavsdk::Telemetry](classmavsdk_1_1_telemetry.md)
 * [mavsdk::TrackingServer](classmavsdk_1_1_tracking_server.md)
@@ -37,6 +38,7 @@ Namespace for all mavsdk types.
 Type | Description
 --- | ---
 enum [ConnectionResult](#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | Result type returned when adding a connection.
+enum [ForwardingOption](#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) | ForwardingOption for Connection, used to set message forwarding option.
 enum [ComponentType](#namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12) | Component Types.
 
 ## Functions
@@ -75,6 +77,21 @@ Value | Description
 <span id="namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992a63e76f04ccb26b3da08fc20176c8577c"></span> `ConnectionsExhausted` | Connections exhausted. 
 <span id="namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992a4ffb87ccb1fd17d4d54d882a06885f49"></span> `ConnectionUrlInvalid` | URL invalid. 
 <span id="namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992a94a6b3fbdd01834703b52a5493535b1d"></span> `BaudrateUnknown` | Baudrate unknown. 
+
+### enum ForwardingOption {#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9}
+
+```
+#include: mavsdk.h
+```
+
+
+ForwardingOption for Connection, used to set message forwarding option.
+
+
+Value | Description
+--- | ---
+<span id="namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9a67cc131236b099b681048d4812558fca"></span> `ForwardingOff` |  
+<span id="namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9ac07f34e9a31f4a26b48711122e89cdb8"></span> `ForwardingOn` |  
 
 ### enum ComponentType {#namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12}
 
