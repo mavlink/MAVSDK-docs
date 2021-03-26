@@ -18,6 +18,8 @@
 
 float [temperature_degc](#structmavsdk_1_1_telemetry_1_1_imu_1a25504448c25602ab87cc773c28f58caa) {float(NAN)} - Temperature.
 
+uint64_t [timestamp_us](#structmavsdk_1_1_telemetry_1_1_imu_1a3466ec3148942040add5d5bab2c69f56) {} - Timestamp in microseconds.
+
 
 ## Field Documentation
 
@@ -60,4 +62,14 @@ float mavsdk::Telemetry::Imu::temperature_degc {float(NAN)}
 
 
 Temperature.
+
+
+### timestamp_us {#structmavsdk_1_1_telemetry_1_1_imu_1a3466ec3148942040add5d5bab2c69f56}
+
+```cpp
+uint64_t mavsdk::Telemetry::Imu::timestamp_us {}
+```
+
+
+Timestamp in microseconds.
 

@@ -34,15 +34,16 @@ Type | Name | Description
 &nbsp; | [Mavsdk](#classmavsdk_1_1_mavsdk_1aad81f6df52096ea28d4e646ad7339461) () | Constructor.
 &nbsp; | [~Mavsdk](#classmavsdk_1_1_mavsdk_1ac1549f715d6857711b9b9e364a4ca351) () | Destructor.
 std::string | [version](#classmavsdk_1_1_mavsdk_1a8fdb97695762d06fd2bccfc6309943fa) () const | Returns the version of MAVSDK.
-[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_any_connection](#classmavsdk_1_1_mavsdk_1a229888e2931c16d11edbed07b03174d4) (const std::string & connection_url) | Adds Connection via URL.
-[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_udp_connection](#classmavsdk_1_1_mavsdk_1a605d3a89cd527222bf131b2c036dc899) (int local_port=[DEFAULT_UDP_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1affddcc7c7849ed86a0c7dab1166e657a)) | Adds a UDP connection to the specified port number.
-[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_udp_connection](#classmavsdk_1_1_mavsdk_1a20b51cc972876eef5101e35a5c289c13) (const std::string & local_ip, int local_port=[DEFAULT_UDP_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1affddcc7c7849ed86a0c7dab1166e657a)) | Adds a UDP connection to the specified port number and local interface.
-[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [setup_udp_remote](#classmavsdk_1_1_mavsdk_1a438b86fab92fa85cd8bc5dff90991eed) (const std::string & remote_ip, int remote_port) | Sets up instance to send heartbeats to the specified remote interface and port number.
-[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a868d224223d2f4e8de7d5e00863b6ceb) (int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific port number on localhost.
-[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a950038afdd201f89e97a3e60e227869a) (const std::string & remote_ip, int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd)) | Adds a TCP connection with a specific IP address and port number.
-[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_serial_connection](#classmavsdk_1_1_mavsdk_1a8bb8d79c35c44eb3b57fe658c060b093) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a870d15142914f1db564c12f385d5489b), bool flow_control=false) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
+[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_any_connection](#classmavsdk_1_1_mavsdk_1a405041a5043c610c86540de090626d97) (const std::string & connection_url, [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) forwarding_option=ForwardingOption::ForwardingOff) | Adds Connection via URL.
+[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_udp_connection](#classmavsdk_1_1_mavsdk_1aa43dfb00d5118d26ae5aabd0f9ba56b2) (int local_port=[DEFAULT_UDP_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1affddcc7c7849ed86a0c7dab1166e657a), [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) forwarding_option=ForwardingOption::ForwardingOff) | Adds a UDP connection to the specified port number.
+[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_udp_connection](#classmavsdk_1_1_mavsdk_1a98fd1c01bd366b27084810875a1b94c1) (const std::string & local_ip, int local_port=[DEFAULT_UDP_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1affddcc7c7849ed86a0c7dab1166e657a), [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) forwarding_option=ForwardingOption::ForwardingOff) | Adds a UDP connection to the specified port number and local interface.
+[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [setup_udp_remote](#classmavsdk_1_1_mavsdk_1adb2a69282a5d3766fd6251662c28616d) (const std::string & remote_ip, int remote_port, [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) forwarding_option=ForwardingOption::ForwardingOff) | Sets up instance to send heartbeats to the specified remote interface and port number.
+[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a91c7a70c6e8ffa43844f2ce04f2696f0) (int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd), [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) forwarding_option=ForwardingOption::ForwardingOff) | Adds a TCP connection with a specific port number on localhost.
+[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_tcp_connection](#classmavsdk_1_1_mavsdk_1a50ecebb9ee710b9a044d2d5eb57645e4) (const std::string & remote_ip, int remote_port=[DEFAULT_TCP_REMOTE_PORT](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a52a6a9e0acd6c0ade566208d253427bd), [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) forwarding_option=ForwardingOption::ForwardingOff) | Adds a TCP connection with a specific IP address and port number.
+[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | [add_serial_connection](#classmavsdk_1_1_mavsdk_1a669ddeec7af571fdbde9f31e343d50ac) (const std::string & dev_path, int baudrate=[DEFAULT_SERIAL_BAUDRATE](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a870d15142914f1db564c12f385d5489b), bool flow_control=false, [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) forwarding_option=ForwardingOption::ForwardingOff) | Adds a serial connection with a specific port (COM or UART dev node) and baudrate as specified.
 std::vector< std::shared_ptr< [System](classmavsdk_1_1_system.md) > > | [systems](#classmavsdk_1_1_mavsdk_1a0d0bc4cdab14d96877b52baec5113fa8) () const | Get a vector of systems which have been discovered or set-up.
 void | [set_configuration](#classmavsdk_1_1_mavsdk_1acaeea86253493dc15b6540d2100a1b86) ([Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) configuration) | Set [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) of SDK.
+void | [set_timeout_s](#classmavsdk_1_1_mavsdk_1a765f37b61462addcfd961e720585d2c6) (double timeout_s) | Set timeout of MAVLink transfers.
 DEPRECATED std::vector< uint64_t > | [system_uuids](#classmavsdk_1_1_mavsdk_1a21e860cb6d24a0c94e8381a8552563fd) () const | Get vector of system UUIDs (deprecated).
 DEPRECATED [System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1a94227abeef7ccb938126ca94b1d034e9) () const | Get the first discovered system.
 DEPRECATED [System](classmavsdk_1_1_system.md) & | [system](#classmavsdk_1_1_mavsdk_1aa21bb28b338c89d670b839491568ff31) (uint64_t uuid)const | Get the system with the specified UUID (deprecated).
@@ -68,6 +69,9 @@ static constexpr int [DEFAULT_TCP_REMOTE_PORT](#classmavsdk_1_1_mavsdk_1a52a6a9e
 
 
 static constexpr int [DEFAULT_SERIAL_BAUDRATE](#classmavsdk_1_1_mavsdk_1a870d15142914f1db564c12f385d5489b) = 57600 - Default serial baudrate.
+
+
+static constexpr double [DEFAULT_TIMEOUT_S](#classmavsdk_1_1_mavsdk_1a74f7b4d32d9551bb9c11ce8668f634a6) = 0.5 - Default internal timeout in seconds.
 
 
 ## Constructor & Destructor Documentation
@@ -137,9 +141,9 @@ Note, you're not supposed to request the version too many times.
 
 &emsp;std::string - A string containing the version.
 
-### add_any_connection() {#classmavsdk_1_1_mavsdk_1a229888e2931c16d11edbed07b03174d4}
+### add_any_connection() {#classmavsdk_1_1_mavsdk_1a405041a5043c610c86540de090626d97}
 ```cpp
-ConnectionResult mavsdk::Mavsdk::add_any_connection(const std::string &connection_url)
+ConnectionResult mavsdk::Mavsdk::add_any_connection(const std::string &connection_url, ForwardingOption forwarding_option=ForwardingOption::ForwardingOff)
 ```
 
 
@@ -158,14 +162,15 @@ Supports connection: Serial, TCP or UDP. Connection URL format should be:
 **Parameters**
 
 * const std::string& **connection_url** - connection URL string.
+* [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) **forwarding_option** - message forwarding option (when multiple interfaces are used).
 
 **Returns**
 
 &emsp;[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) - The result of adding the connection.
 
-### add_udp_connection() {#classmavsdk_1_1_mavsdk_1a605d3a89cd527222bf131b2c036dc899}
+### add_udp_connection() {#classmavsdk_1_1_mavsdk_1aa43dfb00d5118d26ae5aabd0f9ba56b2}
 ```cpp
-ConnectionResult mavsdk::Mavsdk::add_udp_connection(int local_port=DEFAULT_UDP_PORT)
+ConnectionResult mavsdk::Mavsdk::add_udp_connection(int local_port=DEFAULT_UDP_PORT, ForwardingOption forwarding_option=ForwardingOption::ForwardingOff)
 ```
 
 
@@ -176,14 +181,15 @@ Any incoming connections are accepted (0.0.0.0).
 **Parameters**
 
 * int **local_port** - The local UDP port to listen to (defaults to 14540, the same as MAVROS).
+* [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) **forwarding_option** - message forwarding option (when multiple interfaces are used).
 
 **Returns**
 
 &emsp;[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) - The result of adding the connection.
 
-### add_udp_connection() {#classmavsdk_1_1_mavsdk_1a20b51cc972876eef5101e35a5c289c13}
+### add_udp_connection() {#classmavsdk_1_1_mavsdk_1a98fd1c01bd366b27084810875a1b94c1}
 ```cpp
-ConnectionResult mavsdk::Mavsdk::add_udp_connection(const std::string &local_ip, int local_port=DEFAULT_UDP_PORT)
+ConnectionResult mavsdk::Mavsdk::add_udp_connection(const std::string &local_ip, int local_port=DEFAULT_UDP_PORT, ForwardingOption forwarding_option=ForwardingOption::ForwardingOff)
 ```
 
 
@@ -195,14 +201,15 @@ To accept only local connections of the machine, use 127.0.0.1. For any incoming
 
 * const std::string& **local_ip** - The local UDP IP address to listen to.
 * int **local_port** - The local UDP port to listen to (defaults to 14540, the same as MAVROS).
+* [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) **forwarding_option** - message forwarding option (when multiple interfaces are used).
 
 **Returns**
 
 &emsp;[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) - The result of adding the connection.
 
-### setup_udp_remote() {#classmavsdk_1_1_mavsdk_1a438b86fab92fa85cd8bc5dff90991eed}
+### setup_udp_remote() {#classmavsdk_1_1_mavsdk_1adb2a69282a5d3766fd6251662c28616d}
 ```cpp
-ConnectionResult mavsdk::Mavsdk::setup_udp_remote(const std::string &remote_ip, int remote_port)
+ConnectionResult mavsdk::Mavsdk::setup_udp_remote(const std::string &remote_ip, int remote_port, ForwardingOption forwarding_option=ForwardingOption::ForwardingOff)
 ```
 
 
@@ -213,14 +220,15 @@ Sets up instance to send heartbeats to the specified remote interface and port n
 
 * const std::string& **remote_ip** - The remote UDP IP address to report to.
 * int **remote_port** - The local UDP port to report to.
+* [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) **forwarding_option** - message forwarding option (when multiple interfaces are used).
 
 **Returns**
 
 &emsp;[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) - The result of operation.
 
-### add_tcp_connection() {#classmavsdk_1_1_mavsdk_1a868d224223d2f4e8de7d5e00863b6ceb}
+### add_tcp_connection() {#classmavsdk_1_1_mavsdk_1a91c7a70c6e8ffa43844f2ce04f2696f0}
 ```cpp
-ConnectionResult mavsdk::Mavsdk::add_tcp_connection(int remote_port=DEFAULT_TCP_REMOTE_PORT)
+ConnectionResult mavsdk::Mavsdk::add_tcp_connection(int remote_port=DEFAULT_TCP_REMOTE_PORT, ForwardingOption forwarding_option=ForwardingOption::ForwardingOff)
 ```
 
 
@@ -230,14 +238,15 @@ Adds a TCP connection with a specific port number on localhost.
 **Parameters**
 
 * int **remote_port** - The TCP port to connect to (defaults to 5760).
+* [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) **forwarding_option** - message forwarding option (when multiple interfaces are used).
 
 **Returns**
 
 &emsp;[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) - The result of adding the connection.
 
-### add_tcp_connection() {#classmavsdk_1_1_mavsdk_1a950038afdd201f89e97a3e60e227869a}
+### add_tcp_connection() {#classmavsdk_1_1_mavsdk_1a50ecebb9ee710b9a044d2d5eb57645e4}
 ```cpp
-ConnectionResult mavsdk::Mavsdk::add_tcp_connection(const std::string &remote_ip, int remote_port=DEFAULT_TCP_REMOTE_PORT)
+ConnectionResult mavsdk::Mavsdk::add_tcp_connection(const std::string &remote_ip, int remote_port=DEFAULT_TCP_REMOTE_PORT, ForwardingOption forwarding_option=ForwardingOption::ForwardingOff)
 ```
 
 
@@ -248,14 +257,15 @@ Adds a TCP connection with a specific IP address and port number.
 
 * const std::string& **remote_ip** - Remote IP address to connect to.
 * int **remote_port** - The TCP port to connect to (defaults to 5760).
+* [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) **forwarding_option** - message forwarding option (when multiple interfaces are used).
 
 **Returns**
 
 &emsp;[ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) - The result of adding the connection.
 
-### add_serial_connection() {#classmavsdk_1_1_mavsdk_1a8bb8d79c35c44eb3b57fe658c060b093}
+### add_serial_connection() {#classmavsdk_1_1_mavsdk_1a669ddeec7af571fdbde9f31e343d50ac}
 ```cpp
-ConnectionResult mavsdk::Mavsdk::add_serial_connection(const std::string &dev_path, int baudrate=DEFAULT_SERIAL_BAUDRATE, bool flow_control=false)
+ConnectionResult mavsdk::Mavsdk::add_serial_connection(const std::string &dev_path, int baudrate=DEFAULT_SERIAL_BAUDRATE, bool flow_control=false, ForwardingOption forwarding_option=ForwardingOption::ForwardingOff)
 ```
 
 
@@ -266,7 +276,8 @@ Adds a serial connection with a specific port (COM or UART dev node) and baudrat
 
 * const std::string& **dev_path** - COM or UART dev node name/path (e.g. "/dev/ttyS0", or "COM3" on Windows).
 * int **baudrate** - Baudrate of the serial port (defaults to 57600).
-* bool **flow_control** - enable/disable flow control
+* bool **flow_control** - enable/disable flow control.
+* [ForwardingOption](namespacemavsdk.md#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) **forwarding_option** - message forwarding option (when multiple interfaces are used).
 
 **Returns**
 
@@ -298,6 +309,20 @@ The default configuration is `Configuration::GroundStation` The configuration is
 **Parameters**
 
 * [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) **configuration** - [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) chosen.
+
+### set_timeout_s() {#classmavsdk_1_1_mavsdk_1a765f37b61462addcfd961e720585d2c6}
+```cpp
+void mavsdk::Mavsdk::set_timeout_s(double timeout_s)
+```
+
+
+Set timeout of MAVLink transfers.
+
+The default timeout used is generally DEFAULT_SERIAL_BAUDRATE (0.5 seconds) seconds. If MAVSDK is used on the same host this timeout can be reduced, while if MAVSDK has to communicate over links with high latency it might need to be increased to prevent timeouts.
+
+**Parameters**
+
+* double **timeout_s** - 
 
 ### system_uuids() {#classmavsdk_1_1_mavsdk_1a21e860cb6d24a0c94e8381a8552563fd}
 ```cpp
@@ -514,4 +539,14 @@ constexpr int mavsdk::Mavsdk::DEFAULT_SERIAL_BAUDRATE = 57600
 
 
 Default serial baudrate.
+
+
+### DEFAULT_TIMEOUT_S {#classmavsdk_1_1_mavsdk_1a74f7b4d32d9551bb9c11ce8668f634a6}
+
+```cpp
+constexpr double mavsdk::Mavsdk::DEFAULT_TIMEOUT_S = 0.5
+```
+
+
+Default internal timeout in seconds.
 
