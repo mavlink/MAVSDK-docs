@@ -41,12 +41,12 @@ These are the instructions on how to get a release out the door.
      ```
      git switch main
      git pull
-     git switch -c vX.Y.Z
+     git switch -c vX.Y
      ```
-   - Modify **book.json** in the vX.Y.Z branch to change the value of `github_branch` to match the new branch: `"github_branch": "vX.Y.Z"`
+   - Modify **book.json** in the vX.Y branch to change the value of `github_branch` to match the new branch: `"github_branch": "vX.Y"`
    - Push the branch to the upstream repo
      ```
-     git push origin vX.Y.Z
+     git push origin vX.Y
      ```
 1. Add the branch to the version checker in main branch [book.json](https://github.com/mavlink/MAVSDK-docs/blob/main/book.json) (see pattern below `versions`).
 
