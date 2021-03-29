@@ -24,8 +24,9 @@ This means that breaking changes to the API result in a bump of the major versio
 
 ### Mission
 
-The functionality to import missions from QGroundControl (.plan files) has been moved from the Mission to the MissionRaw plugin.
-The reasoning was that the Mission API didn't support most of the functionality that can be part of a QGC mission, and therefore will likely have not work as expected. With MissionRaw it's just a simple 1:1 mapping and the results should be more predictable.
+The functionality to import missions from *QGroundControl* (**.plan** files) has been moved from the `Mission` to the `MissionRaw` plugin.
+The reasoning was that the Mission API didn't support most of the functionality that can be part of a QGC mission, and therefore will likely have not work as expected.
+With `MissionRaw` it's just a simple 1:1 mapping and the results should be more predictable.
 
 The old API was:
 ```
