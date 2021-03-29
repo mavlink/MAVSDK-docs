@@ -20,8 +20,28 @@ This means that breaking changes to the API result in a bump of the major versio
 > **Note** At time of writing, breaking/incompatible changes *are not* resulting in the major version number being increased!
   We plan to release version 1.0.0 in the near future, after which the above strategy will be adopted (i.e. currently breaking changes can occur in both minor and patch releases).
 
+## 0.38
 
-## v0.33.0
+### Mission
+
+The functionality to import missions from QGroundControl (.plan files) has been moved from the Mission to the MissionRaw plugin.
+The reasoning was that the Mission API didn't support most of the functionality that can be part of a QGC mission, and therefore will likely have not work as expected. With MissionRaw it's just a simple 1:1 mapping and the results should be more predictable.
+
+The old API was:
+```
+// Import Mission items from QGC plan
+std::pair<Mission::Result, Mission::MissionPlan> import_res =
+    mission.import_qgroundcontrol_mission(qgc_plan);
+```
+
+The new API is:
+```
+// Import Mission items from QGC plan
+std::pair<MissionRaw::Result, MissionRaw::MissionImportData> import_res =
+    mission_raw.import_qgroundcontrol_mission(qgc_plan);
+```
+
+## v0.33
 
 There are some changes in how systems are discovered, connected and accessed with this release.
 The previous APIs are still available but marked deprecated and they will be removed in the future.
@@ -127,7 +147,7 @@ auto system = mavsdk.systems().at(0);
 
 > **Note** The `std::vector<std::shared_ptr>` returned by `systems()` might be empty if no system has been discovered yet, and the above call will abort.
 
-## v0.25.0
+## v0.25
 
 There are several changes in this release (from v0.24.0) because the C++ plugins are now partially auto-generated from the proto files.
 While this causes some painful changes, it has several advantages:
