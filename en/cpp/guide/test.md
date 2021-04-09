@@ -5,7 +5,7 @@ The unit tests are run every time new code is committed to the library, and must
 
 This topic shows how to run the existing tests.
 
-> **Tip** For information on _writing_ tests see: [Writing Plugins &gt; Test Code](../../contributing/plugins.md#testing).
+> **Tip** For information on _writing_ tests see: [Writing Plugins &gt; Test Code](../contributing/plugins.md#testing).
 
 ## Running Unit Tests
 

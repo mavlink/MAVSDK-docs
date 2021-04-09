@@ -29,7 +29,7 @@ MAVSDK is primarly written in C++ with wrappers available for several programmin
 
 Check out the quickstart guide for [C++](cpp/quickstart.md) and [Python](python/quickstart.md)
 
-## Getting Help
+## Getting Help {#getting-help}
 
 This guide contains information and examples showing how to use MAVSDK.
 If you have specific questions that are not answered by the documentation, these can be raised on:
@@ -50,7 +50,7 @@ Use Github for bug reports/enhancement requests:
 
 We welcome contributions! If you want to help or have suggestions/bug reports [please get in touch with the development team](#getting-help).
 
-The [Contributing](contributing/README.md) (C++) section contains more information on how and what to contribute, including topics about building MAVSDK from source code, running our integration and unit tests, and all other aspects of core development.
+The [Contributing](cpp/contributing/README.md) (C++) section contains more information on how and what to contribute, including topics about building MAVSDK from source code, running our integration and unit tests, and all other aspects of core development.
 
 
 ## License

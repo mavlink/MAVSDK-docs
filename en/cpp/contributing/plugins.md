@@ -337,7 +337,7 @@ add_executable(integration_tests_runner
 #### Integration Test Files/Code
 
 The main MAVSDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/integration_test_helper.h).
-This provides access to the [Plugin/Test Logger](../cpp/guide/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
+This provides access to the [Plugin/Test Logger](../guide/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
 > **Note** All tests running against SITL can be declared using `TEST_F` and have a first argument `SitlTest` as shown.
   This is required in order to use the shared class to set up and tear down the simulator between tests.
@@ -361,15 +361,15 @@ Where possible examples should demonstrate realistic use cases such that the cod
 
 The public API must be fully documented using the proto files.
 
-> **Tip** The in-source comments will be compiled to markdown and included in the [API Reference](../cpp/api_reference/README.md).
-> The process is outlined in [Documentation > API Reference](../contributing/documentation.md#api-reference).
+> **Tip** The in-source comments will be compiled to markdown and included in the [API Reference](../api_reference/README.md).
+> The process is outlined in [Documentation > API Reference](documentation.md#api-reference).
 
 Internal/implementation classes need not be documented, but should be written using expressive naming of variables and functions to help the reader.
 Anything unexpected or special however warrants an explanation as a comment.
 
 ### Example Code Documentation
 
-The plugin example should be documented in markdown following the same pattern as the existing [examples](../cpp/examples/README.md).
+The plugin example should be documented in markdown following the same pattern as the existing [examples](../examples/README.md).
 
 Generally this involves explaining what the example does and displaying the source.
 The explanation of how the code works is usually deferred to [guide documentation](#guide).
@@ -377,7 +377,7 @@ The explanation of how the code works is usually deferred to [guide documentatio
 
 ### Guide Documentation {#guide}
 
-Ideally, [guide](../cpp/guide/README.md) documentation should be created. This should be based on example code.
+Ideally, [guide](../guide/README.md) documentation should be created. This should be based on example code.
 
 The purpose of the guide is to:
 * Show how different parts of the API can be used together
