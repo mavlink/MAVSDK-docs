@@ -139,6 +139,8 @@
         * [class TrackingServer](cpp/api_reference/classmavsdk_1_1_tracking_server.md)
             * [struct Point](cpp/api_reference/structmavsdk_1_1_tracking_server_1_1_track_point.md)
             * [struct Rectangle](cpp/api_reference/structmavsdk_1_1_tracking_server_1_1_track_rectangle.md)
+        * [class Transponder](cpp/api_reference/classmavsdk_1_1_transponder.md)
+            * [struct AdsbVehicle](cpp/api_reference/structmavsdk_1_1_transponder_1_1_adsb_vehicle.md)
         * [class Tune](cpp/api_reference/classmavsdk_1_1_tune.md)
             * [struct TuneDescription](cpp/api_reference/structmavsdk_1_1_tune_1_1_tune_description.md)
         * [class PluginBase](cpp/api_reference/classmavsdk_1_1_plugin_base.md)

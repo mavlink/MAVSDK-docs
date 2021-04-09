@@ -104,6 +104,8 @@
 * [class TrackingServer](classmavsdk_1_1_tracking_server.md)
   * [struct TrackPoint](structmavsdk_1_1_tracking_server_1_1_track_point.md)
   * [struct TrackRectangle](structmavsdk_1_1_tracking_server_1_1_track_rectangle.md)
+* [class Transponder](classmavsdk_1_1_transponder.md)
+  * [struct AdsbVehicle](structmavsdk_1_1_transponder_1_1_adsb_vehicle.md)
 * [class Tune](classmavsdk_1_1_tune.md)
   * [struct TuneDescription](structmavsdk_1_1_tune_1_1_tune_description.md)
 * [namespace mavsdk (globals)](namespacemavsdk.md)
