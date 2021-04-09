@@ -50,6 +50,8 @@ void | [goto_location_async](#classmavsdk_1_1_action_1a6fd615e5571d6e7e3c53a79d2
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [goto_location](#classmavsdk_1_1_action_1afb3546fa994357e491816f2032716818) (double latitude_deg, double longitude_deg, float absolute_altitude_m, float yaw_deg)const | Send command to move the vehicle to a specific global position.
 void | [do_orbit_async](#classmavsdk_1_1_action_1aac9a2ac57a6e8f734b25c2e6dc0729ba) (float radius_m, float velocity_ms, [OrbitYawBehavior](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92) yaw_behavior, double latitude_deg, double longitude_deg, double absolute_altitude_m, const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command do orbit to the drone.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [do_orbit](#classmavsdk_1_1_action_1ac7447a86016bee3576643563079288b9) (float radius_m, float velocity_ms, [OrbitYawBehavior](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ad9dd7c5e85dda1ae188df75998375c92) yaw_behavior, double latitude_deg, double longitude_deg, double absolute_altitude_m)const | Send command do orbit to the drone.
+void | [hold_async](#classmavsdk_1_1_action_1aad198c883e7ace1cf4556c3b15bd8ad8) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to hold position (a.k.a. "Loiter").
+[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [hold](#classmavsdk_1_1_action_1a3440724492453e88d2399be7bae6e7c4) () const | Send command to hold position (a.k.a. "Loiter").
 void | [transition_to_fixedwing_async](#classmavsdk_1_1_action_1aa56181441cd64e092a8fb91a38c7c9fd) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to transition the drone to fixedwing.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [transition_to_fixedwing](#classmavsdk_1_1_action_1a8d5cf999a48ea3859ec75db27cf4fbda) () const | Send command to transition the drone to fixedwing.
 void | [transition_to_multicopter_async](#classmavsdk_1_1_action_1a8c109076641b5c9aa6dd78ea8b913529) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to transition the drone to multicopter.
@@ -621,6 +623,46 @@ This function is blocking. See 'do_orbit_async' for the non-blocking counterpart
 * double **latitude_deg** - 
 * double **longitude_deg** - 
 * double **absolute_altitude_m** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
+
+### hold_async() {#classmavsdk_1_1_action_1aad198c883e7ace1cf4556c3b15bd8ad8}
+```cpp
+void mavsdk::Action::hold_async(const ResultCallback callback)
+```
+
+
+Send command to hold position (a.k.a. "Loiter").
+
+Sends a command to drone to change to Hold flight mode, causing the vehicle to stop and maintain its current GPS position and altitude.
+
+
+Note: this command is specific to the PX4 Autopilot flight stack as it implies a change to a PX4-specific mode.
+
+
+This function is non-blocking. See 'hold' for the blocking counterpart.
+
+**Parameters**
+
+* const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) **callback** - 
+
+### hold() {#classmavsdk_1_1_action_1a3440724492453e88d2399be7bae6e7c4}
+```cpp
+Result mavsdk::Action::hold() const
+```
+
+
+Send command to hold position (a.k.a. "Loiter").
+
+Sends a command to drone to change to Hold flight mode, causing the vehicle to stop and maintain its current GPS position and altitude.
+
+
+Note: this command is specific to the PX4 Autopilot flight stack as it implies a change to a PX4-specific mode.
+
+
+This function is blocking. See 'hold_async' for the non-blocking counterpart.
 
 **Returns**
 

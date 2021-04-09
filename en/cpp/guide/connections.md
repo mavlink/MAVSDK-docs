@@ -7,10 +7,10 @@ Once monitoring a port, MAVSDK will automatically detect connected vehicles, add
 
 ## Monitoring a Port
 
-Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a229888e2931c16d11edbed07b03174d4), [add_udp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a605d3a89cd527222bf131b2c036dc899), [add_tcp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a868d224223d2f4e8de7d5e00863b6ceb) or [add_serial_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a8bb8d79c35c44eb3b57fe658c060b093).
+Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a405041a5043c610c86540de090626d97), [add_udp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1aa43dfb00d5118d26ae5aabd0f9ba56b2), [add_tcp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a91c7a70c6e8ffa43844f2ce04f2696f0) or [add_serial_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a669ddeec7af571fdbde9f31e343d50ac).
 All the methods are used similarly, and return immediately with a [ConnectionResult](../api_reference/namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) indicating whether they succeeded.
 
-The [add_any_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a229888e2931c16d11edbed07b03174d4) method can be used to set up monitoring for any of the supported port types (while the other methods set up specific connection types).
+The [add_any_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a405041a5043c610c86540de090626d97) method can be used to set up monitoring for any of the supported port types (while the other methods set up specific connection types).
 The connection details are specified using the string formats shown below:
 
 Connection | URL Format

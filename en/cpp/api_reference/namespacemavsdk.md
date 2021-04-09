@@ -30,6 +30,7 @@ Namespace for all mavsdk types.
 * [mavsdk::Shell](classmavsdk_1_1_shell.md)
 * [mavsdk::Telemetry](classmavsdk_1_1_telemetry.md)
 * [mavsdk::TrackingServer](classmavsdk_1_1_tracking_server.md)
+* [mavsdk::Transponder](classmavsdk_1_1_transponder.md)
 * [mavsdk::Tune](classmavsdk_1_1_tune.md)
 * [mavsdk::System](classmavsdk_1_1_system.md)
 
@@ -39,7 +40,6 @@ Type | Description
 --- | ---
 enum [ConnectionResult](#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) | Result type returned when adding a connection.
 enum [ForwardingOption](#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) | ForwardingOption for Connection, used to set message forwarding option.
-enum [ComponentType](#namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12) | Component Types.
 
 ## Functions
 
@@ -92,23 +92,6 @@ Value | Description
 --- | ---
 <span id="namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9a67cc131236b099b681048d4812558fca"></span> `ForwardingOff` |  
 <span id="namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9ac07f34e9a31f4a26b48711122e89cdb8"></span> `ForwardingOn` |  
-
-### enum ComponentType {#namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12}
-
-```
-#include: system.h
-```
-
-
-Component Types.
-
-
-Value | Description
---- | ---
-<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a696b031073e74bf2cb98e5ef201d4aa3"></span> `UNKNOWN` |  
-<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a8797273a75c761c3b925c165511d653c"></span> `AUTOPILOT` |  
-<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12addf0d6b21537d984fea6544f58101fa8"></span> `CAMERA` |  
-<span id="namespacemavsdk_1a20fe7f7c8312779a187017111bf33d12a0bad549bc68e5c4adb2ed793b8dcf8e3"></span> `GIMBAL` |  
 
 ## Function Documentation
 

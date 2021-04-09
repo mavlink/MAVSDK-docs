@@ -58,7 +58,7 @@ It might also come in handy whenever any other REST resources are required.
 
 ### How are plugins added?
 
-Check out [contributing/plugins](contributing/plugins.md).
+Check out [C++/Contributing/Plugins](cpp/contributing/plugins.md).
 
 ### Can a plugin depend on another one?
 
