@@ -69,6 +69,10 @@
                     "text": "main"
                 },
                 {
+                    "value": "https://mavsdk.mavlink.io/v0.39/en/",
+                    "text": "v0.39"
+                },
+                {
                     "value": "https://mavsdk.mavlink.io/v0.38/en/",
                     "text": "v0.38"
                 },
