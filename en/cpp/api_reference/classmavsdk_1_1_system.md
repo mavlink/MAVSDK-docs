@@ -26,6 +26,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [~System](#classmavsdk_1_1_system_1abdc4208c07d776c628acdc037a881ea6) () | Destructor.
 &nbsp; | [System](#classmavsdk_1_1_system_1ac0e97e92181683f6b31fe208165dc35c) (const [System](classmavsdk_1_1_system.md) &)=delete | Copy constructor (object is not copyable).
+void | [init](#classmavsdk_1_1_system_1add025b5dc9081631ef6fd3680acceb89) (uint8_t system_id, uint8_t component_id, bool connected)const | Initialize the system.
 bool | [has_autopilot](#classmavsdk_1_1_system_1a0c3d766baa73f5b35e2950a6f0a38c02) () const | Checks whether the system has an autopilot.
 bool | [is_standalone](#classmavsdk_1_1_system_1a7fb7ed01204498dcaa2ab7d9cc31acf2) () const | Checks whether the system is a standalone (non-autopilot).
 bool | [has_camera](#classmavsdk_1_1_system_1a440fd601ed2120e1e41d9eab536a7da8) (int camera_id=-1)const | Checks whether the system has a camera with the given camera ID.
@@ -105,6 +106,22 @@ Value | Description
 
 ## Member Function Documentation
 
+
+### init() {#classmavsdk_1_1_system_1add025b5dc9081631ef6fd3680acceb89}
+```cpp
+void mavsdk::System::init(uint8_t system_id, uint8_t component_id, bool connected) const
+```
+
+
+Initialize the system.
+
+This is not (and should not be) directly called by application code.
+
+**Parameters**
+
+* uint8_t **system_id** - [System](classmavsdk_1_1_system.md) id.
+* uint8_t **component_id** - Component id.
+* bool **connected** - If true then the system doesn't wait for heartbeat to go into connected state
 
 ### has_autopilot() {#classmavsdk_1_1_system_1a0c3d766baa73f5b35e2950a6f0a38c02}
 ```cpp
