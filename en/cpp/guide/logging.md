@@ -7,13 +7,13 @@ printing messages unless they are important enough.
 ## Usage
 It is possible to customize logging with a user-defined callback function:
 ```c++
-#include "mavsdk/log_callback.h"
+#include <mavsdk/log_callback.h>
 
 // ...
 
 mavsdk::log::subscribe([](mavsdk::log::Level level,   // message severity level
-                          const std::string &message, // message text
-                          const std::string &file,    // source file from which the message was sent
+                          const std::string& message, // message text
+                          const std::string& file,    // source file from which the message was sent
                           int line) {                 // line number in the source file
   // process the log message in a way you like
   my_nice_log(level, message);
