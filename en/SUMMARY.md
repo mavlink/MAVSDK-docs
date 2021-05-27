@@ -16,6 +16,7 @@
         * [Follow Me](cpp/guide/follow_me.md)
         * [VTOL Support](cpp/guide/vtol.md)
         * [Building C++ Apps](cpp/guide/toolchain.md)
+        * [Logging](cpp/guide/logging.md)
         * [Plugin/Test Logging](cpp/guide/dev_logging.md)
         * [Testing](cpp/guide/test.md)
         * [Building library from Source](cpp/guide/build.md)
