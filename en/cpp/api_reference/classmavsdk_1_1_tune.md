@@ -155,6 +155,7 @@ Value | Description
 <span id="classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909dab94ce655e90ee954ba1c4c5d0e13659e"></span> `InvalidTempo` | Invalid tempo (range: 32 - 255). 
 <span id="classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909da088c77b60655734bff629e03e1968495"></span> `TuneTooLong` | Invalid tune: encoded string must be at most 247 chars. 
 <span id="classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909da902b0d55fddef6f8d651fe1035b7d4bd"></span> `Error` | Failed to send the request. 
+<span id="classmavsdk_1_1_tune_1aed2b008974298098cedd69b7e95e909da1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 
 ## Member Function Documentation
 

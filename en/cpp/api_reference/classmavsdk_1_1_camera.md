@@ -306,6 +306,7 @@ Value | Description
 <span id="classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcfa902b0d55fddef6f8d651fe1035b7d4bd"></span> `Error` | An error has occured while executing the command. 
 <span id="classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcfac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Command timed out. 
 <span id="classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcfa5a738160747f39c20e9f65416931c974"></span> `WrongArgument` | Command has wrong argument(s). 
+<span id="classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcfa1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 
 ## Member Function Documentation
 

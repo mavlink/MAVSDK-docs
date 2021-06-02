@@ -132,6 +132,7 @@ Value | Description
 <span id="classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881dfa094a6f6b0868122a9dd008cb91c083e4"></span> `ConnectionError` | Connection error. 
 <span id="classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881dfafdf152936dcbf201445440856357f6ac"></span> `WrongType` | Wrong type. 
 <span id="classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881dfaa2b5cfc4e45ca036892b3dadc483e655"></span> `ParamNameTooLong` | Parameter name too long (> 16). 
+<span id="classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881dfa1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 
 ## Member Function Documentation
 

@@ -187,6 +187,7 @@ Value | Description
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa3465fd31285ebd60597cf59bff9db01a"></span> `TransferCancelled` | [Mission](classmavsdk_1_1_mission.md) transfer (upload or download) has been cancelled. 
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafac73901782ccb07eeaf03f1a27e323e4f"></span> `FailedToOpenQgcPlan` | Failed to open the QGroundControl plan. 
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafabd0579c3163a37a4bc4fe181903cc1e9"></span> `FailedToParseQgcPlan` | Failed to parse the QGroundControl plan. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 
 ## Member Function Documentation
 

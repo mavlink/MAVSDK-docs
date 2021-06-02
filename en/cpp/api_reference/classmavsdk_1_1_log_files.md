@@ -151,6 +151,7 @@ Value | Description
 <span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cdac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | A timeout happened. 
 <span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda253ca7dd096ee0956cccee4d376cab8b"></span> `InvalidArgument` | Invalid argument. 
 <span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda17fd85d9b010cda721a6aa7db5af2b28"></span> `FileOpenFailed` | File open failed. 
+<span id="classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cda1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system is connected. 
 
 ## Member Function Documentation
 

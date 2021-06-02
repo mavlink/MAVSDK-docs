@@ -172,6 +172,7 @@ Value | Description
 <span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76aca902b0d55fddef6f8d651fe1035b7d4bd"></span> `Error` | Error occurred sending the command. 
 <span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76acac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Command timed out. 
 <span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76acab4080bdf74febf04d578ff105cce9d3f"></span> `Unsupported` | Functionality not supported. 
+<span id="classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76aca1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 
 ## Member Function Documentation
 

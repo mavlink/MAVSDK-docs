@@ -173,6 +173,7 @@ Value | Description
 <span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a6b0ce476dfc17eed72967386f52ede78"></span> `NoMissionAvailable` | No mission available on the system. 
 <span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6aefcaef698baace312f79a53019bd9cf4"></span> `UnsupportedMissionCmd` | Unsupported mission command. 
 <span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a3465fd31285ebd60597cf59bff9db01a"></span> `TransferCancelled` | [Mission](classmavsdk_1_1_mission.md) transfer (upload or download) has been cancelled. 
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 
 ## Member Function Documentation
 
