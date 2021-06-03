@@ -131,6 +131,7 @@ Value | Description
 <span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aa88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
 <span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aa505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
 <span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aa56c1e4870d2594d9fd4d91ffaf1e3e70"></span> `InformationNotReceivedYet` | Information has not been received yet. 
+<span id="classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45aa1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system is connected. 
 
 ## Member Function Documentation
 

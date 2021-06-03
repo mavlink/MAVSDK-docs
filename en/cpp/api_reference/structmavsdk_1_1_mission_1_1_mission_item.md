@@ -40,6 +40,8 @@ float [loiter_time_s](#structmavsdk_1_1_mission_1_1_mission_item_1aa54196266e57f
 
 double [camera_photo_interval_s](#structmavsdk_1_1_mission_1_1_mission_item_1a7b48c46ecb52f115e5461a944f619612) { 1.0} - [Camera](classmavsdk_1_1_camera.md) photo interval to use after this mission item (in seconds)
 
+float [acceptance_radius_m](#structmavsdk_1_1_mission_1_1_mission_item_1a9114a16c5405dacb35f45ae37f343665) { float(NAN)} - Radius for completing a mission item (in metres)
+
 
 ## Member Enumeration Documentation
 
@@ -160,4 +162,14 @@ double mavsdk::Mission::MissionItem::camera_photo_interval_s { 1.0}
 
 
 [Camera](classmavsdk_1_1_camera.md) photo interval to use after this mission item (in seconds)
+
+
+### acceptance_radius_m {#structmavsdk_1_1_mission_1_1_mission_item_1a9114a16c5405dacb35f45ae37f343665}
+
+```cpp
+float mavsdk::Mission::MissionItem::acceptance_radius_m { float(NAN)}
+```
+
+
+Radius for completing a mission item (in metres)
 

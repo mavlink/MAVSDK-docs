@@ -128,6 +128,7 @@ Value | Description
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642ad8a942ef2b04672adfafef0ad817a407"></span> `Busy` | Vehicle is busy. 
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642ac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Request timed out. 
 <span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642a253ca7dd096ee0956cccee4d376cab8b"></span> `InvalidArgument` | Invalid argument. 
+<span id="classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 
 ## Member Function Documentation
 
