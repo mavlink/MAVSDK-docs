@@ -84,3 +84,25 @@ To access a certain system, pick the one from the vector that you require, or us
 
 The `System` is used by the MAVSDK plugin classes to query and control the vehicle.
 For more information see [Using Plugins](../guide/using_plugins.md) (and the other guide topics).
+
+## Forwarding MAVLink between connections
+
+It is possible to add multiple connections to MAVSDK and forward all MAVLink messages. To do so, each connection which should forward messages needs to have forwarding set to on.
+
+To forward bi-directional from UDP to serial and serial to UDP, you would set both connections forwarding:
+
+```
+   Mavsdk mavsdk;
+   mavsdk.add_any_connection("udp://:14540", ForwardingOption::ForwardingOn);
+   mavsdk.add_any_connection("serial:///dev/serial/by-id/usb-FTDI_FT232R_USB_UART_XXXXXXXX-if00-port0:57600", ForwardingOption::ForwardingOn);
+```
+
+To forward only in one direction, e.g to send messages arriving on serial over UDP, you would only set up forwarding for the UDP connection:
+
+```
+   Mavsdk mavsdk;
+   mavsdk.add_any_connection("udp://:14540", ForwardingOption::ForwardingOn);
+   mavsdk.add_any_connection("serial:///dev/serial/by-id/usb-FTDI_FT232R_USB_UART_XXXXXXXX-if00-port0:57600", `ForwardingOption::ForwardingOff`);
+```
+
+Note that the default function overload is `ForwardingOption::ForwardingOff`.
