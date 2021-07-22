@@ -4,7 +4,7 @@
 ----
 
 
-Type for float paramters. 
+Type for float parameters. 
 
 
 ## Data Fields

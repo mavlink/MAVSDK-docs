@@ -32,7 +32,6 @@ bool | [is_standalone](#classmavsdk_1_1_system_1a7fb7ed01204498dcaa2ab7d9cc31acf
 bool | [has_camera](#classmavsdk_1_1_system_1a440fd601ed2120e1e41d9eab536a7da8) (int camera_id=-1)const | Checks whether the system has a camera with the given camera ID.
 bool | [has_gimbal](#classmavsdk_1_1_system_1ad66c3ecc096970d40c34610e49dba929) () const | Checks whether the system has a gimbal.
 bool | [is_connected](#classmavsdk_1_1_system_1ad07991ae044bc367e27f544db40d065b) () const | Checks if the system is connected.
-DEPRECATED uint64_t | [get_uuid](#classmavsdk_1_1_system_1a1ac9b6bca2f55d2c050a68542fe00892) () const | Get the UUID of the system.
 uint8_t | [get_system_id](#classmavsdk_1_1_system_1a091d793db29719f4996040886ad951a6) () const | MAVLink [System](classmavsdk_1_1_system.md) ID of connected system.
 void | [subscribe_is_connected](#classmavsdk_1_1_system_1a4e0a0237d54285ac8b7690f6e42c35fd) ([IsConnectedCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1a0e56bb48498100fde0872a3ec376f282) callback) | Subscribe to callback to be called when system connection state changes.
 void | [register_component_discovered_callback](#classmavsdk_1_1_system_1aab05799a3c85976590ddc7ae2800c5a6) ([DiscoverCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1af5f75718750071579b507434cdcd4562) callback)const | Register a callback to be called when a component is discovered.
@@ -193,20 +192,6 @@ A system is connected when heartbeats are arriving (discovered and not timed out
 **Returns**
 
 &emsp;bool - `true` if the system is connected.
-
-### get_uuid() {#classmavsdk_1_1_system_1a1ac9b6bca2f55d2c050a68542fe00892}
-```cpp
-DEPRECATED uint64_t mavsdk::System::get_uuid() const
-```
-
-
-Get the UUID of the system.
-
-> **Note** This method will be deprecated because the UUID will be replaced by a uid with 18 bytes which can be accessed from the info plugin.
-
-**Returns**
-
-&emsp;DEPRECATED uint64_t - UUID of system.
 
 ### get_system_id() {#classmavsdk_1_1_system_1a091d793db29719f4996040886ad951a6}
 ```cpp

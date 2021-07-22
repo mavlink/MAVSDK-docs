@@ -712,6 +712,7 @@ Value | Description
 <span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75ad8a942ef2b04672adfafef0ad817a407"></span> `Busy` | Vehicle is busy. 
 <span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75a3398e12855176d55f43d53e04f472c8a"></span> `CommandDenied` | Command refused by vehicle. 
 <span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75ac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Request timed out. 
+<span id="classmavsdk_1_1_telemetry_1a241427df9a06234df2d3020fb524db75ab4080bdf74febf04d578ff105cce9d3f"></span> `Unsupported` | Request not supported. 
 
 ## Member Function Documentation
 
