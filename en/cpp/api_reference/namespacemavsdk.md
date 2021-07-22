@@ -7,6 +7,8 @@ Namespace for all mavsdk types.
 
 ## Data Structures
 
+* [mavsdk::Mavsdk](classmavsdk_1_1_mavsdk.md)
+* [mavsdk::PluginBase](classmavsdk_1_1_plugin_base.md)
 * [mavsdk::Action](classmavsdk_1_1_action.md)
 * [mavsdk::Calibration](classmavsdk_1_1_calibration.md)
 * [mavsdk::Camera](classmavsdk_1_1_camera.md)
@@ -19,20 +21,19 @@ Namespace for all mavsdk types.
 * [mavsdk::LogFiles](classmavsdk_1_1_log_files.md)
 * [mavsdk::ManualControl](classmavsdk_1_1_manual_control.md)
 * [mavsdk::MavlinkPassthrough](classmavsdk_1_1_mavlink_passthrough.md)
-* [mavsdk::Mavsdk](classmavsdk_1_1_mavsdk.md)
 * [mavsdk::Mission](classmavsdk_1_1_mission.md)
 * [mavsdk::MissionRaw](classmavsdk_1_1_mission_raw.md)
 * [mavsdk::Mocap](classmavsdk_1_1_mocap.md)
 * [mavsdk::Offboard](classmavsdk_1_1_offboard.md)
 * [mavsdk::Param](classmavsdk_1_1_param.md)
-* [mavsdk::PluginBase](classmavsdk_1_1_plugin_base.md)
+* [mavsdk::ParamServer](classmavsdk_1_1_param_server.md)
 * [mavsdk::ServerUtility](classmavsdk_1_1_server_utility.md)
 * [mavsdk::Shell](classmavsdk_1_1_shell.md)
-* [mavsdk::System](classmavsdk_1_1_system.md)
 * [mavsdk::Telemetry](classmavsdk_1_1_telemetry.md)
 * [mavsdk::TrackingServer](classmavsdk_1_1_tracking_server.md)
 * [mavsdk::Transponder](classmavsdk_1_1_transponder.md)
 * [mavsdk::Tune](classmavsdk_1_1_tune.md)
+* [mavsdk::System](classmavsdk_1_1_system.md)
 
 ## Enumerations
 

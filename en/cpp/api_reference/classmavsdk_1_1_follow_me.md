@@ -126,7 +126,7 @@ Possible results returned for followme operations.
 
 Value | Description
 --- | ---
-<span id="classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unkown result. 
+<span id="classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown result. 
 <span id="classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8a505a83f220c02df2f85c3810cd9ceb38"></span> `Success` | Request succeeded. 
 <span id="classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 <span id="classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8a094a6f6b0868122a9dd008cb91c083e4"></span> `ConnectionError` | Connection error. 

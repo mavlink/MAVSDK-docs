@@ -42,6 +42,8 @@ double [camera_photo_interval_s](#structmavsdk_1_1_mission_1_1_mission_item_1a7b
 
 float [acceptance_radius_m](#structmavsdk_1_1_mission_1_1_mission_item_1a9114a16c5405dacb35f45ae37f343665) { float(NAN)} - Radius for completing a mission item (in metres)
 
+float [yaw_deg](#structmavsdk_1_1_mission_1_1_mission_item_1a40af7ff4f2a346492d276255febd92c7) {float(NAN)} - Absolute yaw angle (in degrees)
+
 
 ## Member Enumeration Documentation
 
@@ -172,4 +174,14 @@ float mavsdk::Mission::MissionItem::acceptance_radius_m { float(NAN)}
 
 
 Radius for completing a mission item (in metres)
+
+
+### yaw_deg {#structmavsdk_1_1_mission_1_1_mission_item_1a40af7ff4f2a346492d276255febd92c7}
+
+```cpp
+float mavsdk::Mission::MissionItem::yaw_deg {float(NAN)}
+```
+
+
+Absolute yaw angle (in degrees)
 
