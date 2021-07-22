@@ -1,39 +1,100 @@
 # Connecting to Systems (Vehicles)
 
-MAVSDK allows you to connect to multiple vehicles attached to the local WiFi network and/or via serial ports.
+MAVSDK allows you to connect to multiple vehicles/systems attached to the local WiFi network and/or via serial ports.
 
-In order to detect vehicles you must first specify the communication ports that MAVSDK will monitor for new systems.
+In order to detect systems you must first specify the communication ports that MAVSDK will monitor for new systems.
 Once monitoring a port, MAVSDK will automatically detect connected vehicles, add them to its collection, and notify registered users of connection and disconnection events.
 
 ## Monitoring a Port
 
-Specify the port(s) to watch using one of the (synchronous) connection methods: [add_any_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a405041a5043c610c86540de090626d97), [add_udp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1aa43dfb00d5118d26ae5aabd0f9ba56b2), [add_tcp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a91c7a70c6e8ffa43844f2ce04f2696f0) or [add_serial_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a669ddeec7af571fdbde9f31e343d50ac).
-All the methods are used similarly, and return immediately with a [ConnectionResult](../api_reference/namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) indicating whether they succeeded.
+Specify the port(s) to watch using one of the (synchronous) connection method: [add_any_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a405041a5043c610c86540de090626d97). The method returns immediately with a [ConnectionResult](../api_reference/namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) indicating whether it succeeded.
 
-The [add_any_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a405041a5043c610c86540de090626d97) method can be used to set up monitoring for any of the supported port types (while the other methods set up specific connection types).
 The connection details are specified using the string formats shown below:
 
 Connection | URL Format
 --- | ---
-UDP | `udp://[Bind_host][:Bind_port]`
-TCP | `tcp://[Server_host][:Server_port]`
-Serial | `serial://[Dev_Node][:Baudrate]`
+UDP | `udp://[host][:port]`
+TCP | `tcp://[host][:port]`
+Serial | `serial://[path][:baudrate]`
 
-The code snippet below shows how to set up monitoring with `add_any_connection()`:
+### Connecting over serial
+
+To add a serial connection (e.g. over USB, FTDI, or an SiK radio), you specify the serial port and the baudrate like this:
+
+**On Linux:**
+
+```cpp
+Mavsdk mavsdk;
+ConnectionResult connection_result = mavsdk.add_any_connection("serial:///dev/serial/by-id/usb-FTDI_FT232R_USB_UART_XXXXXXXX-if00-port0:57600");
+if (connection_result != ConnectionResult::Success) {
+    std::cout << "Adding connection failed: " << connection_result << '\n';
+    return;
+}
+```
+
+**On Windows:**
+
+```cpp
+Mavsdk mavsdk;
+ConnectionResult connection_result = mavsdk.add_any_connection("serial://COM3:57600");
+if (connection_result != ConnectionResult::Success) {
+    std::cout << "Adding connection failed: " << connection_result << '\n';
+    return;
+}
+```
+
+
+### Connecting over UDP
+
+When connecting over UDP, there are two setups to distinguish: server and client mode.
+
+#### Behave like a server
+
+This is the default connection mode  for a ground station listening to a system/vehicle. (This is the same as [add_udp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1aa43dfb00d5118d26ae5aabd0f9ba56b2).)
+
+In the server mode, we listen on an local networking interface (`INADDR_ANY`/`0.0.0.0`) on the set port and wait for any heartbeats arriving. This means that the drone has to send the UDP packets to that local IP, or broadcast them on the network.
+
+The code snippet below shows how to set up a connection in server mode and listen on the "SDK port 14540":
 
 ```cpp
 Mavsdk mavsdk;
 ConnectionResult connection_result = mavsdk.add_any_connection("udp://:14540");
-ASSERT_EQ(connection_result, ConnectionResult::Success)
+if (connection_result != ConnectionResult::Success) {
+    std::cout << "Adding connection failed: " << connection_result << '\n';
+    return;
+}
 ```
 
-> **Note** The connection string used above (`udp://:14540`) is to the [standard PX4 UDP port](https://docs.px4.io/master/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
+> **Note** The connection string used above (`udp://:14540`) is to the [standard PX4 UDP port](https://docs.px4.io/master/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540). This is the normal/most common way for offboard APIs to connect to PX4 over WiFi. The standard way to talk to a ground station (e.g. QGC is on port 14550).
 
-The code fragment below shows how you might print the string for the preceding code fragment to the console:
+#### Behave like a client
+
+If MAVSDK is used on the vehicle or companion side, it sometimes has to actually initiate the connection, rather than listen for it.
+In this case the IP and port, of where it should connect to, has to be set. (This is the same as [setup_udp_remote()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1adb2a69282a5d3766fd6251662c28616d).)
+
+E.g. to connect to a ground station on 192.168.1.12, you would do:
+
 ```cpp
-std::cout << "Connection result: " << connection_result << '\n';
+Mavsdk mavsdk;
+ConnectionResult connection_result = mavsdk.add_any_connection("udp://192.168.1.12:14550");
+if (connection_result != ConnectionResult::Success) {
+    std::cout << "Adding connection failed: " << connection_result << '\n';
+    return;
+}
 ```
 
+### Connecting over TCP
+
+For TCP connections, only the client connection is currently implemented. (This is the same as [add_tcp_connection()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1a91c7a70c6e8ffa43844f2ce04f2696f0).)
+
+```cpp
+Mavsdk mavsdk;
+ConnectionResult connection_result = mavsdk.add_any_connection("tcp://192.168.1.12:14550");
+if (connection_result != ConnectionResult::Success) {
+    std::cout << "Adding connection failed: " << connection_result << '\n';
+    return;
+}
+```
 
 ### Register for System-Detection Notifications
 
