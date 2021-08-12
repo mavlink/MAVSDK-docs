@@ -67,7 +67,7 @@ cd examples
 To build the takeoff and land example, you can do:
 
 ```sh
-cd takeoff_land/
+cd takeoff_and_land/
 cmake -Bbuild -H.
 cmake --build build -j4
 ```
