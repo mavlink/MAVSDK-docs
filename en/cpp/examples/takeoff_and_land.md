@@ -57,7 +57,7 @@ Finished...
 
 ## Source code {#source_code}
 
-> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/takeoff_land).
+> **Tip** The full source code for the example [can be found on Github here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/takeoff_and_land).
 
-- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/takeoff_land/CMakeLists.txt)
-- [takeoff_and_land.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/takeoff_land/takeoff_and_land.cpp)
+- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/takeoff_and_land/CMakeLists.txt)
+- [takeoff_and_land.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/takeoff_and_land/takeoff_and_land.cpp)
