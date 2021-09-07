@@ -94,3 +94,31 @@ From a MAVSDK project point of view, there is also an advantage of not having a 
 The requirements for MAVSDK were that it can efficiently run in embedded setups, e.g. as part of an app or onboard a drone on the companion computer which suggested C or C++.
 The goal with MAVSDK was to provide a simple and safe API. This favored C++ over C as it allows for more expressive but type-safe APIs using standard library containers (e.g. `std::vector<MissionItem>`).
 
+### Why is gRPC used for the language wrappers?
+
+There are multiple ways to support multiple programming languages all with their pros and cons:
+
+1. Separate implementation per language:
+   + Nice native API.
+   + No non-native dependencies (often) in language wrappers.
+   - Lots of implementation effort required, does not scale well with a small team.
+   - Languages will not have consistency of feature parity.
+2. Direct language bindings based on [Swig](http://www.swig.org/).
+   + Many languages "almost for free".
+   - Not always optimal/super clean API, unless another layer is written manually.
+   - Requires linking to non-native dependencies.
+3. Direct language bindings manually written, or based on various tools like [pybind11](https://github.com/pybind/pybind11).
+   + Some languages "almost for free".
+   - Varies on the language. If done manually likely to have bugs.
+   - Requires linking to nan-native dependencies.
+4. Language bindings based on proto definitions (protobuf) and gRPC.
+   + Nice native APIs can be auto-generated from proto files.
+   + No non-native dependencies in language wrappers.
+   + mavsdk_server (gRPC server) can be run on other machine, or over network, in cloud, etc.
+   - gRPC requires quite a few dependencies.
+
+When writing the language wrappers for MAVSDK we decided to try gRPC, however, we underestimated just how much work was required to  write all the auto-generation for the various function signatures (sync, async, result handling, streams, etc.), and also were not aware about the pain that comes with every dependency.
+
+You can [read more about the auto-generation](cpp/contributing/autogen.md), and [learn how to add functionality](cpp/contributing/plugins.md#add-api-to-proto).
+
+We are not ruling out direct-bindings for the future, there is e.g. a [prototype for Python using pybind11](https://github.com/mavlink/MAVSDK/pull/1283), so this is an ongoing topic.
