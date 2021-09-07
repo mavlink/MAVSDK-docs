@@ -88,3 +88,9 @@ While it would be nice to have access to all MAVLink messages in the language wr
   This would come with the cost of no type safety and runtime overhead for parsing the strings.
 
 From a MAVSDK project point of view, there is also an advantage of not having a passthrough available in language wrappers; it encourages that required features are contributed back to the open-source project, rather than implemented in private using passthrough, and thus benefitting everyone.
+
+### Why is MAVSDK written in C++?
+
+The requirements for MAVSDK were that it can efficiently run in embedded setups, e.g. as part of an app or onboard a drone on the companion computer which suggested C or C++.
+The goal with MAVSDK was to provide a simple and safe API. This favored C++ over C as it allows for more expressive but type-safe APIs using standard library containers (e.g. `std::vector<MissionItem>`).
+
