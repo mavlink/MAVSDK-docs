@@ -33,6 +33,8 @@ Type | Name | Description
 &nbsp; | [Geofence](#classmavsdk_1_1_geofence_1a60e1f1a3123050c73980cba61b4b4009) (const [Geofence](classmavsdk_1_1_geofence.md) & other) | Copy constructor.
 void | [upload_geofence_async](#classmavsdk_1_1_geofence_1a530a5b38690393c3b8ea99d52a650aca) (std::vector< [Polygon](structmavsdk_1_1_geofence_1_1_polygon.md) > polygons, const [ResultCallback](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofence_1af9662e645781e4e64ed8b7c65d3d9309) callback) | Upload a geofence.
 [Result](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642) | [upload_geofence](#classmavsdk_1_1_geofence_1ad9ffe5312847d828f44bce6d1a4662ca) (std::vector< [Polygon](structmavsdk_1_1_geofence_1_1_polygon.md) > polygons)const | Upload a geofence.
+void | [clear_geofence_async](#classmavsdk_1_1_geofence_1a6947151765b621a93d35885599812752) (const [ResultCallback](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofence_1af9662e645781e4e64ed8b7c65d3d9309) callback) | Clear all geofences saved on the vehicle.
+[Result](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642) | [clear_geofence](#classmavsdk_1_1_geofence_1a54b2a696e8aebae6916116adb92c03c3) () const | Clear all geofences saved on the vehicle.
 const [Geofence](classmavsdk_1_1_geofence.md) & | [operator=](#classmavsdk_1_1_geofence_1a2e8a69dddfa9b4937df117060fa2e0d7) (const [Geofence](classmavsdk_1_1_geofence.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -167,6 +169,34 @@ This function is blocking. See 'upload_geofence_async' for the non-blocking coun
 **Parameters**
 
 * std::vector< [Polygon](structmavsdk_1_1_geofence_1_1_polygon.md) > **polygons** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofence_1ab64d6e3b9aeb9b6d5e45ae8a843a2642) - Result of request.
+
+### clear_geofence_async() {#classmavsdk_1_1_geofence_1a6947151765b621a93d35885599812752}
+```cpp
+void mavsdk::Geofence::clear_geofence_async(const ResultCallback callback)
+```
+
+
+Clear all geofences saved on the vehicle.
+
+This function is non-blocking. See 'clear_geofence' for the blocking counterpart.
+
+**Parameters**
+
+* const [ResultCallback](classmavsdk_1_1_geofence.md#classmavsdk_1_1_geofence_1af9662e645781e4e64ed8b7c65d3d9309) **callback** - 
+
+### clear_geofence() {#classmavsdk_1_1_geofence_1a54b2a696e8aebae6916116adb92c03c3}
+```cpp
+Result mavsdk::Geofence::clear_geofence() const
+```
+
+
+Clear all geofences saved on the vehicle.
+
+This function is blocking. See 'clear_geofence_async' for the non-blocking counterpart.
 
 **Returns**
 
