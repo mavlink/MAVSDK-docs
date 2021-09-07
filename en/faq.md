@@ -69,7 +69,7 @@ If the same code is used in many places, it can always be moved to core and get 
 
 Over time we have sometimes moved functionality from plugins to the core if it was exposed in multiple plugins (e.g. mission upload/download has been moved to the core so it can be used in the Mission plugin as well as the MissionRaw and Geofence plugins.
 
-### Can MAVSDK run on an embedded platform / microcontroller
+### Can MAVSDK run on an embedded platform / microcontroller?
 
 MAVSDK is generally written a bit higher level, geared towards ARM devices such as a Raspberry Pi, smartphone or faster/better.
 
@@ -77,7 +77,7 @@ As it doesn't actually use too much compute, it could in theory be run on a micr
 
 The recommendation for a microcontroller would be to use the pure [C MAVLink headers](https://mavlink.io/en/mavgen_c/).
 
-### Why is MAVLink Passthrough only available in C++
+### Why is MAVLink Passthrough only available in C++?
 
 The C++ MAVLink passthrough plugin basically exposes the direct C MAVLink API.
 
