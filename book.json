@@ -7,16 +7,16 @@
     },
     "plugins": [
         "youtube",
-        "richquotes@git+https://github.com/Dronecode/gitbook-plugin-richquotes.git",
         "language-picker",
         "collapsible-menu",
         "page-toc-button",
         "page-footer-ex",
         "custom-favicon",
-        "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
         "validate-links",
         "anchors",
         "theme-dronecode@git+https://github.com/Dronecode/theme-dronecode.git",
+        "richquotes@git+https://github.com/Dronecode/gitbook-plugin-richquotes.git",
+        "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
         "versions-select@git+https://github.com/Dronecode/gitbook-plugin-versions-select.git"
     ],
     "pluginsConfig": {
