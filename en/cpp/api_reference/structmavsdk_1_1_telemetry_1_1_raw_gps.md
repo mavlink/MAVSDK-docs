@@ -37,7 +37,7 @@ float [vertical_uncertainty_m](#structmavsdk_1_1_telemetry_1_1_raw_gps_1ac9b725d
 
 float [velocity_uncertainty_m_s](#structmavsdk_1_1_telemetry_1_1_raw_gps_1a5191bc0046118664dd928f0338dadfe1) {} - Velocity uncertainty in metres per second.
 
-float [heading_uncertainty_deg](#structmavsdk_1_1_telemetry_1_1_raw_gps_1af1dd338be444666f9dadc3393176a015) {} - Heading uncertainty in degrees.
+float [heading_uncertainty_deg](#structmavsdk_1_1_telemetry_1_1_raw_gps_1af1dd338be444666f9dadc3393176a015) {} - [Heading](structmavsdk_1_1_telemetry_1_1_heading.md) uncertainty in degrees.
 
 float [yaw_deg](#structmavsdk_1_1_telemetry_1_1_raw_gps_1a01c83a26d734e47e257492fdc574e45d) {} - Yaw in earth frame from north.
 
@@ -172,7 +172,7 @@ float mavsdk::Telemetry::RawGps::heading_uncertainty_deg {}
 ```
 
 
-Heading uncertainty in degrees.
+[Heading](structmavsdk_1_1_telemetry_1_1_heading.md) uncertainty in degrees.
 
 
 ### yaw_deg {#structmavsdk_1_1_telemetry_1_1_raw_gps_1a01c83a26d734e47e257492fdc574e45d}

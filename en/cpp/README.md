@@ -45,6 +45,10 @@ The most important classes are:
 - [LogFiles](api_reference/classmavsdk_1_1_log_files.md): Download log files from the vehicle.
 
 
+In addition, "[Server Plugins](server_plugins.md)" can be used to implement vehicle-side MAVLink functionality.
+The might be used to expose a MAVLink interface from non-MAVLink autopilots or components.
+
+
 The following APIs provide more direct access to underlying MAVLink messages/types.
 They should only be used where features are missing from the main APIs above.
 * [Param](api_reference/classmavsdk_1_1_param.md): Raw access to get and set parameters.
