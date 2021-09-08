@@ -12,7 +12,6 @@
         "page-toc-button",
         "page-footer-ex",
         "custom-favicon",
-        "validate-links",
         "anchors",
         "theme-dronecode@git+https://github.com/Dronecode/theme-dronecode.git",
         "richquotes@git+https://github.com/Dronecode/gitbook-plugin-richquotes.git",
