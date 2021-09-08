@@ -117,7 +117,7 @@ There are multiple ways to support multiple programming languages all with their
    + mavsdk_server (gRPC server) can be run on other machine, or over network, in cloud, etc.
    - gRPC requires quite a few dependencies.
 
-When writing the language wrappers for MAVSDK we decided to try gRPC, however, we underestimated just how much work was required to  write all the auto-generation for the various function signatures (sync, async, result handling, streams, etc.), and also were not aware about the pain that comes with every dependency.
+When writing the language wrappers for MAVSDK we decided to try gRPC, however, we underestimated just how much work was required to write all the auto-generation for the various function signatures (sync, async, result handling, streams, etc.), and also were not aware about the pain that comes with every dependency.
 
 You can [read more about the auto-generation](cpp/contributing/autogen.md), and [learn how to add functionality](cpp/contributing/plugins.md#add-api-to-proto).
 
