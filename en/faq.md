@@ -99,23 +99,23 @@ The goal with MAVSDK was to provide a simple and safe API. This favored C++ over
 There are multiple ways to support multiple programming languages all with their pros and cons:
 
 1. Separate implementation per language:
-   + Nice native API.
-   + No non-native dependencies (often) in language wrappers.
-   - Lots of implementation effort required, does not scale well with a small team.
-   - Languages will not have consistency of feature parity.
+   `+` Nice native API.
+   `+` No non-native dependencies (often) in language wrappers.
+   `-` Lots of implementation effort required, does not scale well with a small team.
+   `-` Languages will not have consistency of feature parity.
 2. Direct language bindings based on [Swig](http://www.swig.org/).
-   + Many languages "almost for free".
-   - Not always optimal/super clean API, unless another layer is written manually.
-   - Requires linking to non-native dependencies.
+   `+` Many languages "almost for free".
+   `-` Not always optimal/super clean API, unless another layer is written manually.
+   `-` Requires linking to non-native dependencies.
 3. Direct language bindings manually written, or based on various tools like [pybind11](https://github.com/pybind/pybind11).
-   + Some languages "almost for free".
-   - Varies on the language. If done manually likely to have bugs.
-   - Requires linking to nan-native dependencies.
+   `+` Some languages "almost for free".
+   `-` Varies on the language. If done manually likely to have bugs.
+   `-` Requires linking to nan-native dependencies.
 4. Language bindings based on proto definitions (protobuf) and gRPC.
-   + Nice native APIs can be auto-generated from proto files.
-   + No non-native dependencies in language wrappers.
-   + mavsdk_server (gRPC server) can be run on other machine, or over network, in cloud, etc.
-   - gRPC requires quite a few dependencies.
+   `+` Nice native APIs can be auto-generated from proto files.
+   `+` No non-native dependencies in language wrappers.
+   `+` mavsdk_server (gRPC server) can be run on other machine, or over network, in cloud, etc.
+   `-` gRPC requires quite a few dependencies.
 
 When writing the language wrappers for MAVSDK we decided to try gRPC, however, we underestimated just how much work was required to write all the auto-generation for the various function signatures (sync, async, result handling, streams, etc.), and also were not aware about the pain that comes with every dependency.
 
