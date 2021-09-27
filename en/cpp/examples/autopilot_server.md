@@ -1,8 +1,13 @@
 # Example: Autopilot Server
 
-The [Autopilot Server](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/autopilot_server) example shows how to use MAVSDK to act as a vehicle autopilot as well as a ground control station.
+The [Autopilot Server](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/autopilot_server) example shows how to use MAVSDK to act as a vehicle autopilot, providing vehicle side
+MAVLink services, as well as a ground control station.
 
-This example creates two instances of MAVSDK. One as an autopilot and another as a ground control station. Each MAVSDK instance communicates via UDP to one another, transmitting telemetry, parameters, missions and takeoff commands.
+The server plugins allow MAVSDK to act as a vehicle and publish live telemetry data, receive mission uploads, listen for vehicle commands and more.
+
+This example creates two instances of MAVSDK (GCS <-> Vehicle). Each MAVSDK instance communicates via UDP to one another, transmitting telemetry, publishing parameters, missions and takeoff commands.
+
+This is a good starting point if you are looking to implement MAVLink services to a non-MAVLink compatible system.
 
 ## Running the Example {#run_example}
 
@@ -240,9 +245,13 @@ Altitude: 10 m
 
 ## How it works
 
-The operation of most of this code is discussed in the guide: [Missions](../guide/missions.md).
+By creating two MAVSDK instances on seperate threads, configuring them and then using different plugins on each, we are able to create a full MAVLink system (GCS <-> Vehicle)
+in one program.
+
+Each plugin (and it's respective server plugin) implements a particular MAVLink service. By utilising the server plugins and client plugins we are able to create a full MAVLink
+system, without the need for a seperate external autopilot.
 
 ## Source code {#source_code}
 
-- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/fly_mission/CMakeLists.txt)
-- [fly_mission.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/fly_mission/fly_mission.cpp)
+- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/autopilot_server/CMakeLists.txt)
+- [autopilot_server.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/autopilot_server/autopilot_server.cpp)
