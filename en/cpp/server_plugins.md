@@ -4,13 +4,13 @@ Initially, MAVSDK was developed to act as a ground station (client). MAVSDK woul
 autopilot, which would then execute them. This meant MAVSDK always required an external MAVLink autopilot, simulated or real,
 to act as the other-side (server) of the MAVLink service.
 
-MAVSDK has since been extended to provide MAVLink autopilot services. This means it is possible to use MAVSDK to act as a vehicle autopilot
-to listen and act on ground station commands. MAVSDK can now also act as a companion computer.
+However, MAVSDK can also be used for the server-side of the protocol e.g. running on a companion computer on the vehicle or as an autopilot. This means it is possible to use MAVSDK to act as a vehicle autopilot
+to listen and act on ground station commands or MAVSDK can act as a companion computer alongside an autopilot.
 
 ## Adding MAVLink support to your vehicle
 
 Proprietary or non-MAVLink control systems can be given MAVLink support by utilising the MAVSDK `Server` plugins. MAVSDK does not provide 
-low-level vehicle control (see: PX4 or Ardupilot), but provides a simple interface for listening and publishing to appropriate MAVLink services.
+low-level vehicle control (see: PX4 or ArduPilot), but provides a simple interface for listening and publishing to appropriate MAVLink services.
 
 Adding MAVLink support to your vehicle is as simple as instantiating the required server plugin and actioning the vehicle on the appropriate
 callback.
