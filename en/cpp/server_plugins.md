@@ -1,11 +1,23 @@
 # Server Plugins
 
-MAVLink protocols are often designed using the client-server pattern, where vehicle-based components like the autopilot typically act as a server, responding to commands sent by a ground station "client".
+MAVSDK _Server_ plugins are used to expose MAVLink services on non-MAVLink flight stacks, companions computers, cameras, gimbals and other components.
 
-Initially MAVSDK was mainly developed with the use case of a ground station in mind, so plugins implemented the client-side protocol behaviour.
+The plugins listen for commands from a ground station or other MAVLink client, pass them to the underlying native system using callbacks, and respond as needed. 
 
-However, MAVSDK can also be used for the server-side of the protocol e.g. running on a companion computer on the vehicle.
-This can be used to extend the functionality "in the air", or as a bridge to a proprietary or non-MAVLink flight controller.
+> **Note:** They are called "server" plugins because they perform the server role in communication - listening for commands and responding.
+> The client role is usually performed by a ground station (or "ordinary" MAVSDK plugin)
+
+
+## Adding MAVLink support to your vehicle
+
+Adding MAVLink support to your vehicle is as simple as instantiating the required server plugin and actioning the vehicle on the appropriate callback.
+
+## Examples
+
+The [Autopilot_Server](../examples/autopilot_server.md) example uses many different MAVSDK server plugins to replicate a simple vehicle and autopilot system, with telemetry, mission handling, parameters and more.
+
+## Plugins
+
 The plugins developed specifically for this case are usually suffixed with `Server`, e.g.:
 
 - [ActionServer](../api_reference/classmavsdk_1_1_action_server.md)
@@ -14,4 +26,4 @@ The plugins developed specifically for this case are usually suffixed with `Serv
 - [TelemetryServer](../api_reference/classmavsdk_1_1_telemetry_server.md)
 - [TrackingServer](../api_reference/classmavsdk_1_1_tracking_server.md)
 
-These server plugins can potentially also be used to test the "non-server" plugins of MAVSDK in the future.
+These server plugins can potentially also be used to test the "client" plugins of MAVSDK in the future. The [Autopilot Server](../examples/server_plugins.md) example uses multiple MAVSDK instances in this way.
