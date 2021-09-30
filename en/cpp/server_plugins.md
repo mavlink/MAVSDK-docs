@@ -1,19 +1,19 @@
 # Server Plugins
 
-Initially, MAVSDK was developed to act as a ground station (client). MAVSDK would issue ground station commands to an
-autopilot, which would then execute them. This meant MAVSDK always required an external MAVLink autopilot, simulated or real,
-to act as the other-side (server) of the MAVLink service.
+MAVSDK was originally developed to act as a ground station (client).
+MAVSDK would issue ground station commands to an autopilot, which would then execute them.
+This meant MAVSDK always required an external MAVLink autopilot, simulated or real, to act as the other-side (server) of the MAVLink service.
 
-However, MAVSDK can also be used for the server-side of the protocol e.g. running on a companion computer on the vehicle or as an autopilot. This means it is possible to use MAVSDK to act as a vehicle autopilot
-to listen and act on ground station commands or MAVSDK can act as a companion computer alongside an autopilot.
+MAVSDK can also be used for the server-side of the protocol e.g. acting as an autopilot or companion computer.
+In this case MAVSDK listens for commands from a ground station (or from MAVSDK running as a client).
+
+MAVSDK server plugins provide a simple interface for listening and publishing to appropriate MAVLink services (they do not implement low-level vehicle control in the same way as a full flight stack such as  PX4 or ArduPilot). 
 
 ## Adding MAVLink support to your vehicle
 
-Proprietary or non-MAVLink control systems can be given MAVLink support by utilising the MAVSDK `Server` plugins. MAVSDK does not provide 
-low-level vehicle control (see: PX4 or ArduPilot), but provides a simple interface for listening and publishing to appropriate MAVLink services.
+Proprietary or non-MAVLink control systems can be given MAVLink support by utilising the MAVSDK `Server` plugins.
 
-Adding MAVLink support to your vehicle is as simple as instantiating the required server plugin and actioning the vehicle on the appropriate
-callback.
+Adding MAVLink support to your vehicle is as simple as instantiating the required server plugin and actioning the vehicle on the appropriate callback.
 
 ## Examples
 
