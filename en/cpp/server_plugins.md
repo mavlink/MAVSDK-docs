@@ -1,16 +1,14 @@
 # Server Plugins
 
-MAVSDK was originally developed to act as a ground station ("client"), issuing commands to an autopilot or companion computer ("server"), which would then execute them.
-This meant MAVSDK always required an external MAVLink autopilot, simulated or real, to act as the other-side (server) of the MAVLink service.
+MAVSDK _Server_ plugins are used to expose MAVLink services on non-MAVLink flight stacks, companions computers, cameras, gimbals and other components.
 
-MAVSDK can also be used for the server-side of the protocol e.g. acting as an autopilot or companion computer.
-In this case MAVSDK listens for commands from a ground station (or from MAVSDK running as a client).
+The plugins listen for commands from a ground station or other MAVLink client, pass them to the underlying native system using callbacks, and respond as needed. 
 
-MAVSDK server plugins provide a simple interface for listening and publishing to appropriate MAVLink services (they do not implement low-level vehicle control in the same way as a full flight stack such as PX4 or ArduPilot). 
+> **Note:** They are called "server" plugins because they perform the server role in communication - listening for commands and responding.
+> The client role is usually performed by a ground station (or "ordinary" MAVSDK plugin)
+
 
 ## Adding MAVLink support to your vehicle
-
-Proprietary or non-MAVLink control systems can be given MAVLink support by utilising the MAVSDK `Server` plugins.
 
 Adding MAVLink support to your vehicle is as simple as instantiating the required server plugin and actioning the vehicle on the appropriate callback.
 
