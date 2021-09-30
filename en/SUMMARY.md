@@ -29,6 +29,7 @@
         * [Offboard Mode - Velocity Control](cpp/examples/offboard_velocity.md)
         * [Follow Me Mode](cpp/examples/follow_me.md)
         * [VTOL Transitions](cpp/examples/transition_vtol_fixed_wing.md)
+        * [Autopilot Server](cpp/examples/autopilot_server.md)
     * [Server plugins](cpp/server_plugins.md)
     * [API Changes](cpp/api_changes.md)
     * [API Reference](cpp/api_reference/README.md)

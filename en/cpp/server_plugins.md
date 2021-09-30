@@ -26,4 +26,4 @@ The plugins developed specifically for this case are usually suffixed with `Serv
 - [TelemetryServer](../api_reference/classmavsdk_1_1_telemetry_server.md)
 - [TrackingServer](../api_reference/classmavsdk_1_1_tracking_server.md)
 
-These server plugins can potentially also be used to test the "client" plugins of MAVSDK in the future.
+These server plugins can potentially also be used to test the "client" plugins of MAVSDK in the future. The [Autopilot Server](../examples/server_plugins.md) example uses multiple MAVSDK instances in this way.
