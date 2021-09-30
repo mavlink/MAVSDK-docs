@@ -1,13 +1,11 @@
 # Example: Autopilot Server
 
-The [Autopilot Server](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/autopilot_server) example shows how to use MAVSDK to act as a vehicle autopilot, providing vehicle side
-MAVLink services, as well as a ground control station.
+The [Autopilot Server](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/autopilot_server) example creates two instances of MAVSDK, representing a client (GCS) and a server (Vehicle).
+The MAVSDK instances communicates with each other via UDP transmitting telemetry, publishing parameters, missions and takeoff commands.
 
-The server plugins allow MAVSDK to act as a vehicle and publish live telemetry data, receive mission uploads, listen for vehicle commands and more.
+> **Note** This example shows how to use [MAVSDK Server Plugins](../server_plugins.md)!
+> This is a good starting point if you are looking to implement MAVLink services to a non-MAVLink compatible system.
 
-This example creates two instances of MAVSDK (GCS <-> Vehicle). Each MAVSDK instance communicates via UDP to one another, transmitting telemetry, publishing parameters, missions and takeoff commands.
-
-This is a good starting point if you are looking to implement MAVLink services to a non-MAVLink compatible system.
 
 ## Running the Example {#run_example}
 
@@ -248,7 +246,8 @@ Altitude: 10 m
 By creating two MAVSDK instances on seperate threads, configuring them and then using different plugins on each, we are able to create a full MAVLink system (GCS <-> Vehicle)
 in one program.
 
-Each plugin (and it's respective server plugin) implements a particular MAVLink service. By utilising the server plugins and client plugins we are able to create a full MAVLink
+Each plugin (and it's respective server plugin) implements a particular MAVLink service.
+By utilising the server plugins and client plugins we are able to create a full MAVLink
 system, without the need for a seperate external autopilot.
 
 ## Source code {#source_code}
