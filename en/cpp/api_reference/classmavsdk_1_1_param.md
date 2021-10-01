@@ -33,12 +33,12 @@ Type | Name | Description
 &nbsp; | [Param](#classmavsdk_1_1_param_1a08e40eaf4052555d28f2404cc7ede680) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~Param](#classmavsdk_1_1_param_1afe3db48e33da2ff7245e41fe0636fdc3) () | Destructor (internal use only).
 &nbsp; | [Param](#classmavsdk_1_1_param_1ab7a03a825118c944d31c562594826f72) (const [Param](classmavsdk_1_1_param.md) & other) | Copy constructor.
-std::pair< [Result](classmavsdk_1_1_param.md#classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881df), int32_t > | [get_param_int](#classmavsdk_1_1_param_1a554099a07baa9e4765824005f47bef94) (std::string name)const | Get an int parameter.
+std::pair< [Result](classmavsdk_1_1_param.md#classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881df), int32_t > | [get_param_int](#classmavsdk_1_1_param_1a23e4fe22bcef677fe9bb291a8f7d56c5) (std::string name)const | Get an int parameter.
 [Result](classmavsdk_1_1_param.md#classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881df) | [set_param_int](#classmavsdk_1_1_param_1af8124bae8b4649605a51fe2943ae8414) (std::string name, int32_t value)const | Set an int parameter.
-std::pair< [Result](classmavsdk_1_1_param.md#classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881df), float > | [get_param_float](#classmavsdk_1_1_param_1ac8efd0381aa1cc2e4461dfb256797619) (std::string name)const | Get a float parameter.
+std::pair< [Result](classmavsdk_1_1_param.md#classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881df), float > | [get_param_float](#classmavsdk_1_1_param_1a3258e5ceec1bfaa2b0228786f197f4d3) (std::string name)const | Get a float parameter.
 [Result](classmavsdk_1_1_param.md#classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881df) | [set_param_float](#classmavsdk_1_1_param_1a58a2f14fbcda2bf73815dbc2a31528bf) (std::string name, float value)const | Set a float parameter.
 [Param::AllParams](structmavsdk_1_1_param_1_1_all_params.md) | [get_all_params](#classmavsdk_1_1_param_1ab9259e1f91809aa574404131aa540fd8) () const | Get all parameters.
-const [Param](classmavsdk_1_1_param.md) & | [operator=](#classmavsdk_1_1_param_1a4d75b066cb985d3a38cc8221e18aa608) (const [Param](classmavsdk_1_1_param.md) &)=delete | Equality operator (object is not copyable).
+const [Param](classmavsdk_1_1_param.md) & | [operator=](#classmavsdk_1_1_param_1ac66cb2c623da03454e0cee033c3a1514) (const [Param](classmavsdk_1_1_param.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -137,9 +137,9 @@ Value | Description
 ## Member Function Documentation
 
 
-### get_param_int() {#classmavsdk_1_1_param_1a554099a07baa9e4765824005f47bef94}
+### get_param_int() {#classmavsdk_1_1_param_1a23e4fe22bcef677fe9bb291a8f7d56c5}
 ```cpp
-std::pair<Result, int32_t> mavsdk::Param::get_param_int(std::string name) const
+std::pair< Result, int32_t > mavsdk::Param::get_param_int(std::string name) const
 ```
 
 
@@ -180,9 +180,9 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_param.md#classmavsdk_1_1_param_1afde69c8b60c41e2f21db148d211881df) - Result of request.
 
-### get_param_float() {#classmavsdk_1_1_param_1ac8efd0381aa1cc2e4461dfb256797619}
+### get_param_float() {#classmavsdk_1_1_param_1a3258e5ceec1bfaa2b0228786f197f4d3}
 ```cpp
-std::pair<Result, float> mavsdk::Param::get_param_float(std::string name) const
+std::pair< Result, float > mavsdk::Param::get_param_float(std::string name) const
 ```
 
 
@@ -237,9 +237,9 @@ This function is blocking.
 
 &emsp;[Param::AllParams](structmavsdk_1_1_param_1_1_all_params.md) - Result of request.
 
-### operator=() {#classmavsdk_1_1_param_1a4d75b066cb985d3a38cc8221e18aa608}
+### operator=() {#classmavsdk_1_1_param_1ac66cb2c623da03454e0cee033c3a1514}
 ```cpp
-const Param& mavsdk::Param::operator=(const Param &)=delete
+const Param & mavsdk::Param::operator=(const Param &)=delete
 ```
 
 

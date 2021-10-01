@@ -59,18 +59,18 @@ void | [transition_to_fixedwing_async](#classmavsdk_1_1_action_1aa56181441cd64e0
 void | [transition_to_multicopter_async](#classmavsdk_1_1_action_1a8c109076641b5c9aa6dd78ea8b913529) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to transition the drone to multicopter.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [transition_to_multicopter](#classmavsdk_1_1_action_1aac94bfb8613a8e9869e3620b3dc9bb8e) () const | Send command to transition the drone to multicopter.
 void | [get_takeoff_altitude_async](#classmavsdk_1_1_action_1a0a600e6ef75a69341d8b21243e7b1a71) (const [GetTakeoffAltitudeCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ad1ae6edb8ea375a3472ef14313b591e2) callback) | Get the takeoff altitude (in meters above ground).
-std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_takeoff_altitude](#classmavsdk_1_1_action_1a85df48432c5ed2c6e23831409139ed39) () const | Get the takeoff altitude (in meters above ground).
+std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_takeoff_altitude](#classmavsdk_1_1_action_1ad7596d6bb5e2f3b6b04e2b4ef12f5b8e) () const | Get the takeoff altitude (in meters above ground).
 void | [set_takeoff_altitude_async](#classmavsdk_1_1_action_1a9027c3e5f9eaf37cdfe8c426727c7693) (float altitude, const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Set takeoff altitude (in meters above ground).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [set_takeoff_altitude](#classmavsdk_1_1_action_1ace2188fe367b3bb10b17b89c88d1f952) (float altitude)const | Set takeoff altitude (in meters above ground).
 void | [get_maximum_speed_async](#classmavsdk_1_1_action_1a30aada232be0f805950a78e2005ade75) (const [GetMaximumSpeedCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a6993096d3e1424a817ad58ce8217a73c) callback) | Get the vehicle maximum speed (in metres/second).
-std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_maximum_speed](#classmavsdk_1_1_action_1a128bf73fe8d0d359f36a3a9a327799ee) () const | Get the vehicle maximum speed (in metres/second).
+std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_maximum_speed](#classmavsdk_1_1_action_1a87ef9f4d1eef44a90ba45d9d483ed9f6) () const | Get the vehicle maximum speed (in metres/second).
 void | [set_maximum_speed_async](#classmavsdk_1_1_action_1abc99f14481f0d961228c6535da9017a6) (float speed, const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Set vehicle maximum speed (in metres/second).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [set_maximum_speed](#classmavsdk_1_1_action_1a5fccee1636215bccf8d77d9dca15134e) (float speed)const | Set vehicle maximum speed (in metres/second).
 void | [get_return_to_launch_altitude_async](#classmavsdk_1_1_action_1aa19935b55d80f63e06397b3ea4b51c22) (const [GetReturnToLaunchAltitudeCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1af28acf6f7cff11f3c583761edb7d7415) callback) | Get the return to launch minimum return altitude (in meters).
-std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_return_to_launch_altitude](#classmavsdk_1_1_action_1aeffd084ea51c8a784e28b44b859b6586) () const | Get the return to launch minimum return altitude (in meters).
+std::pair< [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51), float > | [get_return_to_launch_altitude](#classmavsdk_1_1_action_1a90e6a8fc7cd44c610c9a0a159c8e1a87) () const | Get the return to launch minimum return altitude (in meters).
 void | [set_return_to_launch_altitude_async](#classmavsdk_1_1_action_1acdc4360c21ec82c57125023c552b3410) (float relative_altitude_m, const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Set the return to launch minimum return altitude (in meters).
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [set_return_to_launch_altitude](#classmavsdk_1_1_action_1a5b05e84d35fad5b0ba2837aae1b3686e) (float relative_altitude_m)const | Set the return to launch minimum return altitude (in meters).
-const [Action](classmavsdk_1_1_action.md) & | [operator=](#classmavsdk_1_1_action_1a1ff7e178b7ededc41bd9ccab0ca07457) (const [Action](classmavsdk_1_1_action.md) &)=delete | Equality operator (object is not copyable).
+const [Action](classmavsdk_1_1_action.md) & | [operator=](#classmavsdk_1_1_action_1a89482740f533e194fade200103b5adef) (const [Action](classmavsdk_1_1_action.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -787,9 +787,9 @@ This function is non-blocking. See 'get_takeoff_altitude' for the blocking count
 
 * const [GetTakeoffAltitudeCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1ad1ae6edb8ea375a3472ef14313b591e2) **callback** - 
 
-### get_takeoff_altitude() {#classmavsdk_1_1_action_1a85df48432c5ed2c6e23831409139ed39}
+### get_takeoff_altitude() {#classmavsdk_1_1_action_1ad7596d6bb5e2f3b6b04e2b4ef12f5b8e}
 ```cpp
-std::pair<Result, float> mavsdk::Action::get_takeoff_altitude() const
+std::pair< Result, float > mavsdk::Action::get_takeoff_altitude() const
 ```
 
 
@@ -848,9 +848,9 @@ This function is non-blocking. See 'get_maximum_speed' for the blocking counterp
 
 * const [GetMaximumSpeedCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a6993096d3e1424a817ad58ce8217a73c) **callback** - 
 
-### get_maximum_speed() {#classmavsdk_1_1_action_1a128bf73fe8d0d359f36a3a9a327799ee}
+### get_maximum_speed() {#classmavsdk_1_1_action_1a87ef9f4d1eef44a90ba45d9d483ed9f6}
 ```cpp
-std::pair<Result, float> mavsdk::Action::get_maximum_speed() const
+std::pair< Result, float > mavsdk::Action::get_maximum_speed() const
 ```
 
 
@@ -909,9 +909,9 @@ This function is non-blocking. See 'get_return_to_launch_altitude' for the block
 
 * const [GetReturnToLaunchAltitudeCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1af28acf6f7cff11f3c583761edb7d7415) **callback** - 
 
-### get_return_to_launch_altitude() {#classmavsdk_1_1_action_1aeffd084ea51c8a784e28b44b859b6586}
+### get_return_to_launch_altitude() {#classmavsdk_1_1_action_1a90e6a8fc7cd44c610c9a0a159c8e1a87}
 ```cpp
-std::pair<Result, float> mavsdk::Action::get_return_to_launch_altitude() const
+std::pair< Result, float > mavsdk::Action::get_return_to_launch_altitude() const
 ```
 
 
@@ -956,9 +956,9 @@ This function is blocking. See 'set_return_to_launch_altitude_async' for the non
 
 &emsp;[Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) - Result of request.
 
-### operator=() {#classmavsdk_1_1_action_1a1ff7e178b7ededc41bd9ccab0ca07457}
+### operator=() {#classmavsdk_1_1_action_1a89482740f533e194fade200103b5adef}
 ```cpp
-const Action& mavsdk::Action::operator=(const Action &)=delete
+const Action & mavsdk::Action::operator=(const Action &)=delete
 ```
 
 
