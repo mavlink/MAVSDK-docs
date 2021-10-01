@@ -44,7 +44,7 @@ void | [subscribe_tracking_off_command](#classmavsdk_1_1_tracking_server_1af457e
 [Result](classmavsdk_1_1_tracking_server.md#classmavsdk_1_1_tracking_server_1a1a288ecd74fd52a6f0ffbf24e8da2cc2) | [respond_tracking_point_command](#classmavsdk_1_1_tracking_server_1a75ec8813d5c5dac5dc3fcd3590a62e2a) ([CommandAnswer](classmavsdk_1_1_tracking_server.md#classmavsdk_1_1_tracking_server_1abe88efaef492f9b549a57b5b05666d61) command_answer)const | Respond to an incoming tracking point command.
 [Result](classmavsdk_1_1_tracking_server.md#classmavsdk_1_1_tracking_server_1a1a288ecd74fd52a6f0ffbf24e8da2cc2) | [respond_tracking_rectangle_command](#classmavsdk_1_1_tracking_server_1a6388d3a7bafeb0fbb58343a09495fc7c) ([CommandAnswer](classmavsdk_1_1_tracking_server.md#classmavsdk_1_1_tracking_server_1abe88efaef492f9b549a57b5b05666d61) command_answer)const | Respond to an incoming tracking rectangle command.
 [Result](classmavsdk_1_1_tracking_server.md#classmavsdk_1_1_tracking_server_1a1a288ecd74fd52a6f0ffbf24e8da2cc2) | [respond_tracking_off_command](#classmavsdk_1_1_tracking_server_1a113b2d4adf5b62a5f167b81c39474da4) ([CommandAnswer](classmavsdk_1_1_tracking_server.md#classmavsdk_1_1_tracking_server_1abe88efaef492f9b549a57b5b05666d61) command_answer)const | Respond to an incoming tracking off command.
-const [TrackingServer](classmavsdk_1_1_tracking_server.md) & | [operator=](#classmavsdk_1_1_tracking_server_1a9ea0947f9038e3affbd4129f5d6f671d) (const [TrackingServer](classmavsdk_1_1_tracking_server.md) &)=delete | Equality operator (object is not copyable).
+const [TrackingServer](classmavsdk_1_1_tracking_server.md) & | [operator=](#classmavsdk_1_1_tracking_server_1a01e314b0a7ff4cbe06fed339b0a9f547) (const [TrackingServer](classmavsdk_1_1_tracking_server.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -315,9 +315,9 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_tracking_server.md#classmavsdk_1_1_tracking_server_1a1a288ecd74fd52a6f0ffbf24e8da2cc2) - Result of request.
 
-### operator=() {#classmavsdk_1_1_tracking_server_1a9ea0947f9038e3affbd4129f5d6f671d}
+### operator=() {#classmavsdk_1_1_tracking_server_1a01e314b0a7ff4cbe06fed339b0a9f547}
 ```cpp
-const TrackingServer& mavsdk::TrackingServer::operator=(const TrackingServer &)=delete
+const TrackingServer & mavsdk::TrackingServer::operator=(const TrackingServer &)=delete
 ```
 
 

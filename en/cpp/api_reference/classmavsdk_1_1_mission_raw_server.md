@@ -43,7 +43,7 @@ void | [subscribe_current_item_changed](#classmavsdk_1_1_mission_raw_server_1a60
 void | [set_current_item_complete](#classmavsdk_1_1_mission_raw_server_1a496791a14c2bdc1e9917f5d04622330a) () const | Set Current item as completed.
 void | [subscribe_clear_all](#classmavsdk_1_1_mission_raw_server_1a990002711e49d62b854a608bd30126a9) ([ClearAllCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ae9d7d9d863d1552274440d091e2ec869) callback) | Subscribe when a MISSION_CLEAR_ALL is received.
 uint32_t | [clear_all](#classmavsdk_1_1_mission_raw_server_1a307e0f39d704ae9aeb227a27092bf435) () const | Poll for 'uint32_t' (blocking).
-const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) & | [operator=](#classmavsdk_1_1_mission_raw_server_1aad0690db8cec599b271d4f62e8ecd975) (const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) &)=delete | Equality operator (object is not copyable).
+const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) & | [operator=](#classmavsdk_1_1_mission_raw_server_1a9d589d816286937b2c9c5d29451f0f91) (const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -266,9 +266,9 @@ Poll for 'uint32_t' (blocking).
 
 &emsp;uint32_t - One uint32_t update.
 
-### operator=() {#classmavsdk_1_1_mission_raw_server_1aad0690db8cec599b271d4f62e8ecd975}
+### operator=() {#classmavsdk_1_1_mission_raw_server_1a9d589d816286937b2c9c5d29451f0f91}
 ```cpp
-const MissionRawServer& mavsdk::MissionRawServer::operator=(const MissionRawServer &)=delete
+const MissionRawServer & mavsdk::MissionRawServer::operator=(const MissionRawServer &)=delete
 ```
 
 

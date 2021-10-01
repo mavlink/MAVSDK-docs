@@ -30,7 +30,7 @@ Type | Name | Description
 &nbsp; | [Shell](#classmavsdk_1_1_shell_1aa9d95d880297fca1a5cba341633e660e) (const [Shell](classmavsdk_1_1_shell.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1a768bfa296ba3309f936f887fb86c9ba8) | [send](#classmavsdk_1_1_shell_1a7b39022ce3be914eec82b53a76d19bc7) (std::string command)const | Send a command line.
 void | [subscribe_receive](#classmavsdk_1_1_shell_1aa7e47ad1ce0f35e82701bd1811598ee1) ([ReceiveCallback](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1adfa64ede96967ae1ab5a5ecd83032dbb) callback) | Receive feedback from a sent command line.
-const [Shell](classmavsdk_1_1_shell.md) & | [operator=](#classmavsdk_1_1_shell_1a492f8b2e36ef2468522bfd0f51f4b9b8) (const [Shell](classmavsdk_1_1_shell.md) &)=delete | Equality operator (object is not copyable).
+const [Shell](classmavsdk_1_1_shell.md) & | [operator=](#classmavsdk_1_1_shell_1abd920b11e6535152ad85cb4187b0c620) (const [Shell](classmavsdk_1_1_shell.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -170,9 +170,9 @@ This subscription needs to be made before a command line is sent, otherwise, no 
 
 * [ReceiveCallback](classmavsdk_1_1_shell.md#classmavsdk_1_1_shell_1adfa64ede96967ae1ab5a5ecd83032dbb) **callback** - 
 
-### operator=() {#classmavsdk_1_1_shell_1a492f8b2e36ef2468522bfd0f51f4b9b8}
+### operator=() {#classmavsdk_1_1_shell_1abd920b11e6535152ad85cb4187b0c620}
 ```cpp
-const Shell& mavsdk::Shell::operator=(const Shell &)=delete
+const Shell & mavsdk::Shell::operator=(const Shell &)=delete
 ```
 
 

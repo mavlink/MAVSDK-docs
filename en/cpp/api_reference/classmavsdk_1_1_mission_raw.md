@@ -40,7 +40,7 @@ void | [upload_mission_async](#classmavsdk_1_1_mission_raw_1a77cc5df3362b7ab4cbc
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [upload_mission](#classmavsdk_1_1_mission_raw_1ad4f5c2ccfb2249f6e11c9533c263926a) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items)const | Upload a list of raw mission items to the system.
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [cancel_mission_upload](#classmavsdk_1_1_mission_raw_1aa353e3fa6e836305248be131dbe19273) () const | Cancel an ongoing mission upload.
 void | [download_mission_async](#classmavsdk_1_1_mission_raw_1a7e27b0fb58889ca5cb1202276c0e0669) (const [DownloadMissionCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a016633e6338744da02ac7cb6da28880a) callback) | Download a list of raw mission items from the system (asynchronous).
-std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), std::vector< [MissionRaw::MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > > | [download_mission](#classmavsdk_1_1_mission_raw_1a2cc470785c486d1b7fdaaa2e3fbff809) () const | Download a list of raw mission items from the system (asynchronous).
+std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), std::vector< [MissionRaw::MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > > | [download_mission](#classmavsdk_1_1_mission_raw_1a18138bc7cbc6c6c16fde44e2fa53a459) () const | Download a list of raw mission items from the system (asynchronous).
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [cancel_mission_download](#classmavsdk_1_1_mission_raw_1a7c554999ca66c5434ef1fa334d949e5a) () const | Cancel an ongoing mission download.
 void | [start_mission_async](#classmavsdk_1_1_mission_raw_1acca64e0a08978f5721be8fa955b1bb0f) (const [ResultCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) callback) | Start the mission.
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [start_mission](#classmavsdk_1_1_mission_raw_1af1b010b0f28b284a94eba88198ee15f8) () const | Start the mission.
@@ -56,8 +56,8 @@ void | [subscribe_mission_changed](#classmavsdk_1_1_mission_raw_1a18019bf4f46b6f
 <li><p>Subscribes to mission changed. </p>
 </li>
 </ul>
-std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > | [import_qgroundcontrol_mission](#classmavsdk_1_1_mission_raw_1a43345b21cf9dedf594f62ec7ad963ce8) (std::string qgc_plan_path)const | Import a QGroundControl missions in JSON .plan format.
-const [MissionRaw](classmavsdk_1_1_mission_raw.md) & | [operator=](#classmavsdk_1_1_mission_raw_1a0cfdf21bad5478c91cf18207b6a21ad3) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) &)=delete | Equality operator (object is not copyable).
+std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > | [import_qgroundcontrol_mission](#classmavsdk_1_1_mission_raw_1a2a4ca261c37737e691c6954693d6d0a5) (std::string qgc_plan_path)const | Import a QGroundControl missions in JSON .plan format.
+const [MissionRaw](classmavsdk_1_1_mission_raw.md) & | [operator=](#classmavsdk_1_1_mission_raw_1a2b8cdc1fbee72224a9ef6eb9266b2e2a) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -259,9 +259,9 @@ This function is non-blocking. See 'download_mission' for the blocking counterpa
 
 * const [DownloadMissionCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a016633e6338744da02ac7cb6da28880a) **callback** - 
 
-### download_mission() {#classmavsdk_1_1_mission_raw_1a2cc470785c486d1b7fdaaa2e3fbff809}
+### download_mission() {#classmavsdk_1_1_mission_raw_1a18138bc7cbc6c6c16fde44e2fa53a459}
 ```cpp
-std::pair<Result, std::vector<MissionRaw::MissionItem> > mavsdk::MissionRaw::download_mission() const
+std::pair< Result, std::vector< MissionRaw::MissionItem > > mavsdk::MissionRaw::download_mission() const
 ```
 
 
@@ -465,9 +465,9 @@ This notification can be used to be informed if a ground station has been upload
 
 * [MissionChangedCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6) **callback** - Callback to notify about change.
 
-### import_qgroundcontrol_mission() {#classmavsdk_1_1_mission_raw_1a43345b21cf9dedf594f62ec7ad963ce8}
+### import_qgroundcontrol_mission() {#classmavsdk_1_1_mission_raw_1a2a4ca261c37737e691c6954693d6d0a5}
 ```cpp
-std::pair<Result, MissionRaw::MissionImportData> mavsdk::MissionRaw::import_qgroundcontrol_mission(std::string qgc_plan_path) const
+std::pair< Result, MissionRaw::MissionImportData > mavsdk::MissionRaw::import_qgroundcontrol_mission(std::string qgc_plan_path) const
 ```
 
 
@@ -494,9 +494,9 @@ This function is blocking.
 
 &emsp;std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > - Result of request.
 
-### operator=() {#classmavsdk_1_1_mission_raw_1a0cfdf21bad5478c91cf18207b6a21ad3}
+### operator=() {#classmavsdk_1_1_mission_raw_1a2b8cdc1fbee72224a9ef6eb9266b2e2a}
 ```cpp
-const MissionRaw& mavsdk::MissionRaw::operator=(const MissionRaw &)=delete
+const MissionRaw & mavsdk::MissionRaw::operator=(const MissionRaw &)=delete
 ```
 
 
