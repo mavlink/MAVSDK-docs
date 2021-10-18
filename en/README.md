@@ -27,7 +27,9 @@ MAVSDK is primarly written in C++ with wrappers available for several programmin
 
 ## Getting Started
 
-Check out the quickstart guide for [C++](cpp/quickstart.md) and [Python](python/quickstart.md)
+Check out the quickstart guide for [C++](cpp/quickstart.md) and [Python](python/quickstart.md).
+And no matter which language you are using, use the [C++ Guide](cpp/guide.md) to learn how to
+perform common tasks and use the library in general.
 
 ## Getting Help {#getting-help}
 
