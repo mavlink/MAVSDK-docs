@@ -14,16 +14,16 @@ Adding MAVLink support to your vehicle is as simple as instantiating the require
 
 ## Examples
 
-The [Autopilot_Server](../examples/autopilot_server.md) example uses many different MAVSDK server plugins to replicate a simple vehicle and autopilot system, with telemetry, mission handling, parameters and more.
+The [Autopilot_Server](./examples/autopilot_server.md) example uses many different MAVSDK server plugins to replicate a simple vehicle and autopilot system, with telemetry, mission handling, parameters and more.
 
 ## Plugins
 
 The plugins developed specifically for this case are usually suffixed with `Server`, e.g.:
 
-- [ActionServer](../api_reference/classmavsdk_1_1_action_server.md)
-- [MissionRawServer](../api_reference/classmavsdk_1_1_mission_raw_server.md)
-- [ParamServer](../api_reference/classmavsdk_1_1_param_server.md)
-- [TelemetryServer](../api_reference/classmavsdk_1_1_telemetry_server.md)
-- [TrackingServer](../api_reference/classmavsdk_1_1_tracking_server.md)
+- [ActionServer](./api_reference/classmavsdk_1_1_action_server.md)
+- [MissionRawServer](./api_reference/classmavsdk_1_1_mission_raw_server.md)
+- [ParamServer](./api_reference/classmavsdk_1_1_param_server.md)
+- [TelemetryServer](./api_reference/classmavsdk_1_1_telemetry_server.md)
+- [TrackingServer](./api_reference/classmavsdk_1_1_tracking_server.md)
 
-These server plugins can potentially also be used to test the "client" plugins of MAVSDK in the future. The [Autopilot Server](../examples/server_plugins.md) example uses multiple MAVSDK instances in this way.
+These server plugins can potentially also be used to test the "client" plugins of MAVSDK in the future. The [Autopilot Server](./examples/autopilot_server.md) example uses multiple MAVSDK instances in this way.
