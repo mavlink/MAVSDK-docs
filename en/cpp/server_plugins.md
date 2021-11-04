@@ -14,7 +14,7 @@ Adding MAVLink support to your vehicle is as simple as instantiating the require
 
 ## Examples
 
-The [Autopilot_Server](./examples/autopilot_server.md) example uses many different MAVSDK server plugins to replicate a simple vehicle and autopilot system, with telemetry, mission handling, parameters and more.
+The [Autopilot Server](./examples/autopilot_server.md) example uses many different MAVSDK server plugins to replicate a simple vehicle and autopilot system, with telemetry, mission handling, parameters and more.
 
 ## Plugins
 
