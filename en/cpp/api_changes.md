@@ -50,13 +50,13 @@ target_link_libraries(my_executable
 **Why were the "plugins" split up in the first place?**
 
 - The plugins were split because they were supposed to be extendable plugins. However, the last few years have shown that this is not really required, as there were no requests or contributions for it.
-- Also, having a real plugin architecture is not always easy. For instance, loading plugins at runtime with `dlopen` [is not possible](https://github.com/bpowers/musl/blob/master/src/ldso/dlopen.c) when the library is compiled with [musl](https://www.musl-libc.org/). (We use musl to compile `mavsdk_server` statically without dependencies, so that it can be shipped with PyPi and runs on any Linux distribution and version as well as cross-compiled on armv6/7/8.
+- Also, having a real plugin architecture is not always easy. For instance, loading plugins at runtime with `dlopen` [is not possible](https://github.com/bpowers/musl/blob/master/src/ldso/dlopen.c) when the library is compiled with [musl](https://www.musl-libc.org/). (We use musl to compile `mavsdk_server` statically without dependencies, so that it can be shipped with PyPi and runs on any Linux distribution and version as well as cross-compiled on armv6/7/8).
 
 **What are the advantages of the change?**
 
 - Having one library to link to is easier and more inline with other libraries. When more functionality is needed, CMakeLists.txt doesn't need to be changed every time.
 - Having only one library makes it easier to check for ABI breaks.
-- The file overhead for every plugin is actually very small, so the overhead should be neglible.
+- The file overhead for every plugin is actually very small, so the overhead should be negligible.
 
 ## 0.38
 
