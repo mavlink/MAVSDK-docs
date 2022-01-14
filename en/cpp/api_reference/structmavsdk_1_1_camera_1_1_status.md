@@ -13,6 +13,7 @@
 Type | Description
 --- | ---
 enum [StorageStatus](#structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52) | Storage status type.
+enum [StorageType](#structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fb) | Storage type.
 
 ## Data Fields
 
@@ -33,6 +34,10 @@ std::string [media_folder_name](#structmavsdk_1_1_camera_1_1_status_1a37ed53027e
 
 [StorageStatus](structmavsdk_1_1_camera_1_1_status.md#structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52) [storage_status](#structmavsdk_1_1_camera_1_1_status_1a7a8e6d37bce3e2a97c9e71d5b6ea6536) {} - Storage status.
 
+uint32_t [storage_id](#structmavsdk_1_1_camera_1_1_status_1a2abcc09bd9f5b657698d56cb4bd6ef4c) {} - Storage ID starting at 1.
+
+[StorageType](structmavsdk_1_1_camera_1_1_status.md#structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fb) [storage_type](#structmavsdk_1_1_camera_1_1_status_1a92decb1a85b16d505bd17e71740c221a) {} - Storage type.
+
 
 ## Member Enumeration Documentation
 
@@ -49,6 +54,21 @@ Value | Description
 <span id="structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52acbe526fde94ab97f641ac0cb6d4b624b"></span> `Unformatted` | Storage is not formatted (i.e. has no recognized file system). 
 <span id="structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52a550ed376863f4dfb07120a0aa2d249db"></span> `Formatted` | Storage is formatted (i.e. has recognized a file system). 
 <span id="structmavsdk_1_1_camera_1_1_status_1ae4e4a1e5622e75cce5813ffdf2ffcc52a9ed2d871602556951e39f3cebd08d6cb"></span> `NotSupported` | Storage status is not supported. 
+
+### enum StorageType {#structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fb}
+
+
+Storage type.
+
+
+Value | Description
+--- | ---
+<span id="structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fba88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Storage type unknown. 
+<span id="structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fbabde95cc0c5bed9c67d73515b8d5d7532"></span> `UsbStick` | Storage type USB stick. 
+<span id="structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fba05c89bdbbeeae48a6daccce0d05257fd"></span> `Sd` | Storage type SD card. 
+<span id="structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fbad837d75833970e2240058444912a5f9a"></span> `Microsd` | Storage type MicroSD card. 
+<span id="structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fba9bae1e7e6957fa30f9258d6b590d936a"></span> `Hd` | Storage type HD mass storage. 
+<span id="structmavsdk_1_1_camera_1_1_status_1a2e4c017d9eb4449a1695269a401648fba6311ae17c1ee52b36e68aaf4ad066387"></span> `Other` | Storage type other, not listed. 
 
 ## Field Documentation
 
@@ -131,4 +151,24 @@ StorageStatus mavsdk::Camera::Status::storage_status {}
 
 
 Storage status.
+
+
+### storage_id {#structmavsdk_1_1_camera_1_1_status_1a2abcc09bd9f5b657698d56cb4bd6ef4c}
+
+```cpp
+uint32_t mavsdk::Camera::Status::storage_id {}
+```
+
+
+Storage ID starting at 1.
+
+
+### storage_type {#structmavsdk_1_1_camera_1_1_status_1a92decb1a85b16d505bd17e71740c221a}
+
+```cpp
+StorageType mavsdk::Camera::Status::storage_type {}
+```
+
+
+Storage type.
 

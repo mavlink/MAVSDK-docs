@@ -29,6 +29,8 @@ struct [Attitude](structmavsdk_1_1_offboard_1_1_attitude.md)
 
 struct [AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md)
 
+struct [PositionGlobalYaw](structmavsdk_1_1_offboard_1_1_position_global_yaw.md)
+
 struct [PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md)
 
 struct [VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md)
@@ -61,6 +63,7 @@ bool | [is_active](#classmavsdk_1_1_offboard_1aa5e0f3c02a03f2667f82d5e162221ff5)
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_actuator_control](#classmavsdk_1_1_offboard_1a619ee02a1f73041a5cae6a5c72169b96) ([ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md) actuator_control)const | Set direct actuator control values to groups #0 and #1.
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_attitude_rate](#classmavsdk_1_1_offboard_1a034a98a0e7a5a7a0fac507adabf6ecf8) ([AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md) attitude_rate)const | Set the attitude rate in terms of pitch, roll and yaw angular rate along with thrust.
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_position_ned](#classmavsdk_1_1_offboard_1ade7dcec93ebee17de60687a75184b8b6) ([PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md) position_ned_yaw)const | Set the position in NED coordinates and yaw.
+[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_position_global](#classmavsdk_1_1_offboard_1a97b2bd8f516e267e5b28373f369ff8d3) ([PositionGlobalYaw](structmavsdk_1_1_offboard_1_1_position_global_yaw.md) position_global_yaw)const | Set the position in Global coordinates (latitude, longitude, altitude) and yaw.
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_velocity_body](#classmavsdk_1_1_offboard_1abe7364f0a48dda4df34c5c67d177cfb4) ([VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md) velocity_body_yawspeed)const | Set the velocity in body coordinates and yaw angular rate. Not available for fixed-wing aircraft.
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_velocity_ned](#classmavsdk_1_1_offboard_1a4edbc6e4528ff955d4e46e7c4e711732) ([VelocityNedYaw](structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md) velocity_ned_yaw)const | Set the velocity in NED coordinates and yaw. Not available for fixed-wing aircraft.
 [Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) | [set_position_velocity_ned](#classmavsdk_1_1_offboard_1ae422165680b434eed74e84cc901e3a33) ([PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md) position_ned_yaw, [VelocityNedYaw](structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md) velocity_ned_yaw)const | Set the position in NED coordinates, with the velocity to be used as feed-forward.
@@ -314,6 +317,24 @@ This function is blocking.
 **Parameters**
 
 * [PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md) **position_ned_yaw** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_offboard.md#classmavsdk_1_1_offboard_1a2d4d594301d8c756429457b0982130e9) - Result of request.
+
+### set_position_global() {#classmavsdk_1_1_offboard_1a97b2bd8f516e267e5b28373f369ff8d3}
+```cpp
+Result mavsdk::Offboard::set_position_global(PositionGlobalYaw position_global_yaw) const
+```
+
+
+Set the position in Global coordinates (latitude, longitude, altitude) and yaw.
+
+This function is blocking.
+
+**Parameters**
+
+* [PositionGlobalYaw](structmavsdk_1_1_offboard_1_1_position_global_yaw.md) **position_global_yaw** - 
 
 **Returns**
 

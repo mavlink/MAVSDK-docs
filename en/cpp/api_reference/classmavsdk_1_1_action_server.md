@@ -22,13 +22,13 @@ Type | Description
 enum [FlightMode](#classmavsdk_1_1_action_server_1aee12027f5d9380f2c13fa7813c6ae1d8) | Flight modes.
 enum [Result](#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8) | Possible results returned for action requests.
 std::function< void([Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8))> [ResultCallback](#classmavsdk_1_1_action_server_1affc7fcdc5f60e367bb9032b938223b95) | Callback type for asynchronous [ActionServer](classmavsdk_1_1_action_server.md) calls.
-std::function< void([ActionServer::Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), [ArmDisarm](structmavsdk_1_1_action_server_1_1_arm_disarm.md))> [ArmDisarmCallback](#classmavsdk_1_1_action_server_1a4a24832552294272528724712c648aa1) | Callback type for subscribe_arm_disarm.
-std::function< void([ActionServer::Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), [FlightMode](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1aee12027f5d9380f2c13fa7813c6ae1d8))> [FlightModeChangeCallback](#classmavsdk_1_1_action_server_1a8ad29cd0bb41d4db20a4c88918befdd2) | Callback type for subscribe_flight_mode_change.
-std::function< void([ActionServer::Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [TakeoffCallback](#classmavsdk_1_1_action_server_1a065f96ce2ec4cb2aa6045d6fa61262db) | Callback type for subscribe_takeoff.
-std::function< void([ActionServer::Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [LandCallback](#classmavsdk_1_1_action_server_1a89e245fcc7c9caf8cc303807ba9d7b8f) | Callback type for subscribe_land.
-std::function< void([ActionServer::Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [RebootCallback](#classmavsdk_1_1_action_server_1a316626c8c0e4e70a74c57c82c95d4256) | Callback type for subscribe_reboot.
-std::function< void([ActionServer::Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [ShutdownCallback](#classmavsdk_1_1_action_server_1a2c47f977c517dc0fa18b23e2e71fea15) | Callback type for subscribe_shutdown.
-std::function< void([ActionServer::Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [TerminateCallback](#classmavsdk_1_1_action_server_1aa004ad19d0db17e6d0e027cd8051a02d) | Callback type for subscribe_terminate.
+std::function< void([Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), [ArmDisarm](structmavsdk_1_1_action_server_1_1_arm_disarm.md))> [ArmDisarmCallback](#classmavsdk_1_1_action_server_1a8ef1c6ec94f6bf5173d208be15b14910) | Callback type for subscribe_arm_disarm.
+std::function< void([Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), [FlightMode](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1aee12027f5d9380f2c13fa7813c6ae1d8))> [FlightModeChangeCallback](#classmavsdk_1_1_action_server_1a58a1284a240908bf4d9dd998d5939f6f) | Callback type for subscribe_flight_mode_change.
+std::function< void([Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [TakeoffCallback](#classmavsdk_1_1_action_server_1a23074d52d687eff2c4fc0184ac1b61fd) | Callback type for subscribe_takeoff.
+std::function< void([Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [LandCallback](#classmavsdk_1_1_action_server_1af2eb6d32c9f903a6e9f773ddf2acf4a0) | Callback type for subscribe_land.
+std::function< void([Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [RebootCallback](#classmavsdk_1_1_action_server_1a8b2ad3a5fc6a5ac256e21b60043093bd) | Callback type for subscribe_reboot.
+std::function< void([Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [ShutdownCallback](#classmavsdk_1_1_action_server_1aaa5057d10ec2b242c4a35fec46e5602a) | Callback type for subscribe_shutdown.
+std::function< void([Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8), bool)> [TerminateCallback](#classmavsdk_1_1_action_server_1a5eb879b36b5efc4f14bed82ed7655384) | Callback type for subscribe_terminate.
 
 ## Public Member Functions
 
@@ -39,13 +39,13 @@ Type | Name | Description
 &nbsp; | [ActionServer](#classmavsdk_1_1_action_server_1af79849116682eefccb72756406f665c9) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~ActionServer](#classmavsdk_1_1_action_server_1a381d9ac6c56ab6e6881c3523f61e6aad) () | Destructor (internal use only).
 &nbsp; | [ActionServer](#classmavsdk_1_1_action_server_1a42228e948d6a50b42ac8e506dc9d094c) (const [ActionServer](classmavsdk_1_1_action_server.md) & other) | Copy constructor.
-void | [subscribe_arm_disarm](#classmavsdk_1_1_action_server_1a325b1aa857abaf845ecd4aff36915051) ([ArmDisarmCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a24832552294272528724712c648aa1) callback) | Subscribe to ARM/DISARM commands.
-void | [subscribe_flight_mode_change](#classmavsdk_1_1_action_server_1adaae0026c0e5faa00fd71e294d10c058) ([FlightModeChangeCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a8ad29cd0bb41d4db20a4c88918befdd2) callback) | Subscribe to DO_SET_MODE.
-void | [subscribe_takeoff](#classmavsdk_1_1_action_server_1ab6e180cf678d1b62988137c22e890a9f) ([TakeoffCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a065f96ce2ec4cb2aa6045d6fa61262db) callback) | Subscribe to takeoff command.
-void | [subscribe_land](#classmavsdk_1_1_action_server_1a6374cc32922d7fba59d76f9e19605eb9) ([LandCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a89e245fcc7c9caf8cc303807ba9d7b8f) callback) | Subscribe to land command.
-void | [subscribe_reboot](#classmavsdk_1_1_action_server_1af7ba1a3e5a4e070d287a25d487ef0c79) ([RebootCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a316626c8c0e4e70a74c57c82c95d4256) callback) | Subscribe to reboot command.
-void | [subscribe_shutdown](#classmavsdk_1_1_action_server_1abcb5318ba88b79eb8c5a3300c97fb313) ([ShutdownCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a2c47f977c517dc0fa18b23e2e71fea15) callback) | Subscribe to shutdown command.
-void | [subscribe_terminate](#classmavsdk_1_1_action_server_1a195412691db1d8fc02c2852a7ca180a6) ([TerminateCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1aa004ad19d0db17e6d0e027cd8051a02d) callback) | Subscribe to terminate command.
+void | [subscribe_arm_disarm](#classmavsdk_1_1_action_server_1a325b1aa857abaf845ecd4aff36915051) ([ArmDisarmCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a8ef1c6ec94f6bf5173d208be15b14910) callback) | Subscribe to ARM/DISARM commands.
+void | [subscribe_flight_mode_change](#classmavsdk_1_1_action_server_1adaae0026c0e5faa00fd71e294d10c058) ([FlightModeChangeCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a58a1284a240908bf4d9dd998d5939f6f) callback) | Subscribe to DO_SET_MODE.
+void | [subscribe_takeoff](#classmavsdk_1_1_action_server_1ab6e180cf678d1b62988137c22e890a9f) ([TakeoffCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a23074d52d687eff2c4fc0184ac1b61fd) callback) | Subscribe to takeoff command.
+void | [subscribe_land](#classmavsdk_1_1_action_server_1a6374cc32922d7fba59d76f9e19605eb9) ([LandCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1af2eb6d32c9f903a6e9f773ddf2acf4a0) callback) | Subscribe to land command.
+void | [subscribe_reboot](#classmavsdk_1_1_action_server_1af7ba1a3e5a4e070d287a25d487ef0c79) ([RebootCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a8b2ad3a5fc6a5ac256e21b60043093bd) callback) | Subscribe to reboot command.
+void | [subscribe_shutdown](#classmavsdk_1_1_action_server_1abcb5318ba88b79eb8c5a3300c97fb313) ([ShutdownCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1aaa5057d10ec2b242c4a35fec46e5602a) callback) | Subscribe to shutdown command.
+void | [subscribe_terminate](#classmavsdk_1_1_action_server_1a195412691db1d8fc02c2852a7ca180a6) ([TerminateCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a5eb879b36b5efc4f14bed82ed7655384) callback) | Subscribe to terminate command.
 [Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8) | [set_allow_takeoff](#classmavsdk_1_1_action_server_1a250a8a8d1aed87d7c4125c6cfe797250) (bool allow_takeoff)const | Can the vehicle takeoff.
 [Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8) | [set_armable](#classmavsdk_1_1_action_server_1ab5b21457f69f9f315d54dbc06e745a7a) (bool armable, bool force_armable)const | Can the vehicle arm when requested.
 [Result](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a8eb4fe9d098a5b7891232fc5bf32f8) | [set_disarmable](#classmavsdk_1_1_action_server_1afae1336100d7a91a4f4521cee56a1ecb) (bool disarmable, bool force_disarmable)const | Can the vehicle disarm when requested.
@@ -128,70 +128,70 @@ using mavsdk::ActionServer::ResultCallback =  std::function<void(Result)>
 Callback type for asynchronous [ActionServer](classmavsdk_1_1_action_server.md) calls.
 
 
-### typedef ArmDisarmCallback {#classmavsdk_1_1_action_server_1a4a24832552294272528724712c648aa1}
+### typedef ArmDisarmCallback {#classmavsdk_1_1_action_server_1a8ef1c6ec94f6bf5173d208be15b14910}
 
 ```cpp
-using mavsdk::ActionServer::ArmDisarmCallback =  std::function<void(ActionServer::Result, ArmDisarm)>
+using mavsdk::ActionServer::ArmDisarmCallback =  std::function<void(Result, ArmDisarm)>
 ```
 
 
 Callback type for subscribe_arm_disarm.
 
 
-### typedef FlightModeChangeCallback {#classmavsdk_1_1_action_server_1a8ad29cd0bb41d4db20a4c88918befdd2}
+### typedef FlightModeChangeCallback {#classmavsdk_1_1_action_server_1a58a1284a240908bf4d9dd998d5939f6f}
 
 ```cpp
-using mavsdk::ActionServer::FlightModeChangeCallback =  std::function<void(ActionServer::Result, FlightMode)>
+using mavsdk::ActionServer::FlightModeChangeCallback =  std::function<void(Result, FlightMode)>
 ```
 
 
 Callback type for subscribe_flight_mode_change.
 
 
-### typedef TakeoffCallback {#classmavsdk_1_1_action_server_1a065f96ce2ec4cb2aa6045d6fa61262db}
+### typedef TakeoffCallback {#classmavsdk_1_1_action_server_1a23074d52d687eff2c4fc0184ac1b61fd}
 
 ```cpp
-using mavsdk::ActionServer::TakeoffCallback =  std::function<void(ActionServer::Result, bool)>
+using mavsdk::ActionServer::TakeoffCallback =  std::function<void(Result, bool)>
 ```
 
 
 Callback type for subscribe_takeoff.
 
 
-### typedef LandCallback {#classmavsdk_1_1_action_server_1a89e245fcc7c9caf8cc303807ba9d7b8f}
+### typedef LandCallback {#classmavsdk_1_1_action_server_1af2eb6d32c9f903a6e9f773ddf2acf4a0}
 
 ```cpp
-using mavsdk::ActionServer::LandCallback =  std::function<void(ActionServer::Result, bool)>
+using mavsdk::ActionServer::LandCallback =  std::function<void(Result, bool)>
 ```
 
 
 Callback type for subscribe_land.
 
 
-### typedef RebootCallback {#classmavsdk_1_1_action_server_1a316626c8c0e4e70a74c57c82c95d4256}
+### typedef RebootCallback {#classmavsdk_1_1_action_server_1a8b2ad3a5fc6a5ac256e21b60043093bd}
 
 ```cpp
-using mavsdk::ActionServer::RebootCallback =  std::function<void(ActionServer::Result, bool)>
+using mavsdk::ActionServer::RebootCallback =  std::function<void(Result, bool)>
 ```
 
 
 Callback type for subscribe_reboot.
 
 
-### typedef ShutdownCallback {#classmavsdk_1_1_action_server_1a2c47f977c517dc0fa18b23e2e71fea15}
+### typedef ShutdownCallback {#classmavsdk_1_1_action_server_1aaa5057d10ec2b242c4a35fec46e5602a}
 
 ```cpp
-using mavsdk::ActionServer::ShutdownCallback =  std::function<void(ActionServer::Result, bool)>
+using mavsdk::ActionServer::ShutdownCallback =  std::function<void(Result, bool)>
 ```
 
 
 Callback type for subscribe_shutdown.
 
 
-### typedef TerminateCallback {#classmavsdk_1_1_action_server_1aa004ad19d0db17e6d0e027cd8051a02d}
+### typedef TerminateCallback {#classmavsdk_1_1_action_server_1a5eb879b36b5efc4f14bed82ed7655384}
 
 ```cpp
-using mavsdk::ActionServer::TerminateCallback =  std::function<void(ActionServer::Result, bool)>
+using mavsdk::ActionServer::TerminateCallback =  std::function<void(Result, bool)>
 ```
 
 
@@ -261,7 +261,7 @@ Subscribe to ARM/DISARM commands.
 
 **Parameters**
 
-* [ArmDisarmCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a4a24832552294272528724712c648aa1) **callback** - 
+* [ArmDisarmCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a8ef1c6ec94f6bf5173d208be15b14910) **callback** - 
 
 ### subscribe_flight_mode_change() {#classmavsdk_1_1_action_server_1adaae0026c0e5faa00fd71e294d10c058}
 ```cpp
@@ -274,7 +274,7 @@ Subscribe to DO_SET_MODE.
 
 **Parameters**
 
-* [FlightModeChangeCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a8ad29cd0bb41d4db20a4c88918befdd2) **callback** - 
+* [FlightModeChangeCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a58a1284a240908bf4d9dd998d5939f6f) **callback** - 
 
 ### subscribe_takeoff() {#classmavsdk_1_1_action_server_1ab6e180cf678d1b62988137c22e890a9f}
 ```cpp
@@ -287,7 +287,7 @@ Subscribe to takeoff command.
 
 **Parameters**
 
-* [TakeoffCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a065f96ce2ec4cb2aa6045d6fa61262db) **callback** - 
+* [TakeoffCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a23074d52d687eff2c4fc0184ac1b61fd) **callback** - 
 
 ### subscribe_land() {#classmavsdk_1_1_action_server_1a6374cc32922d7fba59d76f9e19605eb9}
 ```cpp
@@ -300,7 +300,7 @@ Subscribe to land command.
 
 **Parameters**
 
-* [LandCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a89e245fcc7c9caf8cc303807ba9d7b8f) **callback** - 
+* [LandCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1af2eb6d32c9f903a6e9f773ddf2acf4a0) **callback** - 
 
 ### subscribe_reboot() {#classmavsdk_1_1_action_server_1af7ba1a3e5a4e070d287a25d487ef0c79}
 ```cpp
@@ -313,7 +313,7 @@ Subscribe to reboot command.
 
 **Parameters**
 
-* [RebootCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a316626c8c0e4e70a74c57c82c95d4256) **callback** - 
+* [RebootCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a8b2ad3a5fc6a5ac256e21b60043093bd) **callback** - 
 
 ### subscribe_shutdown() {#classmavsdk_1_1_action_server_1abcb5318ba88b79eb8c5a3300c97fb313}
 ```cpp
@@ -326,7 +326,7 @@ Subscribe to shutdown command.
 
 **Parameters**
 
-* [ShutdownCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a2c47f977c517dc0fa18b23e2e71fea15) **callback** - 
+* [ShutdownCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1aaa5057d10ec2b242c4a35fec46e5602a) **callback** - 
 
 ### subscribe_terminate() {#classmavsdk_1_1_action_server_1a195412691db1d8fc02c2852a7ca180a6}
 ```cpp
@@ -339,7 +339,7 @@ Subscribe to terminate command.
 
 **Parameters**
 
-* [TerminateCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1aa004ad19d0db17e6d0e027cd8051a02d) **callback** - 
+* [TerminateCallback](classmavsdk_1_1_action_server.md#classmavsdk_1_1_action_server_1a5eb879b36b5efc4f14bed82ed7655384) **callback** - 
 
 ### set_allow_takeoff() {#classmavsdk_1_1_action_server_1a250a8a8d1aed87d7c4125c6cfe797250}
 ```cpp

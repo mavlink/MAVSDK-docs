@@ -23,7 +23,7 @@ Type | Description
 --- | ---
 enum [Result](#classmavsdk_1_1_mission_raw_server_1a14f2cae8b098b7221d8aae547b70f7bd) | Possible results returned for action requests.
 std::function< void([Result](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a14f2cae8b098b7221d8aae547b70f7bd))> [ResultCallback](#classmavsdk_1_1_mission_raw_server_1a3bddb8adba3f8576ae102639601e576f) | Callback type for asynchronous [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) calls.
-std::function< void([MissionRawServer::Result](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a14f2cae8b098b7221d8aae547b70f7bd), [MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md))> [IncomingMissionCallback](#classmavsdk_1_1_mission_raw_server_1a132344de6871d67dc75f6563902f7efe) | Callback type for subscribe_incoming_mission.
+std::function< void([Result](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a14f2cae8b098b7221d8aae547b70f7bd), [MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md))> [IncomingMissionCallback](#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693) | Callback type for subscribe_incoming_mission.
 std::function< void([MissionItem](structmavsdk_1_1_mission_raw_server_1_1_mission_item.md))> [CurrentItemChangedCallback](#classmavsdk_1_1_mission_raw_server_1aca7ac64b6e39e612d05ff6497cd572b1) | Callback type for subscribe_current_item_changed.
 std::function< void(uint32_t)> [ClearAllCallback](#classmavsdk_1_1_mission_raw_server_1ae9d7d9d863d1552274440d091e2ec869) | Callback type for subscribe_clear_all.
 
@@ -36,7 +36,7 @@ Type | Name | Description
 &nbsp; | [MissionRawServer](#classmavsdk_1_1_mission_raw_server_1ac742e0088f8b72d349b2808f00bdf24b) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~MissionRawServer](#classmavsdk_1_1_mission_raw_server_1a547fd04a550429c4d395b528da554175) () | Destructor (internal use only).
 &nbsp; | [MissionRawServer](#classmavsdk_1_1_mission_raw_server_1a14b11b78ba44bdda6fb718ed13e1ab77) (const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) & other) | Copy constructor.
-void | [subscribe_incoming_mission](#classmavsdk_1_1_mission_raw_server_1a31b14a826e6bb8727c26105f05e53550) ([IncomingMissionCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a132344de6871d67dc75f6563902f7efe) callback) | Subscribe to when a new mission is uploaded (asynchronous).
+void | [subscribe_incoming_mission](#classmavsdk_1_1_mission_raw_server_1a31b14a826e6bb8727c26105f05e53550) ([IncomingMissionCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693) callback) | Subscribe to when a new mission is uploaded (asynchronous).
 [MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md) | [incoming_mission](#classmavsdk_1_1_mission_raw_server_1ae7c20d621170e5454953513526241577) () const | Poll for '[MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md)' (blocking).
 void | [subscribe_current_item_changed](#classmavsdk_1_1_mission_raw_server_1a60ea84204d2679b41a607d87cd9a1082) ([CurrentItemChangedCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1aca7ac64b6e39e612d05ff6497cd572b1) callback) | Subscribe to when a new current item is set.
 [MissionItem](structmavsdk_1_1_mission_raw_server_1_1_mission_item.md) | [current_item_changed](#classmavsdk_1_1_mission_raw_server_1af2bbab99a8a2e1dd1dfebceb439f2ad1) () const | Poll for '[MissionItem](structmavsdk_1_1_mission_raw_server_1_1_mission_item.md)' (blocking).
@@ -120,10 +120,10 @@ using mavsdk::MissionRawServer::ResultCallback =  std::function<void(Result)>
 Callback type for asynchronous [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) calls.
 
 
-### typedef IncomingMissionCallback {#classmavsdk_1_1_mission_raw_server_1a132344de6871d67dc75f6563902f7efe}
+### typedef IncomingMissionCallback {#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693}
 
 ```cpp
-using mavsdk::MissionRawServer::IncomingMissionCallback =  std::function<void(MissionRawServer::Result, MissionPlan)>
+using mavsdk::MissionRawServer::IncomingMissionCallback =  std::function<void(Result, MissionPlan)>
 ```
 
 
@@ -189,7 +189,7 @@ Subscribe to when a new mission is uploaded (asynchronous).
 
 **Parameters**
 
-* [IncomingMissionCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a132344de6871d67dc75f6563902f7efe) **callback** - 
+* [IncomingMissionCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693) **callback** - 
 
 ### incoming_mission() {#classmavsdk_1_1_mission_raw_server_1ae7c20d621170e5454953513526241577}
 ```cpp
