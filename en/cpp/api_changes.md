@@ -20,11 +20,11 @@ This means that breaking changes to the API result in a bump of the major versio
 > **Note** At time of writing, breaking/incompatible changes *are not* resulting in the major version number being increased!
   We plan to release version 1.0.0 in the near future, after which the above strategy will be adopted (i.e. currently breaking changes can occur in both minor and patch releases).
 
-## 1.0
+## 0.51
 
 ### Linking
 
-With version 1, we introduce bigger changes in the way the MAVSDK library is linked to. Essentially, the library is no longer split up in multiple library files, one for the core (e.g. `mavsdk.so`) and one each for every plugin (e.g. `mavsdk_action.so`) and instead everything is merged into one library file (usually `mavsdk.so`).
+With version 0.51, we introduce bigger changes in the way the MAVSDK library is linked to. Essentially, the library is no longer split up in multiple library files, one for the core (e.g. `mavsdk.so`) and one each for every plugin (e.g. `mavsdk_action.so`) and instead everything is merged into one library file (usually `mavsdk.so`).
 
 This means that linking in cmake gets easier.
 
