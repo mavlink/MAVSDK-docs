@@ -3,7 +3,7 @@
     "title": "MAVSDK Guide",
     "variables": {
         "logo": "./assets/site/sdk_logo_full.png",
-        "github_branch": "main"
+        "github_branch": "v1.0"
     },
     "plugins": [
         "youtube",
