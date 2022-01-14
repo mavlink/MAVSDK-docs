@@ -19,8 +19,8 @@ Type | Description
 --- | ---
 enum [Result](#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4) | Possible results returned for FTP commands.
 std::function< void([Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4))> [ResultCallback](#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) | Callback type for asynchronous [Ftp](classmavsdk_1_1_ftp.md) calls.
-std::function< void([Ftp::Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), [ProgressData](structmavsdk_1_1_ftp_1_1_progress_data.md))> [DownloadCallback](#classmavsdk_1_1_ftp_1aa1f79399f168f386610b5a8f3e7c75d4) | Callback type for download_async.
-std::function< void([Ftp::Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), [ProgressData](structmavsdk_1_1_ftp_1_1_progress_data.md))> [UploadCallback](#classmavsdk_1_1_ftp_1a8b8d4d8e6f9efe96e6c5feb38fae9ff4) | Callback type for upload_async.
+std::function< void([Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), [ProgressData](structmavsdk_1_1_ftp_1_1_progress_data.md))> [DownloadCallback](#classmavsdk_1_1_ftp_1a7c8e0377726e349a8a4e12495db42c75) | Callback type for download_async.
+std::function< void([Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), [ProgressData](structmavsdk_1_1_ftp_1_1_progress_data.md))> [UploadCallback](#classmavsdk_1_1_ftp_1a50ffb77f0730267f499656d40291f5a3) | Callback type for upload_async.
 std::function< void([Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), std::vector< std::string >)> [ListDirectoryCallback](#classmavsdk_1_1_ftp_1a87a77c4e013a8665017504a550d876b7) | Callback type for list_directory_async.
 std::function< void([Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), bool)> [AreFilesIdenticalCallback](#classmavsdk_1_1_ftp_1abe24e99f7141a234206f8952d2f61318) | Callback type for are_files_identical_async.
 
@@ -34,8 +34,8 @@ Type | Name | Description
 &nbsp; | [~Ftp](#classmavsdk_1_1_ftp_1a10f8eff234be8dcaca8f40482e744ee6) () | Destructor (internal use only).
 &nbsp; | [Ftp](#classmavsdk_1_1_ftp_1a7b7486356a7b04fb231c430e090c673e) (const [Ftp](classmavsdk_1_1_ftp.md) & other) | Copy constructor.
 void | [reset_async](#classmavsdk_1_1_ftp_1aab8895023bb3db8750622a5a38adcf07) (const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) callback) | Resets FTP server in case there are stale open sessions.
-void | [download_async](#classmavsdk_1_1_ftp_1afd01f6380b2a5d4b433abaf7aa734fc0) (std::string remote_file_path, std::string local_dir, [DownloadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1aa1f79399f168f386610b5a8f3e7c75d4) callback) | Downloads a file to local directory.
-void | [upload_async](#classmavsdk_1_1_ftp_1a14489e59f195709915d01ad093790b09) (std::string local_file_path, std::string remote_dir, [UploadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a8b8d4d8e6f9efe96e6c5feb38fae9ff4) callback) | Uploads local file to remote directory.
+void | [download_async](#classmavsdk_1_1_ftp_1afd01f6380b2a5d4b433abaf7aa734fc0) (std::string remote_file_path, std::string local_dir, [DownloadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a7c8e0377726e349a8a4e12495db42c75) callback) | Downloads a file to local directory.
+void | [upload_async](#classmavsdk_1_1_ftp_1a14489e59f195709915d01ad093790b09) (std::string local_file_path, std::string remote_dir, [UploadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a50ffb77f0730267f499656d40291f5a3) callback) | Uploads local file to remote directory.
 void | [list_directory_async](#classmavsdk_1_1_ftp_1abf5d83104a7293413b62e7a8ba1a0f2c) (std::string remote_dir, const [ListDirectoryCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a87a77c4e013a8665017504a550d876b7) callback) | Lists items from a remote directory.
 std::pair< [Result](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a4cc4f42a3ef6d63403d811e594b946e4), std::vector< std::string > > | [list_directory](#classmavsdk_1_1_ftp_1a410297b23d9c85f96a9f10451d9ec23a) (std::string remote_dir)const | Lists items from a remote directory.
 void | [create_directory_async](#classmavsdk_1_1_ftp_1aa53fdd5c005bd4da3e0cb29d448689d3) (std::string remote_dir, const [ResultCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a04a12a1ab954b24a54570300f89486b0) callback) | Creates a remote directory.
@@ -128,20 +128,20 @@ using mavsdk::Ftp::ResultCallback =  std::function<void(Result)>
 Callback type for asynchronous [Ftp](classmavsdk_1_1_ftp.md) calls.
 
 
-### typedef DownloadCallback {#classmavsdk_1_1_ftp_1aa1f79399f168f386610b5a8f3e7c75d4}
+### typedef DownloadCallback {#classmavsdk_1_1_ftp_1a7c8e0377726e349a8a4e12495db42c75}
 
 ```cpp
-using mavsdk::Ftp::DownloadCallback =  std::function<void(Ftp::Result, ProgressData)>
+using mavsdk::Ftp::DownloadCallback =  std::function<void(Result, ProgressData)>
 ```
 
 
 Callback type for download_async.
 
 
-### typedef UploadCallback {#classmavsdk_1_1_ftp_1a8b8d4d8e6f9efe96e6c5feb38fae9ff4}
+### typedef UploadCallback {#classmavsdk_1_1_ftp_1a50ffb77f0730267f499656d40291f5a3}
 
 ```cpp
-using mavsdk::Ftp::UploadCallback =  std::function<void(Ftp::Result, ProgressData)>
+using mavsdk::Ftp::UploadCallback =  std::function<void(Result, ProgressData)>
 ```
 
 
@@ -223,7 +223,7 @@ Downloads a file to local directory.
 
 * std::string **remote_file_path** - 
 * std::string **local_dir** - 
-* [DownloadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1aa1f79399f168f386610b5a8f3e7c75d4) **callback** - 
+* [DownloadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a7c8e0377726e349a8a4e12495db42c75) **callback** - 
 
 ### upload_async() {#classmavsdk_1_1_ftp_1a14489e59f195709915d01ad093790b09}
 ```cpp
@@ -238,7 +238,7 @@ Uploads local file to remote directory.
 
 * std::string **local_file_path** - 
 * std::string **remote_dir** - 
-* [UploadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a8b8d4d8e6f9efe96e6c5feb38fae9ff4) **callback** - 
+* [UploadCallback](classmavsdk_1_1_ftp.md#classmavsdk_1_1_ftp_1a50ffb77f0730267f499656d40291f5a3) **callback** - 
 
 ### list_directory_async() {#classmavsdk_1_1_ftp_1abf5d83104a7293413b62e7a8ba1a0f2c}
 ```cpp

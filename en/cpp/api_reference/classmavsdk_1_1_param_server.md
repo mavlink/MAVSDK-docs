@@ -131,6 +131,7 @@ Value | Description
 <span id="classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469a38c300f4fc9ce8a77aad4a30de05cad8"></span> `NotFound` | Not Found. 
 <span id="classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469afdf152936dcbf201445440856357f6ac"></span> `WrongType` | Wrong type. 
 <span id="classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469aa2b5cfc4e45ca036892b3dadc483e655"></span> `ParamNameTooLong` | Parameter name too long (> 16). 
+<span id="classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system available. 
 
 ## Member Function Documentation
 

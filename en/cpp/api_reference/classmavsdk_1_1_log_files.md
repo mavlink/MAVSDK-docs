@@ -22,7 +22,7 @@ Type | Description
 enum [Result](#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) | Possible results returned for calibration commands.
 std::function< void([Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd))> [ResultCallback](#classmavsdk_1_1_log_files_1a64cd003ea9110b4a11eb08753a360a59) | Callback type for asynchronous [LogFiles](classmavsdk_1_1_log_files.md) calls.
 std::function< void([Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [Entry](structmavsdk_1_1_log_files_1_1_entry.md) >)> [GetEntriesCallback](#classmavsdk_1_1_log_files_1a0bb101777daba9e87cb33baf55389403) | Callback type for get_entries_async.
-std::function< void([LogFiles::Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), [ProgressData](structmavsdk_1_1_log_files_1_1_progress_data.md))> [DownloadLogFileCallback](#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3) | Callback type for download_log_file_async.
+std::function< void([Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), [ProgressData](structmavsdk_1_1_log_files_1_1_progress_data.md))> [DownloadLogFileCallback](#classmavsdk_1_1_log_files_1af62400ee1e20bfbe948e1ec98255d236) | Callback type for download_log_file_async.
 
 ## Public Member Functions
 
@@ -35,7 +35,7 @@ Type | Name | Description
 &nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1ae09021cd080dc45f63019ea76968801f) (const [LogFiles](classmavsdk_1_1_log_files.md) & other) | Copy constructor.
 void | [get_entries_async](#classmavsdk_1_1_log_files_1a6a922097850fb43fbb9d3348fe0b3bb7) (const [GetEntriesCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0bb101777daba9e87cb33baf55389403) callback) | Get List of log files.
 std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [LogFiles::Entry](structmavsdk_1_1_log_files_1_1_entry.md) > > | [get_entries](#classmavsdk_1_1_log_files_1a89164b17ff0a521b7ad67f3ef69b445c) () const | Get List of log files.
-void | [download_log_file_async](#classmavsdk_1_1_log_files_1a48712c031e204b23e00cfa28a0b1bc01) ([Entry](structmavsdk_1_1_log_files_1_1_entry.md) entry, std::string path, [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3) callback) | Download log file.
+void | [download_log_file_async](#classmavsdk_1_1_log_files_1a48712c031e204b23e00cfa28a0b1bc01) ([Entry](structmavsdk_1_1_log_files_1_1_entry.md) entry, std::string path, [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1af62400ee1e20bfbe948e1ec98255d236) callback) | Download log file.
 const [LogFiles](classmavsdk_1_1_log_files.md) & | [operator=](#classmavsdk_1_1_log_files_1a2122270cf236099a445e3b4fc31573aa) (const [LogFiles](classmavsdk_1_1_log_files.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -123,10 +123,10 @@ using mavsdk::LogFiles::GetEntriesCallback =  std::function<void(Result, std::ve
 Callback type for get_entries_async.
 
 
-### typedef DownloadLogFileCallback {#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3}
+### typedef DownloadLogFileCallback {#classmavsdk_1_1_log_files_1af62400ee1e20bfbe948e1ec98255d236}
 
 ```cpp
-using mavsdk::LogFiles::DownloadLogFileCallback =  std::function<void(LogFiles::Result, ProgressData)>
+using mavsdk::LogFiles::DownloadLogFileCallback =  std::function<void(Result, ProgressData)>
 ```
 
 
@@ -197,7 +197,7 @@ Download log file.
 
 * [Entry](structmavsdk_1_1_log_files_1_1_entry.md) **entry** - 
 * std::string **path** - 
-* [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0a02c3e91339ac34fdb637603691cfa3) **callback** - 
+* [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1af62400ee1e20bfbe948e1ec98255d236) **callback** - 
 
 ### operator=() {#classmavsdk_1_1_log_files_1a2122270cf236099a445e3b4fc31573aa}
 ```cpp

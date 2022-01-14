@@ -44,6 +44,8 @@ float [acceptance_radius_m](#structmavsdk_1_1_mission_1_1_mission_item_1a9114a16
 
 float [yaw_deg](#structmavsdk_1_1_mission_1_1_mission_item_1a40af7ff4f2a346492d276255febd92c7) {float(NAN)} - Absolute yaw angle (in degrees)
 
+float [camera_photo_distance_m](#structmavsdk_1_1_mission_1_1_mission_item_1a0a2802a1cab28552e8f49389f472e1a9) { NAN} - [Camera](classmavsdk_1_1_camera.md) photo distance to use after this mission item (in meters)
+
 
 ## Member Enumeration Documentation
 
@@ -62,6 +64,8 @@ Value | Description
 <span id="structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4aa5ca4f2a945ea616f186b130f8f36a18"></span> `StopPhotoInterval` | Stop capturing photos at regular intervals. 
 <span id="structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4a7a9102c91e389c449d24a3ca0d8bdf4f"></span> `StartVideo` | Start capturing video. 
 <span id="structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4a3ab23501110c4bf07668c2178168da01"></span> `StopVideo` | Stop capturing video. 
+<span id="structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4a9aabe55729b070dbba61b3b7e9e8faa3"></span> `StartPhotoDistance` | Start capturing photos at regular distance. 
+<span id="structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4a3e66812860fd78f0707062e31b98cd1e"></span> `StopPhotoDistance` | Stop capturing photos at regular distance. 
 
 ## Field Documentation
 
@@ -184,4 +188,14 @@ float mavsdk::Mission::MissionItem::yaw_deg {float(NAN)}
 
 
 Absolute yaw angle (in degrees)
+
+
+### camera_photo_distance_m {#structmavsdk_1_1_mission_1_1_mission_item_1a0a2802a1cab28552e8f49389f472e1a9}
+
+```cpp
+float mavsdk::Mission::MissionItem::camera_photo_distance_m { NAN}
+```
+
+
+[Camera](classmavsdk_1_1_camera.md) photo distance to use after this mission item (in meters)
 

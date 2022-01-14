@@ -26,6 +26,7 @@ Namespace for all mavsdk types.
 * [mavsdk::MissionRawServer](classmavsdk_1_1_mission_raw_server.md)
 * [mavsdk::Mocap](classmavsdk_1_1_mocap.md)
 * [mavsdk::Offboard](classmavsdk_1_1_offboard.md)
+* [mavsdk::overloaded](structmavsdk_1_1overloaded.md)
 * [mavsdk::Param](classmavsdk_1_1_param.md)
 * [mavsdk::ParamServer](classmavsdk_1_1_param_server.md)
 * [mavsdk::PluginBase](classmavsdk_1_1_plugin_base.md)
@@ -50,6 +51,7 @@ enum [ForwardingOption](#namespacemavsdk_1a7066729108eae8a605d4dd169e4581b9) | F
 Type | Name | Description
 --- | --- | ---
 std::ostream & | [operator<<](#namespacemavsdk_1a2aa91d8b846b07fe7f305b399375ce5f) (std::ostream & str, const [ConnectionResult](namespacemavsdk.md#namespacemavsdk_1a0bad93f6d037051ac3906a0bcc09f992) & result) | Stream operator to print information about a `ConnectionResult`.
+&nbsp; | [overloaded](#namespacemavsdk_1a724e321aaff91eb2ba28279e0292e552) (Ts...)-> overloaded< Ts... > | Template deduction helper for `overloaded`
 
 ## Enumeration Type Documentation
 
@@ -121,3 +123,20 @@ Stream operator to print information about a `ConnectionResult`.
 **Returns**
 
 &emsp;std::ostream & - A reference to the stream.
+
+### overloaded() {#namespacemavsdk_1a724e321aaff91eb2ba28279e0292e552}
+
+```
+#include: plugin_base.h
+```
+```cpp
+mavsdk::overloaded(Ts...) -> overloaded< Ts... >
+```
+
+
+Template deduction helper for `overloaded`
+
+
+**Parameters**
+
+* Ts...  - 

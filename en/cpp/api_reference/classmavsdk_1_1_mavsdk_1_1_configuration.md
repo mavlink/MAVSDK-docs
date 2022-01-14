@@ -90,7 +90,11 @@ Value | Description
 <span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a6ca1d2b081cc474f42cb95e3d04e6e68"></span> `Autopilot` | SDK is used as an autopilot. 
 <span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8af64f82089eddc6133add8c55c65d6687"></span> `GroundStation` | SDK is used as a ground station. 
 <span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a8f2f82e1a7aa48819e9530d5c4977477"></span> `CompanionComputer` | SDK is used as a companion computer on board the MAV. 
-<span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a90589c47f06eb971d548591f23c285af"></span> `Custom` | the SDK is used in a custom configuration, no automatic ID will be provided 
+<span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a967d35e40f3f95b1f538bd248640bf3b"></span> `Camera` |  
+<span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a90589c47f06eb971d548591f23c285af"></span> `Custom` | SDK is used as a camera. <
+
+
+the SDK is used in a custom configuration, no automatic ID will be provided
 
 ## Member Function Documentation
 
