@@ -73,7 +73,7 @@
   * [struct ActuatorControl](structmavsdk_1_1_offboard_1_1_actuator_control.md)
   * [struct ActuatorControlGroup](structmavsdk_1_1_offboard_1_1_actuator_control_group.md)
   * [struct Attitude](structmavsdk_1_1_offboard_1_1_attitude.md)
-  * [struct AltitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md)
+  * [struct AttitudeRate](structmavsdk_1_1_offboard_1_1_attitude_rate.md)
   * [struct VelocityBodyYawspeed](structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md)
   * [struct VelocityNedYaw](structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md)
   * [struct PositionNedYaw](structmavsdk_1_1_offboard_1_1_position_ned_yaw.md)
