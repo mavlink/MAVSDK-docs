@@ -108,7 +108,7 @@
             * [struct ActuatorControl](cpp/api_reference/structmavsdk_1_1_offboard_1_1_actuator_control.md)
             * [struct ActuatorControlGroup](cpp/api_reference/structmavsdk_1_1_offboard_1_1_actuator_control_group.md)
             * [struct Attitude](cpp/api_reference/structmavsdk_1_1_offboard_1_1_attitude.md)
-            * [struct AltitudeRate](cpp/api_reference/structmavsdk_1_1_offboard_1_1_attitude_rate.md)
+            * [struct AttitudeRate](cpp/api_reference/structmavsdk_1_1_offboard_1_1_attitude_rate.md)
             * [struct VelocityBodyYawspeed](cpp/api_reference/structmavsdk_1_1_offboard_1_1_velocity_body_yawspeed.md)
             * [struct VelocityNedYaw](cpp/api_reference/structmavsdk_1_1_offboard_1_1_velocity_ned_yaw.md)
             * [struct PositionNedYaw](cpp/api_reference/structmavsdk_1_1_offboard_1_1_position_ned_yaw.md)
