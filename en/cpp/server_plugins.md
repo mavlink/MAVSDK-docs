@@ -4,7 +4,7 @@ MAVSDK _Server_ plugins are used to expose MAVLink services on non-MAVLink fligh
 
 The plugins listen for commands from a ground station or other MAVLink client, pass them to the underlying native system using callbacks, and respond as needed. 
 
-> **Note:** They are called "server" plugins because they perform the server role in communication - listening for commands and responding.
+> **Note** They are called "server" plugins because they perform the server role in communication - listening for commands and responding.
 > The client role is usually performed by a ground station (or "ordinary" MAVSDK plugin)
 
 
