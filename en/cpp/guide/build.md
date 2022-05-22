@@ -140,6 +140,49 @@ cmake --build build/default --target install
   rm -rf build/default
   ```
 
+## MAVLink headers and dialects
+
+MAVSDK uses the dialect [common.xml](https://mavlink.io/en/messages/common.html) by default.
+It does so by checking out the [mavlink/mavlink](https://github.com/mavlink/mavlink/) repository at configure time and using [Pymavlink](https://github.com/ArduPilot/pymavlink) to generate the C headers.
+
+There are two options to change the default mentioned above.
+
+### Change dialect
+
+If you need to build with a dialect other than `common`, you can specify that during the configure step:
+
+```sh
+cmake -Bbuild/default -DMAVLINK_DIALECT=mydialect -H.
+```
+
+If you also want to swap out the repository and git commit, you can do so in [third_party/mavlink/CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/bbdb9e96f5567a488925093f641d249f8e01b2de/third_party/mavlink/CMakeLists.txt#L20-L21).
+
+### Provide C headers manually
+
+Instead of depending on the generation of the MAVLink C headers as part of the cmake configure step, you can provide the generated C headers manually.
+This can be useful if you already have the headers generated in your worspace or CI, or if you don't have Python available during the configure step (e.g. as is the case for the dockcross images).
+
+To provide the generated C headers manually, you have to set the path during the configure step:
+
+Let's say the mavlink headers are "next to" the MAVSDK directory:
+```sh
+cmake -Bbuild/default -DMAVLINK_DIALECT=mydialect -DMAVLINK_HEADERS=../mavlink-headers -H.
+```
+
+Note that the structure of the headers needs to be like this:
+
+```sh
+mavlink-headers # <-- This is the directory referenced
+└── mavlink
+    └── v2.0
+        ├── checksum.h
+        ├── mydialect
+        │   ├── mydialect.h
+        │   ├── mavlink.h
+        │   ├── mavlink_msg_...
+
+```
+
 ## Other build flags
 
 During the configure step, there are various flags that an be set using `-DFLAG=Value`:
