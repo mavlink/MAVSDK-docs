@@ -78,7 +78,7 @@ To build the example we would do:
 
 For Windows we need to install the library and header files locally by extracting **mavsdk-windows-x64-release.zip** file from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases).
 
-On macOS/Linux, you can also use locally installed library artefacts by [building from source](build.md) if that is required (e.g. during development order not to conflict with system-wide installe library).
+On macOS/Linux, you can also use locally installed library artefacts by [building from source](build.md) if that is required (e.g. during development in order not to conflict with a system-wide installed library).
 
 For the case where the library is installed in some local directory, you need to specify this path using the `CMAKE_PREFIX_PATH`.
 
