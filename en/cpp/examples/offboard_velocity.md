@@ -59,5 +59,5 @@ The operation of most of this code is discussed in the guide: [Offboard Control]
 
 ## Source code {#source_code}
 
-- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/offboard_velocity/CMakeLists.txt)
-- [offboard_velocity.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/offboard_velocity/offboard_velocity.cpp)
+- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/offboard/CMakeLists.txt)
+- [offboard_velocity.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/offboard/offboard.cpp)
