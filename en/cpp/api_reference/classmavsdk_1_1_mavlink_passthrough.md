@@ -43,7 +43,7 @@ uint8_t | [get_target_sysid](#classmavsdk_1_1_mavlink_passthrough_1a2867d1f37649
 uint8_t | [get_target_compid](#classmavsdk_1_1_mavlink_passthrough_1a22ecab3905237a2f227f77bbab9afd17) () const | Get target component ID.
 void | [intercept_incoming_messages_async](#classmavsdk_1_1_mavlink_passthrough_1a06f6c1d181f966bc9d67c4a69e4aae7a) (std::function< bool(mavlink_message_t &)> callback) | Intercept incoming messages.
 void | [intercept_outgoing_messages_async](#classmavsdk_1_1_mavlink_passthrough_1ad06c4f286f8b785a2fc09ee18dfb43c3) (std::function< bool(mavlink_message_t &)> callback) | Intercept outgoing messages.
-const [MavlinkPassthrough](classmavsdk_1_1_mavlink_passthrough.md) & | [operator=](#classmavsdk_1_1_mavlink_passthrough_1a39b74b37094511cc5bc910a2233d024e) (const [MavlinkPassthrough](classmavsdk_1_1_mavlink_passthrough.md) &)=delete | Equality operator (object is not copyable).
+const [MavlinkPassthrough](classmavsdk_1_1_mavlink_passthrough.md) & | [operator=](#classmavsdk_1_1_mavlink_passthrough_1aa7f49a131a8facf4d05449ec03ce3643) (const [MavlinkPassthrough](classmavsdk_1_1_mavlink_passthrough.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -283,9 +283,9 @@ This is a hook which allows to change or drop MAVLink messages before they are s
 
 * std::function< bool(mavlink_message_t &)> **callback** - Callback to be called for each outgoing message. To drop a message, return 'false' from the callback.
 
-### operator=() {#classmavsdk_1_1_mavlink_passthrough_1a39b74b37094511cc5bc910a2233d024e}
+### operator=() {#classmavsdk_1_1_mavlink_passthrough_1aa7f49a131a8facf4d05449ec03ce3643}
 ```cpp
-const MavlinkPassthrough & mavsdk::MavlinkPassthrough::operator=(const MavlinkPassthrough &)=delete
+const MavlinkPassthrough& mavsdk::MavlinkPassthrough::operator=(const MavlinkPassthrough &)=delete
 ```
 
 

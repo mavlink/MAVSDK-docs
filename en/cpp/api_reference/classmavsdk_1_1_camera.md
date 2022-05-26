@@ -80,7 +80,7 @@ void | [stop_video_async](#classmavsdk_1_1_camera_1a77d1b1a201164023c5eef3c91cdd
 void | [set_mode_async](#classmavsdk_1_1_camera_1a76d98d04885d38d0438da7c8696ef6ab) ([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode, const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Set camera mode.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [set_mode](#classmavsdk_1_1_camera_1a249755db2eaa8fd3d202ac01ca52448d) ([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode)const | Set camera mode.
 void | [list_photos_async](#classmavsdk_1_1_camera_1aec1edfe505476d437d45ec2f0deec924) ([PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) photos_range, const [ListPhotosCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a23240233586f7673c3a1b48f07623fe4) callback) | List photos available on the camera.
-std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), std::vector< [Camera::CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) > > | [list_photos](#classmavsdk_1_1_camera_1a61b8ac1c965b60bf4b8d1adf900926a2) ([PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) photos_range)const | List photos available on the camera.
+std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), std::vector< [Camera::CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) > > | [list_photos](#classmavsdk_1_1_camera_1a49dc17b74047049c386d88cd365de868) ([PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) photos_range)const | List photos available on the camera.
 void | [subscribe_mode](#classmavsdk_1_1_camera_1a002b03af2331606752aba43da0216503) ([ModeCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931) callback) | Subscribe to camera mode updates.
 [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) | [mode](#classmavsdk_1_1_camera_1a222bce91e70d1ca53bcf5d885bacd418) () const | Poll for 'Mode' (blocking).
 void | [subscribe_information](#classmavsdk_1_1_camera_1a64a8d8ac28784b0d304d5a7b1519657a) ([InformationCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65) callback) | Subscribe to camera information updates.
@@ -92,14 +92,15 @@ void | [subscribe_status](#classmavsdk_1_1_camera_1ab62186cc3fc79459bde0e4704eb1
 [Status](structmavsdk_1_1_camera_1_1_status.md) | [status](#classmavsdk_1_1_camera_1a0bb78c2b665c28b314f00f11a0f676b1) () const | Poll for '[Status](structmavsdk_1_1_camera_1_1_status.md)' (blocking).
 void | [subscribe_current_settings](#classmavsdk_1_1_camera_1a460cf8f9810417e63ce2643df9ed014a) ([CurrentSettingsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a77484487381b2579460c36d97d367fe6) callback) | Get the list of current camera settings.
 void | [subscribe_possible_setting_options](#classmavsdk_1_1_camera_1abd8c5e18e165b319aaae9815c735b683) ([PossibleSettingOptionsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a) callback) | Get the list of settings that can be changed.
-std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) > | [possible_setting_options](#classmavsdk_1_1_camera_1a61bac2d61d346a872c199d7203e08f38) () const | Poll for 'std::vector<SettingOptions>' (blocking).
+std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) > | [possible_setting_options](#classmavsdk_1_1_camera_1a5416dc30ec436707420db715ee56ce08) () const | Poll for 'std::vector<SettingOptions>' (blocking).
 void | [set_setting_async](#classmavsdk_1_1_camera_1aace1d6ffd86a6fdf30b3466c8522feba) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting, const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Set a setting to some value.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [set_setting](#classmavsdk_1_1_camera_1aa4b1293d8c6332293cccde87ec79f64a) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting)const | Set a setting to some value.
 void | [get_setting_async](#classmavsdk_1_1_camera_1a6b2e4e9b5b304aff313e4f988aa6ba86) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting, const [GetSettingCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1ac233f5688f0b7f1e712bb31dfaeadd85) callback) | Get a setting.
-std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), [Camera::Setting](structmavsdk_1_1_camera_1_1_setting.md) > | [get_setting](#classmavsdk_1_1_camera_1a7d426658c9c125efc0a9ba3862b1912f) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting)const | Get a setting.
+std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), [Camera::Setting](structmavsdk_1_1_camera_1_1_setting.md) > | [get_setting](#classmavsdk_1_1_camera_1ae88917857b666dc7cfd0d84b3ad29d9c) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting)const | Get a setting.
 void | [format_storage_async](#classmavsdk_1_1_camera_1a20455726797ece508d49fe05442fe0c1) (const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Format storage (e.g. SD card) in camera.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [format_storage](#classmavsdk_1_1_camera_1a1e2d39b44251f39a395527b0170e223a) () const | Format storage (e.g. SD card) in camera.
-const [Camera](classmavsdk_1_1_camera.md) & | [operator=](#classmavsdk_1_1_camera_1a358026db44ff9a10cf14a166d8f1da78) (const [Camera](classmavsdk_1_1_camera.md) &)=delete | Equality operator (object is not copyable).
+[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [select_camera](#classmavsdk_1_1_camera_1ab3348f98003f71f2399dd15505effae3) (int32_t camera_id)const | Select current camera .
+const [Camera](classmavsdk_1_1_camera.md) & | [operator=](#classmavsdk_1_1_camera_1aeff295155b6a665f5c942e473f1fe894) (const [Camera](classmavsdk_1_1_camera.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -562,9 +563,9 @@ This function is non-blocking. See 'list_photos' for the blocking counterpart.
 * [PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) **photos_range** - 
 * const [ListPhotosCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a23240233586f7673c3a1b48f07623fe4) **callback** - 
 
-### list_photos() {#classmavsdk_1_1_camera_1a61b8ac1c965b60bf4b8d1adf900926a2}
+### list_photos() {#classmavsdk_1_1_camera_1a49dc17b74047049c386d88cd365de868}
 ```cpp
-std::pair< Result, std::vector< Camera::CaptureInfo > > mavsdk::Camera::list_photos(PhotosRange photos_range) const
+std::pair<Result, std::vector<Camera::CaptureInfo> > mavsdk::Camera::list_photos(PhotosRange photos_range) const
 ```
 
 
@@ -723,9 +724,9 @@ Get the list of settings that can be changed.
 
 * [PossibleSettingOptionsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a) **callback** - 
 
-### possible_setting_options() {#classmavsdk_1_1_camera_1a61bac2d61d346a872c199d7203e08f38}
+### possible_setting_options() {#classmavsdk_1_1_camera_1a5416dc30ec436707420db715ee56ce08}
 ```cpp
-std::vector< SettingOptions > mavsdk::Camera::possible_setting_options() const
+std::vector<SettingOptions> mavsdk::Camera::possible_setting_options() const
 ```
 
 
@@ -793,9 +794,9 @@ This function is non-blocking. See 'get_setting' for the blocking counterpart.
 * [Setting](structmavsdk_1_1_camera_1_1_setting.md) **setting** - 
 * const [GetSettingCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1ac233f5688f0b7f1e712bb31dfaeadd85) **callback** - 
 
-### get_setting() {#classmavsdk_1_1_camera_1a7d426658c9c125efc0a9ba3862b1912f}
+### get_setting() {#classmavsdk_1_1_camera_1ae88917857b666dc7cfd0d84b3ad29d9c}
 ```cpp
-std::pair< Result, Camera::Setting > mavsdk::Camera::get_setting(Setting setting) const
+std::pair<Result, Camera::Setting> mavsdk::Camera::get_setting(Setting setting) const
 ```
 
 
@@ -848,9 +849,30 @@ This function is blocking. See 'format_storage_async' for the non-blocking count
 
 &emsp;[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) - Result of request.
 
-### operator=() {#classmavsdk_1_1_camera_1a358026db44ff9a10cf14a166d8f1da78}
+### select_camera() {#classmavsdk_1_1_camera_1ab3348f98003f71f2399dd15505effae3}
 ```cpp
-const Camera & mavsdk::Camera::operator=(const Camera &)=delete
+Result mavsdk::Camera::select_camera(int32_t camera_id) const
+```
+
+
+Select current camera .
+
+Bind the plugin instance to a specific camera_id
+
+
+This function is blocking.
+
+**Parameters**
+
+* int32_t **camera_id** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) - Result of request.
+
+### operator=() {#classmavsdk_1_1_camera_1aeff295155b6a665f5c942e473f1fe894}
+```cpp
+const Camera& mavsdk::Camera::operator=(const Camera &)=delete
 ```
 
 

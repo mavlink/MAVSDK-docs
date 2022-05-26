@@ -12,6 +12,8 @@ Provide raw access to retrieve and provide server parameters.
 
 struct [AllParams](structmavsdk_1_1_param_server_1_1_all_params.md)
 
+struct [CustomParam](structmavsdk_1_1_param_server_1_1_custom_param.md)
+
 struct [FloatParam](structmavsdk_1_1_param_server_1_1_float_param.md)
 
 struct [IntParam](structmavsdk_1_1_param_server_1_1_int_param.md)
@@ -33,12 +35,14 @@ Type | Name | Description
 &nbsp; | [ParamServer](#classmavsdk_1_1_param_server_1a2d57795672afad77a1c55cda9e6d57d6) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [~ParamServer](#classmavsdk_1_1_param_server_1a6066a31b1b6f6ce29a30617634ba1184) () | Destructor (internal use only).
 &nbsp; | [ParamServer](#classmavsdk_1_1_param_server_1a4cffcb488093838f72414c94e6c40fd0) (const [ParamServer](classmavsdk_1_1_param_server.md) & other) | Copy constructor.
-std::pair< [Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469), int32_t > | [retrieve_param_int](#classmavsdk_1_1_param_server_1aba490929e68a2a280dd4637152ab45c1) (std::string name)const | Retrieve an int parameter.
+std::pair< [Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469), int32_t > | [retrieve_param_int](#classmavsdk_1_1_param_server_1a95c445dbdd2b764248c811da0230b0b4) (std::string name)const | Retrieve an int parameter.
 [Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469) | [provide_param_int](#classmavsdk_1_1_param_server_1a9de5dade4020eda7fb1cc07c6868dad1) (std::string name, int32_t value)const | Provide an int parameter.
-std::pair< [Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469), float > | [retrieve_param_float](#classmavsdk_1_1_param_server_1a4ad8adbaafa16f597e0141716dc440bd) (std::string name)const | Retrieve a float parameter.
+std::pair< [Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469), float > | [retrieve_param_float](#classmavsdk_1_1_param_server_1a2845916c07a7e47e7444a49f88b23320) (std::string name)const | Retrieve a float parameter.
 [Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469) | [provide_param_float](#classmavsdk_1_1_param_server_1a7893e4b00609eb0826835b3d8930db1f) (std::string name, float value)const | Provide a float parameter.
+std::pair< [Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469), std::string > | [retrieve_param_custom](#classmavsdk_1_1_param_server_1aa6564b8138bc66519f425a350265b50d) (std::string name)const | Retrieve a custom parameter.
+[Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469) | [provide_param_custom](#classmavsdk_1_1_param_server_1a60487de3470b9b1c39b403d4c9053d73) (std::string name, std::string value)const | Provide a custom parameter.
 [ParamServer::AllParams](structmavsdk_1_1_param_server_1_1_all_params.md) | [retrieve_all_params](#classmavsdk_1_1_param_server_1aaf6b3862213d415ff26730afad95565f) () const | Retrieve all parameters.
-const [ParamServer](classmavsdk_1_1_param_server.md) & | [operator=](#classmavsdk_1_1_param_server_1af919ccd34f6ada4ded2b9c84c448fffe) (const [ParamServer](classmavsdk_1_1_param_server.md) &)=delete | Equality operator (object is not copyable).
+const [ParamServer](classmavsdk_1_1_param_server.md) & | [operator=](#classmavsdk_1_1_param_server_1a29ce1d2c4a2b80fbe4a0b7e7470e14af) (const [ParamServer](classmavsdk_1_1_param_server.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -132,13 +136,14 @@ Value | Description
 <span id="classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469afdf152936dcbf201445440856357f6ac"></span> `WrongType` | Wrong type. 
 <span id="classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469aa2b5cfc4e45ca036892b3dadc483e655"></span> `ParamNameTooLong` | Parameter name too long (> 16). 
 <span id="classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system available. 
+<span id="classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469a1fc93bc695e2e3e1903029eb77228234"></span> `ParamValueTooLong` | Parameter name too long (> 128). 
 
 ## Member Function Documentation
 
 
-### retrieve_param_int() {#classmavsdk_1_1_param_server_1aba490929e68a2a280dd4637152ab45c1}
+### retrieve_param_int() {#classmavsdk_1_1_param_server_1a95c445dbdd2b764248c811da0230b0b4}
 ```cpp
-std::pair< Result, int32_t > mavsdk::ParamServer::retrieve_param_int(std::string name) const
+std::pair<Result, int32_t> mavsdk::ParamServer::retrieve_param_int(std::string name) const
 ```
 
 
@@ -179,9 +184,9 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469) - Result of request.
 
-### retrieve_param_float() {#classmavsdk_1_1_param_server_1a4ad8adbaafa16f597e0141716dc440bd}
+### retrieve_param_float() {#classmavsdk_1_1_param_server_1a2845916c07a7e47e7444a49f88b23320}
 ```cpp
-std::pair< Result, float > mavsdk::ParamServer::retrieve_param_float(std::string name) const
+std::pair<Result, float> mavsdk::ParamServer::retrieve_param_float(std::string name) const
 ```
 
 
@@ -222,6 +227,49 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469) - Result of request.
 
+### retrieve_param_custom() {#classmavsdk_1_1_param_server_1aa6564b8138bc66519f425a350265b50d}
+```cpp
+std::pair<Result, std::string> mavsdk::ParamServer::retrieve_param_custom(std::string name) const
+```
+
+
+Retrieve a custom parameter.
+
+If the type is wrong, the result will be `WRONG_TYPE`.
+
+
+This function is blocking.
+
+**Parameters**
+
+* std::string **name** - 
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469), std::string > - Result of request.
+
+### provide_param_custom() {#classmavsdk_1_1_param_server_1a60487de3470b9b1c39b403d4c9053d73}
+```cpp
+Result mavsdk::ParamServer::provide_param_custom(std::string name, std::string value) const
+```
+
+
+Provide a custom parameter.
+
+If the type is wrong, the result will be `WRONG_TYPE`.
+
+
+This function is blocking.
+
+**Parameters**
+
+* std::string **name** - 
+* std::string **value** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_param_server.md#classmavsdk_1_1_param_server_1a6f7fcc017f43dcf68837dbc35ee4f469) - Result of request.
+
 ### retrieve_all_params() {#classmavsdk_1_1_param_server_1aaf6b3862213d415ff26730afad95565f}
 ```cpp
 ParamServer::AllParams mavsdk::ParamServer::retrieve_all_params() const
@@ -236,9 +284,9 @@ This function is blocking.
 
 &emsp;[ParamServer::AllParams](structmavsdk_1_1_param_server_1_1_all_params.md) - Result of request.
 
-### operator=() {#classmavsdk_1_1_param_server_1af919ccd34f6ada4ded2b9c84c448fffe}
+### operator=() {#classmavsdk_1_1_param_server_1a29ce1d2c4a2b80fbe4a0b7e7470e14af}
 ```cpp
-const ParamServer & mavsdk::ParamServer::operator=(const ParamServer &)=delete
+const ParamServer& mavsdk::ParamServer::operator=(const ParamServer &)=delete
 ```
 
 

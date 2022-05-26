@@ -30,6 +30,8 @@ std::string [callsign](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1a4289413e
 
 uint32_t [squawk](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1a424c6cf5a90d9296f43f78d173b72c94) {} - Squawk code.
 
+uint32_t [tslc_s](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1a61d1625effb91af73cc763b92c55425b) {} - Time Since Last Communication in seconds.
+
 
 ## Field Documentation
 
@@ -132,4 +134,14 @@ uint32_t mavsdk::Transponder::AdsbVehicle::squawk {}
 
 
 Squawk code.
+
+
+### tslc_s {#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1a61d1625effb91af73cc763b92c55425b}
+
+```cpp
+uint32_t mavsdk::Transponder::AdsbVehicle::tslc_s {}
+```
+
+
+Time Since Last Communication in seconds.
 
