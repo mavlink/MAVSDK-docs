@@ -99,7 +99,7 @@ Type | Name | Description
 [Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_scaled_imu](#classmavsdk_1_1_telemetry_server_1aff52c34112c885662c711cda94b7c985) ([Imu](structmavsdk_1_1_telemetry_server_1_1_imu.md) imu)const | Publish to 'Scaled IMU' updates.
 [Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_raw_imu](#classmavsdk_1_1_telemetry_server_1a92f3fcb090ffc96c70ce35d433a1a2a5) ([Imu](structmavsdk_1_1_telemetry_server_1_1_imu.md) imu)const | Publish to 'Raw IMU' updates.
 [Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_unix_epoch_time](#classmavsdk_1_1_telemetry_server_1a27b1b901cd8baf91380029c2b95b2dac) (uint64_t time_us)const | Publish to 'unix epoch time' updates.
-const [TelemetryServer](classmavsdk_1_1_telemetry_server.md) & | [operator=](#classmavsdk_1_1_telemetry_server_1ae56dd6efaacf4bcbcc9fd65699ff6ec4) (const [TelemetryServer](classmavsdk_1_1_telemetry_server.md) &)=delete | Equality operator (object is not copyable).
+const [TelemetryServer](classmavsdk_1_1_telemetry_server.md) & | [operator=](#classmavsdk_1_1_telemetry_server_1a479502f1ce3bdc2c5be486911a20ca25) (const [TelemetryServer](classmavsdk_1_1_telemetry_server.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -521,9 +521,9 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) - Result of request.
 
-### operator=() {#classmavsdk_1_1_telemetry_server_1ae56dd6efaacf4bcbcc9fd65699ff6ec4}
+### operator=() {#classmavsdk_1_1_telemetry_server_1a479502f1ce3bdc2c5be486911a20ca25}
 ```cpp
-const TelemetryServer & mavsdk::TelemetryServer::operator=(const TelemetryServer &)=delete
+const TelemetryServer& mavsdk::TelemetryServer::operator=(const TelemetryServer &)=delete
 ```
 
 

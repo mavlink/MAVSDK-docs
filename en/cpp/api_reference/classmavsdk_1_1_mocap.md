@@ -51,7 +51,7 @@ Type | Name | Description
 [Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) | [set_vision_position_estimate](#classmavsdk_1_1_mocap_1a22d007409839e28a45d7b10f10e22fd6) ([VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) vision_position_estimate)const | Send Global position/attitude estimate from a vision source.
 [Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) | [set_attitude_position_mocap](#classmavsdk_1_1_mocap_1a5f9a63d8bbed750056e139640b38cd7f) ([AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) attitude_position_mocap)const | Send motion capture attitude and position.
 [Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) | [set_odometry](#classmavsdk_1_1_mocap_1a149fa242e0b01bc0aee9204118b00f59) ([Odometry](structmavsdk_1_1_mocap_1_1_odometry.md) odometry)const | Send odometry information with an external interface.
-const [Mocap](classmavsdk_1_1_mocap.md) & | [operator=](#classmavsdk_1_1_mocap_1afb0d68876155a6990317b3b620f018f7) (const [Mocap](classmavsdk_1_1_mocap.md) &)=delete | Equality operator (object is not copyable).
+const [Mocap](classmavsdk_1_1_mocap.md) & | [operator=](#classmavsdk_1_1_mocap_1adf2f33e3befbec23f43e066946050eab) (const [Mocap](classmavsdk_1_1_mocap.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -144,6 +144,7 @@ Value | Description
 <span id="classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system is connected. 
 <span id="classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5a094a6f6b0868122a9dd008cb91c083e4"></span> `ConnectionError` | Connection error. 
 <span id="classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5aa7bcc6c4cca7f1edddd6823f37a6b3b6"></span> `InvalidRequestData` | Invalid request data. 
+<span id="classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5ab4080bdf74febf04d578ff105cce9d3f"></span> `Unsupported` | Function unsupported. 
 
 ## Member Function Documentation
 
@@ -202,9 +203,9 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) - Result of request.
 
-### operator=() {#classmavsdk_1_1_mocap_1afb0d68876155a6990317b3b620f018f7}
+### operator=() {#classmavsdk_1_1_mocap_1adf2f33e3befbec23f43e066946050eab}
 ```cpp
-const Mocap & mavsdk::Mocap::operator=(const Mocap &)=delete
+const Mocap& mavsdk::Mocap::operator=(const Mocap &)=delete
 ```
 
 

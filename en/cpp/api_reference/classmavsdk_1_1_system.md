@@ -23,6 +23,7 @@ Type | Description
 enum [ComponentType](#classmavsdk_1_1_system_1af2a91929d9771ae0e59c98557027b1dc) | Component Types.
 std::function< void(bool)> [IsConnectedCallback](#classmavsdk_1_1_system_1a0e56bb48498100fde0872a3ec376f282) | type for is connected callback.
 std::function< void([ComponentType](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1af2a91929d9771ae0e59c98557027b1dc))> [DiscoverCallback](#classmavsdk_1_1_system_1af5f75718750071579b507434cdcd4562) | type for component discovery callback
+std::function< void([ComponentType](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1af2a91929d9771ae0e59c98557027b1dc), uint8_t)> [DiscoverIdCallback](#classmavsdk_1_1_system_1a465269d8d93e8038218d4f98821431c3) | type for component discovery callback
 
 ## Public Member Functions
 
@@ -38,11 +39,12 @@ bool | [has_camera](#classmavsdk_1_1_system_1a440fd601ed2120e1e41d9eab536a7da8) 
 bool | [has_gimbal](#classmavsdk_1_1_system_1ad66c3ecc096970d40c34610e49dba929) () const | Checks whether the system has a gimbal.
 bool | [is_connected](#classmavsdk_1_1_system_1ad07991ae044bc367e27f544db40d065b) () const | Checks if the system is connected.
 uint8_t | [get_system_id](#classmavsdk_1_1_system_1a091d793db29719f4996040886ad951a6) () const | MAVLink [System](classmavsdk_1_1_system.md) ID of connected system.
-std::vector< uint8_t > | [component_ids](#classmavsdk_1_1_system_1a8ef8d3f5c4b59aa71b6b0e92587185d4) () const | MAVLink component IDs of connected system.
+std::vector< uint8_t > | [component_ids](#classmavsdk_1_1_system_1aa33f748f81cc512601451c80bd077888) () const | MAVLink component IDs of connected system.
 void | [subscribe_is_connected](#classmavsdk_1_1_system_1a4e0a0237d54285ac8b7690f6e42c35fd) ([IsConnectedCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1a0e56bb48498100fde0872a3ec376f282) callback) | Subscribe to callback to be called when system connection state changes.
 void | [register_component_discovered_callback](#classmavsdk_1_1_system_1aab05799a3c85976590ddc7ae2800c5a6) ([DiscoverCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1af5f75718750071579b507434cdcd4562) callback)const | Register a callback to be called when a component is discovered.
+void | [register_component_discovered_id_callback](#classmavsdk_1_1_system_1a3dc4f7f6b390ae08182c78ec253d45f9) ([DiscoverIdCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1a465269d8d93e8038218d4f98821431c3) callback)const | Register a callback to be called when a component is discovered.
 void | [enable_timesync](#classmavsdk_1_1_system_1a7c7177fb0789aefbfb375f4bb12ce824) () | Enable time synchronization using the TIMESYNC messages.
-const [System](classmavsdk_1_1_system.md) & | [operator=](#classmavsdk_1_1_system_1ace4603ebad199e8619876993a2ad5237) (const [System](classmavsdk_1_1_system.md) &)=delete | Equality operator (object is not copyable).
+const [System](classmavsdk_1_1_system.md) & | [operator=](#classmavsdk_1_1_system_1a21284c27829fda2391ee27f5732f916d) (const [System](classmavsdk_1_1_system.md) &)=delete | Equality operator (object is not copyable).
 void | [add_capabilities](#classmavsdk_1_1_system_1a5d4418aa5d9dff55a8246d98633c643d) (uint64_t capabilities) | Register capabilities to the system (only used if MAVSDK is autopilot)
 void | [set_flight_sw_version](#classmavsdk_1_1_system_1abff603407597661498c0ac8bede2ee4c) (uint32_t flight_sw_version) | Set flight sw version (only used if MAVSDK is autopilot)
 void | [set_middleware_sw_version](#classmavsdk_1_1_system_1abbe7a180d8de90f1e20f1d7ba849ec4a) (uint32_t middleware_sw_version) | Set middleware sw version (only used if MAVSDK is autopilot)
@@ -96,6 +98,16 @@ type for is connected callback.
 
 ```cpp
 using mavsdk::System::DiscoverCallback =  std::function<void(ComponentType)>
+```
+
+
+type for component discovery callback
+
+
+### typedef DiscoverIdCallback {#classmavsdk_1_1_system_1a465269d8d93e8038218d4f98821431c3}
+
+```cpp
+using mavsdk::System::DiscoverIdCallback =  std::function<void(ComponentType, uint8_t)>
 ```
 
 
@@ -222,9 +234,9 @@ MAVLink [System](classmavsdk_1_1_system.md) ID of connected system.
 
 &emsp;uint8_t - the system ID.
 
-### component_ids() {#classmavsdk_1_1_system_1a8ef8d3f5c4b59aa71b6b0e92587185d4}
+### component_ids() {#classmavsdk_1_1_system_1aa33f748f81cc512601451c80bd077888}
 ```cpp
-std::vector< uint8_t > mavsdk::System::component_ids() const
+std::vector<uint8_t> mavsdk::System::component_ids() const
 ```
 
 
@@ -262,6 +274,19 @@ Register a callback to be called when a component is discovered.
 
 * [DiscoverCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1af5f75718750071579b507434cdcd4562) **callback** - a function of type void(ComponentType) which will be called with the component type of the new component.
 
+### register_component_discovered_id_callback() {#classmavsdk_1_1_system_1a3dc4f7f6b390ae08182c78ec253d45f9}
+```cpp
+void mavsdk::System::register_component_discovered_id_callback(DiscoverIdCallback callback) const
+```
+
+
+Register a callback to be called when a component is discovered.
+
+
+**Parameters**
+
+* [DiscoverIdCallback](classmavsdk_1_1_system.md#classmavsdk_1_1_system_1a465269d8d93e8038218d4f98821431c3) **callback** - a function of type void(ComponentType) which will be called with the component type and the component id of the new component.
+
 ### enable_timesync() {#classmavsdk_1_1_system_1a7c7177fb0789aefbfb375f4bb12ce824}
 ```cpp
 void mavsdk::System::enable_timesync()
@@ -271,9 +296,9 @@ void mavsdk::System::enable_timesync()
 Enable time synchronization using the TIMESYNC messages.
 
 
-### operator=() {#classmavsdk_1_1_system_1ace4603ebad199e8619876993a2ad5237}
+### operator=() {#classmavsdk_1_1_system_1a21284c27829fda2391ee27f5732f916d}
 ```cpp
-const System & mavsdk::System::operator=(const System &)=delete
+const System& mavsdk::System::operator=(const System &)=delete
 ```
 
 

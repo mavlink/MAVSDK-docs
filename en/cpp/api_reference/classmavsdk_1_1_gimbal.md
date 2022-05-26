@@ -46,7 +46,7 @@ void | [release_control_async](#classmavsdk_1_1_gimbal_1aa58402c4e2d9506dbe9839e
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [release_control](#classmavsdk_1_1_gimbal_1ab994d4130b2956e2d33613ffb2127335) () const | Release control.
 void | [subscribe_control](#classmavsdk_1_1_gimbal_1a411ee29d7b8513758973ad8aeb4222ab) ([ControlCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62) callback) | Subscribe to control status updates.
 [ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md) | [control](#classmavsdk_1_1_gimbal_1aae172788140e37d6125b224f5e79829e) () const | Poll for '[ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md)' (blocking).
-const [Gimbal](classmavsdk_1_1_gimbal.md) & | [operator=](#classmavsdk_1_1_gimbal_1a2d16cfd6fbe82b0e34d35133ab5c9617) (const [Gimbal](classmavsdk_1_1_gimbal.md) &)=delete | Equality operator (object is not copyable).
+const [Gimbal](classmavsdk_1_1_gimbal.md) & | [operator=](#classmavsdk_1_1_gimbal_1ac9a6e1936f58ce8f957be7c6bcc0d134) (const [Gimbal](classmavsdk_1_1_gimbal.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
@@ -447,9 +447,9 @@ Poll for '[ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md)' (block
 
 &emsp;[ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md) - One [ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md) update.
 
-### operator=() {#classmavsdk_1_1_gimbal_1a2d16cfd6fbe82b0e34d35133ab5c9617}
+### operator=() {#classmavsdk_1_1_gimbal_1ac9a6e1936f58ce8f957be7c6bcc0d134}
 ```cpp
-const Gimbal & mavsdk::Gimbal::operator=(const Gimbal &)=delete
+const Gimbal& mavsdk::Gimbal::operator=(const Gimbal &)=delete
 ```
 
 
