@@ -61,13 +61,14 @@ See [QGroundControl > Download and Install](https://docs.qgroundcontrol.com/en/g
 
 To build the examples follow the instructions below, replacing *takeoff_and_land* with the name of the specific example.
 
-The examples require the MAVSDK library to be installed. See [installation guide](../guide/installation.md) if that is not already the case.
+The examples require the MAVSDK library to be installed.
+See [installation guide](../guide/installation.md) if that is not already the case.
 
 Then build the example:
 ```sh
-cd example/takeoff_land/
+cd examples/takeoff_and_land/
 cmake -Bbuild -H.
-cmake --build
+cmake --build build -j4
 ```
 
 > **Note** if MAVSDK is installed locally (e.g. on Windows) you need to pass the location to cmake:
