@@ -129,7 +129,7 @@ runas cmake --build build/default --target install
 
 The install path can be set in the configure call using `CMAKE_INSTALL_PREFIX`:
 
-For example, to install into the `MAVSDK/install/` folder you woul set the `CMAKE_INSTALL_PREFIX` variable to specify a path relative to the folder from which you call `cmake` (or an absolute path).
+For example, to install into the `MAVSDK/install/` folder you would set the `CMAKE_INSTALL_PREFIX` variable to specify a path relative to the folder from which you call `cmake` (or an absolute path).
 ```
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=install -Bbuild/default -H.
 cmake --build build/default --target install
