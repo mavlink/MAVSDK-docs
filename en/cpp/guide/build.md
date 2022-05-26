@@ -187,9 +187,10 @@ mavlink-headers # <-- This is the directory referenced
 
 During the configure step, there are various flags that an be set using `-DFLAG=Value`:
 
-- `CMAKE_BUILD_TYPE`: as documented above, to chose between `Debug` and `Release` build.
-- `CMAKE_INSTALL_PREFIX`: as documented above, to specify directory to install library artefacts.
-- `BUILD_SHARED_LIBS`: set to `ON` to build dynamic libraries (such as .so on Linux, .dylib on macOS, .dll on Windows). Set to `OFF` to build static libraries (such as .a on Linux and macOS, .lib on Windows).
+- `CMAKE_BUILD_TYPE`: as documented above, to choose between `Debug` and `Release` build.
+- `CMAKE_INSTALL_PREFIX`: as documented above, to specify the directory in which to install library artefacts.
+- `BUILD_SHARED_LIBS`: set to `ON` to build dynamic libraries (such as `.so` on Linux, `.dylib` on macOS, `.dll` on Windows).
+  Set to `OFF` to build static libraries (such as `.a` on Linux and macOS, `.lib` on Windows).
 - `SUPERBUILD`: set to `OFF` to use system dependencies instead of dependencies downloaded and built using cmake.
 - `CMAKE_PREFIX_PATH`: can be used to set the path where the dependencies can be found if `SUPERBUILD` is set to `OFF`.
 - `BUILD_MAVSDK_SERVER`: set to `ON` to build mavsdk_server, see instruction to [build mavsdk_server](build_mavsdk_server.md).
