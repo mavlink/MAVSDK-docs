@@ -129,7 +129,7 @@
             * [struct CustomParam](cpp/api_reference/structmavsdk_1_1_param_1_1_custom_param.md)
             * [struct FloatParam](cpp/api_reference/structmavsdk_1_1_param_1_1_float_param.md)
             * [struct IntParam](cpp/api_reference/structmavsdk_1_1_param_1_1_int_param.md)
-        * [class ParamServer](classmavsdk_1_1_param_server.md)
+        * [class ParamServer](cpp/api_reference/classmavsdk_1_1_param_server.md)
             * [struct AllParams](cpp/api_reference/structmavsdk_1_1_param_server_1_1_all_params.md)
             * [struct CustomParam](cpp/api_reference/structmavsdk_1_1_param_server_1_1_custom_param.md)
             * [struct FloatParam](cpp/api_reference/structmavsdk_1_1_param_server_1_1_float_param.md)
