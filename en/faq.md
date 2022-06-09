@@ -9,8 +9,8 @@ Additionally, the library needs to be lightweight and fast, so it does not slow 
 
 Yes.
 - The MAVSDK C++ library allows C++ applications to connect to multiple vehicles at a time.
-- Python, Swift, and other language wrappers an only connect to a _single vehicle at a time_.
-  However you can intantiate multiple copies of wrappers in order to connect to multiple systems.
+- Python, Swift, and other language wrappers can only connect to a _single vehicle at a time_.
+  However you can initiate multiple copies of wrappers in order to connect to multiple systems.
 
 A maximum of 255 vehicles can be connected.
 
@@ -35,13 +35,13 @@ This use-case is mostly unsupported and untested.
 
 Indoor use is supported, however, some modes such as mission or position control are not available indoor, unless some additional positioning method is available (e.g. optical flow, visual-inertial odometry, a motion capture system, etc.).
 
-Note that PX4 currently does not support missions in "local coordinates" i.e. meters but only "global coordinates i. e. latitude/longitude.
+Note that PX4 currently does not support missions using "local coordinates" (i.e. meters) but only supports using "global coordinates" (i. e. latitude/longitude).
 
 ### What UAV flight stacks are supported?
 
 MAVSDK, so far, is optimised for use with the PX4 flight stack and all testing is done against PX4.
 
-While many features should work on other flight stacks there may be implementation differences at the [MAVLink microservices level](https://mavlink.io/en/protocol/overview.html) that mean not every API will work.
+While many features should work on other flight stacks there may be implementation differences at the [MAVLink microservices level](https://mavlink.io/en/protocol/overview.html) which means that not every API will work.
 For example, PX4 and ArduPilot implement the parameter protocol differently, and vary slightly in the mission upload/download protocol (e.g. ArduPilot uses the 0 entry as the home position).
 
 > **Note** The SDK welcomes contributions to better support flight stacks other than PX4.
@@ -64,35 +64,29 @@ Check out [C++/Contributing/Plugins](cpp/contributing/plugins.md).
 
 Yes - but it should not!
 The idea is that plugins don't have any coupling between each other which allows for any plugin to be changed or removed without breaking the rest.
-This will lead to some duplication at places, that's an acceptable trade-off.
+This will lead to some duplication at places, and that's an acceptable trade-off.
 If the same code is used in many places, it can always be moved to core and get re-used from there.
 
-Over time we have sometimes moved functionality from plugins to the core if it was exposed in multiple plugins (e.g. mission upload/download has been moved to the core so it can be used in the Mission plugin as well as the MissionRaw and Geofence plugins.
+We have sometimes moved functionality from plugins to the core if it was exposed in multiple plugins. As an example mission upload/download has been moved to the core so it can be used in the Mission plugin as well as the MissionRaw and Geofence plugins.
 
 ### Can MAVSDK run on an embedded platform / microcontroller?
 
-MAVSDK is generally written a bit higher level, geared towards ARM devices such as a Raspberry Pi, smartphone or faster/better.
+MAVSDK is generally written at a bit higher level, geared towards ARM devices such as a Raspberry Pi, a smartphone, or a similar device with equal/better performance.
 
-As it doesn't actually use too much compute, it could in theory be run on a microcontroller such as an ARM Cortex M4, however, it would require the POSIX APIs for serial and networking communication as well as the C++ standard library for things like `std::thread` or `std::vector`.
+As MAVSDK does not actually require too much CPU power, it could in theory be run on a microcontroller such as an ARM Cortex M4, however, it would require the POSIX APIs for serial and networking communication, as well as the C++ standard library for classes/functions such as `std::thread` or `std::vector`.
 
-The recommendation for a microcontroller would be to use the pure [C MAVLink headers](https://mavlink.io/en/mavgen_c/).
+The recommendation for usage with a microcontroller would be to use the pure [C MAVLink headers](https://mavlink.io/en/mavgen_c/).
 
 ### Why is MAVLink Passthrough only available in C++?
 
-The C++ MAVLink passthrough plugin basically exposes the direct C MAVLink API.
+The C++ MAVLink passthrough plugin basically exposes the direct C MAVLink API. While it would be nice to have access to all MAVLink messages in the language wrappers, there are some technical challenges:
 
-While it would be nice to have access to all MAVLink messages in the language wrappers, there are some technical challenges:
 - Essentially, it would mean that all MAVLink APIs would have to be duplicated by the [proto APIs](https://github.com/mavlink/MAVSDK-Proto/tree/main/protos).
   This would increase the API and code size considerably.
 - Alternatively, the API could be exposed without types, using some sort of runtime access like `get_message("ATTITUDE").get_field("pitch").as_float()`.
   This would come with the cost of no type safety and runtime overhead for parsing the strings.
 
 From a MAVSDK project point of view, there is also an advantage of not having a passthrough available in language wrappers; it encourages that required features are contributed back to the open-source project, rather than implemented in private using passthrough, and thus benefitting everyone.
-
-### Why is MAVSDK written in C++?
-
-The requirements for MAVSDK were that it can efficiently run in embedded setups, e.g. as part of an app or onboard a drone on the companion computer which suggested C or C++.
-The goal with MAVSDK was to provide a simple and safe API. This favored C++ over C as it allows for more expressive but type-safe APIs using standard library containers (e.g. `std::vector<MissionItem>`).
 
 ### Why is gRPC used for the language wrappers?
 
