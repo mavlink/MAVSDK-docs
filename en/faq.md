@@ -1,16 +1,17 @@
 ## FAQ
 
-### Why was the core of the SDK written in C++?
+### Why was the core of MAVSDK written in C++?
 
 The aim was to have an API in a language which is cross-platform and has many language bindings.
-Additionally, the library needs to be lightweight and fast, so it does not slow down for onboard usage at higher rate messaging.
+The library also needs to be lightweight and fast, so it does not slow down for onboard usage at higher rate messaging.
+Additionally, MAVSDK should be able to run efficiently in embedded setups, e.g. as part of an app or onboard a drone on a companion computer, as well as provide a simple and safe API. This favoured C++ over C as it allows for more expressive but type-safe APIs using standard library containers (e.g. `std::vector<MissionItem>`) for usage in embedded setups.
 
 ### Are multiple vehicles supported?
 
 Yes.
 - The MAVSDK C++ library allows C++ applications to connect to multiple vehicles at a time.
 - Python, Swift, and other language wrappers can only connect to a _single vehicle at a time_.
-  However you can initiate multiple copies of wrappers in order to connect to multiple systems.
+  However you can intantiate multiple copies of wrappers in order to connect to multiple systems.
 
 A maximum of 255 vehicles can be connected.
 
