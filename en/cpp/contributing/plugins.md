@@ -55,8 +55,8 @@ Looking at the plugin structure again, this means that some of the files are aut
         ├── CMakeLists.txt       # auto-generated
         ├── example.cpp          # auto-generated
         ├── example.h            # auto-generated
-        ├── example_impl.cpp     # hand-written (can initally be generated)
-        ├── example_impl.h       # hand-written (can initally be generated)
+        ├── example_impl.cpp     # hand-written (can initially be generated)
+        ├── example_impl.h       # hand-written (can initially be generated)
         └── example_foo_test.cpp  # optional
 ```
 
@@ -188,7 +188,7 @@ Once the proto file has been created, you can generate all files required for th
    tools/fix_style.sh .
    ```
 
-> **Note** the files `my_new_plugin.h` and `my_new_plugin.cpp` are generated and overwritten everytime the script is run.
+> **Note** the files `my_new_plugin.h` and `my_new_plugin.cpp` are generated and overwritten every time the script is run.
   However, the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` are only generated once.
   To re-generate them, delete them and run the script again.
   This approach is used to prevent the script from overwriting your local changes.
@@ -196,7 +196,7 @@ Once the proto file has been created, you can generate all files required for th
 ### Actually implement MAVLink messages
 
 You can now add the actual "business logic" which is usually sending and receiving MAVLink messages, waiting for timeouts, etc.
-All implementation goes into the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` or additional files for separete classes required.
+All implementation goes into the files `my_new_plugin_impl.h` and `my_new_plugin_impl.cpp` or additional files for separate classes required.
 
 You can also add unit tests with `unittest_source_files`, as [discussed below](#adding_unit_tests).
 
