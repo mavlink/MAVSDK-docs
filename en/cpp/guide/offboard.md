@@ -92,7 +92,7 @@ if (result != Offboard::Result::Success) {
 ## Velocity Setpoints
 
 The API provides methods to set velocity and yaw components using the NED frame (`set_velocity_ned()`) and the body frame (`set_velocity_body()`).
-The difference is that NED is relative to an absolute co-ordinate system (North, East, Down) while body frame is relative to the vehicle orientation (front, right, down).
+The difference is that NED is relative to an absolute coordinate system (North, East, Down) while body frame is relative to the vehicle orientation (front, right, down).
 
 The NED frame is used to move towards a specific compass direction or face the vehicle in a specific compass direction.
 Body frame is usually used for tasks where the vehicle needs to *deviate* from the current path (e.g. to avoid an obstacle) or to rotate the vehicle at a specific rate.
@@ -121,7 +121,7 @@ Examples:
 
 ### Go Up or Down
 
-Both co-ordinate systems use the same definition for "down", and both methods take an argument where the third value is used to specify the velocity component in this direction.
+Both coordinate systems use the same definition for "down", and both methods take an argument where the third value is used to specify the velocity component in this direction.
 The following examples show how you set the velocity component down (positive) or up (negative) using the two methods:
 
 Examples:

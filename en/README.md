@@ -14,7 +14,7 @@ MAVSDK is cross-platform: Linux, macOS, Windows, Android and iOS.
 
 ## Programming Languages
 
-MAVSDK is primarly written in C++ with wrappers available for several programming languages:
+MAVSDK is primarily written in C++ with wrappers available for several programming languages:
 
 - [MAVSDK-C++](https://github.com/mavlink/MAVSDK) (2016): Used in production.
 - [MAVSDK-Swift](https://github.com/mavlink/MAVSDK-Swift) (2018): Used in production.

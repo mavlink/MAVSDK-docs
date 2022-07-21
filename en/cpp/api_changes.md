@@ -157,8 +157,8 @@ This mostly worked fine, however, had some drawbacks:
   This is not very intuitive and also means additional checks inside the plugins are required.
 - The ownership model is not very clear as `Mavsdk` owns the `System` but then each plugin only seems to require the `System`.
   Internally, the plugins still require `Mavsdk` to be alive and working but that's not apparent through the API.
-- If there are multiple sytems they need to be accessed using the `uuid`.
-  This seems like a crutch because essentially we would just like to have a `std::vector` of systems but of course that's not posible with references.
+- If there are multiple systems they need to be accessed using the `uuid`.
+  This seems like a crutch because essentially we would just like to have a `std::vector` of systems but of course that's not possible with references.
 
 As the API for the uid was about the change anyway (see above) it seemed time to redesign the API to access systems with these considerations in mind.
 

@@ -11,7 +11,7 @@ Additionally, MAVSDK should be able to run efficiently in embedded setups, e.g. 
 Yes.
 - The MAVSDK C++ library allows C++ applications to connect to multiple vehicles at a time.
 - Python, Swift, and other language wrappers can only connect to a _single vehicle at a time_.
-  However you can intantiate multiple copies of wrappers in order to connect to multiple systems.
+  However you can instantiate multiple copies of wrappers in order to connect to multiple systems.
 
 A maximum of 255 vehicles can be connected.
 

@@ -243,12 +243,12 @@ Altitude: 10 m
 
 ## How it works
 
-By creating two MAVSDK instances on seperate threads, configuring them and then using different plugins on each, we are able to create a full MAVLink system (GCS <-> Vehicle)
+By creating two MAVSDK instances on separate threads, configuring them and then using different plugins on each, we are able to create a full MAVLink system (GCS <-> Vehicle)
 in one program.
 
 Each plugin (and it's respective server plugin) implements a particular MAVLink service.
 By utilising the server plugins and client plugins we are able to create a full MAVLink
-system, without the need for a seperate external autopilot.
+system, without the need for a separate external autopilot.
 
 ## Source code {#source_code}
 
