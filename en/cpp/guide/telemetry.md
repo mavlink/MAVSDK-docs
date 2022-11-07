@@ -220,7 +220,7 @@ Similarly, you can use the asynchronous method and block
 }
 ```
 > **Note** Note that `prom->set_value()` must only be called once.
-  If your code can potentially call this multiple times, remember to unsubscribe from the callback after it succeeds (e.g. using `telemetry.subscribe_all_ok(nullptr)`).
+  If your code can potentially call this multiple times, remember to unsubscribe from the callback after it succeeds (e.g. using `telemetry.subscribe_health_all_ok(nullptr)`).
 
 Depending on the architecture of your application, you may even wish to arm the vehicle in your callback function.
 Usually though it is easier to understand program flow using the approach above.
