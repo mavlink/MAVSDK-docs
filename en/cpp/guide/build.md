@@ -140,6 +140,16 @@ cmake --build build/default --target install
   rm -rf build/default
   ```
 
+Once installed locally, you can then use the installed headers and library from the local folder by setting it using `CMAKE_PREFIX_PATH`.
+
+For instance, to build the examples, you would do:
+
+```
+cd examples
+cmake -DCMAKE_PREFIX_PATH=$(pwd)/../install -Bbuild -H.
+cmake --build build -j8
+```
+
 ## MAVLink headers and dialects
 
 MAVSDK uses the dialect [common.xml](https://mavlink.io/en/messages/common.html) by default.
