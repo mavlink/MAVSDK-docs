@@ -49,7 +49,7 @@ brew install cmake
 
 To build the library in Windows, you need:
 
-- [Build Tools for Visual Studio 2019](https://www.visualstudio.com/downloads/): Download and install (only the "Visual C+ Build Tools" are needed from installer).
+- [Build Tools for Visual Studio 2022](https://www.visualstudio.com/downloads/): Download and install (only the "Visual C+ Build Tools" are needed from installer).
 - [cmake](https://cmake.org/download/): Download the installer and run it.
   Make sure to tick "add to PATH" during the installation.
 - [git](https://git-scm.com/download/win) or any other tool to work with git.
