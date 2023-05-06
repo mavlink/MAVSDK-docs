@@ -37,7 +37,7 @@ This guide contains information and examples showing how to use MAVSDK.
 If you have specific questions that are not answered by the documentation, these can be raised on:
 
 * [Discuss board](https://discuss.px4.io/c/mavsdk)
-* [Slack (#mavsdk)](https://px4.slack.com/messages/C68J8H32A) (get a [Slack login here](http://slack.px4.io))
+* [Discord (#mavsdk)](https://discord.gg/dronecode) 
 
 Use Github for bug reports/enhancement requests:
 
