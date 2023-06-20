@@ -11,11 +11,16 @@ This quickstart shows you how to build and run a simple MAVSDK C++ example appli
 
 **Ubuntu**
 
+If you have an older version already installed remove that first:
+```
+sudo apt remove mavsdk
+```
+
 The prebuilt C++ library can be downloaded as a **.deb** from [releases](https://github.com/mavlink/MAVSDK/releases), e.g.:
 
 ```
-wget https://github.com/mavlink/MAVSDK/releases/download/v0.37.0/mavsdk_0.37.0_ubuntu20.04_amd64.deb
-sudo dpkg -i mavsdk_0.37.0_ubuntu20.04_amd64.deb
+wget https://github.com/mavlink/MAVSDK/releases/download/v1.4.16/libmavsdk-dev_1.4.16_ubuntu20.04_amd64.deb
+sudo dpkg -i libmavsdk-dev_1.4.16_ubuntu20.04_amd64.deb
 ```
 
 ### macOS
