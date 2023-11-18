@@ -26,6 +26,15 @@ cmake --build build/default -j8
 
 > **Note:** there is no proper support for the Apple M1 chip yet. One blocker is that there is currently no M1 hardware in GitHub Actions CI available.
 
+## Build on Windows
+
+Open the "x64 Native Tools Command Prompt for VS 2022", cd into the MAVSDK directory, and do:
+
+```
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
+cmake --build build/default -j8
+```
+
 ## Build for Android {#build_cpp_android}
 
 Build for Android using the dockcross cross compiler, as described in the [cross-compilation](#cross_compilation_dockcross) section below (e.g. with the `dockcross/android-arm64` image).
