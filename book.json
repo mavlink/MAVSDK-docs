@@ -68,70 +68,13 @@
                     "text": "main"
                 },
                 {
+                    "value": "https://mavsdk.mavlink.io/v2.0/en/",
+                    "text": "v2.0"
+                },
+                {
                     "value": "https://mavsdk.mavlink.io/v1.4/en/",
                     "text": "v1.4"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v1.0/en/",
-                    "text": "v1.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.44/en/",
-                    "text": "v0.44"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.39/en/",
-                    "text": "v0.39"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.38/en/",
-                    "text": "v0.38"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.37.0/en/",
-                    "text": "v0.37.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.36.0/en/",
-                    "text": "v0.36.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.35.0/en/",
-                    "text": "v0.35.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.33.0/en/",
-                    "text": "v0.33.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.29.0/en/",
-                    "text": "v0.29.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.27.0/en/",
-                    "text": "v0.27.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.25.0/en/",
-                    "text": "v0.25.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.24.0/en/",
-                    "text": "v0.24.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.21.1/en/",
-                    "text": "v0.21.1"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.19.0/en/",
-                    "text": "v0.19.0"
-                },
-                {
-                    "value": "https://mavsdk.mavlink.io/v0.18.0/en/",
-                    "text": "v0.18.0"
                 }
-
             ]
         }
 
