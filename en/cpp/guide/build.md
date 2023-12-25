@@ -81,7 +81,7 @@ A typical configuration command example would be:
 
 - Build type is set to `Debug`
 - Build directory is set to `build/default`
-- TODO: Explain `H.` flag
+- Chose the directory using the `H.` flag
 
 During the configure step you can set more flags using `-DFLAG=Value`:
 
@@ -99,7 +99,7 @@ During the configure step you can set more flags using `-DFLAG=Value`:
 After the configuration step, everything that will be build in the [build step](#build_step) have been specified, and if you want to change your build configuration (e.g. If you want to build `Debug` build instead of `Release` build), you must execute the [configuration step](#configuration_step) again!
 
 #### Build Step {#build_step}
-In the build step, we finally link all the dependencies and source files to actually build the library we want.
+In the build step, we finally build the library and binaries and link them.
 
 The stripped down version of the build command would be:
 
@@ -118,8 +118,8 @@ To build the MAVSDK C++ Library for development, use the debug build.
 
 There are 2 steps in building a library: Configure and build.
 ```bash
-cmake -DCMAKE_BUILD_TYPE=Debug -Bbuild/default -H. # Configure the build
-cmake --build build/default -j8 # Build the Library
+cmake -DCMAKE_BUILD_TYPE=Debug -Bbuild/default -H.
+cmake --build build/default -j8
 ```
 
 ####  Release
@@ -129,15 +129,15 @@ Once you ship software, make sure to use the release build with optimizations tu
 **Linux/macOS:**
 
  ```bash
- cmake -Bbuild/default -DCMAKE_BUILD_TYPE=Release -H. # Configure the build
- cmake --build build/default -j8 # Build the Library
+ cmake -Bbuild/default -DCMAKE_BUILD_TYPE=Release -H.
+ cmake --build build/default -j8
  ```
 
 **Windows:**
 
 ```bash
-cmake -Bbuild/default -H. -DCMAKE_BUILD_TYPE=Release # Configure the build
-cmake --build build/default -j8 --config Release # Build the Library
+cmake -Bbuild/default -H. -DCMAKE_BUILD_TYPE=Release
+cmake --build build/default -j8 --config Release
 ```
 
 > Note: It is not usual to use CMAKE_BUILD_TYPE on Windows (with MSVC), however, our build requires it for the dependencies which are built at configure time.
