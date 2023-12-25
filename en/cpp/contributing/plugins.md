@@ -1,6 +1,6 @@
 # Writing Plugins
 
-MAVSDK-C++ is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins).
+MAVSDK-C++ is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/mavsdk/plugins).
 
 Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time.
 The [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
@@ -17,12 +17,15 @@ A simplified view of the folder structure is shown below:
 
 ```
 ├── MAVSDK
-│   ├── core
-│   ├── integration_tests
-│   └── plugins
-│       ├── action
-│       ├── ...
-│       └── telemetry
+│   └── src
+│       ├── integration_tests
+│       ├── mavsdk_server
+│       └── mavsdk
+│           ├── core
+│           └── plugins
+│               ├── action
+│               ├── ...
+│               └── tune
 ```
 
 Each plugin must have the same files/structure, as shown for the "example" plugin below.
@@ -119,7 +122,7 @@ message SetReturnToLaunchAltitudeResponse {
 }
 ```
 
-> **Note** that requests can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
+> **Note** Requests can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
   The choice depends on the functionality that is being implemented and how it would generally be used.
   There are no hard rules, it's something that makes sense to be discussed one by one in a pull request.
   The default implementation is `BOTH`.
@@ -141,10 +144,10 @@ message PositionResponse {
 }
 ```
 
-> **Note** that subscriptions also can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
+> **Note** Subscriptions also can defined SYNC, ASYNC, or BOTH using `option (mavsdk.options.async_type) = ...;`.
   The sync implementation of a subscription is just a getter for the last received value.
 
-> **Note** that subscriptions can be defined finite using `option (mavsdk.options.is_finite) = true;`.
+> **Note** Subscriptions can be defined finite using `option (mavsdk.options.is_finite) = true;`.
   This means that the stream of messages will end at some point instead of continuing indefinitely. An example would be progress updates about a calibration which eventually finishes.
 
 ### Add API to proto
