@@ -61,6 +61,7 @@ pipeline {
         anyOf {
           branch "main"
           branch "pr-jenkins"
+          branch "v2.*"
           branch "v1.*"
           branch "v0.*"
         }
