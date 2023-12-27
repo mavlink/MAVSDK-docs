@@ -7,6 +7,13 @@
 [System](classmavsdk_1_1_system.md) version information. 
 
 
+## Public Types
+
+
+Type | Description
+--- | ---
+enum [FlightSoftwareVersionType](#structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9) | These values define the type of firmware/flight software release.
+
 ## Data Fields
 
 
@@ -32,6 +39,26 @@ std::string [flight_sw_git_hash](#structmavsdk_1_1_info_1_1_version_1a684d49782e
 
 std::string [os_sw_git_hash](#structmavsdk_1_1_info_1_1_version_1ad6a2e4f45c02373ebca08ef5bd54cf47) {} - Operating system software git hash.
 
+[FlightSoftwareVersionType](structmavsdk_1_1_info_1_1_version.md#structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9) [flight_sw_version_type](#structmavsdk_1_1_info_1_1_version_1ab563fb15dfd6b929504b642309a9e97b) {} - Flight software version type.
+
+
+## Member Enumeration Documentation
+
+
+### enum FlightSoftwareVersionType {#structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9}
+
+
+These values define the type of firmware/flight software release.
+
+
+Value | Description
+--- | ---
+<span id="structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9a88183b946cc5f0e8c96b2e66e1c74a7e"></span> `Unknown` | Unknown type. 
+<span id="structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9a55f37d1fd483f6a85379640fe51aafa8"></span> `Dev` | Development release. 
+<span id="structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9a6132295fcf5570fb8b0a944ef322a598"></span> `Alpha` | Alpha release. 
+<span id="structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9a0b87d66b88c72957dfea8c9605016442"></span> `Beta` | Beta release. 
+<span id="structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9a7c98274c63a1588cfa35ffb5c0adc833"></span> `Rc` | Release candidate. 
+<span id="structmavsdk_1_1_info_1_1_version_1ae35252bd527add36f2babf5e6d815da9ab8e7b465df7c5979dc731d06e84ce2cf"></span> `Release` | Official stable release. 
 
 ## Field Documentation
 
@@ -144,4 +171,14 @@ std::string mavsdk::Info::Version::os_sw_git_hash {}
 
 
 Operating system software git hash.
+
+
+### flight_sw_version_type {#structmavsdk_1_1_info_1_1_version_1ab563fb15dfd6b929504b642309a9e97b}
+
+```cpp
+FlightSoftwareVersionType mavsdk::Info::Version::flight_sw_version_type {}
+```
+
+
+Flight software version type.
 

@@ -25,7 +25,9 @@ enum [Result](#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) |
 std::function< void([Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf))> [ResultCallback](#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) | Callback type for asynchronous [MissionRaw](classmavsdk_1_1_mission_raw.md) calls.
 std::function< void([Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) >)> [DownloadMissionCallback](#classmavsdk_1_1_mission_raw_1a016633e6338744da02ac7cb6da28880a) | Callback type for download_mission_async.
 std::function< void([MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md))> [MissionProgressCallback](#classmavsdk_1_1_mission_raw_1a9dd594878925da494b4add6acc3184fc) | Callback type for subscribe_mission_progress.
+[Handle](classmavsdk_1_1_handle.md)< [MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md) > [MissionProgressHandle](#classmavsdk_1_1_mission_raw_1a34e0eaf9922daa5d27d2b044eae7885c) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_mission_progress.
 std::function< void(bool)> [MissionChangedCallback](#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6) | Callback type for subscribe_mission_changed.
+[Handle](classmavsdk_1_1_handle.md)< bool > [MissionChangedHandle](#classmavsdk_1_1_mission_raw_1a46da6d8a53822fd5fbd7b2a414624c5c) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_mission_changed.
 
 ## Public Member Functions
 
@@ -34,10 +36,14 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [MissionRaw](#classmavsdk_1_1_mission_raw_1ad03476f12988a12808a8c4385c7a7344) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [MissionRaw](#classmavsdk_1_1_mission_raw_1aec90f3e32d7366f3e27f025bb62c1e78) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~MissionRaw](#classmavsdk_1_1_mission_raw_1a366afae5d3c7c2345e3ecec26ff9e307) () | Destructor (internal use only).
+&nbsp; | [~MissionRaw](#classmavsdk_1_1_mission_raw_1a1c7e90261ab67337d6b570cb3f9bfdb9) () override | Destructor (internal use only).
 &nbsp; | [MissionRaw](#classmavsdk_1_1_mission_raw_1a91216322f0b6139d5ba83127f2ef1f12) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) & other) | Copy constructor.
 void | [upload_mission_async](#classmavsdk_1_1_mission_raw_1a77cc5df3362b7ab4cbc94e5bc9707609) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items, const [ResultCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) callback) | Upload a list of raw mission items to the system.
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [upload_mission](#classmavsdk_1_1_mission_raw_1ad4f5c2ccfb2249f6e11c9533c263926a) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items)const | Upload a list of raw mission items to the system.
+void | [upload_geofence_async](#classmavsdk_1_1_mission_raw_1abae3246480b334c319cfb8a9c0d2d8c6) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items, const [ResultCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) callback) | Upload a list of geofence items to the system.
+[Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [upload_geofence](#classmavsdk_1_1_mission_raw_1ac65fe0675332c318c5c07be5a8d22ac7) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items)const | Upload a list of geofence items to the system.
+void | [upload_rally_points_async](#classmavsdk_1_1_mission_raw_1a2c5d52246a8ad13151fcfedeab2859e5) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items, const [ResultCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) callback) | Upload a list of rally point items to the system.
+[Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [upload_rally_points](#classmavsdk_1_1_mission_raw_1a02fc4f293a8094df5dbd7ea0d2184739) (std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > mission_items)const | Upload a list of rally point items to the system.
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [cancel_mission_upload](#classmavsdk_1_1_mission_raw_1aa353e3fa6e836305248be131dbe19273) () const | Cancel an ongoing mission upload.
 void | [download_mission_async](#classmavsdk_1_1_mission_raw_1a7e27b0fb58889ca5cb1202276c0e0669) (const [DownloadMissionCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a016633e6338744da02ac7cb6da28880a) callback) | Download a list of raw mission items from the system (asynchronous).
 std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), std::vector< [MissionRaw::MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > > | [download_mission](#classmavsdk_1_1_mission_raw_1a2cc470785c486d1b7fdaaa2e3fbff809) () const | Download a list of raw mission items from the system (asynchronous).
@@ -50,13 +56,16 @@ void | [clear_mission_async](#classmavsdk_1_1_mission_raw_1acf6bf293facbd45fa112
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [clear_mission](#classmavsdk_1_1_mission_raw_1ab10f8fcaa0f6d3e0f844b7430d8d14c2) () const | Clear the mission saved on the vehicle.
 void | [set_current_mission_item_async](#classmavsdk_1_1_mission_raw_1a5540d6ca691d60ef19b66e303bae7f87) (int32_t index, const [ResultCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) callback) | Sets the raw mission item index to go to.
 [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) | [set_current_mission_item](#classmavsdk_1_1_mission_raw_1ada9aa2abf79ebfc8e1d10de8e85e91ae) (int32_t index)const | Sets the raw mission item index to go to.
-void | [subscribe_mission_progress](#classmavsdk_1_1_mission_raw_1ac0428c520645cdf10430c6c0554a104e) ([MissionProgressCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a9dd594878925da494b4add6acc3184fc) callback) | Subscribe to mission progress updates.
+[MissionProgressHandle](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a34e0eaf9922daa5d27d2b044eae7885c) | [subscribe_mission_progress](#classmavsdk_1_1_mission_raw_1a88a3c4b26418e734a547f251706988d2) (const [MissionProgressCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a9dd594878925da494b4add6acc3184fc) & callback) | Subscribe to mission progress updates.
+void | [unsubscribe_mission_progress](#classmavsdk_1_1_mission_raw_1ac46f08b52706f45956cf3b01df381835) ([MissionProgressHandle](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a34e0eaf9922daa5d27d2b044eae7885c) handle) | Unsubscribe from subscribe_mission_progress.
 [MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md) | [mission_progress](#classmavsdk_1_1_mission_raw_1a3200dea1094926a4dd54f079f21b94e1) () const | Poll for '[MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md)' (blocking).
-void | [subscribe_mission_changed](#classmavsdk_1_1_mission_raw_1a18019bf4f46b6f3719df55512575f500) ([MissionChangedCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6) callback) | <ul>
+[MissionChangedHandle](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a46da6d8a53822fd5fbd7b2a414624c5c) | [subscribe_mission_changed](#classmavsdk_1_1_mission_raw_1ad4a2991e1a8f9423270af4220309edfb) (const [MissionChangedCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6) & callback) | <ul>
 <li><p>Subscribes to mission changed. </p>
 </li>
 </ul>
-std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > | [import_qgroundcontrol_mission](#classmavsdk_1_1_mission_raw_1a43345b21cf9dedf594f62ec7ad963ce8) (std::string qgc_plan_path)const | Import a QGroundControl missions in JSON .plan format.
+void | [unsubscribe_mission_changed](#classmavsdk_1_1_mission_raw_1ac6cd7602b2e5b46ad0ea1cf8bf602a0c) ([MissionChangedHandle](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a46da6d8a53822fd5fbd7b2a414624c5c) handle) | Unsubscribe from subscribe_mission_changed.
+std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > | [import_qgroundcontrol_mission](#classmavsdk_1_1_mission_raw_1a43345b21cf9dedf594f62ec7ad963ce8) (std::string qgc_plan_path)const | Import a QGroundControl missions in JSON .plan format, from a file.
+std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > | [import_qgroundcontrol_mission_from_string](#classmavsdk_1_1_mission_raw_1ab0a0d18b65beced6112b2f27556fae37) (std::string qgc_plan)const | Import a QGroundControl missions in JSON .plan format, from a string.
 const [MissionRaw](classmavsdk_1_1_mission_raw.md) & | [operator=](#classmavsdk_1_1_mission_raw_1a0cfdf21bad5478c91cf18207b6a21ad3) (const [MissionRaw](classmavsdk_1_1_mission_raw.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -99,9 +108,9 @@ auto mission_raw = MissionRaw(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~MissionRaw() {#classmavsdk_1_1_mission_raw_1a366afae5d3c7c2345e3ecec26ff9e307}
+### ~MissionRaw() {#classmavsdk_1_1_mission_raw_1a1c7e90261ab67337d6b570cb3f9bfdb9}
 ```cpp
-mavsdk::MissionRaw::~MissionRaw()
+mavsdk::MissionRaw::~MissionRaw() override
 ```
 
 
@@ -154,6 +163,16 @@ using mavsdk::MissionRaw::MissionProgressCallback =  std::function<void(MissionP
 Callback type for subscribe_mission_progress.
 
 
+### typedef MissionProgressHandle {#classmavsdk_1_1_mission_raw_1a34e0eaf9922daa5d27d2b044eae7885c}
+
+```cpp
+using mavsdk::MissionRaw::MissionProgressHandle =  Handle<MissionProgress>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_mission_progress.
+
+
 ### typedef MissionChangedCallback {#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6}
 
 ```cpp
@@ -162,6 +181,16 @@ using mavsdk::MissionRaw::MissionChangedCallback =  std::function<void(bool)>
 
 
 Callback type for subscribe_mission_changed.
+
+
+### typedef MissionChangedHandle {#classmavsdk_1_1_mission_raw_1a46da6d8a53822fd5fbd7b2a414624c5c}
+
+```cpp
+using mavsdk::MissionRaw::MissionChangedHandle =  Handle<bool>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_mission_changed.
 
 
 ## Member Enumeration Documentation
@@ -188,6 +217,12 @@ Value | Description
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafac73901782ccb07eeaf03f1a27e323e4f"></span> `FailedToOpenQgcPlan` | Failed to open the QGroundControl plan. 
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafabd0579c3163a37a4bc4fe181903cc1e9"></span> `FailedToParseQgcPlan` | Failed to parse the QGroundControl plan. 
 <span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa58d036b9b7f0e7eb38cfb90f1cc70a73"></span> `Denied` | Request denied. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa43dd1d7bd7daf88c044f7463ccdb1f0c"></span> `MissionTypeNotConsistent` | [Mission](classmavsdk_1_1_mission.md) type is not consistent. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafaff5c3eeddd1c7a19875b5686efd52fdb"></span> `InvalidSequence` | The mission item sequences are not increasing correctly. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa80038ba51e64057d4a00429697a3368f"></span> `CurrentInvalid` | The current item is not set correctly. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafaca3da8f495e4e628912a7798655da6c2"></span> `ProtocolError` | There was a protocol error. 
+<span id="classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eafa3f5f527103f3b11c1c271363c542432b"></span> `IntMessagesNotSupported` | The system does not support the MISSION_INT protocol. 
 
 ## Member Function Documentation
 
@@ -222,6 +257,72 @@ The raw mission items are uploaded to a drone. Once uploaded the mission can be 
 
 
 This function is blocking. See 'upload_mission_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > **mission_items** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) - Result of request.
+
+### upload_geofence_async() {#classmavsdk_1_1_mission_raw_1abae3246480b334c319cfb8a9c0d2d8c6}
+```cpp
+void mavsdk::MissionRaw::upload_geofence_async(std::vector< MissionItem > mission_items, const ResultCallback callback)
+```
+
+
+Upload a list of geofence items to the system.
+
+This function is non-blocking. See 'upload_geofence' for the blocking counterpart.
+
+**Parameters**
+
+* std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > **mission_items** - 
+* const [ResultCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) **callback** - 
+
+### upload_geofence() {#classmavsdk_1_1_mission_raw_1ac65fe0675332c318c5c07be5a8d22ac7}
+```cpp
+Result mavsdk::MissionRaw::upload_geofence(std::vector< MissionItem > mission_items) const
+```
+
+
+Upload a list of geofence items to the system.
+
+This function is blocking. See 'upload_geofence_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > **mission_items** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) - Result of request.
+
+### upload_rally_points_async() {#classmavsdk_1_1_mission_raw_1a2c5d52246a8ad13151fcfedeab2859e5}
+```cpp
+void mavsdk::MissionRaw::upload_rally_points_async(std::vector< MissionItem > mission_items, const ResultCallback callback)
+```
+
+
+Upload a list of rally point items to the system.
+
+This function is non-blocking. See 'upload_rally_points' for the blocking counterpart.
+
+**Parameters**
+
+* std::vector< [MissionItem](structmavsdk_1_1_mission_raw_1_1_mission_item.md) > **mission_items** - 
+* const [ResultCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a1a36a84f17dca07e1da49c13abbc9564) **callback** - 
+
+### upload_rally_points() {#classmavsdk_1_1_mission_raw_1a02fc4f293a8094df5dbd7ea0d2184739}
+```cpp
+Result mavsdk::MissionRaw::upload_rally_points(std::vector< MissionItem > mission_items) const
+```
+
+
+Upload a list of rally point items to the system.
+
+This function is blocking. See 'upload_rally_points_async' for the non-blocking counterpart.
 
 **Parameters**
 
@@ -422,9 +523,9 @@ This function is blocking. See 'set_current_mission_item_async' for the non-bloc
 
 &emsp;[Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf) - Result of request.
 
-### subscribe_mission_progress() {#classmavsdk_1_1_mission_raw_1ac0428c520645cdf10430c6c0554a104e}
+### subscribe_mission_progress() {#classmavsdk_1_1_mission_raw_1a88a3c4b26418e734a547f251706988d2}
 ```cpp
-void mavsdk::MissionRaw::subscribe_mission_progress(MissionProgressCallback callback)
+MissionProgressHandle mavsdk::MissionRaw::subscribe_mission_progress(const MissionProgressCallback &callback)
 ```
 
 
@@ -433,7 +534,24 @@ Subscribe to mission progress updates.
 
 **Parameters**
 
-* [MissionProgressCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a9dd594878925da494b4add6acc3184fc) **callback** - 
+* const [MissionProgressCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a9dd594878925da494b4add6acc3184fc)& **callback** - 
+
+**Returns**
+
+&emsp;[MissionProgressHandle](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a34e0eaf9922daa5d27d2b044eae7885c) - 
+
+### unsubscribe_mission_progress() {#classmavsdk_1_1_mission_raw_1ac46f08b52706f45956cf3b01df381835}
+```cpp
+void mavsdk::MissionRaw::unsubscribe_mission_progress(MissionProgressHandle handle)
+```
+
+
+Unsubscribe from subscribe_mission_progress.
+
+
+**Parameters**
+
+* [MissionProgressHandle](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a34e0eaf9922daa5d27d2b044eae7885c) **handle** - 
 
 ### mission_progress() {#classmavsdk_1_1_mission_raw_1a3200dea1094926a4dd54f079f21b94e1}
 ```cpp
@@ -448,9 +566,9 @@ Poll for '[MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md
 
 &emsp;[MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md) - One [MissionProgress](structmavsdk_1_1_mission_raw_1_1_mission_progress.md) update.
 
-### subscribe_mission_changed() {#classmavsdk_1_1_mission_raw_1a18019bf4f46b6f3719df55512575f500}
+### subscribe_mission_changed() {#classmavsdk_1_1_mission_raw_1ad4a2991e1a8f9423270af4220309edfb}
 ```cpp
-void mavsdk::MissionRaw::subscribe_mission_changed(MissionChangedCallback callback)
+MissionChangedHandle mavsdk::MissionRaw::subscribe_mission_changed(const MissionChangedCallback &callback)
 ```
 
 
@@ -463,7 +581,24 @@ This notification can be used to be informed if a ground station has been upload
 
 **Parameters**
 
-* [MissionChangedCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6) **callback** - Callback to notify about change.
+* const [MissionChangedCallback](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1ac22d81eefc5e883cdb6baf792a7487e6)& **callback** - Callback to notify about change.
+
+**Returns**
+
+&emsp;[MissionChangedHandle](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a46da6d8a53822fd5fbd7b2a414624c5c) - 
+
+### unsubscribe_mission_changed() {#classmavsdk_1_1_mission_raw_1ac6cd7602b2e5b46ad0ea1cf8bf602a0c}
+```cpp
+void mavsdk::MissionRaw::unsubscribe_mission_changed(MissionChangedHandle handle)
+```
+
+
+Unsubscribe from subscribe_mission_changed.
+
+
+**Parameters**
+
+* [MissionChangedHandle](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a46da6d8a53822fd5fbd7b2a414624c5c) **handle** - 
 
 ### import_qgroundcontrol_mission() {#classmavsdk_1_1_mission_raw_1a43345b21cf9dedf594f62ec7ad963ce8}
 ```cpp
@@ -471,7 +606,7 @@ std::pair<Result, MissionRaw::MissionImportData> mavsdk::MissionRaw::import_qgro
 ```
 
 
-Import a QGroundControl missions in JSON .plan format.
+Import a QGroundControl missions in JSON .plan format, from a file.
 
 Supported:
 <ul>
@@ -489,6 +624,35 @@ This function is blocking.
 **Parameters**
 
 * std::string **qgc_plan_path** - 
+
+**Returns**
+
+&emsp;std::pair< [Result](classmavsdk_1_1_mission_raw.md#classmavsdk_1_1_mission_raw_1a7ea2a624818ebb5a3e209cc275d58eaf), [MissionRaw::MissionImportData](structmavsdk_1_1_mission_raw_1_1_mission_import_data.md) > - Result of request.
+
+### import_qgroundcontrol_mission_from_string() {#classmavsdk_1_1_mission_raw_1ab0a0d18b65beced6112b2f27556fae37}
+```cpp
+std::pair<Result, MissionRaw::MissionImportData> mavsdk::MissionRaw::import_qgroundcontrol_mission_from_string(std::string qgc_plan) const
+```
+
+
+Import a QGroundControl missions in JSON .plan format, from a string.
+
+Supported:
+<ul>
+<li><p>Waypoints</p>
+</li>
+<li><p>Survey Not supported:</p>
+</li>
+<li><p>Structure Scan</p>
+</li>
+</ul>
+
+
+This function is blocking.
+
+**Parameters**
+
+* std::string **qgc_plan** - 
 
 **Returns**
 

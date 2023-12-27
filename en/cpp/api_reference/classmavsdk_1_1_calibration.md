@@ -32,13 +32,13 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Calibration](#classmavsdk_1_1_calibration_1ac86c794a9ca1043e21b501218346f2b1) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [Calibration](#classmavsdk_1_1_calibration_1a22b833023e256511495918cf9e78cb87) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~Calibration](#classmavsdk_1_1_calibration_1a9bfe7b366c142b90b4f35cb3b2dfda2e) () | Destructor (internal use only).
+&nbsp; | [~Calibration](#classmavsdk_1_1_calibration_1a10bc64254ae667f563484020ed5f7861) () override | Destructor (internal use only).
 &nbsp; | [Calibration](#classmavsdk_1_1_calibration_1a90c300742cbb2e29594c294b2ca6ef0e) (const [Calibration](classmavsdk_1_1_calibration.md) & other) | Copy constructor.
-void | [calibrate_gyro_async](#classmavsdk_1_1_calibration_1abf9e20bb07dbbaa0c7481f6296a0d35c) ([CalibrateGyroCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a79bbabba5b60188b0afd8b3667c182b8) callback) | Perform gyro calibration.
-void | [calibrate_accelerometer_async](#classmavsdk_1_1_calibration_1a135a5e5cd76b2a181345a9e90cfd7c77) ([CalibrateAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a46f81dd310e70251240c619b5299d026) callback) | Perform accelerometer calibration.
-void | [calibrate_magnetometer_async](#classmavsdk_1_1_calibration_1a430fd1aafa1718969400bfcad0bf155a) ([CalibrateMagnetometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a0b61d29092a8fc8407b0c0c13c825438) callback) | Perform magnetometer calibration.
-void | [calibrate_level_horizon_async](#classmavsdk_1_1_calibration_1a3ae22637db83e8b2a790429affd1965b) ([CalibrateLevelHorizonCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a397475f5df5fd0e1a181437d4e146aa4) callback) | Perform board level horizon calibration.
-void | [calibrate_gimbal_accelerometer_async](#classmavsdk_1_1_calibration_1a11cfa1951cd34dca2ac605f15a0e2b35) ([CalibrateGimbalAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1aa254e3a18042794e182fc7f3685aad01) callback) | Perform gimbal accelerometer calibration.
+void | [calibrate_gyro_async](#classmavsdk_1_1_calibration_1aa270d72a3dd0126b9c712f2467d105cb) (const [CalibrateGyroCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a79bbabba5b60188b0afd8b3667c182b8) & callback) | Perform gyro calibration.
+void | [calibrate_accelerometer_async](#classmavsdk_1_1_calibration_1a45fb6549dc486110359b532177c9bddc) (const [CalibrateAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a46f81dd310e70251240c619b5299d026) & callback) | Perform accelerometer calibration.
+void | [calibrate_magnetometer_async](#classmavsdk_1_1_calibration_1aa8a04e0f687a9d2aa7fe9a2346a233fa) (const [CalibrateMagnetometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a0b61d29092a8fc8407b0c0c13c825438) & callback) | Perform magnetometer calibration.
+void | [calibrate_level_horizon_async](#classmavsdk_1_1_calibration_1a77dd4e73da90801d63da973e1736628d) (const [CalibrateLevelHorizonCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a397475f5df5fd0e1a181437d4e146aa4) & callback) | Perform board level horizon calibration.
+void | [calibrate_gimbal_accelerometer_async](#classmavsdk_1_1_calibration_1a9b95e383527253c17cd0990653682cd6) (const [CalibrateGimbalAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1aa254e3a18042794e182fc7f3685aad01) & callback) | Perform gimbal accelerometer calibration.
 [Result](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a6e1ce7a3a07eb098edc06821d23a8ec1) | [cancel](#classmavsdk_1_1_calibration_1ae26f45164d36576d56a186ee69e32ffb) () const | Cancel ongoing calibration process.
 const [Calibration](classmavsdk_1_1_calibration.md) & | [operator=](#classmavsdk_1_1_calibration_1ada12d974bb516745ea67f94c72abf59b) (const [Calibration](classmavsdk_1_1_calibration.md) &)=delete | Equality operator (object is not copyable).
 
@@ -82,9 +82,9 @@ auto calibration = Calibration(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~Calibration() {#classmavsdk_1_1_calibration_1a9bfe7b366c142b90b4f35cb3b2dfda2e}
+### ~Calibration() {#classmavsdk_1_1_calibration_1a10bc64254ae667f563484020ed5f7861}
 ```cpp
-mavsdk::Calibration::~Calibration()
+mavsdk::Calibration::~Calibration() override
 ```
 
 
@@ -194,9 +194,9 @@ Value | Description
 ## Member Function Documentation
 
 
-### calibrate_gyro_async() {#classmavsdk_1_1_calibration_1abf9e20bb07dbbaa0c7481f6296a0d35c}
+### calibrate_gyro_async() {#classmavsdk_1_1_calibration_1aa270d72a3dd0126b9c712f2467d105cb}
 ```cpp
-void mavsdk::Calibration::calibrate_gyro_async(CalibrateGyroCallback callback)
+void mavsdk::Calibration::calibrate_gyro_async(const CalibrateGyroCallback &callback)
 ```
 
 
@@ -205,11 +205,11 @@ Perform gyro calibration.
 
 **Parameters**
 
-* [CalibrateGyroCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a79bbabba5b60188b0afd8b3667c182b8) **callback** - 
+* const [CalibrateGyroCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a79bbabba5b60188b0afd8b3667c182b8)& **callback** - 
 
-### calibrate_accelerometer_async() {#classmavsdk_1_1_calibration_1a135a5e5cd76b2a181345a9e90cfd7c77}
+### calibrate_accelerometer_async() {#classmavsdk_1_1_calibration_1a45fb6549dc486110359b532177c9bddc}
 ```cpp
-void mavsdk::Calibration::calibrate_accelerometer_async(CalibrateAccelerometerCallback callback)
+void mavsdk::Calibration::calibrate_accelerometer_async(const CalibrateAccelerometerCallback &callback)
 ```
 
 
@@ -218,11 +218,11 @@ Perform accelerometer calibration.
 
 **Parameters**
 
-* [CalibrateAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a46f81dd310e70251240c619b5299d026) **callback** - 
+* const [CalibrateAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a46f81dd310e70251240c619b5299d026)& **callback** - 
 
-### calibrate_magnetometer_async() {#classmavsdk_1_1_calibration_1a430fd1aafa1718969400bfcad0bf155a}
+### calibrate_magnetometer_async() {#classmavsdk_1_1_calibration_1aa8a04e0f687a9d2aa7fe9a2346a233fa}
 ```cpp
-void mavsdk::Calibration::calibrate_magnetometer_async(CalibrateMagnetometerCallback callback)
+void mavsdk::Calibration::calibrate_magnetometer_async(const CalibrateMagnetometerCallback &callback)
 ```
 
 
@@ -231,11 +231,11 @@ Perform magnetometer calibration.
 
 **Parameters**
 
-* [CalibrateMagnetometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a0b61d29092a8fc8407b0c0c13c825438) **callback** - 
+* const [CalibrateMagnetometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a0b61d29092a8fc8407b0c0c13c825438)& **callback** - 
 
-### calibrate_level_horizon_async() {#classmavsdk_1_1_calibration_1a3ae22637db83e8b2a790429affd1965b}
+### calibrate_level_horizon_async() {#classmavsdk_1_1_calibration_1a77dd4e73da90801d63da973e1736628d}
 ```cpp
-void mavsdk::Calibration::calibrate_level_horizon_async(CalibrateLevelHorizonCallback callback)
+void mavsdk::Calibration::calibrate_level_horizon_async(const CalibrateLevelHorizonCallback &callback)
 ```
 
 
@@ -244,11 +244,11 @@ Perform board level horizon calibration.
 
 **Parameters**
 
-* [CalibrateLevelHorizonCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a397475f5df5fd0e1a181437d4e146aa4) **callback** - 
+* const [CalibrateLevelHorizonCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1a397475f5df5fd0e1a181437d4e146aa4)& **callback** - 
 
-### calibrate_gimbal_accelerometer_async() {#classmavsdk_1_1_calibration_1a11cfa1951cd34dca2ac605f15a0e2b35}
+### calibrate_gimbal_accelerometer_async() {#classmavsdk_1_1_calibration_1a9b95e383527253c17cd0990653682cd6}
 ```cpp
-void mavsdk::Calibration::calibrate_gimbal_accelerometer_async(CalibrateGimbalAccelerometerCallback callback)
+void mavsdk::Calibration::calibrate_gimbal_accelerometer_async(const CalibrateGimbalAccelerometerCallback &callback)
 ```
 
 
@@ -257,7 +257,7 @@ Perform gimbal accelerometer calibration.
 
 **Parameters**
 
-* [CalibrateGimbalAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1aa254e3a18042794e182fc7f3685aad01) **callback** - 
+* const [CalibrateGimbalAccelerometerCallback](classmavsdk_1_1_calibration.md#classmavsdk_1_1_calibration_1aa254e3a18042794e182fc7f3685aad01)& **callback** - 
 
 ### cancel() {#classmavsdk_1_1_calibration_1ae26f45164d36576d56a186ee69e32ffb}
 ```cpp

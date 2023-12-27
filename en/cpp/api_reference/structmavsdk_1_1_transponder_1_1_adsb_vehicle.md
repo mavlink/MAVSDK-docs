@@ -16,7 +16,9 @@ double [latitude_deg](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1aa53879957
 
 double [longitude_deg](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1a7a4f84ff4e7b773b86c9518d555bda1e) {} - Longitude in degrees (range: -180 to +180).
 
-float [absolute_altitude_m](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1af33bf54b2bd961157a44781e4c6b48fa) {} - Altitude AMSL (above mean sea level) in metres.
+[AdsbAltitudeType](classmavsdk_1_1_transponder.md#classmavsdk_1_1_transponder_1a64af76be070a2496e0db1c201ece9313) [altitude_type](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1a85f9833840e59e4db1a99fc9192b410a) {} - ADSB altitude type.
+
+float [absolute_altitude_m](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1af33bf54b2bd961157a44781e4c6b48fa) {} - Altitude in metres according to altitude_type.
 
 float [heading_deg](#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1aaf318675876c499566760bfa69ee279c) {} - Course over ground, in degrees.
 
@@ -66,6 +68,16 @@ double mavsdk::Transponder::AdsbVehicle::longitude_deg {}
 Longitude in degrees (range: -180 to +180).
 
 
+### altitude_type {#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1a85f9833840e59e4db1a99fc9192b410a}
+
+```cpp
+AdsbAltitudeType mavsdk::Transponder::AdsbVehicle::altitude_type {}
+```
+
+
+ADSB altitude type.
+
+
 ### absolute_altitude_m {#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1af33bf54b2bd961157a44781e4c6b48fa}
 
 ```cpp
@@ -73,7 +85,7 @@ float mavsdk::Transponder::AdsbVehicle::absolute_altitude_m {}
 ```
 
 
-Altitude AMSL (above mean sea level) in metres.
+Altitude in metres according to altitude_type.
 
 
 ### heading_deg {#structmavsdk_1_1_transponder_1_1_adsb_vehicle_1aaf318675876c499566760bfa69ee279c}

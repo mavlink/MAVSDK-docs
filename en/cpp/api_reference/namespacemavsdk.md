@@ -7,6 +7,10 @@ Namespace for all mavsdk types.
 
 ## Data Structures
 
+* [mavsdk::CallbackListImpl](classmavsdk_1_1_callback_list_impl.md)
+* [mavsdk::CallbackList](classmavsdk_1_1_callback_list.md)
+* [mavsdk::FakeHandle](classmavsdk_1_1_fake_handle.md)
+* [mavsdk::Handle](classmavsdk_1_1_handle.md)
 * [mavsdk::Mavsdk](classmavsdk_1_1_mavsdk.md)
 * [mavsdk::overloaded](structmavsdk_1_1overloaded.md)
 * [mavsdk::PluginBase](classmavsdk_1_1_plugin_base.md)
@@ -20,8 +24,10 @@ Namespace for all mavsdk types.
 * [mavsdk::Failure](classmavsdk_1_1_failure.md)
 * [mavsdk::FollowMe](classmavsdk_1_1_follow_me.md)
 * [mavsdk::Ftp](classmavsdk_1_1_ftp.md)
+* [mavsdk::FtpServer](classmavsdk_1_1_ftp_server.md)
 * [mavsdk::Geofence](classmavsdk_1_1_geofence.md)
 * [mavsdk::Gimbal](classmavsdk_1_1_gimbal.md)
+* [mavsdk::Gripper](classmavsdk_1_1_gripper.md)
 * [mavsdk::Info](classmavsdk_1_1_info.md)
 * [mavsdk::LogFiles](classmavsdk_1_1_log_files.md)
 * [mavsdk::ManualControl](classmavsdk_1_1_manual_control.md)
@@ -41,6 +47,9 @@ Namespace for all mavsdk types.
 * [mavsdk::TrackingServer](classmavsdk_1_1_tracking_server.md)
 * [mavsdk::Transponder](classmavsdk_1_1_transponder.md)
 * [mavsdk::Tune](classmavsdk_1_1_tune.md)
+* [mavsdk::Winch](classmavsdk_1_1_winch.md)
+* [mavsdk::ServerComponent](classmavsdk_1_1_server_component.md)
+* [mavsdk::ServerPluginBase](classmavsdk_1_1_server_plugin_base.md)
 * [mavsdk::System](classmavsdk_1_1_system.md)
 
 ## Enumerations

@@ -16,6 +16,7 @@ A [MissionItem](structmavsdk_1_1_mission_1_1_mission_item.md) can contain a posi
 Type | Description
 --- | ---
 enum [CameraAction](#structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4) | Possible camera actions at a mission item.
+enum [VehicleAction](#structmavsdk_1_1_mission_1_1_mission_item_1abf579024f942deef18ef902839513743) | Possible vehicle actions at a mission item.
 
 ## Data Fields
 
@@ -46,6 +47,8 @@ float [yaw_deg](#structmavsdk_1_1_mission_1_1_mission_item_1a40af7ff4f2a346492d2
 
 float [camera_photo_distance_m](#structmavsdk_1_1_mission_1_1_mission_item_1a0a2802a1cab28552e8f49389f472e1a9) { NAN} - [Camera](classmavsdk_1_1_camera.md) photo distance to use after this mission item (in meters)
 
+[VehicleAction](structmavsdk_1_1_mission_1_1_mission_item.md#structmavsdk_1_1_mission_1_1_mission_item_1abf579024f942deef18ef902839513743) [vehicle_action](#structmavsdk_1_1_mission_1_1_mission_item_1a0892ef1c7dd89ea18535689f69d5493a) {} - Vehicle action to trigger at this mission item.
+
 
 ## Member Enumeration Documentation
 
@@ -66,6 +69,20 @@ Value | Description
 <span id="structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4a3ab23501110c4bf07668c2178168da01"></span> `StopVideo` | Stop capturing video. 
 <span id="structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4a9aabe55729b070dbba61b3b7e9e8faa3"></span> `StartPhotoDistance` | Start capturing photos at regular distance. 
 <span id="structmavsdk_1_1_mission_1_1_mission_item_1a0299fbbe7c7b03bc43eb116f96b48df4a3e66812860fd78f0707062e31b98cd1e"></span> `StopPhotoDistance` | Stop capturing photos at regular distance. 
+
+### enum VehicleAction {#structmavsdk_1_1_mission_1_1_mission_item_1abf579024f942deef18ef902839513743}
+
+
+Possible vehicle actions at a mission item.
+
+
+Value | Description
+--- | ---
+<span id="structmavsdk_1_1_mission_1_1_mission_item_1abf579024f942deef18ef902839513743a6adf97f83acf6453d4a6a4b1070f3754"></span> `None` | No action. 
+<span id="structmavsdk_1_1_mission_1_1_mission_item_1abf579024f942deef18ef902839513743a56373a80447c41b9a29e500e62d6884e"></span> `Takeoff` | Vehicle will takeoff and go to defined waypoint. 
+<span id="structmavsdk_1_1_mission_1_1_mission_item_1abf579024f942deef18ef902839513743a512ef7c688a2c8572d5e16f44e17e869"></span> `Land` | When a waypoint is reached vehicle will land at current position. 
+<span id="structmavsdk_1_1_mission_1_1_mission_item_1abf579024f942deef18ef902839513743a45f439a04f9144adc1dcf5a4fbda0026"></span> `TransitionToFw` | When a waypoint is reached vehicle will transition to fixed-wing mode. 
+<span id="structmavsdk_1_1_mission_1_1_mission_item_1abf579024f942deef18ef902839513743af3abadebd9602a0acb33350f64fa7661"></span> `TransitionToMc` | When a waypoint is reached vehicle will transition to multi-copter mode. 
 
 ## Field Documentation
 
@@ -198,4 +215,14 @@ float mavsdk::Mission::MissionItem::camera_photo_distance_m { NAN}
 
 
 [Camera](classmavsdk_1_1_camera.md) photo distance to use after this mission item (in meters)
+
+
+### vehicle_action {#structmavsdk_1_1_mission_1_1_mission_item_1a0892ef1c7dd89ea18535689f69d5493a}
+
+```cpp
+VehicleAction mavsdk::Mission::MissionItem::vehicle_action {}
+```
+
+
+Vehicle action to trigger at this mission item.
 

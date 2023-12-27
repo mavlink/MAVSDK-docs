@@ -29,7 +29,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [FollowMe](#classmavsdk_1_1_follow_me_1ab85b27fcd899f4861cd2e99c08083b9e) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [FollowMe](#classmavsdk_1_1_follow_me_1a422ef7ca182c92052b0da32d789b0c14) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~FollowMe](#classmavsdk_1_1_follow_me_1a7c8769bb4a10665d6df9b6043c86233b) () | Destructor (internal use only).
+&nbsp; | [~FollowMe](#classmavsdk_1_1_follow_me_1a51cc272f759657eb583830cbde2785cf) () override | Destructor (internal use only).
 &nbsp; | [FollowMe](#classmavsdk_1_1_follow_me_1a204548d586c8355ab60991be4b63c7aa) (const [FollowMe](classmavsdk_1_1_follow_me.md) & other) | Copy constructor.
 [FollowMe::Config](structmavsdk_1_1_follow_me_1_1_config.md) | [get_config](#classmavsdk_1_1_follow_me_1aca2e599cd6fb889b9f80dc7a9da57ee9) () const | Get current configuration.
 [Result](classmavsdk_1_1_follow_me.md#classmavsdk_1_1_follow_me_1a2b3f334ea72fd84d9e925fb3756451d8) | [set_config](#classmavsdk_1_1_follow_me_1aa76aab9a21bc3ae475bee6a55c0e4d30) ([Config](structmavsdk_1_1_follow_me_1_1_config.md) config)const | Apply configuration by sending it to the system.
@@ -80,9 +80,9 @@ auto follow_me = FollowMe(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~FollowMe() {#classmavsdk_1_1_follow_me_1a7c8769bb4a10665d6df9b6043c86233b}
+### ~FollowMe() {#classmavsdk_1_1_follow_me_1a51cc272f759657eb583830cbde2785cf}
 ```cpp
-mavsdk::FollowMe::~FollowMe()
+mavsdk::FollowMe::~FollowMe() override
 ```
 
 

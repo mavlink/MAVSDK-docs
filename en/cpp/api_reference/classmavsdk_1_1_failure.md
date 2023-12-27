@@ -24,7 +24,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Failure](#classmavsdk_1_1_failure_1a7fd948954e053597be4223a5507e7f77) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [Failure](#classmavsdk_1_1_failure_1abb4693ce8ebfac246d489bbab438be04) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~Failure](#classmavsdk_1_1_failure_1a1c39229a02725130ed8295f5b6d422fd) () | Destructor (internal use only).
+&nbsp; | [~Failure](#classmavsdk_1_1_failure_1a1358a71e00d96af5415236183c6508cd) () override | Destructor (internal use only).
 &nbsp; | [Failure](#classmavsdk_1_1_failure_1ae12162366b96624fa85d345a7166749c) (const [Failure](classmavsdk_1_1_failure.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_failure.md#classmavsdk_1_1_failure_1a6dcdd665b49a7ddf48c76b41475022f1) | [inject](#classmavsdk_1_1_failure_1ae937d22216ecae38f4c763f503cbbd88) ([FailureUnit](classmavsdk_1_1_failure.md#classmavsdk_1_1_failure_1a471f93c1fbff2124ebdea7fb681e23f1) failure_unit, [FailureType](classmavsdk_1_1_failure.md#classmavsdk_1_1_failure_1ade0813be29826ae35e6692f506e8ab72) failure_type, int32_t instance)const | Injects a failure.
 const [Failure](classmavsdk_1_1_failure.md) & | [operator=](#classmavsdk_1_1_failure_1a255209f9df74ffde1f63b707f17bdb72) (const [Failure](classmavsdk_1_1_failure.md) &)=delete | Equality operator (object is not copyable).
@@ -69,9 +69,9 @@ auto failure = Failure(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~Failure() {#classmavsdk_1_1_failure_1a1c39229a02725130ed8295f5b6d422fd}
+### ~Failure() {#classmavsdk_1_1_failure_1a1358a71e00d96af5415236183c6508cd}
 ```cpp
-mavsdk::Failure::~Failure()
+mavsdk::Failure::~Failure() override
 ```
 
 

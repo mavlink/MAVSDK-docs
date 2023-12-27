@@ -33,7 +33,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Info](#classmavsdk_1_1_info_1a01a29a579c8ecb75ea73d48f8f6adf17) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [Info](#classmavsdk_1_1_info_1ae67e006f16f1e1aa12efe94120ef83ec) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~Info](#classmavsdk_1_1_info_1a2681cccfa006f9ea4f4eb9e498a83c04) () | Destructor (internal use only).
+&nbsp; | [~Info](#classmavsdk_1_1_info_1abbf48bc4b9aa5b9fdbdb54ec3e398f65) () override | Destructor (internal use only).
 &nbsp; | [Info](#classmavsdk_1_1_info_1a0f6e0851757046c540fe7ce920eb3fa2) (const [Info](classmavsdk_1_1_info.md) & other) | Copy constructor.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::FlightInfo](structmavsdk_1_1_info_1_1_flight_info.md) > | [get_flight_information](#classmavsdk_1_1_info_1a915e0833d8c3c61fed9b9ad687caef77) () const | Get flight information of the system.
 std::pair< [Result](classmavsdk_1_1_info.md#classmavsdk_1_1_info_1ab1798ed39271915800b25aaa05d1d45a), [Info::Identification](structmavsdk_1_1_info_1_1_identification.md) > | [get_identification](#classmavsdk_1_1_info_1a812ed66265b7427bc781faec3f0fa89e) () const | Get the identification of the system.
@@ -82,9 +82,9 @@ auto info = Info(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~Info() {#classmavsdk_1_1_info_1a2681cccfa006f9ea4f4eb9e498a83c04}
+### ~Info() {#classmavsdk_1_1_info_1abbf48bc4b9aa5b9fdbdb54ec3e398f65}
 ```cpp
-mavsdk::Info::~Info()
+mavsdk::Info::~Info() override
 ```
 
 

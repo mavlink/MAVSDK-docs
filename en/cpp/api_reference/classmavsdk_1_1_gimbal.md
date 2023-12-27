@@ -22,6 +22,7 @@ enum [ControlMode](#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3) |
 enum [Result](#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | Possible results returned for gimbal commands.
 std::function< void([Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac))> [ResultCallback](#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) | Callback type for asynchronous [Gimbal](classmavsdk_1_1_gimbal.md) calls.
 std::function< void([ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md))> [ControlCallback](#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62) | Callback type for subscribe_control.
+[Handle](classmavsdk_1_1_handle.md)< [ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md) > [ControlHandle](#classmavsdk_1_1_gimbal_1accab76c321008685a455ccff45811397) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_control.
 
 ## Public Member Functions
 
@@ -30,7 +31,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1aa33f4df704c7f09698884083c379f787) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1aa3cb6e1e37a2f275ab5cc8ed4dd71d93) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~Gimbal](#classmavsdk_1_1_gimbal_1ae5047b7edcfc7086c8e80c758bdf98ee) () | Destructor (internal use only).
+&nbsp; | [~Gimbal](#classmavsdk_1_1_gimbal_1a3b86d8209172a578f238928b9f5bfdd6) () override | Destructor (internal use only).
 &nbsp; | [Gimbal](#classmavsdk_1_1_gimbal_1ae69df278ca37deaee22fb13053fd4f2d) (const [Gimbal](classmavsdk_1_1_gimbal.md) & other) | Copy constructor.
 void | [set_pitch_and_yaw_async](#classmavsdk_1_1_gimbal_1a325a49cc256359013cbc917b3576f292) (float pitch_deg, float yaw_deg, const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Set gimbal pitch and yaw angles.
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [set_pitch_and_yaw](#classmavsdk_1_1_gimbal_1ad65ba3258833fe78f2939b9b72dc3b88) (float pitch_deg, float yaw_deg)const | Set gimbal pitch and yaw angles.
@@ -44,7 +45,8 @@ void | [take_control_async](#classmavsdk_1_1_gimbal_1a331139df593e8ccef0f8ca7652
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [take_control](#classmavsdk_1_1_gimbal_1a7dabe20d1bceb7031440fefba59cd707) ([ControlMode](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3) control_mode)const | Take control.
 void | [release_control_async](#classmavsdk_1_1_gimbal_1aa58402c4e2d9506dbe9839ef8cbfb920) (const [ResultCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a88ee7dd17821fb9b12c44b2a3630c197) callback) | Release control.
 [Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) | [release_control](#classmavsdk_1_1_gimbal_1ab994d4130b2956e2d33613ffb2127335) () const | Release control.
-void | [subscribe_control](#classmavsdk_1_1_gimbal_1a411ee29d7b8513758973ad8aeb4222ab) ([ControlCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62) callback) | Subscribe to control status updates.
+[ControlHandle](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1accab76c321008685a455ccff45811397) | [subscribe_control](#classmavsdk_1_1_gimbal_1aafd016582be5b63d9b378d414f2faf30) (const [ControlCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62) & callback) | Subscribe to control status updates.
+void | [unsubscribe_control](#classmavsdk_1_1_gimbal_1a899b442fafac1d83b9450bd219f6975e) ([ControlHandle](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1accab76c321008685a455ccff45811397) handle) | Unsubscribe from subscribe_control.
 [ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md) | [control](#classmavsdk_1_1_gimbal_1aae172788140e37d6125b224f5e79829e) () const | Poll for '[ControlStatus](structmavsdk_1_1_gimbal_1_1_control_status.md)' (blocking).
 const [Gimbal](classmavsdk_1_1_gimbal.md) & | [operator=](#classmavsdk_1_1_gimbal_1ac9a6e1936f58ce8f957be7c6bcc0d134) (const [Gimbal](classmavsdk_1_1_gimbal.md) &)=delete | Equality operator (object is not copyable).
 
@@ -88,9 +90,9 @@ auto gimbal = Gimbal(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~Gimbal() {#classmavsdk_1_1_gimbal_1ae5047b7edcfc7086c8e80c758bdf98ee}
+### ~Gimbal() {#classmavsdk_1_1_gimbal_1a3b86d8209172a578f238928b9f5bfdd6}
 ```cpp
-mavsdk::Gimbal::~Gimbal()
+mavsdk::Gimbal::~Gimbal() override
 ```
 
 
@@ -133,6 +135,16 @@ using mavsdk::Gimbal::ControlCallback =  std::function<void(ControlStatus)>
 Callback type for subscribe_control.
 
 
+### typedef ControlHandle {#classmavsdk_1_1_gimbal_1accab76c321008685a455ccff45811397}
+
+```cpp
+using mavsdk::Gimbal::ControlHandle =  Handle<ControlStatus>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_control.
+
+
 ## Member Enumeration Documentation
 
 
@@ -145,7 +157,7 @@ Callback type for subscribe_control.
 Value | Description
 --- | ---
 <span id="classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dcaae370d3502f507d9c9ea57d6fd3c4ed7b"></span> `YawFollow` | Yaw follow will point the gimbal to the vehicle heading. 
-<span id="classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dcaaf0a46b0b7151dca1ab120e02b6e6663e"></span> `YawLock` | Yaw lock will fix the gimbal poiting to an absolute direction. 
+<span id="classmavsdk_1_1_gimbal_1afb92614c5d5915d3960bcea51bec2dcaaf0a46b0b7151dca1ab120e02b6e6663e"></span> `YawLock` | Yaw lock will fix the gimbal pointing to an absolute direction. 
 
 ### enum ControlMode {#classmavsdk_1_1_gimbal_1a01b721086d7de6089aefdeb0fda4cff3}
 
@@ -420,9 +432,9 @@ This function is blocking. See 'release_control_async' for the non-blocking coun
 
 &emsp;[Result](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1aa732ec0bd49ac03b7910199d635f76ac) - Result of request.
 
-### subscribe_control() {#classmavsdk_1_1_gimbal_1a411ee29d7b8513758973ad8aeb4222ab}
+### subscribe_control() {#classmavsdk_1_1_gimbal_1aafd016582be5b63d9b378d414f2faf30}
 ```cpp
-void mavsdk::Gimbal::subscribe_control(ControlCallback callback)
+ControlHandle mavsdk::Gimbal::subscribe_control(const ControlCallback &callback)
 ```
 
 
@@ -432,7 +444,24 @@ This allows a component to know if it has primary, secondary or no control over 
 
 **Parameters**
 
-* [ControlCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62) **callback** - 
+* const [ControlCallback](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1a1645ab20c41161e6c47620b7352eef62)& **callback** - 
+
+**Returns**
+
+&emsp;[ControlHandle](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1accab76c321008685a455ccff45811397) - 
+
+### unsubscribe_control() {#classmavsdk_1_1_gimbal_1a899b442fafac1d83b9450bd219f6975e}
+```cpp
+void mavsdk::Gimbal::unsubscribe_control(ControlHandle handle)
+```
+
+
+Unsubscribe from subscribe_control.
+
+
+**Parameters**
+
+* [ControlHandle](classmavsdk_1_1_gimbal.md#classmavsdk_1_1_gimbal_1accab76c321008685a455ccff45811397) **handle** - 
 
 ### control() {#classmavsdk_1_1_gimbal_1aae172788140e37d6125b224f5e79829e}
 ```cpp
