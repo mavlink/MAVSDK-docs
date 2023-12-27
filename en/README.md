@@ -1,7 +1,7 @@
 <img src="../assets/site/sdk_logo_full.png" title="MAVSDK Logo" width="400px"/>
 # MAVSDK ({{ book.github_branch }})
 
-[![Slack](../assets/site/slack.svg)](https://join.slack.com/t/px4/shared_invite/zt-si4xo5qs-R4baYFmMjlrT4rQK5yUnaA)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![GitHub Actions Status](https://github.com/mavlink/MAVSDK/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/mavlink/MAVSDK/actions?query=branch%3Amain)
+[![Discord](https://img.shields.io/badge/Discord-Join_Us!-blue)](https://discord.com/invite/dronecode)&nbsp;[![Discuss](https://img.shields.io/badge/discuss-MAVSDK-ff69b4.svg)](https://discuss.px4.io/c/sdk) [![GitHub Actions Status](https://github.com/mavlink/MAVSDK/workflows/Build%20and%20Test/badge.svg?branch=main)](https://github.com/mavlink/MAVSDK/actions?query=branch%3Amain)
 [![Coverage Status](https://coveralls.io/repos/github/mavlink/MAVSDK/badge.svg?branch=main)](https://coveralls.io/github/mavlink/MAVSDK?branch=main)
 
 *MAVSDK* is a collection of libraries for various programming languages to interface with [MAVLink](https://mavlink.io/en/) systems such as drones, cameras or ground systems.
@@ -54,6 +54,24 @@ We welcome contributions! If you want to help or have suggestions/bug reports [p
 
 The [Contributing](cpp/contributing/README.md) (C++) section contains more information on how and what to contribute, including topics about building MAVSDK from source code, running our integration and unit tests, and all other aspects of core development.
 
+## Maintenance
+
+This project is maintained by volunteers:
+- [Julian Oes](https://github.com/julianoes) ([sponsoring](https://github.com/sponsors/julianoes), [consulting](https://julianoes.com)).
+- [Jonas Vautherin](https://github.com/JonasVautherin)
+
+Maintenance is not sponsored by any company, however, hosting of the [docs](https://mavsdk.mavlink.io/main/en/) and the [forum](https://discuss.px4.io/c/mavsdk/) is provided by the [Dronecode Foundation](https://dronecode.org).
+
+## Support and issues
+
+If you just have a question, consider asking in the [forum](https://discuss.px4.io/c/mavsdk/).
+
+If you have run into an issue, discovered a bug, or want to request a feature, create an [issue](https://github.com/mavlink/MAVSDK/issues). If it is important or urgent to you, consider sponsoring any of the maintainers to move the issue up on their todo list.
+
+If you need private support, consider paid consulting:
+- [Julian Oes consulting](https://julianoes.com)
+
+(Create a pull request if you wish to be listed here.)
 
 ## License
 
