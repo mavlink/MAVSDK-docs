@@ -54,6 +54,24 @@ We welcome contributions! If you want to help or have suggestions/bug reports [p
 
 The [Contributing](cpp/contributing/README.md) (C++) section contains more information on how and what to contribute, including topics about building MAVSDK from source code, running our integration and unit tests, and all other aspects of core development.
 
+## Maintenance
+
+This project is maintained by volunteers:
+- [Julian Oes](https://github.com/julianoes) ([sponsoring](https://github.com/sponsors/julianoes), [consulting](https://julianoes.com)).
+- [Jonas Vautherin](https://github.com/JonasVautherin)
+
+Maintenance is not sponsored by any company, however, hosting of the [docs](https://mavsdk.mavlink.io/main/en/) and the [forum](https://discuss.px4.io/c/mavsdk/) is provided by the [Dronecode Foundation](https://dronecode.org).
+
+## Support and issues
+
+If you just have a question, consider asking in the [forum](https://discuss.px4.io/c/mavsdk/).
+
+If you have run into an issue, discovered a bug, or want to request a feature, create an [issue](https://github.com/mavlink/MAVSDK/issues). If it is important or urgent to you, consider sponsoring any of the maintainers to move the issue up on their todo list.
+
+If you need private support, consider paid consulting:
+- [Julian Oes consulting](https://julianoes.com)
+
+(Create a pull request if you wish to be listed here.)
 
 ## License
 
