@@ -31,12 +31,11 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1a4a487863501b7ef30db5179bebc45a3a) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1ad42b07d8ef2f70f63ded5e5e3825f837) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~LogFiles](#classmavsdk_1_1_log_files_1a051ae59e72ddb9be39f128592604ded6) () | Destructor (internal use only).
+&nbsp; | [~LogFiles](#classmavsdk_1_1_log_files_1a313ea62b9c45927c4140fb784578a5b9) () override | Destructor (internal use only).
 &nbsp; | [LogFiles](#classmavsdk_1_1_log_files_1ae09021cd080dc45f63019ea76968801f) (const [LogFiles](classmavsdk_1_1_log_files.md) & other) | Copy constructor.
 void | [get_entries_async](#classmavsdk_1_1_log_files_1a6a922097850fb43fbb9d3348fe0b3bb7) (const [GetEntriesCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a0bb101777daba9e87cb33baf55389403) callback) | Get List of log files.
 std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [LogFiles::Entry](structmavsdk_1_1_log_files_1_1_entry.md) > > | [get_entries](#classmavsdk_1_1_log_files_1ab06a17009589c57aa90ac31a24aa9064) () const | Get List of log files.
-void | [download_log_file_async](#classmavsdk_1_1_log_files_1a48712c031e204b23e00cfa28a0b1bc01) ([Entry](structmavsdk_1_1_log_files_1_1_entry.md) entry, std::string path, [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1af62400ee1e20bfbe948e1ec98255d236) callback) | Download log file.
-std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), [LogFiles::ProgressData](structmavsdk_1_1_log_files_1_1_progress_data.md) > | [download_log_file](#classmavsdk_1_1_log_files_1a55610b37e800a61a62f3b608d6f7ad86) ([Entry](structmavsdk_1_1_log_files_1_1_entry.md) entry, std::string path)const | Download log file synchronously.
+void | [download_log_file_async](#classmavsdk_1_1_log_files_1a2d5eca47cfa3de13a317915cd261d642) ([Entry](structmavsdk_1_1_log_files_1_1_entry.md) entry, std::string path, const [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1af62400ee1e20bfbe948e1ec98255d236) & callback) | Download log file.
 [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd) | [erase_all_log_files](#classmavsdk_1_1_log_files_1a31cc0db36046c8211763a829b8f62414) () const | Erase all log files.
 const [LogFiles](classmavsdk_1_1_log_files.md) & | [operator=](#classmavsdk_1_1_log_files_1a2ba9f188f7644a647f5dcdadb034e300) (const [LogFiles](classmavsdk_1_1_log_files.md) &)=delete | Equality operator (object is not copyable).
 
@@ -80,9 +79,9 @@ auto log_files = LogFiles(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~LogFiles() {#classmavsdk_1_1_log_files_1a051ae59e72ddb9be39f128592604ded6}
+### ~LogFiles() {#classmavsdk_1_1_log_files_1a313ea62b9c45927c4140fb784578a5b9}
 ```cpp
-mavsdk::LogFiles::~LogFiles()
+mavsdk::LogFiles::~LogFiles() override
 ```
 
 
@@ -186,9 +185,9 @@ This function is blocking. See 'get_entries_async' for the non-blocking counterp
 
 &emsp;std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), std::vector< [LogFiles::Entry](structmavsdk_1_1_log_files_1_1_entry.md) > > - Result of request.
 
-### download_log_file_async() {#classmavsdk_1_1_log_files_1a48712c031e204b23e00cfa28a0b1bc01}
+### download_log_file_async() {#classmavsdk_1_1_log_files_1a2d5eca47cfa3de13a317915cd261d642}
 ```cpp
-void mavsdk::LogFiles::download_log_file_async(Entry entry, std::string path, DownloadLogFileCallback callback)
+void mavsdk::LogFiles::download_log_file_async(Entry entry, std::string path, const DownloadLogFileCallback &callback)
 ```
 
 
@@ -199,26 +198,7 @@ Download log file.
 
 * [Entry](structmavsdk_1_1_log_files_1_1_entry.md) **entry** - 
 * std::string **path** - 
-* [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1af62400ee1e20bfbe948e1ec98255d236) **callback** - 
-
-### download_log_file() {#classmavsdk_1_1_log_files_1a55610b37e800a61a62f3b608d6f7ad86}
-```cpp
-std::pair<Result, LogFiles::ProgressData> mavsdk::LogFiles::download_log_file(Entry entry, std::string path) const
-```
-
-
-Download log file synchronously.
-
-This function is blocking.
-
-**Parameters**
-
-* [Entry](structmavsdk_1_1_log_files_1_1_entry.md) **entry** - 
-* std::string **path** - 
-
-**Returns**
-
-&emsp;std::pair< [Result](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1a43e5425f17cd8a6830ff6fd952a724cd), [LogFiles::ProgressData](structmavsdk_1_1_log_files_1_1_progress_data.md) > - Result of request.
+* const [DownloadLogFileCallback](classmavsdk_1_1_log_files.md#classmavsdk_1_1_log_files_1af62400ee1e20bfbe948e1ec98255d236)& **callback** - 
 
 ### erase_all_log_files() {#classmavsdk_1_1_log_files_1a31cc0db36046c8211763a829b8f62414}
 ```cpp

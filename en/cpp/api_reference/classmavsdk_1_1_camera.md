@@ -46,12 +46,19 @@ enum [Result](#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | Poss
 std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf))> [ResultCallback](#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) | Callback type for asynchronous [Camera](classmavsdk_1_1_camera.md) calls.
 std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), std::vector< [CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) >)> [ListPhotosCallback](#classmavsdk_1_1_camera_1a23240233586f7673c3a1b48f07623fe4) | Callback type for list_photos_async.
 std::function< void([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65))> [ModeCallback](#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931) | Callback type for subscribe_mode.
+[Handle](classmavsdk_1_1_handle.md)< [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) > [ModeHandle](#classmavsdk_1_1_camera_1ac6759725ac9696f9572b05524fde2354) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_mode.
 std::function< void([Information](structmavsdk_1_1_camera_1_1_information.md))> [InformationCallback](#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65) | Callback type for subscribe_information.
+[Handle](classmavsdk_1_1_handle.md)< [Information](structmavsdk_1_1_camera_1_1_information.md) > [InformationHandle](#classmavsdk_1_1_camera_1a0dcacb795da7de566fb6dce091ca4605) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_information.
 std::function< void([VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md))> [VideoStreamInfoCallback](#classmavsdk_1_1_camera_1acd9baf073b816e46c22dbd6b599ece66) | Callback type for subscribe_video_stream_info.
+[Handle](classmavsdk_1_1_handle.md)< [VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md) > [VideoStreamInfoHandle](#classmavsdk_1_1_camera_1aebf91f740cc85682c6b7a0955635f848) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_video_stream_info.
 std::function< void([CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md))> [CaptureInfoCallback](#classmavsdk_1_1_camera_1a9bf5c20ea0b03ab019057829d1a3441e) | Callback type for subscribe_capture_info.
+[Handle](classmavsdk_1_1_handle.md)< [CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) > [CaptureInfoHandle](#classmavsdk_1_1_camera_1a789f1fccde8eb44bc07694751b3a1b40) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_capture_info.
 std::function< void([Status](structmavsdk_1_1_camera_1_1_status.md))> [StatusCallback](#classmavsdk_1_1_camera_1aea925914ce854b81b67e3213840c97ad) | Callback type for subscribe_status.
+[Handle](classmavsdk_1_1_handle.md)< [Status](structmavsdk_1_1_camera_1_1_status.md) > [StatusHandle](#classmavsdk_1_1_camera_1a902bc3a824040a37714bb2c1c41a9601) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_status.
 std::function< void(std::vector< [Setting](structmavsdk_1_1_camera_1_1_setting.md) >)> [CurrentSettingsCallback](#classmavsdk_1_1_camera_1a77484487381b2579460c36d97d367fe6) | Callback type for subscribe_current_settings.
+[Handle](classmavsdk_1_1_handle.md)< std::vector< [Setting](structmavsdk_1_1_camera_1_1_setting.md) > > [CurrentSettingsHandle](#classmavsdk_1_1_camera_1a19960e47f1c2b3fb5117ba2f7f3cfbe6) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_current_settings.
 std::function< void(std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) >)> [PossibleSettingOptionsCallback](#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a) | Callback type for subscribe_possible_setting_options.
+[Handle](classmavsdk_1_1_handle.md)< std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) > > [PossibleSettingOptionsHandle](#classmavsdk_1_1_camera_1a1144be14cd9f15724397ad6b5253b8a9) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_possible_setting_options.
 std::function< void([Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), [Setting](structmavsdk_1_1_camera_1_1_setting.md))> [GetSettingCallback](#classmavsdk_1_1_camera_1ac233f5688f0b7f1e712bb31dfaeadd85) | Callback type for get_setting_async.
 
 ## Public Member Functions
@@ -61,7 +68,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Camera](#classmavsdk_1_1_camera_1a186a2853440c879b99ed7e4a726969e9) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [Camera](#classmavsdk_1_1_camera_1aecd55dc849bbb967a6b9dcfd36cc075e) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~Camera](#classmavsdk_1_1_camera_1abd845e6fb2adc386dba7c8860a67f761) () | Destructor (internal use only).
+&nbsp; | [~Camera](#classmavsdk_1_1_camera_1afc23a58baf97868b1d9a9b983d7c2087) () override | Destructor (internal use only).
 &nbsp; | [Camera](#classmavsdk_1_1_camera_1a1b83c38c360d70b56222a94999d862fd) (const [Camera](classmavsdk_1_1_camera.md) & other) | Copy constructor.
 void | [prepare_async](#classmavsdk_1_1_camera_1aba33f1f8302259a7d51a09b60ea29cbf) (const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Prepare the camera plugin (e.g. download the camera definition, etc).
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [prepare](#classmavsdk_1_1_camera_1af263d3ea4e24da262f935c56fb578444) () const | Prepare the camera plugin (e.g. download the camera definition, etc).
@@ -75,31 +82,40 @@ void | [start_video_async](#classmavsdk_1_1_camera_1a2d5dff782ea3f8346bc53560be3
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [start_video](#classmavsdk_1_1_camera_1ac64e77dee9f5ff9b5c84100d8f007670) () const | Start a video recording.
 void | [stop_video_async](#classmavsdk_1_1_camera_1a77d1b1a201164023c5eef3c91cdd4e54) (const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Stop a running video recording.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [stop_video](#classmavsdk_1_1_camera_1a6062ac1907bd10944d2ddb9655943ddc) () const | Stop a running video recording.
-[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [start_video_streaming](#classmavsdk_1_1_camera_1a8714183c1b03ec4251287911db1492c3) () const | Start video streaming.
-[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [stop_video_streaming](#classmavsdk_1_1_camera_1a9f6ec4e37cdd287f0cbeed40a2602416) () const | Stop current video streaming.
+[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [start_video_streaming](#classmavsdk_1_1_camera_1a6e062242a02389e2fc839f5e9ec03d7d) (int32_t stream_id)const | Start video streaming.
+[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [stop_video_streaming](#classmavsdk_1_1_camera_1ae495e8c52984ad76b27b72fc58987d9d) (int32_t stream_id)const | Stop current video streaming.
 void | [set_mode_async](#classmavsdk_1_1_camera_1a76d98d04885d38d0438da7c8696ef6ab) ([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode, const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Set camera mode.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [set_mode](#classmavsdk_1_1_camera_1a249755db2eaa8fd3d202ac01ca52448d) ([Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) mode)const | Set camera mode.
 void | [list_photos_async](#classmavsdk_1_1_camera_1aec1edfe505476d437d45ec2f0deec924) ([PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) photos_range, const [ListPhotosCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a23240233586f7673c3a1b48f07623fe4) callback) | List photos available on the camera.
 std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), std::vector< [Camera::CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) > > | [list_photos](#classmavsdk_1_1_camera_1a49dc17b74047049c386d88cd365de868) ([PhotosRange](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1211ea6664aa9c1d4ef4aede363c7c22) photos_range)const | List photos available on the camera.
-void | [subscribe_mode](#classmavsdk_1_1_camera_1a002b03af2331606752aba43da0216503) ([ModeCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931) callback) | Subscribe to camera mode updates.
+[ModeHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1ac6759725ac9696f9572b05524fde2354) | [subscribe_mode](#classmavsdk_1_1_camera_1a1963bfcfcc8c9e96451648f96fd618cd) (const [ModeCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931) & callback) | Subscribe to camera mode updates.
+void | [unsubscribe_mode](#classmavsdk_1_1_camera_1ab9437b41565d8957050e09cf4143f5d1) ([ModeHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1ac6759725ac9696f9572b05524fde2354) handle) | Unsubscribe from subscribe_mode.
 [Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) | [mode](#classmavsdk_1_1_camera_1a222bce91e70d1ca53bcf5d885bacd418) () const | Poll for 'Mode' (blocking).
-void | [subscribe_information](#classmavsdk_1_1_camera_1a64a8d8ac28784b0d304d5a7b1519657a) ([InformationCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65) callback) | Subscribe to camera information updates.
+[InformationHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a0dcacb795da7de566fb6dce091ca4605) | [subscribe_information](#classmavsdk_1_1_camera_1af4b5c713813df8c407a09963295c33a2) (const [InformationCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65) & callback) | Subscribe to camera information updates.
+void | [unsubscribe_information](#classmavsdk_1_1_camera_1a90b70deaf25dff027714afb856653ea5) ([InformationHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a0dcacb795da7de566fb6dce091ca4605) handle) | Unsubscribe from subscribe_information.
 [Information](structmavsdk_1_1_camera_1_1_information.md) | [information](#classmavsdk_1_1_camera_1a7feb16f3d913b91d05efc803ce4e396b) () const | Poll for '[Information](structmavsdk_1_1_camera_1_1_information.md)' (blocking).
-void | [subscribe_video_stream_info](#classmavsdk_1_1_camera_1a23a43693897e77995d8be6d1b15fe62c) ([VideoStreamInfoCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1acd9baf073b816e46c22dbd6b599ece66) callback) | Subscribe to video stream info updates.
+[VideoStreamInfoHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aebf91f740cc85682c6b7a0955635f848) | [subscribe_video_stream_info](#classmavsdk_1_1_camera_1a4dcf0ebeb1f9f5e5b2b71f59c9b7eeb9) (const [VideoStreamInfoCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1acd9baf073b816e46c22dbd6b599ece66) & callback) | Subscribe to video stream info updates.
+void | [unsubscribe_video_stream_info](#classmavsdk_1_1_camera_1abc370783800fb90dda20d2843f990036) ([VideoStreamInfoHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aebf91f740cc85682c6b7a0955635f848) handle) | Unsubscribe from subscribe_video_stream_info.
 [VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md) | [video_stream_info](#classmavsdk_1_1_camera_1ad466621feff2d4f0f11124a36dda656c) () const | Poll for '[VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md)' (blocking).
-void | [subscribe_capture_info](#classmavsdk_1_1_camera_1a26901f1812df6253a39457d7bc230895) ([CaptureInfoCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a9bf5c20ea0b03ab019057829d1a3441e) callback) | Subscribe to capture info updates.
-void | [subscribe_status](#classmavsdk_1_1_camera_1ab62186cc3fc79459bde0e4704eb1e768) ([StatusCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aea925914ce854b81b67e3213840c97ad) callback) | Subscribe to camera status updates.
+[CaptureInfoHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a789f1fccde8eb44bc07694751b3a1b40) | [subscribe_capture_info](#classmavsdk_1_1_camera_1a8822ab1d802984a1acc9b53cd9810e8f) (const [CaptureInfoCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a9bf5c20ea0b03ab019057829d1a3441e) & callback) | Subscribe to capture info updates.
+void | [unsubscribe_capture_info](#classmavsdk_1_1_camera_1a9b7f729dfa30a6cb0d041533bd272793) ([CaptureInfoHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a789f1fccde8eb44bc07694751b3a1b40) handle) | Unsubscribe from subscribe_capture_info.
+[StatusHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a902bc3a824040a37714bb2c1c41a9601) | [subscribe_status](#classmavsdk_1_1_camera_1a1bf71cdb27a9b8d3fefe15463c9b9bf1) (const [StatusCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aea925914ce854b81b67e3213840c97ad) & callback) | Subscribe to camera status updates.
+void | [unsubscribe_status](#classmavsdk_1_1_camera_1a402cf21219f9b303fca0a269dab15b63) ([StatusHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a902bc3a824040a37714bb2c1c41a9601) handle) | Unsubscribe from subscribe_status.
 [Status](structmavsdk_1_1_camera_1_1_status.md) | [status](#classmavsdk_1_1_camera_1a0bb78c2b665c28b314f00f11a0f676b1) () const | Poll for '[Status](structmavsdk_1_1_camera_1_1_status.md)' (blocking).
-void | [subscribe_current_settings](#classmavsdk_1_1_camera_1a460cf8f9810417e63ce2643df9ed014a) ([CurrentSettingsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a77484487381b2579460c36d97d367fe6) callback) | Get the list of current camera settings.
-void | [subscribe_possible_setting_options](#classmavsdk_1_1_camera_1abd8c5e18e165b319aaae9815c735b683) ([PossibleSettingOptionsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a) callback) | Get the list of settings that can be changed.
+[CurrentSettingsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a19960e47f1c2b3fb5117ba2f7f3cfbe6) | [subscribe_current_settings](#classmavsdk_1_1_camera_1a906c431b63dde866b691ab4c839858ff) (const [CurrentSettingsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a77484487381b2579460c36d97d367fe6) & callback) | Get the list of current camera settings.
+void | [unsubscribe_current_settings](#classmavsdk_1_1_camera_1a117e76672b39c9cd751fa64a42741c17) ([CurrentSettingsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a19960e47f1c2b3fb5117ba2f7f3cfbe6) handle) | Unsubscribe from subscribe_current_settings.
+[PossibleSettingOptionsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1144be14cd9f15724397ad6b5253b8a9) | [subscribe_possible_setting_options](#classmavsdk_1_1_camera_1aef7c545aaa05e36b212255120557967b) (const [PossibleSettingOptionsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a) & callback) | Get the list of settings that can be changed.
+void | [unsubscribe_possible_setting_options](#classmavsdk_1_1_camera_1a191cc00bb6b1c834fc93b19f4bff1c29) ([PossibleSettingOptionsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1144be14cd9f15724397ad6b5253b8a9) handle) | Unsubscribe from subscribe_possible_setting_options.
 std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) > | [possible_setting_options](#classmavsdk_1_1_camera_1a5416dc30ec436707420db715ee56ce08) () const | Poll for 'std::vector<SettingOptions>' (blocking).
 void | [set_setting_async](#classmavsdk_1_1_camera_1aace1d6ffd86a6fdf30b3466c8522feba) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting, const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Set a setting to some value.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [set_setting](#classmavsdk_1_1_camera_1aa4b1293d8c6332293cccde87ec79f64a) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting)const | Set a setting to some value.
 void | [get_setting_async](#classmavsdk_1_1_camera_1a6b2e4e9b5b304aff313e4f988aa6ba86) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting, const [GetSettingCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1ac233f5688f0b7f1e712bb31dfaeadd85) callback) | Get a setting.
 std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), [Camera::Setting](structmavsdk_1_1_camera_1_1_setting.md) > | [get_setting](#classmavsdk_1_1_camera_1ae88917857b666dc7cfd0d84b3ad29d9c) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting)const | Get a setting.
-void | [format_storage_async](#classmavsdk_1_1_camera_1a20455726797ece508d49fe05442fe0c1) (const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Format storage (e.g. SD card) in camera.
-[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [format_storage](#classmavsdk_1_1_camera_1a1e2d39b44251f39a395527b0170e223a) () const | Format storage (e.g. SD card) in camera.
+void | [format_storage_async](#classmavsdk_1_1_camera_1afd1074b185776167e7355438ac69d955) (int32_t storage_id, const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Format storage (e.g. SD card) in camera.
+[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [format_storage](#classmavsdk_1_1_camera_1a942f9bad2e2bede982d404ce552090a5) (int32_t storage_id)const | Format storage (e.g. SD card) in camera.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [select_camera](#classmavsdk_1_1_camera_1ab3348f98003f71f2399dd15505effae3) (int32_t camera_id)const | Select current camera .
+void | [reset_settings_async](#classmavsdk_1_1_camera_1ab2316e20104a5efa94bf2719dc3dd994) (const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Reset all settings in camera.
+[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [reset_settings](#classmavsdk_1_1_camera_1a49c84f20f1100848e3951f5e14b569dc) () const | Reset all settings in camera.
 const [Camera](classmavsdk_1_1_camera.md) & | [operator=](#classmavsdk_1_1_camera_1aeff295155b6a665f5c942e473f1fe894) (const [Camera](classmavsdk_1_1_camera.md) &)=delete | Equality operator (object is not copyable).
 
 
@@ -142,9 +158,9 @@ auto camera = Camera(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~Camera() {#classmavsdk_1_1_camera_1abd845e6fb2adc386dba7c8860a67f761}
+### ~Camera() {#classmavsdk_1_1_camera_1afc23a58baf97868b1d9a9b983d7c2087}
 ```cpp
-mavsdk::Camera::~Camera()
+mavsdk::Camera::~Camera() override
 ```
 
 
@@ -197,6 +213,16 @@ using mavsdk::Camera::ModeCallback =  std::function<void(Mode)>
 Callback type for subscribe_mode.
 
 
+### typedef ModeHandle {#classmavsdk_1_1_camera_1ac6759725ac9696f9572b05524fde2354}
+
+```cpp
+using mavsdk::Camera::ModeHandle =  Handle<Mode>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_mode.
+
+
 ### typedef InformationCallback {#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65}
 
 ```cpp
@@ -205,6 +231,16 @@ using mavsdk::Camera::InformationCallback =  std::function<void(Information)>
 
 
 Callback type for subscribe_information.
+
+
+### typedef InformationHandle {#classmavsdk_1_1_camera_1a0dcacb795da7de566fb6dce091ca4605}
+
+```cpp
+using mavsdk::Camera::InformationHandle =  Handle<Information>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_information.
 
 
 ### typedef VideoStreamInfoCallback {#classmavsdk_1_1_camera_1acd9baf073b816e46c22dbd6b599ece66}
@@ -217,6 +253,16 @@ using mavsdk::Camera::VideoStreamInfoCallback =  std::function<void(VideoStreamI
 Callback type for subscribe_video_stream_info.
 
 
+### typedef VideoStreamInfoHandle {#classmavsdk_1_1_camera_1aebf91f740cc85682c6b7a0955635f848}
+
+```cpp
+using mavsdk::Camera::VideoStreamInfoHandle =  Handle<VideoStreamInfo>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_video_stream_info.
+
+
 ### typedef CaptureInfoCallback {#classmavsdk_1_1_camera_1a9bf5c20ea0b03ab019057829d1a3441e}
 
 ```cpp
@@ -225,6 +271,16 @@ using mavsdk::Camera::CaptureInfoCallback =  std::function<void(CaptureInfo)>
 
 
 Callback type for subscribe_capture_info.
+
+
+### typedef CaptureInfoHandle {#classmavsdk_1_1_camera_1a789f1fccde8eb44bc07694751b3a1b40}
+
+```cpp
+using mavsdk::Camera::CaptureInfoHandle =  Handle<CaptureInfo>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_capture_info.
 
 
 ### typedef StatusCallback {#classmavsdk_1_1_camera_1aea925914ce854b81b67e3213840c97ad}
@@ -237,6 +293,16 @@ using mavsdk::Camera::StatusCallback =  std::function<void(Status)>
 Callback type for subscribe_status.
 
 
+### typedef StatusHandle {#classmavsdk_1_1_camera_1a902bc3a824040a37714bb2c1c41a9601}
+
+```cpp
+using mavsdk::Camera::StatusHandle =  Handle<Status>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_status.
+
+
 ### typedef CurrentSettingsCallback {#classmavsdk_1_1_camera_1a77484487381b2579460c36d97d367fe6}
 
 ```cpp
@@ -247,6 +313,16 @@ using mavsdk::Camera::CurrentSettingsCallback =  std::function<void(std::vector<
 Callback type for subscribe_current_settings.
 
 
+### typedef CurrentSettingsHandle {#classmavsdk_1_1_camera_1a19960e47f1c2b3fb5117ba2f7f3cfbe6}
+
+```cpp
+using mavsdk::Camera::CurrentSettingsHandle =  Handle<std::vector<Setting> >
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_current_settings.
+
+
 ### typedef PossibleSettingOptionsCallback {#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a}
 
 ```cpp
@@ -255,6 +331,16 @@ using mavsdk::Camera::PossibleSettingOptionsCallback =  std::function<void(std::
 
 
 Callback type for subscribe_possible_setting_options.
+
+
+### typedef PossibleSettingOptionsHandle {#classmavsdk_1_1_camera_1a1144be14cd9f15724397ad6b5253b8a9}
+
+```cpp
+using mavsdk::Camera::PossibleSettingOptionsHandle =  Handle<std::vector<SettingOptions> >
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_possible_setting_options.
 
 
 ### typedef GetSettingCallback {#classmavsdk_1_1_camera_1ac233f5688f0b7f1e712bb31dfaeadd85}
@@ -310,6 +396,7 @@ Value | Description
 <span id="classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcfac85a251cc457840f1e032f1b733e9398"></span> `Timeout` | Command timed out. 
 <span id="classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcfa5a738160747f39c20e9f65416931c974"></span> `WrongArgument` | Command has wrong argument(s). 
 <span id="classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcfa1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
+<span id="classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcfacb4221c88cb5b30c3380aad8569a80c1"></span> `ProtocolUnsupported` | Definition file protocol not supported. 
 
 ## Member Function Documentation
 
@@ -487,9 +574,9 @@ This function is blocking. See 'stop_video_async' for the non-blocking counterpa
 
 &emsp;[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) - Result of request.
 
-### start_video_streaming() {#classmavsdk_1_1_camera_1a8714183c1b03ec4251287911db1492c3}
+### start_video_streaming() {#classmavsdk_1_1_camera_1a6e062242a02389e2fc839f5e9ec03d7d}
 ```cpp
-Result mavsdk::Camera::start_video_streaming() const
+Result mavsdk::Camera::start_video_streaming(int32_t stream_id) const
 ```
 
 
@@ -497,19 +584,27 @@ Start video streaming.
 
 This function is blocking.
 
+**Parameters**
+
+* int32_t **stream_id** - 
+
 **Returns**
 
 &emsp;[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) - Result of request.
 
-### stop_video_streaming() {#classmavsdk_1_1_camera_1a9f6ec4e37cdd287f0cbeed40a2602416}
+### stop_video_streaming() {#classmavsdk_1_1_camera_1ae495e8c52984ad76b27b72fc58987d9d}
 ```cpp
-Result mavsdk::Camera::stop_video_streaming() const
+Result mavsdk::Camera::stop_video_streaming(int32_t stream_id) const
 ```
 
 
 Stop current video streaming.
 
 This function is blocking.
+
+**Parameters**
+
+* int32_t **stream_id** - 
 
 **Returns**
 
@@ -581,9 +676,9 @@ This function is blocking. See 'list_photos_async' for the non-blocking counterp
 
 &emsp;std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), std::vector< [Camera::CaptureInfo](structmavsdk_1_1_camera_1_1_capture_info.md) > > - Result of request.
 
-### subscribe_mode() {#classmavsdk_1_1_camera_1a002b03af2331606752aba43da0216503}
+### subscribe_mode() {#classmavsdk_1_1_camera_1a1963bfcfcc8c9e96451648f96fd618cd}
 ```cpp
-void mavsdk::Camera::subscribe_mode(ModeCallback callback)
+ModeHandle mavsdk::Camera::subscribe_mode(const ModeCallback &callback)
 ```
 
 
@@ -592,7 +687,24 @@ Subscribe to camera mode updates.
 
 **Parameters**
 
-* [ModeCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931) **callback** - 
+* const [ModeCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a33a7257ab95d9277b786e6de86604931)& **callback** - 
+
+**Returns**
+
+&emsp;[ModeHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1ac6759725ac9696f9572b05524fde2354) - 
+
+### unsubscribe_mode() {#classmavsdk_1_1_camera_1ab9437b41565d8957050e09cf4143f5d1}
+```cpp
+void mavsdk::Camera::unsubscribe_mode(ModeHandle handle)
+```
+
+
+Unsubscribe from subscribe_mode.
+
+
+**Parameters**
+
+* [ModeHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1ac6759725ac9696f9572b05524fde2354) **handle** - 
 
 ### mode() {#classmavsdk_1_1_camera_1a222bce91e70d1ca53bcf5d885bacd418}
 ```cpp
@@ -607,9 +719,9 @@ Poll for 'Mode' (blocking).
 
 &emsp;[Mode](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a02bb5ce37d125ba4c65d43f172cc2d65) - One Mode update.
 
-### subscribe_information() {#classmavsdk_1_1_camera_1a64a8d8ac28784b0d304d5a7b1519657a}
+### subscribe_information() {#classmavsdk_1_1_camera_1af4b5c713813df8c407a09963295c33a2}
 ```cpp
-void mavsdk::Camera::subscribe_information(InformationCallback callback)
+InformationHandle mavsdk::Camera::subscribe_information(const InformationCallback &callback)
 ```
 
 
@@ -618,7 +730,24 @@ Subscribe to camera information updates.
 
 **Parameters**
 
-* [InformationCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65) **callback** - 
+* const [InformationCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1af13455249eebaf152a71d59e32fcbf65)& **callback** - 
+
+**Returns**
+
+&emsp;[InformationHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a0dcacb795da7de566fb6dce091ca4605) - 
+
+### unsubscribe_information() {#classmavsdk_1_1_camera_1a90b70deaf25dff027714afb856653ea5}
+```cpp
+void mavsdk::Camera::unsubscribe_information(InformationHandle handle)
+```
+
+
+Unsubscribe from subscribe_information.
+
+
+**Parameters**
+
+* [InformationHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a0dcacb795da7de566fb6dce091ca4605) **handle** - 
 
 ### information() {#classmavsdk_1_1_camera_1a7feb16f3d913b91d05efc803ce4e396b}
 ```cpp
@@ -633,9 +762,9 @@ Poll for '[Information](structmavsdk_1_1_camera_1_1_information.md)' (blocking).
 
 &emsp;[Information](structmavsdk_1_1_camera_1_1_information.md) - One [Information](structmavsdk_1_1_camera_1_1_information.md) update.
 
-### subscribe_video_stream_info() {#classmavsdk_1_1_camera_1a23a43693897e77995d8be6d1b15fe62c}
+### subscribe_video_stream_info() {#classmavsdk_1_1_camera_1a4dcf0ebeb1f9f5e5b2b71f59c9b7eeb9}
 ```cpp
-void mavsdk::Camera::subscribe_video_stream_info(VideoStreamInfoCallback callback)
+VideoStreamInfoHandle mavsdk::Camera::subscribe_video_stream_info(const VideoStreamInfoCallback &callback)
 ```
 
 
@@ -644,7 +773,24 @@ Subscribe to video stream info updates.
 
 **Parameters**
 
-* [VideoStreamInfoCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1acd9baf073b816e46c22dbd6b599ece66) **callback** - 
+* const [VideoStreamInfoCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1acd9baf073b816e46c22dbd6b599ece66)& **callback** - 
+
+**Returns**
+
+&emsp;[VideoStreamInfoHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aebf91f740cc85682c6b7a0955635f848) - 
+
+### unsubscribe_video_stream_info() {#classmavsdk_1_1_camera_1abc370783800fb90dda20d2843f990036}
+```cpp
+void mavsdk::Camera::unsubscribe_video_stream_info(VideoStreamInfoHandle handle)
+```
+
+
+Unsubscribe from subscribe_video_stream_info.
+
+
+**Parameters**
+
+* [VideoStreamInfoHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aebf91f740cc85682c6b7a0955635f848) **handle** - 
 
 ### video_stream_info() {#classmavsdk_1_1_camera_1ad466621feff2d4f0f11124a36dda656c}
 ```cpp
@@ -659,9 +805,9 @@ Poll for '[VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md)' (
 
 &emsp;[VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md) - One [VideoStreamInfo](structmavsdk_1_1_camera_1_1_video_stream_info.md) update.
 
-### subscribe_capture_info() {#classmavsdk_1_1_camera_1a26901f1812df6253a39457d7bc230895}
+### subscribe_capture_info() {#classmavsdk_1_1_camera_1a8822ab1d802984a1acc9b53cd9810e8f}
 ```cpp
-void mavsdk::Camera::subscribe_capture_info(CaptureInfoCallback callback)
+CaptureInfoHandle mavsdk::Camera::subscribe_capture_info(const CaptureInfoCallback &callback)
 ```
 
 
@@ -670,11 +816,28 @@ Subscribe to capture info updates.
 
 **Parameters**
 
-* [CaptureInfoCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a9bf5c20ea0b03ab019057829d1a3441e) **callback** - 
+* const [CaptureInfoCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a9bf5c20ea0b03ab019057829d1a3441e)& **callback** - 
 
-### subscribe_status() {#classmavsdk_1_1_camera_1ab62186cc3fc79459bde0e4704eb1e768}
+**Returns**
+
+&emsp;[CaptureInfoHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a789f1fccde8eb44bc07694751b3a1b40) - 
+
+### unsubscribe_capture_info() {#classmavsdk_1_1_camera_1a9b7f729dfa30a6cb0d041533bd272793}
 ```cpp
-void mavsdk::Camera::subscribe_status(StatusCallback callback)
+void mavsdk::Camera::unsubscribe_capture_info(CaptureInfoHandle handle)
+```
+
+
+Unsubscribe from subscribe_capture_info.
+
+
+**Parameters**
+
+* [CaptureInfoHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a789f1fccde8eb44bc07694751b3a1b40) **handle** - 
+
+### subscribe_status() {#classmavsdk_1_1_camera_1a1bf71cdb27a9b8d3fefe15463c9b9bf1}
+```cpp
+StatusHandle mavsdk::Camera::subscribe_status(const StatusCallback &callback)
 ```
 
 
@@ -683,7 +846,24 @@ Subscribe to camera status updates.
 
 **Parameters**
 
-* [StatusCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aea925914ce854b81b67e3213840c97ad) **callback** - 
+* const [StatusCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1aea925914ce854b81b67e3213840c97ad)& **callback** - 
+
+**Returns**
+
+&emsp;[StatusHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a902bc3a824040a37714bb2c1c41a9601) - 
+
+### unsubscribe_status() {#classmavsdk_1_1_camera_1a402cf21219f9b303fca0a269dab15b63}
+```cpp
+void mavsdk::Camera::unsubscribe_status(StatusHandle handle)
+```
+
+
+Unsubscribe from subscribe_status.
+
+
+**Parameters**
+
+* [StatusHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a902bc3a824040a37714bb2c1c41a9601) **handle** - 
 
 ### status() {#classmavsdk_1_1_camera_1a0bb78c2b665c28b314f00f11a0f676b1}
 ```cpp
@@ -698,9 +878,9 @@ Poll for '[Status](structmavsdk_1_1_camera_1_1_status.md)' (blocking).
 
 &emsp;[Status](structmavsdk_1_1_camera_1_1_status.md) - One [Status](structmavsdk_1_1_camera_1_1_status.md) update.
 
-### subscribe_current_settings() {#classmavsdk_1_1_camera_1a460cf8f9810417e63ce2643df9ed014a}
+### subscribe_current_settings() {#classmavsdk_1_1_camera_1a906c431b63dde866b691ab4c839858ff}
 ```cpp
-void mavsdk::Camera::subscribe_current_settings(CurrentSettingsCallback callback)
+CurrentSettingsHandle mavsdk::Camera::subscribe_current_settings(const CurrentSettingsCallback &callback)
 ```
 
 
@@ -709,11 +889,28 @@ Get the list of current camera settings.
 
 **Parameters**
 
-* [CurrentSettingsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a77484487381b2579460c36d97d367fe6) **callback** - 
+* const [CurrentSettingsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a77484487381b2579460c36d97d367fe6)& **callback** - 
 
-### subscribe_possible_setting_options() {#classmavsdk_1_1_camera_1abd8c5e18e165b319aaae9815c735b683}
+**Returns**
+
+&emsp;[CurrentSettingsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a19960e47f1c2b3fb5117ba2f7f3cfbe6) - 
+
+### unsubscribe_current_settings() {#classmavsdk_1_1_camera_1a117e76672b39c9cd751fa64a42741c17}
 ```cpp
-void mavsdk::Camera::subscribe_possible_setting_options(PossibleSettingOptionsCallback callback)
+void mavsdk::Camera::unsubscribe_current_settings(CurrentSettingsHandle handle)
+```
+
+
+Unsubscribe from subscribe_current_settings.
+
+
+**Parameters**
+
+* [CurrentSettingsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a19960e47f1c2b3fb5117ba2f7f3cfbe6) **handle** - 
+
+### subscribe_possible_setting_options() {#classmavsdk_1_1_camera_1aef7c545aaa05e36b212255120557967b}
+```cpp
+PossibleSettingOptionsHandle mavsdk::Camera::subscribe_possible_setting_options(const PossibleSettingOptionsCallback &callback)
 ```
 
 
@@ -722,7 +919,24 @@ Get the list of settings that can be changed.
 
 **Parameters**
 
-* [PossibleSettingOptionsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a) **callback** - 
+* const [PossibleSettingOptionsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a)& **callback** - 
+
+**Returns**
+
+&emsp;[PossibleSettingOptionsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1144be14cd9f15724397ad6b5253b8a9) - 
+
+### unsubscribe_possible_setting_options() {#classmavsdk_1_1_camera_1a191cc00bb6b1c834fc93b19f4bff1c29}
+```cpp
+void mavsdk::Camera::unsubscribe_possible_setting_options(PossibleSettingOptionsHandle handle)
+```
+
+
+Unsubscribe from subscribe_possible_setting_options.
+
+
+**Parameters**
+
+* [PossibleSettingOptionsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1144be14cd9f15724397ad6b5253b8a9) **handle** - 
 
 ### possible_setting_options() {#classmavsdk_1_1_camera_1a5416dc30ec436707420db715ee56ce08}
 ```cpp
@@ -815,9 +1029,9 @@ This function is blocking. See 'get_setting_async' for the non-blocking counterp
 
 &emsp;std::pair< [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf), [Camera::Setting](structmavsdk_1_1_camera_1_1_setting.md) > - Result of request.
 
-### format_storage_async() {#classmavsdk_1_1_camera_1a20455726797ece508d49fe05442fe0c1}
+### format_storage_async() {#classmavsdk_1_1_camera_1afd1074b185776167e7355438ac69d955}
 ```cpp
-void mavsdk::Camera::format_storage_async(const ResultCallback callback)
+void mavsdk::Camera::format_storage_async(int32_t storage_id, const ResultCallback callback)
 ```
 
 
@@ -830,11 +1044,12 @@ This function is non-blocking. See 'format_storage' for the blocking counterpart
 
 **Parameters**
 
+* int32_t **storage_id** - 
 * const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) **callback** - 
 
-### format_storage() {#classmavsdk_1_1_camera_1a1e2d39b44251f39a395527b0170e223a}
+### format_storage() {#classmavsdk_1_1_camera_1a942f9bad2e2bede982d404ce552090a5}
 ```cpp
-Result mavsdk::Camera::format_storage() const
+Result mavsdk::Camera::format_storage(int32_t storage_id) const
 ```
 
 
@@ -844,6 +1059,10 @@ This will delete all content of the camera storage!
 
 
 This function is blocking. See 'format_storage_async' for the non-blocking counterpart.
+
+**Parameters**
+
+* int32_t **storage_id** - 
 
 **Returns**
 
@@ -865,6 +1084,40 @@ This function is blocking.
 **Parameters**
 
 * int32_t **camera_id** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) - Result of request.
+
+### reset_settings_async() {#classmavsdk_1_1_camera_1ab2316e20104a5efa94bf2719dc3dd994}
+```cpp
+void mavsdk::Camera::reset_settings_async(const ResultCallback callback)
+```
+
+
+Reset all settings in camera.
+
+This will reset all camera settings to default value
+
+
+This function is non-blocking. See 'reset_settings' for the blocking counterpart.
+
+**Parameters**
+
+* const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) **callback** - 
+
+### reset_settings() {#classmavsdk_1_1_camera_1a49c84f20f1100848e3951f5e14b569dc}
+```cpp
+Result mavsdk::Camera::reset_settings() const
+```
+
+
+Reset all settings in camera.
+
+This will reset all camera settings to default value
+
+
+This function is blocking. See 'reset_settings_async' for the non-blocking counterpart.
 
 **Returns**
 

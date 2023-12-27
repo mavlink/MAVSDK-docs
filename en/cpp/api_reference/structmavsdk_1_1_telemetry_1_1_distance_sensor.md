@@ -16,6 +16,8 @@ float [maximum_distance_m](#structmavsdk_1_1_telemetry_1_1_distance_sensor_1aca0
 
 float [current_distance_m](#structmavsdk_1_1_telemetry_1_1_distance_sensor_1a16bd239d2498378c57d910f07797a3a1) { float(NAN)} - Current distance reading, NaN if unknown.
 
+[EulerAngle](structmavsdk_1_1_telemetry_1_1_euler_angle.md) [orientation](#structmavsdk_1_1_telemetry_1_1_distance_sensor_1a3a4457610b4d7af76290a0b53426bc68) {} - Sensor Orientation reading.
+
 
 ## Field Documentation
 
@@ -48,4 +50,14 @@ float mavsdk::Telemetry::DistanceSensor::current_distance_m { float(NAN)}
 
 
 Current distance reading, NaN if unknown.
+
+
+### orientation {#structmavsdk_1_1_telemetry_1_1_distance_sensor_1a3a4457610b4d7af76290a0b53426bc68}
+
+```cpp
+EulerAngle mavsdk::Telemetry::DistanceSensor::orientation {}
+```
+
+
+Sensor Orientation reading.
 

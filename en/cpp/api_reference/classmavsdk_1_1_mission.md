@@ -31,6 +31,7 @@ std::function< void([Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_
 std::function< void([Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), [MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md))> [DownloadMissionCallback](#classmavsdk_1_1_mission_1af40f70b9b4c91aa280bf75fbfc333b3b) | Callback type for download_mission_async.
 std::function< void([Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), [ProgressDataOrMission](structmavsdk_1_1_mission_1_1_progress_data_or_mission.md))> [DownloadMissionWithProgressCallback](#classmavsdk_1_1_mission_1ae73dbe775ceaba81183cebdaa1b6779e) | Callback type for download_mission_with_progress_async.
 std::function< void([MissionProgress](structmavsdk_1_1_mission_1_1_mission_progress.md))> [MissionProgressCallback](#classmavsdk_1_1_mission_1a67e8d00b1b20affca59fd4338c34c0e2) | Callback type for subscribe_mission_progress.
+[Handle](classmavsdk_1_1_handle.md)< [MissionProgress](structmavsdk_1_1_mission_1_1_mission_progress.md) > [MissionProgressHandle](#classmavsdk_1_1_mission_1aded0ba06c787ad2f30f401a30b240c8a) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_mission_progress.
 
 ## Public Member Functions
 
@@ -39,15 +40,15 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Mission](#classmavsdk_1_1_mission_1ab02ae9aada51b483e45d88948fe62c29) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [Mission](#classmavsdk_1_1_mission_1a5222f05ac0c65c7455f19e136b8fcb22) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~Mission](#classmavsdk_1_1_mission_1a0a0e9ee6ff15fc2231277d929add95ef) () | Destructor (internal use only).
+&nbsp; | [~Mission](#classmavsdk_1_1_mission_1ab8ddd47439bbc63a0a6b175fdad0368e) () override | Destructor (internal use only).
 &nbsp; | [Mission](#classmavsdk_1_1_mission_1ab4a4a26254fdff0e3f3872f32479fe1c) (const [Mission](classmavsdk_1_1_mission.md) & other) | Copy constructor.
 void | [upload_mission_async](#classmavsdk_1_1_mission_1a250fc4758d47ec12e025c327dc0eb482) ([MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) mission_plan, const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) callback) | Upload a list of mission items to the system.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [upload_mission](#classmavsdk_1_1_mission_1a38274b1c1509375a182c44711ee9f7b1) ([MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) mission_plan)const | Upload a list of mission items to the system.
-void | [upload_mission_with_progress_async](#classmavsdk_1_1_mission_1a0742dbcc599c6d66b46dd0ff0c8b07a2) ([MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) mission_plan, [UploadMissionWithProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a559c82c81b3b7694973da8a65af24837) callback) | Upload a list of mission items to the system and report upload progress.
+void | [upload_mission_with_progress_async](#classmavsdk_1_1_mission_1a0faa587e80a59e8c40d7fc135650749c) ([MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) mission_plan, const [UploadMissionWithProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a559c82c81b3b7694973da8a65af24837) & callback) | Upload a list of mission items to the system and report upload progress.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [cancel_mission_upload](#classmavsdk_1_1_mission_1ab82609426bef51202b2107d33412378c) () const | Cancel an ongoing mission upload.
 void | [download_mission_async](#classmavsdk_1_1_mission_1a04e7e7074273b4591a820894c5c4ad43) (const [DownloadMissionCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1af40f70b9b4c91aa280bf75fbfc333b3b) callback) | Download a list of mission items from the system (asynchronous).
 std::pair< [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), [Mission::MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) > | [download_mission](#classmavsdk_1_1_mission_1a23e9f7da32f42bcce7ef16ea8044fe53) () const | Download a list of mission items from the system (asynchronous).
-void | [download_mission_with_progress_async](#classmavsdk_1_1_mission_1a98e4d4336f1a38ffc1778e254c0a999a) ([DownloadMissionWithProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ae73dbe775ceaba81183cebdaa1b6779e) callback) | Download a list of mission items from the system (asynchronous) and report progress.
+void | [download_mission_with_progress_async](#classmavsdk_1_1_mission_1a5b6b93482f2599c08d75d27a31a4f1d9) (const [DownloadMissionWithProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ae73dbe775ceaba81183cebdaa1b6779e) & callback) | Download a list of mission items from the system (asynchronous) and report progress.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [cancel_mission_download](#classmavsdk_1_1_mission_1a0eaaeffe0354156b5abed892f0950bcc) () const | Cancel an ongoing mission download.
 void | [start_mission_async](#classmavsdk_1_1_mission_1a31ca2fc6b9fe4802dbc3fbebad0bb5d7) (const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) callback) | Start the mission.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [start_mission](#classmavsdk_1_1_mission_1a927fecc7734810d01cc218153780e6e3) () const | Start the mission.
@@ -58,7 +59,8 @@ void | [clear_mission_async](#classmavsdk_1_1_mission_1a51d04a808743915e3cac7f35
 void | [set_current_mission_item_async](#classmavsdk_1_1_mission_1a81aa356215cb2131c2480dc121a6af7b) (int32_t index, const [ResultCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a30091e79f5b67ade138e5be9d65b6591) callback) | Sets the mission item index to go to.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [set_current_mission_item](#classmavsdk_1_1_mission_1a419397edcf63771ddd59a6af231bc8d2) (int32_t index)const | Sets the mission item index to go to.
 std::pair< [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), bool > | [is_mission_finished](#classmavsdk_1_1_mission_1a1ecf4f8798ab9ae96882dfbd34f23466) () const | Check if the mission has been finished.
-void | [subscribe_mission_progress](#classmavsdk_1_1_mission_1a6dd32b92e593c1a692fe59e5bfb670fb) ([MissionProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a67e8d00b1b20affca59fd4338c34c0e2) callback) | Subscribe to mission progress updates.
+[MissionProgressHandle](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1aded0ba06c787ad2f30f401a30b240c8a) | [subscribe_mission_progress](#classmavsdk_1_1_mission_1ac6d3e78de0ea2e6c1db2eaa5f3418660) (const [MissionProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a67e8d00b1b20affca59fd4338c34c0e2) & callback) | Subscribe to mission progress updates.
+void | [unsubscribe_mission_progress](#classmavsdk_1_1_mission_1a2b8bc4dd210506a703afa926f8406880) ([MissionProgressHandle](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1aded0ba06c787ad2f30f401a30b240c8a) handle) | Unsubscribe from subscribe_mission_progress.
 [MissionProgress](structmavsdk_1_1_mission_1_1_mission_progress.md) | [mission_progress](#classmavsdk_1_1_mission_1a5570443e7c1f08cff1759980ff44b40e) () const | Poll for '[MissionProgress](structmavsdk_1_1_mission_1_1_mission_progress.md)' (blocking).
 std::pair< [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), bool > | [get_return_to_launch_after_mission](#classmavsdk_1_1_mission_1a38d17268541ba81d494976caa4a08661) () const | Get whether to trigger Return-to-Launch (RTL) after mission is complete.
 [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) | [set_return_to_launch_after_mission](#classmavsdk_1_1_mission_1ab4adb09283b3fa64a8829f9a6e34cf37) (bool enable)const | Set whether to trigger Return-to-Launch (RTL) after the mission is complete.
@@ -104,9 +106,9 @@ auto mission = Mission(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~Mission() {#classmavsdk_1_1_mission_1a0a0e9ee6ff15fc2231277d929add95ef}
+### ~Mission() {#classmavsdk_1_1_mission_1ab8ddd47439bbc63a0a6b175fdad0368e}
 ```cpp
-mavsdk::Mission::~Mission()
+mavsdk::Mission::~Mission() override
 ```
 
 
@@ -179,6 +181,16 @@ using mavsdk::Mission::MissionProgressCallback =  std::function<void(MissionProg
 Callback type for subscribe_mission_progress.
 
 
+### typedef MissionProgressHandle {#classmavsdk_1_1_mission_1aded0ba06c787ad2f30f401a30b240c8a}
+
+```cpp
+using mavsdk::Mission::MissionProgressHandle =  Handle<MissionProgress>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_mission_progress.
+
+
 ## Member Enumeration Documentation
 
 
@@ -203,6 +215,9 @@ Value | Description
 <span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a3465fd31285ebd60597cf59bff9db01a"></span> `TransferCancelled` | [Mission](classmavsdk_1_1_mission.md) transfer (upload or download) has been cancelled. 
 <span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a1119faf72ba0dfb23aeea644fed960ad"></span> `NoSystem` | No system connected. 
 <span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a10ac3d04253ef7e1ddc73e6091c0cd55"></span> `Next` | Intermediate message showing progress. 
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a58d036b9b7f0e7eb38cfb90f1cc70a73"></span> `Denied` | Request denied. 
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6aca3da8f495e4e628912a7798655da6c2"></span> `ProtocolError` | There was a protocol error. 
+<span id="classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6a3f5f527103f3b11c1c271363c542432b"></span> `IntMessagesNotSupported` | The system does not support the MISSION_INT protocol. 
 
 ## Member Function Documentation
 
@@ -246,9 +261,9 @@ This function is blocking. See 'upload_mission_async' for the non-blocking count
 
 &emsp;[Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6) - Result of request.
 
-### upload_mission_with_progress_async() {#classmavsdk_1_1_mission_1a0742dbcc599c6d66b46dd0ff0c8b07a2}
+### upload_mission_with_progress_async() {#classmavsdk_1_1_mission_1a0faa587e80a59e8c40d7fc135650749c}
 ```cpp
-void mavsdk::Mission::upload_mission_with_progress_async(MissionPlan mission_plan, UploadMissionWithProgressCallback callback)
+void mavsdk::Mission::upload_mission_with_progress_async(MissionPlan mission_plan, const UploadMissionWithProgressCallback &callback)
 ```
 
 
@@ -259,7 +274,7 @@ The mission items are uploaded to a drone. Once uploaded the mission can be star
 **Parameters**
 
 * [MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) **mission_plan** - 
-* [UploadMissionWithProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a559c82c81b3b7694973da8a65af24837) **callback** - 
+* const [UploadMissionWithProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a559c82c81b3b7694973da8a65af24837)& **callback** - 
 
 ### cancel_mission_upload() {#classmavsdk_1_1_mission_1ab82609426bef51202b2107d33412378c}
 ```cpp
@@ -309,9 +324,9 @@ This function is blocking. See 'download_mission_async' for the non-blocking cou
 
 &emsp;std::pair< [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), [Mission::MissionPlan](structmavsdk_1_1_mission_1_1_mission_plan.md) > - Result of request.
 
-### download_mission_with_progress_async() {#classmavsdk_1_1_mission_1a98e4d4336f1a38ffc1778e254c0a999a}
+### download_mission_with_progress_async() {#classmavsdk_1_1_mission_1a5b6b93482f2599c08d75d27a31a4f1d9}
 ```cpp
-void mavsdk::Mission::download_mission_with_progress_async(DownloadMissionWithProgressCallback callback)
+void mavsdk::Mission::download_mission_with_progress_async(const DownloadMissionWithProgressCallback &callback)
 ```
 
 
@@ -321,7 +336,7 @@ Will fail if any of the downloaded mission items are not supported by the MAVSDK
 
 **Parameters**
 
-* [DownloadMissionWithProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ae73dbe775ceaba81183cebdaa1b6779e) **callback** - 
+* const [DownloadMissionWithProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ae73dbe775ceaba81183cebdaa1b6779e)& **callback** - 
 
 ### cancel_mission_download() {#classmavsdk_1_1_mission_1a0eaaeffe0354156b5abed892f0950bcc}
 ```cpp
@@ -492,9 +507,9 @@ This function is blocking.
 
 &emsp;std::pair< [Result](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1ab3114c63db76bdc37460939a1f3316f6), bool > - Result of request.
 
-### subscribe_mission_progress() {#classmavsdk_1_1_mission_1a6dd32b92e593c1a692fe59e5bfb670fb}
+### subscribe_mission_progress() {#classmavsdk_1_1_mission_1ac6d3e78de0ea2e6c1db2eaa5f3418660}
 ```cpp
-void mavsdk::Mission::subscribe_mission_progress(MissionProgressCallback callback)
+MissionProgressHandle mavsdk::Mission::subscribe_mission_progress(const MissionProgressCallback &callback)
 ```
 
 
@@ -503,7 +518,24 @@ Subscribe to mission progress updates.
 
 **Parameters**
 
-* [MissionProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a67e8d00b1b20affca59fd4338c34c0e2) **callback** - 
+* const [MissionProgressCallback](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1a67e8d00b1b20affca59fd4338c34c0e2)& **callback** - 
+
+**Returns**
+
+&emsp;[MissionProgressHandle](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1aded0ba06c787ad2f30f401a30b240c8a) - 
+
+### unsubscribe_mission_progress() {#classmavsdk_1_1_mission_1a2b8bc4dd210506a703afa926f8406880}
+```cpp
+void mavsdk::Mission::unsubscribe_mission_progress(MissionProgressHandle handle)
+```
+
+
+Unsubscribe from subscribe_mission_progress.
+
+
+**Parameters**
+
+* [MissionProgressHandle](classmavsdk_1_1_mission.md#classmavsdk_1_1_mission_1aded0ba06c787ad2f30f401a30b240c8a) **handle** - 
 
 ### mission_progress() {#classmavsdk_1_1_mission_1a5570443e7c1f08cff1759980ff44b40e}
 ```cpp

@@ -26,7 +26,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Action](#classmavsdk_1_1_action_1a5e2a4d65f85d821be691a837453e56ee) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [Action](#classmavsdk_1_1_action_1a4359d18e02bca100175cd00fab814550) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~Action](#classmavsdk_1_1_action_1a20428abedfcd9fe413e16d2398ff99b4) () | Destructor (internal use only).
+&nbsp; | [~Action](#classmavsdk_1_1_action_1a99352fe4e83e4b721d5c5b5942beb76f) () override | Destructor (internal use only).
 &nbsp; | [Action](#classmavsdk_1_1_action_1a99fc1d6fc90af15a93bb270b0279a095) (const [Action](classmavsdk_1_1_action.md) & other) | Copy constructor.
 void | [arm_async](#classmavsdk_1_1_action_1a570a3799ca5dbbf8aab30ce465687796) (const [ResultCallback](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1a70a7b6e742d0c86728dc2e1827dacccd) callback) | Send command to arm the drone.
 [Result](classmavsdk_1_1_action.md#classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51) | [arm](#classmavsdk_1_1_action_1a3ee123973982842f46a9f8b6cb952566) () const | Send command to arm the drone.
@@ -114,9 +114,9 @@ auto action = Action(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~Action() {#classmavsdk_1_1_action_1a20428abedfcd9fe413e16d2398ff99b4}
+### ~Action() {#classmavsdk_1_1_action_1a99352fe4e83e4b721d5c5b5942beb76f}
 ```cpp
-mavsdk::Action::~Action()
+mavsdk::Action::~Action() override
 ```
 
 
@@ -217,6 +217,7 @@ Value | Description
 <span id="classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51a5039f02d708e3874858b22610ed63d1e"></span> `NoVtolTransitionSupport` | Vehicle does not support hybrid/VTOL transitions. 
 <span id="classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51a189976b733e988a6903e4d19d8cd2fea"></span> `ParameterError` | Error getting or setting parameter. 
 <span id="classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51ab4080bdf74febf04d578ff105cce9d3f"></span> `Unsupported` | [Action](classmavsdk_1_1_action.md) not supported. 
+<span id="classmavsdk_1_1_action_1adc2e13257ef13de0e7610cf879a0ec51ad7c8c85bf79bbe1b7188497c32c3b0ca"></span> `Failed` | [Action](classmavsdk_1_1_action.md) failed. 
 
 ## Member Function Documentation
 

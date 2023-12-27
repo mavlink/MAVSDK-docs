@@ -22,63 +22,46 @@ Type | Description
 enum [Result](#classmavsdk_1_1_component_information_server_1aca86e47230e256d3f812269dcbaa5cad) | Possible results returned for param requests.
 std::function< void([Result](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1aca86e47230e256d3f812269dcbaa5cad))> [ResultCallback](#classmavsdk_1_1_component_information_server_1a5f65b34949a1954c85f3f02e64dec35f) | Callback type for asynchronous [ComponentInformationServer](classmavsdk_1_1_component_information_server.md) calls.
 std::function< void([FloatParamUpdate](structmavsdk_1_1_component_information_server_1_1_float_param_update.md))> [FloatParamCallback](#classmavsdk_1_1_component_information_server_1a6174e3eebb5a10c619c57723623696cf) | Callback type for subscribe_float_param.
+[Handle](classmavsdk_1_1_handle.md)< [FloatParamUpdate](structmavsdk_1_1_component_information_server_1_1_float_param_update.md) > [FloatParamHandle](#classmavsdk_1_1_component_information_server_1a0843521587e27f0d630280309712bddb) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_float_param.
 
 ## Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [ComponentInformationServer](#classmavsdk_1_1_component_information_server_1aec0b2946404466539e22ba3bf85eea15) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [ComponentInformationServer](#classmavsdk_1_1_component_information_server_1adf569b42ae040e3ce0c788715ba05b9f) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~ComponentInformationServer](#classmavsdk_1_1_component_information_server_1a359efc7e3079812d0c40bde8bd98a084) () | Destructor (internal use only).
+&nbsp; | [ComponentInformationServer](#classmavsdk_1_1_component_information_server_1a89266c1e143f0cffb6596897b92f7b62) (std::shared_ptr< [ServerComponent](classmavsdk_1_1_server_component.md) > server_component) | Constructor. Creates the plugin for a [ServerComponent](classmavsdk_1_1_server_component.md) instance.
+&nbsp; | [~ComponentInformationServer](#classmavsdk_1_1_component_information_server_1a64a224210755136e130b349db3a8fd10) () override | Destructor (internal use only).
 &nbsp; | [ComponentInformationServer](#classmavsdk_1_1_component_information_server_1a7f8fc33e21e00a390da14596465c800d) (const [ComponentInformationServer](classmavsdk_1_1_component_information_server.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1aca86e47230e256d3f812269dcbaa5cad) | [provide_float_param](#classmavsdk_1_1_component_information_server_1ac4f9a480ef052b792e65b82c3c08b225) ([FloatParam](structmavsdk_1_1_component_information_server_1_1_float_param.md) param)const | Provide a param of type float.
-void | [subscribe_float_param](#classmavsdk_1_1_component_information_server_1aadab6186143edb43d1dddfc2188ac1bd) ([FloatParamCallback](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1a6174e3eebb5a10c619c57723623696cf) callback) | Subscribe to float param updates.
+[FloatParamHandle](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1a0843521587e27f0d630280309712bddb) | [subscribe_float_param](#classmavsdk_1_1_component_information_server_1afb87c280501c677a8f4eaa33394d24e7) (const [FloatParamCallback](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1a6174e3eebb5a10c619c57723623696cf) & callback) | Subscribe to float param updates.
+void | [unsubscribe_float_param](#classmavsdk_1_1_component_information_server_1a56650131d743e441232c5edf844acaeb) ([FloatParamHandle](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1a0843521587e27f0d630280309712bddb) handle) | Unsubscribe from subscribe_float_param.
 const [ComponentInformationServer](classmavsdk_1_1_component_information_server.md) & | [operator=](#classmavsdk_1_1_component_information_server_1a850a10c9d195da5f52807984e72d21fa) (const [ComponentInformationServer](classmavsdk_1_1_component_information_server.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
 
 
-### ComponentInformationServer() {#classmavsdk_1_1_component_information_server_1aec0b2946404466539e22ba3bf85eea15}
+### ComponentInformationServer() {#classmavsdk_1_1_component_information_server_1a89266c1e143f0cffb6596897b92f7b62}
 ```cpp
-mavsdk::ComponentInformationServer::ComponentInformationServer(System &system)
+mavsdk::ComponentInformationServer::ComponentInformationServer(std::shared_ptr< ServerComponent > server_component)
 ```
 
 
-Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+Constructor. Creates the plugin for a [ServerComponent](classmavsdk_1_1_server_component.md) instance.
 
 The plugin is typically created as shown below: 
 
 ```cpp
-auto component_information_server = ComponentInformationServer(system);
+auto component_information_server = ComponentInformationServer(server_component);
 ```
 
 **Parameters**
 
-* [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+* std::shared_ptr< [ServerComponent](classmavsdk_1_1_server_component.md) > **server_component** - The [ServerComponent](classmavsdk_1_1_server_component.md) instance associated with this server plugin.
 
-### ComponentInformationServer() {#classmavsdk_1_1_component_information_server_1adf569b42ae040e3ce0c788715ba05b9f}
+### ~ComponentInformationServer() {#classmavsdk_1_1_component_information_server_1a64a224210755136e130b349db3a8fd10}
 ```cpp
-mavsdk::ComponentInformationServer::ComponentInformationServer(std::shared_ptr< System > system)
-```
-
-
-Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-
-The plugin is typically created as shown below: 
-
-```cpp
-auto component_information_server = ComponentInformationServer(system);
-```
-
-**Parameters**
-
-* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
-
-### ~ComponentInformationServer() {#classmavsdk_1_1_component_information_server_1a359efc7e3079812d0c40bde8bd98a084}
-```cpp
-mavsdk::ComponentInformationServer::~ComponentInformationServer()
+mavsdk::ComponentInformationServer::~ComponentInformationServer() override
 ```
 
 
@@ -121,6 +104,16 @@ using mavsdk::ComponentInformationServer::FloatParamCallback =  std::function<vo
 Callback type for subscribe_float_param.
 
 
+### typedef FloatParamHandle {#classmavsdk_1_1_component_information_server_1a0843521587e27f0d630280309712bddb}
+
+```cpp
+using mavsdk::ComponentInformationServer::FloatParamHandle =  Handle<FloatParamUpdate>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_float_param.
+
+
 ## Member Enumeration Documentation
 
 
@@ -161,9 +154,9 @@ This function is blocking.
 
 &emsp;[Result](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1aca86e47230e256d3f812269dcbaa5cad) - Result of request.
 
-### subscribe_float_param() {#classmavsdk_1_1_component_information_server_1aadab6186143edb43d1dddfc2188ac1bd}
+### subscribe_float_param() {#classmavsdk_1_1_component_information_server_1afb87c280501c677a8f4eaa33394d24e7}
 ```cpp
-void mavsdk::ComponentInformationServer::subscribe_float_param(FloatParamCallback callback)
+FloatParamHandle mavsdk::ComponentInformationServer::subscribe_float_param(const FloatParamCallback &callback)
 ```
 
 
@@ -172,7 +165,24 @@ Subscribe to float param updates.
 
 **Parameters**
 
-* [FloatParamCallback](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1a6174e3eebb5a10c619c57723623696cf) **callback** - 
+* const [FloatParamCallback](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1a6174e3eebb5a10c619c57723623696cf)& **callback** - 
+
+**Returns**
+
+&emsp;[FloatParamHandle](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1a0843521587e27f0d630280309712bddb) - 
+
+### unsubscribe_float_param() {#classmavsdk_1_1_component_information_server_1a56650131d743e441232c5edf844acaeb}
+```cpp
+void mavsdk::ComponentInformationServer::unsubscribe_float_param(FloatParamHandle handle)
+```
+
+
+Unsubscribe from subscribe_float_param.
+
+
+**Parameters**
+
+* [FloatParamHandle](classmavsdk_1_1_component_information_server.md#classmavsdk_1_1_component_information_server_1a0843521587e27f0d630280309712bddb) **handle** - 
 
 ### operator=() {#classmavsdk_1_1_component_information_server_1a850a10c9d195da5f52807984e72d21fa}
 ```cpp

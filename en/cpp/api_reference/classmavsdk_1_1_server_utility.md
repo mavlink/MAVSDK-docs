@@ -23,7 +23,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [ServerUtility](#classmavsdk_1_1_server_utility_1af6a56f1c96b29e033c4412c669e02060) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [ServerUtility](#classmavsdk_1_1_server_utility_1a54e7ef77c7ff8bee6c8f3e8d5cc0864c) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~ServerUtility](#classmavsdk_1_1_server_utility_1aeea37221393a991106429a718b60280a) () | Destructor (internal use only).
+&nbsp; | [~ServerUtility](#classmavsdk_1_1_server_utility_1a3f5fe15b02bcf41520a94feb2fc51fce) () override | Destructor (internal use only).
 &nbsp; | [ServerUtility](#classmavsdk_1_1_server_utility_1a9cbd0e7b1b19b21d98ce7e914ea03f95) (const [ServerUtility](classmavsdk_1_1_server_utility.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_server_utility.md#classmavsdk_1_1_server_utility_1accdda519179f5fc6fe946a727f75f468) | [send_status_text](#classmavsdk_1_1_server_utility_1a7b7bb0b568e94575615086a86a625ae1) ([StatusTextType](classmavsdk_1_1_server_utility.md#classmavsdk_1_1_server_utility_1a763ddc41251f992acec6af7f19287233) type, std::string text)const | Sends a statustext.
 const [ServerUtility](classmavsdk_1_1_server_utility.md) & | [operator=](#classmavsdk_1_1_server_utility_1a11fcb91df55711ecb78d8687b1d47472) (const [ServerUtility](classmavsdk_1_1_server_utility.md) &)=delete | Equality operator (object is not copyable).
@@ -68,9 +68,9 @@ auto server_utility = ServerUtility(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~ServerUtility() {#classmavsdk_1_1_server_utility_1aeea37221393a991106429a718b60280a}
+### ~ServerUtility() {#classmavsdk_1_1_server_utility_1a3f5fe15b02bcf41520a94feb2fc51fce}
 ```cpp
-mavsdk::ServerUtility::~ServerUtility()
+mavsdk::ServerUtility::~ServerUtility() override
 ```
 
 

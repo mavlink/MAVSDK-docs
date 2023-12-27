@@ -22,7 +22,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [ManualControl](#classmavsdk_1_1_manual_control_1af89d947dd2c843cc41f2ea183ad17b03) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [ManualControl](#classmavsdk_1_1_manual_control_1acf87299c9d9b632dbbc0975244c537e9) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~ManualControl](#classmavsdk_1_1_manual_control_1a793e4be2447ef44cfd5a41b1c06e9350) () | Destructor (internal use only).
+&nbsp; | [~ManualControl](#classmavsdk_1_1_manual_control_1a7e1bfb49a11b98c541b88fdef8fe76f7) () override | Destructor (internal use only).
 &nbsp; | [ManualControl](#classmavsdk_1_1_manual_control_1a8253b8063d4cd4832d84acd2afa26775) (const [ManualControl](classmavsdk_1_1_manual_control.md) & other) | Copy constructor.
 void | [start_position_control_async](#classmavsdk_1_1_manual_control_1a2a3352c11c56dd14d55537b3a6413792) (const [ResultCallback](classmavsdk_1_1_manual_control.md#classmavsdk_1_1_manual_control_1a08b010bafdf770d3e4ea6060f56a0f3b) callback) | Start position control using e.g. joystick input.
 [Result](classmavsdk_1_1_manual_control.md#classmavsdk_1_1_manual_control_1a6c7dbd25e051b6e1369a65fd05a22799) | [start_position_control](#classmavsdk_1_1_manual_control_1a570c7e78fc9c5083d9a2f9570c32caaa) () const | Start position control using e.g. joystick input.
@@ -71,9 +71,9 @@ auto manual_control = ManualControl(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~ManualControl() {#classmavsdk_1_1_manual_control_1a793e4be2447ef44cfd5a41b1c06e9350}
+### ~ManualControl() {#classmavsdk_1_1_manual_control_1a7e1bfb49a11b98c541b88fdef8fe76f7}
 ```cpp
-mavsdk::ManualControl::~ManualControl()
+mavsdk::ManualControl::~ManualControl() override
 ```
 
 

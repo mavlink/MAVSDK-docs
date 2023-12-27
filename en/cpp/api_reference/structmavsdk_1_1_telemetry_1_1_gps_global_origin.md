@@ -14,7 +14,7 @@ double [latitude_deg](#structmavsdk_1_1_telemetry_1_1_gps_global_origin_1a536463
 
 double [longitude_deg](#structmavsdk_1_1_telemetry_1_1_gps_global_origin_1a29614c8df2f364a278ceb8a7803e0604) {double(NAN)} - Longitude of the origin.
 
-float [altitude_m](#structmavsdk_1_1_telemetry_1_1_gps_global_origin_1a346a73d38ab2c360fd0e79b8a0c5455f) {float(NAN)} - Altitude AMSL (above mean sea level) in metres.
+float [altitude_m](#structmavsdk_1_1_telemetry_1_1_gps_global_origin_1a346a73d38ab2c360fd0e79b8a0c5455f) {float(NAN)} - [Altitude](structmavsdk_1_1_telemetry_1_1_altitude.md) AMSL (above mean sea level) in metres.
 
 
 ## Field Documentation
@@ -47,5 +47,5 @@ float mavsdk::Telemetry::GpsGlobalOrigin::altitude_m {float(NAN)}
 ```
 
 
-Altitude AMSL (above mean sea level) in metres.
+[Altitude](structmavsdk_1_1_telemetry_1_1_altitude.md) AMSL (above mean sea level) in metres.
 

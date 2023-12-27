@@ -7,20 +7,13 @@
 Possible configurations. 
 
 
-## Public Types
-
-
-Type | Description
---- | ---
-enum [UsageType](#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) | UsageTypes of configurations, used for automatic ID setting.
-
 ## Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a10477130d041107e76efd1f94e65b503) (uint8_t system_id, uint8_t component_id, bool always_send_heartbeats) | Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) via manually configured system and component ID.
-&nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1afe37b405647f2cdcd7d3e0f6661676e1) ([UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) usage_type) | Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) using a usage type. In this mode, the system and component ID will be automatically chosen.
+&nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1abcc015ee6be8abc2da2c967bbbda9fed) ([ComponentType](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ac9e9d48bbf840dad8705323b224b1746) component_type) | Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) using a component type. In this mode, the system and component ID will be automatically chosen.
 &nbsp; | [Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a1a65e2e31f06bec1f6692a933c95b03c) ()=delete |
 &nbsp; | [~Configuration](#classmavsdk_1_1_mavsdk_1_1_configuration_1a31cad2329ee14898752638d9c3759da9) ()=default |
 uint8_t | [get_system_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1a0497bdda816b674b1418ab07889ca781) () const | Get the system id of this configuration.
@@ -29,8 +22,8 @@ uint8_t | [get_component_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1adfcae3d
 void | [set_component_id](#classmavsdk_1_1_mavsdk_1_1_configuration_1aa590fbafa8ca104e1a004ca537f5798e) (uint8_t component_id) | Set the component id of this configuration.
 bool | [get_always_send_heartbeats](#classmavsdk_1_1_mavsdk_1_1_configuration_1a0aa9008fe5a7498f374dbd2adad5f137) () const | Get whether to send heartbeats by default.
 void | [set_always_send_heartbeats](#classmavsdk_1_1_mavsdk_1_1_configuration_1a0ad68b52763e205012b34faa5120a792) (bool always_send_heartbeats) | Set whether to send heartbeats by default.
-[UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) | [get_usage_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a7f2e657d2d86870ca07e1d0520f6c117) () const | Usage type of this configuration, used for automatic ID set.
-void | [set_usage_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a7664dce33264446e4d2e8410d5e140c6) ([UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) usage_type) | Set the usage type of this configuration.
+[ComponentType](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ac9e9d48bbf840dad8705323b224b1746) | [get_component_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a81d3645816f8a3072044498c3f539d12) () const | Component type of this configuration, used for automatic ID set.
+void | [set_component_type](#classmavsdk_1_1_mavsdk_1_1_configuration_1a06461b86734eaa9544e80a4a907c9754) ([ComponentType](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ac9e9d48bbf840dad8705323b224b1746) component_type) | Set the component type of this configuration.
 
 
 ## Constructor & Destructor Documentation
@@ -51,18 +44,18 @@ Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) via manu
 * uint8_t **component_id** - the component id to store in this configuration
 * bool **always_send_heartbeats** - send heartbeats by default even without a system connected
 
-### Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1afe37b405647f2cdcd7d3e0f6661676e1}
+### Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1abcc015ee6be8abc2da2c967bbbda9fed}
 ```cpp
-mavsdk::Mavsdk::Configuration::Configuration(UsageType usage_type)
+mavsdk::Mavsdk::Configuration::Configuration(ComponentType component_type)
 ```
 
 
-Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) using a usage type. In this mode, the system and component ID will be automatically chosen.
+Create new [Configuration](classmavsdk_1_1_mavsdk_1_1_configuration.md) using a component type. In this mode, the system and component ID will be automatically chosen.
 
 
 **Parameters**
 
-* [UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) **usage_type** - the usage type, used for automatically choosing ids.
+* [ComponentType](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ac9e9d48bbf840dad8705323b224b1746) **component_type** - the component type, used for automatically choosing ids.
 
 ### Configuration() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a1a65e2e31f06bec1f6692a933c95b03c}
 ```cpp
@@ -75,26 +68,6 @@ mavsdk::Mavsdk::Configuration::Configuration()=delete
 mavsdk::Mavsdk::Configuration::~Configuration()=default
 ```
 
-
-## Member Enumeration Documentation
-
-
-### enum UsageType {#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8}
-
-
-UsageTypes of configurations, used for automatic ID setting.
-
-
-Value | Description
---- | ---
-<span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a6ca1d2b081cc474f42cb95e3d04e6e68"></span> `Autopilot` | SDK is used as an autopilot. 
-<span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8af64f82089eddc6133add8c55c65d6687"></span> `GroundStation` | SDK is used as a ground station. 
-<span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a8f2f82e1a7aa48819e9530d5c4977477"></span> `CompanionComputer` | SDK is used as a companion computer on board the MAV. 
-<span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a967d35e40f3f95b1f538bd248640bf3b"></span> `Camera` |  
-<span id="classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8a90589c47f06eb971d548591f23c285af"></span> `Custom` | SDK is used as a camera. <
-
-
-the SDK is used in a custom configuration, no automatic ID will be provided
 
 ## Member Function Documentation
 
@@ -177,28 +150,28 @@ Set whether to send heartbeats by default.
 
 * bool **always_send_heartbeats** - 
 
-### get_usage_type() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a7f2e657d2d86870ca07e1d0520f6c117}
+### get_component_type() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a81d3645816f8a3072044498c3f539d12}
 ```cpp
-UsageType mavsdk::Mavsdk::Configuration::get_usage_type() const
+ComponentType mavsdk::Mavsdk::Configuration::get_component_type() const
 ```
 
 
-Usage type of this configuration, used for automatic ID set.
+Component type of this configuration, used for automatic ID set.
 
 
 **Returns**
 
-&emsp;[UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) - 
+&emsp;[ComponentType](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ac9e9d48bbf840dad8705323b224b1746) - 
 
-### set_usage_type() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a7664dce33264446e4d2e8410d5e140c6}
+### set_component_type() {#classmavsdk_1_1_mavsdk_1_1_configuration_1a06461b86734eaa9544e80a4a907c9754}
 ```cpp
-void mavsdk::Mavsdk::Configuration::set_usage_type(UsageType usage_type)
+void mavsdk::Mavsdk::Configuration::set_component_type(ComponentType component_type)
 ```
 
 
-Set the usage type of this configuration.
+Set the component type of this configuration.
 
 
 **Parameters**
 
-* [UsageType](classmavsdk_1_1_mavsdk_1_1_configuration.md#classmavsdk_1_1_mavsdk_1_1_configuration_1a4426913e8669b94b9e88810c500482f8) **usage_type** - 
+* [ComponentType](classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1ac9e9d48bbf840dad8705323b224b1746) **component_type** - 

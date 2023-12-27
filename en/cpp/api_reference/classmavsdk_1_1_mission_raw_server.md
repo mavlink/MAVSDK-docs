@@ -24,24 +24,29 @@ Type | Description
 enum [Result](#classmavsdk_1_1_mission_raw_server_1a14f2cae8b098b7221d8aae547b70f7bd) | Possible results returned for action requests.
 std::function< void([Result](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a14f2cae8b098b7221d8aae547b70f7bd))> [ResultCallback](#classmavsdk_1_1_mission_raw_server_1a3bddb8adba3f8576ae102639601e576f) | Callback type for asynchronous [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) calls.
 std::function< void([Result](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a14f2cae8b098b7221d8aae547b70f7bd), [MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md))> [IncomingMissionCallback](#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693) | Callback type for subscribe_incoming_mission.
+[Handle](classmavsdk_1_1_handle.md)< [Result](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a14f2cae8b098b7221d8aae547b70f7bd), [MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md) > [IncomingMissionHandle](#classmavsdk_1_1_mission_raw_server_1a71173397d112f738fd05014ccc0952ff) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_incoming_mission.
 std::function< void([MissionItem](structmavsdk_1_1_mission_raw_server_1_1_mission_item.md))> [CurrentItemChangedCallback](#classmavsdk_1_1_mission_raw_server_1aca7ac64b6e39e612d05ff6497cd572b1) | Callback type for subscribe_current_item_changed.
+[Handle](classmavsdk_1_1_handle.md)< [MissionItem](structmavsdk_1_1_mission_raw_server_1_1_mission_item.md) > [CurrentItemChangedHandle](#classmavsdk_1_1_mission_raw_server_1a490cab4b8b06fd5d6eb8e759427f5b47) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_current_item_changed.
 std::function< void(uint32_t)> [ClearAllCallback](#classmavsdk_1_1_mission_raw_server_1ae9d7d9d863d1552274440d091e2ec869) | Callback type for subscribe_clear_all.
+[Handle](classmavsdk_1_1_handle.md)< uint32_t > [ClearAllHandle](#classmavsdk_1_1_mission_raw_server_1a59022e22386a18e9d51f88e6ed3cf120) | [Handle](classmavsdk_1_1_handle.md) type for subscribe_clear_all.
 
 ## Public Member Functions
 
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [MissionRawServer](#classmavsdk_1_1_mission_raw_server_1a409bf742aa4e227b83877476641e938e) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [MissionRawServer](#classmavsdk_1_1_mission_raw_server_1ac742e0088f8b72d349b2808f00bdf24b) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~MissionRawServer](#classmavsdk_1_1_mission_raw_server_1a547fd04a550429c4d395b528da554175) () | Destructor (internal use only).
+&nbsp; | [MissionRawServer](#classmavsdk_1_1_mission_raw_server_1a8a899f742cf7b52c27185cee5e5b29e8) (std::shared_ptr< [ServerComponent](classmavsdk_1_1_server_component.md) > server_component) | Constructor. Creates the plugin for a [ServerComponent](classmavsdk_1_1_server_component.md) instance.
+&nbsp; | [~MissionRawServer](#classmavsdk_1_1_mission_raw_server_1a7e14a210c0e7ac4b19633cf8dbd4bbec) () override | Destructor (internal use only).
 &nbsp; | [MissionRawServer](#classmavsdk_1_1_mission_raw_server_1a14b11b78ba44bdda6fb718ed13e1ab77) (const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) & other) | Copy constructor.
-void | [subscribe_incoming_mission](#classmavsdk_1_1_mission_raw_server_1a31b14a826e6bb8727c26105f05e53550) ([IncomingMissionCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693) callback) | Subscribe to when a new mission is uploaded (asynchronous).
+[IncomingMissionHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a71173397d112f738fd05014ccc0952ff) | [subscribe_incoming_mission](#classmavsdk_1_1_mission_raw_server_1aede616f945d7c59d2da6afad830f377b) (const [IncomingMissionCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693) & callback) | Subscribe to when a new mission is uploaded (asynchronous).
+void | [unsubscribe_incoming_mission](#classmavsdk_1_1_mission_raw_server_1a93107d6ee73d03edc0050401c5a5f169) ([IncomingMissionHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a71173397d112f738fd05014ccc0952ff) handle) | Unsubscribe from subscribe_incoming_mission.
 [MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md) | [incoming_mission](#classmavsdk_1_1_mission_raw_server_1ae7c20d621170e5454953513526241577) () const | Poll for '[MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md)' (blocking).
-void | [subscribe_current_item_changed](#classmavsdk_1_1_mission_raw_server_1a60ea84204d2679b41a607d87cd9a1082) ([CurrentItemChangedCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1aca7ac64b6e39e612d05ff6497cd572b1) callback) | Subscribe to when a new current item is set.
+[CurrentItemChangedHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a490cab4b8b06fd5d6eb8e759427f5b47) | [subscribe_current_item_changed](#classmavsdk_1_1_mission_raw_server_1a287af1e5ca18de2e84345b4f5f8fa386) (const [CurrentItemChangedCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1aca7ac64b6e39e612d05ff6497cd572b1) & callback) | Subscribe to when a new current item is set.
+void | [unsubscribe_current_item_changed](#classmavsdk_1_1_mission_raw_server_1a8c693a86be890f78a5a10cee9a36dc6c) ([CurrentItemChangedHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a490cab4b8b06fd5d6eb8e759427f5b47) handle) | Unsubscribe from subscribe_current_item_changed.
 [MissionItem](structmavsdk_1_1_mission_raw_server_1_1_mission_item.md) | [current_item_changed](#classmavsdk_1_1_mission_raw_server_1af2bbab99a8a2e1dd1dfebceb439f2ad1) () const | Poll for '[MissionItem](structmavsdk_1_1_mission_raw_server_1_1_mission_item.md)' (blocking).
 void | [set_current_item_complete](#classmavsdk_1_1_mission_raw_server_1a496791a14c2bdc1e9917f5d04622330a) () const | Set Current item as completed.
-void | [subscribe_clear_all](#classmavsdk_1_1_mission_raw_server_1a990002711e49d62b854a608bd30126a9) ([ClearAllCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ae9d7d9d863d1552274440d091e2ec869) callback) | Subscribe when a MISSION_CLEAR_ALL is received.
+[ClearAllHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a59022e22386a18e9d51f88e6ed3cf120) | [subscribe_clear_all](#classmavsdk_1_1_mission_raw_server_1a9b08ba6c1607618e67fd1ec723883415) (const [ClearAllCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ae9d7d9d863d1552274440d091e2ec869) & callback) | Subscribe when a MISSION_CLEAR_ALL is received.
+void | [unsubscribe_clear_all](#classmavsdk_1_1_mission_raw_server_1af337c8126b52d78436605a3b2e558397) ([ClearAllHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a59022e22386a18e9d51f88e6ed3cf120) handle) | Unsubscribe from subscribe_clear_all.
 uint32_t | [clear_all](#classmavsdk_1_1_mission_raw_server_1a307e0f39d704ae9aeb227a27092bf435) () const | Poll for 'uint32_t' (blocking).
 const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) & | [operator=](#classmavsdk_1_1_mission_raw_server_1aad0690db8cec599b271d4f62e8ecd975) (const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) &)=delete | Equality operator (object is not copyable).
 
@@ -49,45 +54,27 @@ const [MissionRawServer](classmavsdk_1_1_mission_raw_server.md) & | [operator=](
 ## Constructor & Destructor Documentation
 
 
-### MissionRawServer() {#classmavsdk_1_1_mission_raw_server_1a409bf742aa4e227b83877476641e938e}
+### MissionRawServer() {#classmavsdk_1_1_mission_raw_server_1a8a899f742cf7b52c27185cee5e5b29e8}
 ```cpp
-mavsdk::MissionRawServer::MissionRawServer(System &system)
+mavsdk::MissionRawServer::MissionRawServer(std::shared_ptr< ServerComponent > server_component)
 ```
 
 
-Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+Constructor. Creates the plugin for a [ServerComponent](classmavsdk_1_1_server_component.md) instance.
 
 The plugin is typically created as shown below: 
 
 ```cpp
-auto mission_raw_server = MissionRawServer(system);
+auto mission_raw_server = MissionRawServer(server_component);
 ```
 
 **Parameters**
 
-* [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+* std::shared_ptr< [ServerComponent](classmavsdk_1_1_server_component.md) > **server_component** - The [ServerComponent](classmavsdk_1_1_server_component.md) instance associated with this server plugin.
 
-### MissionRawServer() {#classmavsdk_1_1_mission_raw_server_1ac742e0088f8b72d349b2808f00bdf24b}
+### ~MissionRawServer() {#classmavsdk_1_1_mission_raw_server_1a7e14a210c0e7ac4b19633cf8dbd4bbec}
 ```cpp
-mavsdk::MissionRawServer::MissionRawServer(std::shared_ptr< System > system)
-```
-
-
-Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-
-The plugin is typically created as shown below: 
-
-```cpp
-auto mission_raw_server = MissionRawServer(system);
-```
-
-**Parameters**
-
-* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
-
-### ~MissionRawServer() {#classmavsdk_1_1_mission_raw_server_1a547fd04a550429c4d395b528da554175}
-```cpp
-mavsdk::MissionRawServer::~MissionRawServer()
+mavsdk::MissionRawServer::~MissionRawServer() override
 ```
 
 
@@ -130,6 +117,16 @@ using mavsdk::MissionRawServer::IncomingMissionCallback =  std::function<void(Re
 Callback type for subscribe_incoming_mission.
 
 
+### typedef IncomingMissionHandle {#classmavsdk_1_1_mission_raw_server_1a71173397d112f738fd05014ccc0952ff}
+
+```cpp
+using mavsdk::MissionRawServer::IncomingMissionHandle =  Handle<Result, MissionPlan>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_incoming_mission.
+
+
 ### typedef CurrentItemChangedCallback {#classmavsdk_1_1_mission_raw_server_1aca7ac64b6e39e612d05ff6497cd572b1}
 
 ```cpp
@@ -140,6 +137,16 @@ using mavsdk::MissionRawServer::CurrentItemChangedCallback =  std::function<void
 Callback type for subscribe_current_item_changed.
 
 
+### typedef CurrentItemChangedHandle {#classmavsdk_1_1_mission_raw_server_1a490cab4b8b06fd5d6eb8e759427f5b47}
+
+```cpp
+using mavsdk::MissionRawServer::CurrentItemChangedHandle =  Handle<MissionItem>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_current_item_changed.
+
+
 ### typedef ClearAllCallback {#classmavsdk_1_1_mission_raw_server_1ae9d7d9d863d1552274440d091e2ec869}
 
 ```cpp
@@ -148,6 +155,16 @@ using mavsdk::MissionRawServer::ClearAllCallback =  std::function<void(uint32_t)
 
 
 Callback type for subscribe_clear_all.
+
+
+### typedef ClearAllHandle {#classmavsdk_1_1_mission_raw_server_1a59022e22386a18e9d51f88e6ed3cf120}
+
+```cpp
+using mavsdk::MissionRawServer::ClearAllHandle =  Handle<uint32_t>
+```
+
+
+[Handle](classmavsdk_1_1_handle.md) type for subscribe_clear_all.
 
 
 ## Member Enumeration Documentation
@@ -178,9 +195,9 @@ Value | Description
 ## Member Function Documentation
 
 
-### subscribe_incoming_mission() {#classmavsdk_1_1_mission_raw_server_1a31b14a826e6bb8727c26105f05e53550}
+### subscribe_incoming_mission() {#classmavsdk_1_1_mission_raw_server_1aede616f945d7c59d2da6afad830f377b}
 ```cpp
-void mavsdk::MissionRawServer::subscribe_incoming_mission(IncomingMissionCallback callback)
+IncomingMissionHandle mavsdk::MissionRawServer::subscribe_incoming_mission(const IncomingMissionCallback &callback)
 ```
 
 
@@ -189,7 +206,24 @@ Subscribe to when a new mission is uploaded (asynchronous).
 
 **Parameters**
 
-* [IncomingMissionCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693) **callback** - 
+* const [IncomingMissionCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ac8bb83c581ff08945314e51973728693)& **callback** - 
+
+**Returns**
+
+&emsp;[IncomingMissionHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a71173397d112f738fd05014ccc0952ff) - 
+
+### unsubscribe_incoming_mission() {#classmavsdk_1_1_mission_raw_server_1a93107d6ee73d03edc0050401c5a5f169}
+```cpp
+void mavsdk::MissionRawServer::unsubscribe_incoming_mission(IncomingMissionHandle handle)
+```
+
+
+Unsubscribe from subscribe_incoming_mission.
+
+
+**Parameters**
+
+* [IncomingMissionHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a71173397d112f738fd05014ccc0952ff) **handle** - 
 
 ### incoming_mission() {#classmavsdk_1_1_mission_raw_server_1ae7c20d621170e5454953513526241577}
 ```cpp
@@ -204,9 +238,9 @@ Poll for '[MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md)
 
 &emsp;[MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md) - One [MissionPlan](structmavsdk_1_1_mission_raw_server_1_1_mission_plan.md) update.
 
-### subscribe_current_item_changed() {#classmavsdk_1_1_mission_raw_server_1a60ea84204d2679b41a607d87cd9a1082}
+### subscribe_current_item_changed() {#classmavsdk_1_1_mission_raw_server_1a287af1e5ca18de2e84345b4f5f8fa386}
 ```cpp
-void mavsdk::MissionRawServer::subscribe_current_item_changed(CurrentItemChangedCallback callback)
+CurrentItemChangedHandle mavsdk::MissionRawServer::subscribe_current_item_changed(const CurrentItemChangedCallback &callback)
 ```
 
 
@@ -215,7 +249,24 @@ Subscribe to when a new current item is set.
 
 **Parameters**
 
-* [CurrentItemChangedCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1aca7ac64b6e39e612d05ff6497cd572b1) **callback** - 
+* const [CurrentItemChangedCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1aca7ac64b6e39e612d05ff6497cd572b1)& **callback** - 
+
+**Returns**
+
+&emsp;[CurrentItemChangedHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a490cab4b8b06fd5d6eb8e759427f5b47) - 
+
+### unsubscribe_current_item_changed() {#classmavsdk_1_1_mission_raw_server_1a8c693a86be890f78a5a10cee9a36dc6c}
+```cpp
+void mavsdk::MissionRawServer::unsubscribe_current_item_changed(CurrentItemChangedHandle handle)
+```
+
+
+Unsubscribe from subscribe_current_item_changed.
+
+
+**Parameters**
+
+* [CurrentItemChangedHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a490cab4b8b06fd5d6eb8e759427f5b47) **handle** - 
 
 ### current_item_changed() {#classmavsdk_1_1_mission_raw_server_1af2bbab99a8a2e1dd1dfebceb439f2ad1}
 ```cpp
@@ -240,9 +291,9 @@ Set Current item as completed.
 
 This function is blocking.
 
-### subscribe_clear_all() {#classmavsdk_1_1_mission_raw_server_1a990002711e49d62b854a608bd30126a9}
+### subscribe_clear_all() {#classmavsdk_1_1_mission_raw_server_1a9b08ba6c1607618e67fd1ec723883415}
 ```cpp
-void mavsdk::MissionRawServer::subscribe_clear_all(ClearAllCallback callback)
+ClearAllHandle mavsdk::MissionRawServer::subscribe_clear_all(const ClearAllCallback &callback)
 ```
 
 
@@ -251,7 +302,24 @@ Subscribe when a MISSION_CLEAR_ALL is received.
 
 **Parameters**
 
-* [ClearAllCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ae9d7d9d863d1552274440d091e2ec869) **callback** - 
+* const [ClearAllCallback](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1ae9d7d9d863d1552274440d091e2ec869)& **callback** - 
+
+**Returns**
+
+&emsp;[ClearAllHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a59022e22386a18e9d51f88e6ed3cf120) - 
+
+### unsubscribe_clear_all() {#classmavsdk_1_1_mission_raw_server_1af337c8126b52d78436605a3b2e558397}
+```cpp
+void mavsdk::MissionRawServer::unsubscribe_clear_all(ClearAllHandle handle)
+```
+
+
+Unsubscribe from subscribe_clear_all.
+
+
+**Parameters**
+
+* [ClearAllHandle](classmavsdk_1_1_mission_raw_server.md#classmavsdk_1_1_mission_raw_server_1a59022e22386a18e9d51f88e6ed3cf120) **handle** - 
 
 ### clear_all() {#classmavsdk_1_1_mission_raw_server_1a307e0f39d704ae9aeb227a27092bf435}
 ```cpp

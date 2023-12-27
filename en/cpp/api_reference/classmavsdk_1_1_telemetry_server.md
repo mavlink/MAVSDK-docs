@@ -81,9 +81,8 @@ std::function< void([Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1
 
 Type | Name | Description
 ---: | --- | ---
-&nbsp; | [TelemetryServer](#classmavsdk_1_1_telemetry_server_1a5ae7e8559429bff305ee2723ee88d961) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [TelemetryServer](#classmavsdk_1_1_telemetry_server_1a3050a0781dfe58e6b1ee1f489af3a94b) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~TelemetryServer](#classmavsdk_1_1_telemetry_server_1a4b815a42bc5e0d73622a7bb1796ffc1d) () | Destructor (internal use only).
+&nbsp; | [TelemetryServer](#classmavsdk_1_1_telemetry_server_1a49e68672755eaa7a4b0b42108bc8761a) (std::shared_ptr< [ServerComponent](classmavsdk_1_1_server_component.md) > server_component) | Constructor. Creates the plugin for a [ServerComponent](classmavsdk_1_1_server_component.md) instance.
+&nbsp; | [~TelemetryServer](#classmavsdk_1_1_telemetry_server_1a459bdc50c062ae94060a331c1a1d8ed8) () override | Destructor (internal use only).
 &nbsp; | [TelemetryServer](#classmavsdk_1_1_telemetry_server_1a412c886b49f0c7b0cf64c13e7664cc7f) (const [TelemetryServer](classmavsdk_1_1_telemetry_server.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_position](#classmavsdk_1_1_telemetry_server_1ac323f672bf90a210f62bc460f45ce1b4) ([Position](structmavsdk_1_1_telemetry_server_1_1_position.md) position, [VelocityNed](structmavsdk_1_1_telemetry_server_1_1_velocity_ned.md) velocity_ned, [Heading](structmavsdk_1_1_telemetry_server_1_1_heading.md) heading)const | Publish to 'position' updates.
 [Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_home](#classmavsdk_1_1_telemetry_server_1a4a7a504dc665a134b85ea82f90c4e1ac) ([Position](structmavsdk_1_1_telemetry_server_1_1_position.md) home)const | Publish to 'home position' updates.
@@ -99,51 +98,34 @@ Type | Name | Description
 [Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_scaled_imu](#classmavsdk_1_1_telemetry_server_1aff52c34112c885662c711cda94b7c985) ([Imu](structmavsdk_1_1_telemetry_server_1_1_imu.md) imu)const | Publish to 'Scaled IMU' updates.
 [Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_raw_imu](#classmavsdk_1_1_telemetry_server_1a92f3fcb090ffc96c70ce35d433a1a2a5) ([Imu](structmavsdk_1_1_telemetry_server_1_1_imu.md) imu)const | Publish to 'Raw IMU' updates.
 [Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_unix_epoch_time](#classmavsdk_1_1_telemetry_server_1a27b1b901cd8baf91380029c2b95b2dac) (uint64_t time_us)const | Publish to 'unix epoch time' updates.
+[Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) | [publish_distance_sensor](#classmavsdk_1_1_telemetry_server_1a7532d068284fb7f55c00804a4a996a6d) ([DistanceSensor](structmavsdk_1_1_telemetry_server_1_1_distance_sensor.md) distance_sensor)const | Publish to "distance sensor" updates.
 const [TelemetryServer](classmavsdk_1_1_telemetry_server.md) & | [operator=](#classmavsdk_1_1_telemetry_server_1a479502f1ce3bdc2c5be486911a20ca25) (const [TelemetryServer](classmavsdk_1_1_telemetry_server.md) &)=delete | Equality operator (object is not copyable).
 
 
 ## Constructor & Destructor Documentation
 
 
-### TelemetryServer() {#classmavsdk_1_1_telemetry_server_1a5ae7e8559429bff305ee2723ee88d961}
+### TelemetryServer() {#classmavsdk_1_1_telemetry_server_1a49e68672755eaa7a4b0b42108bc8761a}
 ```cpp
-mavsdk::TelemetryServer::TelemetryServer(System &system)
+mavsdk::TelemetryServer::TelemetryServer(std::shared_ptr< ServerComponent > server_component)
 ```
 
 
-Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
+Constructor. Creates the plugin for a [ServerComponent](classmavsdk_1_1_server_component.md) instance.
 
 The plugin is typically created as shown below: 
 
 ```cpp
-auto telemetry_server = TelemetryServer(system);
+auto telemetry_server = TelemetryServer(server_component);
 ```
 
 **Parameters**
 
-* [System](classmavsdk_1_1_system.md)& **system** - The specific system associated with this plugin.
+* std::shared_ptr< [ServerComponent](classmavsdk_1_1_server_component.md) > **server_component** - The [ServerComponent](classmavsdk_1_1_server_component.md) instance associated with this server plugin.
 
-### TelemetryServer() {#classmavsdk_1_1_telemetry_server_1a3050a0781dfe58e6b1ee1f489af3a94b}
+### ~TelemetryServer() {#classmavsdk_1_1_telemetry_server_1a459bdc50c062ae94060a331c1a1d8ed8}
 ```cpp
-mavsdk::TelemetryServer::TelemetryServer(std::shared_ptr< System > system)
-```
-
-
-Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-
-The plugin is typically created as shown below: 
-
-```cpp
-auto telemetry_server = TelemetryServer(system);
-```
-
-**Parameters**
-
-* std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
-
-### ~TelemetryServer() {#classmavsdk_1_1_telemetry_server_1a4b815a42bc5e0d73622a7bb1796ffc1d}
-```cpp
-mavsdk::TelemetryServer::~TelemetryServer()
+mavsdk::TelemetryServer::~TelemetryServer() override
 ```
 
 
@@ -516,6 +498,24 @@ This function is blocking.
 **Parameters**
 
 * uint64_t **time_us** - 
+
+**Returns**
+
+&emsp;[Result](classmavsdk_1_1_telemetry_server.md#classmavsdk_1_1_telemetry_server_1a39d62e69bdc289d55b73b0e4c3a3ac8a) - Result of request.
+
+### publish_distance_sensor() {#classmavsdk_1_1_telemetry_server_1a7532d068284fb7f55c00804a4a996a6d}
+```cpp
+Result mavsdk::TelemetryServer::publish_distance_sensor(DistanceSensor distance_sensor) const
+```
+
+
+Publish to "distance sensor" updates.
+
+This function is blocking.
+
+**Parameters**
+
+* [DistanceSensor](structmavsdk_1_1_telemetry_server_1_1_distance_sensor.md) **distance_sensor** - 
 
 **Returns**
 

@@ -46,7 +46,7 @@ Type | Name | Description
 ---: | --- | ---
 &nbsp; | [Mocap](#classmavsdk_1_1_mocap_1a993147a5f0ae4c8a4ddf8be4258690cc) ([System](classmavsdk_1_1_system.md) & system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
 &nbsp; | [Mocap](#classmavsdk_1_1_mocap_1a981aaa6a7e313376b88557013649de65) (std::shared_ptr< [System](classmavsdk_1_1_system.md) > system) | Constructor. Creates the plugin for a specific [System](classmavsdk_1_1_system.md).
-&nbsp; | [~Mocap](#classmavsdk_1_1_mocap_1a0c065d15483fd1b121ac4d7046f7ea17) () | Destructor (internal use only).
+&nbsp; | [~Mocap](#classmavsdk_1_1_mocap_1ad78b5299367dc1db3236d0b674816e22) () override | Destructor (internal use only).
 &nbsp; | [Mocap](#classmavsdk_1_1_mocap_1a0c2242e86da34ecd94c0a40dcec4858f) (const [Mocap](classmavsdk_1_1_mocap.md) & other) | Copy constructor.
 [Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) | [set_vision_position_estimate](#classmavsdk_1_1_mocap_1a22d007409839e28a45d7b10f10e22fd6) ([VisionPositionEstimate](structmavsdk_1_1_mocap_1_1_vision_position_estimate.md) vision_position_estimate)const | Send Global position/attitude estimate from a vision source.
 [Result](classmavsdk_1_1_mocap.md#classmavsdk_1_1_mocap_1a3af8c27b8ad9a4567feb1045e82884d5) | [set_attitude_position_mocap](#classmavsdk_1_1_mocap_1a5f9a63d8bbed750056e139640b38cd7f) ([AttitudePositionMocap](structmavsdk_1_1_mocap_1_1_attitude_position_mocap.md) attitude_position_mocap)const | Send motion capture attitude and position.
@@ -93,9 +93,9 @@ auto mocap = Mocap(system);
 
 * std::shared_ptr< [System](classmavsdk_1_1_system.md) > **system** - The specific system associated with this plugin.
 
-### ~Mocap() {#classmavsdk_1_1_mocap_1a0c065d15483fd1b121ac4d7046f7ea17}
+### ~Mocap() {#classmavsdk_1_1_mocap_1ad78b5299367dc1db3236d0b674816e22}
 ```cpp
-mavsdk::Mocap::~Mocap()
+mavsdk::Mocap::~Mocap() override
 ```
 
 
