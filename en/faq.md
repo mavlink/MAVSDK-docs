@@ -117,3 +117,13 @@ When writing the language wrappers for MAVSDK we decided to try gRPC, however, w
 You can [read more about the auto-generation](cpp/contributing/autogen.md), and [learn how to add functionality](cpp/contributing/plugins.md#add-api-to-proto).
 
 We are not ruling out direct-bindings for the future, there is e.g. a [prototype for Python using pybind11](https://github.com/mavlink/MAVSDK/pull/1283), so this is an ongoing topic.
+
+### Use of deleted function Mavsdk()
+
+```
+error: use of deleted function ‘mavsdk::Mavsdk::Mavsdk()’
+
+mavsdk::Mavsdk mavsdk;
+```
+
+The API to construct `Mavsdk` has changed with v2. Check [API changes](cpp/api_changes.md):
