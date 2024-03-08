@@ -72,13 +72,24 @@ if (connection_result != ConnectionResult::Success) {
 #### Behave like a client
 
 If MAVSDK is used on the vehicle or companion side, it sometimes has to actually initiate the connection, rather than listen for it.
-In this case the IP and port, of where it should connect to, has to be set (this is the same as [setup_udp_remote()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1adb2a69282a5d3766fd6251662c28616d)).
+In this case the IP and port, of where it should connect to, has to be set (this is the same as [setup_udp_remote()](../api_reference/classmavsdk_1_1_mavsdk.md#classmavsdk_1_1_mavsdk_1adb2a69282a5d3766fd6251662c28616d)). 
 
 E.g. to connect to a ground station on 192.168.1.12, you would do:
 
 ```cpp
 Mavsdk mavsdk;
 ConnectionResult connection_result = mavsdk.add_any_connection("udp://192.168.1.12:14550");
+if (connection_result != ConnectionResult::Success) {
+    std::cout << "Adding connection failed: " << connection_result << '\n';
+    return;
+}
+```
+
+E.g. to connect to a local mavlink-router client endpoint at 14551, you would do:
+
+```cpp
+Mavsdk mavsdk;
+ConnectionResult connection_result = mavsdk.add_any_connection("udp://:14551");
 if (connection_result != ConnectionResult::Success) {
     std::cout << "Adding connection failed: " << connection_result << '\n';
     return;
