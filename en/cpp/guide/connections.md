@@ -85,7 +85,8 @@ if (connection_result != ConnectionResult::Success) {
 }
 ```
 
-E.g. to connect to a local mavlink-router client endpoint at 14551, you would do:
+E.g. to listen locally to a mavlink-router endpoint at 14551, you would do:
+
 
 ```cpp
 Mavsdk mavsdk;
