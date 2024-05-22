@@ -20,7 +20,7 @@ MAVSDK is primarily written in C++ with wrappers available for several programmi
 - [MAVSDK-Swift](https://github.com/mavlink/MAVSDK-Swift) (2018): Used in production.
 - [MAVSDK-Python](https://github.com/mavlink/MAVSDK-Python) (2019): Used in production.
 - [MAVSDK-Java](https://github.com/mavlink/MAVSDK-Java) (2019): Used in production.
-- [MAVSDK-Go](https://github.com/mavlink/MAVSDK-Go) (2020): Feature complete.
+- [MAVSDK-Go](https://github.com/mavlink/MAVSDK-Go) (2020): Proof of concept.
 - [MAVSDK-JavaScript](https://github.com/mavlink/MAVSDK-JavaScript) (2019): Proof of concept.
 - [MAVSDK-CSharp](https://github.com/mavlink/MAVSDK-CSharp) (2019). Proof of concept.
 - [MAVSDK-Rust](https://github.com/mavlink/MAVSDK-Rust) (2019): Proof of concept.
