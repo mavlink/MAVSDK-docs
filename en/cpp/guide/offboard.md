@@ -18,19 +18,6 @@ If more precise control is required, clients can call the setpoint methods at wh
 
 The main steps are:
 
-1. Link the plugin library into your application.
-   Do this by adding `mavsdk_offboard` to the `target_link_libraries` section of the app's *cmake* build definition file
-
-   ```cmake
-   find_package(MAVSDK REQUIRED)
-
-   target_link_libraries(your_application_name
-     MAVSDK::mavsdk
-     ...
-     MAVSDK::mavsdk_offboard
-     ...
-   )
-   ```
 1. [Create a connection](../guide/connections.md) to a `system`. For example (basic code without error checking):
    ```
    #include <mavsdk/mavsdk.h>
