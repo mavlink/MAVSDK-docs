@@ -55,7 +55,7 @@ The main steps are:
    For example (basic code without error checking):
    ```
    #include <mavsdk/mavsdk.h>
-   Mavsdk mavsdk;
+   Mavsdk mavsdk{Mavsdk::Configuration{Mavsdk::ComponentType::GroundStation}};
    ConnectionResult conn_result = mavsdk.add_udp_connection();
    // Wait for the system to connect via heartbeat
    while (mavsdk.system().size() == 0) {
