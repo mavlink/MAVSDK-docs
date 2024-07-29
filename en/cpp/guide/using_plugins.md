@@ -7,17 +7,6 @@ A separate plugin instance must be created for each system that needs it.
 
 > **Note** All plugins are declared/used in the same way. This topic uses the `Action` plugin for the purposes of the demonstration.
 
-To use a plugin first link the plugin library into the application. Do this by adding it to the `target_link_libraries` section of the app's *cmake* build definition file:
-
-```cmake
-target_link_libraries(your_executable_name
-    mavsdk
-    ...
-    mavsdk_action
-   ...
-)
-```
-
 > **Note** Plugins are named using the convention **mavsdk\__plugin\_name_.so**.
   For more information see [Building C++ Apps](../guide/toolchain.md)
 
