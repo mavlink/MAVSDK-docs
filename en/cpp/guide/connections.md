@@ -24,7 +24,7 @@ To add a serial connection (e.g. over USB, FTDI, or an SiK radio), you specify t
 **On Linux:**
 
 ```cpp
-Mavsdk mavsdk;
+Mavsdk mavsdk{Mavsdk::Configuration{Mavsdk::ComponentType::GroundStation}};
 ConnectionResult connection_result = mavsdk.add_any_connection("serial:///dev/serial/by-id/usb-FTDI_FT232R_USB_UART_XXXXXXXX-if00-port0:57600");
 if (connection_result != ConnectionResult::Success) {
     std::cout << "Adding connection failed: " << connection_result << '\n';
@@ -35,7 +35,7 @@ if (connection_result != ConnectionResult::Success) {
 **On Windows:**
 
 ```cpp
-Mavsdk mavsdk;
+Mavsdk mavsdk{Mavsdk::Configuration{Mavsdk::ComponentType::GroundStation}};
 ConnectionResult connection_result = mavsdk.add_any_connection("serial://COM3:57600");
 if (connection_result != ConnectionResult::Success) {
     std::cout << "Adding connection failed: " << connection_result << '\n';
