@@ -16,7 +16,7 @@ Otherwise the example is built and run [in the standard way](../examples/README.
 The example terminal output for a debug build of the SDK should be similar to that shown below (a release build will omit the "Debug" messages):
 
 ```
-$ ./transition_vtol_fixed_wing udp://:14540
+$ ./transition_vtol_fixed_wing udpin://:14540
 ```
 ```
 Waiting to discover system...

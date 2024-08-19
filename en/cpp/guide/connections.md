@@ -58,14 +58,14 @@ The code snippet below shows how to set up a connection in server mode and liste
 
 ```cpp
 Mavsdk mavsdk;
-ConnectionResult connection_result = mavsdk.add_any_connection("udp://:14540");
+ConnectionResult connection_result = mavsdk.add_any_connection("udpin://:14540");
 if (connection_result != ConnectionResult::Success) {
     std::cout << "Adding connection failed: " << connection_result << '\n';
     return;
 }
 ```
 
-> **Note** The connection string used above (`udp://:14540`) is to the [standard PX4 UDP port](https://docs.px4.io/master/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540).
+> **Note** The connection string used above (`udpin://:14540`) is to the [standard PX4 UDP port](https://docs.px4.io/master/en/simulation/#default-px4-mavlink-udp-ports) for off-board APIs (14540).
   This is the normal/most common way for offboard APIs to connect to PX4 over WiFi.
   The standard way to talk to a ground station (e.g. QGC is on port 14550).
 
@@ -169,7 +169,7 @@ To forward bi-directional from UDP to serial and serial to UDP, you would set bo
 
 ```cpp
 Mavsdk mavsdk;
-mavsdk.add_any_connection("udp://:14540", ForwardingOption::ForwardingOn);
+mavsdk.add_any_connection("udpin://:14540", ForwardingOption::ForwardingOn);
 mavsdk.add_any_connection("serial:///dev/serial/by-id/usb-FTDI_FT232R_USB_UART_XXXXXXXX-if00-port0:57600", ForwardingOption::ForwardingOn);
 ```
 
@@ -177,7 +177,7 @@ To forward only in one direction, e.g to send messages arriving on serial over U
 
 ```cpp
 Mavsdk mavsdk;
-mavsdk.add_any_connection("udp://:14540", ForwardingOption::ForwardingOn);
+mavsdk.add_any_connection("udpin://:14540", ForwardingOption::ForwardingOn);
 mavsdk.add_any_connection("serial:///dev/serial/by-id/usb-FTDI_FT232R_USB_UART_XXXXXXXX-if00-port0:57600", `ForwardingOption::ForwardingOff`);
 ```
 

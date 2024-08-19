@@ -18,7 +18,7 @@ The example terminal output should be similar to that shown below:
   A release build will omit the "Debug" messages.
 
 ```sh
-$ ./takeoff_and_land udp://:14540
+$ ./takeoff_and_land udpin://:14540
 ```
 ```sh
 Waiting to discover system...

@@ -15,7 +15,7 @@ The example terminal output should be similar to that shown below:
   A release build will omit the "Debug" messages.
 
 ```
-$ ./offboard udp://:14540
+$ ./offboard udpin://:14540
 ```
 ```
 Wait for system to connect via heartbeat
