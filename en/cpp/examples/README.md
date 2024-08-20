@@ -79,16 +79,16 @@ cmake --build build -j4
 ### Running the Examples {#running_the_examples}
 
 You can then run the example, specifying the connection URL as the first argument.
-When running with the Simulator, you will use the connection string: `udpin://:14540`
+When running with the Simulator, you will use the connection string: `udpin://0.0.0.0:14540`
 
 On Linux/macOS you would run the following (from the **/build** directory):
 ```sh
-build/takeoff_and_land udpin://:14540
+build/takeoff_and_land udpin://0.0.0.0:14540
 ```
 
 For Windows you would run the following (from the **\build\Debug\** directory):
 ```cmd
-build\Debug\takeoff_and_land.exe udpin://:14540
+build\Debug\takeoff_and_land.exe udpin://0.0.0.0:14540
 ```
 
 > **Tip** Most examples will create a binary with the same name as the example.

@@ -75,7 +75,7 @@ Linux (e.g Raspberry Pi) connected to the vehicle via Serial port | `serial:///d
 Linux connected to the vehicle via USB | `serial:///dev/ttyUSBn`,  where `n` = the port | `serial:///dev/ttyUSB0`
 macOS connected to the vehicle via Serial port | `serial:///dev/tty.usbserial-n`,  where `n` = the USB device id | `serial:///dev/tty.usbserial-DA00AG57`
 macOS connected to the vehicle via USB | `serial:///dev/tty.usbmodem-n`,  where `n` = the USB device id | `serial:///dev/tty.usbmodem--DA00AG57`
-SITL connected to the vehicle via UDP | `udpin://:14540`
+SITL connected to the vehicle via UDP | `udpin://0.0.0.0:14540`
 
 
 ### Connection Status
