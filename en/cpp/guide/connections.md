@@ -151,7 +151,7 @@ To access a certain system, pick the one from the vector that you require, or us
 Mavsdk mavsdk;
 mavsdk.add_udp_connection();
 // Wait for the system to connect via heartbeat
-while (mavsdk.system().size() == 0) {
+while (mavsdk.systems().size() == 0) {
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 // System got discovered.
