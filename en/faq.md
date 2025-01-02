@@ -1,4 +1,4 @@
-## FAQ
+# FAQ
 
 ### Why was the core of MAVSDK written in C++?
 
