@@ -19,6 +19,7 @@ export default defineConfig({
     "zh/**/*.md",
     "uk/**/*.md",
     "**/_*.md", //Remove source docs that start with "_" (included/not rendered)
+    "README.md", //Remove README.md in root directory
   ],
   ignoreDeadLinks: true,
   markdown: {

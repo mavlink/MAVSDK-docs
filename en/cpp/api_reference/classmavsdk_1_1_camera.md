@@ -106,7 +106,7 @@ void | [unsubscribe_status](#classmavsdk_1_1_camera_1a402cf21219f9b303fca0a269da
 void | [unsubscribe_current_settings](#classmavsdk_1_1_camera_1a117e76672b39c9cd751fa64a42741c17) ([CurrentSettingsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a19960e47f1c2b3fb5117ba2f7f3cfbe6) handle) | Unsubscribe from subscribe_current_settings.
 [PossibleSettingOptionsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1144be14cd9f15724397ad6b5253b8a9) | [subscribe_possible_setting_options](#classmavsdk_1_1_camera_1aef7c545aaa05e36b212255120557967b) (const [PossibleSettingOptionsCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a78e25614c29cd8bc1bbf26adcf417c2a) & callback) | Get the list of settings that can be changed.
 void | [unsubscribe_possible_setting_options](#classmavsdk_1_1_camera_1a191cc00bb6b1c834fc93b19f4bff1c29) ([PossibleSettingOptionsHandle](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a1144be14cd9f15724397ad6b5253b8a9) handle) | Unsubscribe from subscribe_possible_setting_options.
-std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) > | [possible_setting_options](#classmavsdk_1_1_camera_1a5416dc30ec436707420db715ee56ce08) () const | Poll for 'std::vector<SettingOptions>' (blocking).
+std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) > | [possible_setting_options](#classmavsdk_1_1_camera_1a5416dc30ec436707420db715ee56ce08) () const | Poll for 'std::vector< SettingOptions >' (blocking).
 void | [set_setting_async](#classmavsdk_1_1_camera_1aace1d6ffd86a6fdf30b3466c8522feba) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting, const [ResultCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a8d6d59cd8d0a3584ef60b16255b6301f) callback) | Set a setting to some value.
 [Result](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1a2a84df3938372f4f302576227b308bcf) | [set_setting](#classmavsdk_1_1_camera_1aa4b1293d8c6332293cccde87ec79f64a) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting)const | Set a setting to some value.
 void | [get_setting_async](#classmavsdk_1_1_camera_1a6b2e4e9b5b304aff313e4f988aa6ba86) ([Setting](structmavsdk_1_1_camera_1_1_setting.md) setting, const [GetSettingCallback](classmavsdk_1_1_camera.md#classmavsdk_1_1_camera_1ac233f5688f0b7f1e712bb31dfaeadd85) callback) | Get a setting.
@@ -944,12 +944,12 @@ std::vector<SettingOptions> mavsdk::Camera::possible_setting_options() const
 ```
 
 
-Poll for 'std::vector<SettingOptions>' (blocking).
+Poll for 'std::vector< SettingOptions >' (blocking).
 
 
 **Returns**
 
-&emsp;std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) > - One std::vector<SettingOptions> update.
+&emsp;std::vector< [SettingOptions](structmavsdk_1_1_camera_1_1_setting_options.md) > - One std::vector< SettingOptions > update.
 
 ### set_setting_async() {#classmavsdk_1_1_camera_1aace1d6ffd86a6fdf30b3466c8522feba}
 ```cpp
