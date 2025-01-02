@@ -58,7 +58,7 @@ They should only be used where features are missing from the main APIs above.
 
 ## Contributing/Extending
 
-The [Contributing](contributing/README.md) section contains everything you need to contribute to project, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development.
+The [Contributing](contributing/index.md) section contains everything you need to contribute to project, including topics about building the SDK from source code, running our integration and unit tests, and all other aspects of core development.
 
 ## Troubleshooting
 

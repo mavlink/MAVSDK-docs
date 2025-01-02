@@ -96,6 +96,6 @@ The expected behaviour is shown here: [Example: Takeoff and Land](examples/takeo
 ## Next Steps
 
 Once MAVSDK is installed we recommend you:
-- Try the [other examples](examples/README.md)
+- Try the [other examples](examples/index.md)
 - See how to [write your own application](guide/toolchain.md) in C++.
-- Browse the [API reference](api_reference/README.md) to get an overview of the functionality.
+- Browse the [API reference](api_reference/index.md) to get an overview of the functionality.

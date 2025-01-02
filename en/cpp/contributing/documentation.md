@@ -2,7 +2,7 @@
 
 Making quick fixes to existing text or raising issues is very easy.
 More complicated changes will require you to set up the [Gitbook toolchain](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md).
-If you want to help, [get in touch](../../README.md#getting-help).
+If you want to help, [get in touch](../../index.md#getting-help).
 
 > **Tip** You will need a [Github](https://github.com/) login to make and submit changes to this guide.
 
@@ -12,7 +12,7 @@ This guide is written in [markdown](https://github.com/GitbookIO/gitbook/blob/ma
 The book is hosted on [Gitbook.com](https://www.gitbook.com/) and is automatically rebuilt whenever the master branch of the repo is updated.
 You can also rebuild it locally using the [Gitbook toolchain](https://github.com/GitbookIO/gitbook/blob/master/docs/setup.md).
 
-The [API Reference](../api_reference/README.md) section is compiled from source code into markdown using a [separate toolchain](#api-reference) and then copied into Github.
+The [API Reference](../api_reference/index.md) section is compiled from source code into markdown using a [separate toolchain](#api-reference) and then copied into Github.
 Updates to the reference should be made in the [source code repository](https://github.com/mavlink/MAVSDK) (see [API Reference](#api-reference) below for more information).
 
 The guide is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) - if you make any changes then they will be made available under the same license.
@@ -61,4 +61,4 @@ You can extract the documentation to markdown files (one per class) on macOS or 
 
 In order to include new API reference in the *SDK Documentation* it must be manually added to the [Github repository](https://github.com/mavlink/MAVSDK-docs):
 - Copy the files into the [/en/cpp/api_reference](https://github.com/mavlink/MAVSDK-docs/tree/{{ book.github_branch }}/en/cpp/api_reference) folder
-- *New* APIs should be added to appropriate sections in the [MAVSDK-docs/en/SUMMARY.md](https://github.com/mavlink/MAVSDK-docs/blob/{{ book.github_branch }}/en/SUMMARY.md) and [/en/cpp/api_reference/README.md](https://github.com/mavlink/MAVSDK-docs/blob/{{ book.github_branch }}/en/cpp/api_reference/README.md).
+- *New* APIs should be added to appropriate sections in the [MAVSDK-docs/en/SUMMARY.md](https://github.com/mavlink/MAVSDK-docs/blob/{{ book.github_branch }}/en/SUMMARY.md) and [/en/cpp/api_reference/index.md](https://github.com/mavlink/MAVSDK-docs/blob/{{ book.github_branch }}/en/cpp/api_reference/index.md).

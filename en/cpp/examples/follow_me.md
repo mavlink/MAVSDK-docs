@@ -21,7 +21,7 @@ Special notes for this example:
 * To use *QGroundControl* with this example you **must** ensure that *GSC Position Streaming* is disabled (otherwise QGC and the SDK will both send position updates and they will conflict).
   To do this use the latest *QGC Daily Build* and ensure that the **[Application Setting > General](https://docs.qgroundcontrol.com/en/SettingsView/General.html) > Miscellaneous > Stream GCS Position** is set to *Never*.
 
-Otherwise the example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)).
+Otherwise the example is built and run in the normal way ([as described here](../examples/index.md#trying_the_examples)).
 
 The example terminal output should be similar to that shown below:
 

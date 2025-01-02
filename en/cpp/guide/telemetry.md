@@ -217,7 +217,7 @@ Usually though it is easier to understand program flow using the approach above.
 
 Additional information/examples for the Telemetry API are linked below:
 
-* [SDK Examples](../examples/README.md)
+* [SDK Examples](../examples/index.md)
 * Integration tests:
   * [telemetry_async.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/telemetry_async.cpp)
   * [telemetry_health.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/telemetry_health.cpp)

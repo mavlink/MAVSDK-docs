@@ -1,6 +1,6 @@
 # Generate API docs from source
 
-The [API reference docs for C++](../api_reference/README.md) are already pre-generated. If you still would like to generate them, you find the instructions to do so below.
+The [API reference docs for C++](../api_reference/index.md) are already pre-generated. If you still would like to generate them, you find the instructions to do so below.
 
 ## Build API Reference Documentation {#build_api_reference}
 

@@ -10,7 +10,7 @@ While flying the vehicle receives telemetry. The example is implemented in C++ (
 
 ## Running the Example {#run_example}
 
-The example is built and run [as described here](../examples/README.md#trying_the_examples) (the standard way).
+The example is built and run [as described here](../examples/index.md#trying_the_examples) (the standard way).
 
 The example terminal output should be similar to that shown below:
 

@@ -9,7 +9,7 @@ The MAVSDK instances communicates with each other via UDP transmitting telemetry
 
 ## Running the Example {#run_example}
 
-The example is built and run in the normal way ([as described here](../examples/README.md#trying_the_examples)).
+The example is built and run in the normal way ([as described here](../examples/index.md#trying_the_examples)).
 
 The example terminal output should be similar to that shown below:
 

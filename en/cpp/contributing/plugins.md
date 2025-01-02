@@ -364,7 +364,7 @@ Where possible examples should demonstrate realistic use cases such that the cod
 
 The public API must be fully documented using the proto files.
 
-> **Tip** The in-source comments will be compiled to markdown and included in the [API Reference](../api_reference/README.md).
+> **Tip** The in-source comments will be compiled to markdown and included in the [API Reference](../api_reference/index.md).
 > The process is outlined in [Documentation > API Reference](documentation.md#api-reference).
 
 Internal/implementation classes need not be documented, but should be written using expressive naming of variables and functions to help the reader.
@@ -372,7 +372,7 @@ Anything unexpected or special however warrants an explanation as a comment.
 
 ### Example Code Documentation
 
-The plugin example should be documented in markdown following the same pattern as the existing [examples](../examples/README.md).
+The plugin example should be documented in markdown following the same pattern as the existing [examples](../examples/index.md).
 
 Generally this involves explaining what the example does and displaying the source.
 The explanation of how the code works is usually deferred to [guide documentation](#guide).
@@ -380,7 +380,7 @@ The explanation of how the code works is usually deferred to [guide documentatio
 
 ### Guide Documentation {#guide}
 
-Ideally, [guide](../guide/README.md) documentation should be created. This should be based on example code.
+Ideally, [guide](../guide/index.md) documentation should be created. This should be based on example code.
 
 The purpose of the guide is to:
 * Show how different parts of the API can be used together
