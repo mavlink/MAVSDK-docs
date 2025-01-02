@@ -1,6 +1,6 @@
 # Example: Autopilot Server
 
-The [Autopilot Server](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/autopilot_server) example creates two instances of MAVSDK, representing a client (GCS) and a server (Vehicle).
+The [Autopilot Server](https://github.com/mavlink/MAVSDK/tree/main/examples/autopilot_server) example creates two instances of MAVSDK, representing a client (GCS) and a server (Vehicle).
 The MAVSDK instances communicates with each other via UDP transmitting telemetry, publishing parameters, missions and takeoff commands.
 
 > **Note** This example shows how to use [MAVSDK Server Plugins](../server_plugins.md)!
@@ -252,5 +252,5 @@ system, without the need for a separate external autopilot.
 
 ## Source code {#source_code}
 
-- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/autopilot_server/CMakeLists.txt)
-- [autopilot_server.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/autopilot_server/autopilot_server.cpp)
+- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/main/examples/autopilot_server/CMakeLists.txt)
+- [autopilot_server.cpp](https://github.com/mavlink/MAVSDK/blob/main/examples/autopilot_server/autopilot_server.cpp)

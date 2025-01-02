@@ -219,7 +219,7 @@ Additional information/examples for the Telemetry API are linked below:
 
 * [SDK Examples](../examples/index.md)
 * Integration tests:
-  * [telemetry_async.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/telemetry_async.cpp)
-  * [telemetry_health.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/telemetry_health.cpp)
-  * [telemetry_modes.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/telemetry_modes.cpp)
-  * [telemetry_sync.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/telemetry_sync.cpp)
+  * [telemetry_async.cpp](https://github.com/mavlink/MAVSDK/blob/main/src/integration_tests/telemetry_async.cpp)
+  * [telemetry_health.cpp](https://github.com/mavlink/MAVSDK/blob/main/src/integration_tests/telemetry_health.cpp)
+  * [telemetry_modes.cpp](https://github.com/mavlink/MAVSDK/blob/main/src/integration_tests/telemetry_modes.cpp)
+  * [telemetry_sync.cpp](https://github.com/mavlink/MAVSDK/blob/main/src/integration_tests/telemetry_sync.cpp)

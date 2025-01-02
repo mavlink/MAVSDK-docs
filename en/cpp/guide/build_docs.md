@@ -17,5 +17,5 @@ The files are created in `/install/docs/markdown`.
 
 <span></span>
 > **Note** The *generate_docs.sh* script [builds the library](build.md), installs it locally to **/install**, and then uses *DOxygen* to create XML documentation in **/install/docs/xml**.
-> The [generate_markdown_from_doxygen_xml.py](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/tools/generate_markdown_from_doxygen_xml.py) script
+> The [generate_markdown_from_doxygen_xml.py](https://github.com/mavlink/MAVSDK/blob/main/tools/generate_markdown_from_doxygen_xml.py) script
 > is then run on all files in the */xml* directory to generate markdown files in **/install/docs/markdown**.

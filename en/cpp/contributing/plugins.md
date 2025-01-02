@@ -1,9 +1,9 @@
 # Writing Plugins
 
-MAVSDK-C++ is split into a [core](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/mavsdk/plugins).
+MAVSDK-C++ is split into a [core](https://github.com/mavlink/MAVSDK/tree/main/src/core) and multiple independent [plugins](https://github.com/mavlink/MAVSDK/tree/main/src/mavsdk/plugins).
 
 Plugins that are located in the *correct location* (a subfolder of **/plugins**) and have the *correct structure* are built at compile time.
-The [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/CMakeLists.txt) takes care of including the plugin folders and integration tests.
+The [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/main/CMakeLists.txt) takes care of including the plugin folders and integration tests.
 
 ## Plugin Architecture
 
@@ -203,7 +203,7 @@ All implementation goes into the files `my_new_plugin_impl.h` and `my_new_plugin
 
 You can also add unit tests with `unittest_source_files`, as [discussed below](#adding_unit_tests).
 
-The [standard plugins](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/plugins) can be reviewed for guidance on
+The [standard plugins](https://github.com/mavlink/MAVSDK/tree/main/src/plugins) can be reviewed for guidance on
 how to write plugin code, including how to send and process MAVLink messages.
 
 ## Plugin Code
@@ -309,7 +309,7 @@ All tests in a file should share the same test-case name (the first argument to 
 MAVSDK provides the `integration_tests_runner` application for running the integration tests and some helper code to make it easier to log tests and run them against the simulator.
 
 > **Tip** Check out the [Google Test Primer](https://google.github.io/googletest/primer.html)
-> and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests)
+> and the [integration_tests](https://github.com/mavlink/MAVSDK/tree/main/src/integration_tests)
 > for our existing plugins to better understand how to write your own!
 
 
@@ -318,9 +318,9 @@ MAVSDK provides the `integration_tests_runner` application for running the integ
 In order to run an integration test it needs to be added to the `integration_tests_runner` program.
 
 Integration tests for core functionality and plugins delivered by the project
-are stored in [MAVSDK/src/integration_tests](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/src/integration_tests).
+are stored in [MAVSDK/src/integration_tests](https://github.com/mavlink/MAVSDK/tree/main/src/integration_tests).
 The files are added to the test program in that folder's
-[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/CMakeLists.txt) file:
+[CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/main/src/integration_tests/CMakeLists.txt) file:
 
 ```cmake
 # This includes all GTests that run integration tests
@@ -339,13 +339,13 @@ add_executable(integration_tests_runner
 
 #### Integration Test Files/Code
 
-The main MAVSDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests/integration_test_helper.h).
+The main MAVSDK-specific functionality is provided by [integration_test_helper.h](https://github.com/mavlink/MAVSDK/blob/main/src/integration_tests/integration_test_helper.h).
 This provides access to the [Plugin/Test Logger](../guide/dev_logging.md) and a shared test class `SitlTest` for setting up and tearing down the PX4 simulator.
 
 > **Note** All tests running against SITL can be declared using `TEST_F` and have a first argument `SitlTest` as shown.
   This is required in order to use the shared class to set up and tear down the simulator between tests.
 
-For reference inspect the [existing integration tests](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/src/integration_tests).
+For reference inspect the [existing integration tests](https://github.com/mavlink/MAVSDK/blob/main/src/integration_tests).
 
 ## Example Code
 

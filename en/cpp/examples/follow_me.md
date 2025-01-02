@@ -110,5 +110,5 @@ The operation of the "SDK-specific" part of this code is discussed in the guide:
 
 ## Source code {#source_code}
 
-- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/follow_me/CMakeLists.txt)
-- [follow_me.cpp](https://github.com/mavlink/MAVSDK/blob/{{ book.github_branch }}/examples/follow_me/CMakeLists.txt)
+- [CMakeLists.txt](https://github.com/mavlink/MAVSDK/blob/main/examples/follow_me/CMakeLists.txt)
+- [follow_me.cpp](https://github.com/mavlink/MAVSDK/blob/main/examples/follow_me/CMakeLists.txt)
