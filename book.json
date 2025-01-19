@@ -12,7 +12,7 @@
         "page-toc-button",
         "page-footer-ex",
         "custom-favicon",
-        "anchors",
+        "anchors@0.7.1",
         "theme-dronecode@git+https://github.com/Dronecode/theme-dronecode.git",
         "richquotes@git+https://github.com/Dronecode/gitbook-plugin-richquotes.git",
         "toolbar@git+https://github.com/hamishwillee/gitbook-plugin-toolbar.git",
