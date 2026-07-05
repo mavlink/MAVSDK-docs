@@ -6,7 +6,7 @@ It sets up a UDP connection, waits for a vehicle (system) to appear, arms it, an
 After a short wait the vehicle lands.
 While flying the vehicle receives telemetry. The example is implemented in C++ (only).
 
-> **Tip** The full source code for the example [can be found here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/takeoff_land).
+> **Tip** The full source code for the example [can be found here](https://github.com/mavlink/MAVSDK/tree/{{ book.github_branch }}/examples/takeoff_and_land).
 
 ## Running the Example {#run_example}
 

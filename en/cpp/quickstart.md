@@ -81,7 +81,7 @@ cmake --build build -j4
 
 First start PX4 in SITL (Simulation) and *QGroundControl* as described above.
 
-Then run the example app (from the **example/takeoff_land/build** directory) as shown:
+Then run the example app (from the **examples/takeoff_and_land/build** directory) as shown:
 ```sh
 build/takeoff_and_land udp://:14540
 ```
