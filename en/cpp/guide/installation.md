@@ -33,4 +33,4 @@ brew install mavsdk
 For Windows you can download the **mavsdk-windows-x64-release.zip** file from [MAVSDK releases](https://github.com/mavlink/MAVSDK/releases) containing the headers and library and extract it locally (see [information how to use a locally installed library](toolchain.md#sdk_local_install)).
 
 > **Note** As the library is installed locally (in a local directory) you need to point cmake to that directory at configure time using `CMAKE_PREFIX_PATH` when building your application.
-> i.e.: `cmake -Bbuild -DCMAKE_PREFIX_PATH=../mavsdk_extracted` -H.
+> i.e.: `cmake -B build -DCMAKE_PREFIX_PATH=../mavsdk_extracted` -H.

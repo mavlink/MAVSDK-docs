@@ -176,7 +176,7 @@ Once the proto file has been created, you can generate all files required for th
 
 1. Run the configure step to prepare the tools required:
    ```
-   cmake -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
+   cmake -DBUILD_MAVSDK_SERVER=ON -B build/default -H.
    ```
 1. Install `protoc_gen_mavsdk` which is required for the auto-generation:
    ```

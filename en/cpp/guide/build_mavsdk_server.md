@@ -13,14 +13,14 @@ The requirements are the same as described in the [library build instructions](b
 ## Build on Linux
 
 ```
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_MAVSDK_SERVER=ON -B build/default -H.
 cmake --build build/default -j8
 ```
 
 ## Build on macOS
 
 ```
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_MAVSDK_SERVER=ON -B build/default -H.
 cmake --build build/default -j8
 ```
 
@@ -31,7 +31,7 @@ cmake --build build/default -j8
 Open the "x64 Native Tools Command Prompt for VS 2022", cd into the MAVSDK directory, and do:
 
 ```
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -Bbuild/default -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -B build/default -H.
 cmake --build build/default -j8
 ```
 
@@ -44,14 +44,14 @@ Build for Android using the dockcross cross compiler, as described in the [cross
 To build for real iOS devices on macOS:
 
 ```sh
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=OS -Bbuild/ios -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=OS -B build/ios -H.
 cmake --build build/ios
 ```
 
 Build for the iOS simulator on macOS:
 
 ```sh
-cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -Bbuild/ios_simulator -H.
+cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_TOOLCHAIN_FILE=tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -B build/ios_simulator -H.
 ```
 
 ## Cross compilation using dockcross {#cross_compilation_dockcross}
@@ -68,7 +68,7 @@ For example, use the commands below to build for `armv7`:
    cd MAVSDK
    docker run --rm dockcross/linux-armv7 > ./dockcross-linux-armv7
    chmod +x ./dockcross-linux-armv7
-   ./dockcross-linux-armv7 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -Bbuild/linux-armv7 -S.
+   ./dockcross-linux-armv7 cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -B build/linux-armv7 -S.
    ./dockcross-linux-armv7 cmake --build build/linux-armv7 -j 8
    ```
 3. If all goes well, `mavsdk_server` is built. You can check the file with:

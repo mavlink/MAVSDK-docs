@@ -67,13 +67,13 @@ See [installation guide](../guide/installation.md) if that is not already the ca
 Then build the example:
 ```sh
 cd examples/takeoff_and_land/
-cmake -Bbuild -H.
+cmake -B build -H.
 cmake --build build -j4
 ```
 
 > **Note** if MAVSDK is installed locally (e.g. on Windows) you need to pass the location to cmake:
 > ```
-> cmake -Bbuild -DCMAKE_PREFIX_PATH=wherever_mavsdk_is_locally_installed
+> cmake -B build -DCMAKE_PREFIX_PATH=wherever_mavsdk_is_locally_installed
 > ```
 
 ### Running the Examples {#running_the_examples}
